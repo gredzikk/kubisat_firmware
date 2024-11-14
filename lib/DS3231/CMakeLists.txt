@@ -3,8 +3,6 @@ project(DS3231_lib)
 add_library(DS3231_lib STATIC
     DS3231.cpp
     DS3231.h
-    DS3231_WRAPPER.cpp
-    DS3231_WRAPPER.h
 )
 target_include_directories(DS3231_lib PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}

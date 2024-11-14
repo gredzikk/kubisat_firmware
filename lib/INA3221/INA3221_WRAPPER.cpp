@@ -17,18 +17,16 @@ float INA3221Wrapper::readData(DataType type) {
     if (!initialized) return 0.0f;
 
     switch (type) {
-        case DataType::CURRENT_CH1:
+        case DataType::CURRENT_CHARGE_USB:
             return sensor.getCurrent_mA(INA3221_CH1);
-        case DataType::CURRENT_CH2:
+        case DataType::CURRENT_DRAW:
             return sensor.getCurrent_mA(INA3221_CH2);
-        case DataType::CURRENT_CH3:
+        case DataType::CURRENT_CHARGE_SOLAR:
             return sensor.getCurrent_mA(INA3221_CH3);
-        case DataType::VOLTAGE_CH1:
+        case DataType::VOLTAGE_BATTERY:
             return sensor.getVoltage(INA3221_CH1);
-        case DataType::VOLTAGE_CH2:
+        case DataType::VOLTAGE_5V_OUT:
             return sensor.getVoltage(INA3221_CH2);
-        case DataType::VOLTAGE_CH3:
-            return sensor.getVoltage(INA3221_CH3);
         default:
             return 0.0f;
     }
