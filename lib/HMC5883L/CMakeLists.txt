@@ -10,6 +10,7 @@ add_library(HMC5883L_lib STATIC
 
 target_include_directories(HMC5883L_lib PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_SOURCE_DIR}
 )
 
 target_link_libraries(HMC5883L_lib PUBLIC

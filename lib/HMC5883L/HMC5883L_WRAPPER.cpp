@@ -23,7 +23,7 @@ float HMC5883LWrapper::readData(DataType type) {
     switch (type) {
         case DataType::MAG_FIELD_X:
             return x_uT;
-        case DataType::MAG_FIEDL_Y:
+        case DataType::MAG_FIELD_Y:
             return y_uT;
         case DataType::MAG_FIELD_Z:
             return z_uT;

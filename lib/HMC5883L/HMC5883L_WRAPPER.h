@@ -1,5 +1,5 @@
-#ifndef HMC5883LWRAPPER_H
-#define HMC5883LWRAPPER_H
+#ifndef HMC5883L_WRAPPER_H
+#define HMC5883L_WRAPPER_H
 
 #include "ISensor.h"
 #include "HMC5883L.h"

@@ -23,9 +23,9 @@ bool SensorWrapper::initSensor(SensorType type, i2c_inst_t* i2c) {
         case SensorType::ENVIRONMENT:
             sensors[type] = new BME280Wrapper(i2c);
             break;
-        case SensorType::IMU:
-            sensors[type] = new MPU6050Wrapper(i2c);
-            break;
+        // case SensorType::IMU:
+        //     sensors[type] = new MPU6050Wrapper(i2c);
+        //     break;
         case SensorType::MAGNETOMETER:
             sensors[type] = new HMC5883LWrapper(i2c);
             break;

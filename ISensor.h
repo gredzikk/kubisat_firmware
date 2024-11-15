@@ -27,7 +27,7 @@ enum class DataType {
     PRESSURE,
     HUMIDITY,
     MAG_FIELD_X,
-    MAG_FIEDL_Y,
+    MAG_FIELD_Y,
     MAG_FIELD_Z,
     GYRO_X,
     GYRO_Y,

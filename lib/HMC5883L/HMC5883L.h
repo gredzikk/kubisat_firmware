@@ -5,7 +5,7 @@
 
 class HMC5883L {
 public:
-    HMC5883L(i2c_inst_t* i2c, uint8_t address = 0x1E);
+    HMC5883L(i2c_inst_t* i2c, uint8_t address = 0x0D);
     bool init();
     bool read(int16_t& x, int16_t& y, int16_t& z);
 
