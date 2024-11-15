@@ -8,10 +8,12 @@
 #include <string>
 
 enum class SensorType {
-    LIGHT,      // BH1750
-    POWER,      // INA3221
-    TIME,       // DS3231
-    ENVIRONMENT // BME280
+    LIGHT,          // BH1750
+    POWER,          // INA3221
+    TIME,           // DS3231
+    ENVIRONMENT,    // BME280
+    MAGNETOMETER,   // HMC5883L
+    IMU             // MPU6050
 };
 
 enum class DataType {
@@ -24,6 +26,15 @@ enum class DataType {
     TEMPERATURE,
     PRESSURE,
     HUMIDITY,
+    MAG_FIELD_X,
+    MAG_FIEDL_Y,
+    MAG_FIELD_Z,
+    GYRO_X,
+    GYRO_Y,
+    GYRO_Z,
+    ACCEL_X,
+    ACCEL_Y,
+    ACCEL_Z
 };
 
 class ISensor {

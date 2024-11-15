@@ -41,6 +41,8 @@ add_subdirectory(lib/BH1750)
 add_subdirectory(lib/BME280)
 add_subdirectory(lib/DS3231)
 add_subdirectory(lib/INA3221)
+add_subdirectory(lib/MPU6050)
+add_subdirectory(lib/HMC5883L)
 add_subdirectory(lib/LoRa)
 add_executable(all_sensors_test all_sensors_test.cpp ISensor.cpp)
 
@@ -61,6 +63,8 @@ target_link_libraries(all_sensors_test
     DS3231_lib
     INA3221_lib
     LoRa_pico_lib
+    HMC5883L_lib
+    MPU6050_lib
 )
 
 target_include_directories(all_sensors_test PRIVATE

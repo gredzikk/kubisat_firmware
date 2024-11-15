@@ -3,6 +3,7 @@
 #include "lib/BH1750/BH1750_WRAPPER.h"
 #include "lib/INA3221/INA3221_WRAPPER.h"
 #include "lib/BME280/BME280_WRAPPER.h"
+#include "lib/HMC5883L/HMC5883L_WRAPPER.h"
 
 SensorWrapper& SensorWrapper::getInstance() {
     static SensorWrapper instance;
@@ -21,6 +22,12 @@ bool SensorWrapper::initSensor(SensorType type, i2c_inst_t* i2c) {
             break;
         case SensorType::ENVIRONMENT:
             sensors[type] = new BME280Wrapper(i2c);
+            break;
+        case SensorType::IMU:
+            sensors[type] = new MPU6050Wrapper(i2c);
+            break;
+        case SensorType::MAGNETOMETER:
+            sensors[type] = new HMC5883LWrapper(i2c);
             break;
     }
     return sensors[type]->init();
