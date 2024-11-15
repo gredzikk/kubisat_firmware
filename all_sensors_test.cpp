@@ -21,7 +21,7 @@
 #define UART_RX_PIN 1
 
 #define I2C_PORT i2c0
-char buf[7];
+
 int main()
 {
     stdio_init_all();
@@ -56,8 +56,16 @@ int main()
     sensorManager.configureSensor(SensorType::POWER, powerConfig);
 
     DS3231 systemClock(i2c);    
+    DateTime systemTime;
+    systemTime.year = 2024;
+    systemTime.month = 11;
+    systemTime.day = 15;
+    systemTime.weekday = Weekday::FRI;
+    systemTime.hour = 8;
+    systemTime.min = 25;
+    systemTime.sec = 0;
 
-    systemClock.setTime(0,41,20,4,14,11,2024);
+    systemClock.setTime(systemTime);
 
     for (int i = 5; i > 0; --i) {
         std::cout << "Main loop starts in " << i << " seconds..." << std::endl;
@@ -76,20 +84,16 @@ int main()
         float current_ch1 = sensorManager.readSensorData(SensorType::POWER, DataType::CURRENT_CHARGE_USB);
         float current_ch2 = sensorManager.readSensorData(SensorType::POWER, DataType::CURRENT_DRAW);
         float current_ch3 = sensorManager.readSensorData(SensorType::POWER, DataType::CURRENT_CHARGE_SOLAR);
-
-        uint8_t sec, min, hour, day, month;
-        uint16_t year;
-        std::string weekday;
         
-        if(systemClock.getTime(sec, min, hour, weekday, day, month, year)) {
-            printf("%02d:%02d:%02d %s %02d.%02d.%d\n", 
-                   hour, min, sec, weekday.c_str(), day, month, year);
+        if(systemClock.getTime(systemTime)) {
+            std::cout << systemTime.year << "-" << systemTime.month << "-" << systemTime.day << "-" << DS3231::weekdayToString(systemTime.weekday) << " " << systemTime.hour << ":" << systemTime.min << ":" << systemTime.sec << std::endl;
         }
 
         std::cout << std::fixed << std::setprecision(2);
         std::cout << "Light: " << lightLevel << " lux" << std::endl;
         std::cout << "Temperature: " << temperature << " C" << std::endl; 
         std::cout << "Humidity: " << humidity << " %" << std::endl;
+        std::cout << "Pressure: " << pressure << " hPa" << std::endl;
         
         std::cout << "Voltages: 1: " << voltage_ch1 << "V, 2: " << voltage_ch2 << "V" << std::endl;
         std::cout << "Current: 1: " << current_ch1 << "mA, 2: " << current_ch2 << "mA, 3: " << current_ch3 << "mA" << std::endl;
