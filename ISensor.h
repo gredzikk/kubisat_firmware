@@ -45,7 +45,6 @@ public:
     virtual bool isInitialized() const = 0;
     virtual SensorType getType() const = 0;
     virtual bool configure(const std::map<std::string, std::string>& config) = 0;
-
 };
 
 class SensorWrapper {

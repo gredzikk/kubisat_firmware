@@ -46,6 +46,9 @@ add_subdirectory(lib/HMC5883L)
 add_subdirectory(lib/LoRa)
 add_executable(all_sensors_test all_sensors_test.cpp ISensor.cpp)
 
+enable_testing()
+add_subdirectory(tests)
+
 pico_set_program_name(all_sensors_test "all_sensors_test")
 pico_set_program_version(all_sensors_test "0.1")
 
