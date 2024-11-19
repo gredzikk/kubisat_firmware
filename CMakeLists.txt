@@ -44,7 +44,13 @@ add_subdirectory(lib/INA3221)
 add_subdirectory(lib/MPU6050)
 add_subdirectory(lib/HMC5883L)
 add_subdirectory(lib/LoRa)
-add_executable(all_sensors_test all_sensors_test.cpp ISensor.cpp)
+add_subdirectory(lib/FatFs_SPI build)
+
+add_executable(all_sensors_test 
+    all_sensors_test.cpp 
+    ISensor.cpp 
+    commands.cpp
+)
 
 enable_testing()
 add_subdirectory(tests)
@@ -68,6 +74,7 @@ target_link_libraries(all_sensors_test
     LoRa_pico_lib
     HMC5883L_lib
     MPU6050_lib
+    FatFs_SPI   
 )
 
 target_include_directories(all_sensors_test PRIVATE

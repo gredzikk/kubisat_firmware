@@ -17,27 +17,115 @@
 #include <chrono>
 
 #include "GPSData.h"
+#include "sd_card.h"
+#include "ff.h"
+
+#include <iostream>
+#include <map>
+#include "commands.h"
 
 uint32_t last_gps_time = 0;
 GPSData gpsData;
 
+//DEBUG uart
 #define UART_ID uart0
 #define BAUD_RATE 115200
 
-#define UART_TX_PIN 0
-#define UART_RX_PIN 1
+#define UART_TX_PIN 12
+#define UART_RX_PIN 13
 
 #define I2C_PORT i2c0
 
+// LoRa contants
+using std::string;
+
+const int csPin = 17;          // LoRa radio chip select
+const int resetPin = 15;       // LoRa radio reset
+const int irqPin = 14;         // change for your board; must be a hardware interrupt pin
+
+string outgoing;              // outgoing message
+
+uint8_t msgCount = 0;            // count of outgoing messages
+
+uint8_t localAddress = 37;     // address of this device
+uint8_t destination = 21;      // destination to send to
+
+long lastSendTime = 0;        // last send time
+long unsigned int interval = 2000; // interval between sends
+long lastReceiveTime = 0;     // last receive time
+
+// LoRa methods
+void logMessage(const string& message) {
+	uint32_t timestamp = to_ms_since_boot(get_absolute_time());
+	printf("[%lu ms] %s\n", timestamp, message.c_str());
+}
+
+void sendMessage(string outgoing) {
+	int n = outgoing.length();
+	char send[n+1];
+	strcpy(send,outgoing.c_str());
+	logMessage("Sat to ground: " + string(send) + " [" + std::to_string(n) + "]");
+	LoRa.beginPacket();                   // start packet
+	LoRa.write(destination);              // add destination address
+	LoRa.write(localAddress);             // add sender address
+	LoRa.write(msgCount);                 // add message ID
+	LoRa.write(n+1);                      // add payload length
+	LoRa.print(send);                     // add payload
+	LoRa.endPacket();                     // finish packet and send it
+	msgCount++;                           // increment message ID
+}
+
+void onReceive(int packetSize) {
+  if (packetSize == 0) return;          // if there's no packet, return
+  // read packet header uint8_ts:
+  int recipient = LoRa.read();          // recipient address
+  uint8_t sender = LoRa.read();         // sender address
+  uint8_t incomingMsgId = LoRa.read();  // incoming msg ID
+  uint8_t incomingLength = LoRa.read(); // incoming msg length
+
+  string incoming = "";
+
+  while (LoRa.available()) {
+    incoming += (char)LoRa.read();
+  }
+
+  if (incomingLength != incoming.length() + 1) {   // check length for error
+    printf("error: message length does not match length\n");
+    return;                             // skip rest of function
+  }
+
+  // if the recipient isn't this device or broadcast,
+  if (recipient != localAddress && recipient != 0xFF) {
+    printf("This message is not for me.\n");
+    return;                             // skip rest of function
+  }
+
+  logMessage("Received from: 0x" + std::to_string(sender));
+  logMessage("Sent to: 0x" + std::to_string(recipient));
+  logMessage("Message ID: " + std::to_string(incomingMsgId));
+  logMessage("Message length: " + std::to_string(incomingLength));
+  logMessage("Message: " + incoming);
+  logMessage("RSSI: " + std::to_string(LoRa.packetRssi()));
+  logMessage("Snr: " + std::to_string(LoRa.packetSnr()));
+
+  sleep_ms(500);
+  handleCommand(incoming);
+
+  // Update last receive time
+  lastReceiveTime = to_ms_since_boot(get_absolute_time());
+}
+
+//GPS defines
 #define GPS_UART uart1
 #define GPS_BAUD_RATE 9600
-#define GPS_TX_PIN 8
-#define GPS_RX_PIN 9
+#define GPS_TX_PIN 4
+#define GPS_RX_PIN 5
 #define BUFFER_SIZE 85  // NMEA sentences are usually under 85 chars
 
 char buffer[BUFFER_SIZE];
 int bufferIndex = 0;
 
+//GPS methods
 void setupGPS() {
     uart_init(GPS_UART, GPS_BAUD_RATE);
     gpio_set_function(GPS_TX_PIN, UART_FUNCSEL_NUM(GPS_UART, GPS_TX_PIN));
@@ -78,6 +166,13 @@ void printSensorData(float lightLevel, float temperature, float humidity, float 
 
 int main()
 {
+    FRESULT fr;
+    FATFS fs;
+    FIL fil;
+    int ret;
+    char buf[100];
+    char filename[] = "test02.txt";
+
     stdio_init_all();
 
     uart_init(UART_ID, BAUD_RATE);
@@ -116,11 +211,100 @@ int main()
 
     systemClock.setTime(0,41,20,4,14,11,2024);
 
+    //LoRa init
+    LoRa.setPins(csPin, resetPin, irqPin);
+
+    if (!LoRa.begin(500E6)) {
+        logMessage("LoRa init failed. Check your connections.");
+        while (true);
+    }
+
+    logMessage(" init succeeded.");
+
+    lastReceiveTime = to_ms_since_boot(get_absolute_time());
     for (int i = 5; i > 0; --i) {
         std::cout << "Main loop starts in " << i << " seconds..." << std::endl;
         sleep_ms(1000);
     }
+    
+    //SD init
+    printf("\r\nSD card test. Press 'enter' to start.\n");
+    while (true) {
+        buf[0] = getchar();
+        if ((buf[0] == '\r') || (buf[0] == '\n')) {
+            break;
+        }
+    }
 
+    // Initialize SD card
+    if (!sd_init_driver()) {
+        printf("ERROR: Could not initialize SD card\n");
+        while (true);
+    }
+
+    // Mount drive
+    fr = f_mount(&fs, "0:", 1);
+    if (fr != FR_OK) {
+        printf("ERROR: Could not mount filesystem (%d)\n", fr);
+        while (true);
+    }
+
+    // Open file for writing ()
+    fr = f_open(&fil, filename, FA_WRITE | FA_CREATE_ALWAYS);
+    if (fr != FR_OK) {
+        printf("ERROR: Could not open file (%d)\n", fr);
+        while (true);
+    }
+
+    // Write something to file
+    ret = f_printf(&fil, "This is another test\n");
+    if (ret < 0) {
+        printf("ERROR: Could not write to file (%d)\n", ret);
+        f_close(&fil);
+        while (true);
+    }
+    ret = f_printf(&fil, "of writing to an SD card.\n");
+    if (ret < 0) {
+        printf("ERROR: Could not write to file (%d)\n", ret);
+        f_close(&fil);
+        while (true);
+    }
+
+    // Close file
+    fr = f_close(&fil);
+    if (fr != FR_OK) {
+        printf("ERROR: Could not close file (%d)\n", fr);
+        while (true);
+    }
+
+    // Open file for reading
+    fr = f_open(&fil, filename, FA_READ);
+    if (fr != FR_OK) {
+        printf("ERROR: Could not open file (%d)\n", fr);
+        while (true);
+    }
+
+    // Print every line in file over serial
+    printf("Reading from file '%s':\n", filename);
+    printf("---\n");
+    while (f_gets(buf, sizeof(buf), &fil)) {
+        printf(buf);
+    }
+    printf("\n---\n");
+
+    // Close file
+    fr = f_close(&fil);
+    if (fr != FR_OK) {
+        printf("ERROR: Could not close file (%d)\n", fr);
+        while (true);
+    }
+
+    // Unmount drive
+    f_unmount("0:");
+    printf("done\n");
+
+
+    
     while(true) {
         float lightLevel = sensorManager.readSensorData(SensorType::LIGHT, DataType::LIGHT_LEVEL);
         float temperature = sensorManager.readSensorData(SensorType::ENVIRONMENT, DataType::TEMPERATURE);
@@ -161,10 +345,22 @@ int main()
         else if (bufferIndex < BUFFER_SIZE - 1) {
             buffer[bufferIndex++] = c;
         }
+
+        int packetSize = LoRa.parsePacket();
+        if (packetSize) {
+            onReceive(packetSize);
+        }
+
+        long currentTime = to_ms_since_boot(get_absolute_time());
+        if (currentTime - lastReceiveTime > 5000) {
+            logMessage("No messages received in the last 5 seconds.");
+            lastReceiveTime = currentTime;
+        }
     }
 
         sleep_ms(100);
     }
+    
 
     return 0;
 }
