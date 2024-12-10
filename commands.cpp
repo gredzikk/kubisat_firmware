@@ -1,10 +1,7 @@
 #include "commands.h"
 #include "LoRa/LoRa-RP2040.h"
 #include <string>
-
-extern uint8_t msgCount;
-extern uint8_t localAddress;
-extern uint8_t destination;
+#include "pin_config.h"
 
 std::map<std::string, Command> commandMap = {
     {"get_time", Command::GET_TIME},

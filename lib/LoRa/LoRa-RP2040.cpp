@@ -1,5 +1,4 @@
 #include "LoRa-RP2040.h"
-
 // registers
 #define REG_FIFO                 0x00
 #define REG_OP_MODE              0x01
@@ -101,20 +100,20 @@ int LoRaClass::begin(long frequency)
 
   // start SPI
   spi_init(SPI_PORT, 12500);
-  gpio_set_function(PIN_MISO, GPIO_FUNC_SPI);
-  gpio_set_function(PIN_SCK, GPIO_FUNC_SPI);
-  gpio_set_function(PIN_MOSI, GPIO_FUNC_SPI);
+  gpio_set_function(SX1278_MISO, GPIO_FUNC_SPI);
+  gpio_set_function(SX1278_SCK, GPIO_FUNC_SPI);
+  gpio_set_function(SX1278_MOSI, GPIO_FUNC_SPI);
 
 
   // Make the SPI pins available to picotool
-  bi_decl(bi_3pins_with_func(PIN_MISO, PIN_MOSI, PIN_SCK, GPIO_FUNC_SPI));
+  bi_decl(bi_3pins_with_func(SX1278_MISO, SX1278_MOSI, SX1278_SCK, GPIO_FUNC_SPI));
 
-  gpio_init(PIN_CS);
-  gpio_set_dir(PIN_CS, GPIO_OUT);
-  gpio_put(PIN_CS, 1);
+  gpio_init(SX1278_CS);
+  gpio_set_dir(SX1278_CS, GPIO_OUT);
+  gpio_put(SX1278_CS, 1);
 
   // Make the CS pin available to picotool
-  bi_decl(bi_1pin_with_name(PIN_CS, "SPI CS"));
+  bi_decl(bi_1pin_with_name(SX1278_CS, "SPI CS"));
 
   // check version
   uint8_t version = readRegister(REG_VERSION);

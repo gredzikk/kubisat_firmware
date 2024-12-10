@@ -7,26 +7,9 @@
 #include "hardware/spi.h"
 #include "string.h"
 #include "Print.h"
-
-#define PIN_MISO 16
-#define PIN_CS   17
-#define PIN_SCK  18
-#define PIN_MOSI 19
-
-#define SPI_PORT spi0
-#define READ_BIT 0x80
-
-#define LORA_DEFAULT_SPI           spi0
-#define LORA_DEFAULT_SPI_FREQUENCY 8E6
-#define LORA_DEFAULT_SS_PIN        17
-#define LORA_DEFAULT_RESET_PIN     15
-#define LORA_DEFAULT_DIO0_PIN      13
+#include "pin_config.h"
 
 #endif
-
-#define PA_OUTPUT_RFO_PIN          11
-#define PA_OUTPUT_PA_BOOST_PIN     12
-
 
 static void __empty();
 

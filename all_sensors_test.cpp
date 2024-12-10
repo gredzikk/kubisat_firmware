@@ -23,32 +23,21 @@
 #include <iostream>
 #include <map>
 #include "commands.h"
+#include "pin_config.h"  // Add this line
 
 uint32_t last_gps_time = 0;
 GPSData gpsData;
 
-//DEBUG uart
-#define UART_ID uart0
-#define BAUD_RATE 115200
-
-#define UART_TX_PIN 12
-#define UART_RX_PIN 13
-
-#define I2C_PORT i2c0
-
 // LoRa contants
 using std::string;
 
-const int csPin = 17;          // LoRa radio chip select
-const int resetPin = 15;       // LoRa radio reset
-const int irqPin = 14;         // change for your board; must be a hardware interrupt pin
+      // change for your board; must be a hardware interrupt pin
 
 string outgoing;              // outgoing message
 
 uint8_t msgCount = 0;            // count of outgoing messages
 
-uint8_t localAddress = 37;     // address of this device
-uint8_t destination = 21;      // destination to send to
+      // destination to send to
 
 long lastSendTime = 0;        // last send time
 long unsigned int interval = 2000; // interval between sends
@@ -114,13 +103,6 @@ void onReceive(int packetSize) {
   // Update last receive time
   lastReceiveTime = to_ms_since_boot(get_absolute_time());
 }
-
-//GPS defines
-#define GPS_UART uart1
-#define GPS_BAUD_RATE 9600
-#define GPS_TX_PIN 4
-#define GPS_RX_PIN 5
-#define BUFFER_SIZE 85  // NMEA sentences are usually under 85 chars
 
 char buffer[BUFFER_SIZE];
 int bufferIndex = 0;

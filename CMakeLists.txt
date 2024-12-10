@@ -50,6 +50,7 @@ add_executable(all_sensors_test
     all_sensors_test.cpp 
     ISensor.cpp 
     commands.cpp
+    pin_config.cpp    # Add this line
 )
 
 enable_testing()
