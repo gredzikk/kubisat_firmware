@@ -1154,6 +1154,7 @@ bool sd_init_driver() {
                 gpio_pull_up(pSD->card_detect_gpio);
                 gpio_set_dir(pSD->card_detect_gpio, GPIO_IN);
             }
+            printf("setting sd drive strength");
             if (pSD->set_drive_strength) {
                 gpio_set_drive_strength(pSD->ss_gpio, pSD->ss_gpio_drive_strength);
             }
@@ -1171,6 +1172,7 @@ bool sd_init_driver() {
                 return false;
             }
         }
+        printf("sd init done");
         initialized = true;
     }
     mutex_exit(&sd_init_driver_mutex);

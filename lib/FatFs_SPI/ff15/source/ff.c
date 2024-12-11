@@ -22,7 +22,7 @@
 #include <string.h>
 #include "ff.h"			/* Declarations of FatFs API */
 #include "diskio.h"		/* Declarations of device I/O functions */
-
+#include <stdio.h>
 
 /*--------------------------------------------------------------------------
 
@@ -3427,6 +3427,7 @@ static FRESULT mount_volume (	/* FR_OK(0): successful, !=0: an error occurred */
 	fs->fs_type = 0;					/* Invalidate the filesystem object */
 	stat = disk_initialize(fs->pdrv);	/* Initialize the volume hosting physical drive */
 	if (stat & STA_NOINIT) { 			/* Check if the initialization succeeded */
+		printf("Failed to initialize due to no medium or hard error");
 		return FR_NOT_READY;			/* Failed to initialize due to no medium or hard error */
 	}
 	if (!FF_FS_READONLY && mode && (stat & STA_PROTECT)) { /* Check disk write protection if needed */
@@ -5912,7 +5913,10 @@ FRESULT f_mkfs (
 
 	/* Initialize the hosting physical drive */
 	ds = disk_initialize(pdrv);
-	if (ds & STA_NOINIT) return FR_NOT_READY;
+	if (ds & STA_NOINIT) {
+		printf("sta noinit");
+		return FR_NOT_READY;
+	}
 	if (ds & STA_PROTECT) return FR_WRITE_PROTECTED;
 
 	/* Get physical drive parameters (sz_drv, sz_blk and ss) */
