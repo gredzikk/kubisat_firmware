@@ -3,10 +3,11 @@
 INA3221Wrapper::INA3221Wrapper(i2c_inst_t* i2c) : sensor(INA3221_ADDR40_GND) {}
 
 bool INA3221Wrapper::init() {
+    printf("ina 3221 init");
     sensor.begin();
     uint16_t manuf_id = sensor.getManufID();
     uint16_t die_id = sensor.getDieID();
-
+    printf("die chip id got git gud");
     if (manuf_id == 0x5449 && die_id == 0x3220) {
         std::cout << "INA3221 found, Manufacturer ID: 0x" << std::hex << manuf_id 
                 << ", Die ID: 0x" << die_id << std::endl;

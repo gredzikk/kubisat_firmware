@@ -3,8 +3,10 @@
 #include "pico/stdlib.h"
 #include "hardware/i2c.h"
 #include <iostream>
+#include <pin_config.h>
 
 void INA3221::begin() {
+    printf("ina3221 begin");
     _shuntRes[0] = 10;
     _shuntRes[1] = 10;
     _shuntRes[2] = 10;
@@ -18,13 +20,13 @@ void INA3221::_read(ina3221_reg_t reg, uint16_t *val) {
     uint8_t reg_buf = reg;
     uint8_t data[2];
 
-    int ret = i2c_write_blocking(i2c_default, _i2c_addr, &reg_buf, 1, true);
+    int ret = i2c_write_blocking(I2C_PORT, _i2c_addr, &reg_buf, 1, true);
     if (ret != 1) {
         std::cerr << "Failed to write register address to I2C device." << std::endl;
         return;
     }
 
-    ret = i2c_read_blocking(i2c_default, _i2c_addr, data, 2, false);
+    ret = i2c_read_blocking(I2C_PORT, _i2c_addr, data, 2, false);
     if (ret != 2) {
         std::cerr << "Failed to read data from I2C device." << std::endl;
         return;
@@ -39,7 +41,7 @@ void INA3221::_write(ina3221_reg_t reg, uint16_t *val) {
     buf[1] = (*val >> 8) & 0xFF; // MSB
     buf[2] = (*val) & 0xFF;      // LSB
 
-    int ret = i2c_write_blocking(i2c_default, _i2c_addr, buf, 3, false);
+    int ret = i2c_write_blocking(I2C_PORT, _i2c_addr, buf, 3, false);
     if (ret != 3) {
         std::cerr << "Failed to write data to I2C device." << std::endl;
     }

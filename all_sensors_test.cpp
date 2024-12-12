@@ -42,6 +42,7 @@ uint8_t msgCount = 0;            // count of outgoing messages
 long lastSendTime = 0;        // last send time
 long unsigned int interval = 2000; // interval between sends
 long lastReceiveTime = 0;     // last receive time
+long lastPrintTime = 0;
 
 // LoRa methods
 void logMessage(const string& message) {
@@ -108,10 +109,16 @@ char buffer[BUFFER_SIZE];
 int bufferIndex = 0;
 
 //GPS methods
-void setupGPS() {
+void setupGPS(bool init) {
     uart_init(GPS_UART, GPS_BAUD_RATE);
     gpio_set_function(GPS_TX_PIN, UART_FUNCSEL_NUM(GPS_UART, GPS_TX_PIN));
     gpio_set_function(GPS_RX_PIN, UART_FUNCSEL_NUM(GPS_UART, GPS_RX_PIN));
+
+    if (init) {
+        gpio_init(GPS_POWER_ENABLE);
+        gpio_set_dir(GPS_POWER_ENABLE, GPIO_OUT);
+        gpio_put(GPS_POWER_ENABLE, 1);  // Set GPS_POWER_ENABLE pin high
+    }
 }
 
 void printSensorData(float lightLevel, float temperature, float humidity, float pressure,
@@ -298,14 +305,14 @@ int main()
     gpio_set_function(UART_TX_PIN, UART_FUNCSEL_NUM(UART_ID, UART_TX_PIN));
     gpio_set_function(UART_RX_PIN, UART_FUNCSEL_NUM(UART_ID, UART_RX_PIN));
 
-    i2c_inst_t* i2c = i2c0;
-    i2c_init(i2c, 400 * 1000);
-    gpio_set_function(PICO_DEFAULT_I2C_SDA_PIN, GPIO_FUNC_I2C);
-    gpio_set_function(PICO_DEFAULT_I2C_SCL_PIN, GPIO_FUNC_I2C);
-    gpio_pull_up(PICO_DEFAULT_I2C_SDA_PIN);
-    gpio_pull_up(PICO_DEFAULT_I2C_SCL_PIN);    
+    i2c_inst_t* i2c = I2C_PORT;
+    i2c_init(I2C_PORT, 400 * 1000);
+    gpio_set_function(I2C1_SCL, GPIO_FUNC_I2C);
+    gpio_set_function(I2C1_SDA, GPIO_FUNC_I2C);
+    gpio_pull_up(I2C1_SCL);
+    gpio_pull_up(I2C1_SDA);    
 
-    setupGPS();
+    setupGPS(true);
 
     for (int i = 5; i > 0; --i) {
         std::cout << "Program starts in " << i << " seconds..." << std::endl;
@@ -341,6 +348,8 @@ int main()
     logMessage(" init succeeded.");
 
     lastReceiveTime = to_ms_since_boot(get_absolute_time());
+    lastPrintTime = lastReceiveTime;
+
     for (int i = 5; i > 0; --i) {
         std::cout << "Main loop starts in " << i << " seconds..." << std::endl;
         sleep_ms(1000);
@@ -369,24 +378,33 @@ int main()
         uint16_t year;
         std::string weekday;
 
+        systemClock.getTime(sec, min, hour, weekday, day, month, year);
+
+        long currentTime = to_ms_since_boot(get_absolute_time());
+        if (currentTime - lastPrintTime > 1000) {
+            printSensorData(lightLevel, temperature, humidity, pressure, voltage_ch1, voltage_ch2, current_charge_usb, current_charge_solar, current_draw, magnetic_1, magnetic_2, magnetic_3, systemClock);
+            lastPrintTime = currentTime;
+        }
+
         while (uart_is_readable(GPS_UART)) {
-        char c = uart_getc(GPS_UART);
+            char c = uart_getc(GPS_UART);
         
-        if (c == '$') {  // Start of new NMEA sentence
-            bufferIndex = 0;
-            buffer[bufferIndex++] = c;
-        }
-        else if (c == '\n') {  // End of sentence
-            if (bufferIndex < BUFFER_SIZE - 1) {
+            if (c == '$') {  // Start of new NMEA sentence
+                bufferIndex = 0;
                 buffer[bufferIndex++] = c;
-                buffer[bufferIndex] = '\0';
-                // Print complete NMEA sentence
-                printf("%s", buffer);
             }
-            bufferIndex = 0;
-        }
-        else if (bufferIndex < BUFFER_SIZE - 1) {
-            buffer[bufferIndex++] = c;
+            else if (c == '\n') {  // End of sentence
+                if (bufferIndex < BUFFER_SIZE - 1) {
+                    buffer[bufferIndex++] = c;
+                    buffer[bufferIndex] = '\0';
+                    // Print complete NMEA sentence
+                    printf("%s", buffer);
+                }
+                bufferIndex = 0;
+            }
+            else if (bufferIndex < BUFFER_SIZE - 1) {
+                buffer[bufferIndex++] = c;
+            }
         }
 
         int packetSize = LoRa.parsePacket();
@@ -394,14 +412,12 @@ int main()
             onReceive(packetSize);
         }
 
-        long currentTime = to_ms_since_boot(get_absolute_time());
         if (currentTime - lastReceiveTime > 5000) {
             logMessage("No messages received in the last 5 seconds.");
             lastReceiveTime = currentTime;
         }
-    }
 
-        sleep_ms(100);
+        sleep_ms(70);
     }
     
 

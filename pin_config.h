@@ -12,12 +12,16 @@
 #define UART_RX_PIN 1
 
 #define I2C_PORT i2c1
+#define I2C1_SDA 6
+#define I2C1_SCL 7
 
 // GPS configuration
 #define GPS_UART uart1
 #define GPS_BAUD_RATE 9600
 #define GPS_TX_PIN 8
 #define GPS_RX_PIN 9
+#define GPS_POWER_ENABLE 14
+
 #define BUFFER_SIZE 85  // NMEA sentences are usually under 85 chars
 
 // SPI configuration for SD card
@@ -44,6 +48,8 @@
 
 #define PA_OUTPUT_RFO_PIN          11
 #define PA_OUTPUT_PA_BOOST_PIN     12
+
+
 
 // LoRa constants - declare as extern
 extern const int csPin;      // LoRa radio chip select
