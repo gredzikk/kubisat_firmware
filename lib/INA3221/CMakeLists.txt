@@ -3,8 +3,6 @@ project(INA3221_lib)
 add_library(INA3221_lib STATIC
     INA3221.cpp
     INA3221.h
-    INA3221_WRAPPER.cpp
-    INA3221_WRAPPER.h
 )
 target_include_directories(INA3221_lib PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}

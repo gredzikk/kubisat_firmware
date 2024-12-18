@@ -1,3 +1,17 @@
+# == DO NOT EDIT THE FOLLOWING LINES for the Raspberry Pi Pico VS Code Extension to work ==
+if(WIN32)
+    set(USERHOME $ENV{USERPROFILE})
+else()
+    set(USERHOME $ENV{HOME})
+endif()
+set(sdkVersion 2.1.0)
+set(toolchainVersion 13_3_Rel1)
+set(picotoolVersion 2.1.0)
+set(picoVscode ${USERHOME}/.pico-sdk/cmake/pico-vscode.cmake)
+if (EXISTS ${picoVscode})
+    include(${picoVscode})
+endif()
+# ====================================================================================
 # Generated Cmake Pico project file
 
 cmake_minimum_required(VERSION 3.13)
@@ -45,16 +59,14 @@ add_subdirectory(lib/MPU6050)
 add_subdirectory(lib/HMC5883L)
 add_subdirectory(lib/LoRa)
 add_subdirectory(lib/FatFs_SPI build)
+add_subdirectory(lib/PowerManager)
 
 add_executable(all_sensors_test 
     all_sensors_test.cpp 
     ISensor.cpp 
     commands.cpp
-    pin_config.cpp    # Add this line
+    pin_config.cpp    
 )
-
-enable_testing()
-add_subdirectory(tests)
 
 pico_set_program_name(all_sensors_test "all_sensors_test")
 pico_set_program_version(all_sensors_test "0.1")
@@ -76,6 +88,7 @@ target_link_libraries(all_sensors_test
     HMC5883L_lib
     MPU6050_lib
     FatFs_SPI   
+    PowerManager_lib
 )
 
 target_include_directories(all_sensors_test PRIVATE

@@ -105,9 +105,7 @@ class INA3221 {
         uint16_t reserved:1;
     } masken_reg_t;
 
-    // Arduino's I2C library
-    int fd;
-
+    i2c_inst_t* _i2c;
     // I2C address
     ina3221_addr_t _i2c_addr;
 
@@ -128,7 +126,10 @@ class INA3221 {
 
 public:
 
-    INA3221(ina3221_addr_t addr) : fd(-1),  _i2c_addr(addr) {};
+    INA3221(ina3221_addr_t addr, i2c_inst_t* i2c) {
+        _i2c_addr = addr;
+        _i2c = i2c;
+    }
     // Initializes INA3221
     void begin();
 

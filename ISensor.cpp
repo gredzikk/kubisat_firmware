@@ -1,7 +1,6 @@
 // ISensor.cpp
 #include "ISensor.h"
 #include "lib/BH1750/BH1750_WRAPPER.h"
-#include "lib/INA3221/INA3221_WRAPPER.h"
 #include "lib/BME280/BME280_WRAPPER.h"
 #include "lib/HMC5883L/HMC5883L_WRAPPER.h"
 
@@ -16,9 +15,6 @@ bool SensorWrapper::initSensor(SensorType type, i2c_inst_t* i2c) {
     switch(type) {
         case SensorType::LIGHT:
             sensors[type] = new BH1750Wrapper();
-            break;
-        case SensorType::POWER:
-            sensors[type] = new INA3221Wrapper(i2c);
             break;
         case SensorType::ENVIRONMENT:
             sensors[type] = new BME280Wrapper(i2c);

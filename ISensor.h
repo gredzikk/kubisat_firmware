@@ -9,8 +9,6 @@
 
 enum class SensorType {
     LIGHT,          // BH1750
-    POWER,          // INA3221
-    TIME,           // DS3231
     ENVIRONMENT,    // BME280
     MAGNETOMETER,   // HMC5883L
     IMU             // MPU6050
@@ -18,11 +16,6 @@ enum class SensorType {
 
 enum class DataType {
     LIGHT_LEVEL,
-    CURRENT_CHARGE_USB,
-    CURRENT_DRAW,
-    CURRENT_CHARGE_SOLAR,
-    VOLTAGE_BATTERY,
-    VOLTAGE_5V_OUT,
     TEMPERATURE,
     PRESSURE,
     HUMIDITY,
