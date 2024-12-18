@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include <iostream>
+#include <hardware/i2c.h>
 
 typedef enum {
     INA3221_ADDR40_GND = 0b1000000, // A0 pin -> GND
@@ -126,10 +127,7 @@ class INA3221 {
 
 public:
 
-    INA3221(ina3221_addr_t addr, i2c_inst_t* i2c) {
-        _i2c_addr = addr;
-        _i2c = i2c;
-    }
+    INA3221(ina3221_addr_t addr, i2c_inst_t* i2c);
     // Initializes INA3221
     void begin();
 
