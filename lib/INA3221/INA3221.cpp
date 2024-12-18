@@ -9,27 +9,14 @@ INA3221::INA3221(ina3221_addr_t addr, i2c_inst_t* i2c)
     : _i2c_addr(addr), _i2c(i2c) {}
 
 
-void INA3221::begin() {
+bool INA3221::begin() {
     printf("INA3221 initializing...\n");
     
-    // Initialize I2C if not already done
-    // Ensure _i2c is valid
     if (_i2c == nullptr) {
         std::cerr << "I2C instance is null!" << std::endl;
-        return;
+        return false;
     }
 
-    // Example: Check communication by reading manufacturer ID
-    uint16_t manuf_id = getManufID();
-    uint16_t die_id = getDieID();
-    std::cout << "INA3221 Manufacturer ID: 0x" << std::hex << manuf_id 
-              << ", Die ID: 0x" << die_id << std::endl;
-
-    if (manuf_id == 0x5449 && die_id == 0x3220) { // Replace with actual expected IDs
-        std::cout << "INA3221 found and initialized." << std::endl;
-    } else {
-        std::cerr << "INA3221 initialization failed. Incorrect IDs." << std::endl;
-    }
     _shuntRes[0] = 10;
     _shuntRes[1] = 10;
     _shuntRes[2] = 10;
@@ -37,6 +24,20 @@ void INA3221::begin() {
     _filterRes[0] = 10;
     _filterRes[1] = 10;
     _filterRes[2] = 10;
+
+    uint16_t manuf_id = getManufID();
+    uint16_t die_id = getDieID();
+    std::cout << "INA3221 Manufacturer ID: 0x" << std::hex << manuf_id 
+              << ", Die ID: 0x" << die_id << std::endl;
+
+    if (manuf_id == 0x5449 && die_id == 0x3220) { 
+        std::cout << "INA3221 found and initialized." << std::endl;
+        return true;
+    } else {
+        std::cerr << "INA3221 initialization failed. Incorrect IDs." << std::endl;
+        return false;
+    }
+
 }
 
 void INA3221::_read(ina3221_reg_t reg, uint16_t *val) {

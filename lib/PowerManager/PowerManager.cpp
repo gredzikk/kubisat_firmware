@@ -5,28 +5,33 @@ PowerManager::PowerManager(i2c_inst_t* i2c)
     : ina3221(INA3221_ADDR40_GND, i2c) {};
 
 bool PowerManager::initialize() {
-    ina3221.begin();
-    uint16_t manuf_id = ina3221.getManufID();
-    uint16_t die_id = ina3221.getDieID();
-    std::cout << "INA3221 Manufacturer ID: 0x" << std::hex << manuf_id 
-              << ", Die ID: 0x" << die_id << std::endl;
-    
-    if (manuf_id == 0x5449 && die_id == 0x3220) {
-        initialized = true;
-        return true;
-    }
-    std::cerr << "Failed to initialize INA3221." << std::endl;
-    return false;
+    initialized = ina3221.begin();
+    return initialized;
 }
 
-float PowerManager::getCurrentEnergy() {
+float PowerManager::getVoltageBattery() {
     if (!initialized) return 0.0f;
-    return ina3221.getCurrent_mA(INA3221_CH1); // Adjust channel as needed
+    return ina3221.getVoltage(INA3221_CH1); 
 }
 
-float PowerManager::getBatteryVoltage() {
+float PowerManager::getVoltage5V() {
     if (!initialized) return 0.0f;
-    return ina3221.getVoltage(INA3221_CH1); // Adjust channel as needed
+    return ina3221.getVoltage(INA3221_CH2); 
+}
+
+float PowerManager::getCurrentChargeUSB() {
+    if (!initialized) return 0.0f;
+    return ina3221.getCurrent_mA(INA3221_CH1); 
+}
+
+float PowerManager::getCurrentDraw() {
+    if (!initialized) return 0.0f;
+    return ina3221.getCurrent_mA(INA3221_CH2); 
+}
+
+float PowerManager::getCurrentChargeSolar() {
+    if (!initialized) return 0.0f;
+    return ina3221.getCurrent_mA(INA3221_CH3); 
 }
 
 void PowerManager::configure(const std::map<std::string, std::string>& config) {
@@ -36,7 +41,6 @@ void PowerManager::configure(const std::map<std::string, std::string>& config) {
         if (config.at("operating_mode") == "continuous") {
             ina3221.setModeContinious();
         }
-        // Add other modes if necessary
     }
 
     if (config.find("averaging_mode") != config.end()) {
@@ -51,11 +55,8 @@ void PowerManager::configure(const std::map<std::string, std::string>& config) {
             case 16:
                 ina3221.setAveragingMode(INA3221_REG_CONF_AVG_16);
                 break;
-            // Add other cases as needed
             default:
                 ina3221.setAveragingMode(INA3221_REG_CONF_AVG_16);
         }
     }
-
-    // Configure other settings as needed
 }

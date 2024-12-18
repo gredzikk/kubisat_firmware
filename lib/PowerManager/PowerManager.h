@@ -12,8 +12,11 @@ class PowerManager {
 public:
     PowerManager(i2c_inst_t* i2c);
     bool initialize();
-    float getCurrentEnergy();
-    float getBatteryVoltage();
+    float getCurrentChargeSolar();
+    float getCurrentChargeUSB();
+    float getCurrentDraw();
+    float getVoltageBattery();
+    float getVoltage5V();
     void configure(const std::map<std::string, std::string>& config);
 
 private:

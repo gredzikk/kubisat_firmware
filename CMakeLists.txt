@@ -66,6 +66,8 @@ add_executable(all_sensors_test
     ISensor.cpp 
     commands.cpp
     pin_config.cpp    
+    communication.cpp
+    storage.cpp
 )
 
 pico_set_program_name(all_sensors_test "all_sensors_test")

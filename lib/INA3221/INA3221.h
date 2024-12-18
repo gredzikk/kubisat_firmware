@@ -129,7 +129,7 @@ public:
 
     INA3221(ina3221_addr_t addr, i2c_inst_t* i2c);
     // Initializes INA3221
-    void begin();
+    bool begin();
 
     // Sets shunt resistor value in mOhm
     void setShuntRes(uint32_t res_ch1, uint32_t res_ch2, uint32_t res_ch3);
