@@ -79,7 +79,7 @@ void handleSetGPSPowerStatus(const std::string& param) {
 }
 
 void handleCommands() {
-    std::string response = "Available commands:\n";
+    std::string response = "\nAvailable commands:\n";
     for (const auto& [cmd, _] : commandMap) {
         response += "- " + cmd + "\n";
     }

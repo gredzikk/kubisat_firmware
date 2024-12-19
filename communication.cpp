@@ -14,14 +14,16 @@ long lastPrintTime = 0;
 bool initializeRadio() {
     LoRa.setPins(csPin, resetPin, irqPin);
 
-    if (!LoRa.begin(500E6))
+    long frequency = 433E6;
+
+    if (!LoRa.begin(frequency))
     {
         logMessage("LoRa init failed. Check your connections.");
         return false;
             
     }
 
-    logMessage(" init succeeded.");
+    logMessage("LoRa initialized with frequency " + std::to_string(frequency));
     return true;
 }
 // LoRa methods
@@ -36,22 +38,22 @@ void sendMessage(string outgoing)
     int n = outgoing.length();
     char send[n + 1];
     strcpy(send, outgoing.c_str());
-    logMessage("Sat to ground: " + string(send) + " [" + std::to_string(n) + "]");
+    logMessage("Sat (0x" + std::to_string(localAddress) + ") to ground(" + std::to_string(destination) + "): " + string(send) + " [" + std::to_string(n) + "]");
     LoRa.beginPacket();       // start packet
     LoRa.write(destination);  // add destination address
     LoRa.write(localAddress); // add sender address
     LoRa.write(msgCount);     // add message ID
     LoRa.write(n + 1);        // add payload length
     LoRa.print(send);         // add payload
-    LoRa.endPacket();         // finish packet and send it
+    LoRa.endPacket(false);         // finish packet and send it
     msgCount++;               // increment message ID
 }
 
 void onReceive(int packetSize)
 {
+    logMessage("onReceive: packetSize = " + std::to_string(packetSize));
     if (packetSize == 0)
-        return; // if there's no packet, return
-    // read packet header uint8_ts:
+        return; 
     int recipient = LoRa.read();          // recipient address
     uint8_t sender = LoRa.read();         // sender address
     uint8_t incomingMsgId = LoRa.read();  // incoming msg ID
@@ -65,29 +67,22 @@ void onReceive(int packetSize)
     }
 
     if (incomingLength != incoming.length() + 1)
-    { // check length for error
+    { 
         printf("error: message length does not match length\n");
-        return; // skip rest of function
+        return; 
     }
 
-    // if the recipient isn't this device or broadcast,
     if (recipient != localAddress && recipient != 0xFF)
     {
         printf("This message is not for me.\n");
-        return; // skip rest of function
+        return; 
     }
 
-    logMessage("Received from: 0x" + std::to_string(sender));
-    logMessage("Sent to: 0x" + std::to_string(recipient));
-    logMessage("Message ID: " + std::to_string(incomingMsgId));
-    logMessage("Message length: " + std::to_string(incomingLength));
+    logMessage("Received message of size " + std::to_string(incomingLength) + " with ID " + std::to_string(incomingMsgId) + " from: 0x" + std::to_string(sender));
     logMessage("Message: " + incoming);
-    logMessage("RSSI: " + std::to_string(LoRa.packetRssi()));
-    logMessage("Snr: " + std::to_string(LoRa.packetSnr()));
+    logMessage("RSSI: " + std::to_string(LoRa.packetRssi()) + " Snr: " + std::to_string(LoRa.packetSnr()));
 
-    sleep_ms(150);
     handleCommand(incoming);
 
-    // Update last receive time
     lastReceiveTime = to_ms_since_boot(get_absolute_time());
 }
