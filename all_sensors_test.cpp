@@ -34,12 +34,14 @@ char buffer[BUFFER_SIZE];
 int bufferIndex = 0;
 
 bool initSystems(i2c_inst_t *i2c_port) {
-        stdio_init_all();
+    stdio_init_all();
 
     uart_init(UART_ID, BAUD_RATE);
     gpio_set_function(UART_TX_PIN, UART_FUNCSEL_NUM(UART_ID, UART_TX_PIN));
     gpio_set_function(UART_RX_PIN, UART_FUNCSEL_NUM(UART_ID, UART_RX_PIN));
 
+    gpio_init(PICO_DEFAULT_LED_PIN);
+    gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
     
     i2c_init(i2c_port, 400 * 1000);
     gpio_set_function(I2C1_SCL, GPIO_FUNC_I2C);
@@ -82,6 +84,7 @@ int main()
 
     DS3231 systemClock(i2c_port);
     systemClock.setTime(0, 41, 20, 4, 14, 11, 2024);
+    gpio_put(PICO_DEFAULT_LED_PIN, 1);
 
     PowerManager powerManager(i2c_port);
     if (powerManager.initialize())
@@ -92,20 +95,39 @@ int main()
         };
         powerManager.configure(powerConfig);
     }
+    gpio_put(PICO_DEFAULT_LED_PIN, 0);
 
     bool radioInitSuccess = false;
 
     radioInitSuccess = initializeRadio();
+    gpio_put(PICO_DEFAULT_LED_PIN, 1);
 
     lastReceiveTime = to_ms_since_boot(get_absolute_time());
     lastPrintTime = lastReceiveTime;
 
-    testSDCard();
+    bool sdTestResult = testSDCard();
+    gpio_put(PICO_DEFAULT_LED_PIN, 0);
+
+    if (radioInitSuccess)
+    {
+        LoRa.beginPacket();
+        if (sdTestResult) {
+            LoRa.print("System initialized successfully! SD test was performed.");
+        } else {
+            LoRa.print("System initialized successfully! SD test was skipped.");
+        }
+        LoRa.endPacket();
+    }
+    
+    gpio_put(PICO_DEFAULT_LED_PIN, 1);
+
     for (int i = 5; i > 0; --i)
     {
         std::cout << "Main loop starts in " << i << " seconds..." << std::endl;
+        gpio_put(PICO_DEFAULT_LED_PIN, (i%2==0));
         sleep_ms(1000);
     }
+    gpio_put(PICO_DEFAULT_LED_PIN, 1);
 
     while (true)
     {

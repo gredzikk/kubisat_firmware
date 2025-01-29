@@ -51,6 +51,8 @@ void sendMessage(string outgoing)
 
 void onReceive(int packetSize)
 {
+    gpio_put(PICO_DEFAULT_LED_PIN, 0);
+
     logMessage("onReceive: packetSize = " + std::to_string(packetSize));
     if (packetSize == 0)
         return; 
@@ -82,6 +84,7 @@ void onReceive(int packetSize)
     logMessage("Message: " + incoming);
     logMessage("RSSI: " + std::to_string(LoRa.packetRssi()) + " Snr: " + std::to_string(LoRa.packetSnr()));
 
+    gpio_put(PICO_DEFAULT_LED_PIN, 1);
     handleCommand(incoming);
 
     lastReceiveTime = to_ms_since_boot(get_absolute_time());

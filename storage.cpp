@@ -2,9 +2,12 @@
 #include "sd_card.h"
 #include "pin_config.h"
 #include "stdio.h"
+#include <pico/stdio.h>
 
 bool testSDCard()
 {
+    const uint64_t TIMEOUT_MS = 10000; // 5-second timeout
+    uint64_t startTime;
     FRESULT fr;
     FATFS fs;
     FIL fil;
@@ -13,15 +16,25 @@ bool testSDCard()
     char filename[] = "test02.txt";
 
     printf("\r\nSD card test. Press 'enter' to start or 's' to skip.\n");
+    startTime = to_ms_since_boot(get_absolute_time());
     while (true)
     {
-        buf[0] = getchar();
-        if (buf[0] == 's')
+        int c = getchar_timeout_us(0);
+        if (c == PICO_ERROR_TIMEOUT)
+        {
+            if (to_ms_since_boot(get_absolute_time()) - startTime > TIMEOUT_MS)
+            {
+                printf("No input within %llu ms. Skipping SD card test.\n", TIMEOUT_MS);
+                return false;
+            }
+            continue;
+        }
+        if ((char)c == 's')
         {
             printf("Skipping SD card test.\n");
             return false;
         }
-        if ((buf[0] == '\r') || (buf[0] == '\n'))
+        if ((char)c == '\r' || (char)c == '\n')
         {
             break;
         }
