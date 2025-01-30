@@ -34,6 +34,11 @@ float PowerManager::getCurrentChargeSolar() {
     return ina3221.getCurrent_mA(INA3221_CH3); 
 }
 
+float PowerManager::getCurrentChargeTotal() {
+    if (!initialized) return 0.0f;
+    return ina3221.getCurrent_mA(INA3221_CH1) + ina3221.getCurrent_mA(INA3221_CH3);
+}
+
 void PowerManager::configure(const std::map<std::string, std::string>& config) {
     if (!initialized) return;
 

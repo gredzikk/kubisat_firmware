@@ -68,6 +68,7 @@ add_executable(all_sensors_test
     pin_config.cpp    
     communication.cpp
     storage.cpp
+    event_manager.cpp
 )
 
 pico_set_program_name(all_sensors_test "all_sensors_test")
@@ -91,6 +92,7 @@ target_link_libraries(all_sensors_test
     MPU6050_lib
     FatFs_SPI   
     PowerManager_lib
+    pico_multicore
 )
 
 target_include_directories(all_sensors_test PRIVATE

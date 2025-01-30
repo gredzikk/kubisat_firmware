@@ -2,6 +2,9 @@
 #include "LoRa/LoRa-RP2040.h"
 #include <string>
 #include "pin_config.h"
+#include "PowerManager.h"
+
+extern PowerManager powerManager;
 
 std::map<std::string, Command> commandMap = {
     {"get_time", Command::GET_TIME},
@@ -13,7 +16,6 @@ std::map<std::string, Command> commandMap = {
     {"get_current_draw", Command::GET_CURRENT_DRAW},
     {"get_gps_power_status", Command::GET_GPS_POWER_STATUS},
     {"set_gps_power_status", Command::SET_GPS_POWER_STATUS},
-    {"commands", Command::COMMANDS}
 };
 
 
@@ -37,27 +39,33 @@ void handleGetTime() {
 }
 
 void handleGetVoltageBattery() {
-    sendMessage("Battery voltage: 3.7V");
+    float voltage = powerManager.getVoltageBattery();
+    sendMessage("Battery voltage: " + std::to_string(voltage) + " V");
 }
 
 void handleGetVoltage5V() {
-    sendMessage("5V Rail Voltage: 5.0V");
+    float voltage = powerManager.getVoltage5V();
+    sendMessage("5V Rail Voltage: " + std::to_string(voltage) + " V");
 }
 
 void handleGetCurrentChargeUSB() {
-    sendMessage("USB Charge Current: 500mA");
+    float chargeCurrent = powerManager.getCurrentChargeUSB();
+    sendMessage("USB Charge Current: " + std::to_string(chargeCurrent) + " mA");
 }
 
 void handleGetCurrentChargeSolar() {
-    sendMessage("Solar Charge Current: 100mA");
+    float chargeCurrent = powerManager.getCurrentChargeSolar();
+    sendMessage("Solar Charge Current: " + std::to_string(chargeCurrent) + " mA");
 }
 
 void handleGetCurrentChargeTotal() {
-    sendMessage("Total Charge Current: 600mA");
+    float chargeCurrent = powerManager.getCurrentChargeTotal();
+    sendMessage("Total Charge Current: " + std::to_string(chargeCurrent) + " mA");
 }
 
 void handleGetCurrentDraw() {
-    sendMessage("Current Draw: 300mA");
+    float currentDraw = powerManager.getCurrentDraw();
+    sendMessage("Current Draw: " + std::to_string(currentDraw) + " mA");
 }
 
 void handleGetGPSPowerStatus() {
@@ -76,14 +84,6 @@ void handleSetGPSPowerStatus(const std::string& param) {
     gpio_put(GPS_POWER_ENABLE, powerOn);
     std::string status = powerOn ? "ON" : "OFF";
     sendMessage("GPS Power Status set to: " + status);
-}
-
-void handleCommands() {
-    std::string response = "\nAvailable commands:\n";
-    for (const auto& [cmd, _] : commandMap) {
-        response += "- " + cmd + "\n";
-    }
-    sendMessage(response);
 }
 
 void handleUnknownCommand() {
@@ -122,9 +122,6 @@ void handleCommand(const std::string& message) {
                 break;
             case Command::SET_GPS_POWER_STATUS:
                 handleSetGPSPowerStatus(param);
-                break;
-            case Command::COMMANDS:
-                handleCommands();
                 break;
             default:
                 handleUnknownCommand();

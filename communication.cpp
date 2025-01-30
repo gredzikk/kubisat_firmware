@@ -3,6 +3,8 @@
 #include "commands.h"
 #include "communication.h"
 
+#define MAX_PKT_SIZE 255
+
 using std::string;
 
 std::string outgoing;                // outgoing message
@@ -39,14 +41,73 @@ void sendMessage(string outgoing)
     char send[n + 1];
     strcpy(send, outgoing.c_str());
     logMessage("Sat (0x" + std::to_string(localAddress) + ") to ground(" + std::to_string(destination) + "): " + string(send) + " [" + std::to_string(n) + "]");
+    
     LoRa.beginPacket();       // start packet
     LoRa.write(destination);  // add destination address
     LoRa.write(localAddress); // add sender address
     LoRa.write(msgCount);     // add message ID
     LoRa.write(n + 1);        // add payload length
     LoRa.print(send);         // add payload
-    LoRa.endPacket(false);         // finish packet and send it
+    LoRa.endPacket(false);    // finish packet and send it
     msgCount++;               // increment message ID
+}
+
+void sendLargePacket(const uint8_t* data, size_t length)
+{
+    const size_t MAX_PAYLOAD_SIZE = 200; // Adjust to your LoRa limit
+    size_t offset = 0;
+    while (offset < length)
+    {
+        size_t chunkSize = (length - offset) < MAX_PAYLOAD_SIZE ? (length - offset) : MAX_PAYLOAD_SIZE;
+        LoRa.beginPacket();
+        LoRa.write(&data[offset], chunkSize);
+        LoRa.endPacket();
+        offset += chunkSize;
+        sleep_ms(100); // small delay if needed
+    }
+}
+
+void sendMessageUniversal(const std::string& outgoing)
+{
+    const size_t n = outgoing.length();
+    char sendBuf[n + 1];
+    strcpy(sendBuf, outgoing.c_str());
+
+    logMessage("Sat (0x" + std::to_string(localAddress) + ") to ground(" +
+               std::to_string(destination) + "): " +
+               std::string(sendBuf) + " [" + std::to_string(n) + "]");
+
+    // Calculate max payload that fits LoRa + overhead
+    // Overhead: destination + localAddress + msgCount + 1-byte length
+    // So for example, if you set total buffer to 255, overhead is 4 bytes:
+    // => actual usable payload = 255 - 4
+    const size_t MAX_OVERHEAD = 4;
+    const size_t MAX_TOTAL_SIZE = 255; // Adjust to your LoRa library limits
+    const size_t MAX_PAYLOAD_SIZE = (MAX_TOTAL_SIZE > MAX_OVERHEAD)
+                                      ? (MAX_TOTAL_SIZE - MAX_OVERHEAD)
+                                      : 0;
+
+    size_t offset = 0;
+    while (offset < n)
+    {
+        // Calculate chunk size
+        size_t chunkSize = (n - offset < MAX_PAYLOAD_SIZE)
+                              ? (n - offset)
+                              : MAX_PAYLOAD_SIZE;
+
+        LoRa.beginPacket();
+        LoRa.write(destination);         // add destination address
+        LoRa.write(localAddress);        // add sender address
+        LoRa.write(msgCount);           // add message ID
+        LoRa.write(chunkSize);          // add payload length
+        LoRa.write((uint8_t*)&sendBuf[offset], chunkSize); // add payload
+        LoRa.endPacket(false);
+
+        offset += chunkSize;
+        msgCount++;
+
+        sleep_ms(100);
+    }
 }
 
 void onReceive(int packetSize)

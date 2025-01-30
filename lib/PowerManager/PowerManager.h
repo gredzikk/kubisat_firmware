@@ -14,6 +14,7 @@ public:
     bool initialize();
     float getCurrentChargeSolar();
     float getCurrentChargeUSB();
+    float getCurrentChargeTotal();
     float getCurrentDraw();
     float getVoltageBattery();
     float getVoltage5V();

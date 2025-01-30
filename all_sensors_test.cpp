@@ -3,7 +3,8 @@
 #include "hardware/spi.h"
 #include "hardware/i2c.h"
 #include "hardware/uart.h"
-
+#include "pico/multicore.h"
+#include "event_manager.h"
 #include "PowerManager.h"
 
 #include "ISensor.h"
@@ -26,6 +27,8 @@
 #include "commands.h"
 #include "pin_config.h"
 #include "storage.h"
+
+PowerManager powerManager(I2C_PORT);
 
 uint32_t last_gps_time = 0;
 GPSData gpsData;
@@ -57,7 +60,7 @@ bool initSystems(i2c_inst_t *i2c_port) {
     {
         gpio_init(GPS_POWER_ENABLE);
         gpio_set_dir(GPS_POWER_ENABLE, GPIO_OUT);
-        gpio_put(GPS_POWER_ENABLE, 1); // Set GPS_POWER_ENABLE pin high
+        gpio_put(GPS_POWER_ENABLE, 0); 
     }
 
     std::cout << "GPIOS init done" << std::endl;
@@ -71,6 +74,7 @@ bool initSystems(i2c_inst_t *i2c_port) {
     return true;
 }
 
+
 int main()
 {
     FRESULT fr;
@@ -82,11 +86,12 @@ int main()
     i2c_inst_t *i2c_port = I2C_PORT;
     initSystems(i2c_port);
 
+    //multicore_launch_core1(eventHandlerCore);
+
     DS3231 systemClock(i2c_port);
     systemClock.setTime(0, 41, 20, 4, 14, 11, 2024);
     gpio_put(PICO_DEFAULT_LED_PIN, 1);
 
-    PowerManager powerManager(i2c_port);
     if (powerManager.initialize())
     {
         std::map<std::string, std::string> powerConfig = {
@@ -112,11 +117,10 @@ int main()
     {
         LoRa.beginPacket();
         if (sdTestResult) {
-            LoRa.print("System initialized successfully! SD test was performed.");
+            sendMessage("System initialized successfully! SD test was performed.");
         } else {
-            LoRa.print("System initialized successfully! SD test was skipped.");
+            sendMessage("System initialized successfully! SD test was skipped.");
         }
-        LoRa.endPacket();
     }
     
     gpio_put(PICO_DEFAULT_LED_PIN, 1);
@@ -131,36 +135,37 @@ int main()
 
     while (true)
     {
-        uint8_t sec, min, hour, day, month;
-        uint16_t year;
-        std::string weekday;      
+        // uint8_t sec, min, hour, day, month;
+        // uint16_t year;
+        // std::string weekday;      
 
-        long currentTime = to_ms_since_boot(get_absolute_time());
+        // long currentTime = to_ms_since_boot(get_absolute_time());
 
         int packetSize = LoRa.parsePacket();
         if (packetSize)
         {
             onReceive(packetSize);
         }
+        checkPowerEvents(powerManager);
 
-        if (currentTime - lastReceiveTime > 5000)
-        {
-            std::cout << std::fixed << std::setprecision(2);
-            std::cout << "\n=== Power Manager Measurements ===\n";
-            std::cout << "5V Rail Voltage     : " << powerManager.getVoltage5V() << " V\n";
-            std::cout << "Battery Voltage     : " << powerManager.getVoltageBattery() << " V\n";
-            std::cout << "Solar Charge Current: " << powerManager.getCurrentChargeSolar() << " mA\n";
-            std::cout << "USB Charge Current  : " << powerManager.getCurrentChargeUSB() << " mA\n";
-            std::cout << "Current Draw        : " << powerManager.getCurrentDraw() << " mA\n";
+        // if (currentTime - lastReceiveTime > 5000)
+        // {
+        //     std::cout << std::fixed << std::setprecision(2);
+        //     std::cout << "\n=== Power Manager Measurements ===\n";
+        //     std::cout << "5V Rail Voltage     : " << powerManager.getVoltage5V() << " V\n";
+        //     std::cout << "Battery Voltage     : " << powerManager.getVoltageBattery() << " V\n";
+        //     std::cout << "Solar Charge Current: " << powerManager.getCurrentChargeSolar() << " mA\n";
+        //     std::cout << "USB Charge Current  : " << powerManager.getCurrentChargeUSB() << " mA\n";
+        //     std::cout << "Current Draw        : " << powerManager.getCurrentDraw() << " mA\n";
 
-            systemClock.getTime(sec, min, hour, weekday, day, month, year);
+        //     systemClock.getTime(sec, min, hour, weekday, day, month, year);
 
-            printf("%02d:%02d:%02d %s %02d.%02d.%d\n",
-                   hour, min, sec, weekday.c_str(), day, month, year);
+        //     printf("%02d:%02d:%02d %s %02d.%02d.%d\n",
+        //            hour, min, sec, weekday.c_str(), day, month, year);
 
-            logMessage("No messages received in the last 5 seconds.");
-            lastReceiveTime = currentTime;
-        }
+        //     logMessage("No messages received in the last 5 seconds.");
+        //     lastReceiveTime = currentTime;
+        // }
     }
 
     return 0;

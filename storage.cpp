@@ -6,7 +6,7 @@
 
 bool testSDCard()
 {
-    const uint64_t TIMEOUT_MS = 10000; // 5-second timeout
+    const uint64_t TIMEOUT_MS = 5000; // 5-second timeout
     uint64_t startTime;
     FRESULT fr;
     FATFS fs;
