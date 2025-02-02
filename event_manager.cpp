@@ -1,5 +1,3 @@
-// event_manager.cpp
-
 #include "event_manager.h"
 #include "storage.h"
 #include <cstdio>
@@ -19,6 +17,10 @@ static uint32_t lastEventTime = 0;
 
 static int fallingTrendCount = 0;
 
+/**
+ * @brief Checks power statuses and triggers events based on voltage trends.
+ * @param pm Reference to the PowerManager object.
+ */
 void checkPowerEvents(PowerManager& pm)
 {
     float currentVoltage = pm.getVoltage5V(); 
@@ -66,6 +68,10 @@ void checkPowerEvents(PowerManager& pm)
     }
 }
 
+/**
+ * @brief Logs an event message to stdout (and optionally file).
+ * @param message The event message.
+ */
 void logEvent(const char* message)
 {
     std::cout << message << std::endl;

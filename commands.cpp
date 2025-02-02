@@ -19,9 +19,13 @@ std::map<std::string, Command> commandMap = {
 };
 
 
-void logMessage(const std::string& message);
-
-std::pair<std::string, std::string> parseCommand(const std::string& message) {
+/**
+ * @brief Parses a command string into command and parameter.
+ * @param message The full command message, e.g. "cmd param".
+ * @return A pair where first is the command, second is the parameter.
+ */
+std::pair<std::string, std::string> parseCommand(const std::string& message)
+{
     size_t spacePos = message.find(' ');
     if (spacePos != std::string::npos) {
         return {
@@ -32,48 +36,76 @@ std::pair<std::string, std::string> parseCommand(const std::string& message) {
     return {message, ""};
 }
 
+/**
+ * @brief Retrieves and sends the current time since system boot.
+ */
 void handleGetTime() {
     uint32_t currentTime = to_ms_since_boot(get_absolute_time());
     std::string response = "Current time: " + std::to_string(currentTime) + " ms";
     sendMessage(response);
 }
 
+/**
+ * @brief Measures and sends the battery voltage.
+ */
 void handleGetVoltageBattery() {
     float voltage = powerManager.getVoltageBattery();
     sendMessage("Battery voltage: " + std::to_string(voltage) + " V");
 }
 
+/**
+ * @brief Measures and sends the 5V rail voltage.
+ */
 void handleGetVoltage5V() {
     float voltage = powerManager.getVoltage5V();
     sendMessage("5V Rail Voltage: " + std::to_string(voltage) + " V");
 }
 
+/**
+ * @brief Measures and sends the USB charge current.
+ */
 void handleGetCurrentChargeUSB() {
     float chargeCurrent = powerManager.getCurrentChargeUSB();
     sendMessage("USB Charge Current: " + std::to_string(chargeCurrent) + " mA");
 }
 
+/**
+ * @brief Measures and sends the solar panel charge current.
+ */
 void handleGetCurrentChargeSolar() {
     float chargeCurrent = powerManager.getCurrentChargeSolar();
     sendMessage("Solar Charge Current: " + std::to_string(chargeCurrent) + " mA");
 }
 
+/**
+ * @brief Measures and sends the total charge current.
+ */
 void handleGetCurrentChargeTotal() {
     float chargeCurrent = powerManager.getCurrentChargeTotal();
     sendMessage("Total Charge Current: " + std::to_string(chargeCurrent) + " mA");
 }
 
+/**
+ * @brief Measures and sends the current draw from the system.
+ */
 void handleGetCurrentDraw() {
     float currentDraw = powerManager.getCurrentDraw();
     sendMessage("Current Draw: " + std::to_string(currentDraw) + " mA");
 }
 
+/**
+ * @brief Reads and sends the GPS power status (ON/OFF).
+ */
 void handleGetGPSPowerStatus() {
     bool status = gpio_get(GPS_POWER_ENABLE);
     std::string statusStr = status ? "ON" : "OFF";
     sendMessage("GPS Power Status: " + statusStr);
 }
 
+/**
+ * @brief Sets the GPS power status to ON or OFF.
+ * @param param String containing "on", "off", "1", "0", or "true"/"false".
+ */
 void handleSetGPSPowerStatus(const std::string& param) {
     if (param.empty()) {
         sendMessage("Error: GPS power status parameter required (on/off)");
@@ -86,11 +118,18 @@ void handleSetGPSPowerStatus(const std::string& param) {
     sendMessage("GPS Power Status set to: " + status);
 }
 
+/**
+ * @brief Handles unknown commands by sending an error message.
+ */
 void handleUnknownCommand() {
     std::string response = "Unknown command";
     sendMessage(response);
 }
 
+/**
+ * @brief Main dispatcher for handling incoming commands.
+ * @param message The full message, including command and parameters.
+ */
 void handleCommand(const std::string& message) {
     auto [cmd, param] = parseCommand(message);
     auto it = commandMap.find(cmd);

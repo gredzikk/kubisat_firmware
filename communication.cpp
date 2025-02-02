@@ -13,6 +13,10 @@ long lastSendTime = 0;
 long lastReceiveTime = 0;            
 long lastPrintTime = 0;  
 
+/**
+ * @brief Initializes the LoRa radio hardware and sets frequency.
+ * @return True if successful, otherwise false.
+ */
 bool initializeRadio() {
     LoRa.setPins(csPin, resetPin, irqPin);
 
@@ -29,12 +33,20 @@ bool initializeRadio() {
     return true;
 }
 
+/**
+ * @brief Logs a message with a timestamp to stdout.
+ * @param message The message to log.
+ */
 void logMessage(const string &message)
 {
     uint32_t timestamp = to_ms_since_boot(get_absolute_time());
     printf("[%lu ms] %s\n", timestamp, message.c_str());
 }
 
+/**
+ * @brief Sends a string message using LoRa with addresses and packet ID.
+ * @param outgoing The string to send.
+ */
 void sendMessage(string outgoing)
 {
     int n = outgoing.length();
@@ -52,6 +64,11 @@ void sendMessage(string outgoing)
     msgCount++;               // increment message ID
 }
 
+/**
+ * @brief Sends data in chunks if larger than the max packet size.
+ * @param data Pointer to the data buffer.
+ * @param length Size of the data buffer.
+ */
 void sendLargePacket(const uint8_t* data, size_t length)
 {
     size_t offset = 0;
@@ -66,6 +83,10 @@ void sendLargePacket(const uint8_t* data, size_t length)
     }
 }
 
+/**
+ * @brief Sends a string message using a universal approach to handle overhead and chunking.
+ * @param outgoing The string to send.
+ */
 void sendMessageUniversal(const std::string& outgoing)
 {
     const size_t n = outgoing.length();
@@ -109,6 +130,10 @@ void sendMessageUniversal(const std::string& outgoing)
     }
 }
 
+/**
+ * @brief Callback for receiving LoRa packets; validates and forwards commands.
+ * @param packetSize The size of the incoming packet.
+ */
 void onReceive(int packetSize)
 {
     gpio_put(PICO_DEFAULT_LED_PIN, 0);

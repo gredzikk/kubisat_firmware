@@ -18,6 +18,8 @@ enum class Command {
     UNKNOWN
 };
 
+void logMessage(const std::string& message);
+
 void handleGetTime();
 void handleGetVoltage5V();
 void handleGetCurrentChargeUSB();
