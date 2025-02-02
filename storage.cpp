@@ -181,28 +181,53 @@ bool testSDCard()
     // Wait for user's decision
     if (!waitForUserInteraction(TIMEOUT_MS))
         return false;
+    
+    uint64_t t_start = to_ms_since_boot(get_absolute_time());
+    printf("Starting SD card test at %llu ms\n", t_start);
 
-    // Initialize SD card driver
     if (!initializeSDCard(buf))
         return false;
+    printf("SD card driver initialized at %llu ms (elapsed %llu ms)\n",
+           to_ms_since_boot(get_absolute_time()),
+           to_ms_since_boot(get_absolute_time()) - t_start);
 
-    // Mount filesystem
     if (!mountDrive(fs, buf))
         return false;
+    printf("Filesystem mounted at %llu ms (elapsed %llu ms)\n",
+           to_ms_since_boot(get_absolute_time()),
+           to_ms_since_boot(get_absolute_time()) - t_start);
 
     // Write test
     if (!openFile(fil, filename, FA_WRITE | FA_CREATE_ALWAYS, buf))
         return false;
+    printf("File opened for writing at %llu ms (elapsed %llu ms)\n",
+           to_ms_since_boot(get_absolute_time()),
+           to_ms_since_boot(get_absolute_time()) - t_start);
+
     if (!writeToFile(fil, "This is another test\n", buf))
         return false;
+    printf("First write complete at %llu ms (elapsed %llu ms)\n",
+           to_ms_since_boot(get_absolute_time()),
+           to_ms_since_boot(get_absolute_time()) - t_start);
+
     if (!writeToFile(fil, "of writing to an SD card.\n", buf))
         return false;
+    printf("Second write complete at %llu ms (elapsed %llu ms)\n",
+           to_ms_since_boot(get_absolute_time()),
+           to_ms_since_boot(get_absolute_time()) - t_start);
+
     if (!closeFile(fil, buf))
         return false;
+    printf("File closed after writing at %llu ms (elapsed %llu ms)\n",
+           to_ms_since_boot(get_absolute_time()),
+           to_ms_since_boot(get_absolute_time()) - t_start);
 
     // Read test
     if (!openFile(fil, filename, FA_READ, buf))
         return false;
+    printf("File opened for reading at %llu ms (elapsed %llu ms)\n",
+           to_ms_since_boot(get_absolute_time()),
+           to_ms_since_boot(get_absolute_time()) - t_start);
 
     printf("Reading from file '%s':\n", filename);
     printf("---\n");
@@ -212,11 +237,15 @@ bool testSDCard()
     }
     printf("\n---\n");
 
-    // Close and unmount
     if (!closeFile(fil, buf))
         return false;
+    printf("File closed after reading at %llu ms (elapsed %llu ms)\n",
+           to_ms_since_boot(get_absolute_time()),
+           to_ms_since_boot(get_absolute_time()) - t_start);
 
     f_unmount("0:");
-    printf("SD card test completed successfully.\n");
+    uint64_t t_end = to_ms_since_boot(get_absolute_time());
+    printf("SD card test completed successfully at %llu ms (total elapsed: %llu ms)\n",
+           t_end, t_end - t_start);
     return true;
 }
