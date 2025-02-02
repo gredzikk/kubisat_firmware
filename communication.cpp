@@ -9,8 +9,8 @@ using std::string;
 
 std::string outgoing;                // outgoing message
 uint8_t msgCount = 0;                // count of outgoing messages
-long lastSendTime = 0;                // last send time
-long lastReceiveTime = 0;             // last receive time
+long lastSendTime = 0;               
+long lastReceiveTime = 0;            
 long lastPrintTime = 0;  
 
 bool initializeRadio() {
@@ -28,7 +28,7 @@ bool initializeRadio() {
     logMessage("LoRa initialized with frequency " + std::to_string(frequency));
     return true;
 }
-// LoRa methods
+
 void logMessage(const string &message)
 {
     uint32_t timestamp = to_ms_since_boot(get_absolute_time());
@@ -54,16 +54,15 @@ void sendMessage(string outgoing)
 
 void sendLargePacket(const uint8_t* data, size_t length)
 {
-    const size_t MAX_PAYLOAD_SIZE = 200; // Adjust to your LoRa limit
     size_t offset = 0;
     while (offset < length)
     {
-        size_t chunkSize = (length - offset) < MAX_PAYLOAD_SIZE ? (length - offset) : MAX_PAYLOAD_SIZE;
+        size_t chunkSize = (length - offset) < MAX_PKT_SIZE ? (length - offset) : MAX_PKT_SIZE;
         LoRa.beginPacket();
         LoRa.write(&data[offset], chunkSize);
         LoRa.endPacket();
         offset += chunkSize;
-        sleep_ms(100); // small delay if needed
+        sleep_ms(100); 
     }
 }
 

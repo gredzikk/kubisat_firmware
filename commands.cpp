@@ -87,7 +87,7 @@ void handleSetGPSPowerStatus(const std::string& param) {
 }
 
 void handleUnknownCommand() {
-    std::string response = "Unknown command.\nFor available commands type 'commands'";
+    std::string response = "Unknown command";
     sendMessage(response);
 }
 

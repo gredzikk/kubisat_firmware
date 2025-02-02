@@ -63,8 +63,6 @@ bool initSystems(i2c_inst_t *i2c_port) {
         gpio_put(GPS_POWER_ENABLE, 0); 
     }
 
-    std::cout << "GPIOS init done" << std::endl;
-
     for (int i = 5; i > 0; --i)
     {
         std::cout << "Program starts in " << i << " seconds..." << std::endl;

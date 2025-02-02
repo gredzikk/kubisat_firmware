@@ -5,70 +5,36 @@
 #include <cstdio>
 #include "ff.h"
 #include "commands.h"
-// External reference to PowerManager
+
 extern PowerManager powerManager;
 
-// Current power event state
-static PowerEventState lastPowerState = PowerEventState::NORMAL;
+static PowerEventState lastPowerState = PowerEventState::LOW_BATTERY;
 
-// Voltage sampling parameters
-static constexpr int VOLTAGE_SAMPLES = 10;
-static float voltageHistory[VOLTAGE_SAMPLES] = {0};
-static int historyIndex = 0;
-
-// Detection parameters
-static constexpr float FALL_RATE_THRESHOLD = -0.02f; // Voltage drop per sample (e.g., -0.05V per 10ms)
-static constexpr int FALLING_TREND_REQUIRED = 3;      // Number of consecutive drops required
+static constexpr float FALL_RATE_THRESHOLD = -0.02f; 
+static constexpr int FALLING_TREND_REQUIRED = 3;      
 static constexpr float VOLTAGE_LOW_THRESHOLD = 4.7f;
-// Debounce parameters
-static constexpr int DEBOUNCE_TIME_MS = 5000; // 5 seconds
-static constexpr float VOLTAGE_OVERCHARGE_THRESHOLD = 5.3f; // Voltage overcharge threshold
+
+static constexpr float VOLTAGE_OVERCHARGE_THRESHOLD = 5.3f; 
 static uint32_t lastEventTime = 0;
 
-// Consecutive falling trend counter
 static int fallingTrendCount = 0;
 
-// Calculates the moving average of the latest N samples (optional)
-float calculateMovingAverage() {
-    float sum = 0.0f;
-    for(int i = 0; i < 5; ++i) { // Reduced window for faster response
-        int idx = (historyIndex + VOLTAGE_SAMPLES - 5 + i) % VOLTAGE_SAMPLES;
-        sum += voltageHistory[idx];
-    }
-    return sum / 5.0f;
-}
-
-// Checks power events, including downward trend detection
 void checkPowerEvents(PowerManager& pm)
 {
-    float currentVoltage = pm.getVoltage5V(); // Using 5V measurement as it stabilizes longer
+    float currentVoltage = pm.getVoltage5V(); 
 
-    // Store the current voltage in the ring buffer
-    voltageHistory[historyIndex] = currentVoltage;
-    historyIndex = (historyIndex + 1) % VOLTAGE_SAMPLES;
-
-    // Optional: Calculate moving average if needed
-    float movingAverage = calculateMovingAverage();
-
-    // Compare current voltage with the previous sample
     static float previousVoltage = 0.0f;
     float delta = currentVoltage - previousVoltage;
     previousVoltage = currentVoltage;
 
-    // Update falling trend counter
     if (delta < FALL_RATE_THRESHOLD) {
         fallingTrendCount++;
     } else {
         fallingTrendCount = 0;
     }
 
-    // Get the current time
     uint32_t currentTime = to_ms_since_boot(get_absolute_time());
 
-    // Debounce: Ensure enough time has passed since the last event
-    bool debounce = (currentTime - lastEventTime) > DEBOUNCE_TIME_MS;
-
-    // Detect rapid voltage falling trend
     if (fallingTrendCount >= FALLING_TREND_REQUIRED)
     {
         logEvent("Battery losing power rapidly");
@@ -77,28 +43,25 @@ void checkPowerEvents(PowerManager& pm)
         lastEventTime = currentTime;
     }
 
-    // Detect low battery
-    if (movingAverage < VOLTAGE_LOW_THRESHOLD && lastPowerState != PowerEventState::LOW_BATTERY && debounce)
+    if (currentVoltage < VOLTAGE_LOW_THRESHOLD && lastPowerState != PowerEventState::LOW_BATTERY)
     {
         logEvent("Battery below threshold");
         lastPowerState = PowerEventState::LOW_BATTERY;
-        sendMessage("ALERT: POWER LOW | Voltage: " + std::to_string(movingAverage) + " V");
+        sendMessage("ALERT: POWER LOW | Voltage: " + std::to_string(currentVoltage) + " V");
         lastEventTime = currentTime;
     }
-    // Detect overcharge
-    else if (movingAverage > VOLTAGE_OVERCHARGE_THRESHOLD && lastPowerState != PowerEventState::OVERCHARGE && debounce)
+    else if (currentVoltage > VOLTAGE_OVERCHARGE_THRESHOLD && lastPowerState != PowerEventState::OVERCHARGE)
     {
         logEvent("Battery overcharge level");
         lastPowerState = PowerEventState::OVERCHARGE;
-        sendMessage("ALERT: OVERCHARGE | Voltage: " + std::to_string(movingAverage) + " V");
+        sendMessage("ALERT: OVERVOLTAGE | Voltage: " + std::to_string(currentVoltage) + " V");
         lastEventTime = currentTime;
     }
-    // Detect normal state
-    else if (movingAverage >= VOLTAGE_LOW_THRESHOLD && movingAverage <= VOLTAGE_OVERCHARGE_THRESHOLD && lastPowerState != PowerEventState::NORMAL && debounce)
+    else if (currentVoltage >= VOLTAGE_LOW_THRESHOLD && currentVoltage <= VOLTAGE_OVERCHARGE_THRESHOLD && lastPowerState != PowerEventState::NORMAL)
     {
         logEvent("Battery back to normal");
         lastPowerState = PowerEventState::NORMAL;
-        sendMessage("INFO: Battery back to normal | Voltage: " + std::to_string(movingAverage) + " V");
+        sendMessage("INFO: Battery back to normal | Voltage: " + std::to_string(currentVoltage) + " V");
         lastEventTime = currentTime;
     }
 }

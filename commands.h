@@ -18,7 +18,6 @@ enum class Command {
     UNKNOWN
 };
 
-// Command handler function declarations
 void handleGetTime();
 void handleGetVoltage5V();
 void handleGetCurrentChargeUSB();
