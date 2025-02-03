@@ -6,39 +6,85 @@
 
 extern PowerManager powerManager;
 
-std::map<std::string, CommandHandler> commandRegistry = {
-    {"get_time", [](const CommandMessage& msg) {
-        handleGetTime();
+// std::map<std::string, CommandHandler> commandRegistry = {
+//     {"get_time", [](const CommandMessage& msg) {
+//         handleGetTime();
+//     }},
+//     {"get_voltage_battery", [](const CommandMessage& msg) {
+//         handleGetVoltageBattery();
+//     }},
+//     {"get_voltage_5v", [](const CommandMessage& msg) {
+//         handleGetVoltage5V();
+//     }},
+//     {"get_current_charge_usb", [](const CommandMessage& msg) {
+//         handleGetCurrentChargeUSB();
+//     }},
+//     {"get_current_charge_solar", [](const CommandMessage& msg) {
+//         handleGetCurrentChargeSolar();
+//     }},
+//     {"get_current_charge_total", [](const CommandMessage& msg) {
+//         handleGetCurrentChargeTotal();
+//     }},
+//     {"get_current_draw", [](const CommandMessage& msg) {
+//         handleGetCurrentDraw();
+//     }},
+//     {"get_gps_power_status", [](const CommandMessage& msg) {
+//         handleGetGPSPowerStatus();
+//     }},
+//     {"set_gps_power_status", [](const CommandMessage& msg) {
+//         handleSetGPSPowerStatus(msg.parameter);
+//     }},
+//     {"enable_gps_transparent_mode", [](const CommandMessage& msg) {
+//         handleEnableGPSTransparentMode(msg.parameter);
+//     }},
+// };
+
+std::map<std::string, std::pair<CommandHandler, CommandInfo>> commandRegistry = {
+    {"get_time", {
+        [](const CommandMessage& msg) { handleGetTime(); },
+        {"get_time", "Get system uptime", "none", "n/a"}
     }},
-    {"get_voltage_battery", [](const CommandMessage& msg) {
-        handleGetVoltageBattery();
+    {"get_voltage_battery", {
+        [](const CommandMessage& msg) { handleGetVoltageBattery(); },
+        {"get_voltage_battery", "Read battery voltage", "none", "0-20V"}
     }},
-    {"get_voltage_5v", [](const CommandMessage& msg) {
-        handleGetVoltage5V();
+    {"set_gps_power_status", {
+        [](const CommandMessage& msg) { handleSetGPSPowerStatus(msg.parameter); },
+        {"set_gps_power_status", "Control GPS power", "state", "0/1"}
     }},
-    {"get_current_charge_usb", [](const CommandMessage& msg) {
-        handleGetCurrentChargeUSB();
-    }},
-    {"get_current_charge_solar", [](const CommandMessage& msg) {
-        handleGetCurrentChargeSolar();
-    }},
-    {"get_current_charge_total", [](const CommandMessage& msg) {
-        handleGetCurrentChargeTotal();
-    }},
-    {"get_current_draw", [](const CommandMessage& msg) {
-        handleGetCurrentDraw();
-    }},
-    {"get_gps_power_status", [](const CommandMessage& msg) {
-        handleGetGPSPowerStatus();
-    }},
-    {"set_gps_power_status", [](const CommandMessage& msg) {
-        handleSetGPSPowerStatus(msg.parameter);
-    }},
-    {"enable_gps_transparent_mode", [](const CommandMessage& msg) {
-        handleEnableGPSTransparentMode(msg.parameter);
-    }},
+    {"get_available_commands", {
+        [](const CommandMessage& msg) {
+            // Send number of commands first
+            sendMessage("Commands:" + std::to_string(commandRegistry.size()));
+            
+            // Send each command info separately
+            for(const auto& [cmd, info] : commandRegistry) {
+                const auto& cmdInfo = info.second;
+                std::string cmdDesc = cmdInfo.name + "|" + 
+                                    cmdInfo.description + "|" +
+                                    cmdInfo.parameters + "|" +
+                                    cmdInfo.range;
+                sendMessage(cmdDesc);
+                sleep_ms(100); // Delay between messages
+            }
+        },
+        {"get_available_commands", "List all available commands", "none", "n/a"}
+    }}
 };
 
+void sendAllCommandsOnStartup() {
+    // Same logic as the "get_available_commands" handler
+    sendMessage("Commands:" + std::to_string(commandRegistry.size()));
+    for(const auto& [cmd, info] : commandRegistry) {
+        const auto& cmdInfo = info.second;
+        std::string cmdDesc = cmdInfo.name + "|" + 
+                              cmdInfo.description + "|" +
+                              cmdInfo.parameters + "|" +
+                              cmdInfo.range;
+        sendMessage(cmdDesc);
+        sleep_ms(100);
+    }
+}
 
 /**
  * @brief Parses a command string into command and parameter.
@@ -46,10 +92,12 @@ std::map<std::string, CommandHandler> commandRegistry = {
  * @return A pair where first is the command, second is the parameter.
  */
 void handleCommandMessage(const std::string& message) {
+    // Pass message to CommandMessage constructor
     CommandMessage commandMsg(message);
+
     auto it = commandRegistry.find(commandMsg.command);
-    if(it != commandRegistry.end()) {
-        it->second(commandMsg);
+    if (it != commandRegistry.end()) {
+        it->second.first(commandMsg);
     } else {
         handleUnknownCommand(commandMsg);
     }

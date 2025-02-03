@@ -19,11 +19,18 @@ public:
     }
 };
 
+struct CommandInfo {
+    std::string name;
+    std::string description;
+    std::string parameters;
+    std::string range;
+};
+
 // Type alias for command handler functions
 using CommandHandler = std::function<void(const CommandMessage&)>;
 
 // Command registry mapping command names to their handlers
-extern std::map<std::string, CommandHandler> commandRegistry;
+extern std::map<std::string, std::pair<CommandHandler, CommandInfo>> commandRegistry;
 
 void sendMessage(std::string outgoing);
 void handleCommandMessage(const std::string& message);
@@ -38,5 +45,7 @@ void handleGetCurrentDraw();
 void handleGetGPSPowerStatus();
 void handleSetGPSPowerStatus(const std::string& param);
 void handleEnableGPSTransparentMode(const std::string& timeout);
+
+void sendAllCommandsOnStartup();
 
 void handleUnknownCommand(const CommandMessage& commandMsg);
