@@ -66,6 +66,7 @@ void handleGetTime() {
 
 /**
  * @brief Measures and sends the battery voltage.
+ * @param None
  */
 void handleGetVoltageBattery() {
     float voltage = powerManager.getVoltageBattery();
@@ -74,6 +75,7 @@ void handleGetVoltageBattery() {
 
 /**
  * @brief Measures and sends the 5V rail voltage.
+ * @param None
  */
 void handleGetVoltage5V() {
     float voltage = powerManager.getVoltage5V();
@@ -82,6 +84,7 @@ void handleGetVoltage5V() {
 
 /**
  * @brief Measures and sends the USB charge current.
+ * @param None
  */
 void handleGetCurrentChargeUSB() {
     float chargeCurrent = powerManager.getCurrentChargeUSB();
@@ -90,6 +93,7 @@ void handleGetCurrentChargeUSB() {
 
 /**
  * @brief Measures and sends the solar panel charge current.
+ * @param None
  */
 void handleGetCurrentChargeSolar() {
     float chargeCurrent = powerManager.getCurrentChargeSolar();
@@ -98,6 +102,7 @@ void handleGetCurrentChargeSolar() {
 
 /**
  * @brief Measures and sends the total charge current.
+ * @param None
  */
 void handleGetCurrentChargeTotal() {
     float chargeCurrent = powerManager.getCurrentChargeTotal();
@@ -106,6 +111,7 @@ void handleGetCurrentChargeTotal() {
 
 /**
  * @brief Measures and sends the current draw from the system.
+ * @param None
  */
 void handleGetCurrentDraw() {
     float currentDraw = powerManager.getCurrentDraw();
@@ -114,6 +120,7 @@ void handleGetCurrentDraw() {
 
 /**
  * @brief Reads and sends the GPS power status (ON/OFF).
+ * @param None
  */
 void handleGetGPSPowerStatus() {
     bool status = gpio_get(GPS_POWER_ENABLE);
@@ -123,7 +130,7 @@ void handleGetGPSPowerStatus() {
 
 /**
  * @brief Sets the GPS power status to ON or OFF.
- * @param param String containing "on", "off", "1", "0", or "true"/"false".
+ * @param param 0 or 1
  */
 void handleSetGPSPowerStatus(const std::string& param) {
     if (param.empty()) {
@@ -139,7 +146,7 @@ void handleSetGPSPowerStatus(const std::string& param) {
 
 /**
  * @brief Enable GPS transparent UART communication in order to read or configure using u-center or similar software
- * @param Timeout in [s] after which transparent mode is automatically disabled
+ * @param Timeout in [s] after which transparent mode is automatically disabled, range 1-120 [s]
  */
 void handleEnableGPSTransparentMode(const std::string& timeout) {
     uint32_t timeoutMs = timeout.empty() ? 30000 : std::stoul(timeout);

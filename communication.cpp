@@ -62,6 +62,11 @@ void sendMessage(string outgoing)
     LoRa.print(send);         // add payload
     LoRa.endPacket(false);    // finish packet and send it
     msgCount++;               // increment message ID
+
+    std::string messageToLog = "Sent message of size " + std::to_string(n) + " with ID " + std::to_string(msgCount);
+    messageToLog += " to: 0x" + std::to_string(destination);
+    messageToLog += " containing: " + string(send);
+    logMessage(messageToLog);
 }
 
 /**
@@ -170,7 +175,7 @@ void onReceive(int packetSize)
     logMessage("RSSI: " + std::to_string(LoRa.packetRssi()) + " Snr: " + std::to_string(LoRa.packetSnr()));
 
     gpio_put(PICO_DEFAULT_LED_PIN, 1);
-    handleCommand(incoming);
+    handleCommandMessage(incoming);
 
     lastReceiveTime = to_ms_since_boot(get_absolute_time());
 }
