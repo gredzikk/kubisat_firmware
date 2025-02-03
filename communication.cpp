@@ -67,6 +67,7 @@ void sendMessage(string outgoing)
     messageToLog += " to: 0x" + std::to_string(destination);
     messageToLog += " containing: " + string(send);
     logMessage(messageToLog);
+    LoRa.flush();
 }
 
 /**

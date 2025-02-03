@@ -3,6 +3,9 @@
 #include "pin_config.h"
 #include "stdio.h"
 #include <pico/stdio.h>
+#include "PowerManager.h"
+
+extern PowerManager powerManager;
 
 /**
  * @brief Waits for user input (enter to proceed or 's' to skip) with timeout.
@@ -175,73 +178,51 @@ bool testSDCard()
     const uint64_t TIMEOUT_MS = 5000;  // 5-second timeout
     FATFS fs;
     FIL fil;
-    char buf[100];
+    char buf[1024];
     char filename[] = "test02.txt";
 
     // Wait for user's decision
-    if (!waitForUserInteraction(TIMEOUT_MS))
-        return false;
+    //if (!waitForUserInteraction(TIMEOUT_MS))
+       // return false;
     
     uint64_t t_start = to_ms_since_boot(get_absolute_time());
     printf("Starting SD card test at %llu ms\n", t_start);
 
     if (!initializeSDCard(buf))
         return false;
-    printf("SD card driver initialized at %llu ms (elapsed %llu ms)\n",
-           to_ms_since_boot(get_absolute_time()),
-           to_ms_since_boot(get_absolute_time()) - t_start);
+    uint64_t now = to_ms_since_boot(get_absolute_time());
+    printf("SD card driver initialized at %llu ms (elapsed %llu ms)\n", now, now - t_start);
 
     if (!mountDrive(fs, buf))
         return false;
-    printf("Filesystem mounted at %llu ms (elapsed %llu ms)\n",
-           to_ms_since_boot(get_absolute_time()),
-           to_ms_since_boot(get_absolute_time()) - t_start);
+    now = to_ms_since_boot(get_absolute_time());
+    printf("Filesystem mounted at %llu ms (elapsed %llu ms)\n", now, now - t_start);
 
-    // Write test
     if (!openFile(fil, filename, FA_WRITE | FA_CREATE_ALWAYS, buf))
         return false;
-    printf("File opened for writing at %llu ms (elapsed %llu ms)\n",
-           to_ms_since_boot(get_absolute_time()),
-           to_ms_since_boot(get_absolute_time()) - t_start);
+    now = to_ms_since_boot(get_absolute_time());
+    printf("File opened for writing at %llu ms (elapsed %llu ms)\n", now, now - t_start);
 
-    if (!writeToFile(fil, "This is another test\n", buf))
-        return false;
-    printf("First write complete at %llu ms (elapsed %llu ms)\n",
-           to_ms_since_boot(get_absolute_time()),
-           to_ms_since_boot(get_absolute_time()) - t_start);
+    double voltageData = powerManager.getVoltageBattery();
+    double currentData = powerManager.getCurrentChargeTotal();
+    double drawData = powerManager.getCurrentDraw();
 
-    if (!writeToFile(fil, "of writing to an SD card.\n", buf))
+    std::string powerData = "Voltage: " + std::to_string(voltageData) + "V\n" +
+                            "Current: " + std::to_string(currentData) + "mA\n" +
+                            "Draw: " + std::to_string(drawData) + "mA\n";
+    
+
+    if (!writeToFile(fil, powerData.c_str(), buf))
         return false;
-    printf("Second write complete at %llu ms (elapsed %llu ms)\n",
-           to_ms_since_boot(get_absolute_time()),
-           to_ms_since_boot(get_absolute_time()) - t_start);
+    now = to_ms_since_boot(get_absolute_time());
+
+    printf("Write complete at %llu ms (elapsed %llu ms)\n", now, now - t_start);
+
 
     if (!closeFile(fil, buf))
         return false;
-    printf("File closed after writing at %llu ms (elapsed %llu ms)\n",
-           to_ms_since_boot(get_absolute_time()),
-           to_ms_since_boot(get_absolute_time()) - t_start);
-
-    // Read test
-    if (!openFile(fil, filename, FA_READ, buf))
-        return false;
-    printf("File opened for reading at %llu ms (elapsed %llu ms)\n",
-           to_ms_since_boot(get_absolute_time()),
-           to_ms_since_boot(get_absolute_time()) - t_start);
-
-    printf("Reading from file '%s':\n", filename);
-    printf("---\n");
-    while (f_gets(buf, sizeof(buf), &fil))
-    {
-        printf("%s", buf);
-    }
-    printf("\n---\n");
-
-    if (!closeFile(fil, buf))
-        return false;
-    printf("File closed after reading at %llu ms (elapsed %llu ms)\n",
-           to_ms_since_boot(get_absolute_time()),
-           to_ms_since_boot(get_absolute_time()) - t_start);
+    now = to_ms_since_boot(get_absolute_time());
+    printf("File closed after writing at %llu ms (elapsed %llu ms)\n", now, now - t_start);
 
     f_unmount("0:");
     uint64_t t_end = to_ms_since_boot(get_absolute_time());
