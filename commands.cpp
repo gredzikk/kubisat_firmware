@@ -6,16 +6,37 @@
 
 extern PowerManager powerManager;
 
-std::map<std::string, Command> commandMap = {
-    {"get_time", Command::GET_TIME},
-    {"get_voltage_battery", Command::GET_VOLTAGE_BATTERY},
-    {"get_voltage_5v", Command::GET_VOLTAGE_5V},
-    {"get_current_charge_usb", Command::GET_CURRENT_CHARGE_USB},
-    {"get_current_charge_solar", Command::GET_CURRENT_CHARGE_SOLAR},
-    {"get_current_charge_total", Command::GET_CURRENT_CHARGE_TOTAL},
-    {"get_current_draw", Command::GET_CURRENT_DRAW},
-    {"get_gps_power_status", Command::GET_GPS_POWER_STATUS},
-    {"set_gps_power_status", Command::SET_GPS_POWER_STATUS},
+std::map<std::string, CommandHandler> commandRegistry = {
+    {"get_time", [](const CommandMessage& msg) {
+        handleGetTime();
+    }},
+    {"get_voltage_battery", [](const CommandMessage& msg) {
+        handleGetVoltageBattery();
+    }},
+    {"get_voltage_5v", [](const CommandMessage& msg) {
+        handleGetVoltage5V();
+    }},
+    {"get_current_charge_usb", [](const CommandMessage& msg) {
+        handleGetCurrentChargeUSB();
+    }},
+    {"get_current_charge_solar", [](const CommandMessage& msg) {
+        handleGetCurrentChargeSolar();
+    }},
+    {"get_current_charge_total", [](const CommandMessage& msg) {
+        handleGetCurrentChargeTotal();
+    }},
+    {"get_current_draw", [](const CommandMessage& msg) {
+        handleGetCurrentDraw();
+    }},
+    {"get_gps_power_status", [](const CommandMessage& msg) {
+        handleGetGPSPowerStatus();
+    }},
+    {"set_gps_power_status", [](const CommandMessage& msg) {
+        handleSetGPSPowerStatus(msg.parameter);
+    }},
+    {"enable_gps_transparent_mode", [](const CommandMessage& msg) {
+        handleEnableGPSTransparentMode(msg.parameter);
+    }},
 };
 
 
@@ -24,16 +45,14 @@ std::map<std::string, Command> commandMap = {
  * @param message The full command message, e.g. "cmd param".
  * @return A pair where first is the command, second is the parameter.
  */
-std::pair<std::string, std::string> parseCommand(const std::string& message)
-{
-    size_t spacePos = message.find(' ');
-    if (spacePos != std::string::npos) {
-        return {
-            message.substr(0, spacePos),
-            message.substr(spacePos + 1)
-        };
+void handleCommandMessage(const std::string& message) {
+    CommandMessage commandMsg(message);
+    auto it = commandRegistry.find(commandMsg.command);
+    if(it != commandRegistry.end()) {
+        it->second(commandMsg);
+    } else {
+        handleUnknownCommand(commandMsg);
     }
-    return {message, ""};
 }
 
 /**
@@ -119,54 +138,39 @@ void handleSetGPSPowerStatus(const std::string& param) {
 }
 
 /**
- * @brief Handles unknown commands by sending an error message.
+ * @brief Enable GPS transparent UART communication in order to read or configure using u-center or similar software
+ * @param Timeout in [s] after which transparent mode is automatically disabled
  */
-void handleUnknownCommand() {
-    std::string response = "Unknown command";
-    sendMessage(response);
+void handleEnableGPSTransparentMode(const std::string& timeout) {
+    uint32_t timeoutMs = timeout.empty() ? 30000 : std::stoul(timeout);
+    uint32_t startTime = to_ms_since_boot(get_absolute_time());
+    sendMessage("Entering GPS Serial Pass-Through Mode. Type 'exit' followed by newline to quit.");
+
+    while (true) {
+        // Read from PC (UART_ID) and pass to GPS (GPS_UART)
+        while (uart_is_readable(UART_ID)) {
+            char ch = uart_getc(UART_ID);
+            // Forward character to GPS
+            uart_write_blocking(GPS_UART, reinterpret_cast<const uint8_t*>(&ch), 1);
+        }
+        
+        // Read from GPS (GPS_UART) and pass to PC (UART_ID)
+        while (uart_is_readable(GPS_UART)) {
+            char gpsByte = uart_getc(GPS_UART);
+            uart_write_blocking(UART_ID, reinterpret_cast<const uint8_t*>(&gpsByte), 1);
+        }
+
+        if (to_ms_since_boot(get_absolute_time()) - startTime >= timeoutMs) {
+            break;
+        }
+    }
+    sendMessage("Exiting GPS Serial Pass-Through Mode.");
 }
 
 /**
- * @brief Main dispatcher for handling incoming commands.
- * @param message The full message, including command and parameters.
+ * @brief Handles unknown commands by sending an error message.
  */
-void handleCommand(const std::string& message) {
-    auto [cmd, param] = parseCommand(message);
-    auto it = commandMap.find(cmd);
-    if (it != commandMap.end()) {
-        switch (it->second) {
-            case Command::GET_TIME:
-                handleGetTime();
-                break;
-            case Command::GET_VOLTAGE_BATTERY:
-                handleGetVoltageBattery();
-                break;
-            case Command::GET_VOLTAGE_5V:
-                handleGetVoltage5V();
-                break;
-            case Command::GET_CURRENT_CHARGE_USB:
-                handleGetCurrentChargeUSB();
-                break;
-            case Command::GET_CURRENT_CHARGE_SOLAR:
-                handleGetCurrentChargeSolar();
-                break;
-            case Command::GET_CURRENT_CHARGE_TOTAL:
-                handleGetCurrentChargeTotal();
-                break;
-            case Command::GET_CURRENT_DRAW:
-                handleGetCurrentDraw();
-                break;
-            case Command::GET_GPS_POWER_STATUS:
-                handleGetGPSPowerStatus();
-                break;
-            case Command::SET_GPS_POWER_STATUS:
-                handleSetGPSPowerStatus(param);
-                break;
-            default:
-                handleUnknownCommand();
-                break;
-        }
-    } else {
-        handleUnknownCommand();
-    }
+void handleUnknownCommand(const CommandMessage& commandMsg) {
+    std::string response = "Unknown command: " + commandMsg.command;
+    sendMessage(response);
 }

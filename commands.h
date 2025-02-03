@@ -1,26 +1,35 @@
-#pragma once
-
 #include <string>
 #include <map>
+#include <functional>
 #include "pico/stdlib.h"
 
-enum class Command {
-    GET_TIME,
-    GET_VOLTAGE_BATTERY,
-    GET_VOLTAGE_5V,
-    GET_CURRENT_CHARGE_USB,
-    GET_CURRENT_CHARGE_SOLAR,
-    GET_CURRENT_CHARGE_TOTAL,
-    GET_CURRENT_DRAW,
-    GET_GPS_POWER_STATUS,
-    SET_GPS_POWER_STATUS, 
-    COMMANDS,
-    UNKNOWN
+class CommandMessage {
+public:
+    std::string command;
+    std::string parameter;
+    
+    CommandMessage(const std::string& message) {
+        size_t spacePos = message.find(' ');
+        if(spacePos != std::string::npos) {
+            command = message.substr(0, spacePos);
+            parameter = message.substr(spacePos + 1);
+        } else {
+            command = message;
+        }
+    }
 };
 
-void logMessage(const std::string& message);
+// Type alias for command handler functions
+using CommandHandler = std::function<void(const CommandMessage&)>;
 
+// Command registry mapping command names to their handlers
+extern std::map<std::string, CommandHandler> commandRegistry;
+
+void sendMessage(std::string outgoing);
+void handleCommandMessage(const std::string& message);
+// Existing functions (you can keep them or call them from the lambdas below)
 void handleGetTime();
+void handleGetVoltageBattery();
 void handleGetVoltage5V();
 void handleGetCurrentChargeUSB();
 void handleGetCurrentChargeSolar();
@@ -28,9 +37,6 @@ void handleGetCurrentChargeTotal();
 void handleGetCurrentDraw();
 void handleGetGPSPowerStatus();
 void handleSetGPSPowerStatus(const std::string& param);
-void handleCommands();
-void handleUnknownCommand();
-void handleCommand(const std::string& message);
-void sendMessage(std::string outgoing);
+void handleEnableGPSTransparentMode(const std::string& timeout);
 
-extern std::map<std::string, Command> commandMap;
+void handleUnknownCommand(const CommandMessage& commandMsg);
