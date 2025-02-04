@@ -14,7 +14,7 @@ enum class SensorType {
     IMU             // MPU6050
 };
 
-enum class DataType {
+enum class SensorDataTypeIdentifier {
     LIGHT_LEVEL,
     TEMPERATURE,
     PRESSURE,
@@ -34,7 +34,7 @@ class ISensor {
 public:
     virtual ~ISensor() = default;
     virtual bool init() = 0;
-    virtual float readData(DataType type) = 0;
+    virtual float readData(SensorDataTypeIdentifier type) = 0;
     virtual bool isInitialized() const = 0;
     virtual SensorType getType() const = 0;
     virtual bool configure(const std::map<std::string, std::string>& config) = 0;
@@ -45,7 +45,7 @@ public:
     static SensorWrapper& getInstance();
     bool initSensor(SensorType type, i2c_inst_t* i2c = nullptr);
     bool configureSensor(SensorType type, const std::map<std::string, std::string>& config);
-    float readSensorData(SensorType sensorType, DataType dataType);
+    float readSensorData(SensorType sensorType, SensorDataTypeIdentifier dataType);
 
 private:
     std::map<SensorType, ISensor*> sensors;

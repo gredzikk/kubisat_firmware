@@ -15,7 +15,7 @@ public:
     BH1750Wrapper();
     int get_i2c_addr();
     bool init() override;
-    float readData(DataType type) override;
+    float readData(SensorDataTypeIdentifier type) override;
     bool isInitialized() const override;
     SensorType getType() const override;
     

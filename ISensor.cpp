@@ -63,7 +63,7 @@ bool SensorWrapper::configureSensor(SensorType type, const std::map<std::string,
  * @param dataType The type of data to read (light level, temperature, etc.).
  * @return The requested measurement. Returns 0.0f if sensor not found or uninitialized.
  */
-float SensorWrapper::readSensorData(SensorType sensorType, DataType dataType) {
+float SensorWrapper::readSensorData(SensorType sensorType, SensorDataTypeIdentifier dataType) {
     auto it = sensors.find(sensorType);
     if (it != sensors.end() && it->second->isInitialized()) {
         return it->second->readData(dataType);

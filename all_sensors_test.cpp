@@ -131,7 +131,6 @@ int main()
     }
     gpio_put(PICO_DEFAULT_LED_PIN, 1);
 
-    sendAllCommandsOnStartup();
     while (true)
     {
         // uint8_t sec, min, hour, day, month;

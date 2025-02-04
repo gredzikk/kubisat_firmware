@@ -1,52 +1,35 @@
-// communication.cpp
+#include "communication.h"
 #include "LoRa-RP2040.h"
 #include "commands.h"
-#include "communication.h"
-
-#define MAX_PKT_SIZE 255
+#include <cstdio>
+#include <stdexcept>
+#include <cstring>
+#include <chrono>
+#include <thread>
 
 using std::string;
 
-std::string outgoing;                // outgoing message
-uint8_t msgCount = 0;                // count of outgoing messages
+// Global variables
+string outgoing;                
+uint8_t msgCount = 0;                
 long lastSendTime = 0;               
 long lastReceiveTime = 0;            
 long lastPrintTime = 0;  
+unsigned long interval = 0;
 
-/**
- * @brief Initializes the LoRa radio hardware and sets frequency.
- * @return True if successful, otherwise false.
- */
+// Initialize radio hardware
 bool initializeRadio() {
     LoRa.setPins(csPin, resetPin, irqPin);
-
     long frequency = 433E6;
-
     if (!LoRa.begin(frequency))
     {
         logMessage("LoRa init failed. Check your connections.");
         return false;
-            
     }
-
     logMessage("LoRa initialized with frequency " + std::to_string(frequency));
     return true;
 }
 
-/**
- * @brief Logs a message with a timestamp to stdout.
- * @param message The message to log.
- */
-void logMessage(const string &message)
-{
-    uint32_t timestamp = to_ms_since_boot(get_absolute_time());
-    printf("[%lu ms] %s\n", timestamp, message.c_str());
-}
-
-/**
- * @brief Sends a string message using LoRa with addresses and packet ID.
- * @param outgoing The string to send.
- */
 void sendMessage(string outgoing)
 {
     int n = outgoing.length();
@@ -70,113 +53,177 @@ void sendMessage(string outgoing)
     LoRa.flush();
 }
 
-/**
- * @brief Sends data in chunks if larger than the max packet size.
- * @param data Pointer to the data buffer.
- * @param length Size of the data buffer.
- */
+// Simple logging function with timestamp printing.
+void logMessage(const string &message)
+{
+    uint32_t timestamp = to_ms_since_boot(get_absolute_time());
+    printf("[%lu ms] %s\n", timestamp, message.c_str());
+}
+
+// Helper: send a large packet via LoRa in chunks.
 void sendLargePacket(const uint8_t* data, size_t length)
 {
+    const size_t MAX_PKT_SIZE = 255;
     size_t offset = 0;
     while (offset < length)
     {
-        size_t chunkSize = (length - offset) < MAX_PKT_SIZE ? (length - offset) : MAX_PKT_SIZE;
+        size_t chunkSize = ((length - offset) < MAX_PKT_SIZE) ? (length - offset) : MAX_PKT_SIZE;
         LoRa.beginPacket();
         LoRa.write(&data[offset], chunkSize);
         LoRa.endPacket();
         offset += chunkSize;
-        sleep_ms(100); 
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
 }
 
-/**
- * @brief Sends a string message using a universal approach to handle overhead and chunking.
- * @param outgoing The string to send.
- */
-void sendMessageUniversal(const std::string& outgoing)
+// FRAME BUILDER: creates a frame from given parameters.
+Frame buildFrame(uint8_t direction, uint8_t operation, uint8_t group, uint8_t command, const std::vector<uint8_t>& payload) {
+    Frame frame;
+    frame.direction = direction;
+    frame.operation = operation;
+    frame.group = group;
+    frame.command = command;
+    frame.payload = payload;
+    frame.length = payload.size();
+    // Calculate simple checksum: sum bytes from direction to last payload byte.
+    uint8_t checksum = 0;
+    checksum += frame.direction;
+    checksum += frame.operation;
+    checksum += frame.group;
+    checksum += frame.command;
+    checksum += (frame.length >> 8) & 0xFF;
+    checksum += frame.length & 0xFF;
+    for (auto byte : frame.payload)
+        checksum += byte;
+    frame.checksum = checksum;
+    return frame;
+}
+
+// Encode a frame into a byte buffer
+std::vector<uint8_t> encodeFrame(const Frame& frame)
 {
-    const size_t n = outgoing.length();
-    char sendBuf[n + 1];
-    strcpy(sendBuf, outgoing.c_str());
-
-    logMessage("Sat (0x" + std::to_string(localAddress) + ") to ground(" +
-               std::to_string(destination) + "): " +
-               std::string(sendBuf) + " [" + std::to_string(n) + "]");
-
-    // Calculate max payload that fits LoRa + overhead
-    // Overhead: destination + localAddress + msgCount + 1-byte length
-    // So for example, if you set total buffer to 255, overhead is 4 bytes:
-    // => actual usable payload = 255 - 4
-    const size_t MAX_OVERHEAD = 4;
-    const size_t MAX_TOTAL_SIZE = 255; // Adjust to your LoRa library limits
-    const size_t MAX_PAYLOAD_SIZE = (MAX_TOTAL_SIZE > MAX_OVERHEAD)
-                                      ? (MAX_TOTAL_SIZE - MAX_OVERHEAD)
-                                      : 0;
-
-    size_t offset = 0;
-    while (offset < n)
-    {
-        // Calculate chunk size
-        size_t chunkSize = (n - offset < MAX_PAYLOAD_SIZE)
-                              ? (n - offset)
-                              : MAX_PAYLOAD_SIZE;
-
-        LoRa.beginPacket();
-        LoRa.write(destination);         // add destination address
-        LoRa.write(localAddress);        // add sender address
-        LoRa.write(msgCount);           // add message ID
-        LoRa.write(chunkSize);          // add payload length
-        LoRa.write((uint8_t*)&sendBuf[offset], chunkSize); // add payload
-        LoRa.endPacket(false);
-
-        offset += chunkSize;
-        msgCount++;
-
-        sleep_ms(100);
-    }
+    std::vector<uint8_t> buffer;
+    buffer.push_back(frame.header);
+    buffer.push_back(frame.direction);
+    buffer.push_back(frame.operation);
+    buffer.push_back(frame.group);
+    buffer.push_back(frame.command);
+    
+    // Add 16-bit payload length
+    buffer.push_back((frame.length >> 8) & 0xFF);
+    buffer.push_back(frame.length & 0xFF);
+    
+    // Add payload bytes
+    buffer.insert(buffer.end(), frame.payload.begin(), frame.payload.end());
+    
+    // Append checksum
+    buffer.push_back(frame.checksum);
+    return buffer;
 }
 
-/**
- * @brief Callback for receiving LoRa packets; validates and forwards commands.
- * @param packetSize The size of the incoming packet.
- */
+// Decode a byte buffer into a Frame. Throws std::runtime_error if frame is bad.
+Frame decodeFrame(const std::vector<uint8_t>& data)
+{
+    if (data.size() < 8)
+        throw std::runtime_error("Data too short to be a valid frame");
+    
+    Frame frame;
+    size_t pos = 0;
+    frame.header = data[pos++];
+    if (frame.header != 0xAB)
+        throw std::runtime_error("Invalid frame header");
+    
+    frame.direction = data[pos++];
+    frame.operation = data[pos++];
+    frame.group = data[pos++];
+    frame.command = data[pos++];
+    
+    frame.length = (data[pos] << 8) | data[pos + 1];
+    pos += 2;
+    
+    if (data.size() < pos + frame.length + 1)
+        throw std::runtime_error("Data length does not match payload length");
+    
+    frame.payload.assign(data.begin() + pos, data.begin() + pos + frame.length);
+    pos += frame.length;
+    frame.checksum = data[pos];
+    
+    // Recalculate checksum
+    uint8_t calcSum = 0;
+    calcSum += frame.direction;
+    calcSum += frame.operation;
+    calcSum += frame.group;
+    calcSum += frame.command;
+    calcSum += (frame.length >> 8) & 0xFF;
+    calcSum += frame.length & 0xFF;
+    for(auto byte : frame.payload)
+        calcSum += byte;
+    
+    if(calcSum != frame.checksum)
+        throw std::runtime_error("Checksum mismatch");
+    
+    return frame;
+}
+
+// Sends a Frame using LoRa by encoding it into bytes.
+void sendFrame(const Frame& frame) {
+    std::vector<uint8_t> buffer = encodeFrame(frame);
+    sendLargePacket(buffer.data(), buffer.size());
+}
+
+// Once a frame is decoded, call the command handler to execute it.
+void handleCommandFrame(const Frame& frame) {
+    // For demonstration, we convert the frame into a command string.
+    // We use getGroups() to look up the command name by group & command id.
+    auto groups = getGroups();
+    std::string cmdName = "";
+    for (const auto& grp : groups)
+    {
+        if (grp.Id == frame.group) {
+            for (const auto& cmd : grp.Commands)
+            {
+                if (cmd.Id == frame.command) {
+                    cmdName = cmd.Name;
+                    break;
+                }
+            }
+        }
+    }
+    if(cmdName.empty()){
+        logMessage("Error: Unknown group/command combination");
+        return;
+    }
+    
+    // Assume payload is ASCII text containing parameters.
+    std::string param(frame.payload.begin(), frame.payload.end());
+    
+    // Build a full command string in format: "command param"
+    std::string fullCmd = cmdName + " " + param;
+    logMessage("Decoded command: " + fullCmd);
+}
+
+// Sample onReceive callback that decodes a received packet into a frame.
 void onReceive(int packetSize)
 {
-    gpio_put(PICO_DEFAULT_LED_PIN, 0);
-
-    logMessage("onReceive: packetSize = " + std::to_string(packetSize));
-    if (packetSize == 0)
-        return; 
-    int recipient = LoRa.read();          // recipient address
-    uint8_t sender = LoRa.read();         // sender address
-    uint8_t incomingMsgId = LoRa.read();  // incoming msg ID
-    uint8_t incomingLength = LoRa.read(); // incoming msg length
-
-    string incoming = "";
-
-    while (LoRa.available())
+    if(packetSize == 0)
+        return;
+    
+    // Read raw bytes from LoRa.
+    std::vector<uint8_t> buffer;
+    while(LoRa.available())
     {
-        incoming += (char)LoRa.read();
+        buffer.push_back(LoRa.read());
     }
-
-    if (incomingLength != incoming.length() + 1)
-    { 
-        printf("error: message length does not match length\n");
-        return; 
+    
+    try {
+        Frame frame = decodeFrame(buffer);
+        logMessage("Received valid frame from group: " + std::to_string(frame.group) +
+                   " command: " + std::to_string(frame.command));
+        handleCommandFrame(frame);
     }
-
-    if (recipient != localAddress && recipient != 0xFF)
-    {
-        printf("This message is not for me.\n");
-        return; 
+    catch(const std::exception& e) {
+        logMessage("Frame error: " + std::string(e.what()));
     }
-
-    logMessage("Received message of size " + std::to_string(incomingLength) + " with ID " + std::to_string(incomingMsgId) + " from: 0x" + std::to_string(sender));
-    logMessage("Message: " + incoming);
-    logMessage("RSSI: " + std::to_string(LoRa.packetRssi()) + " Snr: " + std::to_string(LoRa.packetSnr()));
-
-    gpio_put(PICO_DEFAULT_LED_PIN, 1);
-    handleCommandMessage(incoming);
-
+    
     lastReceiveTime = to_ms_since_boot(get_absolute_time());
 }

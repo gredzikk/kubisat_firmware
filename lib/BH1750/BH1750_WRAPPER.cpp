@@ -12,8 +12,8 @@ bool BH1750Wrapper::init() {
     return initialized;
 }
 
-float BH1750Wrapper::readData(DataType type) {
-    if (type == DataType::LIGHT_LEVEL) {
+float BH1750Wrapper::readData(SensorDataTypeIdentifier type) {
+    if (type == SensorDataTypeIdentifier::LIGHT_LEVEL) {
         return sensor.readLightLevel();
     }
     return 0.0f;

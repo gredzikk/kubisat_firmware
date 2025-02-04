@@ -7,16 +7,16 @@ bool BME280Wrapper::init() {
     return initialized;
 }
 
-float BME280Wrapper::readData(DataType type) {
+float BME280Wrapper::readData(SensorDataTypeIdentifier type) {
     int32_t temp_raw, pressure_raw, humidity_raw;
     sensor.read_raw_all(&temp_raw, &pressure_raw, &humidity_raw);
 
     switch(type) {
-        case DataType::TEMPERATURE:
+        case SensorDataTypeIdentifier::TEMPERATURE:
             return sensor.convert_temperature(temp_raw);
-        case DataType::PRESSURE:
+        case SensorDataTypeIdentifier::PRESSURE:
             return sensor.convert_pressure(pressure_raw);
-        case DataType::HUMIDITY:
+        case SensorDataTypeIdentifier::HUMIDITY:
             return sensor.convert_humidity(humidity_raw);
         default:
             return 0.0f;

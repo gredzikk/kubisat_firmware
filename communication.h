@@ -1,16 +1,17 @@
 #include <string>
+#include <vector>
+#include <cstdint>
 
-extern std::string outgoing;         // outgoing message
-extern uint8_t msgCount;            // count of outgoing messages
-extern long lastSendTime;           // last send time
-extern long unsigned int interval;   // interval between sends
-extern long lastReceiveTime;        // last receive time
-extern long lastPrintTime;          // last print time
+// Outgoing/message global variables
+extern std::string outgoing;
+extern uint8_t msgCount;
+extern long lastSendTime;
+extern unsigned long interval;
+extern long lastReceiveTime;
+extern long lastPrintTime;
 
 bool initializeRadio();
-
-void logMessage(const string &message);
-
-void sendMessage(string outgoing);
-
+void logMessage(const std::string &message);
+void sendMessage(std::string outgoing);
+void sendLargePacket(const uint8_t* data, size_t length);
 void onReceive(int packetSize);

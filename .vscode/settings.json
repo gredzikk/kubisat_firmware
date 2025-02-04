@@ -116,6 +116,7 @@
         "cinttypes": "cpp",
         "typeinfo": "cpp",
         "variant": "cpp",
-        "cfenv": "cpp"
+        "cfenv": "cpp",
+        "climits": "cpp"
     }
 }

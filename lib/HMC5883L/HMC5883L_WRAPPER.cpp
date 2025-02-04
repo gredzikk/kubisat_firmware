@@ -9,7 +9,7 @@ bool HMC5883LWrapper::init() {
     return initialized;
 }
 
-float HMC5883LWrapper::readData(DataType type) {
+float HMC5883LWrapper::readData(SensorDataTypeIdentifier type) {
     if (!initialized) return 0.0f;
 
     int16_t x, y, z;
@@ -21,11 +21,11 @@ float HMC5883LWrapper::readData(DataType type) {
     float z_uT = z * LSB_TO_UT;
 
     switch (type) {
-        case DataType::MAG_FIELD_X:
+        case SensorDataTypeIdentifier::MAG_FIELD_X:
             return x_uT;
-        case DataType::MAG_FIELD_Y:
+        case SensorDataTypeIdentifier::MAG_FIELD_Y:
             return y_uT;
-        case DataType::MAG_FIELD_Z:
+        case SensorDataTypeIdentifier::MAG_FIELD_Z:
             return z_uT;
         default:
             return 0.0f;

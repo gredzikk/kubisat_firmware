@@ -15,7 +15,7 @@ public:
     MPU6050Wrapper();
     
     bool init() override;
-    float readData(DataType type) override;
+    float readData(SensorDataTypeIdentifier type) override;
     bool isInitialized() const override;
     SensorType getType() const override;
     

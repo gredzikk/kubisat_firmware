@@ -3,6 +3,7 @@
 #include <cstdio>
 #include "ff.h"
 #include "commands.h"
+#include "communication.h"
 
 extern PowerManager powerManager;
 
