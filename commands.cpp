@@ -73,13 +73,13 @@ void handleEnableGPSTransparentMode(const std::string& timeout) {
     sendMessage("Entering GPS Serial Pass-Through Mode. Type 'exit' to quit.");
     
     while (true) {
-        while(uart_is_readable(UART_ID)) {
-            char ch = uart_getc(UART_ID);
+        while(uart_is_readable(DEBUG_UART_PORT)) {
+            char ch = uart_getc(DEBUG_UART_PORT);
             uart_write_blocking(GPS_UART, reinterpret_cast<const uint8_t*>(&ch), 1);
         }
         while(uart_is_readable(GPS_UART)) {
             char gpsByte = uart_getc(GPS_UART);
-            uart_write_blocking(UART_ID, reinterpret_cast<const uint8_t*>(&gpsByte), 1);
+            uart_write_blocking(DEBUG_UART_PORT, reinterpret_cast<const uint8_t*>(&gpsByte), 1);
         }
         if(to_ms_since_boot(get_absolute_time()) - startTime >= timeoutMs)
             break;

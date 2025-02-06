@@ -5,15 +5,15 @@
 #define PIN_CONFIG_H
 
 //DEBUG uart
-#define UART_ID uart0
-#define BAUD_RATE 115200
+#define DEBUG_UART_PORT uart0
+#define DEBUG_UART_BAUD_RATE 115200
 
-#define UART_TX_PIN 0
-#define UART_RX_PIN 1
+#define DEBUG_UART_TX_PIN 0
+#define DEBUG_UART_RX_PIN 1
 
-#define I2C_PORT i2c1
-#define I2C1_SDA 6
-#define I2C1_SCL 7
+#define MAIN_I2C_PORT i2c1
+#define MAIN_I2C_SDA 6
+#define MAIN_I2C_SCL 7
 
 // GPS configuration
 #define GPS_UART uart1

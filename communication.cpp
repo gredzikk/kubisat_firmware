@@ -49,7 +49,6 @@ void sendMessage(string outgoing)
     std::string messageToLog = "Sent message of size " + std::to_string(n) + " with ID " + std::to_string(msgCount);
     messageToLog += " to: 0x" + std::to_string(destination);
     messageToLog += " containing: " + string(send);
-    logMessage(messageToLog);
     LoRa.flush();
 }
 

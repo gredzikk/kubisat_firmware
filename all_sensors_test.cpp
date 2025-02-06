@@ -28,7 +28,7 @@
 #include "pin_config.h"
 #include "storage.h"
 
-PowerManager powerManager(I2C_PORT);
+PowerManager powerManager(MAIN_I2C_PORT);
 
 uint32_t last_gps_time = 0;
 GPSData gpsData;
@@ -36,21 +36,27 @@ GPSData gpsData;
 char buffer[BUFFER_SIZE];
 int bufferIndex = 0;
 
+static void uartPrint(const char* msg)
+{
+    uart_puts(DEBUG_UART_PORT, msg);
+    uart_puts(DEBUG_UART_PORT, "\r\n"); 
+}
+
 bool initSystems(i2c_inst_t *i2c_port) {
     stdio_init_all();
 
-    uart_init(UART_ID, BAUD_RATE);
-    gpio_set_function(UART_TX_PIN, UART_FUNCSEL_NUM(UART_ID, UART_TX_PIN));
-    gpio_set_function(UART_RX_PIN, UART_FUNCSEL_NUM(UART_ID, UART_RX_PIN));
+    uart_init(DEBUG_UART_PORT, DEBUG_UART_BAUD_RATE);
+    gpio_set_function(DEBUG_UART_TX_PIN, UART_FUNCSEL_NUM(DEBUG_UART_PORT, DEBUG_UART_TX_PIN));
+    gpio_set_function(DEBUG_UART_RX_PIN, UART_FUNCSEL_NUM(DEBUG_UART_PORT, DEBUG_UART_RX_PIN));
 
     gpio_init(PICO_DEFAULT_LED_PIN);
     gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
     
     i2c_init(i2c_port, 400 * 1000);
-    gpio_set_function(I2C1_SCL, GPIO_FUNC_I2C);
-    gpio_set_function(I2C1_SDA, GPIO_FUNC_I2C);
-    gpio_pull_up(I2C1_SCL);
-    gpio_pull_up(I2C1_SDA);
+    gpio_set_function(MAIN_I2C_SCL, GPIO_FUNC_I2C);
+    gpio_set_function(MAIN_I2C_SDA, GPIO_FUNC_I2C);
+    gpio_pull_up(MAIN_I2C_SCL);
+    gpio_pull_up(MAIN_I2C_SDA);
 
     uart_init(GPS_UART, GPS_BAUD_RATE);
     gpio_set_function(GPS_TX_PIN, UART_FUNCSEL_NUM(GPS_UART, GPS_TX_PIN));
@@ -63,11 +69,7 @@ bool initSystems(i2c_inst_t *i2c_port) {
         gpio_put(GPS_POWER_ENABLE, 0); 
     }
 
-    for (int i = 5; i > 0; --i)
-    {
-        std::cout << "Program starts in " << i << " seconds..." << std::endl;
-        sleep_ms(1000);
-    }
+    uartPrint((std::string("System init completed @ ") + std::to_string(to_ms_since_boot(get_absolute_time())) + " ms").c_str());
 
     return true;
 }
@@ -81,9 +83,8 @@ int main()
     int ret;
     char buf[100];
     char filename[] = "test02.txt";
-    i2c_inst_t *i2c_port = I2C_PORT;
+    i2c_inst_t *i2c_port = MAIN_I2C_PORT;
     initSystems(i2c_port);
-
     //multicore_launch_core1(eventHandlerCore);
 
     DS3231 systemClock(i2c_port);
