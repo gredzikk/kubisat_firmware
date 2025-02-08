@@ -181,9 +181,9 @@ bool testSDCard()
     char buf[1024];
     char filename[] = "test02.txt";
 
-    // Wait for user's decision
-    //if (!waitForUserInteraction(TIMEOUT_MS))
-       // return false;
+    //Wait for user's decision
+    if (!waitForUserInteraction(TIMEOUT_MS))
+       return false;
     
     uint64_t t_start = to_ms_since_boot(get_absolute_time());
     printf("Starting SD card test at %llu ms\n", t_start);

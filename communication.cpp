@@ -129,7 +129,7 @@ Frame decodeFrame(const std::vector<uint8_t>& data)
     Frame frame;
     size_t pos = 0;
     frame.header = data[pos++];
-    if (frame.header != 0xAB)
+    if (frame.header != 0xCAFE)
         throw std::runtime_error("Invalid frame header");
     
     frame.direction = data[pos++];
@@ -207,14 +207,36 @@ void onReceive(int packetSize)
     if(packetSize == 0)
         return;
     
-    // Read raw bytes from LoRa.
-    std::vector<uint8_t> buffer;
-    while(LoRa.available())
-    {
-        buffer.push_back(LoRa.read());
+    // Read raw bytes from LoRa into a string first
+    std::string hexString;
+    while(LoRa.available()) {
+        hexString += (char)LoRa.read();
     }
     
     try {
+        // Debug print received hex string
+        uart_puts(DEBUG_UART_PORT, "Received hex: ");
+        uart_puts(DEBUG_UART_PORT, hexString.c_str());
+        uart_puts(DEBUG_UART_PORT, "\r\n");
+        
+        // Convert hex string to bytes
+        std::vector<uint8_t> buffer;
+        for(size_t i = 0; i < hexString.length(); i += 2) {
+            std::string byteString = hexString.substr(i, 2);
+            uint8_t byte = (uint8_t)strtol(byteString.c_str(), nullptr, 16);
+            buffer.push_back(byte);
+        }
+        
+        // Debug print converted bytes
+        std::string hexStr = "Converted bytes: ";
+        for(uint8_t b : buffer) {
+            char hex[4];
+            snprintf(hex, sizeof(hex), "%02X ", b);
+            hexStr += hex;
+        }
+        uart_puts(DEBUG_UART_PORT, hexStr.c_str());
+        uart_puts(DEBUG_UART_PORT, "\r\n");
+        
         Frame frame = decodeFrame(buffer);
         logMessage("Received valid frame from group: " + std::to_string(frame.group) +
                    " command: " + std::to_string(frame.command));
