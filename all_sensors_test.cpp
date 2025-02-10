@@ -17,14 +17,13 @@
 #include <iomanip>
 #include <queue>
 #include <chrono>
-#include "communication.h"
+#include "protocol.h"
 #include "GPSData.h"
 #include "sd_card.h"
 #include "ff.h"
 
 #include <iostream>
 #include <map>
-#include "commands.h"
 #include "pin_config.h"
 #include "storage.h"
 
@@ -106,9 +105,6 @@ int main()
     radioInitSuccess = initializeRadio();
     gpio_put(PICO_DEFAULT_LED_PIN, 1);
 
-    lastReceiveTime = to_ms_since_boot(get_absolute_time());
-    lastPrintTime = lastReceiveTime;
-
     bool sdTestResult = testSDCard();
     gpio_put(PICO_DEFAULT_LED_PIN, 0);
 
@@ -134,37 +130,12 @@ int main()
 
     while (true)
     {
-        // uint8_t sec, min, hour, day, month;
-        // uint16_t year;
-        // std::string weekday;      
-
-        // long currentTime = to_ms_since_boot(get_absolute_time());
-
         int packetSize = LoRa.parsePacket();
         if (packetSize)
         {
             onReceive(packetSize);
         }
         checkPowerEvents(powerManager);
-
-        // if (currentTime - lastReceiveTime > 5000)
-        // {
-        //     std::cout << std::fixed << std::setprecision(2);
-        //     std::cout << "\n=== Power Manager Measurements ===\n";
-        //     std::cout << "5V Rail Voltage     : " << powerManager.getVoltage5V() << " V\n";
-        //     std::cout << "Battery Voltage     : " << powerManager.getVoltageBattery() << " V\n";
-        //     std::cout << "Solar Charge Current: " << powerManager.getCurrentChargeSolar() << " mA\n";
-        //     std::cout << "USB Charge Current  : " << powerManager.getCurrentChargeUSB() << " mA\n";
-        //     std::cout << "Current Draw        : " << powerManager.getCurrentDraw() << " mA\n";
-
-        //     systemClock.getTime(sec, min, hour, weekday, day, month, year);
-
-        //     printf("%02d:%02d:%02d %s %02d.%02d.%d\n",
-        //            hour, min, sec, weekday.c_str(), day, month, year);
-
-        //     logMessage("No messages received in the last 5 seconds.");
-        //     lastReceiveTime = currentTime;
-        // }
     }
 
     return 0;

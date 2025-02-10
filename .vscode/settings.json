@@ -117,6 +117,9 @@
         "typeinfo": "cpp",
         "variant": "cpp",
         "cfenv": "cpp",
-        "climits": "cpp"
+        "climits": "cpp",
+        "semaphore": "cpp",
+        "stop_token": "cpp",
+        "thread": "cpp"
     }
 }

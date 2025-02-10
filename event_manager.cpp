@@ -2,8 +2,7 @@
 #include "storage.h"
 #include <cstdio>
 #include "ff.h"
-#include "commands.h"
-#include "communication.h"
+#include "protocol.h"
 
 extern PowerManager powerManager;
 

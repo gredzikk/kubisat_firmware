@@ -5,25 +5,6 @@
 #include <vector>
 #include <cstdint>
 
-// Frame structure is declared in communication.h so we assume inclusion there as needed.
-struct Frame;
-
-// Function prototypes for sending and handling commands
-void handleCommandMessage(const std::string& message);
-void sendAllCommandsOnStartup();
-
-// Prototypes for command handlers
-void handleGetTime();
-void handleGetVoltageBattery();
-void handleGetVoltage5V();
-void handleGetCurrentChargeUSB();
-void handleGetCurrentChargeSolar();
-void handleGetCurrentChargeTotal();
-void handleGetCurrentDraw();
-void handleGetGPSPowerStatus();
-void handleSetGPSPowerStatus(const std::string& param);
-void handleEnableGPSTransparentMode(const std::string& timeout);
-
 enum class DataTypeIdentifier
 {
     INT8 = 0x01,
@@ -63,6 +44,31 @@ struct Group
 };
 
 
+struct Frame {
+    int header = 0xCAFE;    // Start marker
+    uint8_t direction;        // 0 = ground->sat, 1 = sat->ground
+    uint8_t operation;        // 0 = get, 1 = set
+    uint8_t group;            // Group ID
+    uint8_t command;          // Command ID within group
+    uint16_t length;          // Payload length
+    std::vector<uint8_t> payload;
+    uint8_t checksum;         // Simple checksum
+};
+
+bool initializeRadio();
+void logMessage(const std::string &message);
+void sendMessage(std::string outgoing);
+void sendLargePacket(const uint8_t* data, size_t length);
+void onReceive(int packetSize);
+
+Frame buildFrame(uint8_t direction, uint8_t operation, uint8_t group, uint8_t command, const std::vector<uint8_t>& payload);
+std::vector<uint8_t> encodeFrame(const Frame& frame);
+Frame decodeFrame(const std::vector<uint8_t>& data);
+void handleCommandFrame(const Frame& frame);
+
+using CommandHandler = std::function<void(const std::string&)>;
+
+extern std::map<uint32_t, CommandHandler> commandHandlers;
 
 inline std::vector<Group> getGroups()
 {
@@ -201,19 +207,3 @@ inline std::vector<Group> getGroups()
         }
     };
 }
-
-struct Frame {
-    int header = 0xCAFE;    // Start marker
-    uint8_t direction;        // 0 = ground->sat, 1 = sat->ground
-    uint8_t operation;        // 0 = get, 1 = set
-    uint8_t group;            // Group ID
-    uint8_t command;          // Command ID within group
-    uint16_t length;          // Payload length
-    std::vector<uint8_t> payload;
-    uint8_t checksum;         // Simple checksum
-};
-
-Frame buildFrame(uint8_t direction, uint8_t operation, uint8_t group, uint8_t command, const std::vector<uint8_t>& payload);
-std::vector<uint8_t> encodeFrame(const Frame& frame);
-Frame decodeFrame(const std::vector<uint8_t>& data);
-void handleCommandFrame(const Frame& frame);
