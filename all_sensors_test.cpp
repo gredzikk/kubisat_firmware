@@ -21,11 +21,13 @@
 #include "GPSData.h"
 #include "sd_card.h"
 #include "ff.h"
+#include <atomic>
 
 #include <iostream>
 #include <map>
 #include "pin_config.h"
 #include "storage.h"
+#include "utils.h"
 
 PowerManager powerManager(MAIN_I2C_PORT);
 
@@ -34,11 +36,39 @@ GPSData gpsData;
 
 char buffer[BUFFER_SIZE];
 int bufferIndex = 0;
+struct SharedData {
+    float voltage5V;
+};
 
-static void uartPrint(const char* msg)
-{
-    uart_puts(DEBUG_UART_PORT, msg);
-    uart_puts(DEBUG_UART_PORT, "\r\n"); 
+// Global instance of the shared data
+SharedData sharedData;
+
+// Spinlock for protecting access to the shared data
+std::atomic_flag dataLock = ATOMIC_FLAG_INIT;
+
+// Function to acquire the spinlock
+void acquireLock() {
+    while (dataLock.test_and_set(std::memory_order_acquire)); // Spin until lock is acquired
+}
+
+// Function to release the spinlock
+void releaseLock() {
+    dataLock.clear(std::memory_order_release);
+}
+
+void sensorsRoutine() {
+    float voltage5V;
+    while (true) {
+        voltage5V = powerManager.getVoltage5V();
+
+        // Acquire the lock before writing to the shared data
+        acquireLock();
+        sharedData.voltage5V = voltage5V;
+        releaseLock();
+
+        printf("Core 1: Updated voltage to %f\n", voltage5V);
+        sleep_ms(100);
+    }
 }
 
 bool initSystems(i2c_inst_t *i2c_port) {
@@ -68,11 +98,10 @@ bool initSystems(i2c_inst_t *i2c_port) {
         gpio_put(GPS_POWER_ENABLE_PIN, 0); 
     }
 
-    uartPrint((std::string("System init completed @ ") + std::to_string(to_ms_since_boot(get_absolute_time())) + " ms").c_str());
+    uartPrint(std::string("System init completed @ ") + std::to_string(to_ms_since_boot(get_absolute_time())) + " ms");
 
     return true;
 }
-
 
 int main()
 {
@@ -84,7 +113,8 @@ int main()
     char filename[] = "test02.txt";
     i2c_inst_t *i2c_port = MAIN_I2C_PORT;
     initSystems(i2c_port);
-    //multicore_launch_core1(eventHandlerCore);
+
+    multicore_launch_core1(sensorsRoutine);
 
     DS3231 systemClock(i2c_port);
     systemClock.setTime(0, 41, 20, 4, 14, 11, 2024);
@@ -122,7 +152,8 @@ int main()
 
     for (int i = 5; i > 0; --i)
     {
-        std::cout << "Main loop starts in " << i << " seconds..." << std::endl;
+        std::string intro = "Main loop starts in " + std::to_string(i) + " seconds...\n";
+        uartPrint(intro.c_str());
         gpio_put(PICO_DEFAULT_LED_PIN, (i%2==0));
         sleep_ms(1000);
     }
@@ -135,6 +166,14 @@ int main()
         {
             onReceive(packetSize);
         }
+
+        acquireLock();
+        float voltage = sharedData.voltage5V;
+        releaseLock();
+
+        std::string voltageReading = "Core 0: voltage from common data structure: " + std::to_string(voltage);
+        uartPrint(voltageReading.c_str());
+
         checkPowerEvents(powerManager);
     }
 

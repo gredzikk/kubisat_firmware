@@ -6,10 +6,10 @@
 #include <chrono>
 #include <thread>
 #include <map>
+#include "utils.h"
 
 using std::string;
 
-// Global variables
 string outgoing;
 uint8_t msgCount = 0;
 long lastSendTime = 0;
@@ -17,16 +17,15 @@ long lastReceiveTime = 0;
 long lastPrintTime = 0;
 unsigned long interval = 0;
 
-// Initialize radio hardware
 bool initializeRadio() {
     LoRa.setPins(csPin, resetPin, irqPin);
     long frequency = 433E6;
     if (!LoRa.begin(frequency))
     {
-        logMessage("LoRa init failed. Check your connections.");
+        uartPrint("LoRa init failed. Check your connections.");
         return false;
     }
-    logMessage("LoRa initialized with frequency " + std::to_string(frequency));
+    uartPrint("LoRa initialized with frequency " + std::to_string(frequency));
     return true;
 }
 
@@ -35,7 +34,6 @@ void sendMessage(string outgoing)
     int n = outgoing.length();
     char send[n + 1];
     strcpy(send, outgoing.c_str());
-    logMessage("Sat (0x" + std::to_string(localAddress) + ") to ground(" + std::to_string(destination) + "): " + string(send) + " [" + std::to_string(n) + "]");
 
     LoRa.beginPacket();       // start packet
     LoRa.write(destination);  // add destination address
@@ -49,17 +47,12 @@ void sendMessage(string outgoing)
     std::string messageToLog = "Sent message of size " + std::to_string(n) + " with ID " + std::to_string(msgCount);
     messageToLog += " to: 0x" + std::to_string(destination);
     messageToLog += " containing: " + string(send);
+
+    uartPrint(messageToLog);
+    
     LoRa.flush();
 }
 
-// Simple logging function with timestamp printing.
-void logMessage(const string &message)
-{
-    uint32_t timestamp = to_ms_since_boot(get_absolute_time());
-    printf("[%lu ms] %s\n", timestamp, message.c_str());
-}
-
-// Helper: send a large packet via LoRa in chunks.
 void sendLargePacket(const uint8_t* data, size_t length)
 {
     const size_t MAX_PKT_SIZE = 255;
@@ -190,7 +183,7 @@ void handleCommandFrame(const Frame& frame) {
         // Call the command handler with the payload
         it->second(param);
     } else {
-        logMessage("Error: Unknown group/command combination");
+        uartPrint("Error: Unknown group/command combination");
     }
 }
 
@@ -231,12 +224,14 @@ void onReceive(int packetSize)
         uart_puts(DEBUG_UART_PORT, "\r\n");
 
         Frame frame = decodeFrame(buffer);
-        logMessage("Received valid frame from group: " + std::to_string(frame.group) +
-                   " command: " + std::to_string(frame.command));
+        std::string messageToLog = "Received valid frame from group: " + std::to_string(frame.group) +
+                   " command: " + std::to_string(frame.command);
+        uartPrint(messageToLog);
+
         handleCommandFrame(frame);
     }
     catch(const std::exception& e) {
-        logMessage("Frame error: " + std::string(e.what()));
+        uartPrint("Frame error: " + std::string(e.what()));
     }
 
     lastReceiveTime = to_ms_since_boot(get_absolute_time());

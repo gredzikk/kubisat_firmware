@@ -70,6 +70,7 @@ add_executable(all_sensors_test
     communication.cpp
     storage.cpp
     event_manager.cpp
+    utils.cpp
 )
 
 pico_set_program_name(all_sensors_test "all_sensors_test")

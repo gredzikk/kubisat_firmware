@@ -56,7 +56,6 @@ struct Frame {
 };
 
 bool initializeRadio();
-void logMessage(const std::string &message);
 void sendMessage(std::string outgoing);
 void sendLargePacket(const uint8_t* data, size_t length);
 void onReceive(int packetSize);
