@@ -12,15 +12,15 @@
 #define DEBUG_UART_RX_PIN 1
 
 #define MAIN_I2C_PORT i2c1
-#define MAIN_I2C_SDA 6
-#define MAIN_I2C_SCL 7
+#define MAIN_I2C_SDA_PIN 6
+#define MAIN_I2C_SCL_PIN 7
 
 // GPS configuration
-#define GPS_UART uart1
-#define GPS_BAUD_RATE 9600
-#define GPS_TX_PIN 8
-#define GPS_RX_PIN 9
-#define GPS_POWER_ENABLE 14
+#define GPS_UART_PORT uart1
+#define GPS_UART_BAUD_RATE 9600
+#define GPS_UART_TX_PIN 8
+#define GPS_UART_RX_PIN 9
+#define GPS_POWER_ENABLE_PIN 14
 
 #define BUFFER_SIZE 85  // NMEA sentences are usually under 85 chars
 

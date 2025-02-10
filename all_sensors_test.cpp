@@ -53,20 +53,20 @@ bool initSystems(i2c_inst_t *i2c_port) {
     gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
     
     i2c_init(i2c_port, 400 * 1000);
-    gpio_set_function(MAIN_I2C_SCL, GPIO_FUNC_I2C);
-    gpio_set_function(MAIN_I2C_SDA, GPIO_FUNC_I2C);
-    gpio_pull_up(MAIN_I2C_SCL);
-    gpio_pull_up(MAIN_I2C_SDA);
+    gpio_set_function(MAIN_I2C_SCL_PIN, GPIO_FUNC_I2C);
+    gpio_set_function(MAIN_I2C_SDA_PIN, GPIO_FUNC_I2C);
+    gpio_pull_up(MAIN_I2C_SCL_PIN);
+    gpio_pull_up(MAIN_I2C_SDA_PIN);
 
-    uart_init(GPS_UART, GPS_BAUD_RATE);
-    gpio_set_function(GPS_TX_PIN, UART_FUNCSEL_NUM(GPS_UART, GPS_TX_PIN));
-    gpio_set_function(GPS_RX_PIN, UART_FUNCSEL_NUM(GPS_UART, GPS_RX_PIN));
+    uart_init(GPS_UART_PORT, GPS_UART_BAUD_RATE);
+    gpio_set_function(GPS_UART_TX_PIN, UART_FUNCSEL_NUM(GPS_UART_PORT, GPS_UART_TX_PIN));
+    gpio_set_function(GPS_UART_RX_PIN, UART_FUNCSEL_NUM(GPS_UART_PORT, GPS_UART_RX_PIN));
 
     if (true)
     {
-        gpio_init(GPS_POWER_ENABLE);
-        gpio_set_dir(GPS_POWER_ENABLE, GPIO_OUT);
-        gpio_put(GPS_POWER_ENABLE, 0); 
+        gpio_init(GPS_POWER_ENABLE_PIN);
+        gpio_set_dir(GPS_POWER_ENABLE_PIN, GPIO_OUT);
+        gpio_put(GPS_POWER_ENABLE_PIN, 0); 
     }
 
     uartPrint((std::string("System init completed @ ") + std::to_string(to_ms_since_boot(get_absolute_time())) + " ms").c_str());
