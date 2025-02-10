@@ -233,6 +233,13 @@ void onReceive(int packetSize) {
     // Debug print received hex string
     uartPrint("Received LoRa hex string: " + hexString);
 
+    // Find the "CAFE" sequence in the hex string
+    size_t cafePos = hexString.find("CAFE");
+    if (cafePos != std::string::npos) {
+        // Trim the hex string to start from "CAFE"
+        hexString = hexString.substr(cafePos);
+    }
+
     // Convert hex string to bytes
     std::vector<uint8_t> dataBuffer = hexStringToBytes(hexString);
 
