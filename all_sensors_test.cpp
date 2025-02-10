@@ -22,7 +22,6 @@
 #include "sd_card.h"
 #include "ff.h"
 #include <atomic>
-
 #include <iostream>
 #include <map>
 #include "pin_config.h"
@@ -114,7 +113,7 @@ int main()
     i2c_inst_t *i2c_port = MAIN_I2C_PORT;
     initSystems(i2c_port);
 
-    multicore_launch_core1(sensorsRoutine);
+    //multicore_launch_core1(sensorsRoutine);
 
     DS3231 systemClock(i2c_port);
     systemClock.setTime(0, 41, 20, 4, 14, 11, 2024);
@@ -167,14 +166,16 @@ int main()
             onReceive(packetSize);
         }
 
-        acquireLock();
-        float voltage = sharedData.voltage5V;
-        releaseLock();
+        //acquireLock();
+        //float voltage = sharedData.voltage5V;
+        //releaseLock();
 
-        std::string voltageReading = "Core 0: voltage from common data structure: " + std::to_string(voltage);
-        uartPrint(voltageReading.c_str());
+        //std::string voltageReading = "Core 0: voltage from common data structure: " + std::to_string(voltage);
+        //uartPrint(voltageReading.c_str());
 
         checkPowerEvents(powerManager);
+
+        handleUartInput();
     }
 
     return 0;

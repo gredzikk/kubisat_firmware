@@ -39,7 +39,6 @@ void checkPowerEvents(PowerManager& pm)
 
     if (fallingTrendCount >= FALLING_TREND_REQUIRED)
     {
-        logEvent("Battery losing power rapidly");
         sendMessage("ALERT: POWER FALLING | Voltage: " + std::to_string(currentVoltage) + " V");
         lastPowerState = PowerEventState::POWER_FALLING;
         lastEventTime = currentTime;
@@ -47,21 +46,18 @@ void checkPowerEvents(PowerManager& pm)
 
     if (currentVoltage < VOLTAGE_LOW_THRESHOLD && lastPowerState != PowerEventState::LOW_BATTERY)
     {
-        logEvent("Battery below threshold");
         lastPowerState = PowerEventState::LOW_BATTERY;
         sendMessage("ALERT: POWER LOW | Voltage: " + std::to_string(currentVoltage) + " V");
         lastEventTime = currentTime;
     }
     else if (currentVoltage > VOLTAGE_OVERCHARGE_THRESHOLD && lastPowerState != PowerEventState::OVERCHARGE)
     {
-        logEvent("Battery overcharge level");
         lastPowerState = PowerEventState::OVERCHARGE;
         sendMessage("ALERT: OVERVOLTAGE | Voltage: " + std::to_string(currentVoltage) + " V");
         lastEventTime = currentTime;
     }
     else if (currentVoltage >= VOLTAGE_LOW_THRESHOLD && currentVoltage <= VOLTAGE_OVERCHARGE_THRESHOLD && lastPowerState != PowerEventState::NORMAL)
     {
-        logEvent("Battery back to normal");
         lastPowerState = PowerEventState::NORMAL;
         sendMessage("INFO: Battery back to normal | Voltage: " + std::to_string(currentVoltage) + " V");
         lastEventTime = currentTime;
