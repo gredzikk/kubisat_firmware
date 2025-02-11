@@ -5,67 +5,86 @@
 #include <cstdio>
 #include <cstdlib>
 #include <map>
+#include <cstring>
 
-void handleGetTime(const std::string& param) {
+// Modify handle functions to return vector<uint8_t>
+std::vector<uint8_t> handleGetTime(const std::string& param) {
     uint32_t currentTime = to_ms_since_boot(get_absolute_time());
-    sendMessage("Current time: " + std::to_string(currentTime) + " ms");
+    uint8_t timeBytes[sizeof(uint32_t)];
+    std::memcpy(timeBytes, &currentTime, sizeof(uint32_t));
+    return std::vector<uint8_t>(timeBytes, timeBytes + sizeof(uint32_t));
 }
 
-void handleGetVoltageBattery(const std::string& param) {
+std::vector<uint8_t> handleGetVoltageBattery(const std::string& param) {
     extern PowerManager powerManager;
     float voltage = powerManager.getVoltageBattery();
-    sendMessage("Battery voltage: " + std::to_string(voltage) + " V");
+    uint8_t floatBytes[sizeof(float)];
+    std::memcpy(floatBytes, &voltage, sizeof(float));
+    return std::vector<uint8_t>(floatBytes, floatBytes + sizeof(float));
 }
 
-void handleGetVoltage5V(const std::string& param) {
+std::vector<uint8_t> handleGetVoltage5V(const std::string& param) {
     extern PowerManager powerManager;
     float voltage = powerManager.getVoltage5V();
-    sendMessage("5V Rail Voltage: " + std::to_string(voltage) + " V");
+    uint8_t floatBytes[sizeof(float)];
+    std::memcpy(floatBytes, &voltage, sizeof(float));
+    return std::vector<uint8_t>(floatBytes, floatBytes + sizeof(float));
 }
 
-void handleGetCurrentChargeUSB(const std::string& param) {
+std::vector<uint8_t> handleGetCurrentChargeUSB(const std::string& param) {
     extern PowerManager powerManager;
     float chargeCurrent = powerManager.getCurrentChargeUSB();
-    sendMessage("USB Charge Current: " + std::to_string(chargeCurrent) + " mA");
+    uint8_t floatBytes[sizeof(float)];
+    std::memcpy(floatBytes, &chargeCurrent, sizeof(float));
+    return std::vector<uint8_t>(floatBytes, floatBytes + sizeof(float));
 }
 
-void handleGetCurrentChargeSolar(const std::string& param) {
+std::vector<uint8_t> handleGetCurrentChargeSolar(const std::string& param) {
     extern PowerManager powerManager;
     float chargeCurrent = powerManager.getCurrentChargeSolar();
-    sendMessage("Solar Charge Current: " + std::to_string(chargeCurrent) + " mA");
+    uint8_t floatBytes[sizeof(float)];
+    std::memcpy(floatBytes, &chargeCurrent, sizeof(float));
+    return std::vector<uint8_t>(floatBytes, floatBytes + sizeof(float));
 }
 
-void handleGetCurrentChargeTotal(const std::string& param) {
+std::vector<uint8_t> handleGetCurrentChargeTotal(const std::string& param) {
     extern PowerManager powerManager;
     float chargeCurrent = powerManager.getCurrentChargeTotal();
-    sendMessage("Total Charge Current: " + std::to_string(chargeCurrent) + " mA");
+    uint8_t floatBytes[sizeof(float)];
+    std::memcpy(floatBytes, &chargeCurrent, sizeof(float));
+    return std::vector<uint8_t>(floatBytes, floatBytes + sizeof(float));
 }
 
-void handleGetCurrentDraw(const std::string& param) {
+std::vector<uint8_t> handleGetCurrentDraw(const std::string& param) {
     extern PowerManager powerManager;
     float currentDraw = powerManager.getCurrentDraw();
-    sendMessage("Current Draw: " + std::to_string(currentDraw) + " mA");
+    uint8_t floatBytes[sizeof(float)];
+    std::memcpy(floatBytes, &currentDraw, sizeof(float));
+    return std::vector<uint8_t>(floatBytes, floatBytes + sizeof(float));
 }
 
-void handleGetGPSPowerStatus(const std::string& param) {
+std::vector<uint8_t> handleGetGPSPowerStatus(const std::string& param) {
     bool status = gpio_get(GPS_POWER_ENABLE_PIN);
-    sendMessage("GPS Power Status: " + std::string(status ? "ON" : "OFF"));
+    std::string statusStr = status ? "ON" : "OFF";
+    return std::vector<uint8_t>(statusStr.begin(), statusStr.end());
 }
 
-void handleSetGPSPowerStatus(const std::string& param) {
+std::vector<uint8_t> handleSetGPSPowerStatus(const std::string& param) {
     if (param.empty()) {
-        sendMessage("Error: GPS power status parameter required (on/off)");
-        return;
+        std::string message = "Error: GPS power status parameter required (on/off)";
+        return std::vector<uint8_t>(message.begin(), message.end());
     }
     bool powerOn = (param == "on" || param == "1" || param == "true");
     gpio_put(GPS_POWER_ENABLE_PIN, powerOn);
-    sendMessage("GPS Power Status set to: " + std::string(powerOn ? "ON" : "OFF"));
+    std::string message = "GPS Power Status set to: " + std::string(powerOn ? "ON" : "OFF");
+    return std::vector<uint8_t>(message.begin(), message.end());
 }
 
-void handleEnableGPSTransparentMode(const std::string& param) {
+std::vector<uint8_t> handleEnableGPSTransparentMode(const std::string& param) {
     uint32_t timeoutMs = param.empty() ? 60000u : std::stoul(param) * 1000;
     uint32_t startTime = to_ms_since_boot(get_absolute_time());
-    sendMessage("Entering GPS Serial Pass-Through Mode. Type 'exit' to quit.");
+    std::string message = "Entering GPS Serial Pass-Through Mode. Type 'exit' to quit.";
+    //sendMessage("Entering GPS Serial Pass-Through Mode. Type 'exit' to quit."); //Remove sendMessage
 
     while (true) {
         while (uart_is_readable(DEBUG_UART_PORT)) {
@@ -79,11 +98,12 @@ void handleEnableGPSTransparentMode(const std::string& param) {
         if (to_ms_since_boot(get_absolute_time()) - startTime >= timeoutMs)
             break;
     }
-    sendMessage("Exiting GPS Serial Pass-Through Mode.");
+    message = "Exiting GPS Serial Pass-Through Mode.";
+    return std::vector<uint8_t>(message.begin(), message.end());
 }
 
 
-using CommandHandler = std::function<void(const std::string&)>;
+using CommandHandler = std::function<std::vector<uint8_t>(const std::string&)>;
 
 using CommandMap = std::map<uint32_t, CommandHandler>;
 
@@ -101,23 +121,11 @@ CommandMap commandHandlers = {
 };
 
 std::vector<uint8_t> executeCommand(uint32_t commandKey, const std::string& param) {
-    std::vector<uint8_t> responseData;
-
-    if (commandKey == (((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(2)))) {
-        extern PowerManager powerManager;
-        float voltage = powerManager.getVoltageBattery();
-        std::string voltageStr = std::to_string(voltage);
-        responseData.assign(voltageStr.begin(), voltageStr.end());
+    auto it = commandHandlers.find(commandKey);
+    if (it != commandHandlers.end()) {
+        return it->second(param); // Call the handler function
+    } else {
+        std::string message = "Unknown command";
+        return std::vector<uint8_t>(message.begin(), message.end());
     }
-    else if (commandKey == (((static_cast<uint32_t>(3) << 8) | static_cast<uint32_t>(0)))) {
-        uint32_t currentTime = to_ms_since_boot(get_absolute_time());
-        std::string timeStr = std::to_string(currentTime);
-        responseData.assign(timeStr.begin(), timeStr.end());
-    }
-    else {
-        std::string message = "Command executed successfully";
-        responseData.assign(message.begin(), message.end());
-    }
-
-    return responseData;
 }
