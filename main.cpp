@@ -6,52 +6,6 @@ PowerManager powerManager(MAIN_I2C_PORT);
 
 char buffer[BUFFER_SIZE];
 int bufferIndex = 0;
-struct SharedData {
-    float voltage5V;
-};
-
-// Global instance of the shared data
-SharedData sharedData;
-
-// Spinlock for protecting access to the shared data
-std::atomic_flag dataLock = ATOMIC_FLAG_INIT;
-
-// Function to acquire the spinlock
-void acquireLock() {
-    while (dataLock.test_and_set(std::memory_order_acquire)); // Spin until lock is acquired
-}
-
-// Function to release the spinlock
-void releaseLock() {
-    dataLock.clear(std::memory_order_release);
-}
-
-void sensorsRoutine() {
-    float voltage5V;
-    while (true) {
-        voltage5V = powerManager.getVoltage5V();
-
-        // Acquire the lock before writing to the shared data
-        acquireLock();
-        sharedData.voltage5V = voltage5V;
-        releaseLock();
-
-        printf("Core 1: Updated voltage to %f\n", voltage5V);
-        sleep_ms(100);
-    }
-}
-
-void uartPrintToCore1(const std::string& msg, uart_inst_t* uart) {
-    // Format the message with timestamp
-    uint32_t timestamp = to_ms_since_boot(get_absolute_time());
-    std::string msgToSend = "[" + std::to_string(timestamp) + "ms] - " + msg + "\r\n";
-
-    // Send the message to Core 1
-    for (char c : msgToSend) {
-        multicore_fifo_push_blocking(c);
-    }
-    multicore_fifo_push_blocking(0); // Null terminator to signal end of message
-}
 
 bool initSystems(i2c_inst_t *i2c_port) {
     stdio_init_all();
@@ -94,7 +48,7 @@ int main()
     FATFS fs;
     FIL fil;
     int ret;
-    char buf[100];
+    char buf[256];
     char filename[] = "test02.txt";
     i2c_inst_t *i2c_port = MAIN_I2C_PORT;
     initSystems(i2c_port);
@@ -121,7 +75,7 @@ int main()
     gpio_put(PICO_DEFAULT_LED_PIN, 1);
 
     bool sdTestResult = testSDCard();
-    if (sdTestResult) multicore_launch_core1(loggingRoutine); // Launch logging routine on Core 1
+    multicore_launch_core1(loggingRoutine); // Launch logging routine on Core 1
 
     gpio_put(PICO_DEFAULT_LED_PIN, 0);
 
@@ -137,6 +91,9 @@ int main()
     
     gpio_put(PICO_DEFAULT_LED_PIN, 1);
 
+    uartPrint("This message will only be printed to UART.");
+    uartPrint("This message will be printed to UART and logged to Core 1.", true);
+
     for (int i = 5; i > 0; --i)
     {
         std::string intro = "Main loop starts in " + std::to_string(i) + " seconds...\n";
@@ -145,10 +102,6 @@ int main()
         sleep_ms(1000);
     }
     gpio_put(PICO_DEFAULT_LED_PIN, 1);
-
-    uartPrint("This message will only be printed to UART.", DEBUG_UART_PORT);
-    uartPrint("This message will be printed to UART and logged to Core 1.", DEBUG_UART_PORT, true);
-
 
     while (true)
     {

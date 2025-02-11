@@ -99,7 +99,7 @@ int LoRaClass::begin(long frequency)
 
 
   // start SPI
-  spi_init(SPI_PORT, 12500);
+  spi_init(SPI_PORT, LORA_DEFAULT_SPI_FREQUENCY);
   gpio_set_function(SX1278_MISO, GPIO_FUNC_SPI);
   gpio_set_function(SX1278_SCK, GPIO_FUNC_SPI);
   gpio_set_function(SX1278_MOSI, GPIO_FUNC_SPI);

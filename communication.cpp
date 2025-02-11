@@ -241,7 +241,7 @@ void onReceive(int packetSize) {
     }
 
     // Debug print received hex string
-    uartPrint("Received LoRa hex string: " + hexString);
+    uartPrint("Received LoRa hex string: " + hexString, true);
 
     // Find the "CAFE" sequence in the hex string
     size_t cafePos = hexString.find("CAFE");

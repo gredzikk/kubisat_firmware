@@ -5,8 +5,77 @@
 #include <pico/stdio.h>
 #include "PowerManager.h"
 #include "storage.h"
+#include "utils.h"
 
 extern PowerManager powerManager;
+
+// Helper function to convert FRESULT enum to string
+const std::string fresult_str(FRESULT fr) {
+    switch (fr) {
+        case FR_OK: return "FR_OK";
+        case FR_DISK_ERR: return "FR_DISK_ERR";
+        case FR_INT_ERR: return "FR_INT_ERR";
+        case FR_NOT_READY: return "FR_NOT_READY";
+        case FR_NO_FILE: return "FR_NO_FILE";
+        case FR_NO_PATH: return "FR_NO_PATH";
+        case FR_INVALID_NAME: return "FR_INVALID_NAME";
+        case FR_DENIED: return "FR_DENIED";
+        case FR_EXIST: return "FR_EXIST";
+        case FR_INVALID_OBJECT: return "FR_INVALID_OBJECT";
+        case FR_WRITE_PROTECTED: return "FR_WRITE_PROTECTED";
+        case FR_INVALID_DRIVE: return "FR_INVALID_DRIVE";
+        case FR_NOT_ENABLED: return "FR_NOT_ENABLED";
+        case FR_NO_FILESYSTEM: return "FR_NO_FILESYSTEM";
+        case FR_MKFS_ABORTED: return "FR_MKFS_ABORTED";
+        case FR_TIMEOUT: return "FR_TIMEOUT";
+        case FR_LOCKED: return "FR_LOCKED";
+        case FR_NOT_ENOUGH_CORE: return "FR_NOT_ENOUGH_CORE";
+        case FR_TOO_MANY_OPEN_FILES: return "FR_TOO_MANY_OPEN_FILES";
+        case FR_INVALID_PARAMETER: return "FR_INVALID_PARAMETER";
+        default: return "UNKNOWN_FRESULT";
+    }
+}
+
+/**
+ * @brief Writes data to a file, handling open, write, and close operations.
+ * @param filename Name of the file to write to.
+ * @param data Data string to write.
+ * @param buf Buffer for user input.
+ * @return True if successful, false if an error occurred.
+ */
+bool writeToFile(const char* filename, const char* data) {
+    uint32_t status = save_and_disable_interrupts();
+    FIL fil;
+    FRESULT fr;
+    uartPrint("Writing data to file " + std::string(filename));
+    // Open the file
+    fr = f_open(&fil, filename, FA_WRITE | FA_CREATE_ALWAYS);
+    if (fr != FR_OK) {
+        uartPrint("ERROR: Could not open file " + fresult_str(fr));
+        return false;
+    }
+    uartPrint(std::string("Opened file ") + filename);
+
+    // Write to the file
+    int ret = f_printf(&fil, data);
+    if (ret < 0) {
+        uartPrint("ERROR: Could not write to file " + std::to_string(ret));
+        f_close(&fil);
+        return false;
+    }
+    uartPrint("Wrote " + std::to_string(ret) + " bytes to file " + filename);
+
+    // Close the file
+    fr = f_close(&fil);
+    if (fr != FR_OK) {
+        uartPrint("ERROR: Could not close file " + fresult_str(fr));
+        return false;
+    }
+    uartPrint("File closed, exiting");
+    restore_interrupts(status);
+
+    return true;
+}
 
 /**
  * @brief Waits for user input (enter to proceed or 's' to skip) with timeout.
@@ -16,7 +85,7 @@ extern PowerManager powerManager;
 bool waitForUserInteraction(const uint64_t TIMEOUT_MS)
 {
     uint64_t startTime = to_ms_since_boot(get_absolute_time());
-    printf("\r\nSD card test. Press 'enter' to start or 's' to skip.\n");
+    uartPrint("SD card test. Press 'enter' to start or 's' to skip.");
 
     while (true)
     {
@@ -25,14 +94,14 @@ bool waitForUserInteraction(const uint64_t TIMEOUT_MS)
         {
             if (to_ms_since_boot(get_absolute_time()) - startTime > TIMEOUT_MS)
             {
-                printf("No input within %llu ms. Skipping SD card test.\n", TIMEOUT_MS);
+                uartPrint("User input timeout");
                 return false;
             }
             continue;
         }
         if ((char)c == 's')
         {
-            printf("Skipping SD card test.\n");
+            uartPrint("Skipping SD card test.\n");
             return false;
         }
         if ((char)c == '\r' || (char)c == '\n')
@@ -52,16 +121,8 @@ bool initializeSDCard(char* buf)
 {
     if (!sd_init_driver())
     {
-        printf("ERROR: Could not initialize SD card. Press 's' to skip.\n");
-        while (true)
-        {
-            buf[0] = getchar();
-            if (buf[0] == 's')
-            {
-                printf("Skipping SD card test.\n");
-                return false;
-            }
-        }
+        uartPrint("ERROR: Could not initialize SD card.");
+        return false;
     }
     return true;
 }
@@ -72,100 +133,18 @@ bool initializeSDCard(char* buf)
  * @param buf Buffer for user input.
  * @return True if mounted successfully, false if user skipped.
  */
+// storage.cpp
 bool mountDrive(FATFS& fs, char* buf)
 {
-    FRESULT fr = f_mount(&fs, "0:", 1);
+    uint64_t t_start = to_ms_since_boot(get_absolute_time());
+    FRESULT fr = f_mount(&fs, "SD", 1);
+    uint64_t t_end = to_ms_since_boot(get_absolute_time());
+    std::string message = "f_mount took " + std::to_string(t_end - t_start) + " ms";
+    uartPrint(message);
     if (fr != FR_OK)
     {
-        printf("ERROR: Could not mount filesystem (%d). Press 's' to skip.\n", fr);
-        while (true)
-        {
-            buf[0] = getchar();
-            if (buf[0] == 's')
-            {
-                printf("Skipping SD card test.\n");
-                return false;
-            }
-        }
-    }
-    return true;
-}
-
-/**
- * @brief Opens a file on the SD card.
- * @param fil FIL object reference.
- * @param filename Name of the file to open.
- * @param mode File access mode.
- * @param buf Buffer for user input.
- * @return True if successful, false if user skipped or error occurred.
- */
-bool openFile(FIL& fil, const char* filename, BYTE mode, char* buf)
-{
-    FRESULT fr = f_open(&fil, filename, mode);
-    if (fr != FR_OK)
-    {
-        printf("ERROR: Could not open file (%d). Press 's' to skip.\n", fr);
-        while (true)
-        {
-            buf[0] = getchar();
-            if (buf[0] == 's')
-            {
-                printf("Skipping SD card test.\n");
-                return false;
-            }
-        }
-    }
-    return true;
-}
-
-/**
- * @brief Writes data to an open file.
- * @param fil FIL object reference.
- * @param data Data string to write.
- * @param buf Buffer for user input.
- * @return True if successful, false if user skipped or error occurred.
- */
-bool writeToFile(FIL& fil, const char* data, char* buf)
-{
-    int ret = f_printf(&fil, data);
-    if (ret < 0)
-    {
-        printf("ERROR: Could not write to file (%d). Press 's' to skip.\n", ret);
-        f_close(&fil);
-        while (true)
-        {
-            buf[0] = getchar();
-            if (buf[0] == 's')
-            {
-                printf("Skipping SD card test.\n");
-                return false;
-            }
-        }
-    }
-    return true;
-}
-
-/**
- * @brief Closes an open file.
- * @param fil FIL object reference.
- * @param buf Buffer for user input.
- * @return True if successful, false if user skipped or error occurred.
- */
-bool closeFile(FIL& fil, char* buf)
-{
-    FRESULT fr = f_close(&fil);
-    if (fr != FR_OK)
-    {
-        printf("ERROR: Could not close file (%d). Press 's' to skip.\n", fr);
-        while (true)
-        {
-            buf[0] = getchar();
-            if (buf[0] == 's')
-            {
-                printf("Skipping SD card test.\n");
-                return false;
-            }
-        }
+        uartPrint("ERROR: Could not mount filesystem " + fresult_str(fr));
+        return false;
     }
     return true;
 }
@@ -178,7 +157,6 @@ bool testSDCard()
 {
     const uint64_t TIMEOUT_MS = 5000;  // 5-second timeout
     FATFS fs;
-    FIL fil;
     char buf[1024];
     char filename[] = "test02.txt";
 
@@ -187,22 +165,20 @@ bool testSDCard()
        return false;
     
     uint64_t t_start = to_ms_since_boot(get_absolute_time());
-    printf("Starting SD card test at %llu ms\n", t_start);
+    std::string message = "Starting SD card test @ " + std::to_string(t_start);
+    uartPrint(message);
 
     if (!initializeSDCard(buf))
         return false;
     uint64_t now = to_ms_since_boot(get_absolute_time());
-    printf("SD card driver initialized at %llu ms (elapsed %llu ms)\n", now, now - t_start);
+    message = "SD card driver initialized at " + std::to_string(now) + " ms (elapsed " + std::to_string(now - t_start) + " ms)";
+    uartPrint(message);
 
     if (!mountDrive(fs, buf))
         return false;
     now = to_ms_since_boot(get_absolute_time());
-    printf("Filesystem mounted at %llu ms (elapsed %llu ms)\n", now, now - t_start);
-
-    if (!openFile(fil, filename, FA_WRITE | FA_CREATE_ALWAYS, buf))
-        return false;
-    now = to_ms_since_boot(get_absolute_time());
-    printf("File opened for writing at %llu ms (elapsed %llu ms)\n", now, now - t_start);
+    message = "Filesystem mounted at " + std::to_string(now) + " ms (elapsed " + std::to_string(now - t_start) + " ms)";
+    uartPrint(message);
 
     double voltageData = powerManager.getVoltageBattery();
     double currentData = powerManager.getCurrentChargeTotal();
@@ -213,21 +189,16 @@ bool testSDCard()
                             "Draw: " + std::to_string(drawData) + "mA\n";
     
 
-    if (!writeToFile(fil, powerData.c_str(), buf))
+    if (!writeToFile(filename, powerData.c_str()))
         return false;
     now = to_ms_since_boot(get_absolute_time());
 
-    printf("Write complete at %llu ms (elapsed %llu ms)\n", now, now - t_start);
+    message = "Data written to file at " + std::to_string(now) + " ms (elapsed " + std::to_string(now - t_start) + " ms)";
+    uartPrint(message);
 
-
-    if (!closeFile(fil, buf))
-        return false;
-    now = to_ms_since_boot(get_absolute_time());
-    printf("File closed after writing at %llu ms (elapsed %llu ms)\n", now, now - t_start);
-
-    f_unmount("0:");
+    f_unmount("SD");
     uint64_t t_end = to_ms_since_boot(get_absolute_time());
-    printf("SD card test completed successfully at %llu ms (total elapsed: %llu ms)\n",
-           t_end, t_end - t_start);
+    message = "SD card test completed at " + std::to_string(t_end) + " ms (total elapsed " + std::to_string(t_end - t_start) + " ms)";
+    uartPrint(message);
     return true;
 }

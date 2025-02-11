@@ -105,3 +105,12 @@ target_include_directories(main PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/lib
 )
 pico_add_extra_outputs(main)
+
+add_custom_command(
+    TARGET main POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_CURRENT_SOURCE_DIR}/release"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.uf2"
+        "${CMAKE_CURRENT_SOURCE_DIR}/release/${PROJECT_NAME}.uf2"
+    COMMENT "Copying ${PROJECT_NAME}.uf2 to release directory"
+)
