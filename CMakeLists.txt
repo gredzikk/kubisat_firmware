@@ -42,7 +42,7 @@ set(PICO_BOARD pico CACHE STRING "Board type")
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
 
-project(all_sensors_test C CXX ASM)
+project(main C CXX ASM)
 
 set(PICO_CXX_ENABLE_EXCEPTIONS 1)
 
@@ -62,8 +62,9 @@ add_subdirectory(lib/LoRa)
 add_subdirectory(lib/FatFs_SPI build)
 add_subdirectory(lib/PowerManager)
 
-add_executable(all_sensors_test 
-    all_sensors_test.cpp 
+add_executable(
+    main 
+    main.cpp 
     ISensor.cpp 
     commands.cpp
     pin_config.cpp    
@@ -73,15 +74,16 @@ add_executable(all_sensors_test
     utils.cpp
 )
 
-pico_set_program_name(all_sensors_test "all_sensors_test")
-pico_set_program_version(all_sensors_test "0.1")
+pico_set_program_name(main "kubisat_firmware")
+pico_set_program_version(main "0.1")
 
 # Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(all_sensors_test 1)
-pico_enable_stdio_usb(all_sensors_test 0)
+pico_enable_stdio_uart(main 1)
+pico_enable_stdio_usb(main 0)
 
 # Add the standard library to the build
-target_link_libraries(all_sensors_test
+target_link_libraries(
+    main
     pico_stdlib
     hardware_spi
     hardware_i2c
@@ -97,8 +99,8 @@ target_link_libraries(all_sensors_test
     pico_multicore
 )
 
-target_include_directories(all_sensors_test PRIVATE
+target_include_directories(main PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/lib
 )
-pico_add_extra_outputs(all_sensors_test)
+pico_add_extra_outputs(main)

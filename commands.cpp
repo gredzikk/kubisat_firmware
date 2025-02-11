@@ -85,11 +85,11 @@ std::vector<uint8_t> handleEnableGPSTransparentMode(const std::string& param) {
     uint32_t startTime = to_ms_since_boot(get_absolute_time());
 
     // Store the original baud rate of the debug UART
-    uint32_t originalBaudRate = uart_get_baudrate(DEBUG_UART_PORT);
+    uint32_t originalBaudRate = DEBUG_UART_BAUD_RATE;
 
     // Set the baud rate of the debug UART to match the GPS UART
-    uint32_t gpsBaudRate = uart_get_baudrate(GPS_UART_PORT);
-    std::string message = "Entering GPS Serial Pass-Through Mode @" + gpsBaudRate + " for " + timeoutMs;
+    uint32_t gpsBaudRate = GPS_UART_BAUD_RATE;
+    std::string message = "Entering GPS Serial Pass-Through Mode @" + std::to_string(gpsBaudRate) + " for " + std::to_string(timeoutMs);
 
     uart_set_baudrate(DEBUG_UART_PORT, gpsBaudRate);
 

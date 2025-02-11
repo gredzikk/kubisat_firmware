@@ -70,26 +70,16 @@ void sendLargePacket(const uint8_t* data, size_t length)
     }
 }
 
-// FRAME BUILDER: creates a frame from given parameters.
 Frame buildFrame(uint8_t direction, uint8_t operation, uint8_t group, uint8_t command, const std::vector<uint8_t>& payload) {
     Frame frame;
+    frame.header = 0xCAFE;
     frame.direction = direction;
     frame.operation = operation;
     frame.group = group;
     frame.command = command;
     frame.payload = payload;
     frame.length = payload.size();
-    // Calculate simple checksum: sum bytes from direction to last payload byte.
-    uint8_t checksum = 0;
-    checksum += frame.direction;
-    checksum += frame.operation;
-    checksum += frame.group;
-    checksum += frame.command;
-    checksum += (frame.length >> 8) & 0xFF;
-    checksum += frame.length & 0xFF;
-    for (auto byte : frame.payload)
-        checksum += byte;
-    frame.checksum = checksum;
+    frame.checksum = calculateChecksum(frame.direction, frame.operation, frame.group, frame.command, frame.length, frame.payload);
     return frame;
 }
 
@@ -149,16 +139,7 @@ Frame decodeFrame(const std::vector<uint8_t>& data) {
     }
     frame.checksum = data[pos];
 
-    // Recalculate checksum
-    uint8_t calcSum = 0;
-    calcSum += frame.direction;
-    calcSum += frame.operation;
-    calcSum += frame.group;
-    calcSum += frame.command;
-    calcSum += (frame.length >> 8) & 0xFF;
-    calcSum += frame.length & 0xFF;
-    for (auto byte : frame.payload)
-        calcSum += byte;
+    uint8_t calcSum = calculateChecksum(frame.direction, frame.operation, frame.group, frame.command, frame.length, frame.payload);
 
     if (calcSum != frame.checksum)
         throw std::runtime_error("Checksum mismatch");
@@ -166,27 +147,16 @@ Frame decodeFrame(const std::vector<uint8_t>& data) {
     return frame;
 }
 
-// Function to build a response frame
 Frame buildResponseFrame(const Frame& requestFrame, uint8_t status, const std::vector<uint8_t>& responseData) {
     Frame responseFrame;
+    responseFrame.header = 0xCAFE;
     responseFrame.direction = (requestFrame.direction == 0) ? 1 : 0; // Reverse direction
     responseFrame.operation = 0; // GET
     responseFrame.group = requestFrame.group;
     responseFrame.command = requestFrame.command;
     responseFrame.payload = responseData;
     responseFrame.length = responseData.size();
-
-    // Calculate checksum
-    uint8_t checksum = 0;
-    checksum += responseFrame.direction;
-    checksum += responseFrame.operation;
-    checksum += responseFrame.group;
-    checksum += responseFrame.command;
-    checksum += (responseFrame.length >> 8) & 0xFF;
-    checksum += responseFrame.length & 0xFF;
-    for (auto byte : responseFrame.payload)
-        checksum += byte;
-    responseFrame.checksum = checksum;
+    responseFrame.checksum = calculateChecksum(responseFrame.direction, responseFrame.operation, responseFrame.group, responseFrame.command, responseFrame.length, responseFrame.payload);
 
     return responseFrame;
 }
@@ -198,7 +168,7 @@ void sendFrame(const Frame& frame) {
 }
 
 // Command handler function type
-using CommandHandler = std::function<void(const std::string&)>;
+using CommandHandler = std::function<std::vector<uint8_t>(const std::string&)>;
 
 // Declare command map
 extern std::map<uint32_t, CommandHandler> commandHandlers;
