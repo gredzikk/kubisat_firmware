@@ -83,8 +83,15 @@ std::vector<uint8_t> handleSetGPSPowerStatus(const std::string& param) {
 std::vector<uint8_t> handleEnableGPSTransparentMode(const std::string& param) {
     uint32_t timeoutMs = param.empty() ? 60000u : std::stoul(param) * 1000;
     uint32_t startTime = to_ms_since_boot(get_absolute_time());
-    std::string message = "Entering GPS Serial Pass-Through Mode. Type 'exit' to quit.";
-    //sendMessage("Entering GPS Serial Pass-Through Mode. Type 'exit' to quit."); //Remove sendMessage
+
+    // Store the original baud rate of the debug UART
+    uint32_t originalBaudRate = uart_get_baudrate(DEBUG_UART_PORT);
+
+    // Set the baud rate of the debug UART to match the GPS UART
+    uint32_t gpsBaudRate = uart_get_baudrate(GPS_UART_PORT);
+    std::string message = "Entering GPS Serial Pass-Through Mode @" + gpsBaudRate + " for " + timeoutMs;
+
+    uart_set_baudrate(DEBUG_UART_PORT, gpsBaudRate);
 
     while (true) {
         while (uart_is_readable(DEBUG_UART_PORT)) {
@@ -98,6 +105,10 @@ std::vector<uint8_t> handleEnableGPSTransparentMode(const std::string& param) {
         if (to_ms_since_boot(get_absolute_time()) - startTime >= timeoutMs)
             break;
     }
+
+    // Restore the original baud rate of the debug UART
+    uart_set_baudrate(DEBUG_UART_PORT, originalBaudRate);
+
     message = "Exiting GPS Serial Pass-Through Mode.";
     return std::vector<uint8_t>(message.begin(), message.end());
 }
