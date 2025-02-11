@@ -66,7 +66,7 @@ void sendLargePacket(const uint8_t* data, size_t length)
         LoRa.write(&data[offset], chunkSize);
         LoRa.endPacket();
         offset += chunkSize;
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        sleep_ms(100);
     }
 }
 

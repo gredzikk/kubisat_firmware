@@ -3,8 +3,6 @@
 #include "pin_config.h"
 #include "PowerManager.h"
 #include <cstdio>
-#include <thread>
-#include <chrono>
 #include <cstdlib>
 #include <map>
 
