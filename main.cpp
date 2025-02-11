@@ -28,6 +28,8 @@
 #include "storage.h"
 #include "utils.h"
 
+#define LOG_FILENAME "log.txt"
+
 PowerManager powerManager(MAIN_I2C_PORT);
 
 uint32_t last_gps_time = 0;
@@ -70,6 +72,18 @@ void sensorsRoutine() {
     }
 }
 
+void uartPrintToCore1(const std::string& msg, uart_inst_t* uart) {
+    // Format the message with timestamp
+    uint32_t timestamp = to_ms_since_boot(get_absolute_time());
+    std::string msgToSend = "[" + std::to_string(timestamp) + "ms] - " + msg + "\r\n";
+
+    // Send the message to Core 1
+    for (char c : msgToSend) {
+        multicore_fifo_push_blocking(c);
+    }
+    multicore_fifo_push_blocking(0); // Null terminator to signal end of message
+}
+
 bool initSystems(i2c_inst_t *i2c_port) {
     stdio_init_all();
 
@@ -97,10 +111,13 @@ bool initSystems(i2c_inst_t *i2c_port) {
         gpio_put(GPS_POWER_ENABLE_PIN, 0); 
     }
 
-    uartPrint(std::string("System init completed @ ") + std::to_string(to_ms_since_boot(get_absolute_time())) + " ms");
+    std::string bootString = "System init completed @ " + std::to_string(to_ms_since_boot(get_absolute_time())) + " ms";
+    uartPrint(bootString);
 
     return true;
 }
+
+void loggingRoutine();
 
 int main()
 {
@@ -135,6 +152,8 @@ int main()
     gpio_put(PICO_DEFAULT_LED_PIN, 1);
 
     bool sdTestResult = testSDCard();
+    if (sdTestResult) multicore_launch_core1(loggingRoutine); // Launch logging routine on Core 1
+
     gpio_put(PICO_DEFAULT_LED_PIN, 0);
 
     if (radioInitSuccess)
@@ -157,6 +176,10 @@ int main()
         sleep_ms(1000);
     }
     gpio_put(PICO_DEFAULT_LED_PIN, 1);
+
+    uartPrint("This message will only be printed to UART.", DEBUG_UART_PORT);
+    uartPrint("This message will be printed to UART and logged to Core 1.", DEBUG_UART_PORT, true);
+
 
     while (true)
     {

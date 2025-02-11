@@ -167,6 +167,20 @@ void sendFrame(const Frame& frame) {
     sendLargePacket(buffer.data(), buffer.size());
 }
 
+uint8_t calculateChecksum(uint8_t direction, uint8_t operation, uint8_t group, uint8_t command, uint16_t length, const std::vector<uint8_t>& payload) {
+    uint8_t checksum = 0;
+    checksum += direction;
+    checksum += operation;
+    checksum += group;
+    checksum += command;
+    checksum += (length >> 8) & 0xFF;
+    checksum += length & 0xFF;
+    for (auto byte : payload)
+        checksum += byte;
+    return checksum;
+}
+
+
 // Command handler function type
 using CommandHandler = std::function<std::vector<uint8_t>(const std::string&)>;
 

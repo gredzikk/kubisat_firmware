@@ -72,6 +72,7 @@ add_executable(
     storage.cpp
     event_manager.cpp
     utils.cpp
+    logging.cpp
 )
 
 pico_set_program_name(main "kubisat_firmware")

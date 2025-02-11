@@ -4,6 +4,7 @@
 #include "stdio.h"
 #include <pico/stdio.h>
 #include "PowerManager.h"
+#include "storage.h"
 
 extern PowerManager powerManager;
 

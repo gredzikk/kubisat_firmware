@@ -1,4 +1,6 @@
-#pragma once
+#ifndef PROTOCOL_H
+#define PROTOCOL_H
+
 #include <string>
 #include <map>
 #include <functional>
@@ -55,18 +57,7 @@ struct Frame {
     uint8_t checksum;         // Simple checksum
 };
 
-uint8_t calculateChecksum(uint8_t direction, uint8_t operation, uint8_t group, uint8_t command, uint16_t length, const std::vector<uint8_t>& payload) {
-    uint8_t checksum = 0;
-    checksum += direction;
-    checksum += operation;
-    checksum += group;
-    checksum += command;
-    checksum += (length >> 8) & 0xFF;
-    checksum += length & 0xFF;
-    for (auto byte : payload)
-        checksum += byte;
-    return checksum;
-}
+uint8_t calculateChecksum(uint8_t direction, uint8_t operation, uint8_t group, uint8_t command, uint16_t length, const std::vector<uint8_t>& payload);
 
 bool initializeRadio();
 void sendMessage(std::string outgoing);
@@ -222,3 +213,5 @@ inline std::vector<Group> getGroups()
         }
     };
 }
+
+#endif

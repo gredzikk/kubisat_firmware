@@ -3,6 +3,7 @@
 #include <cstdio>
 #include "ff.h"
 #include "protocol.h"
+#include "pico/multicore.h"
 
 extern PowerManager powerManager;
 
@@ -16,6 +17,10 @@ static constexpr float VOLTAGE_OVERCHARGE_THRESHOLD = 5.3f;
 static uint32_t lastEventTime = 0;
 
 static int fallingTrendCount = 0;
+
+#define POWER_FALLING_SIGNAL 0x01 // Example: Use ASCII SOH (Start of Heading)
+#define EVENT_LOG_SIGNAL 0x02 // Define a signal to indicate an event log message
+
 
 /**
  * @brief Checks power statuses and triggers events based on voltage trends.
@@ -42,6 +47,8 @@ void checkPowerEvents(PowerManager& pm)
         sendMessage("ALERT: POWER FALLING | Voltage: " + std::to_string(currentVoltage) + " V");
         lastPowerState = PowerEventState::POWER_FALLING;
         lastEventTime = currentTime;
+
+        multicore_fifo_push_blocking(POWER_FALLING_SIGNAL);
     }
 
     if (currentVoltage < VOLTAGE_LOW_THRESHOLD && lastPowerState != PowerEventState::LOW_BATTERY)
@@ -68,14 +75,21 @@ void checkPowerEvents(PowerManager& pm)
  * @brief Logs an event message to stdout (and optionally file).
  * @param message The event message.
  */
-void logEvent(const char* message)
-{
+void logEvent(const char* message) {
     std::cout << message << std::endl;
-    // FIL fil;
-    // if (f_open(&fil, "event_log.txt", FA_OPEN_APPEND | FA_WRITE) == FR_OK)
-    // {
-    //     uint32_t currentTime = to_ms_since_boot(get_absolute_time());
-    //     f_printf(&fil, "[%lu ms] %s\n", currentTime, message);
-    //     f_close(&fil);
-    // }
+
+    // Send the event message to Core 1 for logging
+    std::string msg = message;
+    int messageLength = msg.length();
+
+    // Send the event log signal
+    multicore_fifo_push_blocking(EVENT_LOG_SIGNAL);
+
+    // Send the length of the message
+    multicore_fifo_push_blocking(messageLength);
+
+    // Send the message itself
+    for (char c : msg) {
+        multicore_fifo_push_blocking(c);
+    }
 }
