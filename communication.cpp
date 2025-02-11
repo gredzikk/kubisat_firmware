@@ -157,6 +157,31 @@ Frame decodeFrame(const std::vector<uint8_t>& data)
     return frame;
 }
 
+// Function to build a response frame
+Frame buildResponseFrame(const Frame& requestFrame, uint8_t status, const std::vector<uint8_t>& responseData) {
+    Frame responseFrame;
+    responseFrame.direction = (requestFrame.direction == 0) ? 1 : 0; // Reverse direction
+    responseFrame.operation = 0; // GET
+    responseFrame.group = requestFrame.group;
+    responseFrame.command = requestFrame.command;
+    responseFrame.payload = responseData;
+    responseFrame.length = responseData.size();
+
+    // Calculate checksum
+    uint8_t checksum = 0;
+    checksum += responseFrame.direction;
+    checksum += responseFrame.operation;
+    checksum += responseFrame.group;
+    checksum += responseFrame.command;
+    checksum += (responseFrame.length >> 8) & 0xFF;
+    checksum += responseFrame.length & 0xFF;
+    for (auto byte : responseFrame.payload)
+        checksum += byte;
+    responseFrame.checksum = checksum;
+
+    return responseFrame;
+}
+
 // Sends a Frame using LoRa by encoding it into bytes.
 void sendFrame(const Frame& frame) {
     std::vector<uint8_t> buffer = encodeFrame(frame);
@@ -171,17 +196,18 @@ extern std::map<uint32_t, CommandHandler> commandHandlers;
 
 // Once a frame is decoded, call the command handler to execute it.
 void handleCommandFrame(const Frame& frame) {
-    // Combine group and command IDs into a single 32-bit key
     uint32_t commandKey = (static_cast<uint32_t>(frame.group) << 8) | static_cast<uint32_t>(frame.command);
-
-    // Look up the command handler in the map
     auto it = commandHandlers.find(commandKey);
+
     if (it != commandHandlers.end()) {
-        // Extract the payload as a string
         std::string param(frame.payload.begin(), frame.payload.end());
 
-        // Call the command handler with the payload
-        it->second(param);
+        // Execute the command and get the response data
+        std::vector<uint8_t> responseData = executeCommand(commandKey, param);
+
+        // Build and send the response frame
+        Frame responseFrame = buildResponseFrame(frame, 0, responseData);
+        sendFrame(responseFrame);
     } else {
         uartPrint("Error: Unknown group/command combination");
     }

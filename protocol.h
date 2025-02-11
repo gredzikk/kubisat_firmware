@@ -64,6 +64,7 @@ Frame buildFrame(uint8_t direction, uint8_t operation, uint8_t group, uint8_t co
 std::vector<uint8_t> encodeFrame(const Frame& frame);
 Frame decodeFrame(const std::vector<uint8_t>& data);
 void handleCommandFrame(const Frame& frame);
+std::vector<uint8_t> executeCommand(uint32_t commandKey, const std::string& param);
 
 using CommandHandler = std::function<void(const std::string&)>;
 

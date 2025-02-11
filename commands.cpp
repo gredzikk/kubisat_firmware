@@ -101,3 +101,25 @@ CommandMap commandHandlers = {
     {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(2)), handleSetGPSPowerStatus}, // Group 7, Command 2
     {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(3)), handleEnableGPSTransparentMode}, // Group 7, Command 3
 };
+
+std::vector<uint8_t> executeCommand(uint32_t commandKey, const std::string& param) {
+    std::vector<uint8_t> responseData;
+
+    if (commandKey == (((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(2)))) {
+        extern PowerManager powerManager;
+        float voltage = powerManager.getVoltageBattery();
+        std::string voltageStr = std::to_string(voltage);
+        responseData.assign(voltageStr.begin(), voltageStr.end());
+    }
+    else if (commandKey == (((static_cast<uint32_t>(3) << 8) | static_cast<uint32_t>(0)))) {
+        uint32_t currentTime = to_ms_since_boot(get_absolute_time());
+        std::string timeStr = std::to_string(currentTime);
+        responseData.assign(timeStr.begin(), timeStr.end());
+    }
+    else {
+        std::string message = "Command executed successfully";
+        responseData.assign(message.begin(), message.end());
+    }
+
+    return responseData;
+}
