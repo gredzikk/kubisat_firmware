@@ -29,7 +29,8 @@ enum class ValueUnit {
     INT,
     VOLT,
     BOOL,
-    DATETIME
+    DATETIME,
+    STRING
 };
 struct Command
 {

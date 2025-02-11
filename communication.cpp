@@ -146,7 +146,7 @@ Frame decodeFrame(const std::string& data) {
     return frame;
 }
 
-Frame buildResponseFrame(const Frame& requestFrame, const std::string& value, const std::string& unit) {
+Frame buildResponseFrame(const Frame& requestFrame, const std::string& value) {
     Frame responseFrame;
     responseFrame.header = HEADER;
     responseFrame.direction = (requestFrame.direction == 0) ? 1 : 0; // Reverse direction
@@ -154,8 +154,42 @@ Frame buildResponseFrame(const Frame& requestFrame, const std::string& value, co
     responseFrame.group = requestFrame.group;
     responseFrame.command = requestFrame.command;
     responseFrame.value = value;
-    responseFrame.unit = unit;
 
+    // Find the unit from getGroups
+    std::vector<Group> groups = getGroups();
+    for (const auto& group : groups) {
+        if (group.Id == requestFrame.group) {
+            for (const auto& command : group.Commands) {
+                if (command.Id == requestFrame.command) {
+                    // Assign the unit to the response frame
+                    switch (command.Unit) {
+                        case ValueUnit::NUMERIC:
+                            responseFrame.unit = "";
+                            break;
+                        case ValueUnit::INT:
+                            responseFrame.unit = "";
+                            break;
+                        case ValueUnit::VOLT:
+                            responseFrame.unit = "V";
+                            break;
+                        case ValueUnit::BOOL:
+                            responseFrame.unit = "";
+                            break;
+                        case ValueUnit::DATETIME:
+                            responseFrame.unit = "";
+                            break;
+                        default:
+                            responseFrame.unit = "";
+                            break;
+                    }
+                    return responseFrame;
+                }
+            }
+        }
+    }
+
+    // If the unit is not found, set it to an empty string
+    responseFrame.unit = "";
     return responseFrame;
 }
 
@@ -184,7 +218,7 @@ void handleCommandFrame(const Frame& frame) {
         std::string response = executeCommand(commandKey, param);
 
         uartPrint("Sending response data: " + response);
-        Frame responseFrame = buildResponseFrame(frame, "", "");
+        Frame responseFrame = buildResponseFrame(frame, response);
         sendFrame(responseFrame);
     } else {
         uartPrint("Error: Unknown group/command combination");
