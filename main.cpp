@@ -18,7 +18,6 @@
 #include <queue>
 #include <chrono>
 #include "protocol.h"
-#include "GPSData.h"
 #include "sd_card.h"
 #include "ff.h"
 #include <atomic>
@@ -31,9 +30,6 @@
 #define LOG_FILENAME "log.txt"
 
 PowerManager powerManager(MAIN_I2C_PORT);
-
-uint32_t last_gps_time = 0;
-GPSData gpsData;
 
 char buffer[BUFFER_SIZE];
 int bufferIndex = 0;

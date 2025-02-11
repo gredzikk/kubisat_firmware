@@ -13,7 +13,7 @@ extern PowerManager powerManager;
  * @param TIMEOUT_MS Maximum time (in ms) to wait for user input.
  * @return True if proceed, false if skipping.
  */
-static bool waitForUserInteraction(const uint64_t TIMEOUT_MS)
+bool waitForUserInteraction(const uint64_t TIMEOUT_MS)
 {
     uint64_t startTime = to_ms_since_boot(get_absolute_time());
     printf("\r\nSD card test. Press 'enter' to start or 's' to skip.\n");
@@ -48,7 +48,7 @@ static bool waitForUserInteraction(const uint64_t TIMEOUT_MS)
  * @param buf Buffer for user input.
  * @return True if initialized successfully, false if user skipped.
  */
-static bool initializeSDCard(char* buf)
+bool initializeSDCard(char* buf)
 {
     if (!sd_init_driver())
     {
@@ -72,7 +72,7 @@ static bool initializeSDCard(char* buf)
  * @param buf Buffer for user input.
  * @return True if mounted successfully, false if user skipped.
  */
-static bool mountDrive(FATFS& fs, char* buf)
+bool mountDrive(FATFS& fs, char* buf)
 {
     FRESULT fr = f_mount(&fs, "0:", 1);
     if (fr != FR_OK)
@@ -99,7 +99,7 @@ static bool mountDrive(FATFS& fs, char* buf)
  * @param buf Buffer for user input.
  * @return True if successful, false if user skipped or error occurred.
  */
-static bool openFile(FIL& fil, const char* filename, BYTE mode, char* buf)
+bool openFile(FIL& fil, const char* filename, BYTE mode, char* buf)
 {
     FRESULT fr = f_open(&fil, filename, mode);
     if (fr != FR_OK)
@@ -125,7 +125,7 @@ static bool openFile(FIL& fil, const char* filename, BYTE mode, char* buf)
  * @param buf Buffer for user input.
  * @return True if successful, false if user skipped or error occurred.
  */
-static bool writeToFile(FIL& fil, const char* data, char* buf)
+bool writeToFile(FIL& fil, const char* data, char* buf)
 {
     int ret = f_printf(&fil, data);
     if (ret < 0)
@@ -151,7 +151,7 @@ static bool writeToFile(FIL& fil, const char* data, char* buf)
  * @param buf Buffer for user input.
  * @return True if successful, false if user skipped or error occurred.
  */
-static bool closeFile(FIL& fil, char* buf)
+bool closeFile(FIL& fil, char* buf)
 {
     FRESULT fr = f_close(&fil);
     if (fr != FR_OK)
