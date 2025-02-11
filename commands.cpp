@@ -1,3 +1,4 @@
+// commands.cpp
 #include "protocol.h"
 #include "LoRa-RP2040.h"
 #include "pin_config.h"
@@ -6,81 +7,75 @@
 #include <cstdlib>
 #include <map>
 #include <cstring>
+#include "utils.h"
 
-// Modify handle functions to return vector<uint8_t>
-std::vector<uint8_t> handleGetTime(const std::string& param) {
+// Modify handle functions to return string
+std::string handleGetTime(const std::string& param) {
+    uartPrint("Getting current time");
     uint32_t currentTime = to_ms_since_boot(get_absolute_time());
-    uint8_t timeBytes[sizeof(uint32_t)];
-    std::memcpy(timeBytes, &currentTime, sizeof(uint32_t));
-    return std::vector<uint8_t>(timeBytes, timeBytes + sizeof(uint32_t));
+    return std::to_string(currentTime);
 }
 
-std::vector<uint8_t> handleGetVoltageBattery(const std::string& param) {
+std::string handleGetVoltageBattery(const std::string& param) {
+    uartPrint("Getting battery voltage");
     extern PowerManager powerManager;
     float voltage = powerManager.getVoltageBattery();
-    uint8_t floatBytes[sizeof(float)];
-    std::memcpy(floatBytes, &voltage, sizeof(float));
-    return std::vector<uint8_t>(floatBytes, floatBytes + sizeof(float));
+    return std::to_string(voltage);
 }
 
-std::vector<uint8_t> handleGetVoltage5V(const std::string& param) {
+std::string handleGetVoltage5V(const std::string& param) {
+    uartPrint("Getting 5V voltage");
     extern PowerManager powerManager;
     float voltage = powerManager.getVoltage5V();
-    uint8_t floatBytes[sizeof(float)];
-    std::memcpy(floatBytes, &voltage, sizeof(float));
-    return std::vector<uint8_t>(floatBytes, floatBytes + sizeof(float));
+    return std::to_string(voltage);
 }
 
-std::vector<uint8_t> handleGetCurrentChargeUSB(const std::string& param) {
+std::string handleGetCurrentChargeUSB(const std::string& param) {
+    uartPrint("Getting USB charge current");
     extern PowerManager powerManager;
     float chargeCurrent = powerManager.getCurrentChargeUSB();
-    uint8_t floatBytes[sizeof(float)];
-    std::memcpy(floatBytes, &chargeCurrent, sizeof(float));
-    return std::vector<uint8_t>(floatBytes, floatBytes + sizeof(float));
+    return std::to_string(chargeCurrent);
 }
 
-std::vector<uint8_t> handleGetCurrentChargeSolar(const std::string& param) {
+std::string handleGetCurrentChargeSolar(const std::string& param) {
+    uartPrint("Getting solar charge current");
     extern PowerManager powerManager;
     float chargeCurrent = powerManager.getCurrentChargeSolar();
-    uint8_t floatBytes[sizeof(float)];
-    std::memcpy(floatBytes, &chargeCurrent, sizeof(float));
-    return std::vector<uint8_t>(floatBytes, floatBytes + sizeof(float));
+    return std::to_string(chargeCurrent);
 }
 
-std::vector<uint8_t> handleGetCurrentChargeTotal(const std::string& param) {
+std::string handleGetCurrentChargeTotal(const std::string& param) {
+    uartPrint("Getting total charge current");
     extern PowerManager powerManager;
     float chargeCurrent = powerManager.getCurrentChargeTotal();
-    uint8_t floatBytes[sizeof(float)];
-    std::memcpy(floatBytes, &chargeCurrent, sizeof(float));
-    return std::vector<uint8_t>(floatBytes, floatBytes + sizeof(float));
+    return std::to_string(chargeCurrent);
 }
 
-std::vector<uint8_t> handleGetCurrentDraw(const std::string& param) {
+std::string handleGetCurrentDraw(const std::string& param) {
+    uartPrint("Getting current draw");
     extern PowerManager powerManager;
     float currentDraw = powerManager.getCurrentDraw();
-    uint8_t floatBytes[sizeof(float)];
-    std::memcpy(floatBytes, &currentDraw, sizeof(float));
-    return std::vector<uint8_t>(floatBytes, floatBytes + sizeof(float));
+    return std::to_string(currentDraw);
 }
 
-std::vector<uint8_t> handleGetGPSPowerStatus(const std::string& param) {
+std::string handleGetGPSPowerStatus(const std::string& param) {
+    uartPrint("Getting GPS power status");
     bool status = gpio_get(GPS_POWER_ENABLE_PIN);
-    std::string statusStr = status ? "ON" : "OFF";
-    return std::vector<uint8_t>(statusStr.begin(), statusStr.end());
+    return status ? "ON" : "OFF";
 }
 
-std::vector<uint8_t> handleSetGPSPowerStatus(const std::string& param) {
+std::string handleSetGPSPowerStatus(const std::string& param) {
+    uartPrint("Setting GPS power status to " + param);
     if (param.empty()) {
-        std::string message = "Error: GPS power status parameter required (on/off)";
-        return std::vector<uint8_t>(message.begin(), message.end());
+        return "Error: GPS power status parameter required (on/off)";
     }
     bool powerOn = (param == "on" || param == "1" || param == "true");
     gpio_put(GPS_POWER_ENABLE_PIN, powerOn);
-    std::string message = "GPS Power Status set to: " + std::string(powerOn ? "ON" : "OFF");
-    return std::vector<uint8_t>(message.begin(), message.end());
+    return "GPS Power Status set to: " + std::string(powerOn ? "ON" : "OFF");
 }
 
-std::vector<uint8_t> handleEnableGPSTransparentMode(const std::string& param) {
+std::string handleEnableGPSTransparentMode(const std::string& param) {
+    uartPrint("Enabling GPS Serial Pass-Through Mode, timeout " + param + "s");
     uint32_t timeoutMs = param.empty() ? 60000u : std::stoul(param) * 1000;
     uint32_t startTime = to_ms_since_boot(get_absolute_time());
 
@@ -110,11 +105,10 @@ std::vector<uint8_t> handleEnableGPSTransparentMode(const std::string& param) {
     uart_set_baudrate(DEBUG_UART_PORT, originalBaudRate);
 
     message = "Exiting GPS Serial Pass-Through Mode.";
-    return std::vector<uint8_t>(message.begin(), message.end());
+    return message;
 }
 
-
-using CommandHandler = std::function<std::vector<uint8_t>(const std::string&)>;
+using CommandHandler = std::function<std::string(const std::string&)>;
 
 using CommandMap = std::map<uint32_t, CommandHandler>;
 
@@ -131,12 +125,12 @@ CommandMap commandHandlers = {
     {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(3)), handleEnableGPSTransparentMode}, // Group 7, Command 3
 };
 
-std::vector<uint8_t> executeCommand(uint32_t commandKey, const std::string& param) {
+std::string executeCommand(uint32_t commandKey, const std::string& param) {
     auto it = commandHandlers.find(commandKey);
     if (it != commandHandlers.end()) {
+        uartPrint("Executing command: " + std::to_string(commandKey));
         return it->second(param); // Call the handler function
     } else {
-        std::string message = "Unknown command";
-        return std::vector<uint8_t>(message.begin(), message.end());
+        return "Unknown command";
     }
 }

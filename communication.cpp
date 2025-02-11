@@ -1,3 +1,4 @@
+// communication.cpp
 #include "protocol.h"
 #include "LoRa-RP2040.h"
 #include <cstdio>
@@ -70,119 +71,103 @@ void sendLargePacket(const uint8_t* data, size_t length)
     }
 }
 
-Frame buildFrame(uint8_t direction, uint8_t operation, uint8_t group, uint8_t command, const std::vector<uint8_t>& payload) {
+// Function to convert OperationType to string
+std::string operationTypeToString(OperationType type) {
+    switch (type) {
+        case OperationType::GET: return "GET";
+        case OperationType::SET: return "SET";
+        case OperationType::ANS: return "ANS";
+        default: return "UNKNOWN";
+    }
+}
+
+// Function to convert string to OperationType
+OperationType stringToOperationType(const std::string& str) {
+    if (str == "GET") return OperationType::GET;
+    if (str == "SET") return OperationType::SET;
+    if (str == "ANS") return OperationType::ANS;
+    return OperationType::GET; // Default to GET
+}
+
+Frame buildFrame(uint8_t direction, OperationType operationType, uint8_t group, uint8_t command, const std::string& value, const std::string& unit) {
     Frame frame;
-    frame.header = 0xCAFE;
+    frame.header = HEADER;
     frame.direction = direction;
-    frame.operation = operation;
+    frame.operationType = operationType;
     frame.group = group;
     frame.command = command;
-    frame.payload = payload;
-    frame.length = payload.size();
-    frame.checksum = calculateChecksum(frame.direction, frame.operation, frame.group, frame.command, frame.length, frame.payload);
+    frame.value = value;
+    frame.unit = unit;
     return frame;
 }
 
-// Encode a frame into a byte buffer
-std::vector<uint8_t> encodeFrame(const Frame& frame)
-{
-    std::vector<uint8_t> buffer;
-    buffer.push_back(frame.header);
-    buffer.push_back(frame.direction);
-    buffer.push_back(frame.operation);
-    buffer.push_back(frame.group);
-    buffer.push_back(frame.command);
-
-    // Add 16-bit payload length
-    buffer.push_back((frame.length >> 8) & 0xFF);
-    buffer.push_back(frame.length & 0xFF);
-
-    // Add payload bytes
-    buffer.insert(buffer.end(), frame.payload.begin(), frame.payload.end());
-
-    // Append checksum
-    buffer.push_back(frame.checksum);
-    return buffer;
+// Encode a frame into a string
+std::string encodeFrame(const Frame& frame) {
+    std::stringstream ss;
+    ss << frame.header << DELIMITER
+       << static_cast<int>(frame.direction) << DELIMITER
+       << operationTypeToString(frame.operationType) << DELIMITER
+       << static_cast<int>(frame.group) << DELIMITER
+       << static_cast<int>(frame.command) << DELIMITER
+       << frame.value << DELIMITER
+       << frame.unit;
+    return ss.str();
 }
 
-// Decode a byte buffer into a Frame. Throws std::runtime_error if frame is bad.
-Frame decodeFrame(const std::vector<uint8_t>& data) {
-    if (data.size() < 8)
-        throw std::runtime_error("Data too short to be a valid frame");
-
+// Decode a string into a Frame. Throws std::runtime_error if frame is bad.
+Frame decodeFrame(const std::string& data) {
     Frame frame;
-    size_t pos = 0;
+    std::stringstream ss(data);
+    std::string token;
 
-    // Read the header as a uint16_t from two bytes
-    frame.header = (data[pos] << 8) | data[pos + 1];
-    pos += 2;
-
-    if (frame.header != 0xCAFE)
+    std::getline(ss, token, DELIMITER);
+    if (token != HEADER)
         throw std::runtime_error("Invalid frame header");
+    frame.header = token;
 
-    frame.direction = data[pos++];
-    frame.operation = data[pos++];
-    frame.group = data[pos++];
-    frame.command = data[pos++];
+    std::getline(ss, token, DELIMITER);
+    frame.direction = std::stoi(token);
 
-    frame.length = (data[pos] << 8) | data[pos + 1];
-    pos += 2;
+    std::getline(ss, token, DELIMITER);
+    frame.operationType = stringToOperationType(token);
 
-    if (data.size() < pos + frame.length)
-        throw std::runtime_error("Data length does not match payload length");
+    std::getline(ss, token, DELIMITER);
+    frame.group = std::stoi(token);
 
-    frame.payload.assign(data.begin() + pos, data.begin() + pos + frame.length);
-    pos += frame.length;
+    std::getline(ss, token, DELIMITER);
+    frame.command = std::stoi(token);
 
-    if (pos >= data.size()) {
-        throw std::runtime_error("Checksum byte missing");
-    }
-    frame.checksum = data[pos];
+    std::getline(ss, token, DELIMITER);
+    frame.value = token;
 
-    uint8_t calcSum = calculateChecksum(frame.direction, frame.operation, frame.group, frame.command, frame.length, frame.payload);
-
-    if (calcSum != frame.checksum)
-        throw std::runtime_error("Checksum mismatch");
+    std::getline(ss, token, DELIMITER);
+    frame.unit = token;
 
     return frame;
 }
 
-Frame buildResponseFrame(const Frame& requestFrame, uint8_t status, const std::vector<uint8_t>& responseData) {
+Frame buildResponseFrame(const Frame& requestFrame, const std::string& value, const std::string& unit) {
     Frame responseFrame;
-    responseFrame.header = 0xCAFE;
+    responseFrame.header = HEADER;
     responseFrame.direction = (requestFrame.direction == 0) ? 1 : 0; // Reverse direction
-    responseFrame.operation = 0; // GET
+    responseFrame.operationType = OperationType::ANS; // ANS
     responseFrame.group = requestFrame.group;
     responseFrame.command = requestFrame.command;
-    responseFrame.payload = responseData;
-    responseFrame.length = responseData.size();
-    responseFrame.checksum = calculateChecksum(responseFrame.direction, responseFrame.operation, responseFrame.group, responseFrame.command, responseFrame.length, responseFrame.payload);
+    responseFrame.value = value;
+    responseFrame.unit = unit;
 
     return responseFrame;
 }
 
 // Sends a Frame using LoRa by encoding it into bytes.
 void sendFrame(const Frame& frame) {
-    std::vector<uint8_t> buffer = encodeFrame(frame);
-    sendLargePacket(buffer.data(), buffer.size());
+    std::string encodedFrame = encodeFrame(frame);
+    // sendLargePacket(data, encodedFrame);
+    sendMessage(encodedFrame);
 }
-
-uint8_t calculateChecksum(uint8_t direction, uint8_t operation, uint8_t group, uint8_t command, uint16_t length, const std::vector<uint8_t>& payload) {
-    uint8_t checksum = 0;
-    checksum += direction;
-    checksum += operation;
-    checksum += group;
-    checksum += command;
-    checksum += (length >> 8) & 0xFF;
-    checksum += length & 0xFF;
-    for (auto byte : payload)
-        checksum += byte;
-    return checksum;
-}
-
 
 // Command handler function type
-using CommandHandler = std::function<std::vector<uint8_t>(const std::string&)>;
+using CommandHandler = std::function<std::string(const std::string&)>;
 
 // Declare command map
 extern std::map<uint32_t, CommandHandler> commandHandlers;
@@ -193,35 +178,31 @@ void handleCommandFrame(const Frame& frame) {
     auto it = commandHandlers.find(commandKey);
 
     if (it != commandHandlers.end()) {
-        std::string param(frame.payload.begin(), frame.payload.end());
+        std::string param = frame.value;
 
         // Execute the command and get the response data
-        std::vector<uint8_t> responseData = executeCommand(commandKey, param);
+        std::string response = executeCommand(commandKey, param);
 
-        // Build and send the response frame
-        Frame responseFrame = buildResponseFrame(frame, 0, responseData);
+        uartPrint("Sending response data: " + response);
+        Frame responseFrame = buildResponseFrame(frame, "", "");
         sendFrame(responseFrame);
     } else {
         uartPrint("Error: Unknown group/command combination");
     }
 }
 
-std::vector<uint8_t> hexStringToBytes(const std::string& hexString) {
-    std::vector<uint8_t> bytes;
-    for (size_t i = 0; i < hexString.length(); i += 2) {
-        std::string byteString = hexString.substr(i, 2);
-        unsigned int byte;
-        std::stringstream ss;
-        ss << std::hex << byteString;
-        ss >> byte;
-        bytes.push_back(static_cast<uint8_t>(byte));
-    }
-    return bytes;
-}
-
-void processFrameData(const std::vector<uint8_t>& data) {
+void processFrameData(const std::string& data) {
     try {
-        Frame frame = decodeFrame(data);
+        // Find the starting position of the header
+        size_t headerPos = data.find(HEADER);
+        if (headerPos == std::string::npos) {
+            throw std::runtime_error("Invalid frame header");
+        }
+
+        // Extract the frame data starting from the header
+        std::string frameData = data.substr(headerPos);
+
+        Frame frame = decodeFrame(frameData);
         std::string messageToLog = "Received valid frame from group: " + std::to_string(frame.group) +
                                    " command: " + std::to_string(frame.command);
         uartPrint(messageToLog);
@@ -235,34 +216,13 @@ void onReceive(int packetSize) {
     if (packetSize == 0)
         return;
 
-    std::string hexString;
+    std::string receivedString;
     while (LoRa.available()) {
-        hexString += (char)LoRa.read();
+        receivedString += (char)LoRa.read();
     }
 
-    // Debug print received hex string
-    uartPrint("Received LoRa hex string: " + hexString, true);
-
-    // Find the "CAFE" sequence in the hex string
-    size_t cafePos = hexString.find("CAFE");
-    if (cafePos != std::string::npos) {
-        // Trim the hex string to start from "CAFE"
-        hexString = hexString.substr(cafePos);
-    }
-
-    // Convert hex string to bytes
-    std::vector<uint8_t> dataBuffer = hexStringToBytes(hexString);
-
-    // Debug print converted bytes
-    std::string byteString = "Received LoRa bytes: ";
-    for (uint8_t b : dataBuffer) {
-        char hex[4];
-        snprintf(hex, sizeof(hex), "%02X ", b);
-        byteString += hex;
-    }
-    uartPrint(byteString);
-
-    processFrameData(dataBuffer);
+    uartPrint("Received LoRa string: " + receivedString, true);
+    processFrameData(receivedString);
     lastReceiveTime = to_ms_since_boot(get_absolute_time());
 }
 
@@ -273,22 +233,8 @@ void handleUartInput() {
         char c = uart_getc(DEBUG_UART_PORT);
 
         if (c == '\r' || c == '\n') {
-            // Debug print received UART string
             uartPrint("Received UART string: " + uartBuffer);
-
-            // Convert hex string to bytes
-            std::vector<uint8_t> dataBuffer = hexStringToBytes(uartBuffer);
-
-            // Debug print converted bytes
-            std::string byteString = "Received UART bytes: ";
-            for (uint8_t b : dataBuffer) {
-                char hex[4];
-                snprintf(hex, sizeof(hex), "%02X ", b);
-                byteString += hex;
-            }
-            uartPrint(byteString);
-
-            processFrameData(dataBuffer); // Process the data
+            processFrameData(uartBuffer); // Process the data
             uartBuffer.clear(); // Clear the buffer for the next input
         } else {
             // Append the character to the buffer

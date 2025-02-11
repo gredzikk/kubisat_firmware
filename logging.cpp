@@ -29,21 +29,21 @@ void loggingRoutine() {
     bool sd_initialized = false;
     bool sd_mounted = false;
 
-    // Initialize SD card driver
-    if (!initializeSDCard(buf)) {
-        uartPrint("SD card driver initialization failed!\n");
-        return;
-    }
-    sd_initialized = true;
-    uartPrint("SD card driver initialized.");
+    // // Initialize SD card driver
+    // if (!initializeSDCard(buf)) {
+    //     uartPrint("SD card driver initialization failed!\n");
+    //     return;
+    // }
+    // sd_initialized = true;
+    // uartPrint("SD card driver initialized.");
 
-    // Mount the file system
-    if (!mountDrive(fs, buf)) {
-        uartPrint("SD card mount failed!\n");
-        return;
-    }
-    sd_mounted = true;
-    uartPrint("SD card mounted.");
+    // // Mount the file system
+    // if (!mountDrive(fs, buf)) {
+    //     uartPrint("SD card mount failed!\n");
+    //     return;
+    // }
+    // sd_mounted = true;
+    // uartPrint("SD card mounted.");
 
     uartPrint("Logging routine started.");
 
