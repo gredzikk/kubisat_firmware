@@ -45,7 +45,7 @@ struct Group
 
 
 struct Frame {
-    int header = 0xCAFE;    // Start marker
+    uint16_t header = 0xCAFE;    // Start marker
     uint8_t direction;        // 0 = ground->sat, 1 = sat->ground
     uint8_t operation;        // 0 = get, 1 = set
     uint8_t group;            // Group ID
@@ -59,6 +59,8 @@ bool initializeRadio();
 void sendMessage(std::string outgoing);
 void sendLargePacket(const uint8_t* data, size_t length);
 void onReceive(int packetSize);
+void handleUartInput();
+void processFrameData(const std::vector<uint8_t>& data);
 
 Frame buildFrame(uint8_t direction, uint8_t operation, uint8_t group, uint8_t command, const std::vector<uint8_t>& payload);
 std::vector<uint8_t> encodeFrame(const Frame& frame);

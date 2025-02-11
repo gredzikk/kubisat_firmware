@@ -181,22 +181,18 @@ int LoRaClass::endPacket(bool async)
 {
 
   if ((async) && (_onTxDone)) {
-    printf("LORA send async mode");
     writeRegister(REG_DIO_MAPPING_1, 0x40); // DIO0 => TXDONE
   }
   // put in TX mode
   writeRegister(REG_OP_MODE, MODE_LONG_RANGE_MODE | MODE_TX);
-  printf("LORA TX mode set");
 
   if (!async) {
     // wait for TX done
-    printf("LORA wait for TX");
     while ((readRegister(REG_IRQ_FLAGS) & IRQ_TX_DONE_MASK) == 0) {
       sleep_ms(0);
     }
     // clear IRQ's
     writeRegister(REG_IRQ_FLAGS, IRQ_TX_DONE_MASK);
-    printf("LORA send done");
   }
 
   return 1;

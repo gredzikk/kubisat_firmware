@@ -7,6 +7,8 @@
 #include <thread>
 #include <map>
 #include "utils.h"
+#include <sstream>
+#include <iomanip>
 
 using std::string;
 
@@ -114,14 +116,17 @@ std::vector<uint8_t> encodeFrame(const Frame& frame)
 }
 
 // Decode a byte buffer into a Frame. Throws std::runtime_error if frame is bad.
-Frame decodeFrame(const std::vector<uint8_t>& data)
-{
+Frame decodeFrame(const std::vector<uint8_t>& data) {
     if (data.size() < 8)
         throw std::runtime_error("Data too short to be a valid frame");
 
     Frame frame;
     size_t pos = 0;
-    frame.header = data[pos++];
+
+    // Read the header as a uint16_t from two bytes
+    frame.header = (data[pos] << 8) | data[pos + 1];
+    pos += 2;
+
     if (frame.header != 0xCAFE)
         throw std::runtime_error("Invalid frame header");
 
@@ -133,11 +138,15 @@ Frame decodeFrame(const std::vector<uint8_t>& data)
     frame.length = (data[pos] << 8) | data[pos + 1];
     pos += 2;
 
-    if (data.size() < pos + frame.length + 1)
+    if (data.size() < pos + frame.length)
         throw std::runtime_error("Data length does not match payload length");
 
     frame.payload.assign(data.begin() + pos, data.begin() + pos + frame.length);
     pos += frame.length;
+
+    if (pos >= data.size()) {
+        throw std::runtime_error("Checksum byte missing");
+    }
     frame.checksum = data[pos];
 
     // Recalculate checksum
@@ -213,52 +222,93 @@ void handleCommandFrame(const Frame& frame) {
     }
 }
 
-// Sample onReceive callback that decodes a received packet into a frame.
-void onReceive(int packetSize)
-{
-    if(packetSize == 0)
+std::vector<uint8_t> hexStringToBytes(const std::string& hexString) {
+    std::vector<uint8_t> bytes;
+    for (size_t i = 0; i < hexString.length(); i += 2) {
+        std::string byteString = hexString.substr(i, 2);
+        unsigned int byte;
+        std::stringstream ss;
+        ss << std::hex << byteString;
+        ss >> byte;
+        bytes.push_back(static_cast<uint8_t>(byte));
+    }
+    return bytes;
+}
+
+void processFrameData(const std::vector<uint8_t>& data) {
+    try {
+        Frame frame = decodeFrame(data);
+        std::string messageToLog = "Received valid frame from group: " + std::to_string(frame.group) +
+                                   " command: " + std::to_string(frame.command);
+        uartPrint(messageToLog);
+        handleCommandFrame(frame);
+    } catch (const std::exception& e) {
+        uartPrint("Frame error: " + std::string(e.what()));
+    }
+}
+
+void onReceive(int packetSize) {
+    if (packetSize == 0)
         return;
 
-    // Read raw bytes from LoRa into a string first
     std::string hexString;
-    while(LoRa.available()) {
+    while (LoRa.available()) {
         hexString += (char)LoRa.read();
     }
 
-    try {
-        // Debug print received hex string
-        uart_puts(DEBUG_UART_PORT, "Received hex: ");
-        uart_puts(DEBUG_UART_PORT, hexString.c_str());
-        uart_puts(DEBUG_UART_PORT, "\r\n");
+    // Debug print received hex string
+    uartPrint("Received LoRa hex string: " + hexString);
 
-        // Convert hex string to bytes
-        std::vector<uint8_t> buffer;
-        for(size_t i = 0; i < hexString.length(); i += 2) {
-            std::string byteString = hexString.substr(i, 2);
-            uint8_t byte = (uint8_t)strtol(byteString.c_str(), nullptr, 16);
-            buffer.push_back(byte);
-        }
-
-        // Debug print converted bytes
-        std::string hexStr = "Converted bytes: ";
-        for(uint8_t b : buffer) {
-            char hex[4];
-            snprintf(hex, sizeof(hex), "%02X ", b);
-            hexStr += hex;
-        }
-        uart_puts(DEBUG_UART_PORT, hexStr.c_str());
-        uart_puts(DEBUG_UART_PORT, "\r\n");
-
-        Frame frame = decodeFrame(buffer);
-        std::string messageToLog = "Received valid frame from group: " + std::to_string(frame.group) +
-                   " command: " + std::to_string(frame.command);
-        uartPrint(messageToLog);
-
-        handleCommandFrame(frame);
-    }
-    catch(const std::exception& e) {
-        uartPrint("Frame error: " + std::string(e.what()));
+    // Find the "CAFE" sequence in the hex string
+    size_t cafePos = hexString.find("CAFE");
+    if (cafePos != std::string::npos) {
+        // Trim the hex string to start from "CAFE"
+        hexString = hexString.substr(cafePos);
     }
 
+    // Convert hex string to bytes
+    std::vector<uint8_t> dataBuffer = hexStringToBytes(hexString);
+
+    // Debug print converted bytes
+    std::string byteString = "Received LoRa bytes: ";
+    for (uint8_t b : dataBuffer) {
+        char hex[4];
+        snprintf(hex, sizeof(hex), "%02X ", b);
+        byteString += hex;
+    }
+    uartPrint(byteString);
+
+    processFrameData(dataBuffer);
     lastReceiveTime = to_ms_since_boot(get_absolute_time());
+}
+
+void handleUartInput() {
+    static std::string uartBuffer; // Static buffer to store UART input
+
+    while (uart_is_readable(DEBUG_UART_PORT)) {
+        char c = uart_getc(DEBUG_UART_PORT);
+
+        if (c == '\r' || c == '\n') {
+            // Debug print received UART string
+            uartPrint("Received UART string: " + uartBuffer);
+
+            // Convert hex string to bytes
+            std::vector<uint8_t> dataBuffer = hexStringToBytes(uartBuffer);
+
+            // Debug print converted bytes
+            std::string byteString = "Received UART bytes: ";
+            for (uint8_t b : dataBuffer) {
+                char hex[4];
+                snprintf(hex, sizeof(hex), "%02X ", b);
+                byteString += hex;
+            }
+            uartPrint(byteString);
+
+            processFrameData(dataBuffer); // Process the data
+            uartBuffer.clear(); // Clear the buffer for the next input
+        } else {
+            // Append the character to the buffer
+            uartBuffer += c;
+        }
+    }
 }
