@@ -104,14 +104,22 @@ Frame buildFrame(uint8_t direction, OperationType operationType, uint8_t group, 
 // Encode a frame into a string
 std::string encodeFrame(const Frame& frame) {
     std::stringstream ss;
-    ss << frame.header << DELIMITER
-       << static_cast<int>(frame.direction) << DELIMITER
+    ss << static_cast<int>(frame.direction) << DELIMITER
        << operationTypeToString(frame.operationType) << DELIMITER
        << static_cast<int>(frame.group) << DELIMITER
        << static_cast<int>(frame.command) << DELIMITER
        << frame.value << DELIMITER
        << frame.unit;
-    return ss.str();
+
+    std::string frameData = ss.str();
+
+    // Calculate CRC-16 checksum
+    uint16_t checksum = crc16(reinterpret_cast<const uint8_t*>(frameData.c_str()), frameData.length());
+
+    // Append checksum to the frame data
+    ss << DELIMITER << std::hex << std::setw(4) << std::setfill('0') << checksum;
+
+    return HEADER + ss.str();
 }
 
 // Decode a string into a Frame. Throws std::runtime_error if frame is bad.
@@ -125,22 +133,43 @@ Frame decodeFrame(const std::string& data) {
         throw std::runtime_error("Invalid frame header");
     frame.header = token;
 
-    std::getline(ss, token, DELIMITER);
+    std::string frameDataWithoutCrc;
+    while (std::getline(ss, token, DELIMITER)) {
+        if (ss.tellg() == -1) break;
+        frameDataWithoutCrc += token + DELIMITER;
+    }
+    if (!frameDataWithoutCrc.empty()) {
+        frameDataWithoutCrc.pop_back();
+    }
+
+    uint16_t receivedCrc;
+    std::stringstream crcStream(token);
+    crcStream >> std::hex >> receivedCrc;
+
+    uint16_t calculatedCrc = crc16(reinterpret_cast<const uint8_t*>(frameDataWithoutCrc.c_str()), frameDataWithoutCrc.length());
+
+    if (receivedCrc != calculatedCrc) {
+        throw std::runtime_error("CRC check failed");
+    }
+
+    std::stringstream frameDataStream(frameDataWithoutCrc);
+
+    std::getline(frameDataStream, token, DELIMITER);
     frame.direction = std::stoi(token);
 
-    std::getline(ss, token, DELIMITER);
+    std::getline(frameDataStream, token, DELIMITER);
     frame.operationType = stringToOperationType(token);
 
-    std::getline(ss, token, DELIMITER);
+    std::getline(frameDataStream, token, DELIMITER);
     frame.group = std::stoi(token);
 
-    std::getline(ss, token, DELIMITER);
+    std::getline(frameDataStream, token, DELIMITER);
     frame.command = std::stoi(token);
 
-    std::getline(ss, token, DELIMITER);
+    std::getline(frameDataStream, token, DELIMITER);
     frame.value = token;
 
-    std::getline(ss, token, DELIMITER);
+    std::getline(frameDataStream, token, DELIMITER);
     frame.unit = token;
 
     return frame;
@@ -187,7 +216,7 @@ Frame buildResponseFrame(const Frame& requestFrame, const std::string& value) {
             }
         }
     }
-    // If the unit is not found, set it to an empty string
+
     responseFrame.unit = "";
     return responseFrame;
 }

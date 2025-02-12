@@ -33,3 +33,19 @@ void uartPrint(const std::string& msg, bool logToFile, uart_inst_t* uart) {
     uart_puts(uart, msgToSend.c_str());
     mutex_exit(&uart_mutex);
 }
+
+uint16_t crc16(const uint8_t *data, size_t length) {
+    uint16_t crc = 0xFFFF; // Initial value
+    for (size_t i = 0; i < length; ++i) {
+        crc ^= data[i];
+        for (int j = 0; j < 8; ++j) {
+            if ((crc & 0x0001) != 0) {
+                crc >>= 1;
+                crc ^= 0xA001;
+            } else {
+                crc >>= 1;
+            }
+        }
+    }
+    return crc;
+}

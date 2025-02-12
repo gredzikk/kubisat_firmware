@@ -25,14 +25,14 @@ enum class CommandAccessLevel {
 
 enum class ValueUnit {
     UNDEFINED,
-    NONE,
     SECOND,
     VOLT,
     BOOL,
     DATETIME,
-    STRING,
+    TEXT,
     MILIAMP,
 };
+
 struct Command
 {
     int Id;
@@ -94,14 +94,14 @@ inline std::vector<Group> getGroups()
             1,
             "0x01 - DIAGNOSTICS",
             {
-                { 0, "0x00 - FIRMWARE_VERSION", CommandAccessLevel::READ_ONLY, ValueUnit::STRING },
+                { 0, "0x00 - FIRMWARE_VERSION", CommandAccessLevel::READ_ONLY, ValueUnit::TEXT },
             }
         },
         {
             2,
             "0x02 - POWER MANAGER",
             {
-                { 0, "0x00 - ID", CommandAccessLevel::READ_ONLY, ValueUnit::STRING },
+                { 0, "0x00 - ID", CommandAccessLevel::READ_ONLY, ValueUnit::TEXT },
                 { 1, "0x01 - NDEF", CommandAccessLevel::NONE, ValueUnit::UNDEFINED },
                 { 2, "0x02 - VOLTAGE_BATTERY", CommandAccessLevel::READ_ONLY, ValueUnit::VOLT },
                 { 3, "0x03 - VOLTAGE_5V", CommandAccessLevel::READ_ONLY, ValueUnit::VOLT },
@@ -149,7 +149,8 @@ inline std::vector<Group> getGroups()
             8,
             "0x08 - EVENTS",
             {
-                { 0, "0x00 - EVENT_REGISTER", CommandAccessLevel::READ_ONLY, ValueUnit::STRING }
+                { 0, "0x00 - EVENT_REGISTER", CommandAccessLevel::READ_ONLY, ValueUnit::TEXT },
+                { 1, "0x01 - RESET_EVENTS", CommandAccessLevel::WRITE_ONLY, ValueUnit::BOOL }
             }
         },
         {
@@ -191,7 +192,7 @@ inline std::vector<Group> getGroups()
             14,
             "0x0E - KUBISAT_INFO",
             {
-                { 0, "0x00 - NAME", CommandAccessLevel::READ_WRITE, ValueUnit::STRING },
+                { 0, "0x00 - NAME", CommandAccessLevel::READ_WRITE, ValueUnit::TEXT },
             }
         },
         {

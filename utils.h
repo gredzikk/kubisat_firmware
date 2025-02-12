@@ -8,5 +8,6 @@
 #include "pin_config.h"
 
 void uartPrint(const std::string& msg, bool logToFile = false, uart_inst_t* uart = DEBUG_UART_PORT);
+uint16_t crc16(const uint8_t *data, size_t length);
 
 #endif
