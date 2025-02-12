@@ -41,19 +41,23 @@ void sendMessage(string outgoing)
     LoRa.beginPacket();       // start packet
     LoRa.write(destination);  // add destination address
     LoRa.write(localAddress); // add sender address
-    LoRa.write(msgCount);     // add message ID
-    LoRa.write(n + 1);        // add payload length
     LoRa.print(send);         // add payload
     LoRa.endPacket(false);    // finish packet and send it
-    msgCount++;               // increment message ID
 
-    std::string messageToLog = "Sent message of size " + std::to_string(n) + " with ID " + std::to_string(msgCount);
-    messageToLog += " to: 0x" + std::to_string(destination);
+    std::string messageToLog = "Sent message of size " + std::to_string(n);
+    messageToLog += " to 0x" + std::to_string(destination);
     messageToLog += " containing: " + string(send);
 
     uartPrint(messageToLog);
     
     LoRa.flush();
+}
+
+// Sends a Frame using LoRa by encoding it into bytes.
+void sendFrame(const Frame& frame) {
+    std::string encodedFrame = encodeFrame(frame);
+    // sendLargePacket(data, encodedFrame);
+    sendMessage(encodedFrame);
 }
 
 void sendLargePacket(const uint8_t* data, size_t length)
@@ -91,14 +95,19 @@ OperationType stringToOperationType(const std::string& str) {
 
 Frame buildFrame(uint8_t direction, OperationType operationType, uint8_t group, uint8_t command, const std::string& value, const std::string& unit) {
     Frame frame;
-    frame.header = HEADER;
+    frame.header = FRAME_BEGIN;
     frame.direction = direction;
     frame.operationType = operationType;
     frame.group = group;
     frame.command = command;
     frame.value = value;
     frame.unit = unit;
+    frame.footer = FRAME_END;
     return frame;
+}
+
+Frame buildErrorFrame(const std::string& errorMessage) {
+    return buildFrame(1, OperationType::ERR, 0, 0, errorMessage, "");
 }
 
 // Encode a frame into a string
@@ -111,73 +120,61 @@ std::string encodeFrame(const Frame& frame) {
        << frame.value << DELIMITER
        << frame.unit;
 
-    std::string frameData = ss.str();
-
-    // Calculate CRC-16 checksum
-    uint16_t checksum = crc16(reinterpret_cast<const uint8_t*>(frameData.c_str()), frameData.length());
-
-    // Append checksum to the frame data
-    ss << DELIMITER << std::hex << std::setw(4) << std::setfill('0') << checksum;
-
-    return HEADER + ss.str();
+    return FRAME_BEGIN + DELIMITER + ss.str() + DELIMITER + FRAME_END;
 }
 
 // Decode a string into a Frame. Throws std::runtime_error if frame is bad.
 Frame decodeFrame(const std::string& data) {
-    Frame frame;
-    std::stringstream ss(data);
-    std::string token;
+    try {
+        Frame frame;
+        std::stringstream ss(data);
+        std::string token;
 
-    std::getline(ss, token, DELIMITER);
-    if (token != HEADER)
-        throw std::runtime_error("Invalid frame header");
-    frame.header = token;
+        std::getline(ss, token, DELIMITER);
+        if (token != FRAME_BEGIN)
+            throw std::runtime_error("Invalid frame header");
+        frame.header = token;
 
-    std::string frameDataWithoutCrc;
-    while (std::getline(ss, token, DELIMITER)) {
-        if (ss.tellg() == -1) break;
-        frameDataWithoutCrc += token + DELIMITER;
+        std::string frameDataWithoutCrc;
+        while (std::getline(ss, token, DELIMITER)) {
+            if (token == FRAME_END) break; // Stop at the footer
+            frameDataWithoutCrc += token + DELIMITER;
+        }
+        if (!frameDataWithoutCrc.empty()) {
+            frameDataWithoutCrc.pop_back();
+        }
+
+        std::stringstream frameDataStream(frameDataWithoutCrc);
+
+        std::getline(frameDataStream, token, DELIMITER);
+        frame.direction = std::stoi(token);
+
+        std::getline(frameDataStream, token, DELIMITER);
+        frame.operationType = stringToOperationType(token);
+
+        std::getline(frameDataStream, token, DELIMITER);
+        frame.group = std::stoi(token);
+
+        std::getline(frameDataStream, token, DELIMITER);
+        frame.command = std::stoi(token);
+
+        std::getline(frameDataStream, token, DELIMITER);
+        frame.value = token;
+
+        std::getline(frameDataStream, token, DELIMITER);
+        frame.unit = token;
+
+        return frame;
+    } catch (const std::exception& e) {
+        uartPrint("Frame error: " + std::string(e.what()));
+        Frame errorFrame = buildErrorFrame(e.what());
+        sendFrame(errorFrame);
+        throw; // Re-throw the exception so that the calling function knows that an error occurred.
     }
-    if (!frameDataWithoutCrc.empty()) {
-        frameDataWithoutCrc.pop_back();
-    }
-
-    uint16_t receivedCrc;
-    std::stringstream crcStream(token);
-    crcStream >> std::hex >> receivedCrc;
-
-    uint16_t calculatedCrc = crc16(reinterpret_cast<const uint8_t*>(frameDataWithoutCrc.c_str()), frameDataWithoutCrc.length());
-
-    if (receivedCrc != calculatedCrc) {
-        throw std::runtime_error("CRC check failed");
-    }
-
-    std::stringstream frameDataStream(frameDataWithoutCrc);
-
-    std::getline(frameDataStream, token, DELIMITER);
-    frame.direction = std::stoi(token);
-
-    std::getline(frameDataStream, token, DELIMITER);
-    frame.operationType = stringToOperationType(token);
-
-    std::getline(frameDataStream, token, DELIMITER);
-    frame.group = std::stoi(token);
-
-    std::getline(frameDataStream, token, DELIMITER);
-    frame.command = std::stoi(token);
-
-    std::getline(frameDataStream, token, DELIMITER);
-    frame.value = token;
-
-    std::getline(frameDataStream, token, DELIMITER);
-    frame.unit = token;
-
-    return frame;
 }
-
 Frame buildResponseFrame(const Frame& requestFrame, const std::string& value) {
     Frame responseFrame;
-    responseFrame.header = HEADER;
+    responseFrame.header = FRAME_BEGIN;
     responseFrame.direction = (requestFrame.direction == 0) ? 1 : 0; // Reverse direction
     responseFrame.operationType = OperationType::ANS; // ANS
     responseFrame.group = requestFrame.group;
@@ -221,15 +218,10 @@ Frame buildResponseFrame(const Frame& requestFrame, const std::string& value) {
     return responseFrame;
 }
 
-// Sends a Frame using LoRa by encoding it into bytes.
-void sendFrame(const Frame& frame) {
-    std::string encodedFrame = encodeFrame(frame);
-    // sendLargePacket(data, encodedFrame);
-    sendMessage(encodedFrame);
-}
+
 
 // Command handler function type
-using CommandHandler = std::function<std::string(const std::string&)>;
+using CommandHandler = std::function<std::string(const std::string&, OperationType)>;
 
 // Declare command map
 extern std::map<uint32_t, CommandHandler> commandHandlers;
@@ -243,7 +235,7 @@ void handleCommandFrame(const Frame& frame) {
         std::string param = frame.value;
 
         // Execute the command and get the response data
-        std::string response = executeCommand(commandKey, param);
+        std::string response = executeCommand(commandKey, param, frame.operationType);
 
         uartPrint("Sending response data: " + response);
         Frame responseFrame = buildResponseFrame(frame, response);
@@ -256,7 +248,7 @@ void handleCommandFrame(const Frame& frame) {
 void processFrameData(const std::string& data) {
     try {
         // Find the starting position of the header
-        size_t headerPos = data.find(HEADER);
+        size_t headerPos = data.find(FRAME_BEGIN);
         if (headerPos == std::string::npos) {
             throw std::runtime_error("Invalid frame header");
         }
@@ -264,28 +256,92 @@ void processFrameData(const std::string& data) {
         // Extract the frame data starting from the header
         std::string frameData = data.substr(headerPos);
 
-        Frame frame = decodeFrame(frameData);
+        // Find the footer position
+        size_t footerPos = frameData.find(FRAME_END);
+
+        // Extract the frame data without the footer
+        std::string frameWithoutFooter = (footerPos != std::string::npos) ?
+            frameData.substr(0, footerPos) : frameData;
+
+        Frame frame = decodeFrame(frameWithoutFooter);
         std::string messageToLog = "Received valid frame from group: " + std::to_string(frame.group) +
                                    " command: " + std::to_string(frame.command);
         uartPrint(messageToLog);
         handleCommandFrame(frame);
     } catch (const std::exception& e) {
         uartPrint("Frame error: " + std::string(e.what()));
+        Frame errorFrame = buildErrorFrame(e.what());
+        sendFrame(errorFrame);
     }
 }
 
-void onReceive(int packetSize) {
-    if (packetSize == 0)
-        return;
+std::vector<uint8_t> hexStringToBytes(const std::string& hexString) {
+    std::vector<uint8_t> bytes;
+    for (size_t i = 0; i < hexString.length(); i += 2) {
+        std::string byteString = hexString.substr(i, 2);
+        unsigned int byte;
+        std::stringstream ss;
+        ss << std::hex << byteString;
+        ss >> byte;
+        bytes.push_back(static_cast<uint8_t>(byte));
+    }
+    return bytes;
+}
 
-    std::string receivedString;
-    while (LoRa.available()) {
-        receivedString += (char)LoRa.read();
+void onReceive(int packetSize) {
+    if (packetSize == 0) return;
+
+    uint8_t buffer[256];
+    int bytesRead = 0;
+    
+    while (LoRa.available() && bytesRead < packetSize) {
+        buffer[bytesRead++] = LoRa.read();
+    }
+    
+    // Extract LoRa metadata
+    uint8_t receivedDestination = buffer[0];
+    uint8_t receivedLocalAddress = buffer[1];
+    
+    // Validate metadata (optional, for security)
+    if (receivedDestination != localAddress) {
+        uartPrint("Error: Destination address mismatch!");
+        return;
+    }
+    
+    if (receivedLocalAddress != destination) {
+        uartPrint("Error: Local address mismatch!");
+        return;
     }
 
-    uartPrint("Received LoRa string: " + receivedString, true);
-    processFrameData(receivedString);
-    lastReceiveTime = to_ms_since_boot(get_absolute_time());
+    // Find the starting index of the actual frame data
+    int startIndex = 2; // Start after the metadata
+    
+    // Extract the frame data
+    std::string received = std::string(reinterpret_cast<char*>(buffer + startIndex), bytesRead - startIndex);
+    
+    if (received.empty()) return;
+    
+    // Debug: Print raw hex values
+    std::stringstream hexDump;
+    hexDump << "Raw bytes: ";
+    for (int i = 0; i < bytesRead; i++) {
+        hexDump << std::hex << std::setfill('0') << std::setw(2) 
+                << static_cast<int>(buffer[i]) << " ";
+    }
+    uartPrint(hexDump.str());
+    
+    // Find frame boundaries
+    size_t headerPos = received.find(FRAME_BEGIN);
+    size_t footerPos = received.find(FRAME_END);
+    
+    if (headerPos != std::string::npos && footerPos != std::string::npos && footerPos > headerPos) {
+        // Extract frame between header and footer
+        std::string frameData = received.substr(headerPos, footerPos + FRAME_END.length() - headerPos);
+        uartPrint("Extracted frame (length=" + std::to_string(frameData.length()) + "): " + frameData);
+        processFrameData(frameData);
+    } else {
+        uartPrint("No valid frame found in received data");
+    }
 }
 
 void handleUartInput() {

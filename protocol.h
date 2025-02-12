@@ -7,13 +7,15 @@
 #include <vector>
 #include <cstdint>
 
-const std::string HEADER = "KBST";
+const std::string FRAME_BEGIN = "KBST";
+const std::string FRAME_END = "TSBK";
 const char DELIMITER = ';';
 
 enum class OperationType {
     GET,
     SET,
-    ANS
+    ANS,
+    ERR
 };
 
 enum class CommandAccessLevel {
@@ -61,6 +63,7 @@ struct Frame {
     uint8_t command;          // Command ID within group
     std::string value;          // Payload value
     std::string unit;           // Payload unit
+    std::string footer;      // End marker
 };
 
 bool initializeRadio();
@@ -74,10 +77,10 @@ Frame buildFrame(uint8_t direction, OperationType operationType, uint8_t group, 
 std::string encodeFrame(const Frame& frame);
 Frame decodeFrame(const std::string& data);
 void handleCommandFrame(const Frame& frame);
-std::string executeCommand(uint32_t commandKey, const std::string& param);
+std::string executeCommand(uint32_t commandKey, const std::string& param, OperationType operationType);
 void sendEventRegister();
-using CommandHandler = std::function<std::string(const std::string&)>;
-
+std::vector<uint8_t> hexStringToBytes(const std::string& hexString);
+using CommandHandler = std::function<std::string(const std::string&, OperationType)>;
 extern std::map<uint32_t, CommandHandler> commandHandlers;
 
 inline std::vector<Group> getGroups()
@@ -141,8 +144,8 @@ inline std::vector<Group> getGroups()
             {
                 { 0, "0x00 - RESERVED", CommandAccessLevel::NONE, ValueUnit::UNDEFINED },
                 { 1, "0x01 - POWER_STATUS", CommandAccessLevel::READ_WRITE, ValueUnit::BOOL },
-                { 2, "0x02 - TRANSPARENT_MODE", CommandAccessLevel::READ_WRITE, ValueUnit::BOOL },
-                { 3, "0x03 - TRANSPARENT_MODE_TIMEOUT", CommandAccessLevel::READ_WRITE, ValueUnit::SECOND }
+                { 2, "0x02 - TRANSPARENT_MODE_TIMEOUT", CommandAccessLevel::READ_WRITE, ValueUnit::SECOND },
+                { 3, "0x03 - DATA", CommandAccessLevel::READ_ONLY, ValueUnit::TEXT }
             }
         },
         {

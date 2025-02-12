@@ -31,7 +31,7 @@ bool initSystems(i2c_inst_t *i2c_port) {
     {
         gpio_init(GPS_POWER_ENABLE_PIN);
         gpio_set_dir(GPS_POWER_ENABLE_PIN, GPIO_OUT);
-        gpio_put(GPS_POWER_ENABLE_PIN, 0); 
+        gpio_put(GPS_POWER_ENABLE_PIN, 1); 
     }
 
     std::string bootString = "System init completed @ " + std::to_string(to_ms_since_boot(get_absolute_time())) + " ms";
@@ -119,7 +119,7 @@ int main()
         //uartPrint(voltageReading.c_str());
 
         checkPowerEvents(powerManager);
-
+        collectGPSData();
         handleUartInput();
     }
 

@@ -29,5 +29,6 @@
 #include "pin_config.h"
 #include "storage.h"
 #include "utils.h"
+#include "gps_data.h"
 
 #endif

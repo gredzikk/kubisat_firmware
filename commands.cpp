@@ -8,110 +8,174 @@
 #include <map>
 #include <cstring>
 #include "utils.h"
+#include "time.h"
+#include "gps_data.h"
 
-// Modify handle functions to return string
-std::string handleGetTime(const std::string& param) {
-    uartPrint("Getting current time");
-    uint32_t currentTime = to_ms_since_boot(get_absolute_time());
-    return std::to_string(currentTime);
-}
+#define EXCEPTION_NOT_ALLOWED "NOT ALLOWED"
+#define EXCEPTION_INVALID_PARAM "INVALID PARAM"
+#define EXCEPTION_INVALID_OPERATION "INVALID OPERATION"
 
-std::string handleGetVoltageBattery(const std::string& param) {
-    uartPrint("Getting battery voltage");
-    extern PowerManager powerManager;
-    float voltage = powerManager.getVoltageBattery();
-    return std::to_string(voltage);
-}
-
-std::string handleGetVoltage5V(const std::string& param) {
-    uartPrint("Getting 5V voltage");
-    extern PowerManager powerManager;
-    float voltage = powerManager.getVoltage5V();
-    return std::to_string(voltage);
-}
-
-std::string handleGetCurrentChargeUSB(const std::string& param) {
-    uartPrint("Getting USB charge current");
-    extern PowerManager powerManager;
-    float chargeCurrent = powerManager.getCurrentChargeUSB();
-    return std::to_string(chargeCurrent);
-}
-
-std::string handleGetCurrentChargeSolar(const std::string& param) {
-    uartPrint("Getting solar charge current");
-    extern PowerManager powerManager;
-    float chargeCurrent = powerManager.getCurrentChargeSolar();
-    return std::to_string(chargeCurrent);
-}
-
-std::string handleGetCurrentChargeTotal(const std::string& param) {
-    uartPrint("Getting total charge current");
-    extern PowerManager powerManager;
-    float chargeCurrent = powerManager.getCurrentChargeTotal();
-    return std::to_string(chargeCurrent);
-}
-
-std::string handleGetCurrentDraw(const std::string& param) {
-    uartPrint("Getting current draw");
-    extern PowerManager powerManager;
-    float currentDraw = powerManager.getCurrentDraw();
-    return std::to_string(currentDraw);
-}
-
-std::string handleGetGPSPowerStatus(const std::string& param) {
-    uartPrint("Getting GPS power status");
-    bool status = gpio_get(GPS_POWER_ENABLE_PIN);
-    return status ? "ON" : "OFF";
-}
-
-std::string handleSetGPSPowerStatus(const std::string& param) {
-    uartPrint("Setting GPS power status to " + param);
-    if (param.empty()) {
-        return "Error: GPS power status parameter required (on/off)";
+std::string handleTime(const std::string& param, OperationType operationType) {
+    if (operationType == OperationType::GET) {
+        uartPrint("Getting current time");
+        time_t currentTime;
+        time(&currentTime); // Get current time in seconds since epoch
+        return std::to_string(currentTime);
+    } else if (operationType == OperationType::SET) {
+        uartPrint("Setting current time");
+        time_t newTime = std::stoll(param); // Convert parameter to time_t
+        uartPrint("New time: " + std::to_string(newTime));
+        return std::to_string(newTime) + "OK";
+    } else {
+        throw std::runtime_error("Invalid operation type.");
     }
-    bool powerOn = (param == "on" || param == "1" || param == "true");
-    gpio_put(GPS_POWER_ENABLE_PIN, powerOn);
-    sleep_ms(1);
-    bool success = powerOn == gpio_get(GPS_POWER_ENABLE_PIN);
-    return "GPS Power Status set to: " + std::string(powerOn ? "ON" : "OFF");
 }
 
-std::string handleEnableGPSTransparentMode(const std::string& param) {
-    uartPrint("Enabling GPS Serial Pass-Through Mode, timeout " + param + "s");
-    uint32_t timeoutMs = param.empty() ? 60000u : std::stoul(param) * 1000;
-    uint32_t startTime = to_ms_since_boot(get_absolute_time());
-
-    // Store the original baud rate of the debug UART
-    uint32_t originalBaudRate = DEBUG_UART_BAUD_RATE;
-
-    // Set the baud rate of the debug UART to match the GPS UART
-    uint32_t gpsBaudRate = GPS_UART_BAUD_RATE;
-    std::string message = "Entering GPS Serial Pass-Through Mode @" + std::to_string(gpsBaudRate) + " for " + std::to_string(timeoutMs);
-    uartPrint(message);
-
-    uart_set_baudrate(DEBUG_UART_PORT, gpsBaudRate);
-
-    while (true) {
-        while (uart_is_readable(DEBUG_UART_PORT)) {
-            char ch = uart_getc(DEBUG_UART_PORT);
-            uart_write_blocking(GPS_UART_PORT, reinterpret_cast<const uint8_t*>(&ch), 1);
-        }
-        while (uart_is_readable(GPS_UART_PORT)) {
-            char gpsByte = uart_getc(GPS_UART_PORT);
-            uart_write_blocking(DEBUG_UART_PORT, reinterpret_cast<const uint8_t*>(&gpsByte), 1);
-        }
-        if (to_ms_since_boot(get_absolute_time()) - startTime >= timeoutMs)
-            break;
+std::string handleGetVoltageBattery(const std::string& param, OperationType operationType) {
+    if (operationType == OperationType::GET) {
+        uartPrint("Getting battery voltage");
+        extern PowerManager powerManager;
+        float voltage = powerManager.getVoltageBattery();
+        return std::to_string(voltage);
+    } else {
+        uartPrint("SET operation not allowed for GetVoltageBattery");
+        throw std::runtime_error(EXCEPTION_NOT_ALLOWED);
     }
-
-    uart_set_baudrate(DEBUG_UART_PORT, originalBaudRate);
-
-    message = "Exiting GPS Serial Pass-Through Mode.";
-    return message;
 }
 
-using CommandHandler = std::function<std::string(const std::string&)>;
+std::string handleGetVoltage5V(const std::string& param, OperationType operationType) {
+    if (operationType == OperationType::GET) {
+        uartPrint("Getting 5V voltage");
+        extern PowerManager powerManager;
+        float voltage = powerManager.getVoltage5V();
+        return std::to_string(voltage);
+    } else {
+        uartPrint("SET operation not allowed for GetVoltage5V");
+        throw std::runtime_error(EXCEPTION_NOT_ALLOWED);
+    }
+}
 
+std::string handleGetCurrentChargeUSB(const std::string& param, OperationType operationType) {
+    if (operationType == OperationType::GET) {
+        uartPrint("Getting USB charge current");
+        extern PowerManager powerManager;
+        float chargeCurrent = powerManager.getCurrentChargeUSB();
+        return std::to_string(chargeCurrent);
+    } else {
+        uartPrint("SET operation not allowed for GetCurrentChargeUSB");
+        throw std::runtime_error(EXCEPTION_NOT_ALLOWED);
+    }
+}
+
+std::string handleGetCurrentChargeSolar(const std::string& param, OperationType operationType) {
+    if (operationType == OperationType::GET) {
+        uartPrint("Getting solar charge current");
+        extern PowerManager powerManager;
+        float chargeCurrent = powerManager.getCurrentChargeSolar();
+        return std::to_string(chargeCurrent);
+    } else {
+        uartPrint("SET operation not allowed for GetCurrentChargeSolar");
+        throw std::runtime_error(EXCEPTION_NOT_ALLOWED);
+    }
+}
+
+std::string handleGetCurrentChargeTotal(const std::string& param, OperationType operationType) {
+    if (operationType == OperationType::GET) {
+        uartPrint("Getting total charge current");
+        extern PowerManager powerManager;
+        float chargeCurrent = powerManager.getCurrentChargeTotal();
+        return std::to_string(chargeCurrent);
+    } else {
+        uartPrint("SET operation not allowed for GetCurrentChargeTotal");
+        throw std::runtime_error(EXCEPTION_NOT_ALLOWED);
+    }
+}
+
+std::string handleGetCurrentDraw(const std::string& param, OperationType operationType) {
+    if (operationType == OperationType::GET) {
+        uartPrint("Getting current draw");
+        extern PowerManager powerManager;
+        float currentDraw = powerManager.getCurrentDraw();
+        return std::to_string(currentDraw);
+    } else {
+        uartPrint("SET operation not allowed for GetCurrentDraw");
+        throw std::runtime_error(EXCEPTION_NOT_ALLOWED);
+    }
+}
+
+std::string handleGPSPowerStatus(const std::string& param, OperationType operationType) {
+    if (operationType == OperationType::GET) {
+        // Handle GET operation
+        // Read the current GPS power status
+        bool powerStatus = gpio_get(GPS_POWER_ENABLE_PIN); // Assuming GPS_POWER_PIN is defined
+        return std::to_string(powerStatus); // Return the power status as a string ("0" or "1")
+    } else if (operationType == OperationType::SET) {
+        // Handle SET operation
+        int powerStatus = std::stoi(param);
+        if (powerStatus == 0) {
+            uartPrint("Turning GPS OFF");
+            gpio_put(GPS_POWER_ENABLE_PIN, powerStatus); // Assuming GPS_POWER_PIN is defined
+        } else if (powerStatus == 1) {
+            uartPrint("Turning GPS ON");
+            gpio_put(GPS_POWER_ENABLE_PIN, powerStatus); // Assuming GPS_POWER_PIN is defined
+        } else {
+            throw std::runtime_error(EXCEPTION_INVALID_PARAM);
+        }
+        return "GPS PWR = " + std::to_string(powerStatus);
+    } else {
+        throw std::runtime_error(EXCEPTION_INVALID_OPERATION);
+    }
+}
+
+std::string handleEnableGPSTransparentMode(const std::string& param, OperationType operationType) {
+    if (operationType == OperationType::SET) {
+        uartPrint("Enabling GPS Serial Pass-Through Mode, timeout " + param + "s");
+        uint32_t timeoutMs = param.empty() ? 60000u : std::stoul(param) * 1000;
+        uint32_t startTime = to_ms_since_boot(get_absolute_time());
+
+        uint32_t originalBaudRate = DEBUG_UART_BAUD_RATE;
+
+        uint32_t gpsBaudRate = GPS_UART_BAUD_RATE;
+        std::string message = "Entering GPS Serial Pass-Through Mode @" + std::to_string(gpsBaudRate) + " for " + std::to_string(timeoutMs);
+        uartPrint(message);
+        sleep_ms(10);
+        uart_set_baudrate(DEBUG_UART_PORT, gpsBaudRate);
+
+        while (true) {
+            while (uart_is_readable(DEBUG_UART_PORT)) {
+                char ch = uart_getc(DEBUG_UART_PORT);
+                uart_write_blocking(GPS_UART_PORT, reinterpret_cast<const uint8_t*>(&ch), 1);
+            }
+            while (uart_is_readable(GPS_UART_PORT)) {
+                char gpsByte = uart_getc(GPS_UART_PORT);
+                uart_write_blocking(DEBUG_UART_PORT, reinterpret_cast<const uint8_t*>(&gpsByte), 1);
+            }
+            if (to_ms_since_boot(get_absolute_time()) - startTime >= timeoutMs)
+                break;
+        }
+
+        uart_set_baudrate(DEBUG_UART_PORT, originalBaudRate);
+
+        message = "GPS UART BRIDGE EXIT";
+        return message;
+    } else {
+        uartPrint("GET operation not allowed for EnableGPSTransparentMode");
+        throw std::runtime_error(EXCEPTION_NOT_ALLOWED);
+    }
+}
+
+std::string handleGetGPSData(const std::string& param, OperationType operationType) {
+    if (operationType == OperationType::GET) {
+        extern GPSData gps_data;
+        std::string nmea_data = gps_data.getNMEAData();
+        return nmea_data;
+    } else {
+        uartPrint("GET operation is only allowed");
+        throw std::runtime_error(EXCEPTION_NOT_ALLOWED);
+    }
+}
+
+using CommandHandler = std::function<std::string(const std::string&, OperationType)>;
 using CommandMap = std::map<uint32_t, CommandHandler>;
 
 CommandMap commandHandlers = {
@@ -121,18 +185,18 @@ CommandMap commandHandlers = {
     {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(5)), handleGetCurrentChargeSolar}, // Group 2, Command 5
     {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(6)), handleGetCurrentChargeTotal}, // Group 2, Command 6
     {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(7)), handleGetCurrentDraw}, // Group 2, Command 7
-    {((static_cast<uint32_t>(3) << 8) | static_cast<uint32_t>(0)), handleGetTime},  // Group 3, Command 0
-    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(1)), handleGetGPSPowerStatus}, // Group 7, Command 1
-    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(2)), handleSetGPSPowerStatus}, // Group 7, Command 2
-    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(3)), handleEnableGPSTransparentMode}, // Group 7, Command 3
+    {((static_cast<uint32_t>(3) << 8) | static_cast<uint32_t>(0)), handleTime},  // Group 3, Command 0
+    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(1)), handleGPSPowerStatus}, // Group 7, Command 1
+    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(2)), handleEnableGPSTransparentMode}, // Group 7, Command 3
+    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(3)), handleGetGPSData}  // Example: Group 7, Command 4
 };
 
-std::string executeCommand(uint32_t commandKey, const std::string& param) {
+std::string executeCommand(uint32_t commandKey, const std::string& param, OperationType operationType) {
     auto it = commandHandlers.find(commandKey);
     if (it != commandHandlers.end()) {
-        uartPrint("Executing command: " + std::to_string(commandKey));
-        return it->second(param); // Call the handler function
+        CommandHandler handler = it->second;
+        return handler(param, operationType);
     } else {
-        return "Unknown command";
+        return "Error: Unknown command";
     }
 }

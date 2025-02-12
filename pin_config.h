@@ -17,7 +17,7 @@
 
 // GPS configuration
 #define GPS_UART_PORT uart1
-#define GPS_UART_BAUD_RATE 9600
+#define GPS_UART_BAUD_RATE 115200
 #define GPS_UART_TX_PIN 8
 #define GPS_UART_RX_PIN 9
 #define GPS_POWER_ENABLE_PIN 14
