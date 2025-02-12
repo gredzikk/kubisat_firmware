@@ -163,12 +163,6 @@ Frame buildResponseFrame(const Frame& requestFrame, const std::string& value) {
                 if (command.Id == requestFrame.command) {
                     // Assign the unit to the response frame
                     switch (command.Unit) {
-                        case ValueUnit::NUMERIC:
-                            responseFrame.unit = "";
-                            break;
-                        case ValueUnit::INT:
-                            responseFrame.unit = "";
-                            break;
                         case ValueUnit::VOLT:
                             responseFrame.unit = "V";
                             break;
@@ -177,6 +171,12 @@ Frame buildResponseFrame(const Frame& requestFrame, const std::string& value) {
                             break;
                         case ValueUnit::DATETIME:
                             responseFrame.unit = "";
+                            break;
+                        case ValueUnit::SECOND:
+                            responseFrame.unit = "s";
+                            break;
+                        case ValueUnit::MILIAMP:
+                            responseFrame.unit = "mA";
                             break;
                         default:
                             responseFrame.unit = "";
@@ -187,7 +187,6 @@ Frame buildResponseFrame(const Frame& requestFrame, const std::string& value) {
             }
         }
     }
-
     // If the unit is not found, set it to an empty string
     responseFrame.unit = "";
     return responseFrame;
@@ -275,4 +274,26 @@ void handleUartInput() {
             uartBuffer += c;
         }
     }
+}
+
+// Function to send the event register value via radio
+extern volatile uint16_t eventRegister;
+void sendEventRegister() {
+    // Convert the event register value to a string
+    std::stringstream ss;
+    ss << std::hex << std::setw(4) << std::setfill('0') << static_cast<int>(eventRegister);
+    std::string eventValue = ss.str();
+
+    // Build the frame
+    Frame eventFrame = buildFrame(
+        1,                  // Direction: sat->ground
+        OperationType::ANS, // Operation Type: ANS
+        8,                  // Group ID: 8 (EVENTS)
+        0,                  // Command ID: 0 (EVENT_REGISTER)
+        eventValue,         // Value: event register value
+        ""                  // Unit: None
+    );
+
+    // Send the frame
+    sendFrame(eventFrame);
 }

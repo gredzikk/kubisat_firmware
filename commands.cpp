@@ -71,6 +71,8 @@ std::string handleSetGPSPowerStatus(const std::string& param) {
     }
     bool powerOn = (param == "on" || param == "1" || param == "true");
     gpio_put(GPS_POWER_ENABLE_PIN, powerOn);
+    sleep_ms(1);
+    bool success = powerOn == gpio_get(GPS_POWER_ENABLE_PIN);
     return "GPS Power Status set to: " + std::string(powerOn ? "ON" : "OFF");
 }
 
@@ -85,6 +87,7 @@ std::string handleEnableGPSTransparentMode(const std::string& param) {
     // Set the baud rate of the debug UART to match the GPS UART
     uint32_t gpsBaudRate = GPS_UART_BAUD_RATE;
     std::string message = "Entering GPS Serial Pass-Through Mode @" + std::to_string(gpsBaudRate) + " for " + std::to_string(timeoutMs);
+    uartPrint(message);
 
     uart_set_baudrate(DEBUG_UART_PORT, gpsBaudRate);
 
@@ -101,7 +104,6 @@ std::string handleEnableGPSTransparentMode(const std::string& param) {
             break;
     }
 
-    // Restore the original baud rate of the debug UART
     uart_set_baudrate(DEBUG_UART_PORT, originalBaudRate);
 
     message = "Exiting GPS Serial Pass-Through Mode.";

@@ -25,12 +25,13 @@ enum class CommandAccessLevel {
 
 enum class ValueUnit {
     UNDEFINED,
-    NUMERIC,
-    INT,
+    NONE,
+    SECOND,
     VOLT,
     BOOL,
     DATETIME,
-    STRING
+    STRING,
+    MILIAMP,
 };
 struct Command
 {
@@ -74,7 +75,7 @@ std::string encodeFrame(const Frame& frame);
 Frame decodeFrame(const std::string& data);
 void handleCommandFrame(const Frame& frame);
 std::string executeCommand(uint32_t commandKey, const std::string& param);
-
+void sendEventRegister();
 using CommandHandler = std::function<std::string(const std::string&)>;
 
 extern std::map<uint32_t, CommandHandler> commandHandlers;
@@ -93,21 +94,21 @@ inline std::vector<Group> getGroups()
             1,
             "0x01 - DIAGNOSTICS",
             {
-                { 0, "0x00 - FIRMWARE_VERSION", CommandAccessLevel::READ_ONLY, ValueUnit::INT },
+                { 0, "0x00 - FIRMWARE_VERSION", CommandAccessLevel::READ_ONLY, ValueUnit::STRING },
             }
         },
         {
             2,
             "0x02 - POWER MANAGER",
             {
-                { 0, "0x00 - ID", CommandAccessLevel::READ_ONLY, ValueUnit::INT },
+                { 0, "0x00 - ID", CommandAccessLevel::READ_ONLY, ValueUnit::STRING },
                 { 1, "0x01 - NDEF", CommandAccessLevel::NONE, ValueUnit::UNDEFINED },
                 { 2, "0x02 - VOLTAGE_BATTERY", CommandAccessLevel::READ_ONLY, ValueUnit::VOLT },
                 { 3, "0x03 - VOLTAGE_5V", CommandAccessLevel::READ_ONLY, ValueUnit::VOLT },
-                { 4, "0x04 - CURRENT_CHARGE_USB", CommandAccessLevel::READ_ONLY, ValueUnit::VOLT },
-                { 5, "0x05 - CURRENT_CHARGE_SOLAR", CommandAccessLevel::READ_ONLY, ValueUnit::VOLT },
-                { 6, "0x06 - CURRENT_CHARGE_TOTAL", CommandAccessLevel::READ_ONLY, ValueUnit::VOLT },
-                { 7, "0x07 - CURRENT_DRAW", CommandAccessLevel::READ_ONLY, ValueUnit::VOLT },
+                { 4, "0x04 - CURRENT_CHARGE_USB", CommandAccessLevel::READ_ONLY, ValueUnit::MILIAMP },
+                { 5, "0x05 - CURRENT_CHARGE_SOLAR", CommandAccessLevel::READ_ONLY, ValueUnit::MILIAMP },
+                { 6, "0x06 - CURRENT_CHARGE_TOTAL", CommandAccessLevel::READ_ONLY, ValueUnit::MILIAMP },
+                { 7, "0x07 - CURRENT_DRAW", CommandAccessLevel::READ_ONLY, ValueUnit::MILIAMP },
             }
         },
         {
@@ -116,8 +117,8 @@ inline std::vector<Group> getGroups()
             {
                 { 0, "0x00 - CURRENT_TIME", CommandAccessLevel::READ_WRITE, ValueUnit::DATETIME },
                 { 1, "0x01 - GPS_TIME_SYNC", CommandAccessLevel::READ_WRITE, ValueUnit::BOOL },
-                { 2, "0x02 - GPS_TIME_SYNC_INTERVAL", CommandAccessLevel::READ_WRITE, ValueUnit::INT },
-                { 3, "0x03 - TIMEZONE", CommandAccessLevel::READ_WRITE, ValueUnit::NUMERIC }
+                { 2, "0x02 - GPS_TIME_SYNC_INTERVAL", CommandAccessLevel::READ_WRITE, ValueUnit::SECOND },
+                { 3, "0x03 - TIMEZONE", CommandAccessLevel::READ_WRITE, ValueUnit::SECOND }
             }
         },
         {
@@ -141,7 +142,14 @@ inline std::vector<Group> getGroups()
                 { 0, "0x00 - RESERVED", CommandAccessLevel::NONE, ValueUnit::UNDEFINED },
                 { 1, "0x01 - POWER_STATUS", CommandAccessLevel::READ_WRITE, ValueUnit::BOOL },
                 { 2, "0x02 - TRANSPARENT_MODE", CommandAccessLevel::READ_WRITE, ValueUnit::BOOL },
-                { 3, "0x03 - TRANSPARENT_MODE_TIMEOUT", CommandAccessLevel::READ_WRITE, ValueUnit::INT }
+                { 3, "0x03 - TRANSPARENT_MODE_TIMEOUT", CommandAccessLevel::READ_WRITE, ValueUnit::SECOND }
+            }
+        },
+        {
+            8,
+            "0x08 - EVENTS",
+            {
+                { 0, "0x00 - EVENT_REGISTER", CommandAccessLevel::READ_ONLY, ValueUnit::STRING }
             }
         },
         {
