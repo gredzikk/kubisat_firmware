@@ -9,6 +9,13 @@ bool PowerManager::initialize() {
     return initialized;
 }
 
+std::string PowerManager::readIDs() {
+    if (!initialized) return "noinit";
+    std::string MAN = "MAN " + std::to_string(ina3221.getManufID());
+    std::string DIE = "DIE " + std::to_string(ina3221.getDieID());
+    return MAN + " - " + DIE;
+}
+
 float PowerManager::getVoltageBattery() {
     if (!initialized) return 0.0f;
     return ina3221.getVoltage(INA3221_CH1); 

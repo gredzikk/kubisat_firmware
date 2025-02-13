@@ -108,6 +108,16 @@ target_include_directories(main PRIVATE
 pico_add_extra_outputs(main)
 
 add_custom_command(
+	TARGET main
+	PRE_BUILD
+	COMMAND ${CMAKE_COMMAND}
+		-DLANGUAGE:STRING="C"
+		-DHEADER_DIR:PATH="${CMAKE_SOURCE_DIR}"
+		-DCACHE_DIR:PATH="${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}"
+		-P "${CMAKE_CURRENT_SOURCE_DIR}/build_number.cmake"
+)
+
+add_custom_command(
     TARGET main POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_CURRENT_SOURCE_DIR}/release"
     COMMAND ${CMAKE_COMMAND} -E copy_if_different

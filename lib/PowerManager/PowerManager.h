@@ -12,6 +12,7 @@ class PowerManager {
 public:
     PowerManager(i2c_inst_t* i2c);
     bool initialize();
+    std::string readIDs();
     float getCurrentChargeSolar();
     float getCurrentChargeUSB();
     float getCurrentChargeTotal();

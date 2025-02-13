@@ -31,4 +31,5 @@
 #include "utils.h"
 #include "gps_data.h"
 
+#include "build_number.h"
 #endif

@@ -4,18 +4,15 @@
 #include "hardware/i2c.h"
 #include <iostream>
 #include <pin_config.h>
+#include "utils.h"
+#include <sstream>
 
 INA3221::INA3221(ina3221_addr_t addr, i2c_inst_t* i2c)
     : _i2c_addr(addr), _i2c(i2c) {}
 
 
 bool INA3221::begin() {
-    printf("INA3221 initializing...\n");
-    
-    if (_i2c == nullptr) {
-        std::cerr << "I2C instance is null!" << std::endl;
-        return false;
-    }
+    uartPrint("INA3221 initializing...\n");
 
     _shuntRes[0] = 10;
     _shuntRes[1] = 10;
@@ -27,14 +24,16 @@ bool INA3221::begin() {
 
     uint16_t manuf_id = getManufID();
     uint16_t die_id = getDieID();
-    std::cout << "INA3221 Manufacturer ID: 0x" << std::hex << manuf_id 
+    std::stringstream ss;
+    ss << "INA3221 Manufacturer ID: 0x" << std::hex << manuf_id 
               << ", Die ID: 0x" << die_id << std::endl;
+    uartPrint(ss.str());
 
     if (manuf_id == 0x5449 && die_id == 0x3220) { 
-        std::cout << "INA3221 found and initialized." << std::endl;
+       uartPrint("INA3221 found and initialized.");
         return true;
     } else {
-        std::cerr << "INA3221 initialization failed. Incorrect IDs." << std::endl;
+        uartPrint("INA3221 initialization failed. Incorrect IDs.");
         return false;
     }
 

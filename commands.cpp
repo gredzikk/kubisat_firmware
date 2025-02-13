@@ -10,10 +10,36 @@
 #include "utils.h"
 #include "time.h"
 #include "gps_data.h"
+#include "build_number.h"
 
 #define EXCEPTION_NOT_ALLOWED "NOT ALLOWED"
 #define EXCEPTION_INVALID_PARAM "INVALID PARAM"
 #define EXCEPTION_INVALID_OPERATION "INVALID OPERATION"
+#define EXCEPTION_PARAM_UNECESSARY "PARAM UNECESSARY"
+
+std::string handleGetBuildVersion(const std::string& param, OperationType operationType) {
+    if (!param.empty()) {
+        throw std::runtime_error(EXCEPTION_PARAM_UNECESSARY);
+    }
+    if (operationType == OperationType::GET) {
+        return std::to_string(BUILD_NUMBER);
+    }
+    throw std::runtime_error(EXCEPTION_INVALID_OPERATION);
+}
+
+std::string handleGetPowerManagerIDs(const std::string& param, OperationType operationType) {
+    if (!param.empty()) {
+        throw std::runtime_error(EXCEPTION_PARAM_UNECESSARY);
+    }
+
+    if (!(operationType == OperationType::GET)) {
+        throw std::runtime_error(EXCEPTION_INVALID_OPERATION);
+    }
+
+    extern PowerManager powerManager;
+    std::string powerManagerIDS = powerManager.readIDs();
+    return powerManagerIDS;
+}
 
 std::string handleTime(const std::string& param, OperationType operationType) {
     if (operationType == OperationType::GET) {
@@ -27,7 +53,7 @@ std::string handleTime(const std::string& param, OperationType operationType) {
         uartPrint("New time: " + std::to_string(newTime));
         return std::to_string(newTime) + "OK";
     } else {
-        throw std::runtime_error("Invalid operation type.");
+        throw std::runtime_error(EXCEPTION_INVALID_OPERATION);
     }
 }
 
@@ -179,16 +205,18 @@ using CommandHandler = std::function<std::string(const std::string&, OperationTy
 using CommandMap = std::map<uint32_t, CommandHandler>;
 
 CommandMap commandHandlers = {
-    {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(2)), handleGetVoltageBattery}, // Group 2, Command 2
-    {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(3)), handleGetVoltage5V}, // Group 2, Command 3
-    {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(4)), handleGetCurrentChargeUSB}, // Group 2, Command 4
-    {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(5)), handleGetCurrentChargeSolar}, // Group 2, Command 5
-    {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(6)), handleGetCurrentChargeTotal}, // Group 2, Command 6
-    {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(7)), handleGetCurrentDraw}, // Group 2, Command 7
-    {((static_cast<uint32_t>(3) << 8) | static_cast<uint32_t>(0)), handleTime},  // Group 3, Command 0
-    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(1)), handleGPSPowerStatus}, // Group 7, Command 1
+    {((static_cast<uint32_t>(1) << 8) | static_cast<uint32_t>(1)), handleGetBuildVersion},          // Group 1, Command 1
+    {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(0)), handleGetPowerManagerIDs},        // Group 2, Command 2
+    {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(2)), handleGetVoltageBattery},        // Group 2, Command 2
+    {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(3)), handleGetVoltage5V},             // Group 2, Command 3
+    {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(4)), handleGetCurrentChargeUSB},      // Group 2, Command 4
+    {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(5)), handleGetCurrentChargeSolar},    // Group 2, Command 5
+    {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(6)), handleGetCurrentChargeTotal},    // Group 2, Command 6
+    {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(7)), handleGetCurrentDraw},           // Group 2, Command 7
+    {((static_cast<uint32_t>(3) << 8) | static_cast<uint32_t>(0)), handleTime},                     // Group 3, Command 0
+    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(1)), handleGPSPowerStatus},           // Group 7, Command 1
     {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(2)), handleEnableGPSTransparentMode}, // Group 7, Command 3
-    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(3)), handleGetGPSData}  // Example: Group 7, Command 4
+    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(3)), handleGetGPSData},               // Group 7, Command 4
 };
 
 std::string executeCommand(uint32_t commandKey, const std::string& param, OperationType operationType) {

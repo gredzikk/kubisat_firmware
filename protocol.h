@@ -87,17 +87,12 @@ inline std::vector<Group> getGroups()
 {
     return {
         {
-            0,
-            "0x00 - TEST",
-            {
-                { 0, "0x00 - RESERVED", CommandAccessLevel::NONE, ValueUnit::UNDEFINED }
-            }
-        },
-        {
             1,
             "0x01 - DIAGNOSTICS",
             {
                 { 0, "0x00 - FIRMWARE_VERSION", CommandAccessLevel::READ_ONLY, ValueUnit::TEXT },
+                { 1, "0x01 - BUILD VERSION", CommandAccessLevel::READ_ONLY, ValueUnit::TEXT },
+                { 2, "0x02 - BUILD_DATE", CommandAccessLevel::READ_ONLY, ValueUnit::TEXT }
             }
         },
         {
@@ -158,72 +153,45 @@ inline std::vector<Group> getGroups()
         },
         {
             9,
-            "0x09 - SERIAL",
+            "0x09 - MAGNETOMETER",
             {
                 { 0, "0x00 - RESERVED", CommandAccessLevel::NONE, ValueUnit::UNDEFINED }
             }
         },
         {
             10,
-            "0x0A - MAGNETOMETER",
+            "0x0A - ENVIRONMENTAL_SENSOR",
             {
                 { 0, "0x00 - RESERVED", CommandAccessLevel::NONE, ValueUnit::UNDEFINED }
             }
         },
         {
             11,
-            "0x0B - ENVIRONMENTAL_SENSOR",
+            "0x0B - LIGHT_SENSOR",
             {
                 { 0, "0x00 - RESERVED", CommandAccessLevel::NONE, ValueUnit::UNDEFINED }
             }
         },
         {
             12,
-            "0x0C - LIGHT_SENSOR",
+            "0x0C - 6DOF_IMU",
             {
                 { 0, "0x00 - RESERVED", CommandAccessLevel::NONE, ValueUnit::UNDEFINED }
             }
         },
         {
             13,
-            "0x0D - 6DOF_IMU",
+            "0x0D - GASP",
             {
                 { 0, "0x00 - RESERVED", CommandAccessLevel::NONE, ValueUnit::UNDEFINED }
             }
         },
         {
             14,
-            "0x0E - KUBISAT_INFO",
+            "0x0E - RESTART",
             {
-                { 0, "0x00 - NAME", CommandAccessLevel::READ_WRITE, ValueUnit::TEXT },
-            }
-        },
-        {
-            15,
-            "0x0F - SX1278_INFO",
-            {
-                { 0, "0x00 - RESERVED", CommandAccessLevel::NONE, ValueUnit::UNDEFINED }
-            }
-        },
-        {
-            16,
-            "0x10 - LOG",
-            {
-                { 0, "0x00 - RESERVED", CommandAccessLevel::NONE, ValueUnit::UNDEFINED }
-            }
-        },
-        {
-            17,
-            "0x11 - GASP",
-            {
-                { 0, "0x00 - RESERVED", CommandAccessLevel::NONE, ValueUnit::UNDEFINED }
-            }
-        },
-        {
-            18,
-            "0x12 - RESTART",
-            {
-                { 0, "0x00 - RESERVED", CommandAccessLevel::NONE, ValueUnit::UNDEFINED }
+                { 0, "0x00 - RESERVED", CommandAccessLevel::NONE, ValueUnit::UNDEFINED },
+                { 1, "0x01 - RESTART_BOOTSEL", CommandAccessLevel::WRITE_ONLY, ValueUnit::UNDEFINED }
             }
         }
     };
