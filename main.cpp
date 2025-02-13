@@ -7,7 +7,7 @@ PowerManager powerManager(MAIN_I2C_PORT);
 char buffer[BUFFER_SIZE];
 int bufferIndex = 0;
 
-bool initSystems(i2c_inst_t *i2c_port) {
+bool initSystems() {
     stdio_init_all();
 
     uart_init(DEBUG_UART_PORT, DEBUG_UART_BAUD_RATE);
@@ -17,7 +17,7 @@ bool initSystems(i2c_inst_t *i2c_port) {
     gpio_init(PICO_DEFAULT_LED_PIN);
     gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
     
-    i2c_init(i2c_port, 400 * 1000);
+    i2c_init(MAIN_I2C_PORT, 400 * 1000);
     gpio_set_function(MAIN_I2C_SCL_PIN, GPIO_FUNC_I2C);
     gpio_set_function(MAIN_I2C_SDA_PIN, GPIO_FUNC_I2C);
     gpio_pull_up(MAIN_I2C_SCL_PIN);
@@ -44,18 +44,9 @@ void loggingRoutine();
 
 int main()
 {
-    FRESULT fr;
-    FATFS fs;
-    FIL fil;
-    int ret;
-    char buf[256];
-    char filename[] = "test02.txt";
-    i2c_inst_t *i2c_port = MAIN_I2C_PORT;
-    initSystems(i2c_port);
+    initSystems();
 
-    //multicore_launch_core1(sensorsRoutine);
-
-    DS3231 systemClock(i2c_port);
+    DS3231 systemClock(MAIN_I2C_PORT);
     systemClock.setTime(0, 41, 20, 4, 14, 11, 2024);
     gpio_put(PICO_DEFAULT_LED_PIN, 1);
 
@@ -74,25 +65,11 @@ int main()
     radioInitSuccess = initializeRadio();
     gpio_put(PICO_DEFAULT_LED_PIN, 1);
 
-    bool sdTestResult = testSDCard();
-    multicore_launch_core1(loggingRoutine); // Launch logging routine on Core 1
-
     gpio_put(PICO_DEFAULT_LED_PIN, 0);
-
-    if (radioInitSuccess)
-    {
-        LoRa.beginPacket();
-        if (sdTestResult) {
-            sendMessage("System initialized successfully! SD test was performed.");
-        } else {
-            sendMessage("System initialized successfully! SD test was skipped.");
-        }
-    }
     
     gpio_put(PICO_DEFAULT_LED_PIN, 1);
 
     uartPrint("This message will only be printed to UART.");
-    uartPrint("This message will be printed to UART and logged to Core 1.", true);
 
     for (int i = 5; i > 0; --i)
     {

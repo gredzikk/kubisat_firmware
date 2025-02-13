@@ -59,7 +59,6 @@ add_subdirectory(lib/INA3221)
 add_subdirectory(lib/MPU6050)
 add_subdirectory(lib/HMC5883L)
 add_subdirectory(lib/LoRa)
-add_subdirectory(lib/FatFs_SPI build)
 add_subdirectory(lib/PowerManager)
 
 add_executable(
@@ -67,17 +66,18 @@ add_executable(
     main.cpp 
     ISensor.cpp 
     pin_config.cpp    
-    storage.cpp
     event_manager.cpp
     utils.cpp
-    logging.cpp
     gps_data.cpp
     commands/commands.cpp
+    commands/power_commands.cpp
+    commands/gps_commands.cpp
+    commands/diagnostic_commands.cpp
+    commands/clock_commands.cpp
     frame_model/frame.cpp
     frame_model/send.cpp
     frame_model/receive.cpp
-    frame_model/groups.cpp
-    frame_model/communication.cpp
+    frame_model/communication.cpp # If needed
 )
 
 pico_set_program_name(main "kubisat_firmware")
@@ -99,8 +99,7 @@ target_link_libraries(
     INA3221_lib
     LoRa_pico_lib
     HMC5883L_lib
-    MPU6050_lib
-    FatFs_SPI   
+    MPU6050_lib   
     PowerManager_lib
     pico_multicore
 )

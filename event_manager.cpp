@@ -1,7 +1,5 @@
 #include "event_manager.h"
-#include "storage.h"
 #include <cstdio>
-#include "ff.h"
 #include "protocol.h"
 #include "pico/multicore.h"
 #include "communication.h"
