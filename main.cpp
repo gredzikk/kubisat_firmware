@@ -96,8 +96,8 @@ int main()
 
     for (int i = 5; i > 0; --i)
     {
-        std::string intro = "Main loop starts in " + std::to_string(i) + " seconds...\n";
-        uartPrint(intro.c_str());
+        std::string intro = "Main loop starts in " + std::to_string(i) + " seconds...";
+        uartPrint(intro);
         gpio_put(PICO_DEFAULT_LED_PIN, (i%2==0));
         sleep_ms(1000);
     }

@@ -2,10 +2,10 @@
 
 Frame handleGetBuildVersion(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
-        return buildErrorFrame(1, 1, 1, "PARAM UNECESSARY");
+        return buildFrame(ExecutionResult::ERROR, 1, 1, "PARAM UNECESSARY");
     }
     if (operationType == OperationType::GET) {
-        return buildSuccessFrame(1, 1, 1, std::to_string(BUILD_NUMBER), "");
+        return buildFrame(ExecutionResult::SUCCESS, 1, 1, std::to_string(BUILD_NUMBER));
     }
-    return buildErrorFrame(1, 1, 1, "INVALID OPERATION");
+    return buildFrame(ExecutionResult::ERROR, 1, 1, "INVALID OPERATION");
 }

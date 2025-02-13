@@ -6,6 +6,7 @@ std::string operationTypeToString(OperationType type) {
         case OperationType::GET: return "GET";
         case OperationType::SET: return "SET";
         case OperationType::ANS: return "ANS";
+        case OperationType::ERR: return "ERR";
         default: return "UNKNOWN";
     }
 }
@@ -15,40 +16,32 @@ OperationType stringToOperationType(const std::string& str) {
     if (str == "GET") return OperationType::GET;
     if (str == "SET") return OperationType::SET;
     if (str == "ANS") return OperationType::ANS;
+    if (str == "ERR") return OperationType::ERR;
     return OperationType::GET; // Default to GET
 }
 
-Frame buildFrame(uint8_t direction, OperationType operationType, uint8_t group, uint8_t command, const std::string& value, const std::string& unit) {
-    Frame frame;
-    frame.header = FRAME_BEGIN;
-    frame.direction = direction;
-    frame.operationType = operationType;
-    frame.group = group;
-    frame.command = command;
-    frame.value = value;
-    frame.unit = unit;
-    frame.footer = FRAME_END;
-    return frame;
-}
-
-Frame buildErrorFrame(const std::string& errorMessage) {
-    return buildFrame(1, OperationType::ERR, 0, 0, errorMessage, "");
-}
-
-// Encode a frame into a string
+/// @brief Encode Frame instance into a string
+/// @param frame  Frame instance to encode
+/// @return Frame encoded as a string
 std::string encodeFrame(const Frame& frame) {
     std::stringstream ss;
     ss << static_cast<int>(frame.direction) << DELIMITER
        << operationTypeToString(frame.operationType) << DELIMITER
        << static_cast<int>(frame.group) << DELIMITER
        << static_cast<int>(frame.command) << DELIMITER
-       << frame.value << DELIMITER
-       << frame.unit;
+       << frame.value;
+
+    // Only add unit field if it's not empty
+    if (!frame.unit.empty()) {
+        ss << DELIMITER << frame.unit;
+    }
 
     return FRAME_BEGIN + DELIMITER + ss.str() + DELIMITER + FRAME_END;
 }
 
-// Decode a string into a Frame. Throws std::runtime_error if frame is bad.
+/// @brief Convert a string into a Frame instance
+/// @param data Frame data as a string
+/// @return Frame instance
 Frame decodeFrame(const std::string& data) {
     try {
         Frame frame;
@@ -92,58 +85,11 @@ Frame decodeFrame(const std::string& data) {
         return frame;
     } catch (const std::exception& e) {
         uartPrint("Frame error: " + std::string(e.what()));
-        Frame errorFrame = buildErrorFrame(e.what());
+        Frame errorFrame = buildFrame(ExecutionResult::ERROR, 0, 0, e.what()); 
         sendFrame(errorFrame);
         throw; // Re-throw the exception so that the calling function knows that an error occurred.
     }
 }
-
-Frame buildResponseFrame(const Frame& requestFrame, const std::string& value) {
-    Frame responseFrame;
-    responseFrame.header = FRAME_BEGIN;
-    responseFrame.direction = (requestFrame.direction == 0) ? 1 : 0; // Reverse direction
-    responseFrame.operationType = OperationType::ANS; // ANS
-    responseFrame.group = requestFrame.group;
-    responseFrame.command = requestFrame.command;
-    responseFrame.value = value;
-
-    // Find the unit from getGroups
-    std::vector<Group> groups = getGroups();
-    for (const auto& group : groups) {
-        if (group.Id == requestFrame.group) {
-            for (const auto& command : group.Commands) {
-                if (command.Id == requestFrame.command) {
-                    // Assign the unit to the response frame
-                    switch (command.Unit) {
-                        case ValueUnit::VOLT:
-                            responseFrame.unit = "V";
-                            break;
-                        case ValueUnit::BOOL:
-                            responseFrame.unit = "";
-                            break;
-                        case ValueUnit::DATETIME:
-                            responseFrame.unit = "";
-                            break;
-                        case ValueUnit::SECOND:
-                            responseFrame.unit = "s";
-                            break;
-                        case ValueUnit::MILIAMP:
-                            responseFrame.unit = "mA";
-                            break;
-                        default:
-                            responseFrame.unit = "";
-                            break;
-                    }
-                    return responseFrame;
-                }
-            }
-        }
-    }
-
-    responseFrame.unit = "";
-    return responseFrame;
-}
-
 
 
 // Command handler function type
@@ -152,23 +98,8 @@ using CommandHandler = std::function<std::string(const std::string&, OperationTy
 // Declare command map
 extern std::map<uint32_t, CommandHandler> commandHandlers;
 
-// Once a frame is decoded, call the command handler to execute it.
-void handleCommandFrame(const Frame& frame) {
-    uint32_t commandKey = (static_cast<uint32_t>(frame.group) << 8) | static_cast<uint32_t>(frame.command);
-    auto it = commandHandlers.find(commandKey);
-
-    if (it != commandHandlers.end()) {
-        std::string param = frame.value;
-
-        // Execute the command and get the response data
-        Frame response = executeCommand(commandKey, param, frame.operationType);
-
-        sendFrame(response);
-    } else {
-        uartPrint("Error: Unknown group/command combination");
-    }
-}
-
+/// @brief Execute the command based on the command key and the parameter
+/// @param data Frame data in string format
 void processFrameData(const std::string& data) {
     try {
         Frame frame = decodeFrame(data);
@@ -182,11 +113,14 @@ void processFrameData(const std::string& data) {
 
     } catch (const std::exception& e) {
         // Handle decoding errors
-        Frame errorFrame = buildErrorFrame(1, 0, 0, e.what()); // Generic error
+        Frame errorFrame = buildFrame(ExecutionResult::ERROR, 0, 0, e.what()); // Generic error
         sendFrame(errorFrame);
     }
 }
 
+/// @brief Convert a hex string to a vector of bytes
+/// @param hexString Hex string to convert
+/// @return Vector of bytes
 std::vector<uint8_t> hexStringToBytes(const std::string& hexString) {
     std::vector<uint8_t> bytes;
     for (size_t i = 0; i < hexString.length(); i += 2) {
@@ -200,52 +134,84 @@ std::vector<uint8_t> hexStringToBytes(const std::string& hexString) {
     return bytes;
 }
 
-
-
-// Function to send the event register value via radio
 extern volatile uint16_t eventRegister;
+
+/// @brief Send event register value to the ground station
+/// @note This function is called in the main loop
 void sendEventRegister() {
     // Convert the event register value to a string
     std::stringstream ss;
     ss << std::hex << std::setw(4) << std::setfill('0') << static_cast<int>(eventRegister);
     std::string eventValue = ss.str();
 
-    // Build the frame
+    // Build the frame using the new method
     Frame eventFrame = buildFrame(
-        1,                  // Direction: sat->ground
-        OperationType::ANS, // Operation Type: ANS
-        8,                  // Group ID: 8 (EVENTS)
-        0,                  // Command ID: 0 (EVENT_REGISTER)
-        eventValue,         // Value: event register value
-        ""                  // Unit: None
+        ExecutionResult::SUCCESS,  // Result: success as this is a normal status update
+        8,                        // Group ID: 8 (EVENTS)
+        0,                        // Command ID: 0 (EVENT_REGISTER)
+        eventValue                // Value: event register value
     );
 
-    // Send the frame
     sendFrame(eventFrame);
 }
 
-Frame buildSuccessFrame(uint8_t direction, uint8_t group, uint8_t command, const std::string& value, const std::string& unit) {
+Frame buildFrame(ExecutionResult result, uint8_t group, uint8_t command, 
+                const std::string& value, const Frame* requestFrame) {
     Frame frame;
     frame.header = FRAME_BEGIN;
-    frame.direction = direction;
-    frame.operationType = OperationType::ANS;
+    frame.footer = FRAME_END;
+    
+    switch (result) {
+        case ExecutionResult::SUCCESS:
+            frame.direction = 1;
+            frame.operationType = OperationType::ANS;
+            frame.value = value;
+            // Set unit based on command definition
+            frame.unit = determineUnit(group, command);
+            break;
+            
+        case ExecutionResult::ERROR:
+            frame.direction = 1;
+            frame.operationType = OperationType::ERR;
+            frame.value = value; // Error message
+            frame.unit = "";
+            break;
+            
+        case ExecutionResult::RESPONSE:
+            if (!requestFrame) {
+                throw std::runtime_error("Request frame required for RESPONSE type");
+            }
+            frame.direction = 1;
+            frame.operationType = OperationType::ANS;
+            frame.value = value;
+            frame.unit = determineUnit(group, command);
+            break;
+    }
+    
     frame.group = group;
     frame.command = command;
-    frame.value = value;
-    frame.unit = unit;
-    frame.footer = FRAME_END;
+    
     return frame;
 }
 
-Frame buildErrorFrame(uint8_t direction, uint8_t group, uint8_t command, const std::string& errorMessage) {
-    Frame frame;
-    frame.header = FRAME_BEGIN;
-    frame.direction = direction;
-    frame.operationType = OperationType::ERR;
-    frame.group = group;
-    frame.command = command;
-    frame.value = errorMessage;
-    frame.unit = "";
-    frame.footer = FRAME_END;
-    return frame;
+// Helper function to determine unit based on command definition
+std::string determineUnit(uint8_t group, uint8_t command) {
+    std::vector<Group> groups = getGroups();
+    for (const auto& g : groups) {
+        if (g.Id == group) {
+            for (const auto& cmd : g.Commands) {
+                if (cmd.Id == command) {
+                    switch (cmd.Unit) {
+                        case ValueUnit::VOLT: return "V";
+                        case ValueUnit::BOOL: return "";
+                        case ValueUnit::DATETIME: return "";
+                        case ValueUnit::SECOND: return "s";
+                        case ValueUnit::MILIAMP: return "mA";
+                        default: return "";
+                    }
+                }
+            }
+        }
+    }
+    return "";
 }

@@ -4,6 +4,13 @@ std::vector<Group> getGroups()
 {
     return {
         {
+            0,
+            "0x00 - INFO",
+            {
+                { 0, "0x00 - GENERIC_INFO", CommandAccessLevel::READ_ONLY, ValueUnit::UNDEFINED }
+            }
+        },
+        {
             1,
             "0x01 - DIAGNOSTICS",
             {

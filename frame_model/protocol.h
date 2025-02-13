@@ -24,6 +24,12 @@ const std::string FRAME_BEGIN = "KBST";
 const std::string FRAME_END = "TSBK";
 const char DELIMITER = ';';
 
+enum class ExecutionResult {
+    SUCCESS,
+    ERROR,
+    RESPONSE
+};
+
 enum class OperationType {
     GET,
     SET,
@@ -86,9 +92,6 @@ std::string exceptionTypeToString(ExceptionType type);
 
 std::string operationTypeToString(OperationType type);
 OperationType stringToOperationType(const std::string& str);
-
-Frame buildSuccessFrame(uint8_t direction, uint8_t group, uint8_t command, const std::string& value, const std::string& unit);
-Frame buildErrorFrame(uint8_t direction, uint8_t group, uint8_t command, const std::string& errorMessage);
 
 std::vector<Group> getGroups();
 

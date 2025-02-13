@@ -5,6 +5,7 @@
 #include "protocol.h"
 #include "pico/multicore.h"
 #include "communication.h"
+#include "utils.h"
 
 extern PowerManager powerManager;
 
@@ -45,6 +46,7 @@ void checkPowerEvents(PowerManager& pm) {
     uint32_t currentTime = to_ms_since_boot(get_absolute_time());
 
     if (fallingTrendCount >= FALLING_TREND_REQUIRED) {
+        uartPrint("Power falling detected!");
         lastPowerState = PowerEventState::POWER_FALLING;
         lastEventTime = currentTime;
 
@@ -53,6 +55,7 @@ void checkPowerEvents(PowerManager& pm) {
     }
 
     if (currentVoltage < VOLTAGE_LOW_THRESHOLD && lastPowerState != PowerEventState::LOW_BATTERY) {
+        uartPrint("Low battery detected!");
         lastPowerState = PowerEventState::LOW_BATTERY;
         lastEventTime = currentTime;
 
@@ -61,6 +64,7 @@ void checkPowerEvents(PowerManager& pm) {
     } 
 
     else if (currentVoltage > VOLTAGE_OVERCHARGE_THRESHOLD && lastPowerState != PowerEventState::OVERCHARGE) {
+        uartPrint("Overcharge detected!");
         lastPowerState = PowerEventState::OVERCHARGE;
 
         eventRegister |= static_cast<uint16_t>(EventFlag::OVERCHARGE);
@@ -68,6 +72,7 @@ void checkPowerEvents(PowerManager& pm) {
     } 
     
     else if (currentVoltage >= VOLTAGE_LOW_THRESHOLD && currentVoltage <= VOLTAGE_OVERCHARGE_THRESHOLD && lastPowerState != PowerEventState::NORMAL) {
+        uartPrint("Power back to normal!");
         lastPowerState = PowerEventState::NORMAL;
         lastEventTime = currentTime;
         sendEventRegister();

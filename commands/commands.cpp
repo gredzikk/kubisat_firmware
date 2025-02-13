@@ -1,5 +1,6 @@
 // commands/commands.cpp
 #include "commands.h"
+#include "communication.h"
 
 // Command handler function type
 using CommandHandler = std::function<Frame(const std::string&, OperationType)>;
@@ -26,6 +27,6 @@ Frame executeCommand(uint32_t commandKey, const std::string& param, OperationTyp
         CommandHandler handler = it->second;
         return handler(param, operationType);
     } else {
-        return buildErrorFrame(1, 0, 0, "Unknown command"); // Generic error
+        return buildFrame(ExecutionResult::ERROR, 0, 0, "INVALID COMMAND");// Generic error
     }
 }
