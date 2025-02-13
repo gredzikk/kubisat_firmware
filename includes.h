@@ -15,7 +15,6 @@
 #include "lib/BME280/BME280_WRAPPER.h"
 #include "lib/DS3231/DS3231.h"
 #include "lib/HMC5883L/HMC5883L_WRAPPER.h"
-#include "lib/LoRa/LoRa-RP2040.h"
 #include <iostream>
 #include <iomanip>
 #include <queue>
@@ -30,6 +29,6 @@
 #include "storage.h"
 #include "utils.h"
 #include "gps_data.h"
-
+#include "communication.h"
 #include "build_number.h"
 #endif

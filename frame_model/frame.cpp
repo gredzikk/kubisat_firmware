@@ -1,79 +1,4 @@
-// communication.cpp
-#include "protocol.h"
-#include "LoRa-RP2040.h"
-#include <cstdio>
-#include <stdexcept>
-#include <cstring>
-#include <chrono>
-#include <thread>
-#include <map>
-#include "utils.h"
-#include <sstream>
-#include <iomanip>
-
-using std::string;
-
-string outgoing;
-uint8_t msgCount = 0;
-long lastSendTime = 0;
-long lastReceiveTime = 0;
-long lastPrintTime = 0;
-unsigned long interval = 0;
-
-bool initializeRadio() {
-    LoRa.setPins(csPin, resetPin, irqPin);
-    long frequency = 433E6;
-    if (!LoRa.begin(frequency))
-    {
-        uartPrint("LoRa init failed. Check your connections.");
-        return false;
-    }
-    uartPrint("LoRa initialized with frequency " + std::to_string(frequency));
-    return true;
-}
-
-void sendMessage(string outgoing)
-{
-    int n = outgoing.length();
-    char send[n + 1];
-    strcpy(send, outgoing.c_str());
-
-    LoRa.beginPacket();       // start packet
-    LoRa.write(destination);  // add destination address
-    LoRa.write(localAddress); // add sender address
-    LoRa.print(send);         // add payload
-    LoRa.endPacket(false);    // finish packet and send it
-
-    std::string messageToLog = "Sent message of size " + std::to_string(n);
-    messageToLog += " to 0x" + std::to_string(destination);
-    messageToLog += " containing: " + string(send);
-
-    uartPrint(messageToLog);
-    
-    LoRa.flush();
-}
-
-// Sends a Frame using LoRa by encoding it into bytes.
-void sendFrame(const Frame& frame) {
-    std::string encodedFrame = encodeFrame(frame);
-    // sendLargePacket(data, encodedFrame);
-    sendMessage(encodedFrame);
-}
-
-void sendLargePacket(const uint8_t* data, size_t length)
-{
-    const size_t MAX_PKT_SIZE = 255;
-    size_t offset = 0;
-    while (offset < length)
-    {
-        size_t chunkSize = ((length - offset) < MAX_PKT_SIZE) ? (length - offset) : MAX_PKT_SIZE;
-        LoRa.beginPacket();
-        LoRa.write(&data[offset], chunkSize);
-        LoRa.endPacket();
-        offset += chunkSize;
-        sleep_ms(100);
-    }
-}
+#include "communication.h"
 
 // Function to convert OperationType to string
 std::string operationTypeToString(OperationType type) {
@@ -172,6 +97,7 @@ Frame decodeFrame(const std::string& data) {
         throw; // Re-throw the exception so that the calling function knows that an error occurred.
     }
 }
+
 Frame buildResponseFrame(const Frame& requestFrame, const std::string& value) {
     Frame responseFrame;
     responseFrame.header = FRAME_BEGIN;
@@ -235,11 +161,9 @@ void handleCommandFrame(const Frame& frame) {
         std::string param = frame.value;
 
         // Execute the command and get the response data
-        std::string response = executeCommand(commandKey, param, frame.operationType);
+        Frame response = executeCommand(commandKey, param, frame.operationType);
 
-        uartPrint("Sending response data: " + response);
-        Frame responseFrame = buildResponseFrame(frame, response);
-        sendFrame(responseFrame);
+        sendFrame(response);
     } else {
         uartPrint("Error: Unknown group/command combination");
     }
@@ -247,30 +171,18 @@ void handleCommandFrame(const Frame& frame) {
 
 void processFrameData(const std::string& data) {
     try {
-        // Find the starting position of the header
-        size_t headerPos = data.find(FRAME_BEGIN);
-        if (headerPos == std::string::npos) {
-            throw std::runtime_error("Invalid frame header");
-        }
+        Frame frame = decodeFrame(data);
+        uint32_t commandKey = (static_cast<uint32_t>(frame.group) << 8) | static_cast<uint32_t>(frame.command);
 
-        // Extract the frame data starting from the header
-        std::string frameData = data.substr(headerPos);
+        // Execute the command and get the response frame
+        Frame responseFrame = executeCommand(commandKey, frame.value, frame.operationType);
 
-        // Find the footer position
-        size_t footerPos = frameData.find(FRAME_END);
+        // Send the response frame
+        sendFrame(responseFrame);
 
-        // Extract the frame data without the footer
-        std::string frameWithoutFooter = (footerPos != std::string::npos) ?
-            frameData.substr(0, footerPos) : frameData;
-
-        Frame frame = decodeFrame(frameWithoutFooter);
-        std::string messageToLog = "Received valid frame from group: " + std::to_string(frame.group) +
-                                   " command: " + std::to_string(frame.command);
-        uartPrint(messageToLog);
-        handleCommandFrame(frame);
     } catch (const std::exception& e) {
-        uartPrint("Frame error: " + std::string(e.what()));
-        Frame errorFrame = buildErrorFrame(e.what());
+        // Handle decoding errors
+        Frame errorFrame = buildErrorFrame(1, 0, 0, e.what()); // Generic error
         sendFrame(errorFrame);
     }
 }
@@ -288,78 +200,7 @@ std::vector<uint8_t> hexStringToBytes(const std::string& hexString) {
     return bytes;
 }
 
-void onReceive(int packetSize) {
-    if (packetSize == 0) return;
 
-    uint8_t buffer[256];
-    int bytesRead = 0;
-    
-    while (LoRa.available() && bytesRead < packetSize) {
-        buffer[bytesRead++] = LoRa.read();
-    }
-    
-    // Extract LoRa metadata
-    uint8_t receivedDestination = buffer[0];
-    uint8_t receivedLocalAddress = buffer[1];
-    
-    // Validate metadata (optional, for security)
-    if (receivedDestination != localAddress) {
-        uartPrint("Error: Destination address mismatch!");
-        return;
-    }
-    
-    if (receivedLocalAddress != destination) {
-        uartPrint("Error: Local address mismatch!");
-        return;
-    }
-
-    // Find the starting index of the actual frame data
-    int startIndex = 2; // Start after the metadata
-    
-    // Extract the frame data
-    std::string received = std::string(reinterpret_cast<char*>(buffer + startIndex), bytesRead - startIndex);
-    
-    if (received.empty()) return;
-    
-    // Debug: Print raw hex values
-    std::stringstream hexDump;
-    hexDump << "Raw bytes: ";
-    for (int i = 0; i < bytesRead; i++) {
-        hexDump << std::hex << std::setfill('0') << std::setw(2) 
-                << static_cast<int>(buffer[i]) << " ";
-    }
-    uartPrint(hexDump.str());
-    
-    // Find frame boundaries
-    size_t headerPos = received.find(FRAME_BEGIN);
-    size_t footerPos = received.find(FRAME_END);
-    
-    if (headerPos != std::string::npos && footerPos != std::string::npos && footerPos > headerPos) {
-        // Extract frame between header and footer
-        std::string frameData = received.substr(headerPos, footerPos + FRAME_END.length() - headerPos);
-        uartPrint("Extracted frame (length=" + std::to_string(frameData.length()) + "): " + frameData);
-        processFrameData(frameData);
-    } else {
-        uartPrint("No valid frame found in received data");
-    }
-}
-
-void handleUartInput() {
-    static std::string uartBuffer; // Static buffer to store UART input
-
-    while (uart_is_readable(DEBUG_UART_PORT)) {
-        char c = uart_getc(DEBUG_UART_PORT);
-
-        if (c == '\r' || c == '\n') {
-            uartPrint("Received UART string: " + uartBuffer);
-            processFrameData(uartBuffer); // Process the data
-            uartBuffer.clear(); // Clear the buffer for the next input
-        } else {
-            // Append the character to the buffer
-            uartBuffer += c;
-        }
-    }
-}
 
 // Function to send the event register value via radio
 extern volatile uint16_t eventRegister;
@@ -381,4 +222,30 @@ void sendEventRegister() {
 
     // Send the frame
     sendFrame(eventFrame);
+}
+
+Frame buildSuccessFrame(uint8_t direction, uint8_t group, uint8_t command, const std::string& value, const std::string& unit) {
+    Frame frame;
+    frame.header = FRAME_BEGIN;
+    frame.direction = direction;
+    frame.operationType = OperationType::ANS;
+    frame.group = group;
+    frame.command = command;
+    frame.value = value;
+    frame.unit = unit;
+    frame.footer = FRAME_END;
+    return frame;
+}
+
+Frame buildErrorFrame(uint8_t direction, uint8_t group, uint8_t command, const std::string& errorMessage) {
+    Frame frame;
+    frame.header = FRAME_BEGIN;
+    frame.direction = direction;
+    frame.operationType = OperationType::ERR;
+    frame.group = group;
+    frame.command = command;
+    frame.value = errorMessage;
+    frame.unit = "";
+    frame.footer = FRAME_END;
+    return frame;
 }

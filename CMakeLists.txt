@@ -66,14 +66,18 @@ add_executable(
     main 
     main.cpp 
     ISensor.cpp 
-    commands.cpp
     pin_config.cpp    
-    communication.cpp
     storage.cpp
     event_manager.cpp
     utils.cpp
     logging.cpp
     gps_data.cpp
+    commands/commands.cpp
+    frame_model/frame.cpp
+    frame_model/send.cpp
+    frame_model/receive.cpp
+    frame_model/groups.cpp
+    frame_model/communication.cpp
 )
 
 pico_set_program_name(main "kubisat_firmware")
@@ -104,6 +108,8 @@ target_link_libraries(
 target_include_directories(main PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/lib
+    ${CMAKE_CURRENT_SOURCE_DIR}/commands
+    ${CMAKE_CURRENT_SOURCE_DIR}/frame_model
 )
 pico_add_extra_outputs(main)
 

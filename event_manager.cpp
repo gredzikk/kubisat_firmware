@@ -4,6 +4,7 @@
 #include "ff.h"
 #include "protocol.h"
 #include "pico/multicore.h"
+#include "communication.h"
 
 extern PowerManager powerManager;
 

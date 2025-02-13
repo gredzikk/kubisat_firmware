@@ -1,89 +1,6 @@
-#ifndef PROTOCOL_H
-#define PROTOCOL_H
+#include "protocol.h"
 
-#include <string>
-#include <map>
-#include <functional>
-#include <vector>
-#include <cstdint>
-
-const std::string FRAME_BEGIN = "KBST";
-const std::string FRAME_END = "TSBK";
-const char DELIMITER = ';';
-
-enum class OperationType {
-    GET,
-    SET,
-    ANS,
-    ERR
-};
-
-enum class CommandAccessLevel {
-    NONE,
-    READ_ONLY,
-    WRITE_ONLY,
-    READ_WRITE
-};
-
-enum class ValueUnit {
-    UNDEFINED,
-    SECOND,
-    VOLT,
-    BOOL,
-    DATETIME,
-    TEXT,
-    MILIAMP,
-};
-
-struct Command
-{
-    int Id;
-    std::string Name;
-    CommandAccessLevel AccessRights;
-    ValueUnit Unit;
-};
-
-struct Group
-{
-    int Id;
-    std::string Name;
-    std::vector<Command> Commands;
-};
-
-std::string operationTypeToString(OperationType type);
-
-// Function to convert string to OperationType
-OperationType stringToOperationType(const std::string& str);
-
-struct Frame {
-    std::string header;    // Start marker
-    uint8_t direction;        // 0 = ground->sat, 1 = sat->ground
-    OperationType operationType;
-    uint8_t group;            // Group ID
-    uint8_t command;          // Command ID within group
-    std::string value;          // Payload value
-    std::string unit;           // Payload unit
-    std::string footer;      // End marker
-};
-
-bool initializeRadio();
-void sendMessage(std::string outgoing);
-void sendLargePacket(const uint8_t* data, size_t length);
-void onReceive(int packetSize);
-void handleUartInput();
-void processFrameData(const std::string& data);
-
-Frame buildFrame(uint8_t direction, OperationType operationType, uint8_t group, uint8_t command, const std::string& value, const std::string& unit);
-std::string encodeFrame(const Frame& frame);
-Frame decodeFrame(const std::string& data);
-void handleCommandFrame(const Frame& frame);
-std::string executeCommand(uint32_t commandKey, const std::string& param, OperationType operationType);
-void sendEventRegister();
-std::vector<uint8_t> hexStringToBytes(const std::string& hexString);
-using CommandHandler = std::function<std::string(const std::string&, OperationType)>;
-extern std::map<uint32_t, CommandHandler> commandHandlers;
-
-inline std::vector<Group> getGroups()
+std::vector<Group> getGroups()
 {
     return {
         {
@@ -196,5 +113,3 @@ inline std::vector<Group> getGroups()
         }
     };
 }
-
-#endif
