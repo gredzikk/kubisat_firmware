@@ -17,7 +17,7 @@ Frame handleTime(const std::string& param, OperationType operationType) {
     if (operationType == OperationType::SET) {
         try {
             time_t newTime = std::stoll(param);
-            if (stime(&newTime) != 0) {
+            if (newTime != 0) {
                 return buildFrame(ExecutionResult::ERROR, 3, 0, "FAILED TO SET TIME");
             }
             return buildFrame(ExecutionResult::SUCCESS, 3, 0, "Time set successfully");

@@ -6,12 +6,14 @@
 #include <functional>
 #include <map>
 #include "protocol.h"
-
+#include "groups.h"
 // CLOCK
 Frame handleTime(const std::string& param, OperationType operationType);
 
 // DIAG
+Frame handleListCommands(const std::string& param, OperationType operationType);
 Frame handleGetBuildVersion(const std::string& param, OperationType operationType);
+Frame handleGetCommandsTimestamp(const std::string& param, OperationType operationType);
 
 // GPS
 Frame handleGPSPowerStatus(const std::string& param, OperationType operationType);

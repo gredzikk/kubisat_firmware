@@ -1,0 +1,280 @@
+{
+    "groups": [
+      {
+        "id": 0,
+        "name": "INFO",
+        "commands": [
+          {
+            "id": 0,
+            "name": "GENERIC_INFO",
+            "access": "READ_ONLY",
+            "unit": "UNDEFINED"
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "DIAGNOSTICS",
+        "commands": [
+          {
+            "id": 0,
+            "name": "LIST_COMMANDS",
+            "access": "READ_ONLY",
+            "unit": "TEXT"
+          },
+          {
+            "id": 1,
+            "name": "BUILD_VERSION",
+            "access": "READ_ONLY",
+            "unit": "TEXT"
+          },
+          {
+            "id": 2,
+            "name": "BUILD_DATE",
+            "access": "READ_ONLY",
+            "unit": "TEXT"
+          },
+          {
+            "id": 3,
+            "name": "COMMANDS_TIMESTAMP",
+            "access": "READ_ONLY",
+            "unit": "TEXT"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "POWER_MANAGER",
+        "commands": [
+          {
+            "id": 0,
+            "name": "ID",
+            "access": "READ_ONLY",
+            "unit": "TEXT"
+          },
+          {
+            "id": 1,
+            "name": "NDEF",
+            "access": "NONE",
+            "unit": "UNDEFINED"
+          },
+          {
+            "id": 2,
+            "name": "VOLTAGE_BATTERY",
+            "access": "READ_ONLY",
+            "unit": "VOLT"
+          },
+          {
+            "id": 3,
+            "name": "VOLTAGE_5V",
+            "access": "READ_ONLY",
+            "unit": "VOLT"
+          },
+          {
+            "id": 4,
+            "name": "CURRENT_CHARGE_USB",
+            "access": "READ_ONLY",
+            "unit": "MILIAMP"
+          },
+          {
+            "id": 5,
+            "name": "CURRENT_CHARGE_SOLAR",
+            "access": "READ_ONLY",
+            "unit": "MILIAMP"
+          },
+          {
+            "id": 6,
+            "name": "CURRENT_CHARGE_TOTAL",
+            "access": "READ_ONLY",
+            "unit": "MILIAMP"
+          },
+          {
+            "id": 7,
+            "name": "CURRENT_DRAW",
+            "access": "READ_ONLY",
+            "unit": "MILIAMP"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "CLOCK",
+        "commands": [
+          {
+            "id": 0,
+            "name": "CURRENT_TIME",
+            "access": "READ_WRITE",
+            "unit": "DATETIME"
+          },
+          {
+            "id": 1,
+            "name": "GPS_TIME_SYNC",
+            "access": "READ_WRITE",
+            "unit": "BOOL"
+          },
+          {
+            "id": 2,
+            "name": "GPS_TIME_SYNC_INTERVAL",
+            "access": "READ_WRITE",
+            "unit": "SECOND"
+          },
+          {
+            "id": 3,
+            "name": "TIMEZONE",
+            "access": "READ_WRITE",
+            "unit": "SECOND"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "RADIO",
+        "commands": [
+          {
+            "id": 0,
+            "name": "RESERVED",
+            "access": "NONE",
+            "unit": "UNDEFINED"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "STORAGE",
+        "commands": [
+          {
+            "id": 0,
+            "name": "RESERVED",
+            "access": "NONE",
+            "unit": "UNDEFINED"
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "name": "GPS",
+        "commands": [
+          {
+            "id": 0,
+            "name": "RESERVED",
+            "access": "NONE",
+            "unit": "UNDEFINED"
+          },
+          {
+            "id": 1,
+            "name": "POWER_STATUS",
+            "access": "READ_WRITE",
+            "unit": "BOOL"
+          },
+          {
+            "id": 2,
+            "name": "TRANSPARENT_MODE_TIMEOUT",
+            "access": "READ_WRITE",
+            "unit": "SECOND"
+          },
+          {
+            "id": 3,
+            "name": "DATA",
+            "access": "READ_ONLY",
+            "unit": "TEXT"
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "name": "EVENTS",
+        "commands": [
+          {
+            "id": 0,
+            "name": "EVENT_REGISTER",
+            "access": "READ_ONLY",
+            "unit": "TEXT"
+          },
+          {
+            "id": 1,
+            "name": "RESET_EVENTS",
+            "access": "WRITE_ONLY",
+            "unit": "BOOL"
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "name": "MAGNETOMETER",
+        "commands": [
+          {
+            "id": 0,
+            "name": "RESERVED",
+            "access": "NONE",
+            "unit": "UNDEFINED"
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "name": "ENVIRONMENTAL_SENSOR",
+        "commands": [
+          {
+            "id": 0,
+            "name": "RESERVED",
+            "access": "NONE",
+            "unit": "UNDEFINED"
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "name": "LIGHT_SENSOR",
+        "commands": [
+          {
+            "id": 0,
+            "name": "RESERVED",
+            "access": "NONE",
+            "unit": "UNDEFINED"
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "name": "6DOF_IMU",
+        "commands": [
+          {
+            "id": 0,
+            "name": "RESERVED",
+            "access": "NONE",
+            "unit": "UNDEFINED"
+          }
+        ]
+      },
+      {
+        "id": 13,
+        "name": "GASP",
+        "commands": [
+          {
+            "id": 0,
+            "name": "RESERVED",
+            "access": "NONE",
+            "unit": "UNDEFINED"
+          }
+        ]
+      },
+      {
+        "id": 14,
+        "name": "RESTART",
+        "commands": [
+          {
+            "id": 0,
+            "name": "RESERVED",
+            "access": "NONE",
+            "unit": "UNDEFINED"
+          },
+          {
+            "id": 1,
+            "name": "RESTART_BOOTSEL",
+            "access": "WRITE_ONLY",
+            "unit": "UNDEFINED"
+          }
+        ]
+      }
+    ]
+  }

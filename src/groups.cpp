@@ -1,8 +1,5 @@
 // Auto-generated file - DO NOT EDIT
 #include "protocol.h"
-#include "groups.h"
-
-const uint32_t COMMANDS_FILE_VERSION = 1739481310u;
 
 std::vector<Group> getGroups()
 {
@@ -18,10 +15,9 @@ std::vector<Group> getGroups()
             1,
             "DIAGNOSTICS",
             {
-                { 0, "LIST_COMMANDS", CommandAccessLevel::READ_ONLY, ValueUnit::TEXT },
+                { 0, "FIRMWARE_VERSION", CommandAccessLevel::READ_ONLY, ValueUnit::TEXT },
                 { 1, "BUILD_VERSION", CommandAccessLevel::READ_ONLY, ValueUnit::TEXT },
                 { 2, "BUILD_DATE", CommandAccessLevel::READ_ONLY, ValueUnit::TEXT },
-                { 3, "COMMANDS_TIMESTAMP", CommandAccessLevel::READ_ONLY, ValueUnit::TEXT },
             }
         },
         {

@@ -118,6 +118,13 @@ target_include_directories(main PRIVATE
 pico_add_extra_outputs(main)
 
 add_custom_command(
+    OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/frame_model/groups.cpp
+    COMMAND python ${CMAKE_CURRENT_SOURCE_DIR}/scripts/generate_commands.py
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/scripts/commands.json
+    COMMENT "Generating commands header file"
+)
+
+add_custom_command(
 	TARGET main
 	PRE_BUILD
 	COMMAND ${CMAKE_COMMAND}

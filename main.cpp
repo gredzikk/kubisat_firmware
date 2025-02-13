@@ -75,7 +75,7 @@ int main()
     gpio_put(PICO_DEFAULT_LED_PIN, 1);
 
     bool sdTestResult = testSDCard();
-    multicore_launch_core1(loggingRoutine); // Launch logging routine on Core 1
+    // multicore_launch_core1(loggingRoutine); // Launch logging routine on Core 1
 
     gpio_put(PICO_DEFAULT_LED_PIN, 0);
 
@@ -92,7 +92,7 @@ int main()
     gpio_put(PICO_DEFAULT_LED_PIN, 1);
 
     uartPrint("This message will only be printed to UART.");
-    uartPrint("This message will be printed to UART and logged to Core 1.", true);
+    // uartPrint("This message will be printed to UART and logged to Core 1.", true);
 
     for (int i = 5; i > 0; --i)
     {
@@ -119,7 +119,7 @@ int main()
         //uartPrint(voltageReading.c_str());
 
         checkPowerEvents(powerManager);
-        collectGPSData();
+        //collectGPSData();
         handleUartInput();
     }
 

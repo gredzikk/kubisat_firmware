@@ -7,7 +7,9 @@ using CommandHandler = std::function<Frame(const std::string&, OperationType)>;
 using CommandMap = std::map<uint32_t, CommandHandler>;
 
 CommandMap commandHandlers = {
+    {((static_cast<uint32_t>(1) << 8) | static_cast<uint32_t>(0)), handleListCommands},      // Group 1, Command 0
     {((static_cast<uint32_t>(1) << 8) | static_cast<uint32_t>(1)), handleGetBuildVersion},          // Group 1, Command 1
+    {((static_cast<uint32_t>(1) << 8) | static_cast<uint32_t>(3)), handleGetCommandsTimestamp},     // Group 1, Command 3
     {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(0)), handleGetPowerManagerIDs},        // Group 2, Command 2
     {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(2)), handleGetVoltageBattery},        // Group 2, Command 2
     {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(3)), handleGetVoltage5V},             // Group 2, Command 3
