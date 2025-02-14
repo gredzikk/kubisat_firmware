@@ -32,16 +32,16 @@ Frame decodeFrame(const std::string& data) {
             throw std::runtime_error("Invalid frame header");
         frame.header = token;
 
-        std::string frameDataWithoutCrc;
+        std::string decodedFrameData;
         while (std::getline(ss, token, DELIMITER)) {
             if (token == FRAME_END) break; 
-            frameDataWithoutCrc += token + DELIMITER;
+            decodedFrameData += token + DELIMITER;
         }
-        if (!frameDataWithoutCrc.empty()) {
-            frameDataWithoutCrc.pop_back();
+        if (!decodedFrameData.empty()) {
+            decodedFrameData.pop_back();
         }
 
-        std::stringstream frameDataStream(frameDataWithoutCrc);
+        std::stringstream frameDataStream(decodedFrameData);
 
         std::getline(frameDataStream, token, DELIMITER);
         frame.direction = std::stoi(token);
