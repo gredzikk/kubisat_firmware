@@ -59,15 +59,13 @@ add_subdirectory(lib/INA3221)
 add_subdirectory(lib/MPU6050)
 add_subdirectory(lib/HMC5883L)
 add_subdirectory(lib/LoRa)
-add_subdirectory(lib/FatFs_SPI build)
 add_subdirectory(lib/PowerManager)
 
 add_executable(
     main 
     main.cpp 
-    ISensor.cpp 
+    lib/ISensor.cpp 
     pin_config.cpp    
-    storage.cpp
     event_manager.cpp
     utils.cpp
     logging.cpp
@@ -103,8 +101,7 @@ target_link_libraries(
     INA3221_lib
     LoRa_pico_lib
     HMC5883L_lib
-    MPU6050_lib
-    FatFs_SPI   
+    MPU6050_lib   
     PowerManager_lib
     pico_multicore
 )

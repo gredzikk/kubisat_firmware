@@ -20,15 +20,13 @@
 #include <queue>
 #include <chrono>
 #include "protocol.h"
-#include "sd_card.h"
-#include "ff.h"
 #include <atomic>
 #include <iostream>
 #include <map>
 #include "pin_config.h"
-#include "storage.h"
 #include "utils.h"
 #include "gps_data.h"
 #include "communication.h"
 #include "build_number.h"
+
 #endif

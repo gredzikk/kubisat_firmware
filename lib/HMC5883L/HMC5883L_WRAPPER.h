@@ -1,7 +1,7 @@
 #ifndef HMC5883L_WRAPPER_H
 #define HMC5883L_WRAPPER_H
 
-#include "ISensor.h"
+#include "lib/ISensor.h"
 #include "HMC5883L.h"
 
 class HMC5883LWrapper : public ISensor {

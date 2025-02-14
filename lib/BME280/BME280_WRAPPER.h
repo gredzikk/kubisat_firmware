@@ -2,7 +2,7 @@
 #ifndef BME280_WRAPPER_H
 #define BME280_WRAPPER_H
 
-#include "ISensor.h"
+#include "lib/ISensor.h"
 #include "BME280.h"
 
 class BME280Wrapper : public ISensor {

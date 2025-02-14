@@ -1,7 +1,7 @@
 #ifndef BH1750_WRAPPER_H
 #define BH1750_WRAPPER_H
 
-#include "ISensor.h"
+#include "lib/ISensor.h"
 #include "BH1750.h"
 #include <map>
 #include <string>

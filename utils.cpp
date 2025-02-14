@@ -1,7 +1,6 @@
 #include "utils.h"
 #include "pico/multicore.h"
 #include "pico/sync.h"
-#include "storage.h"
 
 #define LOG_FILENAME "log.txt"
 
