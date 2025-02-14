@@ -27,7 +27,7 @@ Frame handleGetVoltageBattery(const std::string& param, OperationType operationT
     uartPrint("Getting battery voltage");
     extern PowerManager powerManager;
     float voltage = powerManager.getVoltageBattery();
-    return buildFrame(ExecutionResult::SUCCESS, 2, 2, std::to_string(voltage));
+    return buildFrame(ExecutionResult::SUCCESS, 2, 2, std::to_string(voltage), ValueUnit::VOLT);
 }
 
 Frame handleGetVoltage5V(const std::string& param, OperationType operationType) {
@@ -43,7 +43,7 @@ Frame handleGetVoltage5V(const std::string& param, OperationType operationType) 
     uartPrint("Getting 5V voltage");
     extern PowerManager powerManager;
     float voltage = powerManager.getVoltage5V();
-    return buildFrame(ExecutionResult::SUCCESS, 2, 3, std::to_string(voltage));
+    return buildFrame(ExecutionResult::SUCCESS, 2, 3, std::to_string(voltage), ValueUnit::VOLT);
 }
 
 Frame handleGetCurrentChargeUSB(const std::string& param, OperationType operationType) {
@@ -59,7 +59,7 @@ Frame handleGetCurrentChargeUSB(const std::string& param, OperationType operatio
     uartPrint("Getting USB charge current");
     extern PowerManager powerManager;
     float chargeCurrent = powerManager.getCurrentChargeUSB();
-    return buildFrame(ExecutionResult::SUCCESS, 2, 4, std::to_string(chargeCurrent));
+    return buildFrame(ExecutionResult::SUCCESS, 2, 4, std::to_string(chargeCurrent), ValueUnit::MILIAMP);
 }
 
 Frame handleGetCurrentChargeSolar(const std::string& param, OperationType operationType) {
@@ -75,7 +75,7 @@ Frame handleGetCurrentChargeSolar(const std::string& param, OperationType operat
     uartPrint("Getting solar charge current");
     extern PowerManager powerManager;
     float chargeCurrent = powerManager.getCurrentChargeSolar();
-    return buildFrame(ExecutionResult::SUCCESS, 2, 5, std::to_string(chargeCurrent));
+    return buildFrame(ExecutionResult::SUCCESS, 2, 5, std::to_string(chargeCurrent), ValueUnit::MILIAMP);
 }
 
 Frame handleGetCurrentChargeTotal(const std::string& param, OperationType operationType) {
@@ -91,7 +91,7 @@ Frame handleGetCurrentChargeTotal(const std::string& param, OperationType operat
     uartPrint("Getting total charge current");
     extern PowerManager powerManager;
     float chargeCurrent = powerManager.getCurrentChargeTotal();
-    return buildFrame(ExecutionResult::SUCCESS, 2, 6, std::to_string(chargeCurrent));
+    return buildFrame(ExecutionResult::SUCCESS, 2, 6, std::to_string(chargeCurrent), ValueUnit::MILIAMP);
 }
 
 Frame handleGetCurrentDraw(const std::string& param, OperationType operationType) {
@@ -107,5 +107,5 @@ Frame handleGetCurrentDraw(const std::string& param, OperationType operationType
     uartPrint("Getting current draw");
     extern PowerManager powerManager;
     float currentDraw = powerManager.getCurrentDraw();
-    return buildFrame(ExecutionResult::SUCCESS, 2, 7, std::to_string(currentDraw));
+    return buildFrame(ExecutionResult::SUCCESS, 2, 7, std::to_string(currentDraw), ValueUnit::MILIAMP);
 }

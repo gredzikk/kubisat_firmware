@@ -19,13 +19,3 @@ bool initializeRadio() {
     return true;
 }
 
-std::string exceptionTypeToString(ExceptionType type) {
-    switch (type) {
-        case ExceptionType::NOT_ALLOWED:       return "NOT ALLOWED";
-        case ExceptionType::INVALID_PARAM:     return "INVALID PARAM";
-        case ExceptionType::INVALID_OPERATION: return "INVALID OPERATION";
-        case ExceptionType::PARAM_UNECESSARY:  return "PARAM UNECESSARY";
-        case ExceptionType::NONE:              return "NONE";
-        default:                               return "UNKNOWN EXCEPTION";
-    }
-}

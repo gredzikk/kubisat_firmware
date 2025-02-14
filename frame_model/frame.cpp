@@ -1,25 +1,5 @@
 #include "communication.h"
 
-// Function to convert OperationType to string
-std::string operationTypeToString(OperationType type) {
-    switch (type) {
-        case OperationType::GET: return "GET";
-        case OperationType::SET: return "SET";
-        case OperationType::ANS: return "ANS";
-        case OperationType::ERR: return "ERR";
-        default: return "UNKNOWN";
-    }
-}
-
-// Function to convert string to OperationType
-OperationType stringToOperationType(const std::string& str) {
-    if (str == "GET") return OperationType::GET;
-    if (str == "SET") return OperationType::SET;
-    if (str == "ANS") return OperationType::ANS;
-    if (str == "ERR") return OperationType::ERR;
-    return OperationType::GET; // Default to GET
-}
-
 /// @brief Encode Frame instance into a string
 /// @param frame  Frame instance to encode
 /// @return Frame encoded as a string
@@ -31,7 +11,6 @@ std::string encodeFrame(const Frame& frame) {
        << static_cast<int>(frame.command) << DELIMITER
        << frame.value;
 
-    // Only add unit field if it's not empty
     if (!frame.unit.empty()) {
         ss << DELIMITER << frame.unit;
     }
@@ -55,7 +34,7 @@ Frame decodeFrame(const std::string& data) {
 
         std::string frameDataWithoutCrc;
         while (std::getline(ss, token, DELIMITER)) {
-            if (token == FRAME_END) break; // Stop at the footer
+            if (token == FRAME_END) break; 
             frameDataWithoutCrc += token + DELIMITER;
         }
         if (!frameDataWithoutCrc.empty()) {
@@ -87,15 +66,12 @@ Frame decodeFrame(const std::string& data) {
         uartPrint("Frame error: " + std::string(e.what()));
         Frame errorFrame = buildFrame(ExecutionResult::ERROR, 0, 0, e.what()); 
         sendFrame(errorFrame);
-        throw; // Re-throw the exception so that the calling function knows that an error occurred.
+        throw; 
     }
 }
 
 
-// Command handler function type
 using CommandHandler = std::function<std::string(const std::string&, OperationType)>;
-
-// Declare command map
 extern std::map<uint32_t, CommandHandler> commandHandlers;
 
 /// @brief Execute the command based on the command key and the parameter
@@ -105,48 +81,27 @@ void processFrameData(const std::string& data) {
         Frame frame = decodeFrame(data);
         uint32_t commandKey = (static_cast<uint32_t>(frame.group) << 8) | static_cast<uint32_t>(frame.command);
 
-        // Execute the command and get the response frame
         Frame responseFrame = executeCommand(commandKey, frame.value, frame.operationType);
 
-        // Send the response frame
         sendFrame(responseFrame);
-
     } catch (const std::exception& e) {
-        // Handle decoding errors
-        Frame errorFrame = buildFrame(ExecutionResult::ERROR, 0, 0, e.what()); // Generic error
+        Frame errorFrame = buildFrame(ExecutionResult::ERROR, 0, 0, e.what()); 
         sendFrame(errorFrame);
     }
 }
 
-/// @brief Convert a hex string to a vector of bytes
-/// @param hexString Hex string to convert
-/// @return Vector of bytes
-std::vector<uint8_t> hexStringToBytes(const std::string& hexString) {
-    std::vector<uint8_t> bytes;
-    for (size_t i = 0; i < hexString.length(); i += 2) {
-        std::string byteString = hexString.substr(i, 2);
-        unsigned int byte;
-        std::stringstream ss;
-        ss << std::hex << byteString;
-        ss >> byte;
-        bytes.push_back(static_cast<uint8_t>(byte));
-    }
-    return bytes;
-}
 
 extern volatile uint16_t eventRegister;
 
 /// @brief Send event register value to the ground station
 /// @note This function is called in the main loop
 void sendEventRegister() {
-    // Convert the event register value to a string
     std::stringstream ss;
     ss << std::hex << std::setw(4) << std::setfill('0') << static_cast<int>(eventRegister);
     std::string eventValue = ss.str();
 
-    // Build the frame using the new method
     Frame eventFrame = buildFrame(
-        ExecutionResult::SUCCESS,  // Result: success as this is a normal status update
+        ExecutionResult::SUCCESS, // Result: success as this is a normal status update
         8,                        // Group ID: 8 (EVENTS)
         0,                        // Command ID: 0 (EVENT_REGISTER)
         eventValue                // Value: event register value
@@ -156,7 +111,7 @@ void sendEventRegister() {
 }
 
 Frame buildFrame(ExecutionResult result, uint8_t group, uint8_t command, 
-                const std::string& value, const Frame* requestFrame) {
+                const std::string& value, const ValueUnit unitType) {
     Frame frame;
     frame.header = FRAME_BEGIN;
     frame.footer = FRAME_END;
@@ -166,25 +121,14 @@ Frame buildFrame(ExecutionResult result, uint8_t group, uint8_t command,
             frame.direction = 1;
             frame.operationType = OperationType::ANS;
             frame.value = value;
-            // Set unit based on command definition
-            frame.unit = determineUnit(group, command);
+            frame.unit = valueUnitTypeToString(unitType);
             break;
             
         case ExecutionResult::ERROR:
             frame.direction = 1;
             frame.operationType = OperationType::ERR;
-            frame.value = value; // Error message
-            frame.unit = "";
-            break;
-            
-        case ExecutionResult::RESPONSE:
-            if (!requestFrame) {
-                throw std::runtime_error("Request frame required for RESPONSE type");
-            }
-            frame.direction = 1;
-            frame.operationType = OperationType::ANS;
-            frame.value = value;
-            frame.unit = determineUnit(group, command);
+            frame.value = value; 
+            frame.unit = valueUnitTypeToString(ValueUnit::UNDEFINED);
             break;
     }
     
@@ -192,26 +136,4 @@ Frame buildFrame(ExecutionResult result, uint8_t group, uint8_t command,
     frame.command = command;
     
     return frame;
-}
-
-// Helper function to determine unit based on command definition
-std::string determineUnit(uint8_t group, uint8_t command) {
-    std::vector<Group> groups = getGroups();
-    for (const auto& g : groups) {
-        if (g.Id == group) {
-            for (const auto& cmd : g.Commands) {
-                if (cmd.Id == command) {
-                    switch (cmd.Unit) {
-                        case ValueUnit::VOLT: return "V";
-                        case ValueUnit::BOOL: return "";
-                        case ValueUnit::DATETIME: return "";
-                        case ValueUnit::SECOND: return "s";
-                        case ValueUnit::MILIAMP: return "mA";
-                        default: return "";
-                    }
-                }
-            }
-        }
-    }
-    return "";
 }

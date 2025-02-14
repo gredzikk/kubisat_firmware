@@ -1,4 +1,3 @@
-// communication/communication.h
 #ifndef COMMUNICATION_H
 #define COMMUNICATION_H
 
@@ -23,7 +22,7 @@ void sendEventRegister();
 std::string encodeFrame(const Frame& frame);
 Frame decodeFrame(const std::string& data);
 
-Frame buildFrame(ExecutionResult result, uint8_t group, uint8_t command,const std::string& value, const Frame* requestFrame = nullptr);
+Frame buildFrame(ExecutionResult result, uint8_t group, uint8_t command,const std::string& value, const ValueUnit unitType  = ValueUnit::UNDEFINED);
 std::string determineUnit(uint8_t group, uint8_t command);
 
 void sendMessage(std::string outgoing);
@@ -34,7 +33,6 @@ void sendLargePacket(const uint8_t* data, size_t length);
 void onReceive(int packetSize);
 void handleUartInput();
 void processFrameData(const std::string& data);
-std::vector<uint8_t> hexStringToBytes(const std::string& hexString);
 
 
 #endif

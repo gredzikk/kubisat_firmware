@@ -1,4 +1,5 @@
 #include "communication.h"
+#include "commands.h"
 
 Frame handleGetBuildVersion(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
@@ -12,47 +13,25 @@ Frame handleGetBuildVersion(const std::string& param, OperationType operationTyp
 
 Frame handleListCommands(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
-        return buildFrame(ExecutionResult::ERROR, 1, 0, "PARAM UNNECESSARY");
+        return buildFrame(ExecutionResult::ERROR, 0, 0, "PARAM UNNECESSARY");
     }
 
     if (!(operationType == OperationType::GET)) {
-        return buildFrame(ExecutionResult::ERROR, 1, 0, "INVALID OPERATION");
+        return buildFrame(ExecutionResult::ERROR, 0, 0, "INVALID OPERATION");
     }
 
-    std::string commandList;
-    std::vector<Group> groups = getGroups();
-    
-    for (const auto& group : groups) {
-        for (const auto& cmd : group.Commands) {
-            std::string accessStr;
-            switch (cmd.AccessRights) {
-                case CommandAccessLevel::READ_ONLY: accessStr = "RO"; break;
-                case CommandAccessLevel::READ_WRITE: accessStr = "RW"; break;
-                case CommandAccessLevel::WRITE_ONLY: accessStr = "WO"; break;
-                default: accessStr = "NA"; break;
-            }
-            
-            // Format: GROUP_ID:CMD_ID - GROUP_NAME:CMD_NAME [ACCESS]
-            std::string cmdInfo = std::to_string(group.Id) + ":" + 
-                                std::to_string(cmd.Id) + " - " + 
-                                group.Name + ":" + cmd.Name + 
-                                " [" + accessStr + "]";
-            uartPrint(cmdInfo, true);
-        }
+    std::stringstream ss;
+    for (const auto& entry : commandHandlers) {
+        uint32_t commandKey = entry.first;
+        uint8_t group = (commandKey >> 8) & 0xFF;
+        uint8_t command = commandKey & 0xFF;
+
+        ss << "Group: " << static_cast<int>(group)
+           << ", Command: " << static_cast<int>(command) << "\n";
     }
 
-    return buildFrame(ExecutionResult::SUCCESS, 1, 0, "Commands listed on UART");
-}
+    std::string commandList = ss.str();
+    uartPrint(commandList, true); // Print to UART
 
-Frame handleGetCommandsTimestamp(const std::string& param, OperationType operationType) {
-    if (!param.empty()) {
-        return buildFrame(ExecutionResult::ERROR, 1, 3, "PARAM UNNECESSARY");
-    }
-
-    if (!(operationType == OperationType::GET)) {
-        return buildFrame(ExecutionResult::ERROR, 1, 3, "INVALID OPERATION");
-    }
-
-    extern const uint32_t COMMANDS_FILE_VERSION;
-    return buildFrame(ExecutionResult::SUCCESS, 1, 3, std::to_string(COMMANDS_FILE_VERSION));
+    return buildFrame(ExecutionResult::SUCCESS, 0, 0, "Commands listed on UART");
 }

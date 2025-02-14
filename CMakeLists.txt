@@ -80,8 +80,8 @@ add_executable(
     frame_model/frame.cpp
     frame_model/send.cpp
     frame_model/receive.cpp
-    frame_model/groups.cpp
     frame_model/communication.cpp
+    frame_model/utils_converters.cpp
 )
 
 pico_set_program_name(main "kubisat_firmware")
@@ -116,13 +116,6 @@ target_include_directories(main PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/frame_model
 )
 pico_add_extra_outputs(main)
-
-add_custom_command(
-    OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/frame_model/groups.cpp
-    COMMAND python ${CMAKE_CURRENT_SOURCE_DIR}/scripts/generate_commands.py
-    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/scripts/commands.json
-    COMMENT "Generating commands header file"
-)
 
 add_custom_command(
 	TARGET main

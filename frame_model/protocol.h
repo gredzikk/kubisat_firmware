@@ -62,37 +62,21 @@ enum class ExceptionType {
     PARAM_UNECESSARY
 };
 
-struct Command
-{
-    int Id;
-    std::string Name;
-    CommandAccessLevel AccessRights;
-    ValueUnit Unit;
-};
-
-struct Group
-{
-    int Id;
-    std::string Name;
-    std::vector<Command> Commands;
-};
-
 struct Frame {
-    std::string header;    // Start marker
-    uint8_t direction;        // 0 = ground->sat, 1 = sat->ground
+    std::string header;             // Start marker
+    uint8_t direction;              // 0 = ground->sat, 1 = sat->ground
     OperationType operationType;
-    uint8_t group;            // Group ID
-    uint8_t command;          // Command ID within group
-    std::string value;          // Payload value
-    std::string unit;           // Payload unit
-    std::string footer;      // End marker
+    uint8_t group;                  // Group ID
+    uint8_t command;                // Command ID within group
+    std::string value;              // Payload value
+    std::string unit;               // Payload unit
+    std::string footer;             // End marker
 };
 
 std::string exceptionTypeToString(ExceptionType type);
-
 std::string operationTypeToString(OperationType type);
 OperationType stringToOperationType(const std::string& str);
-
-std::vector<Group> getGroups();
+std::vector<uint8_t> hexStringToBytes(const std::string& hexString);
+std::string valueUnitTypeToString(ValueUnit unit);
 
 #endif
