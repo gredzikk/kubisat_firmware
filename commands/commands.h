@@ -20,6 +20,16 @@ Frame handleGPSPowerStatus(const std::string& param, OperationType operationType
 Frame handleEnableGPSTransparentMode(const std::string& param, OperationType operationType);
 Frame handleGetGPSData(const std::string& param, OperationType operationType);
 
+Frame handleGetGPSTime(const std::string& param, OperationType operationType);
+Frame handleGetGPSLatitude(const std::string& param, OperationType operationType);
+Frame handleGetGPSLatitudeDirection(const std::string& param, OperationType operationType);
+Frame handleGetGPSLongitude(const std::string& param, OperationType operationType);
+Frame handleGetGPSLongitudeDirection(const std::string& param, OperationType operationType);
+Frame handleGetGPSSpeedOverGround(const std::string& param, OperationType operationType);
+Frame handleGetGPSCourseOverGround(const std::string& param, OperationType operationType);
+Frame handleGetGPSDate(const std::string& param, OperationType operationType);
+
+
 // POWER
 Frame handleGetPowerManagerIDs(const std::string& param, OperationType operationType);
 Frame handleGetVoltageBattery(const std::string& param, OperationType operationType);

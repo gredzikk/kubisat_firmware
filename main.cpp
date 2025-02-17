@@ -7,6 +7,13 @@ PowerManager powerManager(MAIN_I2C_PORT);
 char buffer[BUFFER_SIZE];
 int bufferIndex = 0;
 
+void core1_entry() {
+    while (true) {
+        collectGPSData();
+        sleep_ms(100);
+    }
+}
+
 bool initSystems() {
     stdio_init_all();
 
@@ -45,7 +52,7 @@ void loggingRoutine();
 int main()
 {
     initSystems();
-    //multicore_launch_core1(sensorsRoutine);
+    multicore_launch_core1(core1_entry);
 
     DS3231 systemClock(MAIN_I2C_PORT);
     systemClock.setTime(0, 41, 20, 4, 14, 11, 2024);
@@ -66,16 +73,12 @@ int main()
     radioInitSuccess = initializeRadio();
     gpio_put(PICO_DEFAULT_LED_PIN, 1);
 
-    // multicore_launch_core1(loggingRoutine); // Launch logging routine on Core 1
-
-    gpio_put(PICO_DEFAULT_LED_PIN, 0);
-
     if (radioInitSuccess)
     {
         sendMessage("System initialized successfully!");    
     }
     
-    gpio_put(PICO_DEFAULT_LED_PIN, 1);
+    gpio_put(PICO_DEFAULT_LED_PIN, 0);
 
     uartPrint("This message will only be printed to UART.");
     // uartPrint("This message will be printed to UART and logged to Core 1.", true);

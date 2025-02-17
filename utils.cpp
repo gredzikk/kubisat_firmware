@@ -14,7 +14,7 @@ void uartPrint(const std::string& msg, bool logToFile, uart_inst_t* uart) {
     }
 
     uint32_t timestamp = to_ms_since_boot(get_absolute_time());
-    uint core_num = get_core_num(); // Get the current core number
+    uint core_num = get_core_num();
     std::string msgToSend = "[" + std::to_string(timestamp) + "ms] - Core " + std::to_string(core_num) + ": " + msg + "\r\n";
 
     if (logToFile) {

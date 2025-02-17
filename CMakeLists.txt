@@ -69,7 +69,6 @@ add_executable(
     event_manager.cpp
     utils.cpp
     logging.cpp
-    gps_data.cpp
     commands/commands.cpp
     commands/clock_commands.cpp
     commands/diagnostic_commands.cpp
@@ -80,6 +79,9 @@ add_executable(
     frame_model/receive.cpp
     frame_model/communication.cpp
     frame_model/utils_converters.cpp
+    lib/GPS/gps_collector.cpp
+    lib/GPS/NMEA/NMEA_data.cpp
+    lib/GPS/NMEA/NMEA_parser.cpp
     storage.cpp
 )
 
@@ -119,6 +121,8 @@ target_include_directories(main PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/lib
     ${CMAKE_CURRENT_SOURCE_DIR}/commands
     ${CMAKE_CURRENT_SOURCE_DIR}/frame_model
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/GPS
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/GPS/NMEA
 )
 pico_add_extra_outputs(main)
 

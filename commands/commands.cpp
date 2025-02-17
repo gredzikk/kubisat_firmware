@@ -20,7 +20,16 @@ CommandMap commandHandlers = {
     {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(1)), handleGPSPowerStatus},           // Group 7, Command 1
     {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(2)), handleEnableGPSTransparentMode}, // Group 7, Command 3
     {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(3)), handleGetGPSData},               // Group 7, Command 4
+    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(4)), handleGetGPSTime},               // Group 7, Command 5
+    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(5)), handleGetGPSLatitude},           // Group 7, Command 6
+    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(6)), handleGetGPSLatitudeDirection},  // Group 7, Command 7
+    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(7)), handleGetGPSLongitude},          // Group 7, Command 8
+    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(8)), handleGetGPSLongitudeDirection}, // Group 7, Command 9
+    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(9)), handleGetGPSSpeedOverGround},    // Group 7, Command 10
+    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(10)), handleGetGPSCourseOverGround},  // Group 7, Command 11
+    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(11)), handleGetGPSDate},              // Group 7, Command 12
 };
+
 
 Frame executeCommand(uint32_t commandKey, const std::string& param, OperationType operationType) {
     auto it = commandHandlers.find(commandKey);

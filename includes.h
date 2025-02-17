@@ -25,8 +25,8 @@
 #include <map>
 #include "pin_config.h"
 #include "utils.h"
-#include "gps_data.h"
 #include "communication.h"
 #include "build_number.h"
+#include "lib/GPS/gps_collector.h"
 
 #endif

@@ -1,4 +1,6 @@
 #include "communication.h"
+#include "lib/GPS/gps_collector.h"
+#include <sstream> // Include for stringstream
 
 Frame handleGPSPowerStatus(const std::string& param, OperationType operationType) {
     if (!(operationType == OperationType::GET || operationType == OperationType::SET)) {
@@ -82,7 +84,120 @@ Frame handleGetGPSData(const std::string& param, OperationType operationType) {
         return buildFrame(ExecutionResult::ERROR, 7, 3, "NOT ALLOWED");
     }
 
-    extern GPSData gps_data;
-    std::string nmea = gps_data.getNMEAData();
-    return buildFrame(ExecutionResult::SUCCESS, 7, 3, nmea);
+    ParsedGPSData gpsData = nmea_data.getParsedData();
+    std::stringstream ss;
+    ss << "Time: " << gpsData.time
+       << ", Lat: " << gpsData.latitude << gpsData.latitudeDirection
+       << ", Lon: " << gpsData.longitude << gpsData.longitudeDirection
+       << ", Speed: " << gpsData.speedOverGround
+       << ", Course: " << gpsData.courseOverGround
+       << ", Date: " << gpsData.date;
+
+    return buildFrame(ExecutionResult::SUCCESS, 7, 3, ss.str());
+}
+
+Frame handleGetGPSTime(const std::string& param, OperationType operationType) {
+    if (!(operationType == OperationType::GET)) {
+        return buildFrame(ExecutionResult::ERROR, 7, 4, "NOT ALLOWED");
+    }
+    if (!param.empty()) {
+        return buildFrame(ExecutionResult::ERROR, 7, 4, "PARAM UNNECESSARY");
+    }
+
+    ParsedGPSData gpsData = nmea_data.getParsedData();
+    return buildFrame(ExecutionResult::SUCCESS, 7, 4, gpsData.time);
+}
+
+Frame handleGetGPSLatitude(const std::string& param, OperationType operationType) {
+    if (!(operationType == OperationType::GET)) {
+        return buildFrame(ExecutionResult::ERROR, 7, 5, "NOT ALLOWED");
+    }
+    if (!param.empty()) {
+        return buildFrame(ExecutionResult::ERROR, 7, 5, "PARAM UNNECESSARY");
+    }
+
+    ParsedGPSData gpsData = nmea_data.getParsedData();
+    std::stringstream ss;
+    ss << std::fixed << std::setprecision(6) << gpsData.latitude;
+    return buildFrame(ExecutionResult::SUCCESS, 7, 5, ss.str());
+}
+
+Frame handleGetGPSLatitudeDirection(const std::string& param, OperationType operationType) {
+    if (!(operationType == OperationType::GET)) {
+        return buildFrame(ExecutionResult::ERROR, 7, 6, "NOT ALLOWED");
+    }
+    if (!param.empty()) {
+        return buildFrame(ExecutionResult::ERROR, 7, 6, "PARAM UNNECESSARY");
+    }
+
+    ParsedGPSData gpsData = nmea_data.getParsedData();
+    std::string direction(1, gpsData.latitudeDirection); // Convert char to string
+    return buildFrame(ExecutionResult::SUCCESS, 7, 6, direction);
+}
+
+Frame handleGetGPSLongitude(const std::string& param, OperationType operationType) {
+    if (!(operationType == OperationType::GET)) {
+        return buildFrame(ExecutionResult::ERROR, 7, 7, "NOT ALLOWED");
+    }
+    if (!param.empty()) {
+        return buildFrame(ExecutionResult::ERROR, 7, 7, "PARAM UNNECESSARY");
+    }
+
+    ParsedGPSData gpsData = nmea_data.getParsedData();
+    std::stringstream ss;
+    ss << std::fixed << std::setprecision(6) << gpsData.longitude;
+    return buildFrame(ExecutionResult::SUCCESS, 7, 7, ss.str());
+}
+
+Frame handleGetGPSLongitudeDirection(const std::string& param, OperationType operationType) {
+    if (!(operationType == OperationType::GET)) {
+        return buildFrame(ExecutionResult::ERROR, 7, 8, "NOT ALLOWED");
+    }
+    if (!param.empty()) {
+        return buildFrame(ExecutionResult::ERROR, 7, 8, "PARAM UNNECESSARY");
+    }
+
+    ParsedGPSData gpsData = nmea_data.getParsedData();
+    std::string direction(1, gpsData.longitudeDirection); // Convert char to string
+    return buildFrame(ExecutionResult::SUCCESS, 7, 8, direction);
+}
+
+Frame handleGetGPSSpeedOverGround(const std::string& param, OperationType operationType) {
+    if (!(operationType == OperationType::GET)) {
+        return buildFrame(ExecutionResult::ERROR, 7, 9, "NOT ALLOWED");
+    }
+    if (!param.empty()) {
+        return buildFrame(ExecutionResult::ERROR, 7, 9, "PARAM UNNECESSARY");
+    }
+
+    ParsedGPSData gpsData = nmea_data.getParsedData();
+    std::stringstream ss;
+    ss << std::fixed << std::setprecision(2) << gpsData.speedOverGround;
+    return buildFrame(ExecutionResult::SUCCESS, 7, 9, ss.str());
+}
+
+Frame handleGetGPSCourseOverGround(const std::string& param, OperationType operationType) {
+    if (!(operationType == OperationType::GET)) {
+        return buildFrame(ExecutionResult::ERROR, 7, 10, "NOT ALLOWED");
+    }
+    if (!param.empty()) {
+        return buildFrame(ExecutionResult::ERROR, 7, 10, "PARAM UNNECESSARY");
+    }
+
+    ParsedGPSData gpsData = nmea_data.getParsedData();
+    std::stringstream ss;
+    ss << std::fixed << std::setprecision(2) << gpsData.courseOverGround;
+    return buildFrame(ExecutionResult::SUCCESS, 7, 10, ss.str());
+}
+
+Frame handleGetGPSDate(const std::string& param, OperationType operationType) {
+    if (!(operationType == OperationType::GET)) {
+        return buildFrame(ExecutionResult::ERROR, 7, 11, "NOT ALLOWED");
+    }
+    if (!param.empty()) {
+        return buildFrame(ExecutionResult::ERROR, 7, 11, "PARAM UNNECESSARY");
+    }
+
+    ParsedGPSData gpsData = nmea_data.getParsedData();
+    return buildFrame(ExecutionResult::SUCCESS, 7, 11, gpsData.date);
 }

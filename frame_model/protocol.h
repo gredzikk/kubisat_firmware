@@ -16,7 +16,6 @@
 #include <cstring>
 #include "utils.h"
 #include "time.h"
-#include "gps_data.h"
 #include "build_number.h"
 #include "LoRa-RP2040.h"
 
