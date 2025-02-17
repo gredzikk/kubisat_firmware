@@ -13,10 +13,6 @@
 // Define a signal to indicate an event log message
 #define EVENT_LOG_SIGNAL 0x02 // Choose a different signal value
 
-void logEventToFile(const char* event) {
-    //writeToFile(EVENT_LOG_FILENAME, event, nullptr);
-}
-
 void loggingRoutine() {
     // // Initialize SD card driver
     // if (!initializeSDCard(buf)) {
@@ -49,14 +45,6 @@ void loggingRoutine() {
             uartPrint("Event log signal received.");
             // Event log signal received
             // Read the length of the message from the FIFO
-            int messageLength = multicore_fifo_pop_blocking();
-            if (messageLength > 0 && messageLength < 256) {
-                char eventMessage[256];
-                for (int i = 0; i < messageLength; ++i) {
-                    eventMessage[i] = multicore_fifo_pop_blocking();
-                }
-                eventMessage[messageLength] = '\0'; // Null-terminate the message
-            }
         }
     }
 }

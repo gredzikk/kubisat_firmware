@@ -130,6 +130,9 @@ Frame buildFrame(ExecutionResult result, uint8_t group, uint8_t command,
             frame.value = value; 
             frame.unit = valueUnitTypeToString(ValueUnit::UNDEFINED);
             break;
+
+        case ExecutionResult::RESPONSE:
+            break;
     }
     
     frame.group = group;

@@ -17,6 +17,9 @@ void uartPrint(const std::string& msg, bool logToFile, uart_inst_t* uart) {
     uint core_num = get_core_num(); // Get the current core number
     std::string msgToSend = "[" + std::to_string(timestamp) + "ms] - Core " + std::to_string(core_num) + ": " + msg + "\r\n";
 
+    if (logToFile) {
+        logToFile = !logToFile;
+    }
     mutex_enter_blocking(&uart_mutex);
     uart_puts(uart, msgToSend.c_str());
     mutex_exit(&uart_mutex);

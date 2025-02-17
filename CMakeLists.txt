@@ -48,7 +48,6 @@ set(PICO_CXX_ENABLE_EXCEPTIONS 1)
 
 set(PICO_CXX_ENABLE_RTTI 1)
 
-
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
@@ -60,6 +59,7 @@ add_subdirectory(lib/MPU6050)
 add_subdirectory(lib/HMC5883L)
 add_subdirectory(lib/LoRa)
 add_subdirectory(lib/PowerManager)
+add_subdirectory(lib/pico-vfs)
 
 add_executable(
     main 
@@ -80,7 +80,16 @@ add_executable(
     frame_model/receive.cpp
     frame_model/communication.cpp
     frame_model/utils_converters.cpp
+    storage.cpp
 )
+
+target_compile_options(main PRIVATE 
+        -Wall 
+        -Wextra 
+        -Wno-error  # Disable treating warnings as errors
+    )
+
+pico_enable_filesystem(${CMAKE_PROJECT_NAME})
 
 pico_set_program_name(main "kubisat_firmware")
 pico_set_program_version(main "0.1")
@@ -90,8 +99,7 @@ pico_enable_stdio_uart(main 1)
 pico_enable_stdio_usb(main 0)
 
 # Add the standard library to the build
-target_link_libraries(
-    main
+target_link_libraries(main PRIVATE
     pico_stdlib
     hardware_spi
     hardware_i2c
