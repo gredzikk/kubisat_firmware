@@ -5,9 +5,9 @@
 #include "communication.h"
 #include "utils.h"
 
-extern PowerManager powerManager;
+volatile uint16_t eventLogId = 0;
 
-static PowerEventState lastPowerState = PowerEventState::LOW_BATTERY;
+static PowerEvent lastPowerState = PowerEvent::LOW_BATTERY;
 
 static constexpr float FALL_RATE_THRESHOLD = -0.02f;
 static constexpr int FALLING_TREND_REQUIRED = 3;
@@ -18,19 +18,21 @@ static uint32_t lastEventTime = 0;
 
 static int fallingTrendCount = 0;
 
-#define POWER_FALLING_SIGNAL 0x01 // Example: Use ASCII SOH (Start of Heading)
-#define EVENT_LOG_SIGNAL 0x02 // Define a signal to indicate an event log message
+void logEvent(uint8_t group, uint8_t event) {
+    EventLog log;
+    log.id = eventLogId++;
+    log.timestamp = to_ms_since_boot(get_absolute_time());
+    log.group = group;
+    log.event = event;
 
-// Initialize the event register
-volatile uint16_t eventRegister = 0x0000;
-
+    uartPrint(log);
+}
 /**
  * @brief Checks power statuses and triggers events based on voltage trends.
  * @param pm Reference to the PowerManager object.
  */
 void checkPowerEvents(PowerManager& pm) {
     float currentVoltage = pm.getVoltage5V();
-
     static float previousVoltage = 0.0f;
     float delta = currentVoltage - previousVoltage;
     previousVoltage = currentVoltage;
@@ -41,38 +43,55 @@ void checkPowerEvents(PowerManager& pm) {
         fallingTrendCount = 0;
     }
 
-    uint32_t currentTime = to_ms_since_boot(get_absolute_time());
-
     if (fallingTrendCount >= FALLING_TREND_REQUIRED) {
         uartPrint("Power falling detected!");
-        lastPowerState = PowerEventState::POWER_FALLING;
-        lastEventTime = currentTime;
-
-        eventRegister |= static_cast<uint16_t>(EventFlag::POWER_FALLING);
-        sendEventRegister(); 
+        lastPowerState = PowerEvent::POWER_FALLING;
+        EventEmitter::emit(EventGroup::POWER, PowerEvent::POWER_FALLING);
     }
 
-    if (currentVoltage < VOLTAGE_LOW_THRESHOLD && lastPowerState != PowerEventState::LOW_BATTERY) {
+    if (currentVoltage < PowerManager::VOLTAGE_LOW_THRESHOLD && 
+        lastPowerState != PowerEvent::LOW_BATTERY) {
         uartPrint("Low battery detected!");
-        lastPowerState = PowerEventState::LOW_BATTERY;
-        lastEventTime = currentTime;
-
-        eventRegister |= static_cast<uint16_t>(EventFlag::LOW_BATTERY);
-        sendEventRegister(); // Send the event register value
+        lastPowerState = PowerEvent::LOW_BATTERY;
+        EventEmitter::emit(EventGroup::POWER, PowerEvent::LOW_BATTERY);
     } 
-
-    else if (currentVoltage > VOLTAGE_OVERCHARGE_THRESHOLD && lastPowerState != PowerEventState::OVERCHARGE) {
+    else if (currentVoltage > PowerManager::VOLTAGE_OVERCHARGE_THRESHOLD && 
+             lastPowerState != PowerEvent::OVERCHARGE) {
         uartPrint("Overcharge detected!");
-        lastPowerState = PowerEventState::OVERCHARGE;
-
-        eventRegister |= static_cast<uint16_t>(EventFlag::OVERCHARGE);
-        sendEventRegister(); // Send the event register value
+        lastPowerState = PowerEvent::OVERCHARGE;
+        EventEmitter::emit(EventGroup::POWER, PowerEvent::OVERCHARGE);
     } 
-    
-    else if (currentVoltage >= VOLTAGE_LOW_THRESHOLD && currentVoltage <= VOLTAGE_OVERCHARGE_THRESHOLD && lastPowerState != PowerEventState::NORMAL) {
+    else if (currentVoltage >= PowerManager::VOLTAGE_LOW_THRESHOLD && 
+             currentVoltage <= PowerManager::VOLTAGE_OVERCHARGE_THRESHOLD && 
+             lastPowerState != PowerEvent::POWER_NORMAL) {
         uartPrint("Power back to normal!");
-        lastPowerState = PowerEventState::NORMAL;
-        lastEventTime = currentTime;
-        sendEventRegister();
+        lastPowerState = PowerEvent::POWER_NORMAL;
+        EventEmitter::emit(EventGroup::POWER, PowerEvent::POWER_NORMAL);
+    }
+
+    // Check solar charging state
+    bool currentSolarState = pm.isSolarActive();
+    if (currentSolarState != lastSolarState) {
+        if (currentSolarState) {
+            uartPrint("Solar charging active!");
+            EventEmitter::emit(EventGroup::POWER, PowerEvent::SOLAR_ACTIVE);
+        } else {
+            uartPrint("Solar charging inactive!");
+            EventEmitter::emit(EventGroup::POWER, PowerEvent::SOLAR_INACTIVE);
+        }
+        lastSolarState = currentSolarState;
+    }
+
+    // Check USB connection state
+    bool currentUSBState = pm.isUSBConnected();
+    if (currentUSBState != lastUSBState) {
+        if (currentUSBState) {
+            uartPrint("USB connected!");
+            EventEmitter::emit(EventGroup::POWER, PowerEvent::USB_CONNECTED);
+        } else {
+            uartPrint("USB disconnected!");
+            EventEmitter::emit(EventGroup::POWER, PowerEvent::USB_DISCONNECTED);
+        }
+        lastUSBState = currentUSBState;
     }
 }

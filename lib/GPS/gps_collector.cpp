@@ -48,12 +48,12 @@ void collectGPSData() {
                     parsedData.longitude = rmcMessage->longitude;
                     parsedData.longitudeDirection = rmcMessage->longitudeDirection;
                     parsedData.speedOverGround = rmcMessage->speedOverGround;
-                    parsedData.courseOverGround = rmcMessage->courseOverGround;
+                    parsedData.courseOverGround = rmcMessage->courseOverGround; // 09 09 09 09 fFff
                     parsedData.date = rmcMessage->date;
 
                     // Update the parsed data in the global NMEAData instance
                     nmea_data.updateParsedData(parsedData);
-
+                    EventManager::emit(EventGroup::GPS, GPSEvent::DATA_READY);
                     rmcMessage->print();
                     delete rmcMessage;
                 }

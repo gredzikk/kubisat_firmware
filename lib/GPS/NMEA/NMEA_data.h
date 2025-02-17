@@ -3,6 +3,7 @@
 
 #include <string>
 #include "pico/sync.h" // Include for mutex_t
+#include "event_manager.h"
 
 // Structure to hold parsed GPS data
 struct ParsedGPSData {

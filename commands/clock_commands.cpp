@@ -20,6 +20,7 @@ Frame handleTime(const std::string& param, OperationType operationType) {
             if (newTime != 0) {
                 return buildFrame(ExecutionResult::ERROR, 3, 0, "FAILED TO SET TIME");
             }
+            EventEmitter::emit(EventGroup::CLOCK ,ClockEvent::CHANGED);
             return buildFrame(ExecutionResult::SUCCESS, 3, 0, "Time set successfully");
         } catch (...) {
             return buildFrame(ExecutionResult::ERROR, 3, 0, "INVALID TIME FORMAT");

@@ -72,3 +72,13 @@ void PowerManager::configure(const std::map<std::string, std::string>& config) {
         }
     }
 }
+
+bool PowerManager::isSolarActive() const {
+    if (!initialized) return false;
+    return getCurrentChargeSolar() > SOLAR_CURRENT_THRESHOLD;
+}
+
+bool PowerManager::isUSBConnected() const {
+    if (!initialized) return false;
+    return getCurrentChargeUSB() > USB_CURRENT_THRESHOLD;
+}

@@ -18,6 +18,7 @@ Frame handleGPSPowerStatus(const std::string& param, OperationType operationType
                 return buildFrame(ExecutionResult::ERROR, 7, 1, "INVALID VALUE. USE 0 OR 1");
             }
             gpio_put(GPS_POWER_ENABLE_PIN, powerStatus);
+            EventEmitter::emit(EventGroup::GPS, powerStatus ? GPSEvent::POWER_ON : GPSEvent::POWER_OFF);
             return buildFrame(ExecutionResult::SUCCESS, 7, 1, std::to_string(powerStatus));
         } catch (...) {
             return buildFrame(ExecutionResult::ERROR, 7, 1, "INVALID PARAMETER FORMAT");
@@ -51,6 +52,8 @@ Frame handleEnableGPSTransparentMode(const std::string& param, OperationType ope
     uint32_t gpsBaudRate = GPS_UART_BAUD_RATE;
     uint32_t startTime = to_ms_since_boot(get_absolute_time());
 
+    EventEmitter::emit(EventGroup::GPS, GPSEvent::PASS_THROUGH_START);
+
     std::string message = "Entering GPS Serial Pass-Through Mode @" + 
                          std::to_string(gpsBaudRate) + " for " + 
                          std::to_string(timeoutMs);
@@ -72,6 +75,8 @@ Frame handleEnableGPSTransparentMode(const std::string& param, OperationType ope
     }
 
     uart_set_baudrate(DEBUG_UART_PORT, originalBaudRate);
+    EventEmitter::emit(EventGroup::GPS ,GPSEvent::PASS_THROUGH_END);
+    
     return buildFrame(ExecutionResult::SUCCESS, 7, 2, "GPS UART BRIDGE EXIT");
 }
 

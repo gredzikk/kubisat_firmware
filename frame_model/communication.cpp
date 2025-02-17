@@ -10,12 +10,18 @@ unsigned long interval = 0;
 bool initializeRadio() {
     LoRa.setPins(csPin, resetPin, irqPin);
     long frequency = 433E6;
+    bool initStatus = false;
     if (!LoRa.begin(frequency))
     {
         uartPrint("LoRa init failed. Check your connections.");
-        return false;
+        initStatus = false;
+    } else {
+        uartPrint("LoRa initialized with frequency " + std::to_string(frequency));
+        initStatus = true;
     }
-    uartPrint("LoRa initialized with frequency " + std::to_string(frequency));
-    return true;
+
+    EventEmitter::emit(EventGroup::COMMS, initStatus ? CommsEvent::RADIO_INIT : CommsEvent::RADIO_ERROR);
+
+    return initStatus;
 }
 

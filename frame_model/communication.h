@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 #include "protocol.h"
-
+#include "event_manager.h"
 
 bool initializeRadio();
 void sendMessage(std::string outgoing);

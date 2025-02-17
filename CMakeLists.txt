@@ -44,6 +44,19 @@ include(pico_sdk_import.cmake)
 
 project(main C CXX ASM)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set_property(GLOBAL PROPERTY GRAPHVIZ_GENERATE_DEPENDERS ON)
+set(GRAPHVIZ_GRAPH_NAME "KubisatFirmware")
+set(GRAPHVIZ_GRAPH_HEADER "node [\n  fontsize = \"12\"\n];")
+set(GRAPHVIZ_EXTERNAL_LIBS ON)
+
+# Generate the Graphviz files
+add_custom_target(dependency_graph
+    COMMAND ${CMAKE_COMMAND} --graphviz=dependency_graph.dot .
+    COMMAND dot -Tpng dependency_graph.dot -o dependency_graph.png
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+)
+
 set(PICO_CXX_ENABLE_EXCEPTIONS 1)
 
 set(PICO_CXX_ENABLE_RTTI 1)

@@ -18,8 +18,8 @@ Frame handleGetCommandsTimestamp(const std::string& param, OperationType operati
 // GPS
 Frame handleGPSPowerStatus(const std::string& param, OperationType operationType);
 Frame handleEnableGPSTransparentMode(const std::string& param, OperationType operationType);
-Frame handleGetGPSData(const std::string& param, OperationType operationType);
 
+Frame handleGetGPSData(const std::string& param, OperationType operationType);
 Frame handleGetGPSTime(const std::string& param, OperationType operationType);
 Frame handleGetGPSLatitude(const std::string& param, OperationType operationType);
 Frame handleGetGPSLatitudeDirection(const std::string& param, OperationType operationType);
