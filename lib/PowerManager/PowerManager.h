@@ -20,8 +20,8 @@ public:
     float getVoltageBattery();
     float getVoltage5V();
     void configure(const std::map<std::string, std::string>& config);
-    bool isSolarActive() const;
-    bool isUSBConnected() const;
+    bool isSolarActive();
+    bool isUSBConnected();
     
     static constexpr float SOLAR_CURRENT_THRESHOLD = 50.0f;  // mA
     static constexpr float USB_CURRENT_THRESHOLD = 50.0f;    // mA

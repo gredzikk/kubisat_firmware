@@ -3,6 +3,7 @@
 #define LOG_FILENAME "log.txt"
 
 PowerManager powerManager(MAIN_I2C_PORT);
+DS3231 systemClock(MAIN_I2C_PORT);
 
 char buffer[BUFFER_SIZE];
 int bufferIndex = 0;
@@ -10,7 +11,7 @@ int bufferIndex = 0;
 void core1_entry() {
     while (true) {
         collectGPSData();
-        sleep_ms(100);
+        checkPowerEvents(powerManager);
     }
 }
 
@@ -40,7 +41,9 @@ bool initSystems() {
         gpio_set_dir(GPS_POWER_ENABLE_PIN, GPIO_OUT);
         gpio_put(GPS_POWER_ENABLE_PIN, 1); 
     }
-
+    
+    // bool sdInitDone = fs_init();
+    // uartPrint("SD card init: " + std::to_string(sdInitDone));
     std::string bootString = "System init completed @ " + std::to_string(to_ms_since_boot(get_absolute_time())) + " ms";
     uartPrint(bootString);
 
@@ -54,7 +57,6 @@ int main()
     initSystems();
     multicore_launch_core1(core1_entry);
 
-    DS3231 systemClock(MAIN_I2C_PORT);
     systemClock.setTime(0, 41, 20, 4, 14, 11, 2024);
     gpio_put(PICO_DEFAULT_LED_PIN, 1);
 
@@ -107,7 +109,6 @@ int main()
         //std::string voltageReading = "Core 0: voltage from common data structure: " + std::to_string(voltage);
         //uartPrint(voltageReading.c_str());
 
-        checkPowerEvents(powerManager);
         //collectGPSData();
         handleUartInput();
     }

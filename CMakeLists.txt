@@ -94,7 +94,6 @@ add_executable(
     frame_model/utils_converters.cpp
     lib/GPS/gps_collector.cpp
     lib/GPS/NMEA/NMEA_data.cpp
-    lib/GPS/NMEA/NMEA_parser.cpp
     storage.cpp
 )
 

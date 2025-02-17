@@ -3,6 +3,7 @@
 
 #include "PowerManager.h"
 #include <cstdint>
+#include <string>
 
 // Event Groups
 enum class EventGroup : uint8_t {
@@ -61,11 +62,20 @@ enum class ClockEvent : uint8_t {
     GPS_SYNC = 0x02
 };
 
-struct EventLog {
+class EventLog {
+public:
     uint16_t id;          // Sequence number
     uint32_t timestamp;   // Unix timestamp or system time
-    EventGroup group;     // Event group identifier
+    uint8_t group;        // Event group identifier
     uint8_t event;        // Specific event identifier
+
+    std::string toString() const {
+        char buffer[256];
+        snprintf(buffer, sizeof(buffer),
+                 "EventLog: id=%u, timestamp=%lu, group=%u, event=%u",
+                 id, timestamp, group, event);
+        return std::string(buffer);
+    }
 } __attribute__((packed)); // Ensure no padding
 
 // Forward declare logEvent before EventEmitter class

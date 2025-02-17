@@ -1,23 +1,15 @@
 #include "communication.h"
 #include "commands.h"
-
-Frame handleGetBuildVersion(const std::string& param, OperationType operationType) {
-    if (!param.empty()) {
-        return buildFrame(ExecutionResult::ERROR, 1, 1, "PARAM UNECESSARY");
-    }
-    if (operationType == OperationType::GET) {
-        return buildFrame(ExecutionResult::SUCCESS, 1, 1, std::to_string(BUILD_NUMBER));
-    }
-    return buildFrame(ExecutionResult::ERROR, 1, 1, "INVALID OPERATION");
-}
+#include "pico/stdlib.h"
+#include "pico/bootrom.h" 
 
 Frame handleListCommands(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
-        return buildFrame(ExecutionResult::ERROR, 0, 0, "PARAM UNNECESSARY");
+        return buildFrame(ExecutionResult::ERROR, 1, 0, "PARAM UNNECESSARY");
     }
 
     if (!(operationType == OperationType::GET)) {
-        return buildFrame(ExecutionResult::ERROR, 0, 0, "INVALID OPERATION");
+        return buildFrame(ExecutionResult::ERROR, 1, 0, "INVALID OPERATION");
     }
 
     std::stringstream ss;
@@ -33,5 +25,41 @@ Frame handleListCommands(const std::string& param, OperationType operationType) 
     std::string commandList = ss.str();
     uartPrint(commandList, true); // Print to UART
 
-    return buildFrame(ExecutionResult::SUCCESS, 0, 0, "Commands listed on UART");
+    return buildFrame(ExecutionResult::SUCCESS, 1, 0, "Commands listed on UART");
+}
+
+Frame handleGetBuildVersion(const std::string& param, OperationType operationType) {
+    if (!param.empty()) {
+        return buildFrame(ExecutionResult::ERROR, 1, 1, "PARAM UNECESSARY");
+    }
+    if (operationType == OperationType::GET) {
+        return buildFrame(ExecutionResult::SUCCESS, 1, 1, std::to_string(BUILD_NUMBER));
+    }
+    return buildFrame(ExecutionResult::ERROR, 1, 1, "INVALID OPERATION");
+}
+
+Frame handleEnterBootloaderMode(const std::string& param, OperationType operationType) {
+    if (!param.empty()) {
+        return buildFrame(ExecutionResult::ERROR, 1, 9, "PARAM UNNECESSARY");
+    }
+
+    if (operationType != OperationType::SET) {
+        return buildFrame(ExecutionResult::ERROR, 1, 9, "INVALID OPERATION");
+    }
+
+    // Build the success frame *before* resetting
+    Frame successFrame = buildFrame(ExecutionResult::SUCCESS, 1, 9, "REBOOT BOOTSEL");
+
+    // Send the success frame
+    uartPrint("Sending BOOTSEL confirmation...");
+    sendFrame(successFrame); // Assuming you have a sendFrame function
+
+    // Delay to ensure the frame is sent
+    sleep_ms(100);
+
+    uartPrint("Entering BOOTSEL mode...");
+    reset_usb_boot(0, 0); // Trigger BOOTSEL mode
+
+    // The code will never reach here because the Pico will reset
+    return buildFrame(ExecutionResult::SUCCESS, 1, 9, "Entering BOOTSEL mode");
 }

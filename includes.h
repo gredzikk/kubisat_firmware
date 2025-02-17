@@ -28,5 +28,6 @@
 #include "communication.h"
 #include "build_number.h"
 #include "lib/GPS/gps_collector.h"
+#include "storage.h"
 
 #endif

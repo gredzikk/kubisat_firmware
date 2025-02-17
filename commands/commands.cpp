@@ -9,6 +9,7 @@ using CommandMap = std::map<uint32_t, CommandHandler>;
 CommandMap commandHandlers = {
     {((static_cast<uint32_t>(1) << 8) | static_cast<uint32_t>(0)), handleListCommands},             // Group 1, Command 0
     {((static_cast<uint32_t>(1) << 8) | static_cast<uint32_t>(1)), handleGetBuildVersion},          // Group 1, Command 1
+    {((static_cast<uint32_t>(1) << 8) | static_cast<uint32_t>(9)), handleEnterBootloaderMode},      // Group 9, Command 0
     {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(0)), handleGetPowerManagerIDs},       // Group 2, Command 2
     {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(2)), handleGetVoltageBattery},        // Group 2, Command 2
     {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(3)), handleGetVoltage5V},             // Group 2, Command 3
@@ -19,15 +20,8 @@ CommandMap commandHandlers = {
     {((static_cast<uint32_t>(3) << 8) | static_cast<uint32_t>(0)), handleTime},                     // Group 3, Command 0
     {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(1)), handleGPSPowerStatus},           // Group 7, Command 1
     {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(2)), handleEnableGPSTransparentMode}, // Group 7, Command 3
-    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(3)), handleGetGPSData},               // Group 7, Command 4
-    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(4)), handleGetGPSTime},               // Group 7, Command 5
-    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(5)), handleGetGPSLatitude},           // Group 7, Command 6
-    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(6)), handleGetGPSLatitudeDirection},  // Group 7, Command 7
-    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(7)), handleGetGPSLongitude},          // Group 7, Command 8
-    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(8)), handleGetGPSLongitudeDirection}, // Group 7, Command 9
-    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(9)), handleGetGPSSpeedOverGround},    // Group 7, Command 10
-    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(10)), handleGetGPSCourseOverGround},  // Group 7, Command 11
-    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(11)), handleGetGPSDate},              // Group 7, Command 12
+    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(3)), handleGetRMCData},     // Group 7, Command 3
+    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(4)), handleGetGGAData},     // Group 7, Command 4
 };
 
 

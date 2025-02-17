@@ -1,62 +1,27 @@
+// filepath: /c:/Users/Kuba/Desktop/inz/kubisat/software/kubisat_firmware/lib/GPS/nmea_data.h
 #ifndef NMEA_DATA_H
 #define NMEA_DATA_H
 
+#include <vector>
 #include <string>
-#include "pico/sync.h" // Include for mutex_t
-#include "event_manager.h"
-
-// Structure to hold parsed GPS data
-struct ParsedGPSData {
-    std::string time;
-    double latitude;
-    char latitudeDirection;
-    double longitude;
-    char longitudeDirection;
-    double speedOverGround;
-    double courseOverGround;
-    std::string date;
-};
+#include "pico/sync.h"
 
 class NMEAData {
 public:
-    NMEAData(); // Constructor to initialize the mutex
+    NMEAData();
+    void updateRmcTokens(const std::vector<std::string>& tokens);
+    void updateGgaTokens(const std::vector<std::string>& tokens);
 
-    std::string getNMEAData() {
-        mutex_enter_blocking(&nmea_mutex_); // Wait indefinitely for the mutex
-        std::string data = last_nmea_message_;
-        mutex_exit(&nmea_mutex_); // Release the mutex
-        return data;
-    }
-
-    void updateNMEAData(const std::string& data) {
-        mutex_enter_blocking(&nmea_mutex_); // Wait indefinitely for the mutex
-        last_nmea_message_ = data;
-        mutex_exit(&nmea_mutex_); // Release the mutex
-    }
-
-    // Method to update the parsed GPS data
-    void updateParsedData(const ParsedGPSData& data) {
-        mutex_enter_blocking(&parsed_data_mutex_);
-        parsed_data_ = data;
-        mutex_exit(&parsed_data_mutex_);
-    }
-
-    // Method to retrieve the parsed GPS data
-    ParsedGPSData getParsedData() {
-        mutex_enter_blocking(&parsed_data_mutex_);
-        ParsedGPSData data = parsed_data_;
-        mutex_exit(&parsed_data_mutex_);
-        return data;
-    }
+    std::vector<std::string> getRmcTokens() const;
+    std::vector<std::string> getGgaTokens() const;
 
 private:
-    std::string last_nmea_message_;
-    mutex_t nmea_mutex_;
-
-    ParsedGPSData parsed_data_;
-    mutex_t parsed_data_mutex_;
+    std::vector<std::string> rmcTokens;
+    std::vector<std::string> ggaTokens;
+    mutex_t rmc_mutex;
+    mutex_t gga_mutex;
 };
 
-extern NMEAData nmea_data; // Declare the global instance
+extern NMEAData nmea_data;
 
 #endif

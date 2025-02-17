@@ -14,9 +14,11 @@ static constexpr int FALLING_TREND_REQUIRED = 3;
 static constexpr float VOLTAGE_LOW_THRESHOLD = 4.7f;
 
 static constexpr float VOLTAGE_OVERCHARGE_THRESHOLD = 5.3f;
-static uint32_t lastEventTime = 0;
 
 static int fallingTrendCount = 0;
+
+bool lastSolarState = false;
+bool lastUSBState = false;
 
 void logEvent(uint8_t group, uint8_t event) {
     EventLog log;
@@ -25,7 +27,7 @@ void logEvent(uint8_t group, uint8_t event) {
     log.group = group;
     log.event = event;
 
-    uartPrint(log);
+    uartPrint(log.toString());
 }
 /**
  * @brief Checks power statuses and triggers events based on voltage trends.
