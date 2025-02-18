@@ -31,6 +31,7 @@ std::string operationTypeToString(OperationType type) {
         case OperationType::SET: return "SET";
         case OperationType::ANS: return "ANS";
         case OperationType::ERR: return "ERR";
+        case OperationType::INF: return "INF";
         default: return "UNKNOWN";
     }
 }
@@ -41,6 +42,7 @@ OperationType stringToOperationType(const std::string& str) {
     if (str == "SET") return OperationType::SET;
     if (str == "ANS") return OperationType::ANS;
     if (str == "ERR") return OperationType::ERR;
+    if (str == "INF") return OperationType::INF;
     return OperationType::GET; // Default to GET
 }
 

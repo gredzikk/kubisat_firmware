@@ -4,6 +4,9 @@
 #include "PowerManager.h"
 #include <cstdint>
 #include <string>
+#include "pico/mutex.h"
+
+#define EVENT_BUFFER_SIZE 1000
 
 // Event Groups
 enum class EventGroup : uint8_t {
@@ -62,6 +65,7 @@ enum class ClockEvent : uint8_t {
     GPS_SYNC = 0x02
 };
 
+
 class EventLog {
 public:
     uint16_t id;          // Sequence number
@@ -72,24 +76,77 @@ public:
     std::string toString() const {
         char buffer[256];
         snprintf(buffer, sizeof(buffer),
-                 "EventLog: id=%u, timestamp=%lu, group=%u, event=%u",
-                 id, timestamp, group, event);
+                    "EventLog: id=%u, timestamp=%lu, group=%u, event=%u",
+                    id, timestamp, group, event);
         return std::string(buffer);
     }
-} __attribute__((packed)); // Ensure no padding
+} __attribute__((packed));
+    
+class EventManager {
+public:
+        EventManager() 
+        : eventCount(0)
+        , writeIndex(0)
+        , nextEventId(0)
+        , needsPersistence(false) 
+    {
+        mutex_init(&eventMutex);
+    }
 
-// Forward declare logEvent before EventEmitter class
-void logEvent(uint8_t group, uint8_t event);
+    virtual ~EventManager() = default;
+
+    // Add initialization method
+    virtual void init() {
+        loadFromStorage();
+    }
+    
+    void logEvent(uint8_t group, uint8_t event);
+    const EventLog& getEvent(size_t index) const;
+    size_t getEventCount() const { return eventCount; }
+    
+    virtual bool saveToStorage() = 0;
+    virtual bool loadFromStorage() = 0;
+
+protected:
+    EventLog events[EVENT_BUFFER_SIZE];
+    size_t eventCount;
+    size_t writeIndex;
+    mutex_t eventMutex;
+    volatile uint16_t nextEventId;
+    bool needsPersistence;
+};
+    
+class EventManagerImpl : public EventManager {
+public:
+    EventManagerImpl() {
+        init(); // Safe to call virtual functions here
+    }
+
+    bool saveToStorage() override {
+        // TODO: Implement based on chosen storage (SD/EEPROM)
+        needsPersistence = false;
+        return true;
+    }
+    
+    bool loadFromStorage() override {
+        // TODO: Implement based on chosen storage (SD/EEPROM)
+        return false;
+    }
+};
+
+extern EventManagerImpl eventManager;
 
 class EventEmitter {
 public:
     template<typename T>
     static void emit(EventGroup group, T event) {
-        logEvent(static_cast<uint8_t>(group), static_cast<uint8_t>(event));
+        eventManager.logEvent(
+            static_cast<uint8_t>(group), 
+            static_cast<uint8_t>(event)
+        );
     }
 };
 
-extern volatile uint16_t eventLogId;
 void checkPowerEvents(PowerManager& pm);
 
 #endif

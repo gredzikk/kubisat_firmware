@@ -87,6 +87,7 @@ add_executable(
     commands/diagnostic_commands.cpp
     commands/gps_commands.cpp
     commands/power_commands.cpp
+    commands/event_commands.cpp
     frame_model/frame.cpp
     frame_model/send.cpp
     frame_model/receive.cpp

@@ -47,6 +47,9 @@ bool initSystems() {
     std::string bootString = "System init completed @ " + std::to_string(to_ms_since_boot(get_absolute_time())) + " ms";
     uartPrint(bootString);
 
+    Frame boot = buildFrame(ExecutionResult::INFO, 0, 0, "HELLO");
+    sendFrame(boot);
+
     return true;
 }
 
@@ -93,6 +96,9 @@ int main()
         sleep_ms(1000);
     }
     gpio_put(PICO_DEFAULT_LED_PIN, 1);
+
+    Frame boot = buildFrame(ExecutionResult::INFO, 0, 0, "START");
+    sendFrame(boot);
 
     while (true)
     {

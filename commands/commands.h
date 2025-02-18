@@ -39,6 +39,9 @@ Frame handleGetCurrentChargeSolar(const std::string& param, OperationType operat
 Frame handleGetCurrentChargeTotal(const std::string& param, OperationType operationType);
 Frame handleGetCurrentDraw(const std::string& param, OperationType operationType);
 
+// EVENT
+Frame handleGetLastEvents(const std::string& param, OperationType operationType);
+Frame handleGetEventCount(const std::string& param, OperationType operationType);
 
 Frame executeCommand(uint32_t commandKey, const std::string& param, OperationType operationType);
 extern std::map<uint32_t, std::function<Frame(const std::string&, OperationType)>> commandHandlers;

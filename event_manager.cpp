@@ -20,15 +20,53 @@ static int fallingTrendCount = 0;
 bool lastSolarState = false;
 bool lastUSBState = false;
 
-void logEvent(uint8_t group, uint8_t event) {
-    EventLog log;
-    log.id = eventLogId++;
+EventManagerImpl eventManager;
+
+void EventManager::logEvent(uint8_t group, uint8_t event) {
+    mutex_enter_blocking(&eventMutex);
+
+    EventLog& log = events[writeIndex];
+    log.id = nextEventId++;
     log.timestamp = to_ms_since_boot(get_absolute_time());
     log.group = group;
     log.event = event;
 
+    // Print event immediately
     uartPrint(log.toString());
+
+    writeIndex = (writeIndex + 1) % EVENT_BUFFER_SIZE;
+    if (eventCount < EVENT_BUFFER_SIZE) {
+        eventCount++;
+    }
+
+    // Set persistence flag on buffer full or power events
+    if (eventCount == EVENT_BUFFER_SIZE || 
+        (group == static_cast<uint8_t>(EventGroup::POWER) && 
+         event == static_cast<uint8_t>(PowerEvent::POWER_FALLING))) {
+        needsPersistence = true;
+        saveToStorage();
+    }
+
+    mutex_exit(&eventMutex);
 }
+
+const EventLog& EventManager::getEvent(size_t index) const {
+    static const EventLog emptyEvent = {0, 0, 0, 0};  // Initialize {id, timestamp, group, event}
+    if (index >= eventCount) {
+        return emptyEvent;
+    }
+    
+    // Calculate actual index in circular buffer
+    size_t actualIndex;
+    if (eventCount == EVENT_BUFFER_SIZE) {
+        actualIndex = (writeIndex + index) % EVENT_BUFFER_SIZE;
+    } else {
+        actualIndex = index;
+    }
+    
+    return events[actualIndex];
+}
+
 /**
  * @brief Checks power statuses and triggers events based on voltage trends.
  * @param pm Reference to the PowerManager object.

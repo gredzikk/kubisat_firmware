@@ -35,12 +35,13 @@ Frame handleGPSPowerStatus(const std::string& param, OperationType operationType
 }
 
 Frame handleEnableGPSTransparentMode(const std::string& param, OperationType operationType) {
+    // Validate operation type
     if (!(operationType == OperationType::SET)) {
         uartPrint("GET operation not allowed for EnableGPSTransparentMode");
         return buildFrame(ExecutionResult::ERROR, 7, 2, "NOT ALLOWED");
     }
 
-    uartPrint("Enabling GPS Serial Pass-Through Mode, timeout " + param + "s");
+    // Parse and validate timeout parameter
     uint32_t timeoutMs;
     try {
         timeoutMs = param.empty() ? 60000u : std::stoul(param) * 1000;
@@ -48,36 +49,73 @@ Frame handleEnableGPSTransparentMode(const std::string& param, OperationType ope
         return buildFrame(ExecutionResult::ERROR, 7, 2, "INVALID TIMEOUT FORMAT");
     }
 
+    // Setup UART parameters and exit sequence
+    const std::string EXIT_SEQUENCE = "##EXIT##";
+    std::string inputBuffer;
+    bool exitRequested = false;
     uint32_t originalBaudRate = DEBUG_UART_BAUD_RATE;
     uint32_t gpsBaudRate = GPS_UART_BAUD_RATE;
     uint32_t startTime = to_ms_since_boot(get_absolute_time());
 
+    // Log start of transparent mode
     EventEmitter::emit(EventGroup::GPS, GPSEvent::PASS_THROUGH_START);
 
+    // Print startup message
     std::string message = "Entering GPS Serial Pass-Through Mode @" + 
                          std::to_string(gpsBaudRate) + " for " + 
-                         std::to_string(timeoutMs);
+                         std::to_string(timeoutMs/1000) + "s\r\n" +
+                         "Send " + EXIT_SEQUENCE + " to exit";
     uartPrint(message);
+    
+    // Allow time for message to be sent before baudrate change
     sleep_ms(10);
+    
+    // Switch to GPS baudrate
     uart_set_baudrate(DEBUG_UART_PORT, gpsBaudRate);
 
-    while (true) {
+    // Main transparent mode loop
+    while (!exitRequested) {
         while (uart_is_readable(DEBUG_UART_PORT)) {
             char ch = uart_getc(DEBUG_UART_PORT);
-            uart_write_blocking(GPS_UART_PORT, reinterpret_cast<const uint8_t*>(&ch), 1);
+            
+            inputBuffer += ch;
+            if (inputBuffer.length() > EXIT_SEQUENCE.length()) {
+                inputBuffer = inputBuffer.substr(1);
+            }
+            
+            if (inputBuffer == EXIT_SEQUENCE) {
+                exitRequested = true;
+                break;
+            }
+            
+            if (inputBuffer != EXIT_SEQUENCE.substr(0, inputBuffer.length())) {
+                uart_write_blocking(GPS_UART_PORT, 
+                    reinterpret_cast<const uint8_t*>(&ch), 1);
+            }
         }
+
         while (uart_is_readable(GPS_UART_PORT)) {
             char gpsByte = uart_getc(GPS_UART_PORT);
-            uart_write_blocking(DEBUG_UART_PORT, reinterpret_cast<const uint8_t*>(&gpsByte), 1);
+            uart_write_blocking(DEBUG_UART_PORT, 
+                reinterpret_cast<const uint8_t*>(&gpsByte), 1);
         }
-        if (to_ms_since_boot(get_absolute_time()) - startTime >= timeoutMs)
+
+        if (to_ms_since_boot(get_absolute_time()) - startTime >= timeoutMs) {
             break;
+        }
     }
 
     uart_set_baudrate(DEBUG_UART_PORT, originalBaudRate);
-    EventEmitter::emit(EventGroup::GPS ,GPSEvent::PASS_THROUGH_END);
     
-    return buildFrame(ExecutionResult::SUCCESS, 7, 2, "GPS UART BRIDGE EXIT");
+    sleep_ms(10);
+
+    EventEmitter::emit(EventGroup::GPS, GPSEvent::PASS_THROUGH_END);
+    
+    std::string exitReason = exitRequested ? "USER_EXIT" : "TIMEOUT";
+    std::string response = "GPS UART BRIDGE EXIT: " + exitReason;
+    uartPrint(response);
+    
+    return buildFrame(ExecutionResult::SUCCESS, 7, 2, response);
 }
 
 Frame handleGetRMCData(const std::string& param, OperationType operationType) {

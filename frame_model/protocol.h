@@ -26,14 +26,15 @@ const char DELIMITER = ';';
 enum class ExecutionResult {
     SUCCESS,
     ERROR,
-    RESPONSE
+    INFO
 };
 
 enum class OperationType {
     GET,
     SET,
     ANS,
-    ERR
+    ERR,
+    INF
 };
 
 enum class CommandAccessLevel {

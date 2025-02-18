@@ -25,6 +25,8 @@ CommandMap commandHandlers = {
     {((static_cast<uint32_t>(3) << 8) | static_cast<uint32_t>(5)), handleGetClockDrift},            // Group 3, Command 5
     {((static_cast<uint32_t>(3) << 8) | static_cast<uint32_t>(6)), handleSetClockDrift},            // Group 3, Command 6
     {((static_cast<uint32_t>(3) << 8) | static_cast<uint32_t>(7)), handleGetLastSyncTime},          // Group 3, Command 7
+    {((static_cast<uint32_t>(5) << 8) | static_cast<uint32_t>(1)), handleGetLastEvents},    // Group 5, Command 1
+    {((static_cast<uint32_t>(5) << 8) | static_cast<uint32_t>(2)), handleGetEventCount},    // Group 5, Command 2
     {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(1)), handleGPSPowerStatus},           // Group 7, Command 1
     {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(2)), handleEnableGPSTransparentMode}, // Group 7, Command 3
     {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(3)), handleGetRMCData},               // Group 7, Command 3

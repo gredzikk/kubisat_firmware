@@ -131,7 +131,11 @@ Frame buildFrame(ExecutionResult result, uint8_t group, uint8_t command,
             frame.unit = valueUnitTypeToString(ValueUnit::UNDEFINED);
             break;
 
-        case ExecutionResult::RESPONSE:
+        case ExecutionResult::INFO:
+            frame.direction = 1;
+            frame.operationType = OperationType::INF;
+            frame.value = value;
+            frame.unit = valueUnitTypeToString(ValueUnit::UNDEFINED);
             break;
     }
     
