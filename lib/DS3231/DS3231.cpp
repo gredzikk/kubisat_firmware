@@ -1,6 +1,7 @@
 #include "DS3231.h"
 #include <iomanip>
 #include <sstream>
+
 const std::array<std::string, 7> DS3231::WEEKDAYS = {
     "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"
 };

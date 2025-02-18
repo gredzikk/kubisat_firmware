@@ -4,6 +4,7 @@
 #include "pico/multicore.h"
 #include "communication.h"
 #include "utils.h"
+#include "DS3231.h"
 
 volatile uint16_t eventLogId = 0;
 
@@ -20,6 +21,8 @@ static int fallingTrendCount = 0;
 bool lastSolarState = false;
 bool lastUSBState = false;
 
+extern DS3231 systemClock;
+
 EventManagerImpl eventManager;
 
 void EventManager::logEvent(uint8_t group, uint8_t event) {
@@ -27,7 +30,7 @@ void EventManager::logEvent(uint8_t group, uint8_t event) {
 
     EventLog& log = events[writeIndex];
     log.id = nextEventId++;
-    log.timestamp = to_ms_since_boot(get_absolute_time());
+    log.timestamp = systemClock.getTimeUnix();
     log.group = group;
     log.event = event;
 
