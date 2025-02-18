@@ -1,0 +1,397 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_print" xml:lang="en-US">
+<title>Print Class Reference</title>
+<indexterm><primary>Print</primary></indexterm>
+<para>
+<computeroutput>#include &lt;Print.h&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for Print:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_print.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_print_1a1b9fe938883bb7b4bce8fba012dab112">Print</link> ()</para>
+</listitem>
+            <listitem><para>int <link linkend="_class_print_1a88a4a829fb5d589efb43955ad0cbddcc">getWriteError</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_print_1aec9ecf84cc6d9087a650def3cefc459e">clearWriteError</link> ()</para>
+</listitem>
+            <listitem><para>virtual size_t <link linkend="_class_print_1a5be30d49adae2406a270c29ba9a3e0a3">write</link> (uint8_t)=0</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_print_1a5b40e0e9cab1f2fe5bb0cb22ffe5adda">write</link> (const char *str)</para>
+</listitem>
+            <listitem><para>virtual size_t <link linkend="_class_print_1ad98d820df11e2697be1e4b1ea30b4a23">write</link> (const uint8_t *<link linkend="_main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62">buffer</link>, size_t size)</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_print_1abfdd93a61c4b95a3ba41680188505e73">write</link> (const char *<link linkend="_main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62">buffer</link>, size_t size)</para>
+</listitem>
+            <listitem><para>virtual int <link linkend="_class_print_1ae278602698f895c25820f18da4e765be">availableForWrite</link> ()</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">print</link> (char)</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_print_1aba208d0aaf8ad070829bdd0e4a7cd092">print</link> (const char *)</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_print_1ae50ed3394583e660f6fed94c12758426">print</link> (string c)</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_print_1a97bd44df9222fa4a51a1266fab8d3bc1">print</link> (unsigned char, int=<link linkend="__print_8h_1afe38ec6126e35e40049e27fdf4586ba5">DEC</link>)</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_print_1a32cb3cf32d701c797b2b2d1080052dfe">print</link> (int, int=<link linkend="__print_8h_1afe38ec6126e35e40049e27fdf4586ba5">DEC</link>)</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_print_1a87275de35583868a370f43ce1c887750">print</link> (unsigned int, int=<link linkend="__print_8h_1afe38ec6126e35e40049e27fdf4586ba5">DEC</link>)</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_print_1ab1fb2a2384c7b9f628943f5046e7d1c1">print</link> (long, int=<link linkend="__print_8h_1afe38ec6126e35e40049e27fdf4586ba5">DEC</link>)</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_print_1a26a40be7a557c0bc391a15dce9f06954">print</link> (unsigned long, int=<link linkend="__print_8h_1afe38ec6126e35e40049e27fdf4586ba5">DEC</link>)</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_print_1a669dd47fc762118a5a2052bf77d54dc8">print</link> (long long, int=<link linkend="__print_8h_1afe38ec6126e35e40049e27fdf4586ba5">DEC</link>)</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_print_1a74a51acdc4faa11f63bc5302fb974844">print</link> (unsigned long long, int=<link linkend="__print_8h_1afe38ec6126e35e40049e27fdf4586ba5">DEC</link>)</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_print_1ae8b4c025786c820afe0a90aeea01c9c5">print</link> (double, int=2)</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_print_1ad337ce3f7977411b7d34d47a51e5737e">println</link> (const char[])</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_print_1a554896a71162f967b5794401239d7a01">println</link> (char)</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_print_1ac9afe80f50f0118d735295aec7727e50">println</link> (unsigned char, int=<link linkend="__print_8h_1afe38ec6126e35e40049e27fdf4586ba5">DEC</link>)</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_print_1a738c88471cfb8eac7c8a804699971413">println</link> (int, int=<link linkend="__print_8h_1afe38ec6126e35e40049e27fdf4586ba5">DEC</link>)</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_print_1ac87eed1fcb78641169ba2244278c899e">println</link> (unsigned int, int=<link linkend="__print_8h_1afe38ec6126e35e40049e27fdf4586ba5">DEC</link>)</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_print_1a833fbec3ceba92e3ec95f51e026e4569">println</link> (long, int=<link linkend="__print_8h_1afe38ec6126e35e40049e27fdf4586ba5">DEC</link>)</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_print_1aebee3c33ee5d8f10b6f378d5273742d0">println</link> (unsigned long, int=<link linkend="__print_8h_1afe38ec6126e35e40049e27fdf4586ba5">DEC</link>)</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_print_1a3d0a0f3da98e9401d25b959b726e94ac">println</link> (long long, int=<link linkend="__print_8h_1afe38ec6126e35e40049e27fdf4586ba5">DEC</link>)</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_print_1ab3b823d47192f2c87b54f485ee1a3617">println</link> (unsigned long long, int=<link linkend="__print_8h_1afe38ec6126e35e40049e27fdf4586ba5">DEC</link>)</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_print_1a56e976b079361b6021ef7c2bedb397a2">println</link> (double, int=2)</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_print_1a169b128f9e22f0c15883768f580541a2">println</link> (void)</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_print_1add7f8450dfdc7f94eeec685f220573f7">flush</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_class_print_1a46656410e23c0ec14d7a01b38b3b6f00">setWriteError</link> (int err=1)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>size_t <link linkend="_class_print_1abe7ee1c0946399820a61e1ec39419ee2">printNumber</link> (unsigned long, uint8_t)</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_print_1a4a26b81eecc506213e4d20959c71601d">printULLNumber</link> (unsigned long long, uint8_t)</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_print_1adb44122cacb3fbd2338858efb54ffdef">printFloat</link> (double, int)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_class_print_1ae922182b62afa3b8434397b7a54e70c4">write_error</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<para>
+Definition at line <link linkend="__print_8h_source_1l00034">34</link> of file <link linkend="__print_8h_source">Print.h</link>.</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_class_print_1a1b9fe938883bb7b4bce8fba012dab112"/><section>
+    <title>Print()</title>
+<indexterm><primary>Print</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>Print</secondary></indexterm>
+<para><computeroutput>Print::Print ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__print_8h_source_1l00044">44</link> of file <link linkend="__print_8h_source">Print.h</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_print_1ae278602698f895c25820f18da4e765be"/><section>
+    <title>availableForWrite()</title>
+<indexterm><primary>availableForWrite</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>availableForWrite</secondary></indexterm>
+<para><computeroutput>virtual int Print::availableForWrite ( )<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__print_8h_source_1l00061">61</link> of file <link linkend="__print_8h_source">Print.h</link>.</para>
+</section>
+<anchor xml:id="_class_print_1aec9ecf84cc6d9087a650def3cefc459e"/><section>
+    <title>clearWriteError()</title>
+<indexterm><primary>clearWriteError</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>clearWriteError</secondary></indexterm>
+<para><computeroutput>void Print::clearWriteError ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__print_8h_source_1l00047">47</link> of file <link linkend="__print_8h_source">Print.h</link>.</para>
+</section>
+<anchor xml:id="_class_print_1add7f8450dfdc7f94eeec685f220573f7"/><section>
+    <title>flush()</title>
+<indexterm><primary>flush</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>flush</secondary></indexterm>
+<para><computeroutput>virtual void Print::flush ( )<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Reimplemented in <link linkend="_class_lo_ra_class_1a91c86c4a6e15c86d9343731b81dd0d25">LoRaClass</link>.</para>
+<para>
+Definition at line <link linkend="__print_8h_source_1l00088">88</link> of file <link linkend="__print_8h_source">Print.h</link>.</para>
+</section>
+<anchor xml:id="_class_print_1a88a4a829fb5d589efb43955ad0cbddcc"/><section>
+    <title>getWriteError()</title>
+<indexterm><primary>getWriteError</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>getWriteError</secondary></indexterm>
+<para><computeroutput>int Print::getWriteError ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__print_8h_source_1l00046">46</link> of file <link linkend="__print_8h_source">Print.h</link>.</para>
+</section>
+<anchor xml:id="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029"/><section>
+    <title>print()<computeroutput>[1/11]</computeroutput></title>
+<indexterm><primary>print</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>print</secondary></indexterm>
+<para><computeroutput>size_t Print::print (char c)</computeroutput></para><para>
+Definition at line <link linkend="__print_8cpp_source_1l00051">51</link> of file <link linkend="__print_8cpp_source">Print.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_print_1aba208d0aaf8ad070829bdd0e4a7cd092"/><section>
+    <title>print()<computeroutput>[2/11]</computeroutput></title>
+<indexterm><primary>print</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>print</secondary></indexterm>
+<para><computeroutput>size_t Print::print (const char * c)</computeroutput></para><para>
+Definition at line <link linkend="__print_8cpp_source_1l00056">56</link> of file <link linkend="__print_8cpp_source">Print.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_print_1ae8b4c025786c820afe0a90aeea01c9c5"/><section>
+    <title>print()<computeroutput>[3/11]</computeroutput></title>
+<indexterm><primary>print</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>print</secondary></indexterm>
+<para><computeroutput>size_t Print::print (double n, int digits = <computeroutput>2</computeroutput>
+)</computeroutput></para><para>
+Definition at line <link linkend="__print_8cpp_source_1l00120">120</link> of file <link linkend="__print_8cpp_source">Print.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_print_1a32cb3cf32d701c797b2b2d1080052dfe"/><section>
+    <title>print()<computeroutput>[4/11]</computeroutput></title>
+<indexterm><primary>print</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>print</secondary></indexterm>
+<para><computeroutput>size_t Print::print (int n, int base = <computeroutput><link linkend="__print_8h_1afe38ec6126e35e40049e27fdf4586ba5">DEC</link></computeroutput>
+)</computeroutput></para><para>
+Definition at line <link linkend="__print_8cpp_source_1l00066">66</link> of file <link linkend="__print_8cpp_source">Print.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_print_1a669dd47fc762118a5a2052bf77d54dc8"/><section>
+    <title>print()<computeroutput>[5/11]</computeroutput></title>
+<indexterm><primary>print</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>print</secondary></indexterm>
+<para><computeroutput>size_t Print::print (long long n, int base = <computeroutput><link linkend="__print_8h_1afe38ec6126e35e40049e27fdf4586ba5">DEC</link></computeroutput>
+)</computeroutput></para><para>
+Definition at line <link linkend="__print_8cpp_source_1l00098">98</link> of file <link linkend="__print_8cpp_source">Print.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_print_1ab1fb2a2384c7b9f628943f5046e7d1c1"/><section>
+    <title>print()<computeroutput>[6/11]</computeroutput></title>
+<indexterm><primary>print</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>print</secondary></indexterm>
+<para><computeroutput>size_t Print::print (long n, int base = <computeroutput><link linkend="__print_8h_1afe38ec6126e35e40049e27fdf4586ba5">DEC</link></computeroutput>
+)</computeroutput></para><para>
+Definition at line <link linkend="__print_8cpp_source_1l00076">76</link> of file <link linkend="__print_8cpp_source">Print.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_print_1ae50ed3394583e660f6fed94c12758426"/><section>
+    <title>print()<computeroutput>[7/11]</computeroutput></title>
+<indexterm><primary>print</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>print</secondary></indexterm>
+<para><computeroutput>size_t Print::print (string c)</computeroutput></para><para>
+Definition at line <link linkend="__print_8cpp_source_1l00041">41</link> of file <link linkend="__print_8cpp_source">Print.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_print_1a97bd44df9222fa4a51a1266fab8d3bc1"/><section>
+    <title>print()<computeroutput>[8/11]</computeroutput></title>
+<indexterm><primary>print</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>print</secondary></indexterm>
+<para><computeroutput>size_t Print::print (unsigned char b, int base = <computeroutput><link linkend="__print_8h_1afe38ec6126e35e40049e27fdf4586ba5">DEC</link></computeroutput>
+)</computeroutput></para><para>
+Definition at line <link linkend="__print_8cpp_source_1l00061">61</link> of file <link linkend="__print_8cpp_source">Print.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_print_1a87275de35583868a370f43ce1c887750"/><section>
+    <title>print()<computeroutput>[9/11]</computeroutput></title>
+<indexterm><primary>print</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>print</secondary></indexterm>
+<para><computeroutput>size_t Print::print (unsigned int n, int base = <computeroutput><link linkend="__print_8h_1afe38ec6126e35e40049e27fdf4586ba5">DEC</link></computeroutput>
+)</computeroutput></para><para>
+Definition at line <link linkend="__print_8cpp_source_1l00071">71</link> of file <link linkend="__print_8cpp_source">Print.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_print_1a74a51acdc4faa11f63bc5302fb974844"/><section>
+    <title>print()<computeroutput>[10/11]</computeroutput></title>
+<indexterm><primary>print</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>print</secondary></indexterm>
+<para><computeroutput>size_t Print::print (unsigned long long n, int base = <computeroutput><link linkend="__print_8h_1afe38ec6126e35e40049e27fdf4586ba5">DEC</link></computeroutput>
+)</computeroutput></para><para>
+Definition at line <link linkend="__print_8cpp_source_1l00114">114</link> of file <link linkend="__print_8cpp_source">Print.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_print_1a26a40be7a557c0bc391a15dce9f06954"/><section>
+    <title>print()<computeroutput>[11/11]</computeroutput></title>
+<indexterm><primary>print</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>print</secondary></indexterm>
+<para><computeroutput>size_t Print::print (unsigned long n, int base = <computeroutput><link linkend="__print_8h_1afe38ec6126e35e40049e27fdf4586ba5">DEC</link></computeroutput>
+)</computeroutput></para><para>
+Definition at line <link linkend="__print_8cpp_source_1l00092">92</link> of file <link linkend="__print_8cpp_source">Print.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_print_1adb44122cacb3fbd2338858efb54ffdef"/><section>
+    <title>printFloat()</title>
+<indexterm><primary>printFloat</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>printFloat</secondary></indexterm>
+<para><computeroutput>size_t Print::printFloat (double number, int digits)<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__print_8cpp_source_1l00298">298</link> of file <link linkend="__print_8cpp_source">Print.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_print_1a554896a71162f967b5794401239d7a01"/><section>
+    <title>println()<computeroutput>[1/11]</computeroutput></title>
+<indexterm><primary>println</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>println</secondary></indexterm>
+<para><computeroutput>size_t Print::println (char c)</computeroutput></para><para>
+Definition at line <link linkend="__print_8cpp_source_1l00137">137</link> of file <link linkend="__print_8cpp_source">Print.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_print_1ad337ce3f7977411b7d34d47a51e5737e"/><section>
+    <title>println()<computeroutput>[2/11]</computeroutput></title>
+<indexterm><primary>println</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>println</secondary></indexterm>
+<para><computeroutput>size_t Print::println (const char c[])</computeroutput></para><para>
+Definition at line <link linkend="__print_8cpp_source_1l00130">130</link> of file <link linkend="__print_8cpp_source">Print.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_print_1a56e976b079361b6021ef7c2bedb397a2"/><section>
+    <title>println()<computeroutput>[3/11]</computeroutput></title>
+<indexterm><primary>println</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>println</secondary></indexterm>
+<para><computeroutput>size_t Print::println (double num, int digits = <computeroutput>2</computeroutput>
+)</computeroutput></para><para>
+Definition at line <link linkend="__print_8cpp_source_1l00193">193</link> of file <link linkend="__print_8cpp_source">Print.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_print_1a738c88471cfb8eac7c8a804699971413"/><section>
+    <title>println()<computeroutput>[4/11]</computeroutput></title>
+<indexterm><primary>println</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>println</secondary></indexterm>
+<para><computeroutput>size_t Print::println (int num, int base = <computeroutput><link linkend="__print_8h_1afe38ec6126e35e40049e27fdf4586ba5">DEC</link></computeroutput>
+)</computeroutput></para><para>
+Definition at line <link linkend="__print_8cpp_source_1l00151">151</link> of file <link linkend="__print_8cpp_source">Print.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_print_1a3d0a0f3da98e9401d25b959b726e94ac"/><section>
+    <title>println()<computeroutput>[5/11]</computeroutput></title>
+<indexterm><primary>println</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>println</secondary></indexterm>
+<para><computeroutput>size_t Print::println (long long num, int base = <computeroutput><link linkend="__print_8h_1afe38ec6126e35e40049e27fdf4586ba5">DEC</link></computeroutput>
+)</computeroutput></para><para>
+Definition at line <link linkend="__print_8cpp_source_1l00179">179</link> of file <link linkend="__print_8cpp_source">Print.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_print_1a833fbec3ceba92e3ec95f51e026e4569"/><section>
+    <title>println()<computeroutput>[6/11]</computeroutput></title>
+<indexterm><primary>println</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>println</secondary></indexterm>
+<para><computeroutput>size_t Print::println (long num, int base = <computeroutput><link linkend="__print_8h_1afe38ec6126e35e40049e27fdf4586ba5">DEC</link></computeroutput>
+)</computeroutput></para><para>
+Definition at line <link linkend="__print_8cpp_source_1l00165">165</link> of file <link linkend="__print_8cpp_source">Print.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_print_1ac9afe80f50f0118d735295aec7727e50"/><section>
+    <title>println()<computeroutput>[7/11]</computeroutput></title>
+<indexterm><primary>println</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>println</secondary></indexterm>
+<para><computeroutput>size_t Print::println (unsigned char b, int base = <computeroutput><link linkend="__print_8h_1afe38ec6126e35e40049e27fdf4586ba5">DEC</link></computeroutput>
+)</computeroutput></para><para>
+Definition at line <link linkend="__print_8cpp_source_1l00144">144</link> of file <link linkend="__print_8cpp_source">Print.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_print_1ac87eed1fcb78641169ba2244278c899e"/><section>
+    <title>println()<computeroutput>[8/11]</computeroutput></title>
+<indexterm><primary>println</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>println</secondary></indexterm>
+<para><computeroutput>size_t Print::println (unsigned int num, int base = <computeroutput><link linkend="__print_8h_1afe38ec6126e35e40049e27fdf4586ba5">DEC</link></computeroutput>
+)</computeroutput></para><para>
+Definition at line <link linkend="__print_8cpp_source_1l00158">158</link> of file <link linkend="__print_8cpp_source">Print.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_print_1ab3b823d47192f2c87b54f485ee1a3617"/><section>
+    <title>println()<computeroutput>[9/11]</computeroutput></title>
+<indexterm><primary>println</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>println</secondary></indexterm>
+<para><computeroutput>size_t Print::println (unsigned long long num, int base = <computeroutput><link linkend="__print_8h_1afe38ec6126e35e40049e27fdf4586ba5">DEC</link></computeroutput>
+)</computeroutput></para><para>
+Definition at line <link linkend="__print_8cpp_source_1l00186">186</link> of file <link linkend="__print_8cpp_source">Print.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_print_1aebee3c33ee5d8f10b6f378d5273742d0"/><section>
+    <title>println()<computeroutput>[10/11]</computeroutput></title>
+<indexterm><primary>println</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>println</secondary></indexterm>
+<para><computeroutput>size_t Print::println (unsigned long num, int base = <computeroutput><link linkend="__print_8h_1afe38ec6126e35e40049e27fdf4586ba5">DEC</link></computeroutput>
+)</computeroutput></para><para>
+Definition at line <link linkend="__print_8cpp_source_1l00172">172</link> of file <link linkend="__print_8cpp_source">Print.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_print_1a169b128f9e22f0c15883768f580541a2"/><section>
+    <title>println()<computeroutput>[11/11]</computeroutput></title>
+<indexterm><primary>println</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>println</secondary></indexterm>
+<para><computeroutput>size_t Print::println (void )</computeroutput></para><para>
+Definition at line <link linkend="__print_8cpp_source_1l00125">125</link> of file <link linkend="__print_8cpp_source">Print.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_print_1abe7ee1c0946399820a61e1ec39419ee2"/><section>
+    <title>printNumber()</title>
+<indexterm><primary>printNumber</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>printNumber</secondary></indexterm>
+<para><computeroutput>size_t Print::printNumber (unsigned long n, uint8_t base)<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__print_8cpp_source_1l00203">203</link> of file <link linkend="__print_8cpp_source">Print.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_print_1a4a26b81eecc506213e4d20959c71601d"/><section>
+    <title>printULLNumber()</title>
+<indexterm><primary>printULLNumber</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>printULLNumber</secondary></indexterm>
+<para><computeroutput>size_t Print::printULLNumber (unsigned long long n64, uint8_t base)<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__print_8cpp_source_1l00246">246</link> of file <link linkend="__print_8cpp_source">Print.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_print_1a46656410e23c0ec14d7a01b38b3b6f00"/><section>
+    <title>setWriteError()</title>
+<indexterm><primary>setWriteError</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>setWriteError</secondary></indexterm>
+<para><computeroutput>void Print::setWriteError (int err = <computeroutput>1</computeroutput>
+)<computeroutput>[inline]</computeroutput>, <computeroutput>[protected]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__print_8h_source_1l00042">42</link> of file <link linkend="__print_8h_source">Print.h</link>.</para>
+</section>
+<anchor xml:id="_class_print_1abfdd93a61c4b95a3ba41680188505e73"/><section>
+    <title>write()<computeroutput>[1/4]</computeroutput></title>
+<indexterm><primary>write</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>write</secondary></indexterm>
+<para><computeroutput>size_t Print::write (const char * buffer, size_t size)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__print_8h_source_1l00055">55</link> of file <link linkend="__print_8h_source">Print.h</link>.</para>
+</section>
+<anchor xml:id="_class_print_1a5b40e0e9cab1f2fe5bb0cb22ffe5adda"/><section>
+    <title>write()<computeroutput>[2/4]</computeroutput></title>
+<indexterm><primary>write</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>write</secondary></indexterm>
+<para><computeroutput>size_t Print::write (const char * str)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__print_8h_source_1l00050">50</link> of file <link linkend="__print_8h_source">Print.h</link>.</para>
+</section>
+<anchor xml:id="_class_print_1ad98d820df11e2697be1e4b1ea30b4a23"/><section>
+    <title>write()<computeroutput>[3/4]</computeroutput></title>
+<indexterm><primary>write</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>write</secondary></indexterm>
+<para><computeroutput>size_t Print::write (const uint8_t * buffer, size_t size)<computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Reimplemented in <link linkend="_class_lo_ra_class_1a4b251b35d67bd9363dc44b6324cfc69c">LoRaClass</link>.</para>
+<para>
+Definition at line <link linkend="__print_8cpp_source_1l00031">31</link> of file <link linkend="__print_8cpp_source">Print.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_print_1a5be30d49adae2406a270c29ba9a3e0a3"/><section>
+    <title>write()<computeroutput>[4/4]</computeroutput></title>
+<indexterm><primary>write</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>write</secondary></indexterm>
+<para><computeroutput>virtual size_t Print::write (uint8_t )<computeroutput>[pure virtual]</computeroutput></computeroutput></para><para>
+Implemented in <link linkend="_class_lo_ra_class_1a90b450cefff42e5522be08d159a93b44">LoRaClass</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_class_print_1ae922182b62afa3b8434397b7a54e70c4"/><section>
+    <title>write_error</title>
+<indexterm><primary>write_error</primary><secondary>Print</secondary></indexterm>
+<indexterm><primary>Print</primary><secondary>write_error</secondary></indexterm>
+<para><computeroutput>int Print::write_error<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__print_8h_source_1l00037">37</link> of file <link linkend="__print_8h_source">Print.h</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+lib/LoRa/<link linkend="__print_8h">Print.h</link>lib/LoRa/<link linkend="__print_8cpp">Print.cpp</link></section>
+</section>

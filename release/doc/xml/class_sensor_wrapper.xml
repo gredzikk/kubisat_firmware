@@ -1,0 +1,217 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="class_sensor_wrapper" kind="class" language="C++" prot="public">
+    <compoundname>SensorWrapper</compoundname>
+    <includes refid="_i_sensor_8h" local="no">ISensor.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_sensor_wrapper_1ae06e367395181a74d676c533393b47be" prot="private" static="no" mutable="no">
+        <type>std::map&lt; <ref refid="_i_sensor_8h_1a213c434cb928c4ca22513e2302632435" kindref="member">SensorType</ref>, <ref refid="class_i_sensor" kindref="compound">ISensor</ref> * &gt;</type>
+        <definition>std::map&lt;SensorType, ISensor*&gt; SensorWrapper::sensors</definition>
+        <argsstring></argsstring>
+        <name>sensors</name>
+        <qualifiedname>SensorWrapper::sensors</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/ISensor.h" line="51" column="14" bodyfile="lib/ISensor.h" bodystart="51" bodyend="-1"/>
+        <referencedby refid="class_sensor_wrapper_1aeaa7bbc1f7d31212348fd617392cc8d4" compoundref="_i_sensor_8cpp" startline="51" endline="58">configureSensor</referencedby>
+        <referencedby refid="class_sensor_wrapper_1acbec9bb41e3edd34146eacbf23a807a1" compoundref="_i_sensor_8cpp" startline="27" endline="43">initSensor</referencedby>
+        <referencedby refid="class_sensor_wrapper_1a1b30eac9a56098470f130754134057b9" compoundref="_i_sensor_8cpp" startline="66" endline="72">readSensorData</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_sensor_wrapper_1adac086bdfb57168899df56fc431c5f41" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_sensor_wrapper" kindref="compound">SensorWrapper</ref> &amp;</type>
+        <definition>SensorWrapper &amp; SensorWrapper::getInstance</definition>
+        <argsstring>()</argsstring>
+        <name>getInstance</name>
+        <qualifiedname>SensorWrapper::getInstance</qualifiedname>
+        <briefdescription>
+<para>Provides a global instance of <ref refid="class_sensor_wrapper" kindref="compound">SensorWrapper</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A reference to the single <ref refid="class_sensor_wrapper" kindref="compound">SensorWrapper</ref> instance. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/ISensor.h" line="45" column="26" bodyfile="lib/ISensor.cpp" bodystart="11" bodyend="14"/>
+        <references refid="class_sensor_wrapper_1a1702516a09884caf599fad7761dd04c1">SensorWrapper</references>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_sensor_wrapper_1acbec9bb41e3edd34146eacbf23a807a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SensorWrapper::initSensor</definition>
+        <argsstring>(SensorType type, i2c_inst_t *i2c=nullptr)</argsstring>
+        <name>initSensor</name>
+        <qualifiedname>SensorWrapper::initSensor</qualifiedname>
+        <param>
+          <type><ref refid="_i_sensor_8h_1a213c434cb928c4ca22513e2302632435" kindref="member">SensorType</ref></type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>i2c_inst_t *</type>
+          <declname>i2c</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Initializes a given sensor type on the specified I2C bus. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The sensor type (LIGHT, ENVIRONMENT, etc.). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>i2c</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The I2C interface pointer. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if initialization succeeded, otherwise false. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/ISensor.h" line="46" column="10" bodyfile="lib/ISensor.cpp" bodystart="27" bodyend="43"/>
+        <references refid="_i_sensor_8h_1a213c434cb928c4ca22513e2302632435a889a65415d92b72cffa7df3f8ecf13f9" compoundref="_i_sensor_8h" startline="12">ENVIRONMENT</references>
+        <references refid="_i_sensor_8h_1a213c434cb928c4ca22513e2302632435aadce094d314507ad8b234a286aeff254" compoundref="_i_sensor_8h" startline="14">IMU</references>
+        <references refid="_i_sensor_8h_1a213c434cb928c4ca22513e2302632435af8589806bbf66241917092b2a6e18c6f" compoundref="_i_sensor_8h" startline="11">LIGHT</references>
+        <references refid="_i_sensor_8h_1a213c434cb928c4ca22513e2302632435acf29c1440f69cc71f0169036831ef688" compoundref="_i_sensor_8h" startline="13">MAGNETOMETER</references>
+        <references refid="class_sensor_wrapper_1ae06e367395181a74d676c533393b47be" compoundref="_i_sensor_8h" startline="51">sensors</references>
+      </memberdef>
+      <memberdef kind="function" id="class_sensor_wrapper_1aeaa7bbc1f7d31212348fd617392cc8d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SensorWrapper::configureSensor</definition>
+        <argsstring>(SensorType type, const std::map&lt; std::string, std::string &gt; &amp;config)</argsstring>
+        <name>configureSensor</name>
+        <qualifiedname>SensorWrapper::configureSensor</qualifiedname>
+        <param>
+          <type><ref refid="_i_sensor_8h_1a213c434cb928c4ca22513e2302632435" kindref="member">SensorType</ref></type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>const std::map&lt; std::string, std::string &gt; &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Configures an already initialized sensor with supplied settings. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The sensor type. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Key-value pairs for sensor configuration. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the sensor was successfully configured, otherwise false. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/ISensor.h" line="47" column="10" bodyfile="lib/ISensor.cpp" bodystart="51" bodyend="58"/>
+        <references refid="class_sensor_wrapper_1ae06e367395181a74d676c533393b47be" compoundref="_i_sensor_8h" startline="51">sensors</references>
+      </memberdef>
+      <memberdef kind="function" id="class_sensor_wrapper_1a1b30eac9a56098470f130754134057b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float SensorWrapper::readSensorData</definition>
+        <argsstring>(SensorType sensorType, SensorDataTypeIdentifier dataType)</argsstring>
+        <name>readSensorData</name>
+        <qualifiedname>SensorWrapper::readSensorData</qualifiedname>
+        <param>
+          <type><ref refid="_i_sensor_8h_1a213c434cb928c4ca22513e2302632435" kindref="member">SensorType</ref></type>
+          <declname>sensorType</declname>
+        </param>
+        <param>
+          <type><ref refid="_i_sensor_8h_1a21b0301bb3eb76855366980212c8ae5e" kindref="member">SensorDataTypeIdentifier</ref></type>
+          <declname>dataType</declname>
+        </param>
+        <briefdescription>
+<para>Reads a specific data type (e.g., temperature, humidity) from a sensor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sensorType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The sensor type. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dataType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of data to read (light level, temperature, etc.). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The requested measurement. Returns 0.0f if sensor not found or uninitialized. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/ISensor.h" line="48" column="11" bodyfile="lib/ISensor.cpp" bodystart="66" bodyend="72"/>
+        <references refid="class_sensor_wrapper_1ae06e367395181a74d676c533393b47be" compoundref="_i_sensor_8h" startline="51">sensors</references>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_sensor_wrapper_1a1702516a09884caf599fad7761dd04c1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SensorWrapper::SensorWrapper</definition>
+        <argsstring>()</argsstring>
+        <name>SensorWrapper</name>
+        <qualifiedname>SensorWrapper::SensorWrapper</qualifiedname>
+        <briefdescription>
+<para>Default constructor for <ref refid="class_sensor_wrapper" kindref="compound">SensorWrapper</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/ISensor.h" line="52" column="5"/>
+        <referencedby refid="class_sensor_wrapper_1adac086bdfb57168899df56fc431c5f41" compoundref="_i_sensor_8cpp" startline="11" endline="14">getInstance</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="lib/ISensor.h" line="43" column="1" bodyfile="lib/ISensor.h" bodystart="43" bodyend="53"/>
+    <listofallmembers>
+      <member refid="class_sensor_wrapper_1aeaa7bbc1f7d31212348fd617392cc8d4" prot="public" virt="non-virtual"><scope>SensorWrapper</scope><name>configureSensor</name></member>
+      <member refid="class_sensor_wrapper_1adac086bdfb57168899df56fc431c5f41" prot="public" virt="non-virtual"><scope>SensorWrapper</scope><name>getInstance</name></member>
+      <member refid="class_sensor_wrapper_1acbec9bb41e3edd34146eacbf23a807a1" prot="public" virt="non-virtual"><scope>SensorWrapper</scope><name>initSensor</name></member>
+      <member refid="class_sensor_wrapper_1a1b30eac9a56098470f130754134057b9" prot="public" virt="non-virtual"><scope>SensorWrapper</scope><name>readSensorData</name></member>
+      <member refid="class_sensor_wrapper_1ae06e367395181a74d676c533393b47be" prot="private" virt="non-virtual"><scope>SensorWrapper</scope><name>sensors</name></member>
+      <member refid="class_sensor_wrapper_1a1702516a09884caf599fad7761dd04c1" prot="private" virt="non-virtual"><scope>SensorWrapper</scope><name>SensorWrapper</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

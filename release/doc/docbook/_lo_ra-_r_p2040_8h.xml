@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__lo_ra-_r_p2040_8h" xml:lang="en-US">
+<title>lib/LoRa/LoRa-RP2040.h File Reference</title>
+<indexterm><primary>lib/LoRa/LoRa-RP2040.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;pico/stdlib.h&quot;<?linebreak?>#include &quot;pico/binary_info.h&quot;<?linebreak?>#include &quot;hardware/gpio.h&quot;<?linebreak?>#include &quot;hardware/spi.h&quot;<?linebreak?>#include &quot;string.h&quot;<?linebreak?>#include &quot;Print.h&quot;<?linebreak?>#include &quot;pin_config.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_class_lo_ra_class">LoRaClass</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>static void <link linkend="__lo_ra-_r_p2040_8h_1a1e1fbdfc1b8e6c5b37a637cd1ff3c8f5">__empty</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_lo_ra_class">LoRaClass</link> <link linkend="__lo_ra-_r_p2040_8h_1af4db0e30d2909faa29355167719f196c">LoRa</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="__lo_ra-_r_p2040_8h_1a1e1fbdfc1b8e6c5b37a637cd1ff3c8f5"/><section>
+    <title>__empty()</title>
+<indexterm><primary>__empty</primary><secondary>LoRa-RP2040.h</secondary></indexterm>
+<indexterm><primary>LoRa-RP2040.h</primary><secondary>__empty</secondary></indexterm>
+<para><computeroutput>static void __empty ( )<computeroutput>[static]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="__lo_ra-_r_p2040_8h_1af4db0e30d2909faa29355167719f196c"/><section>
+    <title>LoRa</title>
+<indexterm><primary>LoRa</primary><secondary>LoRa-RP2040.h</secondary></indexterm>
+<indexterm><primary>LoRa-RP2040.h</primary><secondary>LoRa</secondary></indexterm>
+<para><computeroutput><link linkend="_class_lo_ra_class">LoRaClass</link> LoRa<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__lo_ra-_r_p2040_8cpp_source_1l00753">753</link> of file <link linkend="__lo_ra-_r_p2040_8cpp_source">LoRa-RP2040.cpp</link>.</para>
+</section>
+</section>
+</section>

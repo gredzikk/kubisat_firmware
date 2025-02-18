@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_e9d5c4390a5fafe6614a6d2c5a68b64e" xml:lang="en-US">
+<title>lib/GPS Directory Reference</title>
+<indexterm><primary>lib/GPS Directory Reference</primary></indexterm>
+<simplesect>
+    <title>Directories    </title>
+        <itemizedlist>
+            <listitem><para>directory <link linkend="_dir_e49ac814af3ac0bc8a0b0badcbd05502">NMEA</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="_gps__collector_8cpp">gps_collector.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_gps__collector_8h">gps_collector.h</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

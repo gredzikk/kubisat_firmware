@@ -1,0 +1,610 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="event__manager_8cpp" kind="file" language="C++">
+    <compoundname>event_manager.cpp</compoundname>
+    <includes refid="event__manager_8h" local="yes">event_manager.h</includes>
+    <includes local="no">cstdio</includes>
+    <includes refid="protocol_8h" local="yes">protocol.h</includes>
+    <includes local="yes">pico/multicore.h</includes>
+    <includes refid="communication_8h" local="yes">communication.h</includes>
+    <includes refid="utils_8h" local="yes">utils.h</includes>
+    <includes refid="_d_s3231_8h" local="yes">DS3231.h</includes>
+    <incdepgraph>
+      <node id="25">
+        <label>build_number.h</label>
+        <link refid="build__number_8h"/>
+      </node>
+      <node id="1">
+        <label>event_manager.cpp</label>
+        <link refid="event__manager_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>event_manager.h</label>
+        <link refid="event__manager_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>communication.h</label>
+        <link refid="communication_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>protocol.h</label>
+        <link refid="protocol_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>DS3231.h</label>
+        <link refid="_d_s3231_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>INA3221.h</label>
+        <link refid="_i_n_a3221_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>LoRa-RP2040.h</label>
+        <link refid="_lo_ra-_r_p2040_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>Print.h</label>
+        <link refid="_print_8h"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>PowerManager.h</label>
+        <link refid="_power_manager_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>pin_config.h</label>
+        <link refid="pin__config_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>array</label>
+      </node>
+      <node id="11">
+        <label>cstdint</label>
+      </node>
+      <node id="13">
+        <label>cstdio</label>
+      </node>
+      <node id="19">
+        <label>cstdlib</label>
+      </node>
+      <node id="20">
+        <label>cstring</label>
+      </node>
+      <node id="15">
+        <label>functional</label>
+      </node>
+      <node id="28">
+        <label>hardware/gpio.h</label>
+      </node>
+      <node id="7">
+        <label>hardware/i2c.h</label>
+      </node>
+      <node id="29">
+        <label>hardware/spi.h</label>
+      </node>
+      <node id="23">
+        <label>hardware/uart.h</label>
+      </node>
+      <node id="32">
+        <label>inttypes.h</label>
+      </node>
+      <node id="17">
+        <label>iomanip</label>
+      </node>
+      <node id="6">
+        <label>iostream</label>
+      </node>
+      <node id="8">
+        <label>map</label>
+      </node>
+      <node id="27">
+        <label>pico/binary_info.h</label>
+      </node>
+      <node id="33">
+        <label>pico/multicore.h</label>
+      </node>
+      <node id="12">
+        <label>pico/mutex.h</label>
+      </node>
+      <node id="10">
+        <label>pico/stdlib.h</label>
+      </node>
+      <node id="5">
+        <label>stdint.h</label>
+      </node>
+      <node id="22">
+        <label>stdio.h</label>
+      </node>
+      <node id="9">
+        <label>string</label>
+      </node>
+      <node id="30">
+        <label>string.h</label>
+      </node>
+      <node id="24">
+        <label>time.h</label>
+      </node>
+      <node id="16">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="event__manager_8cpp_1ab144678e47784f421d98c3dfdbb53dc8" prot="public" static="no" mutable="no">
+        <type>volatile uint16_t</type>
+        <definition>volatile uint16_t eventLogId</definition>
+        <argsstring></argsstring>
+        <name>eventLogId</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.cpp" line="9" column="19" bodyfile="event_manager.cpp" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="event__manager_8cpp_1a2d4329f1e2606ca8f8535dae8c08afe5" prot="public" static="yes" mutable="no">
+        <type><ref refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6" kindref="member">PowerEvent</ref></type>
+        <definition>PowerEvent lastPowerState</definition>
+        <argsstring></argsstring>
+        <name>lastPowerState</name>
+        <initializer>= <ref refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a36d76a2d86f6dbf2035366b3572f025c" kindref="member">PowerEvent::LOW_BATTERY</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.cpp" line="11" column="19" bodyfile="event_manager.cpp" bodystart="11" bodyend="-1"/>
+        <referencedby refid="event__manager_8cpp_1a467714d66058f52e4ac7aeb6df46b433" compoundref="event__manager_8cpp" startline="77" endline="140">checkPowerEvents</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="event__manager_8cpp_1a234988dfb88db38997bd921cd5c32457" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>float</type>
+        <definition>float FALL_RATE_THRESHOLD</definition>
+        <argsstring></argsstring>
+        <name>FALL_RATE_THRESHOLD</name>
+        <initializer>= -0.02f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.cpp" line="13" column="24" bodyfile="event_manager.cpp" bodystart="13" bodyend="-1"/>
+        <referencedby refid="event__manager_8cpp_1a467714d66058f52e4ac7aeb6df46b433" compoundref="event__manager_8cpp" startline="77" endline="140">checkPowerEvents</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="event__manager_8cpp_1ae4e7da8cdf52e447acd5705d930759cf" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>int</type>
+        <definition>int FALLING_TREND_REQUIRED</definition>
+        <argsstring></argsstring>
+        <name>FALLING_TREND_REQUIRED</name>
+        <initializer>= 3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.cpp" line="14" column="22" bodyfile="event_manager.cpp" bodystart="14" bodyend="-1"/>
+        <referencedby refid="event__manager_8cpp_1a467714d66058f52e4ac7aeb6df46b433" compoundref="event__manager_8cpp" startline="77" endline="140">checkPowerEvents</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="event__manager_8cpp_1aa1095ab71c42b3eaed0492aec0941972" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>float</type>
+        <definition>float VOLTAGE_LOW_THRESHOLD</definition>
+        <argsstring></argsstring>
+        <name>VOLTAGE_LOW_THRESHOLD</name>
+        <initializer>= 4.7f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.cpp" line="15" column="24" bodyfile="event_manager.cpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="event__manager_8cpp_1a98ed7b83dd5e1a54a096ca9bb3456163" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>float</type>
+        <definition>float VOLTAGE_OVERCHARGE_THRESHOLD</definition>
+        <argsstring></argsstring>
+        <name>VOLTAGE_OVERCHARGE_THRESHOLD</name>
+        <initializer>= 5.3f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.cpp" line="17" column="24" bodyfile="event_manager.cpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="event__manager_8cpp_1ad4a2e48e0a0e0d5aa49dd6c2aa12d8fb" prot="public" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int fallingTrendCount</definition>
+        <argsstring></argsstring>
+        <name>fallingTrendCount</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.cpp" line="19" column="12" bodyfile="event_manager.cpp" bodystart="19" bodyend="-1"/>
+        <referencedby refid="event__manager_8cpp_1a467714d66058f52e4ac7aeb6df46b433" compoundref="event__manager_8cpp" startline="77" endline="140">checkPowerEvents</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="event__manager_8cpp_1a908d9cb4eb9ec61d273f6770660bbb8e" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool lastSolarState</definition>
+        <argsstring></argsstring>
+        <name>lastSolarState</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.cpp" line="21" column="6" bodyfile="event_manager.cpp" bodystart="21" bodyend="-1"/>
+        <referencedby refid="event__manager_8cpp_1a467714d66058f52e4ac7aeb6df46b433" compoundref="event__manager_8cpp" startline="77" endline="140">checkPowerEvents</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="event__manager_8cpp_1a0592f758055ae8683676ff86ae7ae9e1" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool lastUSBState</definition>
+        <argsstring></argsstring>
+        <name>lastUSBState</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.cpp" line="22" column="6" bodyfile="event_manager.cpp" bodystart="22" bodyend="-1"/>
+        <referencedby refid="event__manager_8cpp_1a467714d66058f52e4ac7aeb6df46b433" compoundref="event__manager_8cpp" startline="77" endline="140">checkPowerEvents</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="event__manager_8cpp_1abfd573c8a839ac00ea3b96d691ea11c3" prot="public" static="no" extern="yes" mutable="no">
+        <type><ref refid="class_d_s3231" kindref="compound">DS3231</ref></type>
+        <definition>DS3231 systemClock</definition>
+        <argsstring></argsstring>
+        <name>systemClock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.cpp" line="24" column="15" declfile="event_manager.cpp" declline="24" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="variable" id="event__manager_8cpp_1a2a686792b51ec2b9e1b7bfc9faef92f7" prot="public" static="no" mutable="no">
+        <type><ref refid="class_event_manager_impl" kindref="compound">EventManagerImpl</ref></type>
+        <definition>EventManagerImpl eventManager</definition>
+        <argsstring></argsstring>
+        <name>eventManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.cpp" line="26" column="18" bodyfile="event_manager.cpp" bodystart="26" bodyend="-1"/>
+        <referencedby refid="class_event_emitter_1a539d733505f9a793439a9cfc4f2af079" compoundref="event__manager_8h" startline="142" endline="147">EventEmitter::emit</referencedby>
+        <referencedby refid="group___event_commands_1ga6f817db327c7b16cf49575635e595004" compoundref="event__commands_8cpp" startline="82" endline="89">handleGetEventCount</referencedby>
+        <referencedby refid="group___event_commands_1gad921fe7254d7ec43f16a6fb21f5c385a" compoundref="event__commands_8cpp" startline="29" endline="68">handleGetLastEvents</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="event__manager_8cpp_1a467714d66058f52e4ac7aeb6df46b433" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void checkPowerEvents</definition>
+        <argsstring>(PowerManager &amp;pm)</argsstring>
+        <name>checkPowerEvents</name>
+        <param>
+          <type><ref refid="class_power_manager" kindref="compound">PowerManager</ref> &amp;</type>
+          <declname>pm</declname>
+        </param>
+        <briefdescription>
+<para>Checks power statuses and triggers events based on voltage trends. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to the <ref refid="class_power_manager" kindref="compound">PowerManager</ref> object. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.cpp" line="77" column="6" bodyfile="event_manager.cpp" bodystart="77" bodyend="140"/>
+        <references refid="class_event_emitter_1a539d733505f9a793439a9cfc4f2af079" compoundref="event__manager_8h" startline="142" endline="147">EventEmitter::emit</references>
+        <references refid="event__manager_8cpp_1a234988dfb88db38997bd921cd5c32457" compoundref="event__manager_8cpp" startline="13">FALL_RATE_THRESHOLD</references>
+        <references refid="event__manager_8cpp_1ae4e7da8cdf52e447acd5705d930759cf" compoundref="event__manager_8cpp" startline="14">FALLING_TREND_REQUIRED</references>
+        <references refid="event__manager_8cpp_1ad4a2e48e0a0e0d5aa49dd6c2aa12d8fb" compoundref="event__manager_8cpp" startline="19">fallingTrendCount</references>
+        <references refid="class_power_manager_1ae0e4303ddaba328047fb40d8d925c7dd" compoundref="_power_manager_8cpp" startline="24" endline="27">PowerManager::getVoltage5V</references>
+        <references refid="class_power_manager_1a33ea0aaa75b4654b0ee05250119bf083" compoundref="_power_manager_8cpp" startline="76" endline="79">PowerManager::isSolarActive</references>
+        <references refid="class_power_manager_1a0548ae14a668bb06e4cc13e0295ad5c8" compoundref="_power_manager_8cpp" startline="81" endline="84">PowerManager::isUSBConnected</references>
+        <references refid="event__manager_8cpp_1a2d4329f1e2606ca8f8535dae8c08afe5" compoundref="event__manager_8cpp" startline="11">lastPowerState</references>
+        <references refid="event__manager_8cpp_1a908d9cb4eb9ec61d273f6770660bbb8e" compoundref="event__manager_8cpp" startline="21">lastSolarState</references>
+        <references refid="event__manager_8cpp_1a0592f758055ae8683676ff86ae7ae9e1" compoundref="event__manager_8cpp" startline="22">lastUSBState</references>
+        <references refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a36d76a2d86f6dbf2035366b3572f025c" compoundref="event__manager_8h" startline="31">LOW_BATTERY</references>
+        <references refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a575fea54d116603bb4c778db18fbde98" compoundref="event__manager_8h" startline="32">OVERCHARGE</references>
+        <references refid="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7ac9c9c146c630ca5ef9197c73c032f4a6" compoundref="event__manager_8h" startline="14">POWER</references>
+        <references refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a8700d6b962e860d93b3c89489b9aac21" compoundref="event__manager_8h" startline="33">POWER_FALLING</references>
+        <references refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a91d809be807947101ea242de92b64a87" compoundref="event__manager_8h" startline="34">POWER_NORMAL</references>
+        <references refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6aa45a91985c176d6b5d3669bdf41b7e3b" compoundref="event__manager_8h" startline="35">SOLAR_ACTIVE</references>
+        <references refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a35899506cd4cd1e676d022eb14ecb669" compoundref="event__manager_8h" startline="36">SOLAR_INACTIVE</references>
+        <references refid="utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706" compoundref="utils_8cpp" startline="9" endline="26">uartPrint</references>
+        <references refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6aea2afd0110180e8af5bf95a583f9dd13" compoundref="event__manager_8h" startline="37">USB_CONNECTED</references>
+        <references refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a3a026550c6805c690d88a618aff891c9" compoundref="event__manager_8h" startline="38">USB_DISCONNECTED</references>
+        <references refid="class_power_manager_1a426dcedc762549ed6c408708bd61b94e" compoundref="_power_manager_8h" startline="28">PowerManager::VOLTAGE_LOW_THRESHOLD</references>
+        <references refid="class_power_manager_1a4e28f40bee3fd8e6df12178663159783" compoundref="_power_manager_8h" startline="29">PowerManager::VOLTAGE_OVERCHARGE_THRESHOLD</references>
+        <referencedby refid="main_8cpp_1a9f153132b8b4afad133b952111e18bd9" compoundref="main_8cpp" startline="11" endline="16">core1_entry</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="event__manager_8h" kindref="compound">event_manager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdio&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="protocol_8h" kindref="compound">protocol.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;pico/multicore.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="communication_8h" kindref="compound">communication.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="utils_8h" kindref="compound">utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_d_s3231_8h" kindref="compound">DS3231.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="event__manager_8cpp_1ab144678e47784f421d98c3dfdbb53dc8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>uint16_t<sp/><ref refid="event__manager_8cpp_1ab144678e47784f421d98c3dfdbb53dc8" kindref="member">eventLogId</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="event__manager_8cpp_1a2d4329f1e2606ca8f8535dae8c08afe5" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6" kindref="member">PowerEvent</ref><sp/><ref refid="event__manager_8cpp_1a2d4329f1e2606ca8f8535dae8c08afe5" kindref="member">lastPowerState</ref><sp/>=<sp/><ref refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a36d76a2d86f6dbf2035366b3572f025c" kindref="member">PowerEvent::LOW_BATTERY</ref>;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="event__manager_8cpp_1a234988dfb88db38997bd921cd5c32457" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="event__manager_8cpp_1a234988dfb88db38997bd921cd5c32457" kindref="member">FALL_RATE_THRESHOLD</ref><sp/>=<sp/>-0.02f;</highlight></codeline>
+<codeline lineno="14" refid="event__manager_8cpp_1ae4e7da8cdf52e447acd5705d930759cf" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="event__manager_8cpp_1ae4e7da8cdf52e447acd5705d930759cf" kindref="member">FALLING_TREND_REQUIRED</ref><sp/>=<sp/>3;</highlight></codeline>
+<codeline lineno="15" refid="event__manager_8cpp_1aa1095ab71c42b3eaed0492aec0941972" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="event__manager_8cpp_1aa1095ab71c42b3eaed0492aec0941972" kindref="member">VOLTAGE_LOW_THRESHOLD</ref><sp/>=<sp/>4.7f;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="event__manager_8cpp_1a98ed7b83dd5e1a54a096ca9bb3456163" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="event__manager_8cpp_1a98ed7b83dd5e1a54a096ca9bb3456163" kindref="member">VOLTAGE_OVERCHARGE_THRESHOLD</ref><sp/>=<sp/>5.3f;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="event__manager_8cpp_1ad4a2e48e0a0e0d5aa49dd6c2aa12d8fb" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="event__manager_8cpp_1ad4a2e48e0a0e0d5aa49dd6c2aa12d8fb" kindref="member">fallingTrendCount</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="event__manager_8cpp_1a908d9cb4eb9ec61d273f6770660bbb8e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="event__manager_8cpp_1a908d9cb4eb9ec61d273f6770660bbb8e" kindref="member">lastSolarState</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="22" refid="event__manager_8cpp_1a0592f758055ae8683676ff86ae7ae9e1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="event__manager_8cpp_1a0592f758055ae8683676ff86ae7ae9e1" kindref="member">lastUSBState</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="class_d_s3231" kindref="compound">DS3231</ref><sp/><ref refid="clock__commands_8cpp_1abfd573c8a839ac00ea3b96d691ea11c3" kindref="member">systemClock</ref>;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="event__manager_8cpp_1a2a686792b51ec2b9e1b7bfc9faef92f7" refkind="member"><highlight class="normal"><ref refid="class_event_manager_impl" kindref="compound">EventManagerImpl</ref><sp/><ref refid="event__manager_8cpp_1a2a686792b51ec2b9e1b7bfc9faef92f7" kindref="member">eventManager</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="class_event_manager_1ae73a56091dc8713bb86a11abb6742a14" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_event_manager_1ae73a56091dc8713bb86a11abb6742a14" kindref="member">EventManager::logEvent</ref>(uint8_t<sp/><ref refid="event__manager_8h_1ad4291fcb880eb5ecb178b53e32f55741" kindref="member">group</ref>,<sp/>uint8_t<sp/><ref refid="event__manager_8h_1aeef6900f411bc223febdd92c9435693b" kindref="member">event</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_enter_blocking(&amp;<ref refid="class_event_manager_1a970381a54ae432d262830ad74048c94e" kindref="member">eventMutex</ref>);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_event_log" kindref="compound">EventLog</ref>&amp;<sp/>log<sp/>=<sp/><ref refid="class_event_manager_1a9d82f66074e141f352bb852654673536" kindref="member">events</ref>[<ref refid="class_event_manager_1ad97f788895da6e30b3237982a7bcd810" kindref="member">writeIndex</ref>];</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>log.<ref refid="class_event_log_1a5e0923e12450e6b7c782c7f6630f4563" kindref="member">id</ref><sp/>=<sp/><ref refid="class_event_manager_1a31b1b079c272a1d7022ed84b01927186" kindref="member">nextEventId</ref>++;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>log.<ref refid="class_event_log_1aea248a425dedf15b5cee31ce2884db40" kindref="member">timestamp</ref><sp/>=<sp/><ref refid="clock__commands_8cpp_1abfd573c8a839ac00ea3b96d691ea11c3" kindref="member">systemClock</ref>.getTimeUnix();</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>log.<ref refid="class_event_log_1a5209ffdb8dc4bf7f87f3ec44b2ae63e3" kindref="member">group</ref><sp/>=<sp/><ref refid="event__manager_8h_1ad4291fcb880eb5ecb178b53e32f55741" kindref="member">group</ref>;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>log.<ref refid="class_event_log_1a4ba1b6d820bf66740aac49fd299f1ea2" kindref="member">event</ref><sp/>=<sp/><ref refid="event__manager_8h_1aeef6900f411bc223febdd92c9435693b" kindref="member">event</ref>;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Print<sp/>event<sp/>immediately</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706" kindref="member">uartPrint</ref>(log.<ref refid="class_event_log_1adb17c412276c8678289395607c493e7e" kindref="member">toString</ref>());</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_event_manager_1ad97f788895da6e30b3237982a7bcd810" kindref="member">writeIndex</ref><sp/>=<sp/>(<ref refid="class_event_manager_1ad97f788895da6e30b3237982a7bcd810" kindref="member">writeIndex</ref><sp/>+<sp/>1)<sp/>%<sp/><ref refid="event__manager_8h_1acc4dda1aaabc9862fe79fd94e0b722bf" kindref="member">EVENT_BUFFER_SIZE</ref>;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_event_manager_1ab74418c8064525f34692dff74dd28d82" kindref="member">eventCount</ref><sp/>&lt;<sp/><ref refid="event__manager_8h_1acc4dda1aaabc9862fe79fd94e0b722bf" kindref="member">EVENT_BUFFER_SIZE</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_event_manager_1ab74418c8064525f34692dff74dd28d82" kindref="member">eventCount</ref>++;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>persistence<sp/>flag<sp/>on<sp/>buffer<sp/>full<sp/>or<sp/>power<sp/>events</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_event_manager_1ab74418c8064525f34692dff74dd28d82" kindref="member">eventCount</ref><sp/>==<sp/><ref refid="event__manager_8h_1acc4dda1aaabc9862fe79fd94e0b722bf" kindref="member">EVENT_BUFFER_SIZE</ref><sp/>||<sp/></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(<ref refid="event__manager_8h_1ad4291fcb880eb5ecb178b53e32f55741" kindref="member">group</ref><sp/>==<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">uint8_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7ac9c9c146c630ca5ef9197c73c032f4a6" kindref="member">EventGroup::POWER</ref>)<sp/>&amp;&amp;<sp/></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1aeef6900f411bc223febdd92c9435693b" kindref="member">event</ref><sp/>==<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">uint8_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a8700d6b962e860d93b3c89489b9aac21" kindref="member">PowerEvent::POWER_FALLING</ref>)))<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_event_manager_1aed2eb3a8bc611f5594eb62304c7b4754" kindref="member">needsPersistence</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_event_manager_1ad369ac9b7ab0251070e0075745836a40" kindref="member">saveToStorage</ref>();</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_exit(&amp;<ref refid="class_event_manager_1a970381a54ae432d262830ad74048c94e" kindref="member">eventMutex</ref>);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="class_event_manager_1a00648cfe8c39fbd59cc4c593113e5573" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_event_log" kindref="compound">EventLog</ref>&amp;<sp/><ref refid="class_event_manager_1a00648cfe8c39fbd59cc4c593113e5573" kindref="member">EventManager::getEvent</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>index)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_event_log" kindref="compound">EventLog</ref><sp/>emptyEvent<sp/>=<sp/>{0,<sp/>0,<sp/>0,<sp/>0};<sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>{id,<sp/>timestamp,<sp/>group,<sp/>event}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(index<sp/>&gt;=<sp/><ref refid="class_event_manager_1ab74418c8064525f34692dff74dd28d82" kindref="member">eventCount</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>emptyEvent;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Calculate<sp/>actual<sp/>index<sp/>in<sp/>circular<sp/>buffer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>actualIndex;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_event_manager_1ab74418c8064525f34692dff74dd28d82" kindref="member">eventCount</ref><sp/>==<sp/><ref refid="event__manager_8h_1acc4dda1aaabc9862fe79fd94e0b722bf" kindref="member">EVENT_BUFFER_SIZE</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>actualIndex<sp/>=<sp/>(<ref refid="class_event_manager_1ad97f788895da6e30b3237982a7bcd810" kindref="member">writeIndex</ref><sp/>+<sp/>index)<sp/>%<sp/><ref refid="event__manager_8h_1acc4dda1aaabc9862fe79fd94e0b722bf" kindref="member">EVENT_BUFFER_SIZE</ref>;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>actualIndex<sp/>=<sp/>index;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_event_manager_1a9d82f66074e141f352bb852654673536" kindref="member">events</ref>[actualIndex];</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="event__manager_8cpp_1a467714d66058f52e4ac7aeb6df46b433" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="event__manager_8cpp_1a467714d66058f52e4ac7aeb6df46b433" kindref="member">checkPowerEvents</ref>(<ref refid="class_power_manager" kindref="compound">PowerManager</ref>&amp;<sp/>pm)<sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>currentVoltage<sp/>=<sp/>pm.<ref refid="class_power_manager_1ae0e4303ddaba328047fb40d8d925c7dd" kindref="member">getVoltage5V</ref>();</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>previousVoltage<sp/>=<sp/>0.0f;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>delta<sp/>=<sp/>currentVoltage<sp/>-<sp/>previousVoltage;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>previousVoltage<sp/>=<sp/>currentVoltage;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(delta<sp/>&lt;<sp/><ref refid="event__manager_8cpp_1a234988dfb88db38997bd921cd5c32457" kindref="member">FALL_RATE_THRESHOLD</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="event__manager_8cpp_1ad4a2e48e0a0e0d5aa49dd6c2aa12d8fb" kindref="member">fallingTrendCount</ref>++;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="event__manager_8cpp_1ad4a2e48e0a0e0d5aa49dd6c2aa12d8fb" kindref="member">fallingTrendCount</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="event__manager_8cpp_1ad4a2e48e0a0e0d5aa49dd6c2aa12d8fb" kindref="member">fallingTrendCount</ref><sp/>&gt;=<sp/><ref refid="event__manager_8cpp_1ae4e7da8cdf52e447acd5705d930759cf" kindref="member">FALLING_TREND_REQUIRED</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706" kindref="member">uartPrint</ref>(</highlight><highlight class="stringliteral">&quot;Power<sp/>falling<sp/>detected!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="event__manager_8cpp_1a2d4329f1e2606ca8f8535dae8c08afe5" kindref="member">lastPowerState</ref><sp/>=<sp/><ref refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a8700d6b962e860d93b3c89489b9aac21" kindref="member">PowerEvent::POWER_FALLING</ref>;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_event_emitter_1a539d733505f9a793439a9cfc4f2af079" kindref="member">EventEmitter::emit</ref>(<ref refid="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7ac9c9c146c630ca5ef9197c73c032f4a6" kindref="member">EventGroup::POWER</ref>,<sp/><ref refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a8700d6b962e860d93b3c89489b9aac21" kindref="member">PowerEvent::POWER_FALLING</ref>);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(currentVoltage<sp/>&lt;<sp/><ref refid="class_power_manager_1a426dcedc762549ed6c408708bd61b94e" kindref="member">PowerManager::VOLTAGE_LOW_THRESHOLD</ref><sp/>&amp;&amp;<sp/></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="event__manager_8cpp_1a2d4329f1e2606ca8f8535dae8c08afe5" kindref="member">lastPowerState</ref><sp/>!=<sp/><ref refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a36d76a2d86f6dbf2035366b3572f025c" kindref="member">PowerEvent::LOW_BATTERY</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706" kindref="member">uartPrint</ref>(</highlight><highlight class="stringliteral">&quot;Low<sp/>battery<sp/>detected!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="event__manager_8cpp_1a2d4329f1e2606ca8f8535dae8c08afe5" kindref="member">lastPowerState</ref><sp/>=<sp/><ref refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a36d76a2d86f6dbf2035366b3572f025c" kindref="member">PowerEvent::LOW_BATTERY</ref>;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_event_emitter_1a539d733505f9a793439a9cfc4f2af079" kindref="member">EventEmitter::emit</ref>(<ref refid="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7ac9c9c146c630ca5ef9197c73c032f4a6" kindref="member">EventGroup::POWER</ref>,<sp/><ref refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a36d76a2d86f6dbf2035366b3572f025c" kindref="member">PowerEvent::LOW_BATTERY</ref>);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(currentVoltage<sp/>&gt;<sp/><ref refid="class_power_manager_1a4e28f40bee3fd8e6df12178663159783" kindref="member">PowerManager::VOLTAGE_OVERCHARGE_THRESHOLD</ref><sp/>&amp;&amp;<sp/></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="event__manager_8cpp_1a2d4329f1e2606ca8f8535dae8c08afe5" kindref="member">lastPowerState</ref><sp/>!=<sp/><ref refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a575fea54d116603bb4c778db18fbde98" kindref="member">PowerEvent::OVERCHARGE</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706" kindref="member">uartPrint</ref>(</highlight><highlight class="stringliteral">&quot;Overcharge<sp/>detected!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="event__manager_8cpp_1a2d4329f1e2606ca8f8535dae8c08afe5" kindref="member">lastPowerState</ref><sp/>=<sp/><ref refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a575fea54d116603bb4c778db18fbde98" kindref="member">PowerEvent::OVERCHARGE</ref>;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_event_emitter_1a539d733505f9a793439a9cfc4f2af079" kindref="member">EventEmitter::emit</ref>(<ref refid="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7ac9c9c146c630ca5ef9197c73c032f4a6" kindref="member">EventGroup::POWER</ref>,<sp/><ref refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a575fea54d116603bb4c778db18fbde98" kindref="member">PowerEvent::OVERCHARGE</ref>);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(currentVoltage<sp/>&gt;=<sp/><ref refid="class_power_manager_1a426dcedc762549ed6c408708bd61b94e" kindref="member">PowerManager::VOLTAGE_LOW_THRESHOLD</ref><sp/>&amp;&amp;<sp/></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>currentVoltage<sp/>&lt;=<sp/><ref refid="class_power_manager_1a4e28f40bee3fd8e6df12178663159783" kindref="member">PowerManager::VOLTAGE_OVERCHARGE_THRESHOLD</ref><sp/>&amp;&amp;<sp/></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="event__manager_8cpp_1a2d4329f1e2606ca8f8535dae8c08afe5" kindref="member">lastPowerState</ref><sp/>!=<sp/><ref refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a91d809be807947101ea242de92b64a87" kindref="member">PowerEvent::POWER_NORMAL</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706" kindref="member">uartPrint</ref>(</highlight><highlight class="stringliteral">&quot;Power<sp/>back<sp/>to<sp/>normal!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="event__manager_8cpp_1a2d4329f1e2606ca8f8535dae8c08afe5" kindref="member">lastPowerState</ref><sp/>=<sp/><ref refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a91d809be807947101ea242de92b64a87" kindref="member">PowerEvent::POWER_NORMAL</ref>;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_event_emitter_1a539d733505f9a793439a9cfc4f2af079" kindref="member">EventEmitter::emit</ref>(<ref refid="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7ac9c9c146c630ca5ef9197c73c032f4a6" kindref="member">EventGroup::POWER</ref>,<sp/><ref refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a91d809be807947101ea242de92b64a87" kindref="member">PowerEvent::POWER_NORMAL</ref>);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>solar<sp/>charging<sp/>state</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>currentSolarState<sp/>=<sp/>pm.<ref refid="class_power_manager_1a33ea0aaa75b4654b0ee05250119bf083" kindref="member">isSolarActive</ref>();</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(currentSolarState<sp/>!=<sp/><ref refid="event__manager_8cpp_1a908d9cb4eb9ec61d273f6770660bbb8e" kindref="member">lastSolarState</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(currentSolarState)<sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706" kindref="member">uartPrint</ref>(</highlight><highlight class="stringliteral">&quot;Solar<sp/>charging<sp/>active!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_event_emitter_1a539d733505f9a793439a9cfc4f2af079" kindref="member">EventEmitter::emit</ref>(<ref refid="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7ac9c9c146c630ca5ef9197c73c032f4a6" kindref="member">EventGroup::POWER</ref>,<sp/><ref refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6aa45a91985c176d6b5d3669bdf41b7e3b" kindref="member">PowerEvent::SOLAR_ACTIVE</ref>);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706" kindref="member">uartPrint</ref>(</highlight><highlight class="stringliteral">&quot;Solar<sp/>charging<sp/>inactive!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_event_emitter_1a539d733505f9a793439a9cfc4f2af079" kindref="member">EventEmitter::emit</ref>(<ref refid="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7ac9c9c146c630ca5ef9197c73c032f4a6" kindref="member">EventGroup::POWER</ref>,<sp/><ref refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a35899506cd4cd1e676d022eb14ecb669" kindref="member">PowerEvent::SOLAR_INACTIVE</ref>);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="event__manager_8cpp_1a908d9cb4eb9ec61d273f6770660bbb8e" kindref="member">lastSolarState</ref><sp/>=<sp/>currentSolarState;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>USB<sp/>connection<sp/>state</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>currentUSBState<sp/>=<sp/>pm.<ref refid="class_power_manager_1a0548ae14a668bb06e4cc13e0295ad5c8" kindref="member">isUSBConnected</ref>();</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(currentUSBState<sp/>!=<sp/><ref refid="event__manager_8cpp_1a0592f758055ae8683676ff86ae7ae9e1" kindref="member">lastUSBState</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(currentUSBState)<sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706" kindref="member">uartPrint</ref>(</highlight><highlight class="stringliteral">&quot;USB<sp/>connected!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_event_emitter_1a539d733505f9a793439a9cfc4f2af079" kindref="member">EventEmitter::emit</ref>(<ref refid="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7ac9c9c146c630ca5ef9197c73c032f4a6" kindref="member">EventGroup::POWER</ref>,<sp/><ref refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6aea2afd0110180e8af5bf95a583f9dd13" kindref="member">PowerEvent::USB_CONNECTED</ref>);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706" kindref="member">uartPrint</ref>(</highlight><highlight class="stringliteral">&quot;USB<sp/>disconnected!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_event_emitter_1a539d733505f9a793439a9cfc4f2af079" kindref="member">EventEmitter::emit</ref>(<ref refid="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7ac9c9c146c630ca5ef9197c73c032f4a6" kindref="member">EventGroup::POWER</ref>,<sp/><ref refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a3a026550c6805c690d88a618aff891c9" kindref="member">PowerEvent::USB_DISCONNECTED</ref>);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="event__manager_8cpp_1a0592f758055ae8683676ff86ae7ae9e1" kindref="member">lastUSBState</ref><sp/>=<sp/>currentUSBState;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="event_manager.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="class_event_log" kind="class" language="C++" prot="public">
+    <compoundname>EventLog</compoundname>
+    <includes refid="event__manager_8h" local="no">event_manager.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_event_log_1a5e0923e12450e6b7c782c7f6630f4563" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t EventLog::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <qualifiedname>EventLog::id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.h" line="71" column="14" bodyfile="event_manager.h" bodystart="71" bodyend="-1"/>
+        <referencedby refid="class_event_manager_1ae73a56091dc8713bb86a11abb6742a14" compoundref="event__manager_8cpp" startline="28" endline="54">EventManager::logEvent</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_event_log_1aea248a425dedf15b5cee31ce2884db40" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t EventLog::timestamp</definition>
+        <argsstring></argsstring>
+        <name>timestamp</name>
+        <qualifiedname>EventLog::timestamp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.h" line="72" column="14" bodyfile="event_manager.h" bodystart="72" bodyend="-1"/>
+        <referencedby refid="class_event_manager_1ae73a56091dc8713bb86a11abb6742a14" compoundref="event__manager_8cpp" startline="28" endline="54">EventManager::logEvent</referencedby>
+        <referencedby refid="class_event_log_1adb17c412276c8678289395607c493e7e" compoundref="event__manager_8h" startline="76" endline="82">toString</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_event_log_1a5209ffdb8dc4bf7f87f3ec44b2ae63e3" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t EventLog::group</definition>
+        <argsstring></argsstring>
+        <name>group</name>
+        <qualifiedname>EventLog::group</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.h" line="73" column="13" bodyfile="event_manager.h" bodystart="73" bodyend="-1"/>
+        <referencedby refid="class_event_manager_1ae73a56091dc8713bb86a11abb6742a14" compoundref="event__manager_8cpp" startline="28" endline="54">EventManager::logEvent</referencedby>
+        <referencedby refid="class_event_log_1adb17c412276c8678289395607c493e7e" compoundref="event__manager_8h" startline="76" endline="82">toString</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_event_log_1a4ba1b6d820bf66740aac49fd299f1ea2" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t EventLog::event</definition>
+        <argsstring></argsstring>
+        <name>event</name>
+        <qualifiedname>EventLog::event</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.h" line="74" column="13" bodyfile="event_manager.h" bodystart="74" bodyend="-1"/>
+        <referencedby refid="class_event_manager_1ae73a56091dc8713bb86a11abb6742a14" compoundref="event__manager_8cpp" startline="28" endline="54">EventManager::logEvent</referencedby>
+        <referencedby refid="class_event_log_1adb17c412276c8678289395607c493e7e" compoundref="event__manager_8h" startline="76" endline="82">toString</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_event_log_1adb17c412276c8678289395607c493e7e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string EventLog::toString</definition>
+        <argsstring>() const</argsstring>
+        <name>toString</name>
+        <qualifiedname>EventLog::toString</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.h" line="76" column="17" bodyfile="event_manager.h" bodystart="76" bodyend="82"/>
+        <references refid="main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62" compoundref="main_8cpp" startline="8">buffer</references>
+        <references refid="class_event_log_1a4ba1b6d820bf66740aac49fd299f1ea2" compoundref="event__manager_8h" startline="74">event</references>
+        <references refid="class_event_log_1a5209ffdb8dc4bf7f87f3ec44b2ae63e3" compoundref="event__manager_8h" startline="73">group</references>
+        <references refid="class_event_log_1aea248a425dedf15b5cee31ce2884db40" compoundref="event__manager_8h" startline="72">timestamp</references>
+        <referencedby refid="class_event_manager_1ae73a56091dc8713bb86a11abb6742a14" compoundref="event__manager_8cpp" startline="28" endline="54">EventManager::logEvent</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="event_manager.h" line="69" column="1" bodyfile="event_manager.h" bodystart="69" bodyend="83"/>
+    <listofallmembers>
+      <member refid="class_event_log_1a4ba1b6d820bf66740aac49fd299f1ea2" prot="public" virt="non-virtual"><scope>EventLog</scope><name>event</name></member>
+      <member refid="class_event_log_1a5209ffdb8dc4bf7f87f3ec44b2ae63e3" prot="public" virt="non-virtual"><scope>EventLog</scope><name>group</name></member>
+      <member refid="class_event_log_1a5e0923e12450e6b7c782c7f6630f4563" prot="public" virt="non-virtual"><scope>EventLog</scope><name>id</name></member>
+      <member refid="class_event_log_1aea248a425dedf15b5cee31ce2884db40" prot="public" virt="non-virtual"><scope>EventLog</scope><name>timestamp</name></member>
+      <member refid="class_event_log_1adb17c412276c8678289395607c493e7e" prot="public" virt="non-virtual"><scope>EventLog</scope><name>toString</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

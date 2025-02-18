@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="struct_frame" kind="struct" language="C++" prot="public">
+    <compoundname>Frame</compoundname>
+    <includes refid="protocol_8h" local="no">protocol.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_frame_1ae969aefac1bd27476536aae3de4eacee" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Frame::header</definition>
+        <argsstring></argsstring>
+        <name>header</name>
+        <qualifiedname>Frame::header</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="frame_model/protocol.h" line="66" column="17" bodyfile="frame_model/protocol.h" bodystart="66" bodyend="-1"/>
+        <referencedby refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" compoundref="frame_8cpp" startline="113" endline="146">buildFrame</referencedby>
+        <referencedby refid="communication_8h_1a8f34bc31494430539db21206f084d39d" compoundref="frame_8cpp" startline="24" endline="71">decodeFrame</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="struct_frame_1a380c3287d8bc0718ed7a3b93e303dbe5" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Frame::direction</definition>
+        <argsstring></argsstring>
+        <name>direction</name>
+        <qualifiedname>Frame::direction</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="frame_model/protocol.h" line="67" column="13" bodyfile="frame_model/protocol.h" bodystart="67" bodyend="-1"/>
+        <referencedby refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" compoundref="frame_8cpp" startline="113" endline="146">buildFrame</referencedby>
+        <referencedby refid="communication_8h_1a8f34bc31494430539db21206f084d39d" compoundref="frame_8cpp" startline="24" endline="71">decodeFrame</referencedby>
+        <referencedby refid="communication_8h_1ab53898fb6f45dfc657837a665a070959" compoundref="frame_8cpp" startline="6" endline="19">encodeFrame</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="struct_frame_1a6ad0b81e9434fee37a64535a0c58facb" prot="public" static="no" mutable="no">
+        <type><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047" kindref="member">OperationType</ref></type>
+        <definition>OperationType Frame::operationType</definition>
+        <argsstring></argsstring>
+        <name>operationType</name>
+        <qualifiedname>Frame::operationType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="frame_model/protocol.h" line="68" column="19" bodyfile="frame_model/protocol.h" bodystart="68" bodyend="-1"/>
+        <referencedby refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" compoundref="frame_8cpp" startline="113" endline="146">buildFrame</referencedby>
+        <referencedby refid="communication_8h_1a8f34bc31494430539db21206f084d39d" compoundref="frame_8cpp" startline="24" endline="71">decodeFrame</referencedby>
+        <referencedby refid="communication_8h_1ab53898fb6f45dfc657837a665a070959" compoundref="frame_8cpp" startline="6" endline="19">encodeFrame</referencedby>
+        <referencedby refid="communication_8h_1a8b9407b2f579031cf4b705f1ac03ac31" compoundref="frame_8cpp" startline="79" endline="91">processFrameData</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="struct_frame_1abd1ff8cb6b3d53706a97ea15727ddd4f" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Frame::group</definition>
+        <argsstring></argsstring>
+        <name>group</name>
+        <qualifiedname>Frame::group</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="frame_model/protocol.h" line="69" column="13" bodyfile="frame_model/protocol.h" bodystart="69" bodyend="-1"/>
+        <referencedby refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" compoundref="frame_8cpp" startline="113" endline="146">buildFrame</referencedby>
+        <referencedby refid="communication_8h_1a8f34bc31494430539db21206f084d39d" compoundref="frame_8cpp" startline="24" endline="71">decodeFrame</referencedby>
+        <referencedby refid="communication_8h_1ab53898fb6f45dfc657837a665a070959" compoundref="frame_8cpp" startline="6" endline="19">encodeFrame</referencedby>
+        <referencedby refid="communication_8h_1a8b9407b2f579031cf4b705f1ac03ac31" compoundref="frame_8cpp" startline="79" endline="91">processFrameData</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="struct_frame_1a2fa1a9d8fa7eb710234eb68bf376e6de" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Frame::command</definition>
+        <argsstring></argsstring>
+        <name>command</name>
+        <qualifiedname>Frame::command</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="frame_model/protocol.h" line="70" column="13" bodyfile="frame_model/protocol.h" bodystart="70" bodyend="-1"/>
+        <referencedby refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" compoundref="frame_8cpp" startline="113" endline="146">buildFrame</referencedby>
+        <referencedby refid="communication_8h_1a8f34bc31494430539db21206f084d39d" compoundref="frame_8cpp" startline="24" endline="71">decodeFrame</referencedby>
+        <referencedby refid="communication_8h_1ab53898fb6f45dfc657837a665a070959" compoundref="frame_8cpp" startline="6" endline="19">encodeFrame</referencedby>
+        <referencedby refid="communication_8h_1a8b9407b2f579031cf4b705f1ac03ac31" compoundref="frame_8cpp" startline="79" endline="91">processFrameData</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="struct_frame_1a118ecfcbf5afd93d394f667829adf26a" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Frame::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>Frame::value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="frame_model/protocol.h" line="71" column="17" bodyfile="frame_model/protocol.h" bodystart="71" bodyend="-1"/>
+        <referencedby refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" compoundref="frame_8cpp" startline="113" endline="146">buildFrame</referencedby>
+        <referencedby refid="communication_8h_1a8f34bc31494430539db21206f084d39d" compoundref="frame_8cpp" startline="24" endline="71">decodeFrame</referencedby>
+        <referencedby refid="communication_8h_1ab53898fb6f45dfc657837a665a070959" compoundref="frame_8cpp" startline="6" endline="19">encodeFrame</referencedby>
+        <referencedby refid="communication_8h_1a8b9407b2f579031cf4b705f1ac03ac31" compoundref="frame_8cpp" startline="79" endline="91">processFrameData</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="struct_frame_1a6481c04c9c112a41a50c24696454afa8" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Frame::unit</definition>
+        <argsstring></argsstring>
+        <name>unit</name>
+        <qualifiedname>Frame::unit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="frame_model/protocol.h" line="72" column="17" bodyfile="frame_model/protocol.h" bodystart="72" bodyend="-1"/>
+        <referencedby refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" compoundref="frame_8cpp" startline="113" endline="146">buildFrame</referencedby>
+        <referencedby refid="communication_8h_1a8f34bc31494430539db21206f084d39d" compoundref="frame_8cpp" startline="24" endline="71">decodeFrame</referencedby>
+        <referencedby refid="communication_8h_1ab53898fb6f45dfc657837a665a070959" compoundref="frame_8cpp" startline="6" endline="19">encodeFrame</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="struct_frame_1a30e584ccb03562f0bbd5356562a462c1" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Frame::footer</definition>
+        <argsstring></argsstring>
+        <name>footer</name>
+        <qualifiedname>Frame::footer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="frame_model/protocol.h" line="73" column="17" bodyfile="frame_model/protocol.h" bodystart="73" bodyend="-1"/>
+        <referencedby refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" compoundref="frame_8cpp" startline="113" endline="146">buildFrame</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="frame_model/protocol.h" line="65" column="1" bodyfile="frame_model/protocol.h" bodystart="65" bodyend="74"/>
+    <listofallmembers>
+      <member refid="struct_frame_1a2fa1a9d8fa7eb710234eb68bf376e6de" prot="public" virt="non-virtual"><scope>Frame</scope><name>command</name></member>
+      <member refid="struct_frame_1a380c3287d8bc0718ed7a3b93e303dbe5" prot="public" virt="non-virtual"><scope>Frame</scope><name>direction</name></member>
+      <member refid="struct_frame_1a30e584ccb03562f0bbd5356562a462c1" prot="public" virt="non-virtual"><scope>Frame</scope><name>footer</name></member>
+      <member refid="struct_frame_1abd1ff8cb6b3d53706a97ea15727ddd4f" prot="public" virt="non-virtual"><scope>Frame</scope><name>group</name></member>
+      <member refid="struct_frame_1ae969aefac1bd27476536aae3de4eacee" prot="public" virt="non-virtual"><scope>Frame</scope><name>header</name></member>
+      <member refid="struct_frame_1a6ad0b81e9434fee37a64535a0c58facb" prot="public" virt="non-virtual"><scope>Frame</scope><name>operationType</name></member>
+      <member refid="struct_frame_1a6481c04c9c112a41a50c24696454afa8" prot="public" virt="non-virtual"><scope>Frame</scope><name>unit</name></member>
+      <member refid="struct_frame_1a118ecfcbf5afd93d394f667829adf26a" prot="public" virt="non-virtual"><scope>Frame</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

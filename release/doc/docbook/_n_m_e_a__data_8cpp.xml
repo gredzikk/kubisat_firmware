@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__n_m_e_a__data_8cpp" xml:lang="en-US">
+<title>lib/GPS/NMEA/NMEA_data.cpp File Reference</title>
+<indexterm><primary>lib/GPS/NMEA/NMEA_data.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;lib/GPS/NMEA/NMEA_data.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_n_m_e_a_data">NMEAData</link> <link linkend="__n_m_e_a__data_8cpp_1af2b979012abe80d338fef98209f87b78">nmea_data</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="__n_m_e_a__data_8cpp_1af2b979012abe80d338fef98209f87b78"/><section>
+    <title>nmea_data</title>
+<indexterm><primary>nmea_data</primary><secondary>NMEA_data.cpp</secondary></indexterm>
+<indexterm><primary>NMEA_data.cpp</primary><secondary>nmea_data</secondary></indexterm>
+<para><computeroutput><link linkend="_class_n_m_e_a_data">NMEAData</link> nmea_data</computeroutput></para><para>
+Definition at line <link linkend="__n_m_e_a__data_8cpp_source_1l00003">3</link> of file <link linkend="__n_m_e_a__data_8cpp_source">NMEA_data.cpp</link>.</para>
+</section>
+</section>
+</section>

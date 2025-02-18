@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__b_m_e280_8cpp" xml:lang="en-US">
+<title>lib/BME280/BME280.cpp File Reference</title>
+<indexterm><primary>lib/BME280/BME280.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;BME280.h&quot;<?linebreak?>#include &lt;iomanip&gt;<?linebreak?>#include &lt;vector&gt;<?linebreak?>#include &lt;algorithm&gt;<?linebreak?>#include &quot;hardware/i2c.h&quot;<?linebreak?>#include &quot;pico/binary_info.h&quot;<?linebreak?>#include &quot;pico/stdlib.h&quot;<?linebreak?></programlisting></section>

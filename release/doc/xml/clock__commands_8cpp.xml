@@ -1,0 +1,614 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="clock__commands_8cpp" kind="file" language="C++">
+    <compoundname>clock_commands.cpp</compoundname>
+    <includes refid="communication_8h" local="yes">communication.h</includes>
+    <includes local="no">time.h</includes>
+    <includes refid="_d_s3231_8h" local="yes">DS3231.h</includes>
+    <incdepgraph>
+      <node id="24">
+        <label>build_number.h</label>
+        <link refid="build__number_8h"/>
+      </node>
+      <node id="1">
+        <label>commands/clock_commands.cpp</label>
+        <link refid="clock__commands_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>event_manager.h</label>
+        <link refid="event__manager_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>communication.h</label>
+        <link refid="communication_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>protocol.h</label>
+        <link refid="protocol_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>DS3231.h</label>
+        <link refid="_d_s3231_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>INA3221.h</label>
+        <link refid="_i_n_a3221_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>LoRa-RP2040.h</label>
+        <link refid="_lo_ra-_r_p2040_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>Print.h</label>
+        <link refid="_print_8h"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>PowerManager.h</label>
+        <link refid="_power_manager_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>pin_config.h</label>
+        <link refid="pin__config_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>array</label>
+      </node>
+      <node id="8">
+        <label>cstdint</label>
+      </node>
+      <node id="17">
+        <label>cstdio</label>
+      </node>
+      <node id="18">
+        <label>cstdlib</label>
+      </node>
+      <node id="19">
+        <label>cstring</label>
+      </node>
+      <node id="7">
+        <label>functional</label>
+      </node>
+      <node id="27">
+        <label>hardware/gpio.h</label>
+      </node>
+      <node id="15">
+        <label>hardware/i2c.h</label>
+      </node>
+      <node id="28">
+        <label>hardware/spi.h</label>
+      </node>
+      <node id="22">
+        <label>hardware/uart.h</label>
+      </node>
+      <node id="31">
+        <label>inttypes.h</label>
+      </node>
+      <node id="9">
+        <label>iomanip</label>
+      </node>
+      <node id="14">
+        <label>iostream</label>
+      </node>
+      <node id="6">
+        <label>map</label>
+      </node>
+      <node id="26">
+        <label>pico/binary_info.h</label>
+      </node>
+      <node id="33">
+        <label>pico/mutex.h</label>
+      </node>
+      <node id="16">
+        <label>pico/stdlib.h</label>
+      </node>
+      <node id="11">
+        <label>stdint.h</label>
+      </node>
+      <node id="21">
+        <label>stdio.h</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+      <node id="29">
+        <label>string.h</label>
+      </node>
+      <node id="23">
+        <label>time.h</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="clock__commands_8cpp_1abfd573c8a839ac00ea3b96d691ea11c3" prot="public" static="no" extern="yes" mutable="no">
+        <type><ref refid="class_d_s3231" kindref="compound">DS3231</ref></type>
+        <definition>DS3231 systemClock</definition>
+        <argsstring></argsstring>
+        <name>systemClock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="commands/clock_commands.cpp" line="6" column="15" declfile="commands/clock_commands.cpp" declline="6" declcolumn="15"/>
+        <referencedby refid="clock__commands_8cpp_1a6def0bf9e591d66bd98b752f731d44ba" compoundref="clock__commands_8cpp" startline="104" endline="110">handleGetClockDrift</referencedby>
+        <referencedby refid="clock__commands_8cpp_1add8778da60c0dc5c0add2c7b2ccdc57e" compoundref="clock__commands_8cpp" startline="83" endline="89">handleGetClockSyncInterval</referencedby>
+        <referencedby refid="clock__commands_8cpp_1a17274560343c34119630b27d88ef475e" compoundref="clock__commands_8cpp" startline="125" endline="131">handleGetLastSyncTime</referencedby>
+        <referencedby refid="clock__commands_8cpp_1acc9239d946ee18d2ff19af2c6a2177f0" compoundref="clock__commands_8cpp" startline="59" endline="65">handleGetTimezoneOffset</referencedby>
+        <referencedby refid="clock__commands_8cpp_1ae4cd7f745d6f9e2cadef70e21d8a9fcb" compoundref="clock__commands_8cpp" startline="112" endline="123">handleSetClockDrift</referencedby>
+        <referencedby refid="clock__commands_8cpp_1a00137f0d4c6a83ee5c0df49c7370fe65" compoundref="clock__commands_8cpp" startline="91" endline="102">handleSetClockSyncInterval</referencedby>
+        <referencedby refid="clock__commands_8cpp_1a9e802e312d0779aab74966074e81eb30" compoundref="clock__commands_8cpp" startline="67" endline="81">handleSetTimezoneOffset</referencedby>
+        <referencedby refid="clock__commands_8cpp_1a1eefb8c4d539d50c787b4db3f6ebb093" compoundref="clock__commands_8cpp" startline="8" endline="57">handleTime</referencedby>
+        <referencedby refid="class_event_manager_1ae73a56091dc8713bb86a11abb6742a14" compoundref="event__manager_8cpp" startline="28" endline="54">EventManager::logEvent</referencedby>
+        <referencedby refid="main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" compoundref="main_8cpp" startline="58" endline="123">main</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="clock__commands_8cpp_1a1eefb8c4d539d50c787b4db3f6ebb093" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_frame" kindref="compound">Frame</ref></type>
+        <definition>Frame handleTime</definition>
+        <argsstring>(const std::string &amp;param, OperationType operationType)</argsstring>
+        <name>handleTime</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>param</declname>
+        </param>
+        <param>
+          <type><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047" kindref="member">OperationType</ref></type>
+          <declname>operationType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="commands/clock_commands.cpp" line="8" column="7" bodyfile="commands/clock_commands.cpp" bodystart="8" bodyend="57"/>
+        <references refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" compoundref="frame_8cpp" startline="113" endline="146">buildFrame</references>
+        <references refid="event__manager_8h_1a163ce349de3451c81f50080e5fbe62a2ae6b94e58bfd13b21bc786578d9f8ba4a" compoundref="event__manager_8h" startline="64">CHANGED</references>
+        <references refid="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7aca6c44800b2dc123e0d4389a867e8686" compoundref="event__manager_8h" startline="17">CLOCK</references>
+        <references refid="class_event_emitter_1a539d733505f9a793439a9cfc4f2af079" compoundref="event__manager_8h" startline="142" endline="147">EventEmitter::emit</references>
+        <references refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" compoundref="protocol_8h" startline="28">ERROR</references>
+        <references refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8" compoundref="protocol_8h" startline="33">GET</references>
+        <references refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a8c52684db8f49511e9b44471716bf164" compoundref="protocol_8h" startline="34">SET</references>
+        <references refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c" compoundref="protocol_8h" startline="27">SUCCESS</references>
+        <references refid="clock__commands_8cpp_1abfd573c8a839ac00ea3b96d691ea11c3">systemClock</references>
+      </memberdef>
+      <memberdef kind="function" id="clock__commands_8cpp_1acc9239d946ee18d2ff19af2c6a2177f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_frame" kindref="compound">Frame</ref></type>
+        <definition>Frame handleGetTimezoneOffset</definition>
+        <argsstring>(const std::string &amp;param, OperationType operationType)</argsstring>
+        <name>handleGetTimezoneOffset</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>param</declname>
+        </param>
+        <param>
+          <type><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047" kindref="member">OperationType</ref></type>
+          <declname>operationType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="commands/clock_commands.cpp" line="59" column="7" bodyfile="commands/clock_commands.cpp" bodystart="59" bodyend="65"/>
+        <references refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" compoundref="frame_8cpp" startline="113" endline="146">buildFrame</references>
+        <references refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" compoundref="protocol_8h" startline="28">ERROR</references>
+        <references refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8" compoundref="protocol_8h" startline="33">GET</references>
+        <references refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c" compoundref="protocol_8h" startline="27">SUCCESS</references>
+        <references refid="clock__commands_8cpp_1abfd573c8a839ac00ea3b96d691ea11c3">systemClock</references>
+      </memberdef>
+      <memberdef kind="function" id="clock__commands_8cpp_1a9e802e312d0779aab74966074e81eb30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_frame" kindref="compound">Frame</ref></type>
+        <definition>Frame handleSetTimezoneOffset</definition>
+        <argsstring>(const std::string &amp;param, OperationType operationType)</argsstring>
+        <name>handleSetTimezoneOffset</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>param</declname>
+        </param>
+        <param>
+          <type><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047" kindref="member">OperationType</ref></type>
+          <declname>operationType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="commands/clock_commands.cpp" line="67" column="7" bodyfile="commands/clock_commands.cpp" bodystart="67" bodyend="81"/>
+        <references refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" compoundref="frame_8cpp" startline="113" endline="146">buildFrame</references>
+        <references refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" compoundref="protocol_8h" startline="28">ERROR</references>
+        <references refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a8c52684db8f49511e9b44471716bf164" compoundref="protocol_8h" startline="34">SET</references>
+        <references refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c" compoundref="protocol_8h" startline="27">SUCCESS</references>
+        <references refid="clock__commands_8cpp_1abfd573c8a839ac00ea3b96d691ea11c3">systemClock</references>
+      </memberdef>
+      <memberdef kind="function" id="clock__commands_8cpp_1add8778da60c0dc5c0add2c7b2ccdc57e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_frame" kindref="compound">Frame</ref></type>
+        <definition>Frame handleGetClockSyncInterval</definition>
+        <argsstring>(const std::string &amp;param, OperationType operationType)</argsstring>
+        <name>handleGetClockSyncInterval</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>param</declname>
+        </param>
+        <param>
+          <type><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047" kindref="member">OperationType</ref></type>
+          <declname>operationType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="commands/clock_commands.cpp" line="83" column="7" bodyfile="commands/clock_commands.cpp" bodystart="83" bodyend="89"/>
+        <references refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" compoundref="frame_8cpp" startline="113" endline="146">buildFrame</references>
+        <references refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" compoundref="protocol_8h" startline="28">ERROR</references>
+        <references refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8" compoundref="protocol_8h" startline="33">GET</references>
+        <references refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c" compoundref="protocol_8h" startline="27">SUCCESS</references>
+        <references refid="clock__commands_8cpp_1abfd573c8a839ac00ea3b96d691ea11c3">systemClock</references>
+      </memberdef>
+      <memberdef kind="function" id="clock__commands_8cpp_1a00137f0d4c6a83ee5c0df49c7370fe65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_frame" kindref="compound">Frame</ref></type>
+        <definition>Frame handleSetClockSyncInterval</definition>
+        <argsstring>(const std::string &amp;param, OperationType operationType)</argsstring>
+        <name>handleSetClockSyncInterval</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>param</declname>
+        </param>
+        <param>
+          <type><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047" kindref="member">OperationType</ref></type>
+          <declname>operationType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="commands/clock_commands.cpp" line="91" column="7" bodyfile="commands/clock_commands.cpp" bodystart="91" bodyend="102"/>
+        <references refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" compoundref="frame_8cpp" startline="113" endline="146">buildFrame</references>
+        <references refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" compoundref="protocol_8h" startline="28">ERROR</references>
+        <references refid="communication_8cpp_1aaaceac04637cd33a7f3fffdd1711e6c5" compoundref="communication_8cpp" startline="8">interval</references>
+        <references refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a8c52684db8f49511e9b44471716bf164" compoundref="protocol_8h" startline="34">SET</references>
+        <references refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c" compoundref="protocol_8h" startline="27">SUCCESS</references>
+        <references refid="clock__commands_8cpp_1abfd573c8a839ac00ea3b96d691ea11c3">systemClock</references>
+      </memberdef>
+      <memberdef kind="function" id="clock__commands_8cpp_1a6def0bf9e591d66bd98b752f731d44ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_frame" kindref="compound">Frame</ref></type>
+        <definition>Frame handleGetClockDrift</definition>
+        <argsstring>(const std::string &amp;param, OperationType operationType)</argsstring>
+        <name>handleGetClockDrift</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>param</declname>
+        </param>
+        <param>
+          <type><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047" kindref="member">OperationType</ref></type>
+          <declname>operationType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="commands/clock_commands.cpp" line="104" column="7" bodyfile="commands/clock_commands.cpp" bodystart="104" bodyend="110"/>
+        <references refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" compoundref="frame_8cpp" startline="113" endline="146">buildFrame</references>
+        <references refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" compoundref="protocol_8h" startline="28">ERROR</references>
+        <references refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8" compoundref="protocol_8h" startline="33">GET</references>
+        <references refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c" compoundref="protocol_8h" startline="27">SUCCESS</references>
+        <references refid="clock__commands_8cpp_1abfd573c8a839ac00ea3b96d691ea11c3">systemClock</references>
+      </memberdef>
+      <memberdef kind="function" id="clock__commands_8cpp_1ae4cd7f745d6f9e2cadef70e21d8a9fcb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_frame" kindref="compound">Frame</ref></type>
+        <definition>Frame handleSetClockDrift</definition>
+        <argsstring>(const std::string &amp;param, OperationType operationType)</argsstring>
+        <name>handleSetClockDrift</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>param</declname>
+        </param>
+        <param>
+          <type><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047" kindref="member">OperationType</ref></type>
+          <declname>operationType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="commands/clock_commands.cpp" line="112" column="7" bodyfile="commands/clock_commands.cpp" bodystart="112" bodyend="123"/>
+        <references refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" compoundref="frame_8cpp" startline="113" endline="146">buildFrame</references>
+        <references refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" compoundref="protocol_8h" startline="28">ERROR</references>
+        <references refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a8c52684db8f49511e9b44471716bf164" compoundref="protocol_8h" startline="34">SET</references>
+        <references refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c" compoundref="protocol_8h" startline="27">SUCCESS</references>
+        <references refid="clock__commands_8cpp_1abfd573c8a839ac00ea3b96d691ea11c3">systemClock</references>
+      </memberdef>
+      <memberdef kind="function" id="clock__commands_8cpp_1a17274560343c34119630b27d88ef475e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_frame" kindref="compound">Frame</ref></type>
+        <definition>Frame handleGetLastSyncTime</definition>
+        <argsstring>(const std::string &amp;param, OperationType operationType)</argsstring>
+        <name>handleGetLastSyncTime</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>param</declname>
+        </param>
+        <param>
+          <type><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047" kindref="member">OperationType</ref></type>
+          <declname>operationType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="commands/clock_commands.cpp" line="125" column="7" bodyfile="commands/clock_commands.cpp" bodystart="125" bodyend="131"/>
+        <references refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" compoundref="frame_8cpp" startline="113" endline="146">buildFrame</references>
+        <references refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" compoundref="protocol_8h" startline="28">ERROR</references>
+        <references refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8" compoundref="protocol_8h" startline="33">GET</references>
+        <references refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c" compoundref="protocol_8h" startline="27">SUCCESS</references>
+        <references refid="clock__commands_8cpp_1abfd573c8a839ac00ea3b96d691ea11c3">systemClock</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="communication_8h" kindref="compound">communication.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;time.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_d_s3231_8h" kindref="compound">DS3231.h</ref>&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>the<sp/>DS3231<sp/>header</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Declare<sp/>the<sp/>systemClock<sp/>as<sp/>extern</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="class_d_s3231" kindref="compound">DS3231</ref><sp/><ref refid="clock__commands_8cpp_1abfd573c8a839ac00ea3b96d691ea11c3" kindref="member">systemClock</ref>;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="clock__commands_8cpp_1a1eefb8c4d539d50c787b4db3f6ebb093" refkind="member"><highlight class="normal"><ref refid="struct_frame" kindref="compound">Frame</ref><sp/><ref refid="clock__commands_8cpp_1a1eefb8c4d539d50c787b4db3f6ebb093" kindref="member">handleTime</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>param,<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047" kindref="member">OperationType</ref><sp/>operationType)<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(operationType<sp/>==<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a8c52684db8f49511e9b44471716bf164" kindref="member">OperationType::SET</ref><sp/>&amp;&amp;<sp/>param.empty())<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" kindref="member">ExecutionResult::ERROR</ref>,<sp/>3,<sp/>0,<sp/></highlight><highlight class="stringliteral">&quot;PARAM<sp/>REQUIRED&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(operationType<sp/>==<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8" kindref="member">OperationType::GET</ref><sp/>&amp;&amp;<sp/>!param.empty())<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" kindref="member">ExecutionResult::ERROR</ref>,<sp/>3,<sp/>0,<sp/></highlight><highlight class="stringliteral">&quot;PARAM<sp/>UNNECESSARY&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!(operationType<sp/>==<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8" kindref="member">OperationType::GET</ref><sp/>||<sp/>operationType<sp/>==<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a8c52684db8f49511e9b44471716bf164" kindref="member">OperationType::SET</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" kindref="member">ExecutionResult::ERROR</ref>,<sp/>3,<sp/>0,<sp/></highlight><highlight class="stringliteral">&quot;INVALID<sp/>OPERATION&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(operationType<sp/>==<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a8c52684db8f49511e9b44471716bf164" kindref="member">OperationType::SET</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>time_t<sp/>newTime<sp/>=<sp/>std::stoll(param);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">tm*<sp/>timeinfo<sp/>=<sp/>localtime(&amp;newTime);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(timeinfo<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>the<sp/>time<sp/>on<sp/>the<sp/>RTC</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="clock__commands_8cpp_1abfd573c8a839ac00ea3b96d691ea11c3" kindref="member">systemClock</ref>.setTime(timeinfo-&gt;tm_sec,<sp/>timeinfo-&gt;tm_min,<sp/>timeinfo-&gt;tm_hour,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>timeinfo-&gt;tm_wday,<sp/>timeinfo-&gt;tm_mday,<sp/>timeinfo-&gt;tm_mon<sp/>+<sp/>1,<sp/>timeinfo-&gt;tm_year<sp/>+<sp/>1900);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_event_emitter_1a539d733505f9a793439a9cfc4f2af079" kindref="member">EventEmitter::emit</ref>(<ref refid="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7aca6c44800b2dc123e0d4389a867e8686" kindref="member">EventGroup::CLOCK</ref>,<sp/><ref refid="event__manager_8h_1a163ce349de3451c81f50080e5fbe62a2ae6b94e58bfd13b21bc786578d9f8ba4a" kindref="member">ClockEvent::CHANGED</ref>);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c" kindref="member">ExecutionResult::SUCCESS</ref>,<sp/>3,<sp/>0,<sp/></highlight><highlight class="stringliteral">&quot;Time<sp/>set<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" kindref="member">ExecutionResult::ERROR</ref>,<sp/>3,<sp/>0,<sp/></highlight><highlight class="stringliteral">&quot;FAILED<sp/>TO<sp/>SET<sp/>TIME&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(...)<sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" kindref="member">ExecutionResult::ERROR</ref>,<sp/>3,<sp/>0,<sp/></highlight><highlight class="stringliteral">&quot;INVALID<sp/>TIME<sp/>FORMAT&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>GET<sp/>operation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>sec,<sp/>min,<sp/>hour,<sp/>day,<sp/>month;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>year;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>weekday;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="clock__commands_8cpp_1abfd573c8a839ac00ea3b96d691ea11c3" kindref="member">systemClock</ref>.getTime(sec,<sp/>min,<sp/>hour,<sp/>weekday,<sp/>day,<sp/>month,<sp/>year))<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::stringstream<sp/>ss;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ss<sp/>&lt;&lt;<sp/>std::setw(2)<sp/>&lt;&lt;<sp/>std::setfill(&apos;0&apos;)<sp/>&lt;&lt;<sp/>static_cast&lt;int&gt;(hour)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::setw(2)<sp/>&lt;&lt;<sp/>std::setfill(</highlight><highlight class="charliteral">&apos;0&apos;</highlight><highlight class="normal">)<sp/>&lt;&lt;<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(min)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::setw(2)<sp/>&lt;&lt;<sp/>std::setfill(</highlight><highlight class="charliteral">&apos;0&apos;</highlight><highlight class="normal">)<sp/>&lt;&lt;<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(sec)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>weekday<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::setw(2)<sp/>&lt;&lt;<sp/>std::setfill(</highlight><highlight class="charliteral">&apos;0&apos;</highlight><highlight class="normal">)<sp/>&lt;&lt;<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(day)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::setw(2)<sp/>&lt;&lt;<sp/>std::setfill(</highlight><highlight class="charliteral">&apos;0&apos;</highlight><highlight class="normal">)<sp/>&lt;&lt;<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(month)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>year;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c" kindref="member">ExecutionResult::SUCCESS</ref>,<sp/>3,<sp/>0,<sp/>ss.str());</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" kindref="member">ExecutionResult::ERROR</ref>,<sp/>3,<sp/>0,<sp/></highlight><highlight class="stringliteral">&quot;FAILED<sp/>TO<sp/>GET<sp/>TIME&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="clock__commands_8cpp_1acc9239d946ee18d2ff19af2c6a2177f0" refkind="member"><highlight class="normal"><ref refid="struct_frame" kindref="compound">Frame</ref><sp/><ref refid="clock__commands_8cpp_1acc9239d946ee18d2ff19af2c6a2177f0" kindref="member">handleGetTimezoneOffset</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>param,<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047" kindref="member">OperationType</ref><sp/>operationType)<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(operationType<sp/>!=<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8" kindref="member">OperationType::GET</ref><sp/>||<sp/>!param.empty())<sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" kindref="member">ExecutionResult::ERROR</ref>,<sp/>3,<sp/>1,<sp/></highlight><highlight class="stringliteral">&quot;INVALID<sp/>REQUEST&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c" kindref="member">ExecutionResult::SUCCESS</ref>,<sp/>3,<sp/>1,<sp/></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::to_string(<ref refid="clock__commands_8cpp_1abfd573c8a839ac00ea3b96d691ea11c3" kindref="member">systemClock</ref>.getTimezoneOffset()));</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="clock__commands_8cpp_1a9e802e312d0779aab74966074e81eb30" refkind="member"><highlight class="normal"><ref refid="struct_frame" kindref="compound">Frame</ref><sp/><ref refid="clock__commands_8cpp_1a9e802e312d0779aab74966074e81eb30" kindref="member">handleSetTimezoneOffset</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>param,<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047" kindref="member">OperationType</ref><sp/>operationType)<sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(operationType<sp/>!=<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a8c52684db8f49511e9b44471716bf164" kindref="member">OperationType::SET</ref><sp/>||<sp/>param.empty())<sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" kindref="member">ExecutionResult::ERROR</ref>,<sp/>3,<sp/>2,<sp/></highlight><highlight class="stringliteral">&quot;INVALID<sp/>REQUEST&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int16_t<sp/>offset<sp/>=<sp/>std::stoi(param);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(offset<sp/>&lt;<sp/>-720<sp/>||<sp/>offset<sp/>&gt;<sp/>720)<sp/>{<sp/></highlight><highlight class="comment">//<sp/>±12<sp/>hours<sp/>in<sp/>minutes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" kindref="member">ExecutionResult::ERROR</ref>,<sp/>3,<sp/>2,<sp/></highlight><highlight class="stringliteral">&quot;INVALID<sp/>OFFSET&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="clock__commands_8cpp_1abfd573c8a839ac00ea3b96d691ea11c3" kindref="member">systemClock</ref>.setTimezoneOffset(offset);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c" kindref="member">ExecutionResult::SUCCESS</ref>,<sp/>3,<sp/>2,<sp/>param);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(...)<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" kindref="member">ExecutionResult::ERROR</ref>,<sp/>3,<sp/>2,<sp/></highlight><highlight class="stringliteral">&quot;INVALID<sp/>PARAMETER&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="clock__commands_8cpp_1add8778da60c0dc5c0add2c7b2ccdc57e" refkind="member"><highlight class="normal"><ref refid="struct_frame" kindref="compound">Frame</ref><sp/><ref refid="clock__commands_8cpp_1add8778da60c0dc5c0add2c7b2ccdc57e" kindref="member">handleGetClockSyncInterval</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>param,<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047" kindref="member">OperationType</ref><sp/>operationType)<sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(operationType<sp/>!=<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8" kindref="member">OperationType::GET</ref><sp/>||<sp/>!param.empty())<sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" kindref="member">ExecutionResult::ERROR</ref>,<sp/>3,<sp/>3,<sp/></highlight><highlight class="stringliteral">&quot;INVALID<sp/>REQUEST&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c" kindref="member">ExecutionResult::SUCCESS</ref>,<sp/>3,<sp/>3,<sp/></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::to_string(<ref refid="clock__commands_8cpp_1abfd573c8a839ac00ea3b96d691ea11c3" kindref="member">systemClock</ref>.getClockSyncInterval()));</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="clock__commands_8cpp_1a00137f0d4c6a83ee5c0df49c7370fe65" refkind="member"><highlight class="normal"><ref refid="struct_frame" kindref="compound">Frame</ref><sp/><ref refid="clock__commands_8cpp_1a00137f0d4c6a83ee5c0df49c7370fe65" kindref="member">handleSetClockSyncInterval</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>param,<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047" kindref="member">OperationType</ref><sp/>operationType)<sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(operationType<sp/>!=<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a8c52684db8f49511e9b44471716bf164" kindref="member">OperationType::SET</ref><sp/>||<sp/>param.empty())<sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" kindref="member">ExecutionResult::ERROR</ref>,<sp/>3,<sp/>4,<sp/></highlight><highlight class="stringliteral">&quot;INVALID<sp/>REQUEST&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="communication_8cpp_1aaaceac04637cd33a7f3fffdd1711e6c5" kindref="member">interval</ref><sp/>=<sp/>std::stoul(param);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="clock__commands_8cpp_1abfd573c8a839ac00ea3b96d691ea11c3" kindref="member">systemClock</ref>.setClockSyncInterval(<ref refid="communication_8cpp_1aaaceac04637cd33a7f3fffdd1711e6c5" kindref="member">interval</ref>);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c" kindref="member">ExecutionResult::SUCCESS</ref>,<sp/>3,<sp/>4,<sp/>param);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(...)<sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" kindref="member">ExecutionResult::ERROR</ref>,<sp/>3,<sp/>4,<sp/></highlight><highlight class="stringliteral">&quot;INVALID<sp/>PARAMETER&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="clock__commands_8cpp_1a6def0bf9e591d66bd98b752f731d44ba" refkind="member"><highlight class="normal"><ref refid="struct_frame" kindref="compound">Frame</ref><sp/><ref refid="clock__commands_8cpp_1a6def0bf9e591d66bd98b752f731d44ba" kindref="member">handleGetClockDrift</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>param,<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047" kindref="member">OperationType</ref><sp/>operationType)<sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(operationType<sp/>!=<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8" kindref="member">OperationType::GET</ref><sp/>||<sp/>!param.empty())<sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" kindref="member">ExecutionResult::ERROR</ref>,<sp/>3,<sp/>5,<sp/></highlight><highlight class="stringliteral">&quot;INVALID<sp/>REQUEST&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c" kindref="member">ExecutionResult::SUCCESS</ref>,<sp/>3,<sp/>5,<sp/></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::to_string(<ref refid="clock__commands_8cpp_1abfd573c8a839ac00ea3b96d691ea11c3" kindref="member">systemClock</ref>.getClockDrift()));</highlight></codeline>
+<codeline lineno="110"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112" refid="clock__commands_8cpp_1ae4cd7f745d6f9e2cadef70e21d8a9fcb" refkind="member"><highlight class="normal"><ref refid="struct_frame" kindref="compound">Frame</ref><sp/><ref refid="clock__commands_8cpp_1ae4cd7f745d6f9e2cadef70e21d8a9fcb" kindref="member">handleSetClockDrift</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>param,<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047" kindref="member">OperationType</ref><sp/>operationType)<sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(operationType<sp/>!=<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a8c52684db8f49511e9b44471716bf164" kindref="member">OperationType::SET</ref><sp/>||<sp/>param.empty())<sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" kindref="member">ExecutionResult::ERROR</ref>,<sp/>3,<sp/>6,<sp/></highlight><highlight class="stringliteral">&quot;INVALID<sp/>REQUEST&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>drift<sp/>=<sp/>std::stof(param);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="clock__commands_8cpp_1abfd573c8a839ac00ea3b96d691ea11c3" kindref="member">systemClock</ref>.setClockDrift(drift);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c" kindref="member">ExecutionResult::SUCCESS</ref>,<sp/>3,<sp/>6,<sp/>param);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(...)<sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" kindref="member">ExecutionResult::ERROR</ref>,<sp/>3,<sp/>6,<sp/></highlight><highlight class="stringliteral">&quot;INVALID<sp/>PARAMETER&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125" refid="clock__commands_8cpp_1a17274560343c34119630b27d88ef475e" refkind="member"><highlight class="normal"><ref refid="struct_frame" kindref="compound">Frame</ref><sp/><ref refid="clock__commands_8cpp_1a17274560343c34119630b27d88ef475e" kindref="member">handleGetLastSyncTime</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>param,<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047" kindref="member">OperationType</ref><sp/>operationType)<sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(operationType<sp/>!=<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8" kindref="member">OperationType::GET</ref><sp/>||<sp/>!param.empty())<sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" kindref="member">ExecutionResult::ERROR</ref>,<sp/>3,<sp/>7,<sp/></highlight><highlight class="stringliteral">&quot;INVALID<sp/>REQUEST&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c" kindref="member">ExecutionResult::SUCCESS</ref>,<sp/>3,<sp/>7,<sp/></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::to_string(<ref refid="clock__commands_8cpp_1abfd573c8a839ac00ea3b96d691ea11c3" kindref="member">systemClock</ref>.getLastSyncTime()));</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="commands/clock_commands.cpp"/>
+  </compounddef>
+</doxygen>

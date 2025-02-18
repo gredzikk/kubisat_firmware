@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8h" xml:lang="en-US">
+<title>lib/HMC5883L/HMC5883L_WRAPPER.h File Reference</title>
+<indexterm><primary>lib/HMC5883L/HMC5883L_WRAPPER.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;lib/ISensor.h&quot;<?linebreak?>#include &quot;HMC5883L.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_class_h_m_c5883_l_wrapper">HMC5883LWrapper</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

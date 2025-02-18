@@ -1,0 +1,203 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_frame_8cpp" xml:lang="en-US">
+<title>frame_model/frame.cpp File Reference</title>
+<indexterm><primary>frame_model/frame.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;communication.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para>using <link linkend="_frame_8cpp_1a2847cb88200a957abe5098b0cc87556d">CommandHandler</link> = std::function&lt;std::string(const std::string&amp;, <link linkend="_protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</link>)&gt;</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>std::string <link linkend="_frame_8cpp_1ab53898fb6f45dfc657837a665a070959">encodeFrame</link> (const <link linkend="_struct_frame">Frame</link> &amp;frame)</para>
+
+<para>Encode <link linkend="_struct_frame">Frame</link> instance into a string. </para>
+</listitem>
+            <listitem><para><link linkend="_struct_frame">Frame</link> <link linkend="_frame_8cpp_1a8f34bc31494430539db21206f084d39d">decodeFrame</link> (const std::string &amp;data)</para>
+
+<para>Convert a string into a <link linkend="_struct_frame">Frame</link> instance. </para>
+</listitem>
+            <listitem><para>void <link linkend="_frame_8cpp_1a8b9407b2f579031cf4b705f1ac03ac31">processFrameData</link> (const std::string &amp;data)</para>
+
+<para>Execute the command based on the command key and the parameter. </para>
+</listitem>
+            <listitem><para>void <link linkend="_frame_8cpp_1a6005ddd6320bebe2a680fa6b8efff6dd">sendEventRegister</link> ()</para>
+
+<para>Send event register value to the ground station. </para>
+</listitem>
+            <listitem><para><link linkend="_struct_frame">Frame</link> <link linkend="_frame_8cpp_1a5f43260949ee244d3ee66068eb1d7fc1">buildFrame</link> (<link linkend="_protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1">ExecutionResult</link> result, uint8_t <link linkend="_event__manager_8h_1ad4291fcb880eb5ecb178b53e32f55741">group</link>, uint8_t command, const std::string &amp;value, const <link linkend="_protocol_8h_1a2d96449e2b52d45b5726af92084e0d8f">ValueUnit</link> unitType)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>std::map&lt; uint32_t, <link linkend="_commands_8cpp_1afd50beeb0940251ffa11aba67ae299bd">CommandHandler</link> &gt; <link linkend="_frame_8cpp_1a683301014d75a3228003716105486a3e">commandHandlers</link></para>
+</listitem>
+            <listitem><para>volatile uint16_t <link linkend="_frame_8cpp_1ac9c6a252b4ac4dad7cf47681200d3dbe">eventRegister</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Typedef Documentation</title>
+<anchor xml:id="_frame_8cpp_1a2847cb88200a957abe5098b0cc87556d"/><section>
+    <title>CommandHandler</title>
+<indexterm><primary>CommandHandler</primary><secondary>frame.cpp</secondary></indexterm>
+<indexterm><primary>frame.cpp</primary><secondary>CommandHandler</secondary></indexterm>
+<para><computeroutput>using <link linkend="_commands_8cpp_1afd50beeb0940251ffa11aba67ae299bd">CommandHandler</link> = std::function&lt;std::string(const std::string&amp;, <link linkend="_protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</link>)&gt;</computeroutput></para><para>
+Definition at line <link linkend="_frame_8cpp_source_1l00074">74</link> of file <link linkend="_frame_8cpp_source">frame.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_frame_8cpp_1a5f43260949ee244d3ee66068eb1d7fc1"/><section>
+    <title>buildFrame()</title>
+<indexterm><primary>buildFrame</primary><secondary>frame.cpp</secondary></indexterm>
+<indexterm><primary>frame.cpp</primary><secondary>buildFrame</secondary></indexterm>
+<para><computeroutput><link linkend="_struct_frame">Frame</link> buildFrame (<link linkend="_protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1">ExecutionResult</link> result, uint8_t group, uint8_t command, const std::string &amp; value, const <link linkend="_protocol_8h_1a2d96449e2b52d45b5726af92084e0d8f">ValueUnit</link> unitType)</computeroutput></para><para>
+Definition at line <link linkend="_frame_8cpp_source_1l00113">113</link> of file <link linkend="_frame_8cpp_source">frame.cpp</link>.</para>
+</section>
+<anchor xml:id="_frame_8cpp_1a8f34bc31494430539db21206f084d39d"/><section>
+    <title>decodeFrame()</title>
+<indexterm><primary>decodeFrame</primary><secondary>frame.cpp</secondary></indexterm>
+<indexterm><primary>frame.cpp</primary><secondary>decodeFrame</secondary></indexterm>
+<para><computeroutput><link linkend="_struct_frame">Frame</link> decodeFrame (const std::string &amp; data)</computeroutput></para><para>
+
+<para>Convert a string into a <link linkend="_struct_frame">Frame</link> instance. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>data</entry><entry>
+<para><link linkend="_struct_frame">Frame</link> data as a string </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><link linkend="_struct_frame">Frame</link> instance </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_frame_8cpp_source_1l00024">24</link> of file <link linkend="_frame_8cpp_source">frame.cpp</link>.</para>
+</section>
+<anchor xml:id="_frame_8cpp_1ab53898fb6f45dfc657837a665a070959"/><section>
+    <title>encodeFrame()</title>
+<indexterm><primary>encodeFrame</primary><secondary>frame.cpp</secondary></indexterm>
+<indexterm><primary>frame.cpp</primary><secondary>encodeFrame</secondary></indexterm>
+<para><computeroutput>std::string encodeFrame (const <link linkend="_struct_frame">Frame</link> &amp; frame)</computeroutput></para><para>
+
+<para>Encode <link linkend="_struct_frame">Frame</link> instance into a string. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>frame</entry><entry>
+<para><link linkend="_struct_frame">Frame</link> instance to encode </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><link linkend="_struct_frame">Frame</link> encoded as a string </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_frame_8cpp_source_1l00006">6</link> of file <link linkend="_frame_8cpp_source">frame.cpp</link>.</para>
+</section>
+<anchor xml:id="_frame_8cpp_1a8b9407b2f579031cf4b705f1ac03ac31"/><section>
+    <title>processFrameData()</title>
+<indexterm><primary>processFrameData</primary><secondary>frame.cpp</secondary></indexterm>
+<indexterm><primary>frame.cpp</primary><secondary>processFrameData</secondary></indexterm>
+<para><computeroutput>void processFrameData (const std::string &amp; data)</computeroutput></para><para>
+
+<para>Execute the command based on the command key and the parameter. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>data</entry><entry>
+<para><link linkend="_struct_frame">Frame</link> data in string format </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_frame_8cpp_source_1l00079">79</link> of file <link linkend="_frame_8cpp_source">frame.cpp</link>.</para>
+</section>
+<anchor xml:id="_frame_8cpp_1a6005ddd6320bebe2a680fa6b8efff6dd"/><section>
+    <title>sendEventRegister()</title>
+<indexterm><primary>sendEventRegister</primary><secondary>frame.cpp</secondary></indexterm>
+<indexterm><primary>frame.cpp</primary><secondary>sendEventRegister</secondary></indexterm>
+<para><computeroutput>void sendEventRegister ( )</computeroutput></para><para>
+
+<para>Send event register value to the ground station. </para>
+</para>
+
+<para><note><title>Note</title>
+
+<para>This function is called in the main loop </para>
+</note>
+</para>
+<para>
+Definition at line <link linkend="_frame_8cpp_source_1l00098">98</link> of file <link linkend="_frame_8cpp_source">frame.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="_frame_8cpp_1a683301014d75a3228003716105486a3e"/><section>
+    <title>commandHandlers</title>
+<indexterm><primary>commandHandlers</primary><secondary>frame.cpp</secondary></indexterm>
+<indexterm><primary>frame.cpp</primary><secondary>commandHandlers</secondary></indexterm>
+<para><computeroutput>std::map&lt;uint32_t, <link linkend="_commands_8cpp_1afd50beeb0940251ffa11aba67ae299bd">CommandHandler</link>&gt; commandHandlers<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_commands_8cpp_source_1l00009">9</link> of file <link linkend="_commands_8cpp_source">commands.cpp</link>.</para>
+</section>
+<anchor xml:id="_frame_8cpp_1ac9c6a252b4ac4dad7cf47681200d3dbe"/><section>
+    <title>eventRegister</title>
+<indexterm><primary>eventRegister</primary><secondary>frame.cpp</secondary></indexterm>
+<indexterm><primary>frame.cpp</primary><secondary>eventRegister</secondary></indexterm>
+<para><computeroutput>volatile uint16_t eventRegister<computeroutput>[extern]</computeroutput></computeroutput></para></section>
+</section>
+</section>

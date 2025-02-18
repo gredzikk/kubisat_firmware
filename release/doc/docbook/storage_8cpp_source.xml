@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_storage_8cpp_source" xml:lang="en-US">
+<title>storage.cpp</title>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_storage_8cpp_source_1l00001"/>00001 <emphasis role="comment">/*</emphasis>
+<anchor xml:id="_storage_8cpp_source_1l00002"/>00002 <emphasis role="comment">&#32;*&#32;Copyright&#32;2024,&#32;Hiroyuki&#32;OYAMA.&#32;All&#32;rights&#32;reserved.</emphasis>
+<anchor xml:id="_storage_8cpp_source_1l00003"/>00003 <emphasis role="comment">&#32;*</emphasis>
+<anchor xml:id="_storage_8cpp_source_1l00004"/>00004 <emphasis role="comment">&#32;*&#32;SPDX-License-Identifier:&#32;BSD-3-Clause</emphasis>
+<anchor xml:id="_storage_8cpp_source_1l00005"/>00005 <emphasis role="comment">&#32;*/</emphasis>
+<anchor xml:id="_storage_8cpp_source_1l00006"/>00006 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_storage_8h">storage.h</link>&quot;</emphasis>
+<anchor xml:id="_storage_8cpp_source_1l00007"/>00007 <emphasis role="preprocessor">#include&#32;&quot;errno.h&quot;</emphasis>
+<anchor xml:id="_storage_8cpp_source_1l00008"/>00008 
+<anchor xml:id="_storage_8cpp_source_1l00009"/><link linkend="_storage_8cpp_1afb19e37469a751aa61de3dcd0c70b4b0">00009</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_storage_8cpp_1afb19e37469a751aa61de3dcd0c70b4b0">fs_init</link>(<emphasis role="keywordtype">void</emphasis>)&#32;{
+<anchor xml:id="_storage_8cpp_source_1l00010"/>00010 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;fs_init&#32;littlefs&#32;on&#32;SD&#32;card\n&quot;</emphasis>);
+<anchor xml:id="_storage_8cpp_source_1l00011"/>00011 &#32;&#32;&#32;&#32;blockdevice_t&#32;*sd&#32;=&#32;blockdevice_sd_create(<link linkend="_pin__config_8h_1ae8e100b2951ae1785ada736a7d960a77">SD_SPI_PORT</link>,
+<anchor xml:id="_storage_8cpp_source_1l00012"/>00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_pin__config_8h_1a1150cf94392cb54e7e979e6b69f210fb">SD_MOSI_PIN</link>,
+<anchor xml:id="_storage_8cpp_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_pin__config_8h_1ad3aea67d9c7c7dc0be847a1467786abb">SD_MISO_PIN</link>,
+<anchor xml:id="_storage_8cpp_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_pin__config_8h_1a712b6e5405cc83d1a7c1a30f198df12a">SD_SCK_PIN</link>,
+<anchor xml:id="_storage_8cpp_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_pin__config_8h_1a04d57a6c18b2d5e81f31093e58ed0c62">SD_CS_PIN</link>,
+<anchor xml:id="_storage_8cpp_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;24&#32;*&#32;MHZ,
+<anchor xml:id="_storage_8cpp_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="_storage_8cpp_source_1l00018"/>00018 &#32;&#32;&#32;&#32;filesystem_t&#32;*littlefs&#32;=&#32;filesystem_littlefs_create(500,&#32;16);
+<anchor xml:id="_storage_8cpp_source_1l00019"/>00019 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;err&#32;=&#32;fs_mount(<emphasis role="stringliteral">&quot;/&quot;</emphasis>,&#32;littlefs,&#32;sd);
+<anchor xml:id="_storage_8cpp_source_1l00020"/>00020 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(err&#32;==&#32;-1)&#32;{
+<anchor xml:id="_storage_8cpp_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;format&#32;/&#32;with&#32;littlefs\n&quot;</emphasis>);
+<anchor xml:id="_storage_8cpp_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;err&#32;=&#32;fs_format(littlefs,&#32;sd);
+<anchor xml:id="_storage_8cpp_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(err&#32;==&#32;-1)&#32;{
+<anchor xml:id="_storage_8cpp_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;fs_format&#32;error:&#32;%s&quot;</emphasis>,&#32;strerror(errno));
+<anchor xml:id="_storage_8cpp_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_storage_8cpp_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_storage_8cpp_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;err&#32;=&#32;fs_mount(<emphasis role="stringliteral">&quot;/&quot;</emphasis>,&#32;littlefs,&#32;sd);
+<anchor xml:id="_storage_8cpp_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(err&#32;==&#32;-1)&#32;{
+<anchor xml:id="_storage_8cpp_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;fs_mount&#32;error:&#32;%s&quot;</emphasis>,&#32;strerror(errno));
+<anchor xml:id="_storage_8cpp_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_storage_8cpp_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_storage_8cpp_source_1l00032"/>00032 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_storage_8cpp_source_1l00033"/>00033 
+<anchor xml:id="_storage_8cpp_source_1l00034"/>00034 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="_storage_8cpp_source_1l00035"/>00035 }
+<anchor xml:id="_storage_8cpp_source_1l00036"/>00036 
+<anchor xml:id="_storage_8cpp_source_1l00037"/><link linkend="_storage_8cpp_1a921d0d7089c0c7731762035e7feeb27a">00037</link> <link linkend="_struct_file_handle">FileHandle</link>&#32;<link linkend="_storage_8cpp_1a921d0d7089c0c7731762035e7feeb27a">fs_open_file</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;filename,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;mode)&#32;{
+<anchor xml:id="_storage_8cpp_source_1l00038"/>00038 &#32;&#32;&#32;&#32;<link linkend="_struct_file_handle">FileHandle</link>&#32;handle&#32;=&#32;{-1,&#32;<emphasis role="keyword">false</emphasis>};
+<anchor xml:id="_storage_8cpp_source_1l00039"/>00039 &#32;&#32;&#32;&#32;
+<anchor xml:id="_storage_8cpp_source_1l00040"/>00040 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Convert&#32;mode&#32;string&#32;to&#32;flags</emphasis>
+<anchor xml:id="_storage_8cpp_source_1l00041"/>00041 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;flags&#32;=&#32;0;
+<anchor xml:id="_storage_8cpp_source_1l00042"/>00042 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(strchr(mode,&#32;<emphasis role="charliteral">&apos;r&apos;</emphasis>))&#32;flags&#32;|=&#32;O_RDONLY;
+<anchor xml:id="_storage_8cpp_source_1l00043"/>00043 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(strchr(mode,&#32;<emphasis role="charliteral">&apos;w&apos;</emphasis>))&#32;flags&#32;|=&#32;O_WRONLY&#32;|&#32;O_CREAT&#32;|&#32;O_TRUNC;
+<anchor xml:id="_storage_8cpp_source_1l00044"/>00044 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(strchr(mode,&#32;<emphasis role="charliteral">&apos;a&apos;</emphasis>))&#32;flags&#32;|=&#32;O_WRONLY&#32;|&#32;O_CREAT&#32;|&#32;O_APPEND;
+<anchor xml:id="_storage_8cpp_source_1l00045"/>00045 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(strchr(mode,&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>))&#32;flags&#32;=&#32;O_RDWR&#32;|&#32;(flags&#32;&amp;&#32;~(O_RDONLY&#32;|&#32;O_WRONLY));
+<anchor xml:id="_storage_8cpp_source_1l00046"/>00046 
+<anchor xml:id="_storage_8cpp_source_1l00047"/>00047 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Open&#32;the&#32;file</emphasis>
+<anchor xml:id="_storage_8cpp_source_1l00048"/>00048 &#32;&#32;&#32;&#32;handle.<link linkend="_struct_file_handle_1afc2bbe66c168d4d264f3af1ec037b122">fd</link>&#32;=&#32;open(filename,&#32;flags,&#32;0666);
+<anchor xml:id="_storage_8cpp_source_1l00049"/>00049 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(handle.<link linkend="_struct_file_handle_1afc2bbe66c168d4d264f3af1ec037b122">fd</link>&#32;&gt;=&#32;0)&#32;{
+<anchor xml:id="_storage_8cpp_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;handle.<link linkend="_struct_file_handle_1a1c2451d05e2d2937da92fe194e9281cf">is_open</link>&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="_storage_8cpp_source_1l00051"/>00051 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+<anchor xml:id="_storage_8cpp_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Failed&#32;to&#32;open&#32;file&#32;%s:&#32;%s\n&quot;</emphasis>,&#32;filename,&#32;strerror(errno));
+<anchor xml:id="_storage_8cpp_source_1l00053"/>00053 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_storage_8cpp_source_1l00054"/>00054 &#32;&#32;&#32;&#32;
+<anchor xml:id="_storage_8cpp_source_1l00055"/>00055 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;handle;
+<anchor xml:id="_storage_8cpp_source_1l00056"/>00056 }
+<anchor xml:id="_storage_8cpp_source_1l00057"/>00057 
+<anchor xml:id="_storage_8cpp_source_1l00058"/><link linkend="_storage_8cpp_1aab35cc4af25dd4a32624e51bf0fcda5b">00058</link> ssize_t&#32;<link linkend="_storage_8cpp_1aab35cc4af25dd4a32624e51bf0fcda5b">fs_write_file</link>(<link linkend="_struct_file_handle">FileHandle</link>&amp;&#32;handle,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>*&#32;<link linkend="_main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62">buffer</link>,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;size)&#32;{
+<anchor xml:id="_storage_8cpp_source_1l00059"/>00059 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!handle.<link linkend="_struct_file_handle_1a1c2451d05e2d2937da92fe194e9281cf">is_open</link>)&#32;{
+<anchor xml:id="_storage_8cpp_source_1l00060"/>00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;-1;
+<anchor xml:id="_storage_8cpp_source_1l00061"/>00061 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_storage_8cpp_source_1l00062"/>00062 
+<anchor xml:id="_storage_8cpp_source_1l00063"/>00063 &#32;&#32;&#32;&#32;ssize_t&#32;written&#32;=&#32;write(handle.<link linkend="_struct_file_handle_1afc2bbe66c168d4d264f3af1ec037b122">fd</link>,&#32;<link linkend="_main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62">buffer</link>,&#32;size);
+<anchor xml:id="_storage_8cpp_source_1l00064"/>00064 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(written&#32;&lt;&#32;0)&#32;{
+<anchor xml:id="_storage_8cpp_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Write&#32;failed:&#32;%s\n&quot;</emphasis>,&#32;strerror(errno));
+<anchor xml:id="_storage_8cpp_source_1l00066"/>00066 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_storage_8cpp_source_1l00067"/>00067 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;written;
+<anchor xml:id="_storage_8cpp_source_1l00068"/>00068 }
+<anchor xml:id="_storage_8cpp_source_1l00069"/>00069 
+<anchor xml:id="_storage_8cpp_source_1l00070"/><link linkend="_storage_8cpp_1a259e40f946e1178329ed6cdf18c35b0c">00070</link> ssize_t&#32;<link linkend="_storage_8cpp_1a259e40f946e1178329ed6cdf18c35b0c">fs_read_file</link>(<link linkend="_struct_file_handle">FileHandle</link>&amp;&#32;handle,&#32;<emphasis role="keywordtype">void</emphasis>*&#32;<link linkend="_main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62">buffer</link>,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;size)&#32;{
+<anchor xml:id="_storage_8cpp_source_1l00071"/>00071 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!handle.<link linkend="_struct_file_handle_1a1c2451d05e2d2937da92fe194e9281cf">is_open</link>)&#32;{
+<anchor xml:id="_storage_8cpp_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;-1;
+<anchor xml:id="_storage_8cpp_source_1l00073"/>00073 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_storage_8cpp_source_1l00074"/>00074 
+<anchor xml:id="_storage_8cpp_source_1l00075"/>00075 &#32;&#32;&#32;&#32;ssize_t&#32;bytes_read&#32;=&#32;read(handle.<link linkend="_struct_file_handle_1afc2bbe66c168d4d264f3af1ec037b122">fd</link>,&#32;<link linkend="_main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62">buffer</link>,&#32;size);
+<anchor xml:id="_storage_8cpp_source_1l00076"/>00076 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(bytes_read&#32;&lt;&#32;0)&#32;{
+<anchor xml:id="_storage_8cpp_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Read&#32;failed:&#32;%s\n&quot;</emphasis>,&#32;strerror(errno));
+<anchor xml:id="_storage_8cpp_source_1l00078"/>00078 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_storage_8cpp_source_1l00079"/>00079 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;bytes_read;
+<anchor xml:id="_storage_8cpp_source_1l00080"/>00080 }
+<anchor xml:id="_storage_8cpp_source_1l00081"/>00081 
+<anchor xml:id="_storage_8cpp_source_1l00082"/><link linkend="_storage_8cpp_1a1ed8daa820da91b458072334ecec9618">00082</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_storage_8cpp_1a1ed8daa820da91b458072334ecec9618">fs_close_file</link>(<link linkend="_struct_file_handle">FileHandle</link>&amp;&#32;handle)&#32;{
+<anchor xml:id="_storage_8cpp_source_1l00083"/>00083 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!handle.<link linkend="_struct_file_handle_1a1c2451d05e2d2937da92fe194e9281cf">is_open</link>)&#32;{
+<anchor xml:id="_storage_8cpp_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_storage_8cpp_source_1l00085"/>00085 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_storage_8cpp_source_1l00086"/>00086 
+<anchor xml:id="_storage_8cpp_source_1l00087"/>00087 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;result&#32;=&#32;close(handle.<link linkend="_struct_file_handle_1afc2bbe66c168d4d264f3af1ec037b122">fd</link>);
+<anchor xml:id="_storage_8cpp_source_1l00088"/>00088 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(result&#32;==&#32;0)&#32;{
+<anchor xml:id="_storage_8cpp_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;handle.<link linkend="_struct_file_handle_1a1c2451d05e2d2937da92fe194e9281cf">is_open</link>&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_storage_8cpp_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;handle.<link linkend="_struct_file_handle_1afc2bbe66c168d4d264f3af1ec037b122">fd</link>&#32;=&#32;-1;
+<anchor xml:id="_storage_8cpp_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="_storage_8cpp_source_1l00092"/>00092 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+<anchor xml:id="_storage_8cpp_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Close&#32;failed:&#32;%s\n&quot;</emphasis>,&#32;strerror(errno));
+<anchor xml:id="_storage_8cpp_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_storage_8cpp_source_1l00095"/>00095 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_storage_8cpp_source_1l00096"/>00096 }
+<anchor xml:id="_storage_8cpp_source_1l00097"/>00097 
+<anchor xml:id="_storage_8cpp_source_1l00098"/>00098 <emphasis role="comment">//&#32;Helper&#32;function&#32;to&#32;check&#32;if&#32;file&#32;exists</emphasis>
+<anchor xml:id="_storage_8cpp_source_1l00099"/><link linkend="_storage_8cpp_1a4d0e5bbd1f57f47164521ca84c8e6fd1">00099</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_storage_8cpp_1a4d0e5bbd1f57f47164521ca84c8e6fd1">fs_file_exists</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;filename)&#32;{
+<anchor xml:id="_storage_8cpp_source_1l00100"/>00100 &#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis>stat&#32;st;
+<anchor xml:id="_storage_8cpp_source_1l00101"/>00101 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(stat(filename,&#32;&amp;st)&#32;==&#32;0);
+<anchor xml:id="_storage_8cpp_source_1l00102"/>00102 }
+</programlisting></section>

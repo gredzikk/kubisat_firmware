@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_b_m_e280_wrapper" xml:lang="en-US">
+<title>BME280Wrapper Class Reference</title>
+<indexterm><primary>BME280Wrapper</primary></indexterm>
+<para>
+<computeroutput>#include &lt;BME280_WRAPPER.h&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for BME280Wrapper:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_b_m_e280_wrapper.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_b_m_e280_wrapper_1aae6146a4d2637870a28e2cc2391663f7">BME280Wrapper</link> (i2c_inst_t *i2c)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_b_m_e280_wrapper_1a06cd239056ccf58985bd545f684960bd">init</link> () override</para>
+</listitem>
+            <listitem><para>float <link linkend="_class_b_m_e280_wrapper_1af3e891953ad05fe0b83c0cb51aab2055">readData</link> (<link linkend="__i_sensor_8h_1a21b0301bb3eb76855366980212c8ae5e">SensorDataTypeIdentifier</link> type) override</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_b_m_e280_wrapper_1afa864237c62a7cd64d74cf18f9b7a2ac">isInitialized</link> () const override</para>
+</listitem>
+            <listitem><para><link linkend="__i_sensor_8h_1a213c434cb928c4ca22513e2302632435">SensorType</link> <link linkend="_class_b_m_e280_wrapper_1a7863eb6da292da01efdbffc4a93e4453">getType</link> () const override</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_b_m_e280_wrapper_1aa91a632101408df8031cf90b51ef8e3a">configure</link> (const std::map&lt; std::string, std::string &gt; &amp;config) override</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Public Member Functions inherited from <link linkend="_class_i_sensor">ISensor</link>        <itemizedlist>
+            <listitem><para>virtual <link linkend="_class_i_sensor_1adbd5b40ebbf9a78b9845d22dddfac351">~ISensor</link> ()=default</para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_b_m_e280">BME280</link> <link linkend="_class_b_m_e280_wrapper_1ae9fee0cb8d5bc7f1b0a953d0ddc5fc09">sensor</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_b_m_e280_wrapper_1ae2d7f4ac2d6e02784ec9a8b5982795f8">initialized</link> = false</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<para>
+Definition at line <link linkend="__b_m_e280___w_r_a_p_p_e_r_8h_source_1l00008">8</link> of file <link linkend="__b_m_e280___w_r_a_p_p_e_r_8h_source">BME280_WRAPPER.h</link>.</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_class_b_m_e280_wrapper_1aae6146a4d2637870a28e2cc2391663f7"/><section>
+    <title>BME280Wrapper()</title>
+<indexterm><primary>BME280Wrapper</primary><secondary>BME280Wrapper</secondary></indexterm>
+<indexterm><primary>BME280Wrapper</primary><secondary>BME280Wrapper</secondary></indexterm>
+<para><computeroutput>BME280Wrapper::BME280Wrapper (i2c_inst_t * i2c)</computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280___w_r_a_p_p_e_r_8cpp_source_1l00003">3</link> of file <link linkend="__b_m_e280___w_r_a_p_p_e_r_8cpp_source">BME280_WRAPPER.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_b_m_e280_wrapper_1aa91a632101408df8031cf90b51ef8e3a"/><section>
+    <title>configure()</title>
+<indexterm><primary>configure</primary><secondary>BME280Wrapper</secondary></indexterm>
+<indexterm><primary>BME280Wrapper</primary><secondary>configure</secondary></indexterm>
+<para><computeroutput>bool BME280Wrapper::configure (const std::map&lt; std::string, std::string &gt; &amp; config)<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_i_sensor_1aa5fd04ca51fa10cb8d0bcc835b14fb33">ISensor</link>.</para>
+<para>
+Definition at line <link linkend="__b_m_e280___w_r_a_p_p_e_r_8cpp_source_1l00034">34</link> of file <link linkend="__b_m_e280___w_r_a_p_p_e_r_8cpp_source">BME280_WRAPPER.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_wrapper_1a7863eb6da292da01efdbffc4a93e4453"/><section>
+    <title>getType()</title>
+<indexterm><primary>getType</primary><secondary>BME280Wrapper</secondary></indexterm>
+<indexterm><primary>BME280Wrapper</primary><secondary>getType</secondary></indexterm>
+<para><computeroutput><link linkend="__i_sensor_8h_1a213c434cb928c4ca22513e2302632435">SensorType</link> BME280Wrapper::getType ( ) const<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_i_sensor_1a649cfa6c1888996f392f401e7d26125c">ISensor</link>.</para>
+<para>
+Definition at line <link linkend="__b_m_e280___w_r_a_p_p_e_r_8cpp_source_1l00030">30</link> of file <link linkend="__b_m_e280___w_r_a_p_p_e_r_8cpp_source">BME280_WRAPPER.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_wrapper_1a06cd239056ccf58985bd545f684960bd"/><section>
+    <title>init()</title>
+<indexterm><primary>init</primary><secondary>BME280Wrapper</secondary></indexterm>
+<indexterm><primary>BME280Wrapper</primary><secondary>init</secondary></indexterm>
+<para><computeroutput>bool BME280Wrapper::init ( )<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_i_sensor_1a28051b0215d618d82556c8bb2c0abd29">ISensor</link>.</para>
+<para>
+Definition at line <link linkend="__b_m_e280___w_r_a_p_p_e_r_8cpp_source_1l00005">5</link> of file <link linkend="__b_m_e280___w_r_a_p_p_e_r_8cpp_source">BME280_WRAPPER.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_wrapper_1afa864237c62a7cd64d74cf18f9b7a2ac"/><section>
+    <title>isInitialized()</title>
+<indexterm><primary>isInitialized</primary><secondary>BME280Wrapper</secondary></indexterm>
+<indexterm><primary>BME280Wrapper</primary><secondary>isInitialized</secondary></indexterm>
+<para><computeroutput>bool BME280Wrapper::isInitialized ( ) const<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_i_sensor_1a35a720334040ca754deb0931fc6f1b50">ISensor</link>.</para>
+<para>
+Definition at line <link linkend="__b_m_e280___w_r_a_p_p_e_r_8cpp_source_1l00026">26</link> of file <link linkend="__b_m_e280___w_r_a_p_p_e_r_8cpp_source">BME280_WRAPPER.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_wrapper_1af3e891953ad05fe0b83c0cb51aab2055"/><section>
+    <title>readData()</title>
+<indexterm><primary>readData</primary><secondary>BME280Wrapper</secondary></indexterm>
+<indexterm><primary>BME280Wrapper</primary><secondary>readData</secondary></indexterm>
+<para><computeroutput>float BME280Wrapper::readData (<link linkend="__i_sensor_8h_1a21b0301bb3eb76855366980212c8ae5e">SensorDataTypeIdentifier</link> type)<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_i_sensor_1ae8363f6253e47aa23d04c07334f49b5d">ISensor</link>.</para>
+<para>
+Definition at line <link linkend="__b_m_e280___w_r_a_p_p_e_r_8cpp_source_1l00010">10</link> of file <link linkend="__b_m_e280___w_r_a_p_p_e_r_8cpp_source">BME280_WRAPPER.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_class_b_m_e280_wrapper_1ae2d7f4ac2d6e02784ec9a8b5982795f8"/><section>
+    <title>initialized</title>
+<indexterm><primary>initialized</primary><secondary>BME280Wrapper</secondary></indexterm>
+<indexterm><primary>BME280Wrapper</primary><secondary>initialized</secondary></indexterm>
+<para><computeroutput>bool BME280Wrapper::initialized = false<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280___w_r_a_p_p_e_r_8h_source_1l00011">11</link> of file <link linkend="__b_m_e280___w_r_a_p_p_e_r_8h_source">BME280_WRAPPER.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_wrapper_1ae9fee0cb8d5bc7f1b0a953d0ddc5fc09"/><section>
+    <title>sensor</title>
+<indexterm><primary>sensor</primary><secondary>BME280Wrapper</secondary></indexterm>
+<indexterm><primary>BME280Wrapper</primary><secondary>sensor</secondary></indexterm>
+<para><computeroutput><link linkend="_class_b_m_e280">BME280</link> BME280Wrapper::sensor<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280___w_r_a_p_p_e_r_8h_source_1l00010">10</link> of file <link linkend="__b_m_e280___w_r_a_p_p_e_r_8h_source">BME280_WRAPPER.h</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+lib/BME280/<link linkend="__b_m_e280___w_r_a_p_p_e_r_8h">BME280_WRAPPER.h</link>lib/BME280/<link linkend="__b_m_e280___w_r_a_p_p_e_r_8cpp">BME280_WRAPPER.cpp</link></section>
+</section>

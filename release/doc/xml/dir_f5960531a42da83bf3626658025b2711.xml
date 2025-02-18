@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_f5960531a42da83bf3626658025b2711" kind="dir">
+    <compoundname>lib/INA3221</compoundname>
+    <innerfile refid="_i_n_a3221_8cpp">INA3221.cpp</innerfile>
+    <innerfile refid="_i_n_a3221_8h">INA3221.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="lib/INA3221/"/>
+  </compounddef>
+</doxygen>

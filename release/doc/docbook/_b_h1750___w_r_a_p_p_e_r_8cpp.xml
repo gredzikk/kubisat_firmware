@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__b_h1750___w_r_a_p_p_e_r_8cpp" xml:lang="en-US">
+<title>lib/BH1750/BH1750_WRAPPER.cpp File Reference</title>
+<indexterm><primary>lib/BH1750/BH1750_WRAPPER.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;BH1750_WRAPPER.h&quot;<?linebreak?>#include &lt;string&gt;<?linebreak?>#include &lt;iostream&gt;<?linebreak?></programlisting></section>

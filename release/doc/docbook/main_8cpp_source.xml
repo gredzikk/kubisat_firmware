@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_main_8cpp_source" xml:lang="en-US">
+<title>main.cpp</title>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_main_8cpp_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_includes_8h">includes.h</link>&quot;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00002"/>00002 
+<anchor xml:id="_main_8cpp_source_1l00003"/><link linkend="_main_8cpp_1a905b7c29adff0a55966dc2bdd1578a6c">00003</link> <emphasis role="preprocessor">#define&#32;LOG_FILENAME&#32;&quot;log.txt&quot;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00004"/>00004 
+<anchor xml:id="_main_8cpp_source_1l00005"/><link linkend="_main_8cpp_1af8335a606a184154d5e0860517b1e2f8">00005</link> <link linkend="_class_power_manager">PowerManager</link>&#32;<link linkend="_main_8cpp_1af8335a606a184154d5e0860517b1e2f8">powerManager</link>(<link linkend="_pin__config_8h_1ae122c78708c186c48bc347669332c550">MAIN_I2C_PORT</link>);
+<anchor xml:id="_main_8cpp_source_1l00006"/><link linkend="_main_8cpp_1af9c066a94b810cae902343138b54f088">00006</link> <link linkend="_class_d_s3231">DS3231</link>&#32;<link linkend="_main_8cpp_1af9c066a94b810cae902343138b54f088">systemClock</link>(<link linkend="_pin__config_8h_1ae122c78708c186c48bc347669332c550">MAIN_I2C_PORT</link>);
+<anchor xml:id="_main_8cpp_source_1l00007"/>00007 
+<anchor xml:id="_main_8cpp_source_1l00008"/><link linkend="_main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62">00008</link> <emphasis role="keywordtype">char</emphasis>&#32;<link linkend="_main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62">buffer</link>[<link linkend="_pin__config_8h_1a6b20d41d6252e9871430c242cb1a56e7">BUFFER_SIZE</link>];
+<anchor xml:id="_main_8cpp_source_1l00009"/><link linkend="_main_8cpp_1a73b963945a418c57630c1b66ce2aa74f">00009</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_main_8cpp_1a73b963945a418c57630c1b66ce2aa74f">bufferIndex</link>&#32;=&#32;0;
+<anchor xml:id="_main_8cpp_source_1l00010"/>00010 
+<anchor xml:id="_main_8cpp_source_1l00011"/><link linkend="_main_8cpp_1a9f153132b8b4afad133b952111e18bd9">00011</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8cpp_1a9f153132b8b4afad133b952111e18bd9">core1_entry</link>()&#32;{
+<anchor xml:id="_main_8cpp_source_1l00012"/>00012 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(<emphasis role="keyword">true</emphasis>)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_gps__collector_8cpp_1abe46d88c89b1f730f6c9a230acac2a6a">collectGPSData</link>();
+<anchor xml:id="_main_8cpp_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_event__manager_8cpp_1a467714d66058f52e4ac7aeb6df46b433">checkPowerEvents</link>(<link linkend="_main_8cpp_1af8335a606a184154d5e0860517b1e2f8">powerManager</link>);
+<anchor xml:id="_main_8cpp_source_1l00015"/>00015 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00016"/>00016 }
+<anchor xml:id="_main_8cpp_source_1l00017"/>00017 
+<anchor xml:id="_main_8cpp_source_1l00018"/><link linkend="_main_8cpp_1a21af2d50d7779336997d5f3456352431">00018</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_main_8cpp_1a21af2d50d7779336997d5f3456352431">initSystems</link>()&#32;{
+<anchor xml:id="_main_8cpp_source_1l00019"/>00019 &#32;&#32;&#32;&#32;stdio_init_all();
+<anchor xml:id="_main_8cpp_source_1l00020"/>00020 
+<anchor xml:id="_main_8cpp_source_1l00021"/>00021 &#32;&#32;&#32;&#32;uart_init(<link linkend="_pin__config_8h_1a1c9052d1656e86f50326fd275c54ca67">DEBUG_UART_PORT</link>,&#32;<link linkend="_pin__config_8h_1adf735c02ae01a655dbbfc89683107df1">DEBUG_UART_BAUD_RATE</link>);
+<anchor xml:id="_main_8cpp_source_1l00022"/>00022 &#32;&#32;&#32;&#32;gpio_set_function(<link linkend="_pin__config_8h_1a94d099ea6efcf6e349a1e392b17ac6ee">DEBUG_UART_TX_PIN</link>,&#32;UART_FUNCSEL_NUM(<link linkend="_pin__config_8h_1a1c9052d1656e86f50326fd275c54ca67">DEBUG_UART_PORT</link>,&#32;<link linkend="_pin__config_8h_1a94d099ea6efcf6e349a1e392b17ac6ee">DEBUG_UART_TX_PIN</link>));
+<anchor xml:id="_main_8cpp_source_1l00023"/>00023 &#32;&#32;&#32;&#32;gpio_set_function(<link linkend="_pin__config_8h_1aaae74107573261e50cb72bcec8d2d3fe">DEBUG_UART_RX_PIN</link>,&#32;UART_FUNCSEL_NUM(<link linkend="_pin__config_8h_1a1c9052d1656e86f50326fd275c54ca67">DEBUG_UART_PORT</link>,&#32;<link linkend="_pin__config_8h_1aaae74107573261e50cb72bcec8d2d3fe">DEBUG_UART_RX_PIN</link>));
+<anchor xml:id="_main_8cpp_source_1l00024"/>00024 
+<anchor xml:id="_main_8cpp_source_1l00025"/>00025 &#32;&#32;&#32;&#32;gpio_init(PICO_DEFAULT_LED_PIN);
+<anchor xml:id="_main_8cpp_source_1l00026"/>00026 &#32;&#32;&#32;&#32;gpio_set_dir(PICO_DEFAULT_LED_PIN,&#32;GPIO_OUT);
+<anchor xml:id="_main_8cpp_source_1l00027"/>00027 &#32;&#32;&#32;&#32;
+<anchor xml:id="_main_8cpp_source_1l00028"/>00028 &#32;&#32;&#32;&#32;i2c_init(<link linkend="_pin__config_8h_1ae122c78708c186c48bc347669332c550">MAIN_I2C_PORT</link>,&#32;400&#32;*&#32;1000);
+<anchor xml:id="_main_8cpp_source_1l00029"/>00029 &#32;&#32;&#32;&#32;gpio_set_function(<link linkend="_pin__config_8h_1a9e17f76dd11280c50d7625b62557b29f">MAIN_I2C_SCL_PIN</link>,&#32;GPIO_FUNC_I2C);
+<anchor xml:id="_main_8cpp_source_1l00030"/>00030 &#32;&#32;&#32;&#32;gpio_set_function(<link linkend="_pin__config_8h_1af2e27807e37db3df1c383812da249090">MAIN_I2C_SDA_PIN</link>,&#32;GPIO_FUNC_I2C);
+<anchor xml:id="_main_8cpp_source_1l00031"/>00031 &#32;&#32;&#32;&#32;gpio_pull_up(<link linkend="_pin__config_8h_1a9e17f76dd11280c50d7625b62557b29f">MAIN_I2C_SCL_PIN</link>);
+<anchor xml:id="_main_8cpp_source_1l00032"/>00032 &#32;&#32;&#32;&#32;gpio_pull_up(<link linkend="_pin__config_8h_1af2e27807e37db3df1c383812da249090">MAIN_I2C_SDA_PIN</link>);
+<anchor xml:id="_main_8cpp_source_1l00033"/>00033 
+<anchor xml:id="_main_8cpp_source_1l00034"/>00034 &#32;&#32;&#32;&#32;uart_init(<link linkend="_pin__config_8h_1a31bae3288bdf1b7a767c494f2b049779">GPS_UART_PORT</link>,&#32;<link linkend="_pin__config_8h_1aff9a5d52092479f80c68a37d9f47ea0c">GPS_UART_BAUD_RATE</link>);
+<anchor xml:id="_main_8cpp_source_1l00035"/>00035 &#32;&#32;&#32;&#32;gpio_set_function(<link linkend="_pin__config_8h_1a8e35acac4c2208fd0d6b889990c1f970">GPS_UART_TX_PIN</link>,&#32;UART_FUNCSEL_NUM(<link linkend="_pin__config_8h_1a31bae3288bdf1b7a767c494f2b049779">GPS_UART_PORT</link>,&#32;<link linkend="_pin__config_8h_1a8e35acac4c2208fd0d6b889990c1f970">GPS_UART_TX_PIN</link>));
+<anchor xml:id="_main_8cpp_source_1l00036"/>00036 &#32;&#32;&#32;&#32;gpio_set_function(<link linkend="_pin__config_8h_1a8d2d12725644a55f56e8aee18942b144">GPS_UART_RX_PIN</link>,&#32;UART_FUNCSEL_NUM(<link linkend="_pin__config_8h_1a31bae3288bdf1b7a767c494f2b049779">GPS_UART_PORT</link>,&#32;<link linkend="_pin__config_8h_1a8d2d12725644a55f56e8aee18942b144">GPS_UART_RX_PIN</link>));
+<anchor xml:id="_main_8cpp_source_1l00037"/>00037 
+<anchor xml:id="_main_8cpp_source_1l00038"/>00038 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<emphasis role="keyword">true</emphasis>)
+<anchor xml:id="_main_8cpp_source_1l00039"/>00039 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_main_8cpp_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;gpio_init(<link linkend="_pin__config_8h_1aac8b46194f932ec0656edff3718d3750">GPS_POWER_ENABLE_PIN</link>);
+<anchor xml:id="_main_8cpp_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;gpio_set_dir(<link linkend="_pin__config_8h_1aac8b46194f932ec0656edff3718d3750">GPS_POWER_ENABLE_PIN</link>,&#32;GPIO_OUT);
+<anchor xml:id="_main_8cpp_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;gpio_put(<link linkend="_pin__config_8h_1aac8b46194f932ec0656edff3718d3750">GPS_POWER_ENABLE_PIN</link>,&#32;1);&#32;
+<anchor xml:id="_main_8cpp_source_1l00043"/>00043 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00044"/>00044 &#32;&#32;&#32;&#32;
+<anchor xml:id="_main_8cpp_source_1l00045"/>00045 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;sdInitDone&#32;=&#32;<link linkend="_storage_8cpp_1afb19e37469a751aa61de3dcd0c70b4b0">fs_init</link>();
+<anchor xml:id="_main_8cpp_source_1l00046"/>00046 &#32;&#32;&#32;&#32;<link linkend="_utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706">uartPrint</link>(<emphasis role="stringliteral">&quot;SD&#32;card&#32;init:&#32;&quot;</emphasis>&#32;+&#32;std::to_string(sdInitDone));
+<anchor xml:id="_main_8cpp_source_1l00047"/>00047 &#32;&#32;&#32;&#32;std::string&#32;bootString&#32;=&#32;<emphasis role="stringliteral">&quot;System&#32;init&#32;completed&#32;@&#32;&quot;</emphasis>&#32;+&#32;std::to_string(to_ms_since_boot(get_absolute_time()))&#32;+&#32;<emphasis role="stringliteral">&quot;&#32;ms&quot;</emphasis>;
+<anchor xml:id="_main_8cpp_source_1l00048"/>00048 &#32;&#32;&#32;&#32;<link linkend="_utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706">uartPrint</link>(bootString);
+<anchor xml:id="_main_8cpp_source_1l00049"/>00049 
+<anchor xml:id="_main_8cpp_source_1l00050"/>00050 &#32;&#32;&#32;&#32;<link linkend="_struct_frame">Frame</link>&#32;boot&#32;=&#32;<link linkend="_communication_8h_1a54afeb73435419551a1b51a3fd5c3266">buildFrame</link>(<link linkend="_protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1a551b723eafd6a31d444fcb2f5920fbd3">ExecutionResult::INFO</link>,&#32;0,&#32;0,&#32;<emphasis role="stringliteral">&quot;HELLO&quot;</emphasis>);
+<anchor xml:id="_main_8cpp_source_1l00051"/>00051 &#32;&#32;&#32;&#32;<link linkend="_communication_8h_1a752e7cc27f52d4ba064e691b3e240ed8">sendFrame</link>(boot);
+<anchor xml:id="_main_8cpp_source_1l00052"/>00052 
+<anchor xml:id="_main_8cpp_source_1l00053"/>00053 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="_main_8cpp_source_1l00054"/>00054 }
+<anchor xml:id="_main_8cpp_source_1l00055"/>00055 
+<anchor xml:id="_main_8cpp_source_1l00056"/>00056 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_main_8cpp_1a01a8b38ee1cf3fd44cedf3f5a8f1dbde">loggingRoutine</link>();
+<anchor xml:id="_main_8cpp_source_1l00057"/>00057 
+<anchor xml:id="_main_8cpp_source_1l00058"/><link linkend="_main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">00058</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>()
+<anchor xml:id="_main_8cpp_source_1l00059"/>00059 {
+<anchor xml:id="_main_8cpp_source_1l00060"/>00060 &#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1a21af2d50d7779336997d5f3456352431">initSystems</link>();
+<anchor xml:id="_main_8cpp_source_1l00061"/>00061 &#32;&#32;&#32;&#32;multicore_launch_core1(<link linkend="_main_8cpp_1a9f153132b8b4afad133b952111e18bd9">core1_entry</link>);
+<anchor xml:id="_main_8cpp_source_1l00062"/>00062 
+<anchor xml:id="_main_8cpp_source_1l00063"/>00063 &#32;&#32;&#32;&#32;<link linkend="_clock__commands_8cpp_1abfd573c8a839ac00ea3b96d691ea11c3">systemClock</link>.setTime(0,&#32;41,&#32;20,&#32;4,&#32;14,&#32;11,&#32;2024);
+<anchor xml:id="_main_8cpp_source_1l00064"/>00064 &#32;&#32;&#32;&#32;gpio_put(PICO_DEFAULT_LED_PIN,&#32;1);
+<anchor xml:id="_main_8cpp_source_1l00065"/>00065 
+<anchor xml:id="_main_8cpp_source_1l00066"/>00066 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_main_8cpp_1af8335a606a184154d5e0860517b1e2f8">powerManager</link>.initialize())
+<anchor xml:id="_main_8cpp_source_1l00067"/>00067 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_main_8cpp_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::map&lt;std::string,&#32;std::string&gt;&#32;powerConfig&#32;=&#32;{
+<anchor xml:id="_main_8cpp_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{<emphasis role="stringliteral">&quot;operating_mode&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;continuous&quot;</emphasis>},
+<anchor xml:id="_main_8cpp_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{<emphasis role="stringliteral">&quot;averaging_mode&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;16&quot;</emphasis>},
+<anchor xml:id="_main_8cpp_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="_main_8cpp_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_main_8cpp_1af8335a606a184154d5e0860517b1e2f8">powerManager</link>.configure(powerConfig);
+<anchor xml:id="_main_8cpp_source_1l00073"/>00073 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00074"/>00074 &#32;&#32;&#32;&#32;gpio_put(PICO_DEFAULT_LED_PIN,&#32;0);
+<anchor xml:id="_main_8cpp_source_1l00075"/>00075 
+<anchor xml:id="_main_8cpp_source_1l00076"/>00076 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;radioInitSuccess&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_main_8cpp_source_1l00077"/>00077 
+<anchor xml:id="_main_8cpp_source_1l00078"/>00078 &#32;&#32;&#32;&#32;radioInitSuccess&#32;=&#32;<link linkend="_communication_8cpp_1a520df448c1dc359f42111ac240081975">initializeRadio</link>();
+<anchor xml:id="_main_8cpp_source_1l00079"/>00079 &#32;&#32;&#32;&#32;gpio_put(PICO_DEFAULT_LED_PIN,&#32;1);
+<anchor xml:id="_main_8cpp_source_1l00080"/>00080 
+<anchor xml:id="_main_8cpp_source_1l00081"/>00081 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(radioInitSuccess)
+<anchor xml:id="_main_8cpp_source_1l00082"/>00082 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_main_8cpp_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_communication_8h_1a877f9c1d3485cf1521bc13996d39c1fb">sendMessage</link>(<emphasis role="stringliteral">&quot;System&#32;initialized&#32;successfully!&quot;</emphasis>);&#32;&#32;&#32;&#32;
+<anchor xml:id="_main_8cpp_source_1l00084"/>00084 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00085"/>00085 &#32;&#32;&#32;&#32;
+<anchor xml:id="_main_8cpp_source_1l00086"/>00086 &#32;&#32;&#32;&#32;gpio_put(PICO_DEFAULT_LED_PIN,&#32;0);
+<anchor xml:id="_main_8cpp_source_1l00087"/>00087 
+<anchor xml:id="_main_8cpp_source_1l00088"/>00088 &#32;&#32;&#32;&#32;<link linkend="_utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706">uartPrint</link>(<emphasis role="stringliteral">&quot;This&#32;message&#32;will&#32;only&#32;be&#32;printed&#32;to&#32;UART.&quot;</emphasis>);
+<anchor xml:id="_main_8cpp_source_1l00089"/>00089 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;uartPrint(&quot;This&#32;message&#32;will&#32;be&#32;printed&#32;to&#32;UART&#32;and&#32;logged&#32;to&#32;Core&#32;1.&quot;,&#32;true);</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00090"/>00090 
+<anchor xml:id="_main_8cpp_source_1l00091"/>00091 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;5;&#32;i&#32;&gt;&#32;0;&#32;--i)
+<anchor xml:id="_main_8cpp_source_1l00092"/>00092 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_main_8cpp_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;intro&#32;=&#32;<emphasis role="stringliteral">&quot;Main&#32;loop&#32;starts&#32;in&#32;&quot;</emphasis>&#32;+&#32;std::to_string(i)&#32;+&#32;<emphasis role="stringliteral">&quot;&#32;seconds...&quot;</emphasis>;
+<anchor xml:id="_main_8cpp_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706">uartPrint</link>(intro);
+<anchor xml:id="_main_8cpp_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;gpio_put(PICO_DEFAULT_LED_PIN,&#32;(i%2==0));
+<anchor xml:id="_main_8cpp_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sleep_ms(1000);
+<anchor xml:id="_main_8cpp_source_1l00097"/>00097 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00098"/>00098 &#32;&#32;&#32;&#32;gpio_put(PICO_DEFAULT_LED_PIN,&#32;1);
+<anchor xml:id="_main_8cpp_source_1l00099"/>00099 
+<anchor xml:id="_main_8cpp_source_1l00100"/>00100 &#32;&#32;&#32;&#32;<link linkend="_struct_frame">Frame</link>&#32;boot&#32;=&#32;<link linkend="_communication_8h_1a54afeb73435419551a1b51a3fd5c3266">buildFrame</link>(<link linkend="_protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1a551b723eafd6a31d444fcb2f5920fbd3">ExecutionResult::INFO</link>,&#32;0,&#32;0,&#32;<emphasis role="stringliteral">&quot;START&quot;</emphasis>);
+<anchor xml:id="_main_8cpp_source_1l00101"/>00101 &#32;&#32;&#32;&#32;<link linkend="_communication_8h_1a752e7cc27f52d4ba064e691b3e240ed8">sendFrame</link>(boot);
+<anchor xml:id="_main_8cpp_source_1l00102"/>00102 
+<anchor xml:id="_main_8cpp_source_1l00103"/>00103 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(<emphasis role="keyword">true</emphasis>)
+<anchor xml:id="_main_8cpp_source_1l00104"/>00104 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_main_8cpp_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;packetSize&#32;=&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1af4db0e30d2909faa29355167719f196c">LoRa</link>.parsePacket();
+<anchor xml:id="_main_8cpp_source_1l00106"/>00106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(packetSize)
+<anchor xml:id="_main_8cpp_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_main_8cpp_source_1l00108"/>00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_communication_8h_1a54817002e33761dc61558b1138749dfb">onReceive</link>(packetSize);
+<anchor xml:id="_main_8cpp_source_1l00109"/>00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00110"/>00110 
+<anchor xml:id="_main_8cpp_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//acquireLock();</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00112"/>00112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//float&#32;voltage&#32;=&#32;sharedData.voltage5V;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//releaseLock();</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00114"/>00114 
+<anchor xml:id="_main_8cpp_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//std::string&#32;voltageReading&#32;=&#32;&quot;Core&#32;0:&#32;voltage&#32;from&#32;common&#32;data&#32;structure:&#32;&quot;&#32;+&#32;std::to_string(voltage);</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00116"/>00116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//uartPrint(voltageReading.c_str());</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00117"/>00117 
+<anchor xml:id="_main_8cpp_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//collectGPSData();</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00119"/>00119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_communication_8h_1ac5e175a6a1482f700f9aee0b727b924f">handleUartInput</link>();
+<anchor xml:id="_main_8cpp_source_1l00120"/>00120 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_main_8cpp_source_1l00121"/>00121 
+<anchor xml:id="_main_8cpp_source_1l00122"/>00122 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="_main_8cpp_source_1l00123"/>00123 }
+<anchor xml:id="_main_8cpp_source_1l00124"/>00124 
+<anchor xml:id="_main_8cpp_source_1l00125"/>00125 <emphasis role="comment">//&#32;BH1750&#32;&#32;&#32;&#32;0X23</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00126"/>00126 <emphasis role="comment">//&#32;INA3221&#32;&#32;&#32;0X40</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00127"/>00127 <emphasis role="comment">//&#32;BME280&#32;&#32;&#32;&#32;0X76</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00128"/>00128 <emphasis role="comment">//&#32;DS3231&#32;&#32;&#32;&#32;0X86</emphasis>
+</programlisting></section>

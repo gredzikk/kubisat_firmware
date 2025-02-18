@@ -1,0 +1,371 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_event__manager_8h" xml:lang="en-US">
+<title>event_manager.h File Reference</title>
+<indexterm><primary>event_manager.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;PowerManager.h&quot;<?linebreak?>#include &lt;cstdint&gt;<?linebreak?>#include &lt;string&gt;<?linebreak?>#include &quot;pico/mutex.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_class_event_log">EventLog</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_class_event_manager">EventManager</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_class_event_manager_impl">EventManagerImpl</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_class_event_emitter">EventEmitter</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para>#define <link linkend="_event__manager_8h_1acc4dda1aaabc9862fe79fd94e0b722bf">EVENT_BUFFER_SIZE</link>&#160;&#160;&#160;1000</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Enumerations    </title>
+        <itemizedlist>
+            <listitem><para>enum class <link linkend="_event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7">EventGroup</link> : uint8_t { <?linebreak?><link linkend="_event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7afa177138f94a7ea01f549b1aa7893d03">SYSTEM</link> = 0x00
+, <link linkend="_event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7ac9c9c146c630ca5ef9197c73c032f4a6">POWER</link> = 0x01
+, <link linkend="_event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7ac9546343e8e677d92812a4443b3a1bd1">COMMS</link> = 0x02
+, <link linkend="_event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7a8c578de37278ada488d763ea86c5cf20">GPS</link> = 0x03
+, <?linebreak?><link linkend="_event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7aca6c44800b2dc123e0d4389a867e8686">CLOCK</link> = 0x04
+ }</para>
+</listitem>
+            <listitem><para>enum class <link linkend="_event__manager_8h_1a77219d2f280eaad8c79825f50cf78785">SystemEvent</link> : uint8_t { <?linebreak?><link linkend="_event__manager_8h_1a77219d2f280eaad8c79825f50cf78785adf9a77cdc2fe29972274b189cf7bac7c">BOOT</link> = 0x01
+, <link linkend="_event__manager_8h_1a77219d2f280eaad8c79825f50cf78785ab9984206799a7f9fe4bd1b6c18db8112">SHUTDOWN</link> = 0x02
+, <link linkend="_event__manager_8h_1a77219d2f280eaad8c79825f50cf78785aeaa5ce6b67cf5155de76d00a3bb3ff71">WATCHDOG_RESET</link> = 0x03
+, <link linkend="_event__manager_8h_1a77219d2f280eaad8c79825f50cf78785a8021d59157f0850e2f519e17235a286e">CORE1_START</link> = 0x04
+, <?linebreak?><link linkend="_event__manager_8h_1a77219d2f280eaad8c79825f50cf78785a187bb9570e10c85b4a616f289f49837c">CORE1_STOP</link> = 0x05
+ }</para>
+</listitem>
+            <listitem><para>enum class <link linkend="_event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6">PowerEvent</link> : uint8_t { <?linebreak?><link linkend="_event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a36d76a2d86f6dbf2035366b3572f025c">LOW_BATTERY</link> = 0x01
+, <link linkend="_event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a575fea54d116603bb4c778db18fbde98">OVERCHARGE</link> = 0x02
+, <link linkend="_event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a8700d6b962e860d93b3c89489b9aac21">POWER_FALLING</link> = 0x03
+, <link linkend="_event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a91d809be807947101ea242de92b64a87">POWER_NORMAL</link> = 0x04
+, <?linebreak?><link linkend="_event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6aa45a91985c176d6b5d3669bdf41b7e3b">SOLAR_ACTIVE</link> = 0x05
+, <link linkend="_event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a35899506cd4cd1e676d022eb14ecb669">SOLAR_INACTIVE</link> = 0x06
+, <link linkend="_event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6aea2afd0110180e8af5bf95a583f9dd13">USB_CONNECTED</link> = 0x07
+, <link linkend="_event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a3a026550c6805c690d88a618aff891c9">USB_DISCONNECTED</link> = 0x08
+ }</para>
+</listitem>
+            <listitem><para>enum class <link linkend="_event__manager_8h_1a0270a0464efae26aefb8cf32a45e20ad">CommsEvent</link> : uint8_t { <?linebreak?><link linkend="_event__manager_8h_1a0270a0464efae26aefb8cf32a45e20ada6651a96516b323db8bad9897081d76ed">RADIO_INIT</link> = 0x01
+, <link linkend="_event__manager_8h_1a0270a0464efae26aefb8cf32a45e20ada3b9824cc8a230f50d285d16795daa859">RADIO_ERROR</link> = 0x02
+, <link linkend="_event__manager_8h_1a0270a0464efae26aefb8cf32a45e20adaca7aa0062ea158ea48dfc6bc919193bd">MSG_RECEIVED</link> = 0x03
+, <link linkend="_event__manager_8h_1a0270a0464efae26aefb8cf32a45e20adaae15180da5243a7f3be270d71d5eed28">MSG_SENT</link> = 0x04
+, <?linebreak?><link linkend="_event__manager_8h_1a0270a0464efae26aefb8cf32a45e20adae7987a4741412b725a5a1a24867f9b62">UART_ERROR</link> = 0x06
+ }</para>
+</listitem>
+            <listitem><para>enum class <link linkend="_event__manager_8h_1ac4e11c8779c20adc9210532538cdc463">GPSEvent</link> : uint8_t { <?linebreak?><link linkend="_event__manager_8h_1ac4e11c8779c20adc9210532538cdc463af510b97de4ace11844b85f23d0fc012f">LOCK</link> = 0x01
+, <link linkend="_event__manager_8h_1ac4e11c8779c20adc9210532538cdc463ac6daca30aef2af1d72715733825806a3">LOST</link> = 0x02
+, <link linkend="_event__manager_8h_1ac4e11c8779c20adc9210532538cdc463abb1ca97ec761fc37101737ba0aa2e7c5">ERROR</link> = 0x03
+, <link linkend="_event__manager_8h_1ac4e11c8779c20adc9210532538cdc463a3d6fc432ff9e2d9b890c591179a4401e">POWER_ON</link> = 0x04
+, <?linebreak?><link linkend="_event__manager_8h_1ac4e11c8779c20adc9210532538cdc463aa15cea80d926d7282b831d451ba8aee8">POWER_OFF</link> = 0x05
+, <link linkend="_event__manager_8h_1ac4e11c8779c20adc9210532538cdc463a8ee0c87d41412c8df555d1b18ff43e63">DATA_READY</link> = 0x06
+, <link linkend="_event__manager_8h_1ac4e11c8779c20adc9210532538cdc463aad25373b52902ffec9bef3591da75390">PASS_THROUGH_START</link> = 0x07
+, <link linkend="_event__manager_8h_1ac4e11c8779c20adc9210532538cdc463a2806fc6062c22a550a6d2039ab209e4c">PASS_THROUGH_END</link> = 0x08
+ }</para>
+</listitem>
+            <listitem><para>enum class <link linkend="_event__manager_8h_1a163ce349de3451c81f50080e5fbe62a2">ClockEvent</link> : uint8_t { <link linkend="_event__manager_8h_1a163ce349de3451c81f50080e5fbe62a2ae6b94e58bfd13b21bc786578d9f8ba4a">CHANGED</link> = 0x01
+, <link linkend="_event__manager_8h_1a163ce349de3451c81f50080e5fbe62a2a2d05bfe5f19cdad10f55634937f0b61e">GPS_SYNC</link> = 0x02
+ }</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_class_event_log">EventLog</link> <link linkend="_event__manager_8h_1a7984471c52fd4915392929f854c6620c">__attribute__</link> ((packed))</para>
+</listitem>
+            <listitem><para>std::string <link linkend="_event__manager_8h_1a6bbf13289f6c919d96bae17ef018f988">toString</link> () const</para>
+</listitem>
+            <listitem><para>void <link linkend="_event__manager_8h_1a467714d66058f52e4ac7aeb6df46b433">checkPowerEvents</link> (<link linkend="_class_power_manager">PowerManager</link> &amp;pm)</para>
+
+<para>Checks power statuses and triggers events based on voltage trends. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>uint16_t <link linkend="_event__manager_8h_1a4fc3a0c58dfbd1e68224521185cb9384">id</link></para>
+</listitem>
+            <listitem><para>uint32_t <link linkend="_event__manager_8h_1ab20b0c7772544cf5d318507f34231fbe">timestamp</link></para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="_event__manager_8h_1ad4291fcb880eb5ecb178b53e32f55741">group</link></para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="_event__manager_8h_1aeef6900f411bc223febdd92c9435693b">event</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_class_event_manager">EventManager</link> <link linkend="_event__manager_8h_1a179817c61d3e66c0f67cd6bfe5e84c1b">__attribute__</link></para>
+</listitem>
+            <listitem><para><link linkend="_class_event_manager_impl">EventManagerImpl</link> <link linkend="_event__manager_8h_1a2a686792b51ec2b9e1b7bfc9faef92f7">eventManager</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Macro Definition Documentation</title>
+<anchor xml:id="_event__manager_8h_1acc4dda1aaabc9862fe79fd94e0b722bf"/><section>
+    <title>EVENT_BUFFER_SIZE</title>
+<indexterm><primary>EVENT_BUFFER_SIZE</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>EVENT_BUFFER_SIZE</secondary></indexterm>
+<para><computeroutput>#define EVENT_BUFFER_SIZE&#160;&#160;&#160;1000</computeroutput></para><para>
+Definition at line <link linkend="_event__manager_8h_source_1l00009">9</link> of file <link linkend="_event__manager_8h_source">event_manager.h</link>.</para>
+</section>
+</section>
+<section>
+<title>Enumeration Type Documentation</title>
+<anchor xml:id="_event__manager_8h_1a163ce349de3451c81f50080e5fbe62a2"/><section>
+    <title>ClockEvent</title>
+<indexterm><primary>ClockEvent</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>ClockEvent</secondary></indexterm>
+<para><computeroutput>enum class <link linkend="_event__manager_8h_1a163ce349de3451c81f50080e5fbe62a2">ClockEvent</link> : uint8_t<computeroutput>[strong]</computeroutput></computeroutput></para><informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>CHANGED</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>CHANGED</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1a163ce349de3451c81f50080e5fbe62a2ae6b94e58bfd13b21bc786578d9f8ba4a"/>CHANGED</entry><entry></entry></row><row><entry><indexterm><primary>GPS_SYNC</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>GPS_SYNC</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1a163ce349de3451c81f50080e5fbe62a2a2d05bfe5f19cdad10f55634937f0b61e"/>GPS_SYNC</entry><entry></entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+<para>
+Definition at line <link linkend="_event__manager_8h_source_1l00063">63</link> of file <link linkend="_event__manager_8h_source">event_manager.h</link>.</para>
+</section>
+<anchor xml:id="_event__manager_8h_1a0270a0464efae26aefb8cf32a45e20ad"/><section>
+    <title>CommsEvent</title>
+<indexterm><primary>CommsEvent</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>CommsEvent</secondary></indexterm>
+<para><computeroutput>enum class <link linkend="_event__manager_8h_1a0270a0464efae26aefb8cf32a45e20ad">CommsEvent</link> : uint8_t<computeroutput>[strong]</computeroutput></computeroutput></para><informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>RADIO_INIT</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>RADIO_INIT</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1a0270a0464efae26aefb8cf32a45e20ada6651a96516b323db8bad9897081d76ed"/>RADIO_INIT</entry><entry></entry></row><row><entry><indexterm><primary>RADIO_ERROR</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>RADIO_ERROR</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1a0270a0464efae26aefb8cf32a45e20ada3b9824cc8a230f50d285d16795daa859"/>RADIO_ERROR</entry><entry></entry></row><row><entry><indexterm><primary>MSG_RECEIVED</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>MSG_RECEIVED</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1a0270a0464efae26aefb8cf32a45e20adaca7aa0062ea158ea48dfc6bc919193bd"/>MSG_RECEIVED</entry><entry></entry></row><row><entry><indexterm><primary>MSG_SENT</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>MSG_SENT</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1a0270a0464efae26aefb8cf32a45e20adaae15180da5243a7f3be270d71d5eed28"/>MSG_SENT</entry><entry></entry></row><row><entry><indexterm><primary>UART_ERROR</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>UART_ERROR</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1a0270a0464efae26aefb8cf32a45e20adae7987a4741412b725a5a1a24867f9b62"/>UART_ERROR</entry><entry></entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+<para>
+Definition at line <link linkend="_event__manager_8h_source_1l00042">42</link> of file <link linkend="_event__manager_8h_source">event_manager.h</link>.</para>
+</section>
+<anchor xml:id="_event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7"/><section>
+    <title>EventGroup</title>
+<indexterm><primary>EventGroup</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>EventGroup</secondary></indexterm>
+<para><computeroutput>enum class <link linkend="_event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7">EventGroup</link> : uint8_t<computeroutput>[strong]</computeroutput></computeroutput></para><informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>SYSTEM</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>SYSTEM</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7afa177138f94a7ea01f549b1aa7893d03"/>SYSTEM</entry><entry></entry></row><row><entry><indexterm><primary>POWER</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>POWER</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7ac9c9c146c630ca5ef9197c73c032f4a6"/>POWER</entry><entry></entry></row><row><entry><indexterm><primary>COMMS</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>COMMS</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7ac9546343e8e677d92812a4443b3a1bd1"/>COMMS</entry><entry></entry></row><row><entry><indexterm><primary>GPS</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>GPS</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7a8c578de37278ada488d763ea86c5cf20"/>GPS</entry><entry></entry></row><row><entry><indexterm><primary>CLOCK</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>CLOCK</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7aca6c44800b2dc123e0d4389a867e8686"/>CLOCK</entry><entry></entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+<para>
+Definition at line <link linkend="_event__manager_8h_source_1l00012">12</link> of file <link linkend="_event__manager_8h_source">event_manager.h</link>.</para>
+</section>
+<anchor xml:id="_event__manager_8h_1ac4e11c8779c20adc9210532538cdc463"/><section>
+    <title>GPSEvent</title>
+<indexterm><primary>GPSEvent</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>GPSEvent</secondary></indexterm>
+<para><computeroutput>enum class <link linkend="_event__manager_8h_1ac4e11c8779c20adc9210532538cdc463">GPSEvent</link> : uint8_t<computeroutput>[strong]</computeroutput></computeroutput></para><informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>LOCK</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>LOCK</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1ac4e11c8779c20adc9210532538cdc463af510b97de4ace11844b85f23d0fc012f"/>LOCK</entry><entry></entry></row><row><entry><indexterm><primary>LOST</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>LOST</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1ac4e11c8779c20adc9210532538cdc463ac6daca30aef2af1d72715733825806a3"/>LOST</entry><entry></entry></row><row><entry><indexterm><primary>ERROR</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>ERROR</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1ac4e11c8779c20adc9210532538cdc463abb1ca97ec761fc37101737ba0aa2e7c5"/>ERROR</entry><entry></entry></row><row><entry><indexterm><primary>POWER_ON</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>POWER_ON</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1ac4e11c8779c20adc9210532538cdc463a3d6fc432ff9e2d9b890c591179a4401e"/>POWER_ON</entry><entry></entry></row><row><entry><indexterm><primary>POWER_OFF</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>POWER_OFF</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1ac4e11c8779c20adc9210532538cdc463aa15cea80d926d7282b831d451ba8aee8"/>POWER_OFF</entry><entry></entry></row><row><entry><indexterm><primary>DATA_READY</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>DATA_READY</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1ac4e11c8779c20adc9210532538cdc463a8ee0c87d41412c8df555d1b18ff43e63"/>DATA_READY</entry><entry></entry></row><row><entry><indexterm><primary>PASS_THROUGH_START</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>PASS_THROUGH_START</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1ac4e11c8779c20adc9210532538cdc463aad25373b52902ffec9bef3591da75390"/>PASS_THROUGH_START</entry><entry></entry></row><row><entry><indexterm><primary>PASS_THROUGH_END</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>PASS_THROUGH_END</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1ac4e11c8779c20adc9210532538cdc463a2806fc6062c22a550a6d2039ab209e4c"/>PASS_THROUGH_END</entry><entry></entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+<para>
+Definition at line <link linkend="_event__manager_8h_source_1l00051">51</link> of file <link linkend="_event__manager_8h_source">event_manager.h</link>.</para>
+</section>
+<anchor xml:id="_event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6"/><section>
+    <title>PowerEvent</title>
+<indexterm><primary>PowerEvent</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>PowerEvent</secondary></indexterm>
+<para><computeroutput>enum class <link linkend="_event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6">PowerEvent</link> : uint8_t<computeroutput>[strong]</computeroutput></computeroutput></para><informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>LOW_BATTERY</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>LOW_BATTERY</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a36d76a2d86f6dbf2035366b3572f025c"/>LOW_BATTERY</entry><entry></entry></row><row><entry><indexterm><primary>OVERCHARGE</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>OVERCHARGE</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a575fea54d116603bb4c778db18fbde98"/>OVERCHARGE</entry><entry></entry></row><row><entry><indexterm><primary>POWER_FALLING</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>POWER_FALLING</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a8700d6b962e860d93b3c89489b9aac21"/>POWER_FALLING</entry><entry></entry></row><row><entry><indexterm><primary>POWER_NORMAL</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>POWER_NORMAL</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a91d809be807947101ea242de92b64a87"/>POWER_NORMAL</entry><entry></entry></row><row><entry><indexterm><primary>SOLAR_ACTIVE</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>SOLAR_ACTIVE</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6aa45a91985c176d6b5d3669bdf41b7e3b"/>SOLAR_ACTIVE</entry><entry></entry></row><row><entry><indexterm><primary>SOLAR_INACTIVE</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>SOLAR_INACTIVE</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a35899506cd4cd1e676d022eb14ecb669"/>SOLAR_INACTIVE</entry><entry></entry></row><row><entry><indexterm><primary>USB_CONNECTED</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>USB_CONNECTED</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6aea2afd0110180e8af5bf95a583f9dd13"/>USB_CONNECTED</entry><entry></entry></row><row><entry><indexterm><primary>USB_DISCONNECTED</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>USB_DISCONNECTED</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a3a026550c6805c690d88a618aff891c9"/>USB_DISCONNECTED</entry><entry></entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+<para>
+Definition at line <link linkend="_event__manager_8h_source_1l00030">30</link> of file <link linkend="_event__manager_8h_source">event_manager.h</link>.</para>
+</section>
+<anchor xml:id="_event__manager_8h_1a77219d2f280eaad8c79825f50cf78785"/><section>
+    <title>SystemEvent</title>
+<indexterm><primary>SystemEvent</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>SystemEvent</secondary></indexterm>
+<para><computeroutput>enum class <link linkend="_event__manager_8h_1a77219d2f280eaad8c79825f50cf78785">SystemEvent</link> : uint8_t<computeroutput>[strong]</computeroutput></computeroutput></para><informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>BOOT</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>BOOT</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1a77219d2f280eaad8c79825f50cf78785adf9a77cdc2fe29972274b189cf7bac7c"/>BOOT</entry><entry></entry></row><row><entry><indexterm><primary>SHUTDOWN</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>SHUTDOWN</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1a77219d2f280eaad8c79825f50cf78785ab9984206799a7f9fe4bd1b6c18db8112"/>SHUTDOWN</entry><entry></entry></row><row><entry><indexterm><primary>WATCHDOG_RESET</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>WATCHDOG_RESET</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1a77219d2f280eaad8c79825f50cf78785aeaa5ce6b67cf5155de76d00a3bb3ff71"/>WATCHDOG_RESET</entry><entry></entry></row><row><entry><indexterm><primary>CORE1_START</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>CORE1_START</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1a77219d2f280eaad8c79825f50cf78785a8021d59157f0850e2f519e17235a286e"/>CORE1_START</entry><entry></entry></row><row><entry><indexterm><primary>CORE1_STOP</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>CORE1_STOP</secondary></indexterm>
+<anchor xml:id="_event__manager_8h_1a77219d2f280eaad8c79825f50cf78785a187bb9570e10c85b4a616f289f49837c"/>CORE1_STOP</entry><entry></entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+<para>
+Definition at line <link linkend="_event__manager_8h_source_1l00021">21</link> of file <link linkend="_event__manager_8h_source">event_manager.h</link>.</para>
+</section>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_event__manager_8h_1a7984471c52fd4915392929f854c6620c"/><section>
+    <title>__attribute__()</title>
+<indexterm><primary>__attribute__</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>__attribute__</secondary></indexterm>
+<para><computeroutput>class <link linkend="_class_event_log">EventLog</link> __attribute__ ((packed) )</computeroutput></para></section>
+<anchor xml:id="_event__manager_8h_1a467714d66058f52e4ac7aeb6df46b433"/><section>
+    <title>checkPowerEvents()</title>
+<indexterm><primary>checkPowerEvents</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>checkPowerEvents</secondary></indexterm>
+<para><computeroutput>void checkPowerEvents (<link linkend="_class_power_manager">PowerManager</link> &amp; pm)</computeroutput></para><para>
+
+<para>Checks power statuses and triggers events based on voltage trends. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>pm</entry><entry>
+<para>Reference to the <link linkend="_class_power_manager">PowerManager</link> object. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_event__manager_8cpp_source_1l00077">77</link> of file <link linkend="_event__manager_8cpp_source">event_manager.cpp</link>.</para>
+</section>
+<anchor xml:id="_event__manager_8h_1a6bbf13289f6c919d96bae17ef018f988"/><section>
+    <title>toString()</title>
+<indexterm><primary>toString</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>toString</secondary></indexterm>
+<para><computeroutput>std::string __attribute__::toString ( ) const</computeroutput></para><para>
+Definition at line <link linkend="_event__manager_8h_source_1l00006">6</link> of file <link linkend="_event__manager_8h_source">event_manager.h</link>.</para>
+</section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="_event__manager_8h_1a179817c61d3e66c0f67cd6bfe5e84c1b"/><section>
+    <title>__attribute__</title>
+<indexterm><primary>__attribute__</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>__attribute__</secondary></indexterm>
+<para><computeroutput>class <link linkend="_class_event_manager">EventManager</link> __attribute__</computeroutput></para></section>
+<anchor xml:id="_event__manager_8h_1aeef6900f411bc223febdd92c9435693b"/><section>
+    <title>event</title>
+<indexterm><primary>event</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>event</secondary></indexterm>
+<para><computeroutput>uint8_t event</computeroutput></para><para>
+Definition at line <link linkend="_event__manager_8h_source_1l00004">4</link> of file <link linkend="_event__manager_8h_source">event_manager.h</link>.</para>
+</section>
+<anchor xml:id="_event__manager_8h_1a2a686792b51ec2b9e1b7bfc9faef92f7"/><section>
+    <title>eventManager</title>
+<indexterm><primary>eventManager</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>eventManager</secondary></indexterm>
+<para><computeroutput><link linkend="_class_event_manager_impl">EventManagerImpl</link> eventManager<computeroutput>[extern]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="_event__manager_8cpp_source_1l00026">26</link> of file <link linkend="_event__manager_8cpp_source">event_manager.cpp</link>.</para>
+</section>
+<anchor xml:id="_event__manager_8h_1ad4291fcb880eb5ecb178b53e32f55741"/><section>
+    <title>group</title>
+<indexterm><primary>group</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>group</secondary></indexterm>
+<para><computeroutput>uint8_t group</computeroutput></para><para>
+Definition at line <link linkend="_event__manager_8h_source_1l00003">3</link> of file <link linkend="_event__manager_8h_source">event_manager.h</link>.</para>
+</section>
+<anchor xml:id="_event__manager_8h_1a4fc3a0c58dfbd1e68224521185cb9384"/><section>
+    <title>id</title>
+<indexterm><primary>id</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>id</secondary></indexterm>
+<para><computeroutput>uint16_t id</computeroutput></para><para>
+Definition at line <link linkend="_event__manager_8h_source_1l00001">1</link> of file <link linkend="_event__manager_8h_source">event_manager.h</link>.</para>
+</section>
+<anchor xml:id="_event__manager_8h_1ab20b0c7772544cf5d318507f34231fbe"/><section>
+    <title>timestamp</title>
+<indexterm><primary>timestamp</primary><secondary>event_manager.h</secondary></indexterm>
+<indexterm><primary>event_manager.h</primary><secondary>timestamp</secondary></indexterm>
+<para><computeroutput>uint32_t timestamp</computeroutput></para><para>
+Definition at line <link linkend="_event__manager_8h_source_1l00002">2</link> of file <link linkend="_event__manager_8h_source">event_manager.h</link>.</para>
+</section>
+</section>
+</section>

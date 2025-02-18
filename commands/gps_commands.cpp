@@ -2,6 +2,27 @@
 #include "lib/GPS/gps_collector.h"
 #include <sstream> // Include for stringstream
 
+/**
+ * @defgroup GPSCommands GPS Commands
+ * @brief Commands for controlling and monitoring the GPS module
+ * @{
+ */
+
+/**
+ * @brief Handler for controlling GPS module power state
+ * @param param For SET: "0" to power off, "1" to power on. For GET: empty
+ * @param operationType GET to read current state, SET to change state
+ * @return Frame containing:
+ *         - Success: Current power state (0/1)
+ *          or
+ *         - Error: Error reason
+ * @note <b>KBST;0;GET;7;1;;TSBK</b>
+ * @note Return current GPS module power state: ON/OFF
+ * @note <b>KBST;0;SET;7;1;POWER;TSBK</b>
+ * @note POWER - 0 - OFF, 1 - ON
+ * @ingroup GPSCommands
+ * @xrefitem command "Command" "List of Commands" Command ID: 7.1
+ */
 Frame handleGPSPowerStatus(const std::string& param, OperationType operationType) {
     if (!(operationType == OperationType::GET || operationType == OperationType::SET)) {
         return buildFrame(ExecutionResult::ERROR, 7, 1, "INVALID OPERATION");
@@ -34,6 +55,22 @@ Frame handleGPSPowerStatus(const std::string& param, OperationType operationType
     return buildFrame(ExecutionResult::SUCCESS, 7, 1, std::to_string(powerStatus));
 }
 
+
+/**
+ * @brief Handler for enabling GPS transparent mode (UART pass-through)
+ * @param param TIMEOUT in seconds (optional, defaults to 60)
+ * @param operationType SET
+ * @return Frame containing:
+ *         - Success: Exit message + reason
+ *          or
+ *         - Error: Error reason
+ * @note <b>KBST;0;SET;7;2;TIMEOUT;TSBK</b>
+ * @note TIMEOUT - 1-600s, default 60s
+ * @note Enters a pass-through mode where UART communication is bridged directly to GPS
+ * @note Send "##EXIT##" to exit mode before TIMEOUT
+ * @ingroup GPSCommands
+ * @xrefitem command "Command" "List of Commands" Command ID: 7.2
+ */
 Frame handleEnableGPSTransparentMode(const std::string& param, OperationType operationType) {
     // Validate operation type
     if (!(operationType == OperationType::SET)) {
@@ -118,6 +155,19 @@ Frame handleEnableGPSTransparentMode(const std::string& param, OperationType ope
     return buildFrame(ExecutionResult::SUCCESS, 7, 2, response);
 }
 
+
+/**
+ * @brief Handler for retrieving GPS RMC (Recommended Minimum Navigation) data
+ * @param param Empty string expected
+ * @param operationType GET
+ * @return Frame containing:
+ *         - Success: Comma-separated RMC tokens
+ *          or
+ *         - Error: Error message
+ * @note <b>KBST;0;GET;7;3;;TSBK</b>
+ * @ingroup GPSCommands
+ * @xrefitem command "Command" "List of Commands" Command ID: 7.3
+ */
 Frame handleGetRMCData(const std::string& param, OperationType operationType) {
     if (operationType != OperationType::GET) {
         return buildFrame(ExecutionResult::ERROR, 7, 3, "INVALID OPERATION");
@@ -144,6 +194,19 @@ Frame handleGetRMCData(const std::string& param, OperationType operationType) {
     return buildFrame(ExecutionResult::SUCCESS, 7, 3, ss.str());
 }
 
+
+/**
+ * @brief Handler for retrieving GPS GGA (Global Positioning System Fix Data) data
+ * @param param Empty string expected
+ * @param operationType GET
+ * @return Frame containing:
+ *         - Success: Comma-separated GGA tokens
+ *          or
+ *         - Error: Error message
+ * @note <b>KBST;0;GET;7;4;;TSBK</b>
+ * @ingroup GPSCommands
+ * @xrefitem command "Command" "List of Commands" Command ID: 7.4
+ */
 Frame handleGetGGAData(const std::string& param, OperationType operationType) {
     if (operationType != OperationType::GET) {
         return buildFrame(ExecutionResult::ERROR, 7, 4, "INVALID OPERATION");
@@ -169,3 +232,4 @@ Frame handleGetGGAData(const std::string& param, OperationType operationType) {
 
     return buildFrame(ExecutionResult::SUCCESS, 7, 4, ss.str());
 }
+/** @} */ // end of GPSCommands group

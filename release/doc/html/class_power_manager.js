@@ -1,0 +1,25 @@
+var class_power_manager =
+[
+    [ "PowerManager", "class_power_manager.html#aa9ea91634936a20fb03d65ff8878867e", null ],
+    [ "configure", "class_power_manager.html#ae61a45a190d5293029e17c751f88bcd0", null ],
+    [ "getCurrentChargeSolar", "class_power_manager.html#a097734aac2bcc228d6cf22c00e3acb1a", null ],
+    [ "getCurrentChargeTotal", "class_power_manager.html#acad2f0f2daff3bd609952530d202c78b", null ],
+    [ "getCurrentChargeUSB", "class_power_manager.html#a3f9587ee81469642a2e595ef3805e801", null ],
+    [ "getCurrentDraw", "class_power_manager.html#a1ebc18dd508b23614c4c7193fbddd962", null ],
+    [ "getVoltage5V", "class_power_manager.html#ae0e4303ddaba328047fb40d8d925c7dd", null ],
+    [ "getVoltageBattery", "class_power_manager.html#af0d877a74a39cf29cb94d34088641ff9", null ],
+    [ "initialize", "class_power_manager.html#a217939b880543bfff917203a06d45258", null ],
+    [ "isSolarActive", "class_power_manager.html#a33ea0aaa75b4654b0ee05250119bf083", null ],
+    [ "isUSBConnected", "class_power_manager.html#a0548ae14a668bb06e4cc13e0295ad5c8", null ],
+    [ "readIDs", "class_power_manager.html#a885c7374cb22e940ef77c0453da5f622", null ],
+    [ "FALL_RATE_THRESHOLD", "class_power_manager.html#aae449340ac8e77b181ef2f0abd2d96ed", null ],
+    [ "FALLING_TREND_REQUIRED", "class_power_manager.html#a17e01551bc0f14820b2430d697c4c6d2", null ],
+    [ "ina3221", "class_power_manager.html#a5917758068dfeead4ae68840f5bfb493", null ],
+    [ "initialized", "class_power_manager.html#a5cf8825fbe9a81810be2f444dff008f1", null ],
+    [ "SOLAR_CURRENT_THRESHOLD", "class_power_manager.html#aeb488c42ec47e1a8de0446717d339cce", null ],
+    [ "solarActive", "class_power_manager.html#a521e99a9e28cca2525988f572379c936", null ],
+    [ "USB_CURRENT_THRESHOLD", "class_power_manager.html#afc4246cc3b434053c59cf2dcccf4bc64", null ],
+    [ "usbConnected", "class_power_manager.html#a3676187deac57a79034f59f58ac4b746", null ],
+    [ "VOLTAGE_LOW_THRESHOLD", "class_power_manager.html#a426dcedc762549ed6c408708bd61b94e", null ],
+    [ "VOLTAGE_OVERCHARGE_THRESHOLD", "class_power_manager.html#a4e28f40bee3fd8e6df12178663159783", null ]
+];

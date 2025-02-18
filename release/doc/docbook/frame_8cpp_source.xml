@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_frame_8cpp_source" xml:lang="en-US">
+<title>frame.cpp</title>
+<indexterm><primary>frame_model/frame.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_frame_8cpp_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_communication_8h">communication.h</link>&quot;</emphasis>
+<anchor xml:id="_frame_8cpp_source_1l00002"/>00002 
+<anchor xml:id="_frame_8cpp_source_1l00006"/><link linkend="_communication_8h_1ab53898fb6f45dfc657837a665a070959">00006</link> std::string&#32;<link linkend="_frame_8cpp_1ab53898fb6f45dfc657837a665a070959">encodeFrame</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_frame">Frame</link>&amp;&#32;frame)&#32;{
+<anchor xml:id="_frame_8cpp_source_1l00007"/>00007 &#32;&#32;&#32;&#32;std::stringstream&#32;ss;
+<anchor xml:id="_frame_8cpp_source_1l00008"/>00008 &#32;&#32;&#32;&#32;ss&#32;&lt;&lt;&#32;static_cast&lt;int&gt;(frame.<link linkend="_struct_frame_1a380c3287d8bc0718ed7a3b93e303dbe5">direction</link>)&#32;&lt;&lt;&#32;<link linkend="_protocol_8h_1a32d67795a8b119935e98ba0da0d5be5f">DELIMITER</link>
+<anchor xml:id="_frame_8cpp_source_1l00009"/>00009 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;&lt;&#32;<link linkend="_protocol_8h_1a82a11ce999902359454fa904a13ae297">operationTypeToString</link>(frame.<link linkend="_struct_frame_1a6ad0b81e9434fee37a64535a0c58facb">operationType</link>)&#32;&lt;&lt;&#32;<link linkend="_protocol_8h_1a32d67795a8b119935e98ba0da0d5be5f">DELIMITER</link>
+<anchor xml:id="_frame_8cpp_source_1l00010"/>00010 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;&lt;&#32;<emphasis role="keyword">static_cast&lt;</emphasis><emphasis role="keywordtype">int</emphasis><emphasis role="keyword">&gt;</emphasis>(frame.<link linkend="_struct_frame_1abd1ff8cb6b3d53706a97ea15727ddd4f">group</link>)&#32;&lt;&lt;&#32;<link linkend="_protocol_8h_1a32d67795a8b119935e98ba0da0d5be5f">DELIMITER</link>
+<anchor xml:id="_frame_8cpp_source_1l00011"/>00011 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;&lt;&#32;<emphasis role="keyword">static_cast&lt;</emphasis><emphasis role="keywordtype">int</emphasis><emphasis role="keyword">&gt;</emphasis>(frame.<link linkend="_struct_frame_1a2fa1a9d8fa7eb710234eb68bf376e6de">command</link>)&#32;&lt;&lt;&#32;<link linkend="_protocol_8h_1a32d67795a8b119935e98ba0da0d5be5f">DELIMITER</link>
+<anchor xml:id="_frame_8cpp_source_1l00012"/>00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;&lt;&#32;frame.<link linkend="_struct_frame_1a118ecfcbf5afd93d394f667829adf26a">value</link>;
+<anchor xml:id="_frame_8cpp_source_1l00013"/>00013 
+<anchor xml:id="_frame_8cpp_source_1l00014"/>00014 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!frame.<link linkend="_struct_frame_1a6481c04c9c112a41a50c24696454afa8">unit</link>.empty())&#32;{
+<anchor xml:id="_frame_8cpp_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ss&#32;&lt;&lt;&#32;<link linkend="_protocol_8h_1a32d67795a8b119935e98ba0da0d5be5f">DELIMITER</link>&#32;&lt;&lt;&#32;frame.<link linkend="_struct_frame_1a6481c04c9c112a41a50c24696454afa8">unit</link>;
+<anchor xml:id="_frame_8cpp_source_1l00016"/>00016 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_frame_8cpp_source_1l00017"/>00017 
+<anchor xml:id="_frame_8cpp_source_1l00018"/>00018 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_protocol_8h_1aa6688ce7f01167c4ecb45cc4c741cca0">FRAME_BEGIN</link>&#32;+&#32;<link linkend="_protocol_8h_1a32d67795a8b119935e98ba0da0d5be5f">DELIMITER</link>&#32;+&#32;ss.str()&#32;+&#32;<link linkend="_protocol_8h_1a32d67795a8b119935e98ba0da0d5be5f">DELIMITER</link>&#32;+&#32;<link linkend="_protocol_8h_1a38fcd5426cc3ba27b4260e4db4299072">FRAME_END</link>;
+<anchor xml:id="_frame_8cpp_source_1l00019"/>00019 }
+<anchor xml:id="_frame_8cpp_source_1l00020"/>00020 
+<anchor xml:id="_frame_8cpp_source_1l00024"/><link linkend="_communication_8h_1a8f34bc31494430539db21206f084d39d">00024</link> <link linkend="_struct_frame">Frame</link>&#32;<link linkend="_frame_8cpp_1a8f34bc31494430539db21206f084d39d">decodeFrame</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;data)&#32;{
+<anchor xml:id="_frame_8cpp_source_1l00025"/>00025 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">try</emphasis>&#32;{
+<anchor xml:id="_frame_8cpp_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_frame">Frame</link>&#32;frame;
+<anchor xml:id="_frame_8cpp_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::stringstream&#32;ss(data);
+<anchor xml:id="_frame_8cpp_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;token;
+<anchor xml:id="_frame_8cpp_source_1l00029"/>00029 
+<anchor xml:id="_frame_8cpp_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::getline(ss,&#32;token,&#32;<link linkend="_protocol_8h_1a32d67795a8b119935e98ba0da0d5be5f">DELIMITER</link>);
+<anchor xml:id="_frame_8cpp_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(token&#32;!=&#32;<link linkend="_protocol_8h_1aa6688ce7f01167c4ecb45cc4c741cca0">FRAME_BEGIN</link>)
+<anchor xml:id="_frame_8cpp_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;std::runtime_error(<emphasis role="stringliteral">&quot;Invalid&#32;frame&#32;header&quot;</emphasis>);
+<anchor xml:id="_frame_8cpp_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame.<link linkend="_struct_frame_1ae969aefac1bd27476536aae3de4eacee">header</link>&#32;=&#32;token;
+<anchor xml:id="_frame_8cpp_source_1l00034"/>00034 
+<anchor xml:id="_frame_8cpp_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;decodedFrameData;
+<anchor xml:id="_frame_8cpp_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(std::getline(ss,&#32;token,&#32;<link linkend="_protocol_8h_1a32d67795a8b119935e98ba0da0d5be5f">DELIMITER</link>))&#32;{
+<anchor xml:id="_frame_8cpp_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(token&#32;==&#32;<link linkend="_protocol_8h_1a38fcd5426cc3ba27b4260e4db4299072">FRAME_END</link>)&#32;<emphasis role="keywordflow">break</emphasis>;&#32;
+<anchor xml:id="_frame_8cpp_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;decodedFrameData&#32;+=&#32;token&#32;+&#32;<link linkend="_protocol_8h_1a32d67795a8b119935e98ba0da0d5be5f">DELIMITER</link>;
+<anchor xml:id="_frame_8cpp_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_frame_8cpp_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!decodedFrameData.empty())&#32;{
+<anchor xml:id="_frame_8cpp_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;decodedFrameData.pop_back();
+<anchor xml:id="_frame_8cpp_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_frame_8cpp_source_1l00043"/>00043 
+<anchor xml:id="_frame_8cpp_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::stringstream&#32;frameDataStream(decodedFrameData);
+<anchor xml:id="_frame_8cpp_source_1l00045"/>00045 
+<anchor xml:id="_frame_8cpp_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::getline(frameDataStream,&#32;token,&#32;<link linkend="_protocol_8h_1a32d67795a8b119935e98ba0da0d5be5f">DELIMITER</link>);
+<anchor xml:id="_frame_8cpp_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame.<link linkend="_struct_frame_1a380c3287d8bc0718ed7a3b93e303dbe5">direction</link>&#32;=&#32;std::stoi(token);
+<anchor xml:id="_frame_8cpp_source_1l00048"/>00048 
+<anchor xml:id="_frame_8cpp_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::getline(frameDataStream,&#32;token,&#32;<link linkend="_protocol_8h_1a32d67795a8b119935e98ba0da0d5be5f">DELIMITER</link>);
+<anchor xml:id="_frame_8cpp_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame.<link linkend="_struct_frame_1a6ad0b81e9434fee37a64535a0c58facb">operationType</link>&#32;=&#32;<link linkend="_protocol_8h_1a245c34d9f7072236b66e9352a9d3466e">stringToOperationType</link>(token);
+<anchor xml:id="_frame_8cpp_source_1l00051"/>00051 
+<anchor xml:id="_frame_8cpp_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::getline(frameDataStream,&#32;token,&#32;<link linkend="_protocol_8h_1a32d67795a8b119935e98ba0da0d5be5f">DELIMITER</link>);
+<anchor xml:id="_frame_8cpp_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame.<link linkend="_struct_frame_1abd1ff8cb6b3d53706a97ea15727ddd4f">group</link>&#32;=&#32;std::stoi(token);
+<anchor xml:id="_frame_8cpp_source_1l00054"/>00054 
+<anchor xml:id="_frame_8cpp_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::getline(frameDataStream,&#32;token,&#32;<link linkend="_protocol_8h_1a32d67795a8b119935e98ba0da0d5be5f">DELIMITER</link>);
+<anchor xml:id="_frame_8cpp_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame.<link linkend="_struct_frame_1a2fa1a9d8fa7eb710234eb68bf376e6de">command</link>&#32;=&#32;std::stoi(token);
+<anchor xml:id="_frame_8cpp_source_1l00057"/>00057 
+<anchor xml:id="_frame_8cpp_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::getline(frameDataStream,&#32;token,&#32;<link linkend="_protocol_8h_1a32d67795a8b119935e98ba0da0d5be5f">DELIMITER</link>);
+<anchor xml:id="_frame_8cpp_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame.<link linkend="_struct_frame_1a118ecfcbf5afd93d394f667829adf26a">value</link>&#32;=&#32;token;
+<anchor xml:id="_frame_8cpp_source_1l00060"/>00060 
+<anchor xml:id="_frame_8cpp_source_1l00061"/>00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::getline(frameDataStream,&#32;token,&#32;<link linkend="_protocol_8h_1a32d67795a8b119935e98ba0da0d5be5f">DELIMITER</link>);
+<anchor xml:id="_frame_8cpp_source_1l00062"/>00062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame.<link linkend="_struct_frame_1a6481c04c9c112a41a50c24696454afa8">unit</link>&#32;=&#32;token;
+<anchor xml:id="_frame_8cpp_source_1l00063"/>00063 
+<anchor xml:id="_frame_8cpp_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;frame;
+<anchor xml:id="_frame_8cpp_source_1l00065"/>00065 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">catch</emphasis>&#32;(<emphasis role="keyword">const</emphasis>&#32;std::exception&amp;&#32;e)&#32;{
+<anchor xml:id="_frame_8cpp_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706">uartPrint</link>(<emphasis role="stringliteral">&quot;Frame&#32;error:&#32;&quot;</emphasis>&#32;+&#32;std::string(e.what()));
+<anchor xml:id="_frame_8cpp_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_frame">Frame</link>&#32;errorFrame&#32;=&#32;<link linkend="_frame_8cpp_1a5f43260949ee244d3ee66068eb1d7fc1">buildFrame</link>(<link linkend="_protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5">ExecutionResult::ERROR</link>,&#32;0,&#32;0,&#32;e.what());&#32;
+<anchor xml:id="_frame_8cpp_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_communication_8h_1a752e7cc27f52d4ba064e691b3e240ed8">sendFrame</link>(errorFrame);
+<anchor xml:id="_frame_8cpp_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>;&#32;
+<anchor xml:id="_frame_8cpp_source_1l00070"/>00070 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_frame_8cpp_source_1l00071"/>00071 }
+<anchor xml:id="_frame_8cpp_source_1l00072"/>00072 
+<anchor xml:id="_frame_8cpp_source_1l00073"/>00073 
+<anchor xml:id="_frame_8cpp_source_1l00074"/><link linkend="_frame_8cpp_1a2847cb88200a957abe5098b0cc87556d">00074</link> <emphasis role="keyword">using&#32;</emphasis><link linkend="_commands_8cpp_1afd50beeb0940251ffa11aba67ae299bd">CommandHandler</link>&#32;=&#32;std::function&lt;std::string(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;,&#32;<link linkend="_protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</link>)&gt;;
+<anchor xml:id="_frame_8cpp_source_1l00075"/>00075 <emphasis role="keyword">extern</emphasis>&#32;std::map&lt;uint32_t,&#32;CommandHandler&gt;&#32;<link linkend="_commands_8cpp_1a04a0515603ba347ef314678876f3fa26">commandHandlers</link>;
+<anchor xml:id="_frame_8cpp_source_1l00076"/>00076 
+<anchor xml:id="_frame_8cpp_source_1l00079"/><link linkend="_communication_8h_1a8b9407b2f579031cf4b705f1ac03ac31">00079</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_frame_8cpp_1a8b9407b2f579031cf4b705f1ac03ac31">processFrameData</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;data)&#32;{
+<anchor xml:id="_frame_8cpp_source_1l00080"/>00080 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">try</emphasis>&#32;{
+<anchor xml:id="_frame_8cpp_source_1l00081"/>00081 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_frame">Frame</link>&#32;frame&#32;=&#32;<link linkend="_frame_8cpp_1a8f34bc31494430539db21206f084d39d">decodeFrame</link>(data);
+<anchor xml:id="_frame_8cpp_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint32_t&#32;commandKey&#32;=&#32;(<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(frame.<link linkend="_struct_frame_1abd1ff8cb6b3d53706a97ea15727ddd4f">group</link>)&#32;&lt;&lt;&#32;8)&#32;|&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(frame.<link linkend="_struct_frame_1a2fa1a9d8fa7eb710234eb68bf376e6de">command</link>);
+<anchor xml:id="_frame_8cpp_source_1l00083"/>00083 
+<anchor xml:id="_frame_8cpp_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_frame">Frame</link>&#32;responseFrame&#32;=&#32;<link linkend="_commands_8cpp_1a1907d400d2c8d8d054ba95bcf43276ea">executeCommand</link>(commandKey,&#32;frame.<link linkend="_struct_frame_1a118ecfcbf5afd93d394f667829adf26a">value</link>,&#32;frame.<link linkend="_struct_frame_1a6ad0b81e9434fee37a64535a0c58facb">operationType</link>);
+<anchor xml:id="_frame_8cpp_source_1l00085"/>00085 
+<anchor xml:id="_frame_8cpp_source_1l00086"/>00086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_communication_8h_1a752e7cc27f52d4ba064e691b3e240ed8">sendFrame</link>(responseFrame);
+<anchor xml:id="_frame_8cpp_source_1l00087"/>00087 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">catch</emphasis>&#32;(<emphasis role="keyword">const</emphasis>&#32;std::exception&amp;&#32;e)&#32;{
+<anchor xml:id="_frame_8cpp_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_frame">Frame</link>&#32;errorFrame&#32;=&#32;<link linkend="_frame_8cpp_1a5f43260949ee244d3ee66068eb1d7fc1">buildFrame</link>(<link linkend="_protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5">ExecutionResult::ERROR</link>,&#32;0,&#32;0,&#32;e.what());&#32;
+<anchor xml:id="_frame_8cpp_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_communication_8h_1a752e7cc27f52d4ba064e691b3e240ed8">sendFrame</link>(errorFrame);
+<anchor xml:id="_frame_8cpp_source_1l00090"/>00090 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_frame_8cpp_source_1l00091"/>00091 }
+<anchor xml:id="_frame_8cpp_source_1l00092"/>00092 
+<anchor xml:id="_frame_8cpp_source_1l00093"/>00093 
+<anchor xml:id="_frame_8cpp_source_1l00094"/>00094 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keyword">volatile</emphasis>&#32;uint16_t&#32;<link linkend="_frame_8cpp_1ac9c6a252b4ac4dad7cf47681200d3dbe">eventRegister</link>;
+<anchor xml:id="_frame_8cpp_source_1l00095"/>00095 
+<anchor xml:id="_frame_8cpp_source_1l00098"/><link linkend="_communication_8h_1a6005ddd6320bebe2a680fa6b8efff6dd">00098</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_frame_8cpp_1a6005ddd6320bebe2a680fa6b8efff6dd">sendEventRegister</link>()&#32;{
+<anchor xml:id="_frame_8cpp_source_1l00099"/>00099 &#32;&#32;&#32;&#32;std::stringstream&#32;ss;
+<anchor xml:id="_frame_8cpp_source_1l00100"/>00100 &#32;&#32;&#32;&#32;ss&#32;&lt;&lt;&#32;std::hex&#32;&lt;&lt;&#32;std::setw(4)&#32;&lt;&lt;&#32;std::setfill(&apos;0&apos;)&#32;&lt;&lt;&#32;static_cast&lt;int&gt;(<link linkend="_frame_8cpp_1ac9c6a252b4ac4dad7cf47681200d3dbe">eventRegister</link>);
+<anchor xml:id="_frame_8cpp_source_1l00101"/>00101 &#32;&#32;&#32;&#32;std::string&#32;eventValue&#32;=&#32;ss.str();
+<anchor xml:id="_frame_8cpp_source_1l00102"/>00102 
+<anchor xml:id="_frame_8cpp_source_1l00103"/>00103 &#32;&#32;&#32;&#32;<link linkend="_struct_frame">Frame</link>&#32;eventFrame&#32;=&#32;<link linkend="_frame_8cpp_1a5f43260949ee244d3ee66068eb1d7fc1">buildFrame</link>(
+<anchor xml:id="_frame_8cpp_source_1l00104"/>00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c">ExecutionResult::SUCCESS</link>,&#32;<emphasis role="comment">//&#32;Result:&#32;success&#32;as&#32;this&#32;is&#32;a&#32;normal&#32;status&#32;update</emphasis>
+<anchor xml:id="_frame_8cpp_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;8,&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Group&#32;ID:&#32;8&#32;(EVENTS)</emphasis>
+<anchor xml:id="_frame_8cpp_source_1l00106"/>00106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0,&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Command&#32;ID:&#32;0&#32;(EVENT_REGISTER)</emphasis>
+<anchor xml:id="_frame_8cpp_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;eventValue&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Value:&#32;event&#32;register&#32;value</emphasis>
+<anchor xml:id="_frame_8cpp_source_1l00108"/>00108 &#32;&#32;&#32;&#32;);
+<anchor xml:id="_frame_8cpp_source_1l00109"/>00109 
+<anchor xml:id="_frame_8cpp_source_1l00110"/>00110 &#32;&#32;&#32;&#32;<link linkend="_communication_8h_1a752e7cc27f52d4ba064e691b3e240ed8">sendFrame</link>(eventFrame);
+<anchor xml:id="_frame_8cpp_source_1l00111"/>00111 }
+<anchor xml:id="_frame_8cpp_source_1l00112"/>00112 
+<anchor xml:id="_frame_8cpp_source_1l00113"/><link linkend="_communication_8h_1a54afeb73435419551a1b51a3fd5c3266">00113</link> <link linkend="_struct_frame">Frame</link>&#32;<link linkend="_frame_8cpp_1a5f43260949ee244d3ee66068eb1d7fc1">buildFrame</link>(<link linkend="_protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1">ExecutionResult</link>&#32;result,&#32;uint8_t&#32;<link linkend="_event__manager_8h_1ad4291fcb880eb5ecb178b53e32f55741">group</link>,&#32;uint8_t&#32;command,&#32;
+<anchor xml:id="_frame_8cpp_source_1l00114"/>00114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;value,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_protocol_8h_1a2d96449e2b52d45b5726af92084e0d8f">ValueUnit</link>&#32;unitType)&#32;{
+<anchor xml:id="_frame_8cpp_source_1l00115"/>00115 &#32;&#32;&#32;&#32;<link linkend="_struct_frame">Frame</link>&#32;frame;
+<anchor xml:id="_frame_8cpp_source_1l00116"/>00116 &#32;&#32;&#32;&#32;frame.<link linkend="_struct_frame_1ae969aefac1bd27476536aae3de4eacee">header</link>&#32;=&#32;<link linkend="_protocol_8h_1aa6688ce7f01167c4ecb45cc4c741cca0">FRAME_BEGIN</link>;
+<anchor xml:id="_frame_8cpp_source_1l00117"/>00117 &#32;&#32;&#32;&#32;frame.<link linkend="_struct_frame_1a30e584ccb03562f0bbd5356562a462c1">footer</link>&#32;=&#32;<link linkend="_protocol_8h_1a38fcd5426cc3ba27b4260e4db4299072">FRAME_END</link>;
+<anchor xml:id="_frame_8cpp_source_1l00118"/>00118 &#32;&#32;&#32;&#32;
+<anchor xml:id="_frame_8cpp_source_1l00119"/>00119 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">switch</emphasis>&#32;(result)&#32;{
+<anchor xml:id="_frame_8cpp_source_1l00120"/>00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c">ExecutionResult::SUCCESS</link>:
+<anchor xml:id="_frame_8cpp_source_1l00121"/>00121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame.<link linkend="_struct_frame_1a380c3287d8bc0718ed7a3b93e303dbe5">direction</link>&#32;=&#32;1;
+<anchor xml:id="_frame_8cpp_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame.<link linkend="_struct_frame_1a6ad0b81e9434fee37a64535a0c58facb">operationType</link>&#32;=&#32;<link linkend="_protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a4e062fc2814c180a9e08b1d204ab31bd">OperationType::ANS</link>;
+<anchor xml:id="_frame_8cpp_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame.<link linkend="_struct_frame_1a118ecfcbf5afd93d394f667829adf26a">value</link>&#32;=&#32;value;
+<anchor xml:id="_frame_8cpp_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame.<link linkend="_struct_frame_1a6481c04c9c112a41a50c24696454afa8">unit</link>&#32;=&#32;<link linkend="_protocol_8h_1ab4cb9e6b491bd7711c69c9167a2b9286">valueUnitTypeToString</link>(unitType);
+<anchor xml:id="_frame_8cpp_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="_frame_8cpp_source_1l00126"/>00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_frame_8cpp_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5">ExecutionResult::ERROR</link>:
+<anchor xml:id="_frame_8cpp_source_1l00128"/>00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame.<link linkend="_struct_frame_1a380c3287d8bc0718ed7a3b93e303dbe5">direction</link>&#32;=&#32;1;
+<anchor xml:id="_frame_8cpp_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame.<link linkend="_struct_frame_1a6ad0b81e9434fee37a64535a0c58facb">operationType</link>&#32;=&#32;<link linkend="_protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047acd22bad976363fdd1bfbf6759fede482">OperationType::ERR</link>;
+<anchor xml:id="_frame_8cpp_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame.<link linkend="_struct_frame_1a118ecfcbf5afd93d394f667829adf26a">value</link>&#32;=&#32;value;&#32;
+<anchor xml:id="_frame_8cpp_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame.<link linkend="_struct_frame_1a6481c04c9c112a41a50c24696454afa8">unit</link>&#32;=&#32;<link linkend="_protocol_8h_1ab4cb9e6b491bd7711c69c9167a2b9286">valueUnitTypeToString</link>(<link linkend="_protocol_8h_1a2d96449e2b52d45b5726af92084e0d8fa0db45d2a4141101bdfe48e3314cfbca3">ValueUnit::UNDEFINED</link>);
+<anchor xml:id="_frame_8cpp_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="_frame_8cpp_source_1l00133"/>00133 
+<anchor xml:id="_frame_8cpp_source_1l00134"/>00134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1a551b723eafd6a31d444fcb2f5920fbd3">ExecutionResult::INFO</link>:
+<anchor xml:id="_frame_8cpp_source_1l00135"/>00135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame.<link linkend="_struct_frame_1a380c3287d8bc0718ed7a3b93e303dbe5">direction</link>&#32;=&#32;1;
+<anchor xml:id="_frame_8cpp_source_1l00136"/>00136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame.<link linkend="_struct_frame_1a6ad0b81e9434fee37a64535a0c58facb">operationType</link>&#32;=&#32;<link linkend="_protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a9517fd0bf8faa655990a4dffe358e13e">OperationType::INF</link>;
+<anchor xml:id="_frame_8cpp_source_1l00137"/>00137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame.<link linkend="_struct_frame_1a118ecfcbf5afd93d394f667829adf26a">value</link>&#32;=&#32;value;
+<anchor xml:id="_frame_8cpp_source_1l00138"/>00138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame.<link linkend="_struct_frame_1a6481c04c9c112a41a50c24696454afa8">unit</link>&#32;=&#32;<link linkend="_protocol_8h_1ab4cb9e6b491bd7711c69c9167a2b9286">valueUnitTypeToString</link>(<link linkend="_protocol_8h_1a2d96449e2b52d45b5726af92084e0d8fa0db45d2a4141101bdfe48e3314cfbca3">ValueUnit::UNDEFINED</link>);
+<anchor xml:id="_frame_8cpp_source_1l00139"/>00139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="_frame_8cpp_source_1l00140"/>00140 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_frame_8cpp_source_1l00141"/>00141 &#32;&#32;&#32;&#32;
+<anchor xml:id="_frame_8cpp_source_1l00142"/>00142 &#32;&#32;&#32;&#32;frame.<link linkend="_struct_frame_1abd1ff8cb6b3d53706a97ea15727ddd4f">group</link>&#32;=&#32;<link linkend="_event__manager_8h_1ad4291fcb880eb5ecb178b53e32f55741">group</link>;
+<anchor xml:id="_frame_8cpp_source_1l00143"/>00143 &#32;&#32;&#32;&#32;frame.<link linkend="_struct_frame_1a2fa1a9d8fa7eb710234eb68bf376e6de">command</link>&#32;=&#32;command;
+<anchor xml:id="_frame_8cpp_source_1l00144"/>00144 &#32;&#32;&#32;&#32;
+<anchor xml:id="_frame_8cpp_source_1l00145"/>00145 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;frame;
+<anchor xml:id="_frame_8cpp_source_1l00146"/>00146 }
+</programlisting></section>

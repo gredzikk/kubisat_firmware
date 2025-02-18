@@ -1,0 +1,795 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="communication_8h" kind="file" language="C++">
+    <compoundname>communication.h</compoundname>
+    <includes local="no">string</includes>
+    <includes local="no">vector</includes>
+    <includes refid="protocol_8h" local="yes">protocol.h</includes>
+    <includes refid="event__manager_8h" local="yes">event_manager.h</includes>
+    <includedby refid="clock__commands_8cpp" local="yes">commands/clock_commands.cpp</includedby>
+    <includedby refid="commands_8cpp" local="yes">commands/commands.cpp</includedby>
+    <includedby refid="diagnostic__commands_8cpp" local="yes">commands/diagnostic_commands.cpp</includedby>
+    <includedby refid="event__commands_8cpp" local="yes">commands/event_commands.cpp</includedby>
+    <includedby refid="gps__commands_8cpp" local="yes">commands/gps_commands.cpp</includedby>
+    <includedby refid="power__commands_8cpp" local="yes">commands/power_commands.cpp</includedby>
+    <includedby refid="event__manager_8cpp" local="yes">event_manager.cpp</includedby>
+    <includedby refid="communication_8cpp" local="yes">frame_model/communication.cpp</includedby>
+    <includedby refid="frame_8cpp" local="yes">frame_model/frame.cpp</includedby>
+    <includedby refid="receive_8cpp" local="yes">frame_model/receive.cpp</includedby>
+    <includedby refid="send_8cpp" local="yes">frame_model/send.cpp</includedby>
+    <includedby refid="utils__converters_8cpp" local="yes">frame_model/utils_converters.cpp</includedby>
+    <includedby refid="includes_8h" local="yes">includes.h</includedby>
+    <incdepgraph>
+      <node id="23">
+        <label>build_number.h</label>
+        <link refid="build__number_8h"/>
+      </node>
+      <node id="31">
+        <label>event_manager.h</label>
+        <link refid="event__manager_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>frame_model/communication.h</label>
+        <link refid="communication_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>protocol.h</label>
+        <link refid="protocol_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>INA3221.h</label>
+        <link refid="_i_n_a3221_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>LoRa-RP2040.h</label>
+        <link refid="_lo_ra-_r_p2040_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>Print.h</label>
+        <link refid="_print_8h"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>PowerManager.h</label>
+        <link refid="_power_manager_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>pin_config.h</label>
+        <link refid="pin__config_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>cstdint</label>
+      </node>
+      <node id="16">
+        <label>cstdio</label>
+      </node>
+      <node id="17">
+        <label>cstdlib</label>
+      </node>
+      <node id="18">
+        <label>cstring</label>
+      </node>
+      <node id="6">
+        <label>functional</label>
+      </node>
+      <node id="26">
+        <label>hardware/gpio.h</label>
+      </node>
+      <node id="14">
+        <label>hardware/i2c.h</label>
+      </node>
+      <node id="27">
+        <label>hardware/spi.h</label>
+      </node>
+      <node id="21">
+        <label>hardware/uart.h</label>
+      </node>
+      <node id="30">
+        <label>inttypes.h</label>
+      </node>
+      <node id="8">
+        <label>iomanip</label>
+      </node>
+      <node id="13">
+        <label>iostream</label>
+      </node>
+      <node id="5">
+        <label>map</label>
+      </node>
+      <node id="25">
+        <label>pico/binary_info.h</label>
+      </node>
+      <node id="32">
+        <label>pico/mutex.h</label>
+      </node>
+      <node id="15">
+        <label>pico/stdlib.h</label>
+      </node>
+      <node id="10">
+        <label>stdint.h</label>
+      </node>
+      <node id="20">
+        <label>stdio.h</label>
+      </node>
+      <node id="2">
+        <label>string</label>
+      </node>
+      <node id="28">
+        <label>string.h</label>
+      </node>
+      <node id="22">
+        <label>time.h</label>
+      </node>
+      <node id="3">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>commands/clock_commands.cpp</label>
+        <link refid="clock__commands_8cpp"/>
+      </node>
+      <node id="3">
+        <label>commands/commands.cpp</label>
+        <link refid="commands_8cpp"/>
+      </node>
+      <node id="4">
+        <label>commands/diagnostic_commands.cpp</label>
+        <link refid="diagnostic__commands_8cpp"/>
+      </node>
+      <node id="5">
+        <label>commands/event_commands.cpp</label>
+        <link refid="event__commands_8cpp"/>
+      </node>
+      <node id="6">
+        <label>commands/gps_commands.cpp</label>
+        <link refid="gps__commands_8cpp"/>
+      </node>
+      <node id="7">
+        <label>commands/power_commands.cpp</label>
+        <link refid="power__commands_8cpp"/>
+      </node>
+      <node id="8">
+        <label>event_manager.cpp</label>
+        <link refid="event__manager_8cpp"/>
+      </node>
+      <node id="9">
+        <label>frame_model/communication.cpp</label>
+        <link refid="communication_8cpp"/>
+      </node>
+      <node id="1">
+        <label>frame_model/communication.h</label>
+        <link refid="communication_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>frame_model/frame.cpp</label>
+        <link refid="frame_8cpp"/>
+      </node>
+      <node id="11">
+        <label>frame_model/receive.cpp</label>
+        <link refid="receive_8cpp"/>
+      </node>
+      <node id="12">
+        <label>frame_model/send.cpp</label>
+        <link refid="send_8cpp"/>
+      </node>
+      <node id="13">
+        <label>frame_model/utils_converters.cpp</label>
+        <link refid="utils__converters_8cpp"/>
+      </node>
+      <node id="14">
+        <label>includes.h</label>
+        <link refid="includes_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="communication_8h_1a520df448c1dc359f42111ac240081975" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool initializeRadio</definition>
+        <argsstring>()</argsstring>
+        <name>initializeRadio</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="frame_model/communication.h" line="9" column="6" bodyfile="frame_model/communication.cpp" bodystart="10" bodyend="26" declfile="frame_model/communication.h" declline="9" declcolumn="6"/>
+        <references refid="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7ac9546343e8e677d92812a4443b3a1bd1" compoundref="event__manager_8h" startline="15">COMMS</references>
+        <references refid="pin__config_8cpp_1a7e30722535c99b71f449a1eb7bb262aa" compoundref="pin__config_8cpp" startline="4">csPin</references>
+        <references refid="class_event_emitter_1a539d733505f9a793439a9cfc4f2af079" compoundref="event__manager_8h" startline="142" endline="147">EventEmitter::emit</references>
+        <references refid="pin__config_8cpp_1a0c6d69bce8a4e8814e1a96d9ea38d1a8" compoundref="pin__config_8cpp" startline="6">irqPin</references>
+        <references refid="_lo_ra-_r_p2040_8cpp_1af4db0e30d2909faa29355167719f196c" compoundref="_lo_ra-_r_p2040_8cpp" startline="753">LoRa</references>
+        <references refid="event__manager_8h_1a0270a0464efae26aefb8cf32a45e20ada3b9824cc8a230f50d285d16795daa859" compoundref="event__manager_8h" startline="44">RADIO_ERROR</references>
+        <references refid="event__manager_8h_1a0270a0464efae26aefb8cf32a45e20ada6651a96516b323db8bad9897081d76ed" compoundref="event__manager_8h" startline="43">RADIO_INIT</references>
+        <references refid="pin__config_8cpp_1a4447ea46d7cfa6ac5a7208f416e71cad" compoundref="pin__config_8cpp" startline="5">resetPin</references>
+        <references refid="utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706" compoundref="utils_8cpp" startline="9" endline="26">uartPrint</references>
+        <referencedby refid="main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" compoundref="main_8cpp" startline="58" endline="123">main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="communication_8h_1a877f9c1d3485cf1521bc13996d39c1fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sendMessage</definition>
+        <argsstring>(std::string outgoing)</argsstring>
+        <name>sendMessage</name>
+        <param>
+          <type>std::string</type>
+          <declname>outgoing</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="frame_model/communication.h" line="10" column="6" declfile="frame_model/communication.h" declline="10" declcolumn="6"/>
+        <references refid="communication_8cpp_1a13c45747091f32644e83d65348c61232" compoundref="communication_8cpp" startline="3">outgoing</references>
+        <referencedby refid="main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" compoundref="main_8cpp" startline="58" endline="123">main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="communication_8h_1a252a4ea5f222c6879d281cc2f9357b46" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sendLargePacket</definition>
+        <argsstring>(const uint8_t *data, size_t length)</argsstring>
+        <name>sendLargePacket</name>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="frame_model/communication.h" line="11" column="6" bodyfile="frame_model/send.cpp" bodystart="31" bodyend="44" declfile="frame_model/communication.h" declline="11" declcolumn="6"/>
+        <references refid="_lo_ra-_r_p2040_8cpp_1af4db0e30d2909faa29355167719f196c" compoundref="_lo_ra-_r_p2040_8cpp" startline="753">LoRa</references>
+      </memberdef>
+      <memberdef kind="function" id="communication_8h_1a54817002e33761dc61558b1138749dfb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void onReceive</definition>
+        <argsstring>(int packetSize)</argsstring>
+        <name>onReceive</name>
+        <param>
+          <type>int</type>
+          <declname>packetSize</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="frame_model/communication.h" line="12" column="6" bodyfile="frame_model/receive.cpp" bodystart="3" bodyend="57" declfile="frame_model/communication.h" declline="12" declcolumn="6"/>
+        <references refid="main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62" compoundref="main_8cpp" startline="8">buffer</references>
+        <references refid="pin__config_8cpp_1a42676c2cae17bc2fa151feea9e192342" compoundref="pin__config_8cpp" startline="9">destination</references>
+        <references refid="protocol_8h_1aa6688ce7f01167c4ecb45cc4c741cca0" compoundref="protocol_8h" startline="22">FRAME_BEGIN</references>
+        <references refid="protocol_8h_1a38fcd5426cc3ba27b4260e4db4299072" compoundref="protocol_8h" startline="23">FRAME_END</references>
+        <references refid="pin__config_8cpp_1a91a4799f60e5d2bbf7a0ee600912f51f" compoundref="pin__config_8cpp" startline="8">localAddress</references>
+        <references refid="_lo_ra-_r_p2040_8cpp_1af4db0e30d2909faa29355167719f196c" compoundref="_lo_ra-_r_p2040_8cpp" startline="753">LoRa</references>
+        <references refid="communication_8h_1a8b9407b2f579031cf4b705f1ac03ac31" compoundref="frame_8cpp" startline="79" endline="91">processFrameData</references>
+        <references refid="utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706" compoundref="utils_8cpp" startline="9" endline="26">uartPrint</references>
+        <referencedby refid="main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" compoundref="main_8cpp" startline="58" endline="123">main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="communication_8h_1ac5e175a6a1482f700f9aee0b727b924f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void handleUartInput</definition>
+        <argsstring>()</argsstring>
+        <name>handleUartInput</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="frame_model/communication.h" line="13" column="6" bodyfile="frame_model/receive.cpp" bodystart="59" bodyend="74" declfile="frame_model/communication.h" declline="13" declcolumn="6"/>
+        <references refid="pin__config_8h_1a1c9052d1656e86f50326fd275c54ca67" compoundref="pin__config_8h" startline="8">DEBUG_UART_PORT</references>
+        <references refid="communication_8h_1a8b9407b2f579031cf4b705f1ac03ac31" compoundref="frame_8cpp" startline="79" endline="91">processFrameData</references>
+        <references refid="utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706" compoundref="utils_8cpp" startline="9" endline="26">uartPrint</references>
+        <referencedby refid="main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" compoundref="main_8cpp" startline="58" endline="123">main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="communication_8h_1a8b9407b2f579031cf4b705f1ac03ac31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void processFrameData</definition>
+        <argsstring>(const std::string &amp;data)</argsstring>
+        <name>processFrameData</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Execute the command based on the command key and the parameter. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="struct_frame" kindref="compound">Frame</ref> data in string format </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="frame_model/communication.h" line="14" column="6" bodyfile="frame_model/frame.cpp" bodystart="79" bodyend="91" declfile="frame_model/communication.h" declline="14" declcolumn="6"/>
+        <references refid="frame_8cpp_1a5f43260949ee244d3ee66068eb1d7fc1" compoundref="frame_8cpp" startline="113" endline="146">buildFrame</references>
+        <references refid="struct_frame_1a2fa1a9d8fa7eb710234eb68bf376e6de" compoundref="protocol_8h" startline="70">Frame::command</references>
+        <references refid="frame_8cpp_1a8f34bc31494430539db21206f084d39d" compoundref="frame_8cpp" startline="24" endline="71">decodeFrame</references>
+        <references refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" compoundref="protocol_8h" startline="28">ERROR</references>
+        <references refid="commands_8cpp_1a1907d400d2c8d8d054ba95bcf43276ea" compoundref="commands_8cpp" startline="37" endline="45">executeCommand</references>
+        <references refid="struct_frame_1abd1ff8cb6b3d53706a97ea15727ddd4f" compoundref="protocol_8h" startline="69">Frame::group</references>
+        <references refid="struct_frame_1a6ad0b81e9434fee37a64535a0c58facb" compoundref="protocol_8h" startline="68">Frame::operationType</references>
+        <references refid="communication_8h_1a752e7cc27f52d4ba064e691b3e240ed8" compoundref="send_8cpp" startline="25" endline="29">sendFrame</references>
+        <references refid="struct_frame_1a118ecfcbf5afd93d394f667829adf26a" compoundref="protocol_8h" startline="71">Frame::value</references>
+        <referencedby refid="communication_8h_1ac5e175a6a1482f700f9aee0b727b924f" compoundref="receive_8cpp" startline="59" endline="74">handleUartInput</referencedby>
+        <referencedby refid="communication_8h_1a54817002e33761dc61558b1138749dfb" compoundref="receive_8cpp" startline="3" endline="57">onReceive</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="communication_8h_1a3ea1f464aef22cd9918b6fe75659c535" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void handleCommandFrame</definition>
+        <argsstring>(const Frame &amp;frame)</argsstring>
+        <name>handleCommandFrame</name>
+        <param>
+          <type>const <ref refid="struct_frame" kindref="compound">Frame</ref> &amp;</type>
+          <declname>frame</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="frame_model/communication.h" line="17" column="6" declfile="frame_model/communication.h" declline="17" declcolumn="6"/>
+        <references refid="event__manager_8h_1ad4291fcb880eb5ecb178b53e32f55741" compoundref="event__manager_8h" startline="3">group</references>
+        <references refid="protocol_8h_1a2d96449e2b52d45b5726af92084e0d8fa0db45d2a4141101bdfe48e3314cfbca3" compoundref="protocol_8h" startline="48">UNDEFINED</references>
+      </memberdef>
+      <memberdef kind="function" id="communication_8h_1a1907d400d2c8d8d054ba95bcf43276ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_frame" kindref="compound">Frame</ref></type>
+        <definition>Frame executeCommand</definition>
+        <argsstring>(uint32_t commandKey, const std::string &amp;param, OperationType operationType)</argsstring>
+        <name>executeCommand</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>commandKey</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>param</declname>
+        </param>
+        <param>
+          <type><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047" kindref="member">OperationType</ref></type>
+          <declname>operationType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="frame_model/communication.h" line="18" column="7" bodyfile="commands/commands.cpp" bodystart="37" bodyend="45" declfile="frame_model/communication.h" declline="18" declcolumn="7"/>
+        <references refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" compoundref="frame_8cpp" startline="113" endline="146">buildFrame</references>
+        <references refid="commands_8cpp_1a04a0515603ba347ef314678876f3fa26" compoundref="commands_8cpp" startline="9" endline="34">commandHandlers</references>
+        <references refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" compoundref="protocol_8h" startline="28">ERROR</references>
+        <referencedby refid="communication_8h_1a8b9407b2f579031cf4b705f1ac03ac31" compoundref="frame_8cpp" startline="79" endline="91">processFrameData</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="communication_8h_1a6005ddd6320bebe2a680fa6b8efff6dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sendEventRegister</definition>
+        <argsstring>()</argsstring>
+        <name>sendEventRegister</name>
+        <briefdescription>
+<para>Send event register value to the ground station. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This function is called in the main loop </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="frame_model/communication.h" line="19" column="6" bodyfile="frame_model/frame.cpp" bodystart="98" bodyend="111" declfile="frame_model/communication.h" declline="19" declcolumn="6"/>
+        <references refid="frame_8cpp_1a5f43260949ee244d3ee66068eb1d7fc1" compoundref="frame_8cpp" startline="113" endline="146">buildFrame</references>
+        <references refid="frame_8cpp_1ac9c6a252b4ac4dad7cf47681200d3dbe">eventRegister</references>
+        <references refid="communication_8h_1a752e7cc27f52d4ba064e691b3e240ed8" compoundref="send_8cpp" startline="25" endline="29">sendFrame</references>
+        <references refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c" compoundref="protocol_8h" startline="27">SUCCESS</references>
+      </memberdef>
+      <memberdef kind="function" id="communication_8h_1ab53898fb6f45dfc657837a665a070959" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string encodeFrame</definition>
+        <argsstring>(const Frame &amp;frame)</argsstring>
+        <name>encodeFrame</name>
+        <param>
+          <type>const <ref refid="struct_frame" kindref="compound">Frame</ref> &amp;</type>
+          <declname>frame</declname>
+        </param>
+        <briefdescription>
+<para>Encode <ref refid="struct_frame" kindref="compound">Frame</ref> instance into a string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>frame</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="struct_frame" kindref="compound">Frame</ref> instance to encode </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="struct_frame" kindref="compound">Frame</ref> encoded as a string </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="frame_model/communication.h" line="22" column="13" bodyfile="frame_model/frame.cpp" bodystart="6" bodyend="19" declfile="frame_model/communication.h" declline="22" declcolumn="13"/>
+        <references refid="struct_frame_1a2fa1a9d8fa7eb710234eb68bf376e6de" compoundref="protocol_8h" startline="70">Frame::command</references>
+        <references refid="protocol_8h_1a32d67795a8b119935e98ba0da0d5be5f" compoundref="protocol_8h" startline="24">DELIMITER</references>
+        <references refid="struct_frame_1a380c3287d8bc0718ed7a3b93e303dbe5" compoundref="protocol_8h" startline="67">Frame::direction</references>
+        <references refid="protocol_8h_1aa6688ce7f01167c4ecb45cc4c741cca0" compoundref="protocol_8h" startline="22">FRAME_BEGIN</references>
+        <references refid="protocol_8h_1a38fcd5426cc3ba27b4260e4db4299072" compoundref="protocol_8h" startline="23">FRAME_END</references>
+        <references refid="struct_frame_1abd1ff8cb6b3d53706a97ea15727ddd4f" compoundref="protocol_8h" startline="69">Frame::group</references>
+        <references refid="struct_frame_1a6ad0b81e9434fee37a64535a0c58facb" compoundref="protocol_8h" startline="68">Frame::operationType</references>
+        <references refid="protocol_8h_1a82a11ce999902359454fa904a13ae297" compoundref="utils__converters_8cpp" startline="28" endline="37">operationTypeToString</references>
+        <references refid="struct_frame_1a6481c04c9c112a41a50c24696454afa8" compoundref="protocol_8h" startline="72">Frame::unit</references>
+        <references refid="struct_frame_1a118ecfcbf5afd93d394f667829adf26a" compoundref="protocol_8h" startline="71">Frame::value</references>
+        <referencedby refid="communication_8h_1a752e7cc27f52d4ba064e691b3e240ed8" compoundref="send_8cpp" startline="25" endline="29">sendFrame</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="communication_8h_1a8f34bc31494430539db21206f084d39d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_frame" kindref="compound">Frame</ref></type>
+        <definition>Frame decodeFrame</definition>
+        <argsstring>(const std::string &amp;data)</argsstring>
+        <name>decodeFrame</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Convert a string into a <ref refid="struct_frame" kindref="compound">Frame</ref> instance. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="struct_frame" kindref="compound">Frame</ref> data as a string </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="struct_frame" kindref="compound">Frame</ref> instance </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="frame_model/communication.h" line="23" column="7" bodyfile="frame_model/frame.cpp" bodystart="24" bodyend="71" declfile="frame_model/communication.h" declline="23" declcolumn="7"/>
+        <references refid="frame_8cpp_1a5f43260949ee244d3ee66068eb1d7fc1" compoundref="frame_8cpp" startline="113" endline="146">buildFrame</references>
+        <references refid="struct_frame_1a2fa1a9d8fa7eb710234eb68bf376e6de" compoundref="protocol_8h" startline="70">Frame::command</references>
+        <references refid="protocol_8h_1a32d67795a8b119935e98ba0da0d5be5f" compoundref="protocol_8h" startline="24">DELIMITER</references>
+        <references refid="struct_frame_1a380c3287d8bc0718ed7a3b93e303dbe5" compoundref="protocol_8h" startline="67">Frame::direction</references>
+        <references refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" compoundref="protocol_8h" startline="28">ERROR</references>
+        <references refid="protocol_8h_1aa6688ce7f01167c4ecb45cc4c741cca0" compoundref="protocol_8h" startline="22">FRAME_BEGIN</references>
+        <references refid="protocol_8h_1a38fcd5426cc3ba27b4260e4db4299072" compoundref="protocol_8h" startline="23">FRAME_END</references>
+        <references refid="struct_frame_1abd1ff8cb6b3d53706a97ea15727ddd4f" compoundref="protocol_8h" startline="69">Frame::group</references>
+        <references refid="struct_frame_1ae969aefac1bd27476536aae3de4eacee" compoundref="protocol_8h" startline="66">Frame::header</references>
+        <references refid="struct_frame_1a6ad0b81e9434fee37a64535a0c58facb" compoundref="protocol_8h" startline="68">Frame::operationType</references>
+        <references refid="communication_8h_1a752e7cc27f52d4ba064e691b3e240ed8" compoundref="send_8cpp" startline="25" endline="29">sendFrame</references>
+        <references refid="protocol_8h_1a245c34d9f7072236b66e9352a9d3466e" compoundref="utils__converters_8cpp" startline="40" endline="47">stringToOperationType</references>
+        <references refid="utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706" compoundref="utils_8cpp" startline="9" endline="26">uartPrint</references>
+        <references refid="struct_frame_1a6481c04c9c112a41a50c24696454afa8" compoundref="protocol_8h" startline="72">Frame::unit</references>
+        <references refid="struct_frame_1a118ecfcbf5afd93d394f667829adf26a" compoundref="protocol_8h" startline="71">Frame::value</references>
+        <referencedby refid="communication_8h_1a8b9407b2f579031cf4b705f1ac03ac31" compoundref="frame_8cpp" startline="79" endline="91">processFrameData</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_frame" kindref="compound">Frame</ref></type>
+        <definition>Frame buildFrame</definition>
+        <argsstring>(ExecutionResult result, uint8_t group, uint8_t command, const std::string &amp;value, const ValueUnit unitType=ValueUnit::UNDEFINED)</argsstring>
+        <name>buildFrame</name>
+        <param>
+          <type><ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1" kindref="member">ExecutionResult</ref></type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>group</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>command</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>const <ref refid="protocol_8h_1a2d96449e2b52d45b5726af92084e0d8f" kindref="member">ValueUnit</ref></type>
+          <declname>unitType</declname>
+          <defval><ref refid="protocol_8h_1a2d96449e2b52d45b5726af92084e0d8fa0db45d2a4141101bdfe48e3314cfbca3" kindref="member">ValueUnit::UNDEFINED</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="frame_model/communication.h" line="25" column="7" bodyfile="frame_model/frame.cpp" bodystart="113" bodyend="146" declfile="frame_model/communication.h" declline="25" declcolumn="7"/>
+        <references refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a4e062fc2814c180a9e08b1d204ab31bd" compoundref="protocol_8h" startline="35">ANS</references>
+        <references refid="struct_frame_1a2fa1a9d8fa7eb710234eb68bf376e6de" compoundref="protocol_8h" startline="70">Frame::command</references>
+        <references refid="struct_frame_1a380c3287d8bc0718ed7a3b93e303dbe5" compoundref="protocol_8h" startline="67">Frame::direction</references>
+        <references refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047acd22bad976363fdd1bfbf6759fede482" compoundref="protocol_8h" startline="36">ERR</references>
+        <references refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" compoundref="protocol_8h" startline="28">ERROR</references>
+        <references refid="struct_frame_1a30e584ccb03562f0bbd5356562a462c1" compoundref="protocol_8h" startline="73">Frame::footer</references>
+        <references refid="protocol_8h_1aa6688ce7f01167c4ecb45cc4c741cca0" compoundref="protocol_8h" startline="22">FRAME_BEGIN</references>
+        <references refid="protocol_8h_1a38fcd5426cc3ba27b4260e4db4299072" compoundref="protocol_8h" startline="23">FRAME_END</references>
+        <references refid="struct_frame_1abd1ff8cb6b3d53706a97ea15727ddd4f" compoundref="protocol_8h" startline="69">Frame::group</references>
+        <references refid="event__manager_8h_1ad4291fcb880eb5ecb178b53e32f55741" compoundref="event__manager_8h" startline="3">group</references>
+        <references refid="struct_frame_1ae969aefac1bd27476536aae3de4eacee" compoundref="protocol_8h" startline="66">Frame::header</references>
+        <references refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a9517fd0bf8faa655990a4dffe358e13e" compoundref="protocol_8h" startline="37">INF</references>
+        <references refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1a551b723eafd6a31d444fcb2f5920fbd3" compoundref="protocol_8h" startline="29">INFO</references>
+        <references refid="struct_frame_1a6ad0b81e9434fee37a64535a0c58facb" compoundref="protocol_8h" startline="68">Frame::operationType</references>
+        <references refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c" compoundref="protocol_8h" startline="27">SUCCESS</references>
+        <references refid="protocol_8h_1a2d96449e2b52d45b5726af92084e0d8fa0db45d2a4141101bdfe48e3314cfbca3" compoundref="protocol_8h" startline="48">UNDEFINED</references>
+        <references refid="struct_frame_1a6481c04c9c112a41a50c24696454afa8" compoundref="protocol_8h" startline="72">Frame::unit</references>
+        <references refid="struct_frame_1a118ecfcbf5afd93d394f667829adf26a" compoundref="protocol_8h" startline="71">Frame::value</references>
+        <references refid="protocol_8h_1ab4cb9e6b491bd7711c69c9167a2b9286" compoundref="utils__converters_8cpp" startline="14" endline="25">valueUnitTypeToString</references>
+        <referencedby refid="communication_8h_1a8f34bc31494430539db21206f084d39d" compoundref="frame_8cpp" startline="24" endline="71">decodeFrame</referencedby>
+        <referencedby refid="commands_8cpp_1a1907d400d2c8d8d054ba95bcf43276ea" compoundref="commands_8cpp" startline="37" endline="45">executeCommand</referencedby>
+        <referencedby refid="group___g_p_s_commands_1gad12f2e18bdfecbd5b6e8d8a84bb9cd77" compoundref="gps__commands_8cpp" startline="72" endline="154">handleEnableGPSTransparentMode</referencedby>
+        <referencedby refid="group___diagnostic_commands_1ga3a6c6092cd01fd9c13ab429f4a34326d" compoundref="diagnostic__commands_8cpp" startline="70" endline="94">handleEnterBootloaderMode</referencedby>
+        <referencedby refid="group___diagnostic_commands_1ga5ebac5711334cb3584974b2b74556543" compoundref="diagnostic__commands_8cpp" startline="52" endline="60">handleGetBuildVersion</referencedby>
+        <referencedby refid="clock__commands_8cpp_1a6def0bf9e591d66bd98b752f731d44ba" compoundref="clock__commands_8cpp" startline="104" endline="110">handleGetClockDrift</referencedby>
+        <referencedby refid="clock__commands_8cpp_1add8778da60c0dc5c0add2c7b2ccdc57e" compoundref="clock__commands_8cpp" startline="83" endline="89">handleGetClockSyncInterval</referencedby>
+        <referencedby refid="group___power_commands_1ga6fbaf484e68c9561ad7fabef21def37b" compoundref="power__commands_8cpp" startline="131" endline="145">handleGetCurrentChargeSolar</referencedby>
+        <referencedby refid="group___power_commands_1ga83596ea837df6cf7b15e673b95bf524f" compoundref="power__commands_8cpp" startline="159" endline="173">handleGetCurrentChargeTotal</referencedby>
+        <referencedby refid="group___power_commands_1ga3f38c538065bf67dbec1142fdb866d16" compoundref="power__commands_8cpp" startline="103" endline="117">handleGetCurrentChargeUSB</referencedby>
+        <referencedby refid="group___power_commands_1gabd6610f557fe9deaa9f80d9405738226" compoundref="power__commands_8cpp" startline="187" endline="201">handleGetCurrentDraw</referencedby>
+        <referencedby refid="group___event_commands_1ga6f817db327c7b16cf49575635e595004" compoundref="event__commands_8cpp" startline="82" endline="89">handleGetEventCount</referencedby>
+        <referencedby refid="group___g_p_s_commands_1gaf1f6c0fb4266518353e088e8781ed143" compoundref="gps__commands_8cpp" startline="206" endline="230">handleGetGGAData</referencedby>
+        <referencedby refid="group___event_commands_1gad921fe7254d7ec43f16a6fb21f5c385a" compoundref="event__commands_8cpp" startline="29" endline="68">handleGetLastEvents</referencedby>
+        <referencedby refid="clock__commands_8cpp_1a17274560343c34119630b27d88ef475e" compoundref="clock__commands_8cpp" startline="125" endline="131">handleGetLastSyncTime</referencedby>
+        <referencedby refid="group___power_commands_1gafef922e13071e5fb67da78207a9f22a4" compoundref="power__commands_8cpp" startline="21" endline="33">handleGetPowerManagerIDs</referencedby>
+        <referencedby refid="group___g_p_s_commands_1ga71881bd1a0a285e4149db732a3f1b533" compoundref="gps__commands_8cpp" startline="168" endline="192">handleGetRMCData</referencedby>
+        <referencedby refid="clock__commands_8cpp_1acc9239d946ee18d2ff19af2c6a2177f0" compoundref="clock__commands_8cpp" startline="59" endline="65">handleGetTimezoneOffset</referencedby>
+        <referencedby refid="group___power_commands_1ga9f2b608f46080fcdae38a1a8454938b8" compoundref="power__commands_8cpp" startline="75" endline="89">handleGetVoltage5V</referencedby>
+        <referencedby refid="group___power_commands_1gad301b8c13cafa148a6f3e80e9b0bcf1a" compoundref="power__commands_8cpp" startline="47" endline="61">handleGetVoltageBattery</referencedby>
+        <referencedby refid="group___g_p_s_commands_1gaa4c13d7d324ffb354badf45e9ceffb1c" compoundref="gps__commands_8cpp" startline="25" endline="55">handleGPSPowerStatus</referencedby>
+        <referencedby refid="group___diagnostic_commands_1gade74b82cf2c20d93c5e0ce624cd7ca77" compoundref="diagnostic__commands_8cpp" startline="19" endline="42">handleListCommands</referencedby>
+        <referencedby refid="clock__commands_8cpp_1ae4cd7f745d6f9e2cadef70e21d8a9fcb" compoundref="clock__commands_8cpp" startline="112" endline="123">handleSetClockDrift</referencedby>
+        <referencedby refid="clock__commands_8cpp_1a00137f0d4c6a83ee5c0df49c7370fe65" compoundref="clock__commands_8cpp" startline="91" endline="102">handleSetClockSyncInterval</referencedby>
+        <referencedby refid="clock__commands_8cpp_1a9e802e312d0779aab74966074e81eb30" compoundref="clock__commands_8cpp" startline="67" endline="81">handleSetTimezoneOffset</referencedby>
+        <referencedby refid="clock__commands_8cpp_1a1eefb8c4d539d50c787b4db3f6ebb093" compoundref="clock__commands_8cpp" startline="8" endline="57">handleTime</referencedby>
+        <referencedby refid="main_8cpp_1a21af2d50d7779336997d5f3456352431" compoundref="main_8cpp" startline="18" endline="54">initSystems</referencedby>
+        <referencedby refid="main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" compoundref="main_8cpp" startline="58" endline="123">main</referencedby>
+        <referencedby refid="communication_8h_1a8b9407b2f579031cf4b705f1ac03ac31" compoundref="frame_8cpp" startline="79" endline="91">processFrameData</referencedby>
+        <referencedby refid="communication_8h_1a6005ddd6320bebe2a680fa6b8efff6dd" compoundref="frame_8cpp" startline="98" endline="111">sendEventRegister</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="communication_8h_1a6272bef4a482127bfe7c1b50d723d69d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string determineUnit</definition>
+        <argsstring>(uint8_t group, uint8_t command)</argsstring>
+        <name>determineUnit</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>group</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>command</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="frame_model/communication.h" line="26" column="13" declfile="frame_model/communication.h" declline="26" declcolumn="13"/>
+        <references refid="event__manager_8h_1ad4291fcb880eb5ecb178b53e32f55741" compoundref="event__manager_8h" startline="3">group</references>
+        <references refid="communication_8cpp_1a13c45747091f32644e83d65348c61232" compoundref="communication_8cpp" startline="3">outgoing</references>
+      </memberdef>
+      <memberdef kind="function" id="communication_8h_1a752e7cc27f52d4ba064e691b3e240ed8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sendFrame</definition>
+        <argsstring>(const Frame &amp;frame)</argsstring>
+        <name>sendFrame</name>
+        <param>
+          <type>const <ref refid="struct_frame" kindref="compound">Frame</ref> &amp;</type>
+          <declname>frame</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="frame_model/communication.h" line="29" column="6" bodyfile="frame_model/send.cpp" bodystart="25" bodyend="29" declfile="frame_model/communication.h" declline="29" declcolumn="6"/>
+        <references refid="communication_8h_1ab53898fb6f45dfc657837a665a070959" compoundref="frame_8cpp" startline="6" endline="19">encodeFrame</references>
+        <references refid="send_8cpp_1adcc720dc971ce8b237b26df434b65bb2" compoundref="send_8cpp" startline="3" endline="22">sendMessage</references>
+        <referencedby refid="communication_8h_1a8f34bc31494430539db21206f084d39d" compoundref="frame_8cpp" startline="24" endline="71">decodeFrame</referencedby>
+        <referencedby refid="group___diagnostic_commands_1ga3a6c6092cd01fd9c13ab429f4a34326d" compoundref="diagnostic__commands_8cpp" startline="70" endline="94">handleEnterBootloaderMode</referencedby>
+        <referencedby refid="main_8cpp_1a21af2d50d7779336997d5f3456352431" compoundref="main_8cpp" startline="18" endline="54">initSystems</referencedby>
+        <referencedby refid="main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" compoundref="main_8cpp" startline="58" endline="123">main</referencedby>
+        <referencedby refid="communication_8h_1a8b9407b2f579031cf4b705f1ac03ac31" compoundref="frame_8cpp" startline="79" endline="91">processFrameData</referencedby>
+        <referencedby refid="communication_8h_1a6005ddd6320bebe2a680fa6b8efff6dd" compoundref="frame_8cpp" startline="98" endline="111">sendEventRegister</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>COMMUNICATION_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>COMMUNICATION_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="protocol_8h" kindref="compound">protocol.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="event__manager_8h" kindref="compound">event_manager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a520df448c1dc359f42111ac240081975" kindref="member">initializeRadio</ref>();</highlight></codeline>
+<codeline lineno="10" refid="communication_8h_1a877f9c1d3485cf1521bc13996d39c1fb" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a877f9c1d3485cf1521bc13996d39c1fb" kindref="member">sendMessage</ref>(std::string<sp/><ref refid="communication_8cpp_1a13c45747091f32644e83d65348c61232" kindref="member">outgoing</ref>);</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a252a4ea5f222c6879d281cc2f9357b46" kindref="member">sendLargePacket</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t*<sp/>data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>length);</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54817002e33761dc61558b1138749dfb" kindref="member">onReceive</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>packetSize);</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1ac5e175a6a1482f700f9aee0b727b924f" kindref="member">handleUartInput</ref>();</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a8b9407b2f579031cf4b705f1ac03ac31" kindref="member">processFrameData</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>data);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="communication_8h_1a3ea1f464aef22cd9918b6fe75659c535" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a3ea1f464aef22cd9918b6fe75659c535" kindref="member">handleCommandFrame</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_frame" kindref="compound">Frame</ref>&amp;<sp/>frame);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><ref refid="struct_frame" kindref="compound">Frame</ref><sp/><ref refid="communication_8h_1a1907d400d2c8d8d054ba95bcf43276ea" kindref="member">executeCommand</ref>(uint32_t<sp/>commandKey,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>param,<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047" kindref="member">OperationType</ref><sp/>operationType);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a6005ddd6320bebe2a680fa6b8efff6dd" kindref="member">sendEventRegister</ref>();</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal">std::string<sp/><ref refid="communication_8h_1ab53898fb6f45dfc657837a665a070959" kindref="member">encodeFrame</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_frame" kindref="compound">Frame</ref>&amp;<sp/>frame);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><ref refid="struct_frame" kindref="compound">Frame</ref><sp/><ref refid="communication_8h_1a8f34bc31494430539db21206f084d39d" kindref="member">decodeFrame</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>data);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><ref refid="struct_frame" kindref="compound">Frame</ref><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1" kindref="member">ExecutionResult</ref><sp/>result,<sp/>uint8_t<sp/><ref refid="event__manager_8h_1ad4291fcb880eb5ecb178b53e32f55741" kindref="member">group</ref>,<sp/>uint8_t<sp/>command,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>value,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="protocol_8h_1a2d96449e2b52d45b5726af92084e0d8f" kindref="member">ValueUnit</ref><sp/>unitType<sp/><sp/>=<sp/><ref refid="protocol_8h_1a2d96449e2b52d45b5726af92084e0d8fa0db45d2a4141101bdfe48e3314cfbca3" kindref="member">ValueUnit::UNDEFINED</ref>);</highlight></codeline>
+<codeline lineno="26" refid="communication_8h_1a6272bef4a482127bfe7c1b50d723d69d" refkind="member"><highlight class="normal">std::string<sp/><ref refid="communication_8h_1a6272bef4a482127bfe7c1b50d723d69d" kindref="member">determineUnit</ref>(uint8_t<sp/><ref refid="event__manager_8h_1ad4291fcb880eb5ecb178b53e32f55741" kindref="member">group</ref>,<sp/>uint8_t<sp/>command);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a877f9c1d3485cf1521bc13996d39c1fb" kindref="member">sendMessage</ref>(std::string<sp/><ref refid="communication_8cpp_1a13c45747091f32644e83d65348c61232" kindref="member">outgoing</ref>);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a752e7cc27f52d4ba064e691b3e240ed8" kindref="member">sendFrame</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_frame" kindref="compound">Frame</ref>&amp;<sp/>frame);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a252a4ea5f222c6879d281cc2f9357b46" kindref="member">sendLargePacket</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t*<sp/>data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>length);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54817002e33761dc61558b1138749dfb" kindref="member">onReceive</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>packetSize);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1ac5e175a6a1482f700f9aee0b727b924f" kindref="member">handleUartInput</ref>();</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a8b9407b2f579031cf4b705f1ac03ac31" kindref="member">processFrameData</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>data);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="frame_model/communication.h"/>
+  </compounddef>
+</doxygen>

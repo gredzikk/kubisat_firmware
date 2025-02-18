@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__b_m_e280_8h" xml:lang="en-US">
+<title>lib/BME280/BME280.h File Reference</title>
+<indexterm><primary>lib/BME280/BME280.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;cstdint&gt;<?linebreak?>#include &lt;iostream&gt;<?linebreak?>#include &quot;hardware/i2c.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_struct_b_m_e280_calib_param">BME280CalibParam</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_class_b_m_e280">BME280</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

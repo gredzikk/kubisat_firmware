@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="_b_m_e280___w_r_a_p_p_e_r_8cpp" kind="file" language="C++">
+    <compoundname>BME280_WRAPPER.cpp</compoundname>
+    <includes refid="_b_m_e280___w_r_a_p_p_e_r_8h" local="yes">BME280_WRAPPER.h</includes>
+    <incdepgraph>
+      <node id="8">
+        <label>BME280.h</label>
+        <link refid="_b_m_e280_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>lib/BME280/BME280_WRAPPER.cpp</label>
+        <link refid="_b_m_e280___w_r_a_p_p_e_r_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>BME280_WRAPPER.h</label>
+        <link refid="_b_m_e280___w_r_a_p_p_e_r_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>lib/ISensor.h</label>
+        <link refid="_i_sensor_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>cstdint</label>
+      </node>
+      <node id="5">
+        <label>hardware/i2c.h</label>
+      </node>
+      <node id="9">
+        <label>iostream</label>
+      </node>
+      <node id="6">
+        <label>map</label>
+      </node>
+      <node id="7">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_b_m_e280___w_r_a_p_p_e_r_8h" kindref="compound">BME280_WRAPPER.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3" refid="class_b_m_e280_wrapper_1aae6146a4d2637870a28e2cc2391663f7" refkind="member"><highlight class="normal"><ref refid="class_b_m_e280_wrapper_1aae6146a4d2637870a28e2cc2391663f7" kindref="member">BME280Wrapper::BME280Wrapper</ref>(i2c_inst_t*<sp/>i2c)<sp/>:<sp/><ref refid="class_b_m_e280_wrapper_1ae9fee0cb8d5bc7f1b0a953d0ddc5fc09" kindref="member">sensor</ref>(i2c)<sp/>{}</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="class_b_m_e280_wrapper_1a06cd239056ccf58985bd545f684960bd" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_b_m_e280_wrapper_1a06cd239056ccf58985bd545f684960bd" kindref="member">BME280Wrapper::init</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_b_m_e280_wrapper_1ae2d7f4ac2d6e02784ec9a8b5982795f8" kindref="member">initialized</ref><sp/>=<sp/><ref refid="class_b_m_e280_wrapper_1ae9fee0cb8d5bc7f1b0a953d0ddc5fc09" kindref="member">sensor</ref>.init();</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_b_m_e280_wrapper_1ae2d7f4ac2d6e02784ec9a8b5982795f8" kindref="member">initialized</ref>;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="class_b_m_e280_wrapper_1af3e891953ad05fe0b83c0cb51aab2055" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="class_b_m_e280_wrapper_1af3e891953ad05fe0b83c0cb51aab2055" kindref="member">BME280Wrapper::readData</ref>(<ref refid="_i_sensor_8h_1a21b0301bb3eb76855366980212c8ae5e" kindref="member">SensorDataTypeIdentifier</ref><sp/>type)<sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>temp_raw,<sp/>pressure_raw,<sp/>humidity_raw;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_b_m_e280_wrapper_1ae9fee0cb8d5bc7f1b0a953d0ddc5fc09" kindref="member">sensor</ref>.read_raw_all(&amp;temp_raw,<sp/>&amp;pressure_raw,<sp/>&amp;humidity_raw);</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(type)<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="_i_sensor_8h_1a21b0301bb3eb76855366980212c8ae5eab976538812ef6e3e5881e245d5fc3c76" kindref="member">SensorDataTypeIdentifier::TEMPERATURE</ref>:</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_b_m_e280_wrapper_1ae9fee0cb8d5bc7f1b0a953d0ddc5fc09" kindref="member">sensor</ref>.convert_temperature(temp_raw);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="_i_sensor_8h_1a21b0301bb3eb76855366980212c8ae5ea6753182d0065061a189bb834145e8cd1" kindref="member">SensorDataTypeIdentifier::PRESSURE</ref>:</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_b_m_e280_wrapper_1ae9fee0cb8d5bc7f1b0a953d0ddc5fc09" kindref="member">sensor</ref>.convert_pressure(pressure_raw);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="_i_sensor_8h_1a21b0301bb3eb76855366980212c8ae5ea1bfd5cb0758595fd2f392b93a92e8fff" kindref="member">SensorDataTypeIdentifier::HUMIDITY</ref>:</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_b_m_e280_wrapper_1ae9fee0cb8d5bc7f1b0a953d0ddc5fc09" kindref="member">sensor</ref>.convert_humidity(humidity_raw);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0.0f;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="class_b_m_e280_wrapper_1afa864237c62a7cd64d74cf18f9b7a2ac" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_b_m_e280_wrapper_1afa864237c62a7cd64d74cf18f9b7a2ac" kindref="member">BME280Wrapper::isInitialized</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_b_m_e280_wrapper_1ae2d7f4ac2d6e02784ec9a8b5982795f8" kindref="member">initialized</ref>;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="class_b_m_e280_wrapper_1a7863eb6da292da01efdbffc4a93e4453" refkind="member"><highlight class="normal"><ref refid="_i_sensor_8h_1a213c434cb928c4ca22513e2302632435" kindref="member">SensorType</ref><sp/><ref refid="class_b_m_e280_wrapper_1a7863eb6da292da01efdbffc4a93e4453" kindref="member">BME280Wrapper::getType</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="_i_sensor_8h_1a213c434cb928c4ca22513e2302632435a889a65415d92b72cffa7df3f8ecf13f9" kindref="member">SensorType::ENVIRONMENT</ref>;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="class_b_m_e280_wrapper_1aa91a632101408df8031cf90b51ef8e3a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_b_m_e280_wrapper_1aa91a632101408df8031cf90b51ef8e3a" kindref="member">BME280Wrapper::configure</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::map&lt;std::string,<sp/>std::string&gt;&amp;<sp/>config)<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="lib/BME280/BME280_WRAPPER.cpp"/>
+  </compounddef>
+</doxygen>

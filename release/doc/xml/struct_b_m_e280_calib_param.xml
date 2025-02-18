@@ -1,0 +1,286 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="struct_b_m_e280_calib_param" kind="struct" language="C++" prot="public">
+    <compoundname>BME280CalibParam</compoundname>
+    <includes refid="_b_m_e280_8h" local="no">BME280.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_b_m_e280_calib_param_1afbeeeb1ce65458659a5ba34a183920e6" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t BME280CalibParam::dig_t1</definition>
+        <argsstring></argsstring>
+        <name>dig_t1</name>
+        <qualifiedname>BME280CalibParam::dig_t1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/BME280/BME280.h" line="13" column="14" bodyfile="lib/BME280/BME280.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_m_e280_calib_param_1a941c68e822ef43924d09131723141e91" prot="public" static="no" mutable="no">
+        <type>int16_t</type>
+        <definition>int16_t BME280CalibParam::dig_t2</definition>
+        <argsstring></argsstring>
+        <name>dig_t2</name>
+        <qualifiedname>BME280CalibParam::dig_t2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/BME280/BME280.h" line="14" column="14" bodyfile="lib/BME280/BME280.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_m_e280_calib_param_1aca269be642c7d623650b30c8afbaa36d" prot="public" static="no" mutable="no">
+        <type>int16_t</type>
+        <definition>int16_t BME280CalibParam::dig_t3</definition>
+        <argsstring></argsstring>
+        <name>dig_t3</name>
+        <qualifiedname>BME280CalibParam::dig_t3</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/BME280/BME280.h" line="15" column="14" bodyfile="lib/BME280/BME280.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_m_e280_calib_param_1a8917b5f02076019fdfcc3631a74bd5a4" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t BME280CalibParam::dig_p1</definition>
+        <argsstring></argsstring>
+        <name>dig_p1</name>
+        <qualifiedname>BME280CalibParam::dig_p1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/BME280/BME280.h" line="18" column="14" bodyfile="lib/BME280/BME280.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_m_e280_calib_param_1ada88f13a717a1fae02a350564fd9dcb6" prot="public" static="no" mutable="no">
+        <type>int16_t</type>
+        <definition>int16_t BME280CalibParam::dig_p2</definition>
+        <argsstring></argsstring>
+        <name>dig_p2</name>
+        <qualifiedname>BME280CalibParam::dig_p2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/BME280/BME280.h" line="19" column="14" bodyfile="lib/BME280/BME280.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_m_e280_calib_param_1a672a132ba7f8bad5baf71f13cb8fc9a6" prot="public" static="no" mutable="no">
+        <type>int16_t</type>
+        <definition>int16_t BME280CalibParam::dig_p3</definition>
+        <argsstring></argsstring>
+        <name>dig_p3</name>
+        <qualifiedname>BME280CalibParam::dig_p3</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/BME280/BME280.h" line="20" column="14" bodyfile="lib/BME280/BME280.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_m_e280_calib_param_1a4c246ab51ee910992d2478c5ef436d46" prot="public" static="no" mutable="no">
+        <type>int16_t</type>
+        <definition>int16_t BME280CalibParam::dig_p4</definition>
+        <argsstring></argsstring>
+        <name>dig_p4</name>
+        <qualifiedname>BME280CalibParam::dig_p4</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/BME280/BME280.h" line="21" column="14" bodyfile="lib/BME280/BME280.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_m_e280_calib_param_1a9a115f01ee13c0a3c41ff2622e6139e1" prot="public" static="no" mutable="no">
+        <type>int16_t</type>
+        <definition>int16_t BME280CalibParam::dig_p5</definition>
+        <argsstring></argsstring>
+        <name>dig_p5</name>
+        <qualifiedname>BME280CalibParam::dig_p5</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/BME280/BME280.h" line="22" column="14" bodyfile="lib/BME280/BME280.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_m_e280_calib_param_1a7055059520adb0c5589d01576bc0e94e" prot="public" static="no" mutable="no">
+        <type>int16_t</type>
+        <definition>int16_t BME280CalibParam::dig_p6</definition>
+        <argsstring></argsstring>
+        <name>dig_p6</name>
+        <qualifiedname>BME280CalibParam::dig_p6</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/BME280/BME280.h" line="23" column="14" bodyfile="lib/BME280/BME280.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_m_e280_calib_param_1a284ebff265af617c7fb5f89c6786247e" prot="public" static="no" mutable="no">
+        <type>int16_t</type>
+        <definition>int16_t BME280CalibParam::dig_p7</definition>
+        <argsstring></argsstring>
+        <name>dig_p7</name>
+        <qualifiedname>BME280CalibParam::dig_p7</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/BME280/BME280.h" line="24" column="14" bodyfile="lib/BME280/BME280.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_m_e280_calib_param_1a685ef7ec33a5bd9cbcc062ed3b5325d7" prot="public" static="no" mutable="no">
+        <type>int16_t</type>
+        <definition>int16_t BME280CalibParam::dig_p8</definition>
+        <argsstring></argsstring>
+        <name>dig_p8</name>
+        <qualifiedname>BME280CalibParam::dig_p8</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/BME280/BME280.h" line="25" column="14" bodyfile="lib/BME280/BME280.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_m_e280_calib_param_1af2e49680647943c781a8fe80bd88386b" prot="public" static="no" mutable="no">
+        <type>int16_t</type>
+        <definition>int16_t BME280CalibParam::dig_p9</definition>
+        <argsstring></argsstring>
+        <name>dig_p9</name>
+        <qualifiedname>BME280CalibParam::dig_p9</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/BME280/BME280.h" line="26" column="14" bodyfile="lib/BME280/BME280.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_m_e280_calib_param_1a38419a07942da4717394516a883441d7" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t BME280CalibParam::dig_h1</definition>
+        <argsstring></argsstring>
+        <name>dig_h1</name>
+        <qualifiedname>BME280CalibParam::dig_h1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/BME280/BME280.h" line="29" column="14" bodyfile="lib/BME280/BME280.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_m_e280_calib_param_1a87481b9ca1a2cbb278432f576f3e69c3" prot="public" static="no" mutable="no">
+        <type>int16_t</type>
+        <definition>int16_t BME280CalibParam::dig_h2</definition>
+        <argsstring></argsstring>
+        <name>dig_h2</name>
+        <qualifiedname>BME280CalibParam::dig_h2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/BME280/BME280.h" line="30" column="14" bodyfile="lib/BME280/BME280.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_m_e280_calib_param_1afd7a60c148d4caa6cd5a6d0ae82bc6b2" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t BME280CalibParam::dig_h3</definition>
+        <argsstring></argsstring>
+        <name>dig_h3</name>
+        <qualifiedname>BME280CalibParam::dig_h3</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/BME280/BME280.h" line="31" column="14" bodyfile="lib/BME280/BME280.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_m_e280_calib_param_1a110bc26b75614d7798ed2448b167320c" prot="public" static="no" mutable="no">
+        <type>int16_t</type>
+        <definition>int16_t BME280CalibParam::dig_h4</definition>
+        <argsstring></argsstring>
+        <name>dig_h4</name>
+        <qualifiedname>BME280CalibParam::dig_h4</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/BME280/BME280.h" line="32" column="14" bodyfile="lib/BME280/BME280.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_m_e280_calib_param_1af2eac180fdbfe98caa51d2ed77d6e26e" prot="public" static="no" mutable="no">
+        <type>int16_t</type>
+        <definition>int16_t BME280CalibParam::dig_h5</definition>
+        <argsstring></argsstring>
+        <name>dig_h5</name>
+        <qualifiedname>BME280CalibParam::dig_h5</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/BME280/BME280.h" line="33" column="14" bodyfile="lib/BME280/BME280.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_m_e280_calib_param_1a385c601b7cfd409f7174ae298ef77164" prot="public" static="no" mutable="no">
+        <type>int8_t</type>
+        <definition>int8_t BME280CalibParam::dig_h6</definition>
+        <argsstring></argsstring>
+        <name>dig_h6</name>
+        <qualifiedname>BME280CalibParam::dig_h6</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/BME280/BME280.h" line="34" column="14" bodyfile="lib/BME280/BME280.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="lib/BME280/BME280.h" line="11" column="1" bodyfile="lib/BME280/BME280.h" bodystart="11" bodyend="35"/>
+    <listofallmembers>
+      <member refid="struct_b_m_e280_calib_param_1a38419a07942da4717394516a883441d7" prot="public" virt="non-virtual"><scope>BME280CalibParam</scope><name>dig_h1</name></member>
+      <member refid="struct_b_m_e280_calib_param_1a87481b9ca1a2cbb278432f576f3e69c3" prot="public" virt="non-virtual"><scope>BME280CalibParam</scope><name>dig_h2</name></member>
+      <member refid="struct_b_m_e280_calib_param_1afd7a60c148d4caa6cd5a6d0ae82bc6b2" prot="public" virt="non-virtual"><scope>BME280CalibParam</scope><name>dig_h3</name></member>
+      <member refid="struct_b_m_e280_calib_param_1a110bc26b75614d7798ed2448b167320c" prot="public" virt="non-virtual"><scope>BME280CalibParam</scope><name>dig_h4</name></member>
+      <member refid="struct_b_m_e280_calib_param_1af2eac180fdbfe98caa51d2ed77d6e26e" prot="public" virt="non-virtual"><scope>BME280CalibParam</scope><name>dig_h5</name></member>
+      <member refid="struct_b_m_e280_calib_param_1a385c601b7cfd409f7174ae298ef77164" prot="public" virt="non-virtual"><scope>BME280CalibParam</scope><name>dig_h6</name></member>
+      <member refid="struct_b_m_e280_calib_param_1a8917b5f02076019fdfcc3631a74bd5a4" prot="public" virt="non-virtual"><scope>BME280CalibParam</scope><name>dig_p1</name></member>
+      <member refid="struct_b_m_e280_calib_param_1ada88f13a717a1fae02a350564fd9dcb6" prot="public" virt="non-virtual"><scope>BME280CalibParam</scope><name>dig_p2</name></member>
+      <member refid="struct_b_m_e280_calib_param_1a672a132ba7f8bad5baf71f13cb8fc9a6" prot="public" virt="non-virtual"><scope>BME280CalibParam</scope><name>dig_p3</name></member>
+      <member refid="struct_b_m_e280_calib_param_1a4c246ab51ee910992d2478c5ef436d46" prot="public" virt="non-virtual"><scope>BME280CalibParam</scope><name>dig_p4</name></member>
+      <member refid="struct_b_m_e280_calib_param_1a9a115f01ee13c0a3c41ff2622e6139e1" prot="public" virt="non-virtual"><scope>BME280CalibParam</scope><name>dig_p5</name></member>
+      <member refid="struct_b_m_e280_calib_param_1a7055059520adb0c5589d01576bc0e94e" prot="public" virt="non-virtual"><scope>BME280CalibParam</scope><name>dig_p6</name></member>
+      <member refid="struct_b_m_e280_calib_param_1a284ebff265af617c7fb5f89c6786247e" prot="public" virt="non-virtual"><scope>BME280CalibParam</scope><name>dig_p7</name></member>
+      <member refid="struct_b_m_e280_calib_param_1a685ef7ec33a5bd9cbcc062ed3b5325d7" prot="public" virt="non-virtual"><scope>BME280CalibParam</scope><name>dig_p8</name></member>
+      <member refid="struct_b_m_e280_calib_param_1af2e49680647943c781a8fe80bd88386b" prot="public" virt="non-virtual"><scope>BME280CalibParam</scope><name>dig_p9</name></member>
+      <member refid="struct_b_m_e280_calib_param_1afbeeeb1ce65458659a5ba34a183920e6" prot="public" virt="non-virtual"><scope>BME280CalibParam</scope><name>dig_t1</name></member>
+      <member refid="struct_b_m_e280_calib_param_1a941c68e822ef43924d09131723141e91" prot="public" virt="non-virtual"><scope>BME280CalibParam</scope><name>dig_t2</name></member>
+      <member refid="struct_b_m_e280_calib_param_1aca269be642c7d623650b30c8afbaa36d" prot="public" virt="non-virtual"><scope>BME280CalibParam</scope><name>dig_t3</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

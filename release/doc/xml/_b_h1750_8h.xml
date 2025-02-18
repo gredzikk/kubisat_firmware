@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="_b_h1750_8h" kind="file" language="C++">
+    <compoundname>BH1750.h</compoundname>
+    <includes local="yes">hardware/i2c.h</includes>
+    <includedby refid="_b_h1750_8cpp" local="yes">lib/BH1750/BH1750.cpp</includedby>
+    <includedby refid="_b_h1750___w_r_a_p_p_e_r_8h" local="yes">lib/BH1750/BH1750_WRAPPER.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>lib/BH1750/BH1750.h</label>
+        <link refid="_b_h1750_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>hardware/i2c.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="4">
+        <label>includes.h</label>
+        <link refid="includes_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>lib/BH1750/BH1750.cpp</label>
+        <link refid="_b_h1750_8cpp"/>
+      </node>
+      <node id="1">
+        <label>lib/BH1750/BH1750.h</label>
+        <link refid="_b_h1750_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>lib/BH1750/BH1750_WRAPPER.cpp</label>
+        <link refid="_b_h1750___w_r_a_p_p_e_r_8cpp"/>
+      </node>
+      <node id="3">
+        <label>lib/BH1750/BH1750_WRAPPER.h</label>
+        <link refid="_b_h1750___w_r_a_p_p_e_r_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>lib/ISensor.cpp</label>
+        <link refid="_i_sensor_8cpp"/>
+      </node>
+      <node id="5">
+        <label>main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_b_h1750" prot="public">BH1750</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="_b_h1750_8h_1aad341433a609b42d1151895817f1745c" prot="public" static="no">
+        <name>_BH1750_DEVICE_ID</name>
+        <initializer>0xE1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/BH1750/BH1750.h" line="7" column="9" bodyfile="lib/BH1750/BH1750.h" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_b_h1750_8h_1a789aa19af17a7bd05257004f47175178" prot="public" static="no">
+        <name>_BH1750_MTREG_MIN</name>
+        <initializer>31</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/BH1750/BH1750.h" line="8" column="9" bodyfile="lib/BH1750/BH1750.h" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_b_h1750_8h_1aceb598336053a7a1277bb3d098c52db0" prot="public" static="no">
+        <name>_BH1750_MTREG_MAX</name>
+        <initializer>254</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/BH1750/BH1750.h" line="9" column="9" bodyfile="lib/BH1750/BH1750.h" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_b_h1750_8h_1ab60764acdd32eebac725b0d62ee417f4" prot="public" static="no">
+        <name>_BH1750_DEFAULT_MTREG</name>
+        <initializer>69</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/BH1750/BH1750.h" line="10" column="9" bodyfile="lib/BH1750/BH1750.h" bodystart="10" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>__BH1750_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__BH1750_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;hardware/i2c.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Define<sp/>constants</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="_b_h1750_8h_1aad341433a609b42d1151895817f1745c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_BH1750_DEVICE_ID<sp/>0xE1<sp/><sp/></highlight><highlight class="comment">//<sp/>Correct<sp/>content<sp/>of<sp/>WHO_AM_I<sp/>register</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="_b_h1750_8h_1a789aa19af17a7bd05257004f47175178" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_BH1750_MTREG_MIN<sp/>31</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="_b_h1750_8h_1aceb598336053a7a1277bb3d098c52db0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_BH1750_MTREG_MAX<sp/>254</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="_b_h1750_8h_1ab60764acdd32eebac725b0d62ee417f4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_BH1750_DEFAULT_MTREG<sp/>69</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="class_b_h1750" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_b_h1750_1ad3621c02c56c15e4f3d40f0974a376f2" kindref="member">BH1750</ref><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Scoped<sp/>enum<sp/>for<sp/>measurement<sp/>modes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="class_b_h1750_1a8402147d4b96294da6362b538d4827c0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="class_b_h1750_1a8402147d4b96294da6362b538d4827c0" kindref="member">Mode</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="16" refid="class_b_h1750_1a8402147d4b96294da6362b538d4827c0a9d4b69a5f725a5105a480e2e5d67e851" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_b_h1750_1a8402147d4b96294da6362b538d4827c0a9d4b69a5f725a5105a480e2e5d67e851" kindref="member">UNCONFIGURED_POWER_DOWN</ref><sp/>=<sp/>0x00,</highlight></codeline>
+<codeline lineno="17" refid="class_b_h1750_1a8402147d4b96294da6362b538d4827c0a3d6fc432ff9e2d9b890c591179a4401e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_b_h1750_1a8402147d4b96294da6362b538d4827c0a3d6fc432ff9e2d9b890c591179a4401e" kindref="member">POWER_ON</ref><sp/>=<sp/>0x01,</highlight></codeline>
+<codeline lineno="18" refid="class_b_h1750_1a8402147d4b96294da6362b538d4827c0ab5859d8721cfdc0312b2838b9c985bc1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_b_h1750_1a8402147d4b96294da6362b538d4827c0ab5859d8721cfdc0312b2838b9c985bc1" kindref="member">RESET</ref><sp/>=<sp/>0x07,</highlight></codeline>
+<codeline lineno="19" refid="class_b_h1750_1a8402147d4b96294da6362b538d4827c0afd7abdb36f193409d2a88bf176763911" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_b_h1750_1a8402147d4b96294da6362b538d4827c0afd7abdb36f193409d2a88bf176763911" kindref="member">CONTINUOUS_HIGH_RES_MODE</ref><sp/>=<sp/>0x10,</highlight></codeline>
+<codeline lineno="20" refid="class_b_h1750_1a8402147d4b96294da6362b538d4827c0ac12663db8fda5e471cb5b946171a20b1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_b_h1750_1a8402147d4b96294da6362b538d4827c0ac12663db8fda5e471cb5b946171a20b1" kindref="member">CONTINUOUS_HIGH_RES_MODE_2</ref><sp/>=<sp/>0x11,</highlight></codeline>
+<codeline lineno="21" refid="class_b_h1750_1a8402147d4b96294da6362b538d4827c0ac32e5d6f3f1a6561e874a4a8fd60723f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_b_h1750_1a8402147d4b96294da6362b538d4827c0ac32e5d6f3f1a6561e874a4a8fd60723f" kindref="member">CONTINUOUS_LOW_RES_MODE</ref><sp/>=<sp/>0x13,</highlight></codeline>
+<codeline lineno="22" refid="class_b_h1750_1a8402147d4b96294da6362b538d4827c0ae6af2d70de1e4c57254d72b3b1b57e35" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_b_h1750_1a8402147d4b96294da6362b538d4827c0ae6af2d70de1e4c57254d72b3b1b57e35" kindref="member">ONE_TIME_HIGH_RES_MODE</ref><sp/>=<sp/>0x20,</highlight></codeline>
+<codeline lineno="23" refid="class_b_h1750_1a8402147d4b96294da6362b538d4827c0a459f53ea14165ac4c845757c4c93022a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_b_h1750_1a8402147d4b96294da6362b538d4827c0a459f53ea14165ac4c845757c4c93022a" kindref="member">ONE_TIME_HIGH_RES_MODE_2</ref><sp/>=<sp/>0x21,</highlight></codeline>
+<codeline lineno="24" refid="class_b_h1750_1a8402147d4b96294da6362b538d4827c0a4f81ddfb660e4f3e0bc4228c61ff6dc6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_b_h1750_1a8402147d4b96294da6362b538d4827c0a4f81ddfb660e4f3e0bc4228c61ff6dc6" kindref="member">ONE_TIME_LOW_RES_MODE</ref><sp/>=<sp/>0x23</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_b_h1750_1ad3621c02c56c15e4f3d40f0974a376f2" kindref="member">BH1750</ref>(uint8_t<sp/>addr<sp/>=<sp/>0x23);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_b_h1750_1ae0e57ed9ecc08464a6b98b733d420e11" kindref="member">begin</ref>(<ref refid="class_b_h1750_1a8402147d4b96294da6362b538d4827c0" kindref="member">Mode</ref><sp/>mode<sp/>=<sp/><ref refid="class_b_h1750_1a8402147d4b96294da6362b538d4827c0afd7abdb36f193409d2a88bf176763911" kindref="member">Mode::CONTINUOUS_HIGH_RES_MODE</ref>);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_b_h1750_1ab4f497d6aabaa34ba1ace42206bca286" kindref="member">configure</ref>(<ref refid="class_b_h1750_1a8402147d4b96294da6362b538d4827c0" kindref="member">Mode</ref><sp/>mode);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="class_b_h1750_1a15a9940a67c05b9f9a781b032fa4701e" kindref="member">readLightLevel</ref>();</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_b_h1750_1a3208587c6a4e0a6428f53c176c0b2970" kindref="member">write8</ref>(uint8_t<sp/>data);</highlight></codeline>
+<codeline lineno="34" refid="class_b_h1750_1ab332014adec6fccc44f11da4034e788e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="class_b_h1750_1ab332014adec6fccc44f11da4034e788e" kindref="member">_i2c_addr</ref>;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>__BH1750_H__</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="lib/BH1750/BH1750.h"/>
+  </compounddef>
+</doxygen>

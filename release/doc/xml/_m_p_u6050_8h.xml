@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="_m_p_u6050_8h" kind="file" language="C++">
+    <compoundname>MPU6050.h</compoundname>
+    <includedby refid="_m_p_u6050___w_r_a_p_p_e_r_8h" local="yes">lib/MPU6050/MPU6050_WRAPPER.h</includedby>
+    <invincdepgraph>
+      <node id="1">
+        <label>lib/MPU6050/MPU6050.h</label>
+        <link refid="_m_p_u6050_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>lib/MPU6050/MPU6050_WRAPPER.h</label>
+        <link refid="_m_p_u6050___w_r_a_p_p_e_r_8h"/>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="lib/MPU6050/MPU6050.h"/>
+  </compounddef>
+</doxygen>

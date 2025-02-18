@@ -1,0 +1,291 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="event__commands_8cpp" kind="file" language="C++">
+    <compoundname>event_commands.cpp</compoundname>
+    <includes refid="communication_8h" local="yes">communication.h</includes>
+    <includes refid="event__manager_8h" local="yes">event_manager.h</includes>
+    <includes local="no">sstream</includes>
+    <incdepgraph>
+      <node id="24">
+        <label>build_number.h</label>
+        <link refid="build__number_8h"/>
+      </node>
+      <node id="1">
+        <label>commands/event_commands.cpp</label>
+        <link refid="event__commands_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>event_manager.h</label>
+        <link refid="event__manager_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>communication.h</label>
+        <link refid="communication_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>protocol.h</label>
+        <link refid="protocol_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>INA3221.h</label>
+        <link refid="_i_n_a3221_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>LoRa-RP2040.h</label>
+        <link refid="_lo_ra-_r_p2040_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>Print.h</label>
+        <link refid="_print_8h"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>PowerManager.h</label>
+        <link refid="_power_manager_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>pin_config.h</label>
+        <link refid="pin__config_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>cstdint</label>
+      </node>
+      <node id="17">
+        <label>cstdio</label>
+      </node>
+      <node id="18">
+        <label>cstdlib</label>
+      </node>
+      <node id="19">
+        <label>cstring</label>
+      </node>
+      <node id="7">
+        <label>functional</label>
+      </node>
+      <node id="27">
+        <label>hardware/gpio.h</label>
+      </node>
+      <node id="15">
+        <label>hardware/i2c.h</label>
+      </node>
+      <node id="28">
+        <label>hardware/spi.h</label>
+      </node>
+      <node id="22">
+        <label>hardware/uart.h</label>
+      </node>
+      <node id="31">
+        <label>inttypes.h</label>
+      </node>
+      <node id="9">
+        <label>iomanip</label>
+      </node>
+      <node id="14">
+        <label>iostream</label>
+      </node>
+      <node id="6">
+        <label>map</label>
+      </node>
+      <node id="26">
+        <label>pico/binary_info.h</label>
+      </node>
+      <node id="33">
+        <label>pico/mutex.h</label>
+      </node>
+      <node id="16">
+        <label>pico/stdlib.h</label>
+      </node>
+      <node id="34">
+        <label>sstream</label>
+      </node>
+      <node id="11">
+        <label>stdint.h</label>
+      </node>
+      <node id="21">
+        <label>stdio.h</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+      <node id="29">
+        <label>string.h</label>
+      </node>
+      <node id="23">
+        <label>time.h</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="func">
+      <member refid="group___event_commands_1gad921fe7254d7ec43f16a6fb21f5c385a" kind="function"><name>handleGetLastEvents</name></member>
+      <member refid="group___event_commands_1ga6f817db327c7b16cf49575635e595004" kind="function"><name>handleGetEventCount</name></member>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="communication_8h" kindref="compound">communication.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="event__manager_8h" kindref="compound">event_manager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="group___event_commands_1gad921fe7254d7ec43f16a6fb21f5c385a" refkind="member"><highlight class="normal"><ref refid="struct_frame" kindref="compound">Frame</ref><sp/><ref refid="group___event_commands_1gad921fe7254d7ec43f16a6fb21f5c385a" kindref="member">handleGetLastEvents</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>param,<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047" kindref="member">OperationType</ref><sp/>operationType)<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(operationType<sp/>!=<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8" kindref="member">OperationType::GET</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" kindref="member">ExecutionResult::ERROR</ref>,<sp/>5,<sp/>1,<sp/></highlight><highlight class="stringliteral">&quot;INVALID<sp/>OPERATION&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>count<sp/>=<sp/>10;<sp/></highlight><highlight class="comment">//<sp/>Default<sp/>number<sp/>of<sp/>events<sp/>to<sp/>return</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!param.empty())<sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>count<sp/>=<sp/>std::stoul(param);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(count<sp/>==<sp/>0<sp/>||<sp/>count<sp/>&gt;<sp/><ref refid="event__manager_8h_1acc4dda1aaabc9862fe79fd94e0b722bf" kindref="member">EVENT_BUFFER_SIZE</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" kindref="member">ExecutionResult::ERROR</ref>,<sp/>5,<sp/>1,<sp/></highlight><highlight class="stringliteral">&quot;INVALID<sp/>COUNT&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(...)<sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" kindref="member">ExecutionResult::ERROR</ref>,<sp/>5,<sp/>1,<sp/></highlight><highlight class="stringliteral">&quot;INVALID<sp/>PARAMETER&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>std::stringstream<sp/>ss;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>ss<sp/>&lt;&lt;<sp/>std::hex<sp/>&lt;&lt;<sp/>std::uppercase<sp/>&lt;&lt;<sp/>std::setfill(</highlight><highlight class="charliteral">&apos;0&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>available<sp/>=<sp/><ref refid="event__manager_8cpp_1a2a686792b51ec2b9e1b7bfc9faef92f7" kindref="member">eventManager</ref>.getEventCount();</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>toReturn<sp/>=<sp/>std::min(count,<sp/>available);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Start<sp/>from<sp/>the<sp/>most<sp/>recent<sp/>event</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>toReturn;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_event_log" kindref="compound">EventLog</ref>&amp;<sp/></highlight><highlight class="keyword">event</highlight><highlight class="normal"><sp/>=<sp/><ref refid="event__manager_8cpp_1a2a686792b51ec2b9e1b7bfc9faef92f7" kindref="member">eventManager</ref>.getEvent(available<sp/>-<sp/>1<sp/>-<sp/>i);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Format:<sp/>IIIITTTTTTTTGGEE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IIII:<sp/>16-bit<sp/>ID<sp/>(4<sp/>hex<sp/>chars)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TTTTTTTT:<sp/>32-bit<sp/>timestamp<sp/>(8<sp/>hex<sp/>chars)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>GG:<sp/>8-bit<sp/>group<sp/>(2<sp/>hex<sp/>chars)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>EE:<sp/>8-bit<sp/>event<sp/>(2<sp/>hex<sp/>chars)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ss<sp/>&lt;&lt;<sp/>std::setw(4)<sp/>&lt;&lt;<sp/></highlight><highlight class="keyword">event</highlight><highlight class="normal">.id</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::setw(8)<sp/>&lt;&lt;<sp/></highlight><highlight class="keyword">event</highlight><highlight class="normal">.timestamp</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::setw(2)<sp/>&lt;&lt;<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight><highlight class="keyword">event</highlight><highlight class="normal">.group)</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::setw(2)<sp/>&lt;&lt;<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight><highlight class="keyword">event</highlight><highlight class="normal">.event);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>&lt;<sp/>toReturn<sp/>-<sp/>1)<sp/>ss<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;-&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c" kindref="member">ExecutionResult::SUCCESS</ref>,<sp/>5,<sp/>1,<sp/>ss.str());</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="group___event_commands_1ga6f817db327c7b16cf49575635e595004" refkind="member"><highlight class="normal"><ref refid="struct_frame" kindref="compound">Frame</ref><sp/><ref refid="group___event_commands_1ga6f817db327c7b16cf49575635e595004" kindref="member">handleGetEventCount</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>param,<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047" kindref="member">OperationType</ref><sp/>operationType)<sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(operationType<sp/>!=<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8" kindref="member">OperationType::GET</ref><sp/>||<sp/>!param.empty())<sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" kindref="member">ExecutionResult::ERROR</ref>,<sp/>5,<sp/>2,<sp/></highlight><highlight class="stringliteral">&quot;INVALID<sp/>REQUEST&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c" kindref="member">ExecutionResult::SUCCESS</ref>,<sp/>5,<sp/>2,<sp/></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::to_string(<ref refid="event__manager_8cpp_1a2a686792b51ec2b9e1b7bfc9faef92f7" kindref="member">eventManager</ref>.getEventCount()));</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>of<sp/>EventCommands<sp/>group</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="commands/event_commands.cpp"/>
+  </compounddef>
+</doxygen>

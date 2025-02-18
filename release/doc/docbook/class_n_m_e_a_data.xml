@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_n_m_e_a_data" xml:lang="en-US">
+<title>NMEAData Class Reference</title>
+<indexterm><primary>NMEAData</primary></indexterm>
+<para>
+<computeroutput>#include &lt;NMEA_data.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_n_m_e_a_data_1aff10b3badea9258591a2d1eeb601e519">NMEAData</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_n_m_e_a_data_1ace48ac42e9e5af14820ea685b90fcf85">updateRmcTokens</link> (const std::vector&lt; std::string &gt; &amp;tokens)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_n_m_e_a_data_1a8a15909a8db61c8c49e18ddf150ab72c">updateGgaTokens</link> (const std::vector&lt; std::string &gt; &amp;tokens)</para>
+</listitem>
+            <listitem><para>std::vector&lt; std::string &gt; <link linkend="_class_n_m_e_a_data_1a40e87615a984c58bf46242915a288fdc">getRmcTokens</link> () const</para>
+</listitem>
+            <listitem><para>std::vector&lt; std::string &gt; <link linkend="_class_n_m_e_a_data_1af3ac48985760c1b78f503d225ad79028">getGgaTokens</link> () const</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>std::vector&lt; std::string &gt; <link linkend="_class_n_m_e_a_data_1a8010adc7a34a3d04c06c428f28f5b498">rmcTokens</link></para>
+</listitem>
+            <listitem><para>std::vector&lt; std::string &gt; <link linkend="_class_n_m_e_a_data_1a26084e69305d4565dd1372e2004d6c98">ggaTokens</link></para>
+</listitem>
+            <listitem><para>mutex_t <link linkend="_class_n_m_e_a_data_1aa355456dd1bdd1e9af6c37ae9c4ef4f0">rmc_mutex</link></para>
+</listitem>
+            <listitem><para>mutex_t <link linkend="_class_n_m_e_a_data_1afe04b61742fac871746c1c2d4ef0aa17">gga_mutex</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<para>
+Definition at line <link linkend="__n_m_e_a__data_8h_source_1l00009">9</link> of file <link linkend="__n_m_e_a__data_8h_source">NMEA_data.h</link>.</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_class_n_m_e_a_data_1aff10b3badea9258591a2d1eeb601e519"/><section>
+    <title>NMEAData()</title>
+<indexterm><primary>NMEAData</primary><secondary>NMEAData</secondary></indexterm>
+<indexterm><primary>NMEAData</primary><secondary>NMEAData</secondary></indexterm>
+<para><computeroutput>NMEAData::NMEAData ( )</computeroutput></para><para>
+Definition at line <link linkend="__n_m_e_a__data_8cpp_source_1l00005">5</link> of file <link linkend="__n_m_e_a__data_8cpp_source">NMEA_data.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_n_m_e_a_data_1af3ac48985760c1b78f503d225ad79028"/><section>
+    <title>getGgaTokens()</title>
+<indexterm><primary>getGgaTokens</primary><secondary>NMEAData</secondary></indexterm>
+<indexterm><primary>NMEAData</primary><secondary>getGgaTokens</secondary></indexterm>
+<para><computeroutput>std::vector&lt; std::string &gt; NMEAData::getGgaTokens ( ) const</computeroutput></para><para>
+Definition at line <link linkend="__n_m_e_a__data_8cpp_source_1l00029">29</link> of file <link linkend="__n_m_e_a__data_8cpp_source">NMEA_data.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_n_m_e_a_data_1a40e87615a984c58bf46242915a288fdc"/><section>
+    <title>getRmcTokens()</title>
+<indexterm><primary>getRmcTokens</primary><secondary>NMEAData</secondary></indexterm>
+<indexterm><primary>NMEAData</primary><secondary>getRmcTokens</secondary></indexterm>
+<para><computeroutput>std::vector&lt; std::string &gt; NMEAData::getRmcTokens ( ) const</computeroutput></para><para>
+Definition at line <link linkend="__n_m_e_a__data_8cpp_source_1l00022">22</link> of file <link linkend="__n_m_e_a__data_8cpp_source">NMEA_data.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_n_m_e_a_data_1a8a15909a8db61c8c49e18ddf150ab72c"/><section>
+    <title>updateGgaTokens()</title>
+<indexterm><primary>updateGgaTokens</primary><secondary>NMEAData</secondary></indexterm>
+<indexterm><primary>NMEAData</primary><secondary>updateGgaTokens</secondary></indexterm>
+<para><computeroutput>void NMEAData::updateGgaTokens (const std::vector&lt; std::string &gt; &amp; tokens)</computeroutput></para><para>
+Definition at line <link linkend="__n_m_e_a__data_8cpp_source_1l00016">16</link> of file <link linkend="__n_m_e_a__data_8cpp_source">NMEA_data.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_n_m_e_a_data_1ace48ac42e9e5af14820ea685b90fcf85"/><section>
+    <title>updateRmcTokens()</title>
+<indexterm><primary>updateRmcTokens</primary><secondary>NMEAData</secondary></indexterm>
+<indexterm><primary>NMEAData</primary><secondary>updateRmcTokens</secondary></indexterm>
+<para><computeroutput>void NMEAData::updateRmcTokens (const std::vector&lt; std::string &gt; &amp; tokens)</computeroutput></para><para>
+Definition at line <link linkend="__n_m_e_a__data_8cpp_source_1l00010">10</link> of file <link linkend="__n_m_e_a__data_8cpp_source">NMEA_data.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_class_n_m_e_a_data_1afe04b61742fac871746c1c2d4ef0aa17"/><section>
+    <title>gga_mutex</title>
+<indexterm><primary>gga_mutex</primary><secondary>NMEAData</secondary></indexterm>
+<indexterm><primary>NMEAData</primary><secondary>gga_mutex</secondary></indexterm>
+<para><computeroutput>mutex_t NMEAData::gga_mutex<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__n_m_e_a__data_8h_source_1l00022">22</link> of file <link linkend="__n_m_e_a__data_8h_source">NMEA_data.h</link>.</para>
+</section>
+<anchor xml:id="_class_n_m_e_a_data_1a26084e69305d4565dd1372e2004d6c98"/><section>
+    <title>ggaTokens</title>
+<indexterm><primary>ggaTokens</primary><secondary>NMEAData</secondary></indexterm>
+<indexterm><primary>NMEAData</primary><secondary>ggaTokens</secondary></indexterm>
+<para><computeroutput>std::vector&lt;std::string&gt; NMEAData::ggaTokens<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__n_m_e_a__data_8h_source_1l00020">20</link> of file <link linkend="__n_m_e_a__data_8h_source">NMEA_data.h</link>.</para>
+</section>
+<anchor xml:id="_class_n_m_e_a_data_1aa355456dd1bdd1e9af6c37ae9c4ef4f0"/><section>
+    <title>rmc_mutex</title>
+<indexterm><primary>rmc_mutex</primary><secondary>NMEAData</secondary></indexterm>
+<indexterm><primary>NMEAData</primary><secondary>rmc_mutex</secondary></indexterm>
+<para><computeroutput>mutex_t NMEAData::rmc_mutex<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__n_m_e_a__data_8h_source_1l00021">21</link> of file <link linkend="__n_m_e_a__data_8h_source">NMEA_data.h</link>.</para>
+</section>
+<anchor xml:id="_class_n_m_e_a_data_1a8010adc7a34a3d04c06c428f28f5b498"/><section>
+    <title>rmcTokens</title>
+<indexterm><primary>rmcTokens</primary><secondary>NMEAData</secondary></indexterm>
+<indexterm><primary>NMEAData</primary><secondary>rmcTokens</secondary></indexterm>
+<para><computeroutput>std::vector&lt;std::string&gt; NMEAData::rmcTokens<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__n_m_e_a__data_8h_source_1l00019">19</link> of file <link linkend="__n_m_e_a__data_8h_source">NMEA_data.h</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+lib/GPS/NMEA/<link linkend="__n_m_e_a__data_8h">NMEA_data.h</link>lib/GPS/NMEA/<link linkend="__n_m_e_a__data_8cpp">NMEA_data.cpp</link></section>
+</section>

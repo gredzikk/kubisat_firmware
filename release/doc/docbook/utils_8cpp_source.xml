@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_utils_8cpp_source" xml:lang="en-US">
+<title>utils.cpp</title>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_utils_8cpp_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_utils_8h">utils.h</link>&quot;</emphasis>
+<anchor xml:id="_utils_8cpp_source_1l00002"/>00002 <emphasis role="preprocessor">#include&#32;&quot;pico/multicore.h&quot;</emphasis>
+<anchor xml:id="_utils_8cpp_source_1l00003"/>00003 <emphasis role="preprocessor">#include&#32;&quot;pico/sync.h&quot;</emphasis>
+<anchor xml:id="_utils_8cpp_source_1l00004"/>00004 
+<anchor xml:id="_utils_8cpp_source_1l00005"/><link linkend="_utils_8cpp_1a905b7c29adff0a55966dc2bdd1578a6c">00005</link> <emphasis role="preprocessor">#define&#32;LOG_FILENAME&#32;&quot;log.txt&quot;</emphasis>
+<anchor xml:id="_utils_8cpp_source_1l00006"/>00006 
+<anchor xml:id="_utils_8cpp_source_1l00007"/><link linkend="_utils_8cpp_1a1a79e1136e3879e08124c966946cf7b4">00007</link> <emphasis role="keyword">static</emphasis>&#32;mutex_t&#32;<link linkend="_utils_8cpp_1a1a79e1136e3879e08124c966946cf7b4">uart_mutex</link>;
+<anchor xml:id="_utils_8cpp_source_1l00008"/>00008 
+<anchor xml:id="_utils_8cpp_source_1l00009"/><link linkend="_utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706">00009</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706">uartPrint</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;msg,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;logToFile,&#32;uart_inst_t*&#32;uart)&#32;{
+<anchor xml:id="_utils_8cpp_source_1l00010"/>00010 &#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;mutex_inited&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_utils_8cpp_source_1l00011"/>00011 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!mutex_inited)&#32;{
+<anchor xml:id="_utils_8cpp_source_1l00012"/>00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;mutex_init(&amp;<link linkend="_utils_8cpp_1a1a79e1136e3879e08124c966946cf7b4">uart_mutex</link>);
+<anchor xml:id="_utils_8cpp_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;mutex_inited&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="_utils_8cpp_source_1l00014"/>00014 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_utils_8cpp_source_1l00015"/>00015 
+<anchor xml:id="_utils_8cpp_source_1l00016"/>00016 &#32;&#32;&#32;&#32;uint32_t&#32;<link linkend="_event__manager_8h_1ab20b0c7772544cf5d318507f34231fbe">timestamp</link>&#32;=&#32;to_ms_since_boot(get_absolute_time());
+<anchor xml:id="_utils_8cpp_source_1l00017"/>00017 &#32;&#32;&#32;&#32;uint&#32;core_num&#32;=&#32;get_core_num();
+<anchor xml:id="_utils_8cpp_source_1l00018"/>00018 &#32;&#32;&#32;&#32;std::string&#32;msgToSend&#32;=&#32;<emphasis role="stringliteral">&quot;[&quot;</emphasis>&#32;+&#32;std::to_string(<link linkend="_event__manager_8h_1ab20b0c7772544cf5d318507f34231fbe">timestamp</link>)&#32;+&#32;<emphasis role="stringliteral">&quot;ms]&#32;-&#32;Core&#32;&quot;</emphasis>&#32;+&#32;std::to_string(core_num)&#32;+&#32;<emphasis role="stringliteral">&quot;:&#32;&quot;</emphasis>&#32;+&#32;msg&#32;+&#32;<emphasis role="stringliteral">&quot;\r\n&quot;</emphasis>;
+<anchor xml:id="_utils_8cpp_source_1l00019"/>00019 
+<anchor xml:id="_utils_8cpp_source_1l00020"/>00020 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(logToFile)&#32;{
+<anchor xml:id="_utils_8cpp_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;logToFile&#32;=&#32;!logToFile;
+<anchor xml:id="_utils_8cpp_source_1l00022"/>00022 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_utils_8cpp_source_1l00023"/>00023 &#32;&#32;&#32;&#32;mutex_enter_blocking(&amp;<link linkend="_utils_8cpp_1a1a79e1136e3879e08124c966946cf7b4">uart_mutex</link>);
+<anchor xml:id="_utils_8cpp_source_1l00024"/>00024 &#32;&#32;&#32;&#32;uart_puts(uart,&#32;msgToSend.c_str());
+<anchor xml:id="_utils_8cpp_source_1l00025"/>00025 &#32;&#32;&#32;&#32;mutex_exit(&amp;<link linkend="_utils_8cpp_1a1a79e1136e3879e08124c966946cf7b4">uart_mutex</link>);
+<anchor xml:id="_utils_8cpp_source_1l00026"/>00026 }
+<anchor xml:id="_utils_8cpp_source_1l00027"/>00027 
+<anchor xml:id="_utils_8cpp_source_1l00028"/><link linkend="_utils_8cpp_1a662798a1967f4a4ea55257255d0fbbf4">00028</link> uint16_t&#32;<link linkend="_utils_8cpp_1a662798a1967f4a4ea55257255d0fbbf4">crc16</link>(<emphasis role="keyword">const</emphasis>&#32;uint8_t&#32;*data,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;length)&#32;{
+<anchor xml:id="_utils_8cpp_source_1l00029"/>00029 &#32;&#32;&#32;&#32;uint16_t&#32;crc&#32;=&#32;0xFFFF;
+<anchor xml:id="_utils_8cpp_source_1l00030"/>00030 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">size_t</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;length;&#32;i++)&#32;{
+<anchor xml:id="_utils_8cpp_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;crc&#32;^=&#32;data[i];
+<anchor xml:id="_utils_8cpp_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;j&#32;=&#32;0;&#32;j&#32;&lt;&#32;8;&#32;j++)&#32;{
+<anchor xml:id="_utils_8cpp_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(crc&#32;&amp;&#32;0x0001)&#32;{
+<anchor xml:id="_utils_8cpp_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;crc&#32;=&#32;(crc&#32;&gt;&gt;&#32;1)&#32;^&#32;0xA001;
+<anchor xml:id="_utils_8cpp_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+<anchor xml:id="_utils_8cpp_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;crc&#32;&gt;&gt;=&#32;1;
+<anchor xml:id="_utils_8cpp_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_utils_8cpp_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_utils_8cpp_source_1l00039"/>00039 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_utils_8cpp_source_1l00040"/>00040 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;crc;
+<anchor xml:id="_utils_8cpp_source_1l00041"/>00041 }
+</programlisting></section>

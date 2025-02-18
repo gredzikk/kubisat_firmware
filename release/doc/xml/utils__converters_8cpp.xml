@@ -1,0 +1,407 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="utils__converters_8cpp" kind="file" language="C++">
+    <compoundname>utils_converters.cpp</compoundname>
+    <includes refid="communication_8h" local="yes">communication.h</includes>
+    <incdepgraph>
+      <node id="24">
+        <label>build_number.h</label>
+        <link refid="build__number_8h"/>
+      </node>
+      <node id="32">
+        <label>event_manager.h</label>
+        <link refid="event__manager_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>communication.h</label>
+        <link refid="communication_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>protocol.h</label>
+        <link refid="protocol_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>frame_model/utils_converters.cpp</label>
+        <link refid="utils__converters_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>INA3221.h</label>
+        <link refid="_i_n_a3221_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>LoRa-RP2040.h</label>
+        <link refid="_lo_ra-_r_p2040_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>Print.h</label>
+        <link refid="_print_8h"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>PowerManager.h</label>
+        <link refid="_power_manager_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>pin_config.h</label>
+        <link refid="pin__config_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>cstdint</label>
+      </node>
+      <node id="17">
+        <label>cstdio</label>
+      </node>
+      <node id="18">
+        <label>cstdlib</label>
+      </node>
+      <node id="19">
+        <label>cstring</label>
+      </node>
+      <node id="7">
+        <label>functional</label>
+      </node>
+      <node id="27">
+        <label>hardware/gpio.h</label>
+      </node>
+      <node id="15">
+        <label>hardware/i2c.h</label>
+      </node>
+      <node id="28">
+        <label>hardware/spi.h</label>
+      </node>
+      <node id="22">
+        <label>hardware/uart.h</label>
+      </node>
+      <node id="31">
+        <label>inttypes.h</label>
+      </node>
+      <node id="9">
+        <label>iomanip</label>
+      </node>
+      <node id="14">
+        <label>iostream</label>
+      </node>
+      <node id="6">
+        <label>map</label>
+      </node>
+      <node id="26">
+        <label>pico/binary_info.h</label>
+      </node>
+      <node id="33">
+        <label>pico/mutex.h</label>
+      </node>
+      <node id="16">
+        <label>pico/stdlib.h</label>
+      </node>
+      <node id="11">
+        <label>stdint.h</label>
+      </node>
+      <node id="21">
+        <label>stdio.h</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+      <node id="29">
+        <label>string.h</label>
+      </node>
+      <node id="23">
+        <label>time.h</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="utils__converters_8cpp_1a46ff7e9bd427919630557811f44f5473" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string exceptionTypeToString</definition>
+        <argsstring>(ExceptionType type)</argsstring>
+        <name>exceptionTypeToString</name>
+        <param>
+          <type><ref refid="protocol_8h_1a0e0f0f1661d7aeb71ed9698bff6c6383" kindref="member">ExceptionType</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="frame_model/utils_converters.cpp" line="3" column="13" bodyfile="frame_model/utils_converters.cpp" bodystart="3" bodyend="12"/>
+        <references refid="protocol_8h_1a0e0f0f1661d7aeb71ed9698bff6c6383ade918d7abaea4c856c3c64720f3cbb7c" compoundref="protocol_8h" startline="61">INVALID_OPERATION</references>
+        <references refid="protocol_8h_1a0e0f0f1661d7aeb71ed9698bff6c6383a4a775a051faafd7eed30f5a95548729a" compoundref="protocol_8h" startline="60">INVALID_PARAM</references>
+        <references refid="protocol_8h_1a0e0f0f1661d7aeb71ed9698bff6c6383ab50339a10e1de285ac99d4c3990b8693" compoundref="protocol_8h" startline="58">NONE</references>
+        <references refid="protocol_8h_1a0e0f0f1661d7aeb71ed9698bff6c6383a4596302bc1e8ce6e62188e769aac94cf" compoundref="protocol_8h" startline="59">NOT_ALLOWED</references>
+        <references refid="protocol_8h_1a0e0f0f1661d7aeb71ed9698bff6c6383a62c989cb54431f5fa2a775b0ca55bb49" compoundref="protocol_8h" startline="62">PARAM_UNECESSARY</references>
+      </memberdef>
+      <memberdef kind="function" id="utils__converters_8cpp_1ab4cb9e6b491bd7711c69c9167a2b9286" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string valueUnitTypeToString</definition>
+        <argsstring>(ValueUnit unit)</argsstring>
+        <name>valueUnitTypeToString</name>
+        <param>
+          <type><ref refid="protocol_8h_1a2d96449e2b52d45b5726af92084e0d8f" kindref="member">ValueUnit</ref></type>
+          <declname>unit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="frame_model/utils_converters.cpp" line="14" column="13" bodyfile="frame_model/utils_converters.cpp" bodystart="14" bodyend="25"/>
+        <references refid="protocol_8h_1a2d96449e2b52d45b5726af92084e0d8faa97b2c144243b2b9d2c593ec268b62f5" compoundref="protocol_8h" startline="51">BOOL</references>
+        <references refid="protocol_8h_1a2d96449e2b52d45b5726af92084e0d8faa3eb957bd02f4780a599d5ec4464ca46" compoundref="protocol_8h" startline="52">DATETIME</references>
+        <references refid="protocol_8h_1a2d96449e2b52d45b5726af92084e0d8fa1ec9056b2106b66cd5b255ad67fcb671" compoundref="protocol_8h" startline="54">MILIAMP</references>
+        <references refid="protocol_8h_1a2d96449e2b52d45b5726af92084e0d8fa2200becb80f0019c4a2ccecec350d0db" compoundref="protocol_8h" startline="49">SECOND</references>
+        <references refid="protocol_8h_1a2d96449e2b52d45b5726af92084e0d8fa61a96ffcb251bb9bf0abf8fec19d0ea8" compoundref="protocol_8h" startline="53">TEXT</references>
+        <references refid="protocol_8h_1a2d96449e2b52d45b5726af92084e0d8fa0db45d2a4141101bdfe48e3314cfbca3" compoundref="protocol_8h" startline="48">UNDEFINED</references>
+        <references refid="protocol_8h_1a2d96449e2b52d45b5726af92084e0d8fad99987f942ecbf2eea5d50ebf50723e6" compoundref="protocol_8h" startline="50">VOLT</references>
+        <referencedby refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" compoundref="frame_8cpp" startline="113" endline="146">buildFrame</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="utils__converters_8cpp_1a82a11ce999902359454fa904a13ae297" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string operationTypeToString</definition>
+        <argsstring>(OperationType type)</argsstring>
+        <name>operationTypeToString</name>
+        <param>
+          <type><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047" kindref="member">OperationType</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="frame_model/utils_converters.cpp" line="28" column="13" bodyfile="frame_model/utils_converters.cpp" bodystart="28" bodyend="37"/>
+        <references refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a4e062fc2814c180a9e08b1d204ab31bd" compoundref="protocol_8h" startline="35">ANS</references>
+        <references refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047acd22bad976363fdd1bfbf6759fede482" compoundref="protocol_8h" startline="36">ERR</references>
+        <references refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8" compoundref="protocol_8h" startline="33">GET</references>
+        <references refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a9517fd0bf8faa655990a4dffe358e13e" compoundref="protocol_8h" startline="37">INF</references>
+        <references refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a8c52684db8f49511e9b44471716bf164" compoundref="protocol_8h" startline="34">SET</references>
+        <referencedby refid="communication_8h_1ab53898fb6f45dfc657837a665a070959" compoundref="frame_8cpp" startline="6" endline="19">encodeFrame</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="utils__converters_8cpp_1a245c34d9f7072236b66e9352a9d3466e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047" kindref="member">OperationType</ref></type>
+        <definition>OperationType stringToOperationType</definition>
+        <argsstring>(const std::string &amp;str)</argsstring>
+        <name>stringToOperationType</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="frame_model/utils_converters.cpp" line="40" column="15" bodyfile="frame_model/utils_converters.cpp" bodystart="40" bodyend="47"/>
+        <references refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a4e062fc2814c180a9e08b1d204ab31bd" compoundref="protocol_8h" startline="35">ANS</references>
+        <references refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047acd22bad976363fdd1bfbf6759fede482" compoundref="protocol_8h" startline="36">ERR</references>
+        <references refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8" compoundref="protocol_8h" startline="33">GET</references>
+        <references refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a9517fd0bf8faa655990a4dffe358e13e" compoundref="protocol_8h" startline="37">INF</references>
+        <references refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a8c52684db8f49511e9b44471716bf164" compoundref="protocol_8h" startline="34">SET</references>
+        <referencedby refid="communication_8h_1a8f34bc31494430539db21206f084d39d" compoundref="frame_8cpp" startline="24" endline="71">decodeFrame</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="utils__converters_8cpp_1a4d6495102457200a5632a3286331d238" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; uint8_t &gt;</type>
+        <definition>std::vector&lt; uint8_t &gt; hexStringToBytes</definition>
+        <argsstring>(const std::string &amp;hexString)</argsstring>
+        <name>hexStringToBytes</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>hexString</declname>
+        </param>
+        <briefdescription>
+<para>Convert a hex string to a vector of bytes. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>hexString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Hex string to convert </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Vector of bytes </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="frame_model/utils_converters.cpp" line="52" column="13" bodyfile="frame_model/utils_converters.cpp" bodystart="52" bodyend="63"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="communication_8h" kindref="compound">communication.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3" refid="protocol_8h_1a46ff7e9bd427919630557811f44f5473" refkind="member"><highlight class="normal">std::string<sp/><ref refid="utils__converters_8cpp_1a46ff7e9bd427919630557811f44f5473" kindref="member">exceptionTypeToString</ref>(<ref refid="protocol_8h_1a0e0f0f1661d7aeb71ed9698bff6c6383" kindref="member">ExceptionType</ref><sp/>type)<sp/>{</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(type)<sp/>{</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="protocol_8h_1a0e0f0f1661d7aeb71ed9698bff6c6383a4596302bc1e8ce6e62188e769aac94cf" kindref="member">ExceptionType::NOT_ALLOWED</ref>:<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;NOT<sp/>ALLOWED&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="protocol_8h_1a0e0f0f1661d7aeb71ed9698bff6c6383a4a775a051faafd7eed30f5a95548729a" kindref="member">ExceptionType::INVALID_PARAM</ref>:<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;INVALID<sp/>PARAM&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="protocol_8h_1a0e0f0f1661d7aeb71ed9698bff6c6383ade918d7abaea4c856c3c64720f3cbb7c" kindref="member">ExceptionType::INVALID_OPERATION</ref>:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;INVALID<sp/>OPERATION&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="protocol_8h_1a0e0f0f1661d7aeb71ed9698bff6c6383a62c989cb54431f5fa2a775b0ca55bb49" kindref="member">ExceptionType::PARAM_UNECESSARY</ref>:<sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;PARAM<sp/>UNECESSARY&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="protocol_8h_1a0e0f0f1661d7aeb71ed9698bff6c6383ab50339a10e1de285ac99d4c3990b8693" kindref="member">ExceptionType::NONE</ref>:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;NONE&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;UNKNOWN<sp/>EXCEPTION&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="protocol_8h_1ab4cb9e6b491bd7711c69c9167a2b9286" refkind="member"><highlight class="normal">std::string<sp/><ref refid="utils__converters_8cpp_1ab4cb9e6b491bd7711c69c9167a2b9286" kindref="member">valueUnitTypeToString</ref>(<ref refid="protocol_8h_1a2d96449e2b52d45b5726af92084e0d8f" kindref="member">ValueUnit</ref><sp/>unit)<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(unit)<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="protocol_8h_1a2d96449e2b52d45b5726af92084e0d8fa0db45d2a4141101bdfe48e3314cfbca3" kindref="member">ValueUnit::UNDEFINED</ref>:<sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="protocol_8h_1a2d96449e2b52d45b5726af92084e0d8fa2200becb80f0019c4a2ccecec350d0db" kindref="member">ValueUnit::SECOND</ref>:<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;s&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="protocol_8h_1a2d96449e2b52d45b5726af92084e0d8fad99987f942ecbf2eea5d50ebf50723e6" kindref="member">ValueUnit::VOLT</ref>:<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;V&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="protocol_8h_1a2d96449e2b52d45b5726af92084e0d8faa97b2c144243b2b9d2c593ec268b62f5" kindref="member">ValueUnit::BOOL</ref>:<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="protocol_8h_1a2d96449e2b52d45b5726af92084e0d8faa3eb957bd02f4780a599d5ec4464ca46" kindref="member">ValueUnit::DATETIME</ref>:<sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="protocol_8h_1a2d96449e2b52d45b5726af92084e0d8fa61a96ffcb251bb9bf0abf8fec19d0ea8" kindref="member">ValueUnit::TEXT</ref>:<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="protocol_8h_1a2d96449e2b52d45b5726af92084e0d8fa1ec9056b2106b66cd5b255ad67fcb671" kindref="member">ValueUnit::MILIAMP</ref>:<sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;mA&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Function<sp/>to<sp/>convert<sp/>OperationType<sp/>to<sp/>string</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="protocol_8h_1a82a11ce999902359454fa904a13ae297" refkind="member"><highlight class="normal">std::string<sp/><ref refid="utils__converters_8cpp_1a82a11ce999902359454fa904a13ae297" kindref="member">operationTypeToString</ref>(<ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047" kindref="member">OperationType</ref><sp/>type)<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(type)<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8" kindref="member">OperationType::GET</ref>:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;GET&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a8c52684db8f49511e9b44471716bf164" kindref="member">OperationType::SET</ref>:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;SET&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a4e062fc2814c180a9e08b1d204ab31bd" kindref="member">OperationType::ANS</ref>:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;ANS&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047acd22bad976363fdd1bfbf6759fede482" kindref="member">OperationType::ERR</ref>:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;ERR&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a9517fd0bf8faa655990a4dffe358e13e" kindref="member">OperationType::INF</ref>:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;INF&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;UNKNOWN&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Function<sp/>to<sp/>convert<sp/>string<sp/>to<sp/>OperationType</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="protocol_8h_1a245c34d9f7072236b66e9352a9d3466e" refkind="member"><highlight class="normal"><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047" kindref="member">OperationType</ref><sp/><ref refid="utils__converters_8cpp_1a245c34d9f7072236b66e9352a9d3466e" kindref="member">stringToOperationType</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>str)<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(str<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;GET&quot;</highlight><highlight class="normal">)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8" kindref="member">OperationType::GET</ref>;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(str<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;SET&quot;</highlight><highlight class="normal">)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a8c52684db8f49511e9b44471716bf164" kindref="member">OperationType::SET</ref>;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(str<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;ANS&quot;</highlight><highlight class="normal">)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a4e062fc2814c180a9e08b1d204ab31bd" kindref="member">OperationType::ANS</ref>;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(str<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;ERR&quot;</highlight><highlight class="normal">)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047acd22bad976363fdd1bfbf6759fede482" kindref="member">OperationType::ERR</ref>;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(str<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;INF&quot;</highlight><highlight class="normal">)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a9517fd0bf8faa655990a4dffe358e13e" kindref="member">OperationType::INF</ref>;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8" kindref="member">OperationType::GET</ref>;<sp/></highlight><highlight class="comment">//<sp/>Default<sp/>to<sp/>GET</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="protocol_8h_1a4d6495102457200a5632a3286331d238" refkind="member"><highlight class="normal">std::vector&lt;uint8_t&gt;<sp/><ref refid="utils__converters_8cpp_1a4d6495102457200a5632a3286331d238" kindref="member">hexStringToBytes</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>hexString)<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;uint8_t&gt;<sp/>bytes;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>hexString.length();<sp/>i<sp/>+=<sp/>2)<sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>byteString<sp/>=<sp/>hexString.substr(i,<sp/>2);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>byte;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::stringstream<sp/>ss;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ss<sp/>&lt;&lt;<sp/>std::hex<sp/>&lt;&lt;<sp/>byteString;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ss<sp/>&gt;&gt;<sp/>byte;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bytes.push_back(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">uint8_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">byte</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>bytes;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="frame_model/utils_converters.cpp"/>
+  </compounddef>
+</doxygen>

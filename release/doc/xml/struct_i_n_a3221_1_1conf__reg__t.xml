@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="struct_i_n_a3221_1_1conf__reg__t" kind="struct" language="C++" prot="private">
+    <compoundname>INA3221::conf_reg_t</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_i_n_a3221_1_1conf__reg__t_1a663e6b256bd24e6b9161e35a36aac0fc" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t INA3221::conf_reg_t::mode_shunt_en</definition>
+        <argsstring></argsstring>
+        <name>mode_shunt_en</name>
+        <qualifiedname>INA3221::conf_reg_t::mode_shunt_en</qualifiedname>
+        <bitfield>1</bitfield>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/INA3221/INA3221.h" line="77" column="18" bodyfile="lib/INA3221/INA3221.h" bodystart="77" bodyend="-1"/>
+        <referencedby refid="class_i_n_a3221_1a81e01ea764e82831ef3439f44eacc419" compoundref="_i_n_a3221_8cpp" startline="120" endline="126">INA3221::setShuntMeasDisable</referencedby>
+        <referencedby refid="class_i_n_a3221_1a7296fe865ee5f7ddc99eb2149aea22ce" compoundref="_i_n_a3221_8cpp" startline="112" endline="118">INA3221::setShuntMeasEnable</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="struct_i_n_a3221_1_1conf__reg__t_1aec23450c7605d5c0013b8fa27a72056c" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t INA3221::conf_reg_t::mode_bus_en</definition>
+        <argsstring></argsstring>
+        <name>mode_bus_en</name>
+        <qualifiedname>INA3221::conf_reg_t::mode_bus_en</qualifiedname>
+        <bitfield>1</bitfield>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/INA3221/INA3221.h" line="78" column="18" bodyfile="lib/INA3221/INA3221.h" bodystart="78" bodyend="-1"/>
+        <referencedby refid="class_i_n_a3221_1aec3368e9e3fb26d61f4859aef4d1622a" compoundref="_i_n_a3221_8cpp" startline="136" endline="142">INA3221::setBusMeasDisable</referencedby>
+        <referencedby refid="class_i_n_a3221_1a025d641b38dd4483ab3a9e6cd50de504" compoundref="_i_n_a3221_8cpp" startline="128" endline="134">INA3221::setBusMeasEnable</referencedby>
+        <referencedby refid="class_i_n_a3221_1ab1362daa6e137938f34e1fc0d834a86a" compoundref="_i_n_a3221_8cpp" startline="87" endline="94">INA3221::setModePowerDown</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="struct_i_n_a3221_1_1conf__reg__t_1af152fe0cc058165ef37c6986e9d8177f" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t INA3221::conf_reg_t::mode_continious_en</definition>
+        <argsstring></argsstring>
+        <name>mode_continious_en</name>
+        <qualifiedname>INA3221::conf_reg_t::mode_continious_en</qualifiedname>
+        <bitfield>1</bitfield>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/INA3221/INA3221.h" line="79" column="18" bodyfile="lib/INA3221/INA3221.h" bodystart="79" bodyend="-1"/>
+        <referencedby refid="class_i_n_a3221_1a32aa07825afe0f342dbfd5d81c396c40" compoundref="_i_n_a3221_8cpp" startline="96" endline="102">INA3221::setModeContinious</referencedby>
+        <referencedby refid="class_i_n_a3221_1ab1362daa6e137938f34e1fc0d834a86a" compoundref="_i_n_a3221_8cpp" startline="87" endline="94">INA3221::setModePowerDown</referencedby>
+        <referencedby refid="class_i_n_a3221_1a928cf10c0cf6b6d55a860196ec82b51d" compoundref="_i_n_a3221_8cpp" startline="104" endline="110">INA3221::setModeTriggered</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="struct_i_n_a3221_1_1conf__reg__t_1a23045ef81337be493027a335570ac906" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t INA3221::conf_reg_t::shunt_conv_time</definition>
+        <argsstring></argsstring>
+        <name>shunt_conv_time</name>
+        <qualifiedname>INA3221::conf_reg_t::shunt_conv_time</qualifiedname>
+        <bitfield>3</bitfield>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/INA3221/INA3221.h" line="80" column="18" bodyfile="lib/INA3221/INA3221.h" bodystart="80" bodyend="-1"/>
+        <referencedby refid="class_i_n_a3221_1ae0c3b6df34fdb54b770c8ec046cddf6f" compoundref="_i_n_a3221_8cpp" startline="160" endline="166">INA3221::setShuntConversionTime</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="struct_i_n_a3221_1_1conf__reg__t_1ae5d8ffdeff64ebc70c018901b6e45319" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t INA3221::conf_reg_t::bus_conv_time</definition>
+        <argsstring></argsstring>
+        <name>bus_conv_time</name>
+        <qualifiedname>INA3221::conf_reg_t::bus_conv_time</qualifiedname>
+        <bitfield>3</bitfield>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/INA3221/INA3221.h" line="81" column="18" bodyfile="lib/INA3221/INA3221.h" bodystart="81" bodyend="-1"/>
+        <referencedby refid="class_i_n_a3221_1a18dc37e7e320d82427309a954eecbc66" compoundref="_i_n_a3221_8cpp" startline="152" endline="158">INA3221::setBusConversionTime</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="struct_i_n_a3221_1_1conf__reg__t_1a2336f127fcd7bf551db4142c495c54f5" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t INA3221::conf_reg_t::avg_mode</definition>
+        <argsstring></argsstring>
+        <name>avg_mode</name>
+        <qualifiedname>INA3221::conf_reg_t::avg_mode</qualifiedname>
+        <bitfield>3</bitfield>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/INA3221/INA3221.h" line="82" column="18" bodyfile="lib/INA3221/INA3221.h" bodystart="82" bodyend="-1"/>
+        <referencedby refid="class_i_n_a3221_1ac6c7d97118d5f59116ffdde5551fea5d" compoundref="_i_n_a3221_8cpp" startline="144" endline="150">INA3221::setAveragingMode</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="struct_i_n_a3221_1_1conf__reg__t_1a3b03b9771ee7a690d62d6fd4fe644867" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t INA3221::conf_reg_t::ch3_en</definition>
+        <argsstring></argsstring>
+        <name>ch3_en</name>
+        <qualifiedname>INA3221::conf_reg_t::ch3_en</qualifiedname>
+        <bitfield>1</bitfield>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/INA3221/INA3221.h" line="83" column="18" bodyfile="lib/INA3221/INA3221.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_i_n_a3221_1_1conf__reg__t_1a04f0db25a67d43c2ad63dfa5dd2fb1ee" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t INA3221::conf_reg_t::ch2_en</definition>
+        <argsstring></argsstring>
+        <name>ch2_en</name>
+        <qualifiedname>INA3221::conf_reg_t::ch2_en</qualifiedname>
+        <bitfield>1</bitfield>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/INA3221/INA3221.h" line="84" column="18" bodyfile="lib/INA3221/INA3221.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_i_n_a3221_1_1conf__reg__t_1ab763a286b340cd4cda77c7d59411c244" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t INA3221::conf_reg_t::ch1_en</definition>
+        <argsstring></argsstring>
+        <name>ch1_en</name>
+        <qualifiedname>INA3221::conf_reg_t::ch1_en</qualifiedname>
+        <bitfield>1</bitfield>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/INA3221/INA3221.h" line="85" column="18" bodyfile="lib/INA3221/INA3221.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_i_n_a3221_1_1conf__reg__t_1aaa94a05775ef55a4624e85c8ad9ffd4d" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t INA3221::conf_reg_t::reset</definition>
+        <argsstring></argsstring>
+        <name>reset</name>
+        <qualifiedname>INA3221::conf_reg_t::reset</qualifiedname>
+        <bitfield>1</bitfield>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/INA3221/INA3221.h" line="86" column="18" bodyfile="lib/INA3221/INA3221.h" bodystart="86" bodyend="-1"/>
+        <referencedby refid="class_i_n_a3221_1ae6c7cc5bf50be137d0fe29c28e830d40" compoundref="_i_n_a3221_8cpp" startline="79" endline="85">INA3221::reset</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="lib/INA3221/INA3221.h" line="76" column="5" bodyfile="lib/INA3221/INA3221.h" bodystart="76" bodyend="87"/>
+    <listofallmembers>
+      <member refid="struct_i_n_a3221_1_1conf__reg__t_1a2336f127fcd7bf551db4142c495c54f5" prot="public" virt="non-virtual"><scope>INA3221::conf_reg_t</scope><name>avg_mode</name></member>
+      <member refid="struct_i_n_a3221_1_1conf__reg__t_1ae5d8ffdeff64ebc70c018901b6e45319" prot="public" virt="non-virtual"><scope>INA3221::conf_reg_t</scope><name>bus_conv_time</name></member>
+      <member refid="struct_i_n_a3221_1_1conf__reg__t_1ab763a286b340cd4cda77c7d59411c244" prot="public" virt="non-virtual"><scope>INA3221::conf_reg_t</scope><name>ch1_en</name></member>
+      <member refid="struct_i_n_a3221_1_1conf__reg__t_1a04f0db25a67d43c2ad63dfa5dd2fb1ee" prot="public" virt="non-virtual"><scope>INA3221::conf_reg_t</scope><name>ch2_en</name></member>
+      <member refid="struct_i_n_a3221_1_1conf__reg__t_1a3b03b9771ee7a690d62d6fd4fe644867" prot="public" virt="non-virtual"><scope>INA3221::conf_reg_t</scope><name>ch3_en</name></member>
+      <member refid="struct_i_n_a3221_1_1conf__reg__t_1aec23450c7605d5c0013b8fa27a72056c" prot="public" virt="non-virtual"><scope>INA3221::conf_reg_t</scope><name>mode_bus_en</name></member>
+      <member refid="struct_i_n_a3221_1_1conf__reg__t_1af152fe0cc058165ef37c6986e9d8177f" prot="public" virt="non-virtual"><scope>INA3221::conf_reg_t</scope><name>mode_continious_en</name></member>
+      <member refid="struct_i_n_a3221_1_1conf__reg__t_1a663e6b256bd24e6b9161e35a36aac0fc" prot="public" virt="non-virtual"><scope>INA3221::conf_reg_t</scope><name>mode_shunt_en</name></member>
+      <member refid="struct_i_n_a3221_1_1conf__reg__t_1aaa94a05775ef55a4624e85c8ad9ffd4d" prot="public" virt="non-virtual"><scope>INA3221::conf_reg_t</scope><name>reset</name></member>
+      <member refid="struct_i_n_a3221_1_1conf__reg__t_1a23045ef81337be493027a335570ac906" prot="public" virt="non-virtual"><scope>INA3221::conf_reg_t</scope><name>shunt_conv_time</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

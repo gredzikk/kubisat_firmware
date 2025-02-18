@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="_h_m_c5883_l_8cpp" kind="file" language="C++">
+    <compoundname>HMC5883L.cpp</compoundname>
+    <includes refid="_h_m_c5883_l_8h" local="yes">HMC5883L.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>lib/HMC5883L/HMC5883L.cpp</label>
+        <link refid="_h_m_c5883_l_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>HMC5883L.h</label>
+        <link refid="_h_m_c5883_l_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>hardware/i2c.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_h_m_c5883_l_8h" kindref="compound">HMC5883L.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3" refid="class_h_m_c5883_l_1ac94bd9588bfaecdf6d1aa56915799212" refkind="member"><highlight class="normal"><ref refid="class_h_m_c5883_l_1ac94bd9588bfaecdf6d1aa56915799212" kindref="member">HMC5883L::HMC5883L</ref>(i2c_inst_t*<sp/><ref refid="class_h_m_c5883_l_1a5e63fceb40ec1b9427757a4ee206b12f" kindref="member">i2c</ref>,<sp/>uint8_t<sp/><ref refid="class_h_m_c5883_l_1ab0f984a6afb4c434cb32d736a9aaa671" kindref="member">address</ref>)<sp/>:<sp/><ref refid="class_h_m_c5883_l_1a5e63fceb40ec1b9427757a4ee206b12f" kindref="member">i2c</ref>(<ref refid="class_h_m_c5883_l_1a5e63fceb40ec1b9427757a4ee206b12f" kindref="member">i2c</ref>),<sp/><ref refid="class_h_m_c5883_l_1ab0f984a6afb4c434cb32d736a9aaa671" kindref="member">address</ref>(<ref refid="class_h_m_c5883_l_1ab0f984a6afb4c434cb32d736a9aaa671" kindref="member">address</ref>)<sp/>{}</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="class_h_m_c5883_l_1aacf8416e7f9802ccf993b3e6c0dfe17b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_h_m_c5883_l_1aacf8416e7f9802ccf993b3e6c0dfe17b" kindref="member">HMC5883L::init</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Continuous<sp/>measurement<sp/>mode,<sp/>15Hz<sp/>data<sp/>output<sp/>rate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="class_h_m_c5883_l_1a114c069b8221f2780b928063a393a183" kindref="member">writeRegister</ref>(0x00,<sp/>0x70))<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="class_h_m_c5883_l_1a114c069b8221f2780b928063a393a183" kindref="member">writeRegister</ref>(0x01,<sp/>0x20))<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="class_h_m_c5883_l_1a114c069b8221f2780b928063a393a183" kindref="member">writeRegister</ref>(0x02,<sp/>0x00))<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="class_h_m_c5883_l_1a8d34ff9a8ff20e12320df6ce5d64397f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_h_m_c5883_l_1a8d34ff9a8ff20e12320df6ce5d64397f" kindref="member">HMC5883L::read</ref>(int16_t&amp;<sp/>x,<sp/>int16_t&amp;<sp/>y,<sp/>int16_t&amp;<sp/>z)<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62" kindref="member">buffer</ref>[6];</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="class_h_m_c5883_l_1a4a09a4be85064748579e1d44d8f1b305" kindref="member">readRegisters</ref>(0x03,<sp/><ref refid="main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62" kindref="member">buffer</ref>,<sp/>6))<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>x<sp/>=<sp/>(<ref refid="main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62" kindref="member">buffer</ref>[0]<sp/>&lt;&lt;<sp/>8)<sp/>|<sp/><ref refid="main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62" kindref="member">buffer</ref>[1];</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>z<sp/>=<sp/>(<ref refid="main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62" kindref="member">buffer</ref>[2]<sp/>&lt;&lt;<sp/>8)<sp/>|<sp/><ref refid="main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62" kindref="member">buffer</ref>[3];</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>y<sp/>=<sp/>(<ref refid="main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62" kindref="member">buffer</ref>[4]<sp/>&lt;&lt;<sp/>8)<sp/>|<sp/><ref refid="main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62" kindref="member">buffer</ref>[5];</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(x<sp/>&gt;<sp/>32767)<sp/>x<sp/>-=<sp/>65536;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(y<sp/>&gt;<sp/>32767)<sp/>y<sp/>-=<sp/>65536;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(z<sp/>&gt;<sp/>32767)<sp/>z<sp/>-=<sp/>65536;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="class_h_m_c5883_l_1a114c069b8221f2780b928063a393a183" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_h_m_c5883_l_1a114c069b8221f2780b928063a393a183" kindref="member">HMC5883L::writeRegister</ref>(uint8_t<sp/>reg,<sp/>uint8_t<sp/>value)<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62" kindref="member">buffer</ref>[2]<sp/>=<sp/>{reg,<sp/>value};</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>i2c_write_blocking(<ref refid="class_h_m_c5883_l_1a5e63fceb40ec1b9427757a4ee206b12f" kindref="member">i2c</ref>,<sp/><ref refid="class_h_m_c5883_l_1ab0f984a6afb4c434cb32d736a9aaa671" kindref="member">address</ref>,<sp/><ref refid="main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62" kindref="member">buffer</ref>,<sp/>2,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">)<sp/>==<sp/>2;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="class_h_m_c5883_l_1a4a09a4be85064748579e1d44d8f1b305" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_h_m_c5883_l_1a4a09a4be85064748579e1d44d8f1b305" kindref="member">HMC5883L::readRegisters</ref>(uint8_t<sp/>reg,<sp/>uint8_t*<sp/><ref refid="main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62" kindref="member">buffer</ref>,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>length)<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i2c_write_blocking(<ref refid="class_h_m_c5883_l_1a5e63fceb40ec1b9427757a4ee206b12f" kindref="member">i2c</ref>,<sp/><ref refid="class_h_m_c5883_l_1ab0f984a6afb4c434cb32d736a9aaa671" kindref="member">address</ref>,<sp/>&amp;reg,<sp/>1,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>!=<sp/>1)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>i2c_read_blocking(<ref refid="class_h_m_c5883_l_1a5e63fceb40ec1b9427757a4ee206b12f" kindref="member">i2c</ref>,<sp/><ref refid="class_h_m_c5883_l_1ab0f984a6afb4c434cb32d736a9aaa671" kindref="member">address</ref>,<sp/><ref refid="main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62" kindref="member">buffer</ref>,<sp/>length,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">)<sp/>==<sp/>length;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="lib/HMC5883L/HMC5883L.cpp"/>
+  </compounddef>
+</doxygen>

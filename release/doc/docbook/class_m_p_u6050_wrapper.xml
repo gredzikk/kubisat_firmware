@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_m_p_u6050_wrapper" xml:lang="en-US">
+<title>MPU6050Wrapper Class Reference</title>
+<indexterm><primary>MPU6050Wrapper</primary></indexterm>
+<para>
+<computeroutput>#include &lt;MPU6050_WRAPPER.h&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for MPU6050Wrapper:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_m_p_u6050_wrapper.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_m_p_u6050_wrapper_1a6f277b2721235fd28dca313699f87cd6">MPU6050Wrapper</link> ()</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_m_p_u6050_wrapper_1a9c0278899b5d7899fbb5ceb9b2f9e957">init</link> () override</para>
+</listitem>
+            <listitem><para>float <link linkend="_class_m_p_u6050_wrapper_1a80ab2265d434c951fb99f29bdb0e965a">readData</link> (<link linkend="__i_sensor_8h_1a21b0301bb3eb76855366980212c8ae5e">SensorDataTypeIdentifier</link> type) override</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_m_p_u6050_wrapper_1a56ac18f3459bcbfcfcc42c8c1b6a6be7">isInitialized</link> () const override</para>
+</listitem>
+            <listitem><para><link linkend="__i_sensor_8h_1a213c434cb928c4ca22513e2302632435">SensorType</link> <link linkend="_class_m_p_u6050_wrapper_1a922032d7b37976611de3a745e16fafde">getType</link> () const override</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_m_p_u6050_wrapper_1ab8fc4351ba80016c273c3e284dd5e3eb">configure</link> (const std::map&lt; std::string, std::string &gt; &amp;config)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Public Member Functions inherited from <link linkend="_class_i_sensor">ISensor</link>        <itemizedlist>
+            <listitem><para>virtual <link linkend="_class_i_sensor_1adbd5b40ebbf9a78b9845d22dddfac351">~ISensor</link> ()=default</para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>MPU6050 <link linkend="_class_m_p_u6050_wrapper_1abcd0f6b03f36a595e65c8ac1526a69cd">sensor</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_m_p_u6050_wrapper_1a39989e57457ea5c1a230aede7d3f4921">initialized</link> = false</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<para>
+Definition at line <link linkend="__m_p_u6050___w_r_a_p_p_e_r_8h_source_1l00009">9</link> of file <link linkend="__m_p_u6050___w_r_a_p_p_e_r_8h_source">MPU6050_WRAPPER.h</link>.</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_class_m_p_u6050_wrapper_1a6f277b2721235fd28dca313699f87cd6"/><section>
+    <title>MPU6050Wrapper()</title>
+<indexterm><primary>MPU6050Wrapper</primary><secondary>MPU6050Wrapper</secondary></indexterm>
+<indexterm><primary>MPU6050Wrapper</primary><secondary>MPU6050Wrapper</secondary></indexterm>
+<para><computeroutput>MPU6050Wrapper::MPU6050Wrapper ( )</computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_m_p_u6050_wrapper_1ab8fc4351ba80016c273c3e284dd5e3eb"/><section>
+    <title>configure()</title>
+<indexterm><primary>configure</primary><secondary>MPU6050Wrapper</secondary></indexterm>
+<indexterm><primary>MPU6050Wrapper</primary><secondary>configure</secondary></indexterm>
+<para><computeroutput>bool MPU6050Wrapper::configure (const std::map&lt; std::string, std::string &gt; &amp; config)<computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_i_sensor_1aa5fd04ca51fa10cb8d0bcc835b14fb33">ISensor</link>.</para>
+</section>
+<anchor xml:id="_class_m_p_u6050_wrapper_1a922032d7b37976611de3a745e16fafde"/><section>
+    <title>getType()</title>
+<indexterm><primary>getType</primary><secondary>MPU6050Wrapper</secondary></indexterm>
+<indexterm><primary>MPU6050Wrapper</primary><secondary>getType</secondary></indexterm>
+<para><computeroutput><link linkend="__i_sensor_8h_1a213c434cb928c4ca22513e2302632435">SensorType</link> MPU6050Wrapper::getType ( ) const<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_i_sensor_1a649cfa6c1888996f392f401e7d26125c">ISensor</link>.</para>
+</section>
+<anchor xml:id="_class_m_p_u6050_wrapper_1a9c0278899b5d7899fbb5ceb9b2f9e957"/><section>
+    <title>init()</title>
+<indexterm><primary>init</primary><secondary>MPU6050Wrapper</secondary></indexterm>
+<indexterm><primary>MPU6050Wrapper</primary><secondary>init</secondary></indexterm>
+<para><computeroutput>bool MPU6050Wrapper::init ( )<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_i_sensor_1a28051b0215d618d82556c8bb2c0abd29">ISensor</link>.</para>
+</section>
+<anchor xml:id="_class_m_p_u6050_wrapper_1a56ac18f3459bcbfcfcc42c8c1b6a6be7"/><section>
+    <title>isInitialized()</title>
+<indexterm><primary>isInitialized</primary><secondary>MPU6050Wrapper</secondary></indexterm>
+<indexterm><primary>MPU6050Wrapper</primary><secondary>isInitialized</secondary></indexterm>
+<para><computeroutput>bool MPU6050Wrapper::isInitialized ( ) const<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_i_sensor_1a35a720334040ca754deb0931fc6f1b50">ISensor</link>.</para>
+</section>
+<anchor xml:id="_class_m_p_u6050_wrapper_1a80ab2265d434c951fb99f29bdb0e965a"/><section>
+    <title>readData()</title>
+<indexterm><primary>readData</primary><secondary>MPU6050Wrapper</secondary></indexterm>
+<indexterm><primary>MPU6050Wrapper</primary><secondary>readData</secondary></indexterm>
+<para><computeroutput>float MPU6050Wrapper::readData (<link linkend="__i_sensor_8h_1a21b0301bb3eb76855366980212c8ae5e">SensorDataTypeIdentifier</link> type)<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_i_sensor_1ae8363f6253e47aa23d04c07334f49b5d">ISensor</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_class_m_p_u6050_wrapper_1a39989e57457ea5c1a230aede7d3f4921"/><section>
+    <title>initialized</title>
+<indexterm><primary>initialized</primary><secondary>MPU6050Wrapper</secondary></indexterm>
+<indexterm><primary>MPU6050Wrapper</primary><secondary>initialized</secondary></indexterm>
+<para><computeroutput>bool MPU6050Wrapper::initialized = false<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__m_p_u6050___w_r_a_p_p_e_r_8h_source_1l00012">12</link> of file <link linkend="__m_p_u6050___w_r_a_p_p_e_r_8h_source">MPU6050_WRAPPER.h</link>.</para>
+</section>
+<anchor xml:id="_class_m_p_u6050_wrapper_1abcd0f6b03f36a595e65c8ac1526a69cd"/><section>
+    <title>sensor</title>
+<indexterm><primary>sensor</primary><secondary>MPU6050Wrapper</secondary></indexterm>
+<indexterm><primary>MPU6050Wrapper</primary><secondary>sensor</secondary></indexterm>
+<para><computeroutput>MPU6050 MPU6050Wrapper::sensor<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__m_p_u6050___w_r_a_p_p_e_r_8h_source_1l00011">11</link> of file <link linkend="__m_p_u6050___w_r_a_p_p_e_r_8h_source">MPU6050_WRAPPER.h</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+lib/MPU6050/<link linkend="__m_p_u6050___w_r_a_p_p_e_r_8h">MPU6050_WRAPPER.h</link></section>
+</section>

@@ -1,0 +1,237 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__b_m_e280_8cpp_source" xml:lang="en-US">
+<title>BME280.cpp</title>
+<indexterm><primary>lib/BME280/BME280.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__b_m_e280_8cpp_source_1l00001"/>00001 <emphasis role="comment">//&#32;BME280.cpp</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00002"/>00002 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00003"/>00003 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__b_m_e280_8h">BME280.h</link>&quot;</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00004"/>00004 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00005"/>00005 <emphasis role="preprocessor">#include&#32;&lt;iomanip&gt;</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00006"/>00006 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00007"/>00007 <emphasis role="preprocessor">#include&#32;&lt;algorithm&gt;</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00008"/>00008 <emphasis role="preprocessor">#include&#32;&quot;hardware/i2c.h&quot;</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00009"/>00009 <emphasis role="preprocessor">#include&#32;&quot;pico/binary_info.h&quot;</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00010"/>00010 <emphasis role="preprocessor">#include&#32;&quot;pico/stdlib.h&quot;</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00011"/>00011 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00012"/>00012 <emphasis role="comment">//&#32;BME280&#32;(BME280)&#32;Class&#32;Implementation</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00013"/>00013 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00014"/><link linkend="_class_b_m_e280_1a2f0c3415c853ed9303529b75d5d7236b">00014</link> <link linkend="_class_b_m_e280_1a2f0c3415c853ed9303529b75d5d7236b">BME280::BME280</link>(i2c_inst_t*&#32;i2cPort,&#32;uint8_t&#32;address)
+<anchor xml:id="__b_m_e280_8cpp_source_1l00015"/>00015 &#32;&#32;&#32;&#32;:&#32;<link linkend="_class_b_m_e280_1ac402b86b5376fcfebefad1c8cec948b2">i2c_port</link>(i2cPort),&#32;<link linkend="_class_b_m_e280_1ae8a52ae32e8cefd398dedf8913737626">device_addr</link>(address),&#32;<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>{},&#32;<link linkend="_class_b_m_e280_1a34b991139b081ff5ebe7943383ac9a97">initialized</link>(false),&#32;<link linkend="_class_b_m_e280_1ad20f44914b78395f4d4bc64f4a68b369">t_fine</link>(0)&#32;{
+<anchor xml:id="__b_m_e280_8cpp_source_1l00016"/>00016 }
+<anchor xml:id="__b_m_e280_8cpp_source_1l00017"/>00017 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00018"/><link linkend="_class_b_m_e280_1a549f7c534b3c0168148188bca5c30e7b">00018</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_b_m_e280_1a549f7c534b3c0168148188bca5c30e7b">BME280::init</link>()&#32;{
+<anchor xml:id="__b_m_e280_8cpp_source_1l00019"/>00019 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_b_m_e280_1ac402b86b5376fcfebefad1c8cec948b2">i2c_port</link>)&#32;{
+<anchor xml:id="__b_m_e280_8cpp_source_1l00020"/>00020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cerr&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Invalid&#32;I2C&#32;port.\n&quot;</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00022"/>00022 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__b_m_e280_8cpp_source_1l00023"/>00023 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00024"/>00024 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Check&#32;device&#32;ID&#32;to&#32;confirm&#32;it&apos;s&#32;a&#32;BME280</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00025"/>00025 &#32;&#32;&#32;&#32;uint8_t&#32;reg&#32;=&#32;0xD0;&#32;<emphasis role="comment">//&#32;Chip&#32;ID&#32;register</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00026"/>00026 &#32;&#32;&#32;&#32;uint8_t&#32;chip_id&#32;=&#32;0;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00027"/>00027 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;ret&#32;=&#32;i2c_write_blocking(<link linkend="_class_b_m_e280_1ac402b86b5376fcfebefad1c8cec948b2">i2c_port</link>,&#32;<link linkend="_class_b_m_e280_1ae8a52ae32e8cefd398dedf8913737626">device_addr</link>,&#32;&amp;reg,&#32;1,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00028"/>00028 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ret&#32;!=&#32;1)&#32;{
+<anchor xml:id="__b_m_e280_8cpp_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cerr&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Failed&#32;to&#32;write&#32;to&#32;BME280.\n&quot;</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00031"/>00031 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__b_m_e280_8cpp_source_1l00032"/>00032 &#32;&#32;&#32;&#32;ret&#32;=&#32;i2c_read_blocking(<link linkend="_class_b_m_e280_1ac402b86b5376fcfebefad1c8cec948b2">i2c_port</link>,&#32;<link linkend="_class_b_m_e280_1ae8a52ae32e8cefd398dedf8913737626">device_addr</link>,&#32;&amp;chip_id,&#32;1,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00033"/>00033 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ret&#32;!=&#32;1)&#32;{
+<anchor xml:id="__b_m_e280_8cpp_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cerr&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Failed&#32;to&#32;read&#32;chip&#32;ID&#32;from&#32;BME280.\n&quot;</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00036"/>00036 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__b_m_e280_8cpp_source_1l00037"/>00037 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(chip_id&#32;!=&#32;0x60)&#32;{
+<anchor xml:id="__b_m_e280_8cpp_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cerr&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Device&#32;is&#32;not&#32;a&#32;BME280.\n&quot;</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00040"/>00040 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__b_m_e280_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00042"/>00042 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Configure&#32;sensor</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00043"/>00043 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_b_m_e280_1aba168dd8fb74f3b101922c50e60542cb">configure_sensor</link>())&#32;{
+<anchor xml:id="__b_m_e280_8cpp_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cerr&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Failed&#32;to&#32;configure&#32;BME280&#32;sensor.\n&quot;</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00045"/>00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00046"/>00046 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__b_m_e280_8cpp_source_1l00047"/>00047 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00048"/>00048 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Retrieve&#32;calibration&#32;parameters</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00049"/>00049 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_b_m_e280_1a9bdaf8aa0c2a67ab6fd0b611c69753e6">get_calibration_parameters</link>())&#32;{
+<anchor xml:id="__b_m_e280_8cpp_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cerr&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Failed&#32;to&#32;retrieve&#32;calibration&#32;parameters.\n&quot;</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00052"/>00052 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__b_m_e280_8cpp_source_1l00053"/>00053 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00054"/>00054 &#32;&#32;&#32;&#32;<link linkend="_class_b_m_e280_1a34b991139b081ff5ebe7943383ac9a97">initialized</link>&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00055"/>00055 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;BME280&#32;sensor&#32;initialized&#32;successfully.\n&quot;</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00056"/>00056 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00057"/>00057 }
+<anchor xml:id="__b_m_e280_8cpp_source_1l00058"/>00058 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00059"/><link linkend="_class_b_m_e280_1a9a95fc3d574a66657c1ad050e697545c">00059</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_b_m_e280_1a9a95fc3d574a66657c1ad050e697545c">BME280::reset</link>()&#32;{
+<anchor xml:id="__b_m_e280_8cpp_source_1l00060"/>00060 &#32;&#32;&#32;&#32;uint8_t&#32;buf[2]&#32;=&#32;{&#32;<link linkend="_class_b_m_e280_1ae19b16edfdfce1d75578eabb9d42188f">REG_RESET</link>,&#32;0xB6&#32;};
+<anchor xml:id="__b_m_e280_8cpp_source_1l00061"/>00061 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;ret&#32;=&#32;i2c_write_blocking(<link linkend="_class_b_m_e280_1ac402b86b5376fcfebefad1c8cec948b2">i2c_port</link>,&#32;<link linkend="_class_b_m_e280_1ae8a52ae32e8cefd398dedf8913737626">device_addr</link>,&#32;buf,&#32;2,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00062"/>00062 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ret&#32;!=&#32;2)&#32;{
+<anchor xml:id="__b_m_e280_8cpp_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cerr&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Failed&#32;to&#32;reset&#32;BME280&#32;sensor.\n&quot;</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00064"/>00064 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__b_m_e280_8cpp_source_1l00065"/>00065 &#32;&#32;&#32;&#32;sleep_ms(10);&#32;<emphasis role="comment">//&#32;Wait&#32;for&#32;reset&#32;to&#32;complete</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00066"/>00066 }
+<anchor xml:id="__b_m_e280_8cpp_source_1l00067"/>00067 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00068"/><link linkend="_class_b_m_e280_1af22a2c195c0dfb39f457049ffb7e8f09">00068</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_b_m_e280_1af22a2c195c0dfb39f457049ffb7e8f09">BME280::read_raw_all</link>(int32_t*&#32;temperature,&#32;int32_t*&#32;pressure,&#32;int32_t*&#32;humidity)&#32;{
+<anchor xml:id="__b_m_e280_8cpp_source_1l00069"/>00069 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_b_m_e280_1a34b991139b081ff5ebe7943383ac9a97">initialized</link>)&#32;{
+<anchor xml:id="__b_m_e280_8cpp_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cerr&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;BME280&#32;not&#32;initialized.\n&quot;</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00072"/>00072 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__b_m_e280_8cpp_source_1l00073"/>00073 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00074"/>00074 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Define&#32;the&#32;starting&#32;register&#32;address</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00075"/>00075 &#32;&#32;&#32;&#32;uint8_t&#32;start_reg&#32;=&#32;<link linkend="_class_b_m_e280_1a2e17033617efa62019561b3152ccfd5e">REG_PRESSURE_MSB</link>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00076"/>00076 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Total&#32;bytes&#32;to&#32;read:&#32;3&#32;(pressure)&#32;+&#32;3&#32;(temperature)&#32;+&#32;2&#32;(humidity)&#32;=&#32;8</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00077"/>00077 &#32;&#32;&#32;&#32;uint8_t&#32;buf[8]&#32;=&#32;{0};
+<anchor xml:id="__b_m_e280_8cpp_source_1l00078"/>00078 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00079"/>00079 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Write&#32;the&#32;starting&#32;register&#32;address</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00080"/>00080 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;ret&#32;=&#32;i2c_write_blocking(<link linkend="_class_b_m_e280_1ac402b86b5376fcfebefad1c8cec948b2">i2c_port</link>,&#32;<link linkend="_class_b_m_e280_1ae8a52ae32e8cefd398dedf8913737626">device_addr</link>,&#32;&amp;start_reg,&#32;1,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00081"/>00081 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ret&#32;!=&#32;1)&#32;{
+<anchor xml:id="__b_m_e280_8cpp_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cerr&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Failed&#32;to&#32;write&#32;starting&#32;register&#32;address&#32;to&#32;BME280.\n&quot;</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00084"/>00084 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__b_m_e280_8cpp_source_1l00085"/>00085 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00086"/>00086 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Read&#32;data</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00087"/>00087 &#32;&#32;&#32;&#32;ret&#32;=&#32;i2c_read_blocking(<link linkend="_class_b_m_e280_1ac402b86b5376fcfebefad1c8cec948b2">i2c_port</link>,&#32;<link linkend="_class_b_m_e280_1ae8a52ae32e8cefd398dedf8913737626">device_addr</link>,&#32;buf,&#32;8,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00088"/>00088 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ret&#32;!=&#32;8)&#32;{
+<anchor xml:id="__b_m_e280_8cpp_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cerr&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Failed&#32;to&#32;read&#32;data&#32;from&#32;BME280.\n&quot;</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00091"/>00091 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__b_m_e280_8cpp_source_1l00092"/>00092 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00093"/>00093 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Combine&#32;bytes&#32;to&#32;form&#32;raw&#32;values</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00094"/>00094 &#32;&#32;&#32;&#32;*pressure&#32;=&#32;((int32_t)buf[0]&#32;&lt;&lt;&#32;12)&#32;|&#32;((int32_t)buf[1]&#32;&lt;&lt;&#32;4)&#32;|&#32;((int32_t)(buf[2]&#32;&gt;&gt;&#32;4));
+<anchor xml:id="__b_m_e280_8cpp_source_1l00095"/>00095 &#32;&#32;&#32;&#32;*temperature&#32;=&#32;((int32_t)buf[3]&#32;&lt;&lt;&#32;12)&#32;|&#32;((int32_t)buf[4]&#32;&lt;&lt;&#32;4)&#32;|&#32;((int32_t)(buf[5]&#32;&gt;&gt;&#32;4));
+<anchor xml:id="__b_m_e280_8cpp_source_1l00096"/>00096 &#32;&#32;&#32;&#32;*humidity&#32;=&#32;((int32_t)buf[6]&#32;&lt;&lt;&#32;8)&#32;|&#32;(int32_t)buf[7];
+<anchor xml:id="__b_m_e280_8cpp_source_1l00097"/>00097 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00098"/>00098 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00099"/>00099 }
+<anchor xml:id="__b_m_e280_8cpp_source_1l00100"/>00100 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00101"/><link linkend="_class_b_m_e280_1a77faa64e2670bedae42db2aff8bce837">00101</link> <emphasis role="keywordtype">float</emphasis>&#32;<link linkend="_class_b_m_e280_1a77faa64e2670bedae42db2aff8bce837">BME280::convert_temperature</link>(int32_t&#32;temp_raw)<emphasis role="keyword">&#32;const&#32;</emphasis>{
+<anchor xml:id="__b_m_e280_8cpp_source_1l00102"/>00102 &#32;&#32;&#32;&#32;int32_t&#32;var1,&#32;var2;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00103"/>00103 &#32;&#32;&#32;&#32;var1&#32;=&#32;((((temp_raw&#32;&gt;&gt;&#32;3)&#32;-&#32;((int32_t)<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_t1&#32;&lt;&lt;&#32;1)))&#32;*&#32;((int32_t)<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_t2))&#32;&gt;&gt;&#32;11;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00104"/>00104 &#32;&#32;&#32;&#32;var2&#32;=&#32;(((((temp_raw&#32;&gt;&gt;&#32;4)&#32;-&#32;((int32_t)<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_t1))&#32;*&#32;((temp_raw&#32;&gt;&gt;&#32;4)&#32;-&#32;((int32_t)<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_t1)))&#32;&gt;&gt;&#32;12)&#32;*&#32;((int32_t)<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_t3))&#32;&gt;&gt;&#32;14;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00105"/>00105 &#32;&#32;&#32;&#32;<link linkend="_class_b_m_e280_1ad20f44914b78395f4d4bc64f4a68b369">t_fine</link>&#32;=&#32;var1&#32;+&#32;var2;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00106"/>00106 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;T&#32;=&#32;(<link linkend="_class_b_m_e280_1ad20f44914b78395f4d4bc64f4a68b369">t_fine</link>&#32;*&#32;5&#32;+&#32;128)&#32;&gt;&gt;&#32;8;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00107"/>00107 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;T&#32;/&#32;100.0f;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00108"/>00108 }
+<anchor xml:id="__b_m_e280_8cpp_source_1l00109"/>00109 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00110"/><link linkend="_class_b_m_e280_1a132f9daccc10c1b3f973c8740f064f4f">00110</link> <emphasis role="keywordtype">float</emphasis>&#32;<link linkend="_class_b_m_e280_1a132f9daccc10c1b3f973c8740f064f4f">BME280::convert_pressure</link>(int32_t&#32;pressure_raw)<emphasis role="keyword">&#32;const&#32;</emphasis>{
+<anchor xml:id="__b_m_e280_8cpp_source_1l00111"/>00111 &#32;&#32;&#32;&#32;int64_t&#32;var1,&#32;var2,&#32;p;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00112"/>00112 &#32;&#32;&#32;&#32;var1&#32;=&#32;((int64_t)<link linkend="_class_b_m_e280_1ad20f44914b78395f4d4bc64f4a68b369">t_fine</link>)&#32;-&#32;128000;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00113"/>00113 &#32;&#32;&#32;&#32;var2&#32;=&#32;var1&#32;*&#32;var1&#32;*&#32;(int64_t)<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_p6;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00114"/>00114 &#32;&#32;&#32;&#32;var2&#32;=&#32;var2&#32;+&#32;((var1&#32;*&#32;(int64_t)<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_p5)&#32;&lt;&lt;&#32;17);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00115"/>00115 &#32;&#32;&#32;&#32;var2&#32;=&#32;var2&#32;+&#32;(((int64_t)<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_p4)&#32;&lt;&lt;&#32;35);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00116"/>00116 &#32;&#32;&#32;&#32;var1&#32;=&#32;((var1&#32;*&#32;var1&#32;*&#32;(int64_t)<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_p3)&#32;&gt;&gt;&#32;8)&#32;+&#32;((var1&#32;*&#32;(int64_t)<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_p2)&#32;&lt;&lt;&#32;12);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00117"/>00117 &#32;&#32;&#32;&#32;var1&#32;=&#32;((((int64_t)1&#32;&lt;&lt;&#32;47)&#32;+&#32;var1))&#32;*&#32;((int64_t)<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_p1)&#32;&gt;&gt;&#32;33;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00118"/>00118 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00119"/>00119 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(var1&#32;==&#32;0)&#32;{
+<anchor xml:id="__b_m_e280_8cpp_source_1l00120"/>00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0.0f;&#32;<emphasis role="comment">//&#32;avoid&#32;exception&#32;caused&#32;by&#32;division&#32;by&#32;zero</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00121"/>00121 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__b_m_e280_8cpp_source_1l00122"/>00122 &#32;&#32;&#32;&#32;p&#32;=&#32;1048576&#32;-&#32;pressure_raw;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00123"/>00123 &#32;&#32;&#32;&#32;p&#32;=&#32;(((p&#32;&lt;&lt;&#32;31)&#32;-&#32;var2)&#32;*&#32;3125)&#32;/&#32;var1;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00124"/>00124 &#32;&#32;&#32;&#32;var1&#32;=&#32;(((int64_t)<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_p9)&#32;*&#32;(p&#32;&gt;&gt;&#32;13)&#32;*&#32;(p&#32;&gt;&gt;&#32;13))&#32;&gt;&gt;&#32;25;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00125"/>00125 &#32;&#32;&#32;&#32;var2&#32;=&#32;(((int64_t)<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_p8)&#32;*&#32;p)&#32;&gt;&gt;&#32;19;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00126"/>00126 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00127"/>00127 &#32;&#32;&#32;&#32;p&#32;=&#32;((p&#32;+&#32;var1&#32;+&#32;var2)&#32;&gt;&gt;&#32;8)&#32;+&#32;(((int64_t)<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_p7)&#32;&lt;&lt;&#32;4);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00128"/>00128 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(<emphasis role="keywordtype">float</emphasis>)p&#32;/&#32;25600.0f;&#32;<emphasis role="comment">//&#32;in&#32;hPa</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00129"/>00129 }
+<anchor xml:id="__b_m_e280_8cpp_source_1l00130"/>00130 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00131"/><link linkend="_class_b_m_e280_1a54d06d8e21f2d14cd136fdbc9121cb32">00131</link> <emphasis role="keywordtype">float</emphasis>&#32;<link linkend="_class_b_m_e280_1a54d06d8e21f2d14cd136fdbc9121cb32">BME280::convert_humidity</link>(int32_t&#32;humidity_raw)<emphasis role="keyword">&#32;const&#32;</emphasis>{
+<anchor xml:id="__b_m_e280_8cpp_source_1l00132"/>00132 &#32;&#32;&#32;&#32;int32_t&#32;v_x1_u32r;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00133"/>00133 &#32;&#32;&#32;&#32;v_x1_u32r&#32;=&#32;<link linkend="_class_b_m_e280_1ad20f44914b78395f4d4bc64f4a68b369">t_fine</link>&#32;-&#32;76800;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00134"/>00134 &#32;&#32;&#32;&#32;v_x1_u32r&#32;=&#32;(((((humidity_raw&#32;&lt;&lt;&#32;14)&#32;-&#32;((int32_t)<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_h4&#32;&lt;&lt;&#32;20)&#32;-&#32;((int32_t)<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_h5&#32;*&#32;v_x1_u32r))&#32;+&#32;16384)&#32;&gt;&gt;&#32;15)&#32;*
+<anchor xml:id="__b_m_e280_8cpp_source_1l00135"/>00135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(((((((v_x1_u32r&#32;*&#32;(int32_t)<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_h6)&#32;&gt;&gt;&#32;10)&#32;*&#32;(((v_x1_u32r&#32;*&#32;(int32_t)<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_h3)&#32;&gt;&gt;&#32;11)&#32;+&#32;32768))&#32;&gt;&gt;&#32;10)&#32;+&#32;2097152)&#32;*
+<anchor xml:id="__b_m_e280_8cpp_source_1l00136"/>00136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(int32_t)<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_h2&#32;+&#32;8192)&#32;&gt;&gt;&#32;14));
+<anchor xml:id="__b_m_e280_8cpp_source_1l00137"/>00137 &#32;&#32;&#32;&#32;v_x1_u32r&#32;=&#32;std::max(v_x1_u32r,&#32;(int32_t)0);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00138"/>00138 &#32;&#32;&#32;&#32;v_x1_u32r&#32;=&#32;std::min(v_x1_u32r,&#32;(int32_t)419430400);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00139"/>00139 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;h&#32;=&#32;v_x1_u32r&#32;&gt;&gt;&#32;12;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00140"/>00140 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;h&#32;/&#32;1024.0f;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00141"/>00141 }
+<anchor xml:id="__b_m_e280_8cpp_source_1l00142"/>00142 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00143"/><link linkend="_class_b_m_e280_1a9bdaf8aa0c2a67ab6fd0b611c69753e6">00143</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_b_m_e280_1a9bdaf8aa0c2a67ab6fd0b611c69753e6">BME280::get_calibration_parameters</link>()&#32;{
+<anchor xml:id="__b_m_e280_8cpp_source_1l00144"/>00144 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Read&#32;temperature&#32;and&#32;pressure&#32;calibration&#32;data&#32;(0x88&#32;to&#32;0xA1)</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00145"/>00145 &#32;&#32;&#32;&#32;uint8_t&#32;calib_data[26];
+<anchor xml:id="__b_m_e280_8cpp_source_1l00146"/>00146 &#32;&#32;&#32;&#32;uint8_t&#32;reg&#32;=&#32;<link linkend="_class_b_m_e280_1aef2d471c9d214ac18674f634708bf74a">REG_DIG_T1_LSB</link>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00147"/>00147 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;ret&#32;=&#32;i2c_write_blocking(<link linkend="_class_b_m_e280_1ac402b86b5376fcfebefad1c8cec948b2">i2c_port</link>,&#32;<link linkend="_class_b_m_e280_1ae8a52ae32e8cefd398dedf8913737626">device_addr</link>,&#32;&amp;reg,&#32;1,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00148"/>00148 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ret&#32;!=&#32;1)&#32;{
+<anchor xml:id="__b_m_e280_8cpp_source_1l00149"/>00149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cerr&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Failed&#32;to&#32;write&#32;to&#32;BME280.\n&quot;</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00150"/>00150 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00151"/>00151 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__b_m_e280_8cpp_source_1l00152"/>00152 &#32;&#32;&#32;&#32;ret&#32;=&#32;i2c_read_blocking(<link linkend="_class_b_m_e280_1ac402b86b5376fcfebefad1c8cec948b2">i2c_port</link>,&#32;<link linkend="_class_b_m_e280_1ae8a52ae32e8cefd398dedf8913737626">device_addr</link>,&#32;calib_data,&#32;26,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00153"/>00153 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ret&#32;!=&#32;26)&#32;{
+<anchor xml:id="__b_m_e280_8cpp_source_1l00154"/>00154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cerr&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Failed&#32;to&#32;read&#32;calibration&#32;data&#32;from&#32;BME280.\n&quot;</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00155"/>00155 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00156"/>00156 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__b_m_e280_8cpp_source_1l00157"/>00157 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00158"/>00158 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Parse&#32;temperature&#32;calibration&#32;data</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00159"/>00159 &#32;&#32;&#32;&#32;<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_t1&#32;=&#32;(uint16_t)(calib_data[1]&#32;&lt;&lt;&#32;8&#32;|&#32;calib_data[0]);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00160"/>00160 &#32;&#32;&#32;&#32;<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_t2&#32;=&#32;(int16_t)(calib_data[3]&#32;&lt;&lt;&#32;8&#32;|&#32;calib_data[2]);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00161"/>00161 &#32;&#32;&#32;&#32;<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_t3&#32;=&#32;(int16_t)(calib_data[5]&#32;&lt;&lt;&#32;8&#32;|&#32;calib_data[4]);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00162"/>00162 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00163"/>00163 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Parse&#32;pressure&#32;calibration&#32;data</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00164"/>00164 &#32;&#32;&#32;&#32;<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_p1&#32;=&#32;(uint16_t)(calib_data[7]&#32;&lt;&lt;&#32;8&#32;|&#32;calib_data[6]);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00165"/>00165 &#32;&#32;&#32;&#32;<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_p2&#32;=&#32;(int16_t)(calib_data[9]&#32;&lt;&lt;&#32;8&#32;|&#32;calib_data[8]);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00166"/>00166 &#32;&#32;&#32;&#32;<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_p3&#32;=&#32;(int16_t)(calib_data[11]&#32;&lt;&lt;&#32;8&#32;|&#32;calib_data[10]);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00167"/>00167 &#32;&#32;&#32;&#32;<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_p4&#32;=&#32;(int16_t)(calib_data[13]&#32;&lt;&lt;&#32;8&#32;|&#32;calib_data[12]);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00168"/>00168 &#32;&#32;&#32;&#32;<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_p5&#32;=&#32;(int16_t)(calib_data[15]&#32;&lt;&lt;&#32;8&#32;|&#32;calib_data[14]);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00169"/>00169 &#32;&#32;&#32;&#32;<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_p6&#32;=&#32;(int16_t)(calib_data[17]&#32;&lt;&lt;&#32;8&#32;|&#32;calib_data[16]);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00170"/>00170 &#32;&#32;&#32;&#32;<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_p7&#32;=&#32;(int16_t)(calib_data[19]&#32;&lt;&lt;&#32;8&#32;|&#32;calib_data[18]);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00171"/>00171 &#32;&#32;&#32;&#32;<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_p8&#32;=&#32;(int16_t)(calib_data[21]&#32;&lt;&lt;&#32;8&#32;|&#32;calib_data[20]);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00172"/>00172 &#32;&#32;&#32;&#32;<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_p9&#32;=&#32;(int16_t)(calib_data[23]&#32;&lt;&lt;&#32;8&#32;|&#32;calib_data[22]);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00173"/>00173 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00174"/>00174 &#32;&#32;&#32;&#32;<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_h1&#32;=&#32;calib_data[25];
+<anchor xml:id="__b_m_e280_8cpp_source_1l00175"/>00175 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00176"/>00176 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Read&#32;humidity&#32;calibration&#32;data&#32;(0xE1&#32;to&#32;0xE7)</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00177"/>00177 &#32;&#32;&#32;&#32;reg&#32;=&#32;0xE1;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00178"/>00178 &#32;&#32;&#32;&#32;ret&#32;=&#32;i2c_write_blocking(<link linkend="_class_b_m_e280_1ac402b86b5376fcfebefad1c8cec948b2">i2c_port</link>,&#32;<link linkend="_class_b_m_e280_1ae8a52ae32e8cefd398dedf8913737626">device_addr</link>,&#32;&amp;reg,&#32;1,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00179"/>00179 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ret&#32;!=&#32;1)&#32;{
+<anchor xml:id="__b_m_e280_8cpp_source_1l00180"/>00180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cerr&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Failed&#32;to&#32;write&#32;to&#32;BME280&#32;for&#32;humidity&#32;calibration.\n&quot;</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00181"/>00181 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00182"/>00182 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__b_m_e280_8cpp_source_1l00183"/>00183 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00184"/>00184 &#32;&#32;&#32;&#32;uint8_t&#32;hum_calib_data[7];
+<anchor xml:id="__b_m_e280_8cpp_source_1l00185"/>00185 &#32;&#32;&#32;&#32;ret&#32;=&#32;i2c_read_blocking(<link linkend="_class_b_m_e280_1ac402b86b5376fcfebefad1c8cec948b2">i2c_port</link>,&#32;<link linkend="_class_b_m_e280_1ae8a52ae32e8cefd398dedf8913737626">device_addr</link>,&#32;hum_calib_data,&#32;7,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00186"/>00186 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ret&#32;!=&#32;7)&#32;{
+<anchor xml:id="__b_m_e280_8cpp_source_1l00187"/>00187 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cerr&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Failed&#32;to&#32;read&#32;humidity&#32;calibration&#32;data&#32;from&#32;BME280.\n&quot;</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00188"/>00188 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00189"/>00189 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__b_m_e280_8cpp_source_1l00190"/>00190 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00191"/>00191 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Parse&#32;humidity&#32;calibration&#32;data</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00192"/>00192 &#32;&#32;&#32;&#32;<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_h2&#32;=&#32;(int16_t)(hum_calib_data[1]&#32;&lt;&lt;&#32;8&#32;|&#32;hum_calib_data[0]);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00193"/>00193 &#32;&#32;&#32;&#32;<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_h3&#32;=&#32;hum_calib_data[2];
+<anchor xml:id="__b_m_e280_8cpp_source_1l00194"/>00194 &#32;&#32;&#32;&#32;<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_h4&#32;=&#32;(int16_t)((hum_calib_data[3]&#32;&lt;&lt;&#32;4)&#32;|&#32;(hum_calib_data[4]&#32;&amp;&#32;0x0F));
+<anchor xml:id="__b_m_e280_8cpp_source_1l00195"/>00195 &#32;&#32;&#32;&#32;<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_h5&#32;=&#32;(int16_t)((hum_calib_data[5]&#32;&lt;&lt;&#32;4)&#32;|&#32;(hum_calib_data[4]&#32;&gt;&gt;&#32;4));
+<anchor xml:id="__b_m_e280_8cpp_source_1l00196"/>00196 &#32;&#32;&#32;&#32;<link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link>.dig_h6&#32;=&#32;(int8_t)hum_calib_data[6];
+<anchor xml:id="__b_m_e280_8cpp_source_1l00197"/>00197 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00198"/>00198 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00199"/>00199 }
+<anchor xml:id="__b_m_e280_8cpp_source_1l00200"/>00200 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00201"/><link linkend="_class_b_m_e280_1aba168dd8fb74f3b101922c50e60542cb">00201</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_b_m_e280_1aba168dd8fb74f3b101922c50e60542cb">BME280::configure_sensor</link>()&#32;{
+<anchor xml:id="__b_m_e280_8cpp_source_1l00202"/>00202 &#32;&#32;&#32;&#32;uint8_t&#32;buf[2];
+<anchor xml:id="__b_m_e280_8cpp_source_1l00203"/>00203 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00204"/>00204 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Set&#32;humidity&#32;oversampling&#32;(must&#32;be&#32;set&#32;before&#32;ctrl_meas)</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00205"/>00205 &#32;&#32;&#32;&#32;buf[0]&#32;=&#32;<link linkend="_class_b_m_e280_1a79967643d3432d070edb2af1d0082a1f">REG_CTRL_HUM</link>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00206"/>00206 &#32;&#32;&#32;&#32;buf[1]&#32;=&#32;0x05;&#32;<emphasis role="comment">//&#32;Humidity&#32;oversampling&#32;x16</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00207"/>00207 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;ret&#32;=&#32;i2c_write_blocking(<link linkend="_class_b_m_e280_1ac402b86b5376fcfebefad1c8cec948b2">i2c_port</link>,&#32;<link linkend="_class_b_m_e280_1ae8a52ae32e8cefd398dedf8913737626">device_addr</link>,&#32;buf,&#32;2,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00208"/>00208 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ret&#32;!=&#32;2)&#32;{
+<anchor xml:id="__b_m_e280_8cpp_source_1l00209"/>00209 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cerr&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Failed&#32;to&#32;write&#32;CTRL_HUM&#32;to&#32;BME280.\n&quot;</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00210"/>00210 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00211"/>00211 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__b_m_e280_8cpp_source_1l00212"/>00212 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00213"/>00213 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Write&#32;config&#32;register</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00214"/>00214 &#32;&#32;&#32;&#32;buf[0]&#32;=&#32;<link linkend="_class_b_m_e280_1a2b3d50ae8af2aea11c8ed21f1bec4ac8">REG_CONFIG</link>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00215"/>00215 &#32;&#32;&#32;&#32;buf[1]&#32;=&#32;0x00;&#32;<emphasis role="comment">//&#32;Default&#32;settings</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00216"/>00216 &#32;&#32;&#32;&#32;ret&#32;=&#32;i2c_write_blocking(<link linkend="_class_b_m_e280_1ac402b86b5376fcfebefad1c8cec948b2">i2c_port</link>,&#32;<link linkend="_class_b_m_e280_1ae8a52ae32e8cefd398dedf8913737626">device_addr</link>,&#32;buf,&#32;2,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00217"/>00217 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ret&#32;!=&#32;2)&#32;{
+<anchor xml:id="__b_m_e280_8cpp_source_1l00218"/>00218 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cerr&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Failed&#32;to&#32;write&#32;CONFIG&#32;to&#32;BME280.\n&quot;</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00219"/>00219 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00220"/>00220 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__b_m_e280_8cpp_source_1l00221"/>00221 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00222"/>00222 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Write&#32;ctrl_meas&#32;register</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00223"/>00223 &#32;&#32;&#32;&#32;buf[0]&#32;=&#32;<link linkend="_class_b_m_e280_1ab635154b47baca711a2b03fa7d469092">REG_CTRL_MEAS</link>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00224"/>00224 &#32;&#32;&#32;&#32;buf[1]&#32;=&#32;0xB7;&#32;<emphasis role="comment">//&#32;Temp&#32;and&#32;pressure&#32;oversampling&#32;x16,&#32;normal&#32;mode</emphasis>
+<anchor xml:id="__b_m_e280_8cpp_source_1l00225"/>00225 &#32;&#32;&#32;&#32;ret&#32;=&#32;i2c_write_blocking(<link linkend="_class_b_m_e280_1ac402b86b5376fcfebefad1c8cec948b2">i2c_port</link>,&#32;<link linkend="_class_b_m_e280_1ae8a52ae32e8cefd398dedf8913737626">device_addr</link>,&#32;buf,&#32;2,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__b_m_e280_8cpp_source_1l00226"/>00226 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ret&#32;!=2)&#32;{
+<anchor xml:id="__b_m_e280_8cpp_source_1l00227"/>00227 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cerr&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Failed&#32;to&#32;write&#32;CTRL_MEAS&#32;to&#32;BME280.\n&quot;</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00228"/>00228 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00229"/>00229 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__b_m_e280_8cpp_source_1l00230"/>00230 
+<anchor xml:id="__b_m_e280_8cpp_source_1l00231"/>00231 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__b_m_e280_8cpp_source_1l00232"/>00232 }
+</programlisting></section>

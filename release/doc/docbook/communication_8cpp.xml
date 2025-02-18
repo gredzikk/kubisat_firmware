@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_communication_8cpp" xml:lang="en-US">
+<title>frame_model/communication.cpp File Reference</title>
+<indexterm><primary>frame_model/communication.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;communication.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>bool <link linkend="_communication_8cpp_1a520df448c1dc359f42111ac240081975">initializeRadio</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>string <link linkend="_communication_8cpp_1a13c45747091f32644e83d65348c61232">outgoing</link></para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="_communication_8cpp_1a40654cfb6a32f90cfabc24c6a73398c3">msgCount</link> = 0</para>
+</listitem>
+            <listitem><para>long <link linkend="_communication_8cpp_1a2843f69080a5607b99b835cc25627445">lastSendTime</link> = 0</para>
+</listitem>
+            <listitem><para>long <link linkend="_communication_8cpp_1a910147e2cd3d3ef0590509f58c4b2afe">lastReceiveTime</link> = 0</para>
+</listitem>
+            <listitem><para>long <link linkend="_communication_8cpp_1ad56d9179eb2aa95b2115af8e89a20cb6">lastPrintTime</link> = 0</para>
+</listitem>
+            <listitem><para>unsigned long <link linkend="_communication_8cpp_1aaaceac04637cd33a7f3fffdd1711e6c5">interval</link> = 0</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_communication_8cpp_1a520df448c1dc359f42111ac240081975"/><section>
+    <title>initializeRadio()</title>
+<indexterm><primary>initializeRadio</primary><secondary>communication.cpp</secondary></indexterm>
+<indexterm><primary>communication.cpp</primary><secondary>initializeRadio</secondary></indexterm>
+<para><computeroutput>bool initializeRadio ( )</computeroutput></para><para>
+Definition at line <link linkend="_communication_8cpp_source_1l00010">10</link> of file <link linkend="_communication_8cpp_source">communication.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="_communication_8cpp_1aaaceac04637cd33a7f3fffdd1711e6c5"/><section>
+    <title>interval</title>
+<indexterm><primary>interval</primary><secondary>communication.cpp</secondary></indexterm>
+<indexterm><primary>communication.cpp</primary><secondary>interval</secondary></indexterm>
+<para><computeroutput>unsigned long interval = 0</computeroutput></para><para>
+Definition at line <link linkend="_communication_8cpp_source_1l00008">8</link> of file <link linkend="_communication_8cpp_source">communication.cpp</link>.</para>
+</section>
+<anchor xml:id="_communication_8cpp_1ad56d9179eb2aa95b2115af8e89a20cb6"/><section>
+    <title>lastPrintTime</title>
+<indexterm><primary>lastPrintTime</primary><secondary>communication.cpp</secondary></indexterm>
+<indexterm><primary>communication.cpp</primary><secondary>lastPrintTime</secondary></indexterm>
+<para><computeroutput>long lastPrintTime = 0</computeroutput></para><para>
+Definition at line <link linkend="_communication_8cpp_source_1l00007">7</link> of file <link linkend="_communication_8cpp_source">communication.cpp</link>.</para>
+</section>
+<anchor xml:id="_communication_8cpp_1a910147e2cd3d3ef0590509f58c4b2afe"/><section>
+    <title>lastReceiveTime</title>
+<indexterm><primary>lastReceiveTime</primary><secondary>communication.cpp</secondary></indexterm>
+<indexterm><primary>communication.cpp</primary><secondary>lastReceiveTime</secondary></indexterm>
+<para><computeroutput>long lastReceiveTime = 0</computeroutput></para><para>
+Definition at line <link linkend="_communication_8cpp_source_1l00006">6</link> of file <link linkend="_communication_8cpp_source">communication.cpp</link>.</para>
+</section>
+<anchor xml:id="_communication_8cpp_1a2843f69080a5607b99b835cc25627445"/><section>
+    <title>lastSendTime</title>
+<indexterm><primary>lastSendTime</primary><secondary>communication.cpp</secondary></indexterm>
+<indexterm><primary>communication.cpp</primary><secondary>lastSendTime</secondary></indexterm>
+<para><computeroutput>long lastSendTime = 0</computeroutput></para><para>
+Definition at line <link linkend="_communication_8cpp_source_1l00005">5</link> of file <link linkend="_communication_8cpp_source">communication.cpp</link>.</para>
+</section>
+<anchor xml:id="_communication_8cpp_1a40654cfb6a32f90cfabc24c6a73398c3"/><section>
+    <title>msgCount</title>
+<indexterm><primary>msgCount</primary><secondary>communication.cpp</secondary></indexterm>
+<indexterm><primary>communication.cpp</primary><secondary>msgCount</secondary></indexterm>
+<para><computeroutput>uint8_t msgCount = 0</computeroutput></para><para>
+Definition at line <link linkend="_communication_8cpp_source_1l00004">4</link> of file <link linkend="_communication_8cpp_source">communication.cpp</link>.</para>
+</section>
+<anchor xml:id="_communication_8cpp_1a13c45747091f32644e83d65348c61232"/><section>
+    <title>outgoing</title>
+<indexterm><primary>outgoing</primary><secondary>communication.cpp</secondary></indexterm>
+<indexterm><primary>communication.cpp</primary><secondary>outgoing</secondary></indexterm>
+<para><computeroutput>string outgoing</computeroutput></para><para>
+Definition at line <link linkend="_communication_8cpp_source_1l00003">3</link> of file <link linkend="_communication_8cpp_source">communication.cpp</link>.</para>
+</section>
+</section>
+</section>

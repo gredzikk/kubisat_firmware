@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source" xml:lang="en-US">
+<title>HMC5883L_WRAPPER.cpp</title>
+<indexterm><primary>lib/HMC5883L/HMC5883L_WRAPPER.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__h_m_c5883_l___w_r_a_p_p_e_r_8h">HMC5883L_WRAPPER.h</link>&quot;</emphasis>
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00002"/>00002 <emphasis role="preprocessor">#include&#32;&lt;cmath&gt;</emphasis>
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00003"/>00003 <emphasis role="preprocessor">#include&#32;&lt;cstdio&gt;</emphasis>
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00004"/>00004 
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00005"/><link linkend="_class_h_m_c5883_l_wrapper_1af0a0709fd3f48d8343794da5b3ee4f32">00005</link> <link linkend="_class_h_m_c5883_l_wrapper_1af0a0709fd3f48d8343794da5b3ee4f32">HMC5883LWrapper::HMC5883LWrapper</link>(i2c_inst_t*&#32;i2c)&#32;:&#32;<link linkend="_class_h_m_c5883_l_wrapper_1a676ad07965bad428b637c46152b7c6eb">sensor</link>(i2c),&#32;<link linkend="_class_h_m_c5883_l_wrapper_1af52be1c1aad99526965b952521da56f6">initialized</link>(false)&#32;{}
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00006"/>00006 
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00007"/><link linkend="_class_h_m_c5883_l_wrapper_1ab7a5997ae98ed9bc37fdd5ab0afe2fb2">00007</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_h_m_c5883_l_wrapper_1ab7a5997ae98ed9bc37fdd5ab0afe2fb2">HMC5883LWrapper::init</link>()&#32;{
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00008"/>00008 &#32;&#32;&#32;&#32;<link linkend="_class_h_m_c5883_l_wrapper_1af52be1c1aad99526965b952521da56f6">initialized</link>&#32;=&#32;<link linkend="_class_h_m_c5883_l_wrapper_1a676ad07965bad428b637c46152b7c6eb">sensor</link>.init();
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00009"/>00009 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_h_m_c5883_l_wrapper_1af52be1c1aad99526965b952521da56f6">initialized</link>;
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00010"/>00010 }
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00011"/>00011 
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00012"/><link linkend="_class_h_m_c5883_l_wrapper_1a76c63b1af36c160c9e7ebf7dc10f872b">00012</link> <emphasis role="keywordtype">float</emphasis>&#32;<link linkend="_class_h_m_c5883_l_wrapper_1a76c63b1af36c160c9e7ebf7dc10f872b">HMC5883LWrapper::readData</link>(<link linkend="__i_sensor_8h_1a21b0301bb3eb76855366980212c8ae5e">SensorDataTypeIdentifier</link>&#32;type)&#32;{
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00013"/>00013 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_h_m_c5883_l_wrapper_1af52be1c1aad99526965b952521da56f6">initialized</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;0.0f;
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00014"/>00014 
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00015"/>00015 &#32;&#32;&#32;&#32;int16_t&#32;x,&#32;y,&#32;z;
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00016"/>00016 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_h_m_c5883_l_wrapper_1a676ad07965bad428b637c46152b7c6eb">sensor</link>.read(x,&#32;y,&#32;z))&#32;<emphasis role="keywordflow">return</emphasis>&#32;0.0f;
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00017"/>00017 
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00018"/>00018 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;LSB_TO_UT&#32;=&#32;100.0&#32;/&#32;1090.0;
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00019"/>00019 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;x_uT&#32;=&#32;x&#32;*&#32;LSB_TO_UT;
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00020"/>00020 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;y_uT&#32;=&#32;y&#32;*&#32;LSB_TO_UT;
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00021"/>00021 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;z_uT&#32;=&#32;z&#32;*&#32;LSB_TO_UT;
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00022"/>00022 
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00023"/>00023 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">switch</emphasis>&#32;(type)&#32;{
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__i_sensor_8h_1a21b0301bb3eb76855366980212c8ae5ead5a372241abd626a812f95cf96c944fe">SensorDataTypeIdentifier::MAG_FIELD_X</link>:
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;x_uT;
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__i_sensor_8h_1a21b0301bb3eb76855366980212c8ae5ea78f2cbc8bdf1c0b3fd850b61b498aec4">SensorDataTypeIdentifier::MAG_FIELD_Y</link>:
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;y_uT;
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__i_sensor_8h_1a21b0301bb3eb76855366980212c8ae5ea9cbf4039cff07b4022c091d7504fbce3">SensorDataTypeIdentifier::MAG_FIELD_Z</link>:
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;z_uT;
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">default</emphasis>:
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0.0f;
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00032"/>00032 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00033"/>00033 }
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00034"/>00034 
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00035"/><link linkend="_class_h_m_c5883_l_wrapper_1abacf4eeaaff893112e1aa3c20b23ce38">00035</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_h_m_c5883_l_wrapper_1abacf4eeaaff893112e1aa3c20b23ce38">HMC5883LWrapper::isInitialized</link>()<emphasis role="keyword">&#32;const&#32;</emphasis>{
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00036"/>00036 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_h_m_c5883_l_wrapper_1af52be1c1aad99526965b952521da56f6">initialized</link>;
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00037"/>00037 }
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00038"/>00038 
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00039"/><link linkend="_class_h_m_c5883_l_wrapper_1a655c92b4d2040e76636a96f9ba63c56a">00039</link> <link linkend="__i_sensor_8h_1a213c434cb928c4ca22513e2302632435">SensorType</link>&#32;<link linkend="_class_h_m_c5883_l_wrapper_1a655c92b4d2040e76636a96f9ba63c56a">HMC5883LWrapper::getType</link>()<emphasis role="keyword">&#32;const&#32;</emphasis>{
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00040"/>00040 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__i_sensor_8h_1a213c434cb928c4ca22513e2302632435acf29c1440f69cc71f0169036831ef688">SensorType::MAGNETOMETER</link>;
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00041"/>00041 }
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00042"/>00042 
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00043"/><link linkend="_class_h_m_c5883_l_wrapper_1aae28a5412098db267c5f61a638fa3ef6">00043</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_h_m_c5883_l_wrapper_1aae28a5412098db267c5f61a638fa3ef6">HMC5883LWrapper::configure</link>(<emphasis role="keyword">const</emphasis>&#32;std::map&lt;std::string,&#32;std::string&gt;&amp;&#32;config)&#32;{
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00044"/>00044 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Configuration&#32;logic&#32;if&#32;needed</emphasis>
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00045"/>00045 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_1l00046"/>00046 }
+</programlisting></section>

@@ -1,0 +1,758 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__lo_ra-_r_p2040_8cpp_source" xml:lang="en-US">
+<title>LoRa-RP2040.cpp</title>
+<indexterm><primary>lib/LoRa/LoRa-RP2040.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__lo_ra-_r_p2040_8h">LoRa-RP2040.h</link>&quot;</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00002"/>00002 <emphasis role="comment">//&#32;registers</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00003"/><link linkend="__lo_ra-_r_p2040_8cpp_1a8ed1afe4fdc88a0f2626d9ee783e06e5">00003</link> <emphasis role="preprocessor">#define&#32;REG_FIFO&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x00</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00004"/><link linkend="__lo_ra-_r_p2040_8cpp_1a250bcedd7826aa7c25f80654368d0a72">00004</link> <emphasis role="preprocessor">#define&#32;REG_OP_MODE&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x01</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00005"/><link linkend="__lo_ra-_r_p2040_8cpp_1aa9e79eeafee89809ae618e8c1442e24b">00005</link> <emphasis role="preprocessor">#define&#32;REG_FRF_MSB&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x06</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00006"/><link linkend="__lo_ra-_r_p2040_8cpp_1ae2f8700ed3931e4e487e7918c9827571">00006</link> <emphasis role="preprocessor">#define&#32;REG_FRF_MID&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x07</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00007"/><link linkend="__lo_ra-_r_p2040_8cpp_1ad221a315f543118438b59b8ee37f8b09">00007</link> <emphasis role="preprocessor">#define&#32;REG_FRF_LSB&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x08</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00008"/><link linkend="__lo_ra-_r_p2040_8cpp_1af32e257d44b43bf90a535379a12cab17">00008</link> <emphasis role="preprocessor">#define&#32;REG_PA_CONFIG&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x09</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00009"/><link linkend="__lo_ra-_r_p2040_8cpp_1a8acc167ac990f93d8dc07eb908d11521">00009</link> <emphasis role="preprocessor">#define&#32;IRQ_CAD_DETECTED_MASK&#32;&#32;&#32;&#32;0x01</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00010"/><link linkend="__lo_ra-_r_p2040_8cpp_1a4e0e13619868140039378bb218aa5a3b">00010</link> <emphasis role="preprocessor">#define&#32;REG_OCP&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x0b</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00011"/><link linkend="__lo_ra-_r_p2040_8cpp_1ab08aa4c56ad75b3e715a1115330109ca">00011</link> <emphasis role="preprocessor">#define&#32;REG_LNA&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x0c</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00012"/><link linkend="__lo_ra-_r_p2040_8cpp_1aca372e6e19dfb0d0793801b0bc3734f2">00012</link> <emphasis role="preprocessor">#define&#32;IRQ_CAD_DONE_MASK&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x04</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00013"/><link linkend="__lo_ra-_r_p2040_8cpp_1af5e9aa6c1a6e12df72f48a896f6f67b3">00013</link> <emphasis role="preprocessor">#define&#32;REG_FIFO_ADDR_PTR&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x0d</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00014"/><link linkend="__lo_ra-_r_p2040_8cpp_1a01b72f38b82bc5936f8b264324c507d8">00014</link> <emphasis role="preprocessor">#define&#32;REG_FIFO_TX_BASE_ADDR&#32;&#32;&#32;&#32;0x0e</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00015"/><link linkend="__lo_ra-_r_p2040_8cpp_1aa267251c81841a1d7b9da58f0d28b89c">00015</link> <emphasis role="preprocessor">#define&#32;REG_FIFO_RX_BASE_ADDR&#32;&#32;&#32;&#32;0x0f</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00016"/><link linkend="__lo_ra-_r_p2040_8cpp_1a5e931712eaa4377c0ea89af339147cd4">00016</link> <emphasis role="preprocessor">#define&#32;REG_FIFO_RX_CURRENT_ADDR&#32;0x10</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00017"/><link linkend="__lo_ra-_r_p2040_8cpp_1a098e2376499ff1140b6cdac8f022295c">00017</link> <emphasis role="preprocessor">#define&#32;REG_IRQ_FLAGS&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x12</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00018"/><link linkend="__lo_ra-_r_p2040_8cpp_1a45fdf1a8a55bf65cd5fc2af366dbb39a">00018</link> <emphasis role="preprocessor">#define&#32;REG_RX_NB_BYTES&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x13</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00019"/><link linkend="__lo_ra-_r_p2040_8cpp_1ac09e4b4587ebc50f818bbeadc961190b">00019</link> <emphasis role="preprocessor">#define&#32;REG_PKT_SNR_VALUE&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x19</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00020"/><link linkend="__lo_ra-_r_p2040_8cpp_1a4367979bf8684518aaa2919d47f633ce">00020</link> <emphasis role="preprocessor">#define&#32;REG_PKT_RSSI_VALUE&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x1a</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00021"/><link linkend="__lo_ra-_r_p2040_8cpp_1a654b5d2fa5cebad2d1ef983ad7558795">00021</link> <emphasis role="preprocessor">#define&#32;REG_RSSI_VALUE&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x1b</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00022"/><link linkend="__lo_ra-_r_p2040_8cpp_1a2f60143586b5145f84c53feb719be2e7">00022</link> <emphasis role="preprocessor">#define&#32;REG_MODEM_CONFIG_1&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x1d</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00023"/><link linkend="__lo_ra-_r_p2040_8cpp_1a913cd63eb0883fa14622cd288d16c934">00023</link> <emphasis role="preprocessor">#define&#32;REG_MODEM_CONFIG_2&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x1e</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00024"/><link linkend="__lo_ra-_r_p2040_8cpp_1a4e17da98cb7d494ef66c62c4a19f87c7">00024</link> <emphasis role="preprocessor">#define&#32;REG_PREAMBLE_MSB&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x20</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00025"/><link linkend="__lo_ra-_r_p2040_8cpp_1a35da5c14f9b27376e44a29f6f834e403">00025</link> <emphasis role="preprocessor">#define&#32;REG_PREAMBLE_LSB&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x21</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00026"/><link linkend="__lo_ra-_r_p2040_8cpp_1a15806b85f58853b0d479576a3e069574">00026</link> <emphasis role="preprocessor">#define&#32;REG_PAYLOAD_LENGTH&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x22</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00027"/><link linkend="__lo_ra-_r_p2040_8cpp_1af5ebb1a2fe299154f8bd88eca0c8d497">00027</link> <emphasis role="preprocessor">#define&#32;REG_MODEM_CONFIG_3&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x26</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00028"/><link linkend="__lo_ra-_r_p2040_8cpp_1a68abf595e37eef3431180d7dcf995e94">00028</link> <emphasis role="preprocessor">#define&#32;REG_FREQ_ERROR_MSB&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x28</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00029"/><link linkend="__lo_ra-_r_p2040_8cpp_1ab90314a2632f20bf39a9d5d1ae628a29">00029</link> <emphasis role="preprocessor">#define&#32;REG_FREQ_ERROR_MID&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x29</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00030"/><link linkend="__lo_ra-_r_p2040_8cpp_1adf50090774ec6247cc807d563d37d8c5">00030</link> <emphasis role="preprocessor">#define&#32;REG_FREQ_ERROR_LSB&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x2a</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00031"/><link linkend="__lo_ra-_r_p2040_8cpp_1a9e8da2c01379eab6f008f92af7841fe7">00031</link> <emphasis role="preprocessor">#define&#32;REG_RSSI_WIDEBAND&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x2c</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00032"/><link linkend="__lo_ra-_r_p2040_8cpp_1ad85116bd2d6ebf421a4296b9e551b663">00032</link> <emphasis role="preprocessor">#define&#32;REG_DETECTION_OPTIMIZE&#32;&#32;&#32;0x31</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00033"/><link linkend="__lo_ra-_r_p2040_8cpp_1a86fb629735ba0d84e6d2f4468cf0f16b">00033</link> <emphasis role="preprocessor">#define&#32;REG_INVERTIQ&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x33</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00034"/><link linkend="__lo_ra-_r_p2040_8cpp_1a3c142b7e485eac98190fce78583eccd6">00034</link> <emphasis role="preprocessor">#define&#32;REG_DETECTION_THRESHOLD&#32;&#32;0x37</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00035"/><link linkend="__lo_ra-_r_p2040_8cpp_1ab366a2eab16aac633cfee0085fa97ae5">00035</link> <emphasis role="preprocessor">#define&#32;REG_SYNC_WORD&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x39</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00036"/><link linkend="__lo_ra-_r_p2040_8cpp_1aa59b9a3c6ae32456984ba3067f5cef7e">00036</link> <emphasis role="preprocessor">#define&#32;REG_INVERTIQ2&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x3b</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00037"/><link linkend="__lo_ra-_r_p2040_8cpp_1a668618a2983f1d1839eef58e27c9267a">00037</link> <emphasis role="preprocessor">#define&#32;REG_DIO_MAPPING_1&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x40</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00038"/><link linkend="__lo_ra-_r_p2040_8cpp_1aa7075c0ae73420685bb4278ee580f3fa">00038</link> <emphasis role="preprocessor">#define&#32;REG_VERSION&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x42</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00039"/><link linkend="__lo_ra-_r_p2040_8cpp_1a9f8d15d83023df8b754745cff0050220">00039</link> <emphasis role="preprocessor">#define&#32;REG_PA_DAC&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x4d</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00040"/><link linkend="__lo_ra-_r_p2040_8cpp_1a773ee0daf508d7c93c4c99b62364de91">00040</link> <emphasis role="preprocessor">#define&#32;MODE_CAD&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x07</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00041"/>00041 <emphasis role="comment">//&#32;modes</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00042"/><link linkend="__lo_ra-_r_p2040_8cpp_1a3fc02479d24561e80c3c13262de1c114">00042</link> <emphasis role="preprocessor">#define&#32;MODE_LONG_RANGE_MODE&#32;&#32;&#32;&#32;&#32;0x80</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00043"/><link linkend="__lo_ra-_r_p2040_8cpp_1a2d957317ff490fa73cd4377d5ebf0b0d">00043</link> <emphasis role="preprocessor">#define&#32;MODE_SLEEP&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x00</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00044"/><link linkend="__lo_ra-_r_p2040_8cpp_1a3569020d5ac8f1fb0e294ae9fda53535">00044</link> <emphasis role="preprocessor">#define&#32;MODE_STDBY&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x01</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00045"/><link linkend="__lo_ra-_r_p2040_8cpp_1a77e098c32c4c29fe83f5c0010c70c146">00045</link> <emphasis role="preprocessor">#define&#32;MODE_TX&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x03</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00046"/><link linkend="__lo_ra-_r_p2040_8cpp_1ae279c0f7a0a5c9521a088b2dad0df969">00046</link> <emphasis role="preprocessor">#define&#32;MODE_RX_CONTINUOUS&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x05</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00047"/><link linkend="__lo_ra-_r_p2040_8cpp_1aeea6ba7699e25f331ed007501a9da392">00047</link> <emphasis role="preprocessor">#define&#32;MODE_RX_SINGLE&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x06</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00048"/>00048 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00049"/>00049 <emphasis role="comment">//&#32;PA&#32;config</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00050"/><link linkend="__lo_ra-_r_p2040_8cpp_1a39afdedd4b8d71d6dbe5d497cde2ffd3">00050</link> <emphasis role="preprocessor">#define&#32;PA_BOOST&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x80</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00051"/>00051 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00052"/>00052 <emphasis role="comment">//&#32;IRQ&#32;masks</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00053"/><link linkend="__lo_ra-_r_p2040_8cpp_1a5127cb2af4a6ecd93c81e9844a3b1f5e">00053</link> <emphasis role="preprocessor">#define&#32;IRQ_TX_DONE_MASK&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x08</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00054"/><link linkend="__lo_ra-_r_p2040_8cpp_1a1c6981a372ca499afd8f60023bd67564">00054</link> <emphasis role="preprocessor">#define&#32;IRQ_PAYLOAD_CRC_ERROR_MASK&#32;0x20</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00055"/><link linkend="__lo_ra-_r_p2040_8cpp_1a79ac308f2a7c332325b9d4ab4b7399cb">00055</link> <emphasis role="preprocessor">#define&#32;IRQ_RX_DONE_MASK&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x40</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00056"/>00056 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00057"/><link linkend="__lo_ra-_r_p2040_8cpp_1a100df52adef91841f0c5753899602bea">00057</link> <emphasis role="preprocessor">#define&#32;RF_MID_BAND_THRESHOLD&#32;&#32;&#32;&#32;525E6</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00058"/><link linkend="__lo_ra-_r_p2040_8cpp_1ae99d14507bbc0260f32ac7d55f1149b1">00058</link> <emphasis role="preprocessor">#define&#32;RSSI_OFFSET_HF_PORT&#32;&#32;&#32;&#32;&#32;&#32;157</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00059"/><link linkend="__lo_ra-_r_p2040_8cpp_1a6cbefc287f191571a510bff19fa2c39c">00059</link> <emphasis role="preprocessor">#define&#32;RSSI_OFFSET_LF_PORT&#32;&#32;&#32;&#32;&#32;&#32;164</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00060"/>00060 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00061"/><link linkend="__lo_ra-_r_p2040_8cpp_1a985153008ec048506fcc3b914d94617d">00061</link> <emphasis role="preprocessor">#define&#32;MAX_PKT_LENGTH&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;255</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00062"/>00062 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00063"/>00063 <emphasis role="preprocessor">#if&#32;(ESP8266&#32;||&#32;ESP32)</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00064"/>00064 <emphasis role="preprocessor">#define&#32;ISR_PREFIX&#32;ICACHE_RAM_ATTR</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00065"/>00065 <emphasis role="preprocessor">#else</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00066"/><link linkend="__lo_ra-_r_p2040_8cpp_1ab88889208ad180d9427b0f8b1e3f2cd0">00066</link> <emphasis role="preprocessor">#define&#32;ISR_PREFIX</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00067"/>00067 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00068"/>00068 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00069"/><link linkend="_class_lo_ra_class_1a750092f22f3838b419eafb8b411588e0">00069</link> <link linkend="_class_lo_ra_class_1a750092f22f3838b419eafb8b411588e0">LoRaClass::LoRaClass</link>()&#32;:&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1afde12da42c7d4fd446d7dc12977bb598">_spi</link>(<link linkend="_pin__config_8h_1a8112c985f7444e82198d7571ce0a9160">SPI_PORT</link>),
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a3c3500b12c72e9474b9fa557b14d4098">_ss</link>(<link linkend="_pin__config_8h_1a0def6062932193192186b305f79b69ba">LORA_DEFAULT_SS_PIN</link>),&#32;<link linkend="_class_lo_ra_class_1af9c2d6ee80f8a2e989964255f5eac9c9">_reset</link>(<link linkend="_pin__config_8h_1aa55d8819212116c94195ae04d39c7722">LORA_DEFAULT_RESET_PIN</link>),&#32;<link linkend="_class_lo_ra_class_1a4990cc8aaf2d588ec3bf73d6010026d5">_dio0</link>(<link linkend="_pin__config_8h_1a03b70d2799e743f3b9504f1af09f6056">LORA_DEFAULT_DIO0_PIN</link>),&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1af6692e2833e9ae88808ee093c2b2c356">_frequency</link>(0),&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a826b1370bbf70763b2cdb425b5692565">_packetIndex</link>(0),
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1ad8446dc91c11cb077e691f8574571c13">_implicitHeaderMode</link>(0),&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00075"/>00075 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1adf277d5d849f23e5a987ccf072f1701f">_onReceive</link>(NULL),&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a072c4aa49f5668a8b781d6c666f1ceb2">_onCadDone</link>(NULL),
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00077"/>00077 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a344a889ed61dd226b1bdd10dedf35a80">_onTxDone</link>(NULL)&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00078"/>00078 {}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00079"/>00079 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00080"/><link linkend="_class_lo_ra_class_1a3c5b6ee156c14f20238f46292c116d96">00080</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_lo_ra_class_1a3c5b6ee156c14f20238f46292c116d96">LoRaClass::begin</link>(<emphasis role="keywordtype">long</emphasis>&#32;frequency)&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00081"/>00081 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00082"/>00082 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00083"/>00083 &#32;&#32;<emphasis role="comment">//&#32;setup&#32;pins</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00084"/>00084 &#32;&#32;gpio_init(<link linkend="_class_lo_ra_class_1a3c3500b12c72e9474b9fa557b14d4098">_ss</link>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00085"/>00085 &#32;&#32;gpio_set_dir(<link linkend="_class_lo_ra_class_1a3c3500b12c72e9474b9fa557b14d4098">_ss</link>,&#32;GPIO_OUT);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00086"/>00086 &#32;&#32;<emphasis role="comment">//&#32;set&#32;SS&#32;high</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00087"/>00087 &#32;&#32;gpio_put(<link linkend="_class_lo_ra_class_1a3c3500b12c72e9474b9fa557b14d4098">_ss</link>,&#32;1);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00088"/>00088 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00089"/>00089 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_lo_ra_class_1af9c2d6ee80f8a2e989964255f5eac9c9">_reset</link>&#32;!=&#32;-1)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00090"/>00090 &#32;&#32;&#32;&#32;gpio_init(<link linkend="_class_lo_ra_class_1af9c2d6ee80f8a2e989964255f5eac9c9">_reset</link>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00091"/>00091 &#32;&#32;&#32;&#32;gpio_set_dir(<link linkend="_class_lo_ra_class_1af9c2d6ee80f8a2e989964255f5eac9c9">_reset</link>,&#32;GPIO_OUT);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00092"/>00092 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00093"/>00093 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;perform&#32;reset</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00094"/>00094 &#32;&#32;&#32;&#32;gpio_put(<link linkend="_class_lo_ra_class_1af9c2d6ee80f8a2e989964255f5eac9c9">_reset</link>,&#32;0);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00095"/>00095 &#32;&#32;&#32;&#32;sleep_ms(10);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00096"/>00096 &#32;&#32;&#32;&#32;gpio_put(<link linkend="_class_lo_ra_class_1af9c2d6ee80f8a2e989964255f5eac9c9">_reset</link>,&#32;1);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00097"/>00097 &#32;&#32;&#32;&#32;sleep_ms(10);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00098"/>00098 &#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00099"/>00099 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00100"/>00100 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00101"/>00101 &#32;&#32;<emphasis role="comment">//&#32;start&#32;SPI</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00102"/>00102 &#32;&#32;spi_init(<link linkend="_pin__config_8h_1a8112c985f7444e82198d7571ce0a9160">SPI_PORT</link>,&#32;<link linkend="_pin__config_8h_1a118ff074a6c2716f126f594fc0be1ee7">LORA_DEFAULT_SPI_FREQUENCY</link>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00103"/>00103 &#32;&#32;gpio_set_function(<link linkend="_pin__config_8h_1a2a961da12f0cb47e0456db30261047b8">SX1278_MISO</link>,&#32;GPIO_FUNC_SPI);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00104"/>00104 &#32;&#32;gpio_set_function(<link linkend="_pin__config_8h_1a984f1a74ecb2af81a660ba77c0d47ddc">SX1278_SCK</link>,&#32;GPIO_FUNC_SPI);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00105"/>00105 &#32;&#32;gpio_set_function(<link linkend="_pin__config_8h_1a0752355e6d262273b2059c07a7535848">SX1278_MOSI</link>,&#32;GPIO_FUNC_SPI);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00106"/>00106 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00107"/>00107 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00108"/>00108 &#32;&#32;<emphasis role="comment">//&#32;Make&#32;the&#32;SPI&#32;pins&#32;available&#32;to&#32;picotool</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00109"/>00109 &#32;&#32;bi_decl(bi_3pins_with_func(<link linkend="_pin__config_8h_1a2a961da12f0cb47e0456db30261047b8">SX1278_MISO</link>,&#32;<link linkend="_pin__config_8h_1a0752355e6d262273b2059c07a7535848">SX1278_MOSI</link>,&#32;<link linkend="_pin__config_8h_1a984f1a74ecb2af81a660ba77c0d47ddc">SX1278_SCK</link>,&#32;GPIO_FUNC_SPI));
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00110"/>00110 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00111"/>00111 &#32;&#32;gpio_init(<link linkend="_pin__config_8h_1a7780b3759fe45ccad39487fe5f5eab78">SX1278_CS</link>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00112"/>00112 &#32;&#32;gpio_set_dir(<link linkend="_pin__config_8h_1a7780b3759fe45ccad39487fe5f5eab78">SX1278_CS</link>,&#32;GPIO_OUT);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00113"/>00113 &#32;&#32;gpio_put(<link linkend="_pin__config_8h_1a7780b3759fe45ccad39487fe5f5eab78">SX1278_CS</link>,&#32;1);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00114"/>00114 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00115"/>00115 &#32;&#32;<emphasis role="comment">//&#32;Make&#32;the&#32;CS&#32;pin&#32;available&#32;to&#32;picotool</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00116"/>00116 &#32;&#32;bi_decl(bi_1pin_with_name(<link linkend="_pin__config_8h_1a7780b3759fe45ccad39487fe5f5eab78">SX1278_CS</link>,&#32;<emphasis role="stringliteral">&quot;SPI&#32;CS&quot;</emphasis>));
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00117"/>00117 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00118"/>00118 &#32;&#32;<emphasis role="comment">//&#32;check&#32;version</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00119"/>00119 &#32;&#32;uint8_t&#32;version&#32;=&#32;<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1aa7075c0ae73420685bb4278ee580f3fa">REG_VERSION</link>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00120"/>00120 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(version&#32;!=&#32;0x12)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00121"/>00121 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00122"/>00122 &#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00123"/>00123 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00124"/>00124 &#32;&#32;<emphasis role="comment">//&#32;put&#32;in&#32;sleep&#32;mode</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00125"/>00125 &#32;&#32;<link linkend="_class_lo_ra_class_1a24390e2c96490b16ca8733e274164ae0">sleep</link>();
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00126"/>00126 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00127"/>00127 &#32;&#32;<emphasis role="comment">//&#32;set&#32;frequency</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00128"/>00128 &#32;&#32;<link linkend="_class_lo_ra_class_1ab754b002b04a9761ff4bee201b9ff560">setFrequency</link>(frequency);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00129"/>00129 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00130"/>00130 &#32;&#32;<emphasis role="comment">//&#32;set&#32;base&#32;addresses</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00131"/>00131 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a01b72f38b82bc5936f8b264324c507d8">REG_FIFO_TX_BASE_ADDR</link>,&#32;0);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00132"/>00132 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1aa267251c81841a1d7b9da58f0d28b89c">REG_FIFO_RX_BASE_ADDR</link>,&#32;0);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00133"/>00133 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00134"/>00134 &#32;&#32;<emphasis role="comment">//&#32;set&#32;LNA&#32;boost</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00135"/>00135 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1ab08aa4c56ad75b3e715a1115330109ca">REG_LNA</link>,&#32;<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1ab08aa4c56ad75b3e715a1115330109ca">REG_LNA</link>)&#32;|&#32;0x03);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00136"/>00136 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00137"/>00137 &#32;&#32;<emphasis role="comment">//&#32;set&#32;auto&#32;AGC</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00138"/>00138 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1af5ebb1a2fe299154f8bd88eca0c8d497">REG_MODEM_CONFIG_3</link>,&#32;0x04);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00139"/>00139 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00140"/>00140 &#32;&#32;<emphasis role="comment">//&#32;set&#32;output&#32;power&#32;to&#32;17&#32;dBm</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00141"/>00141 &#32;&#32;<link linkend="_class_lo_ra_class_1ae113ad79caf2255287433de45b0e5b5e">setTxPower</link>(17);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00142"/>00142 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00143"/>00143 &#32;&#32;<emphasis role="comment">//&#32;put&#32;in&#32;standby&#32;mode</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00144"/>00144 &#32;&#32;<link linkend="_class_lo_ra_class_1ab0397413dc995dedb08f2c560e79b01c">idle</link>();
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00145"/>00145 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00146"/>00146 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;1;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00147"/>00147 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00148"/>00148 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00149"/><link linkend="_class_lo_ra_class_1a7a444720541f652a1352b643b6d35369">00149</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1a7a444720541f652a1352b643b6d35369">LoRaClass::end</link>()&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00150"/>00150 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00151"/>00151 &#32;&#32;<emphasis role="comment">//&#32;put&#32;in&#32;sleep&#32;mode</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00152"/>00152 &#32;&#32;<link linkend="_class_lo_ra_class_1a24390e2c96490b16ca8733e274164ae0">sleep</link>();
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00153"/>00153 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00154"/>00154 &#32;&#32;<emphasis role="comment">//&#32;stop&#32;SPI</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00155"/>00155 &#32;&#32;spi_deinit(<link linkend="_pin__config_8h_1a8112c985f7444e82198d7571ce0a9160">SPI_PORT</link>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00156"/>00156 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00157"/>00157 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00158"/><link linkend="_class_lo_ra_class_1a22d4ee8aaded004bb91b70ee15c57e2d">00158</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_lo_ra_class_1a22d4ee8aaded004bb91b70ee15c57e2d">LoRaClass::beginPacket</link>(<emphasis role="keywordtype">int</emphasis>&#32;implicitHeader)&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00159"/>00159 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00160"/>00160 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_lo_ra_class_1a3b9ea4a954095979f6e3ae037d8c3d5e">isTransmitting</link>())&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00161"/>00161 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00162"/>00162 &#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00163"/>00163 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00164"/>00164 &#32;&#32;<emphasis role="comment">//&#32;put&#32;in&#32;standby&#32;mode</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00165"/>00165 &#32;&#32;<link linkend="_class_lo_ra_class_1ab0397413dc995dedb08f2c560e79b01c">idle</link>();
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00166"/>00166 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00167"/>00167 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(implicitHeader)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00168"/>00168 &#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1ad06e31c18f7029e231d837a7eca7558e">implicitHeaderMode</link>();
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00169"/>00169 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00170"/>00170 &#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a691417e927af503dacaa797a1bb9527f">explicitHeaderMode</link>();
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00171"/>00171 &#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00172"/>00172 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00173"/>00173 &#32;&#32;<emphasis role="comment">//&#32;reset&#32;FIFO&#32;address&#32;and&#32;paload&#32;length</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00174"/>00174 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1af5e9aa6c1a6e12df72f48a896f6f67b3">REG_FIFO_ADDR_PTR</link>,&#32;0);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00175"/>00175 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a15806b85f58853b0d479576a3e069574">REG_PAYLOAD_LENGTH</link>,&#32;0);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00176"/>00176 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00177"/>00177 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;1;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00178"/>00178 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00179"/>00179 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00180"/><link linkend="_class_lo_ra_class_1a6ad8fad2fa5b9c04ca8a0e0184673685">00180</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_lo_ra_class_1a6ad8fad2fa5b9c04ca8a0e0184673685">LoRaClass::endPacket</link>(<emphasis role="keywordtype">bool</emphasis>&#32;async)&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00181"/>00181 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00182"/>00182 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00183"/>00183 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;((async)&#32;&amp;&amp;&#32;(<link linkend="_class_lo_ra_class_1a344a889ed61dd226b1bdd10dedf35a80">_onTxDone</link>))&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00184"/>00184 &#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a668618a2983f1d1839eef58e27c9267a">REG_DIO_MAPPING_1</link>,&#32;0x40);&#32;<emphasis role="comment">//&#32;DIO0&#32;=&gt;&#32;TXDONE</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00185"/>00185 &#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00186"/>00186 &#32;&#32;<emphasis role="comment">//&#32;put&#32;in&#32;TX&#32;mode</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00187"/>00187 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a250bcedd7826aa7c25f80654368d0a72">REG_OP_MODE</link>,&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1a3fc02479d24561e80c3c13262de1c114">MODE_LONG_RANGE_MODE</link>&#32;|&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1a77e098c32c4c29fe83f5c0010c70c146">MODE_TX</link>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00188"/>00188 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00189"/>00189 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!async)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00190"/>00190 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;wait&#32;for&#32;TX&#32;done</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00191"/>00191 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;((<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a098e2376499ff1140b6cdac8f022295c">REG_IRQ_FLAGS</link>)&#32;&amp;&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1a5127cb2af4a6ecd93c81e9844a3b1f5e">IRQ_TX_DONE_MASK</link>)&#32;==&#32;0)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00192"/>00192 &#32;&#32;&#32;&#32;&#32;&#32;sleep_ms(0);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00193"/>00193 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00194"/>00194 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;clear&#32;IRQ&apos;s</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00195"/>00195 &#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a098e2376499ff1140b6cdac8f022295c">REG_IRQ_FLAGS</link>,&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1a5127cb2af4a6ecd93c81e9844a3b1f5e">IRQ_TX_DONE_MASK</link>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00196"/>00196 &#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00197"/>00197 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00198"/>00198 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;1;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00199"/>00199 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00200"/>00200 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00201"/><link linkend="_class_lo_ra_class_1a3b9ea4a954095979f6e3ae037d8c3d5e">00201</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_lo_ra_class_1a3b9ea4a954095979f6e3ae037d8c3d5e">LoRaClass::isTransmitting</link>()&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00202"/>00202 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00203"/>00203 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;((<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a250bcedd7826aa7c25f80654368d0a72">REG_OP_MODE</link>)&#32;&amp;&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1a77e098c32c4c29fe83f5c0010c70c146">MODE_TX</link>)&#32;==&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1a77e098c32c4c29fe83f5c0010c70c146">MODE_TX</link>)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00204"/>00204 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00205"/>00205 &#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00206"/>00206 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00207"/>00207 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a098e2376499ff1140b6cdac8f022295c">REG_IRQ_FLAGS</link>)&#32;&amp;&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1a5127cb2af4a6ecd93c81e9844a3b1f5e">IRQ_TX_DONE_MASK</link>)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00208"/>00208 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;clear&#32;IRQ&apos;s</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00209"/>00209 &#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a098e2376499ff1140b6cdac8f022295c">REG_IRQ_FLAGS</link>,&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1a5127cb2af4a6ecd93c81e9844a3b1f5e">IRQ_TX_DONE_MASK</link>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00210"/>00210 &#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00211"/>00211 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00212"/>00212 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00213"/>00213 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00214"/>00214 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00215"/><link linkend="_class_lo_ra_class_1a03104c1301f072b6a259bf6d18161069">00215</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_lo_ra_class_1a03104c1301f072b6a259bf6d18161069">LoRaClass::parsePacket</link>(<emphasis role="keywordtype">int</emphasis>&#32;size)&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00216"/>00216 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00217"/>00217 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;packetLength&#32;=&#32;0;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00218"/>00218 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00219"/>00219 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;irqFlags&#32;=&#32;<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a098e2376499ff1140b6cdac8f022295c">REG_IRQ_FLAGS</link>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00220"/>00220 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00221"/>00221 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(size&#32;&gt;&#32;0)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00222"/>00222 &#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1ad06e31c18f7029e231d837a7eca7558e">implicitHeaderMode</link>();
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00223"/>00223 &#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a15806b85f58853b0d479576a3e069574">REG_PAYLOAD_LENGTH</link>,&#32;size&#32;&amp;&#32;0xff);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00224"/>00224 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00225"/>00225 &#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a691417e927af503dacaa797a1bb9527f">explicitHeaderMode</link>();
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00226"/>00226 &#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00227"/>00227 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00228"/>00228 &#32;&#32;<emphasis role="comment">//&#32;clear&#32;IRQ&apos;s</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00229"/>00229 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a098e2376499ff1140b6cdac8f022295c">REG_IRQ_FLAGS</link>,&#32;irqFlags);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00230"/>00230 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a098e2376499ff1140b6cdac8f022295c">REG_IRQ_FLAGS</link>,&#32;irqFlags);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00231"/>00231 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00232"/>00232 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;((irqFlags&#32;&amp;&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1a79ac308f2a7c332325b9d4ab4b7399cb">IRQ_RX_DONE_MASK</link>)&#32;&amp;&amp;&#32;(irqFlags&#32;&amp;&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1a1c6981a372ca499afd8f60023bd67564">IRQ_PAYLOAD_CRC_ERROR_MASK</link>)&#32;==&#32;0)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00233"/>00233 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;received&#32;a&#32;packet</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00234"/>00234 &#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a826b1370bbf70763b2cdb425b5692565">_packetIndex</link>&#32;=&#32;0;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00235"/>00235 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00236"/>00236 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;read&#32;packet&#32;length</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00237"/>00237 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_lo_ra_class_1ad8446dc91c11cb077e691f8574571c13">_implicitHeaderMode</link>)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00238"/>00238 &#32;&#32;&#32;&#32;&#32;&#32;packetLength&#32;=&#32;<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a15806b85f58853b0d479576a3e069574">REG_PAYLOAD_LENGTH</link>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00239"/>00239 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00240"/>00240 &#32;&#32;&#32;&#32;&#32;&#32;packetLength&#32;=&#32;<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a45fdf1a8a55bf65cd5fc2af366dbb39a">REG_RX_NB_BYTES</link>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00241"/>00241 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00242"/>00242 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00243"/>00243 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;set&#32;FIFO&#32;address&#32;to&#32;current&#32;RX&#32;address</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00244"/>00244 &#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1af5e9aa6c1a6e12df72f48a896f6f67b3">REG_FIFO_ADDR_PTR</link>,&#32;<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a5e931712eaa4377c0ea89af339147cd4">REG_FIFO_RX_CURRENT_ADDR</link>));
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00245"/>00245 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00246"/>00246 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;put&#32;in&#32;standby&#32;mode</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00247"/>00247 &#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1ab0397413dc995dedb08f2c560e79b01c">idle</link>();
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00248"/>00248 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a250bcedd7826aa7c25f80654368d0a72">REG_OP_MODE</link>)&#32;!=&#32;(<link linkend="__lo_ra-_r_p2040_8cpp_1a3fc02479d24561e80c3c13262de1c114">MODE_LONG_RANGE_MODE</link>&#32;|&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1aeea6ba7699e25f331ed007501a9da392">MODE_RX_SINGLE</link>))&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00249"/>00249 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;not&#32;currently&#32;in&#32;RX&#32;mode</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00250"/>00250 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00251"/>00251 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;reset&#32;FIFO&#32;address</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00252"/>00252 &#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1af5e9aa6c1a6e12df72f48a896f6f67b3">REG_FIFO_ADDR_PTR</link>,&#32;0);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00253"/>00253 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00254"/>00254 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;put&#32;in&#32;single&#32;RX&#32;mode</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00255"/>00255 &#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a250bcedd7826aa7c25f80654368d0a72">REG_OP_MODE</link>,&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1a3fc02479d24561e80c3c13262de1c114">MODE_LONG_RANGE_MODE</link>&#32;|&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1aeea6ba7699e25f331ed007501a9da392">MODE_RX_SINGLE</link>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00256"/>00256 &#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00257"/>00257 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00258"/>00258 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;packetLength;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00259"/>00259 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00260"/>00260 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00261"/><link linkend="_class_lo_ra_class_1acecb609453b16a9d296f1a8ada54dead">00261</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_lo_ra_class_1acecb609453b16a9d296f1a8ada54dead">LoRaClass::packetRssi</link>()&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00262"/>00262 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00263"/>00263 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a4367979bf8684518aaa2919d47f633ce">REG_PKT_RSSI_VALUE</link>)&#32;-&#32;(<link linkend="_class_lo_ra_class_1af6692e2833e9ae88808ee093c2b2c356">_frequency</link>&#32;&lt;&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1a100df52adef91841f0c5753899602bea">RF_MID_BAND_THRESHOLD</link>&#32;?&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1a6cbefc287f191571a510bff19fa2c39c">RSSI_OFFSET_LF_PORT</link>&#32;:&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1ae99d14507bbc0260f32ac7d55f1149b1">RSSI_OFFSET_HF_PORT</link>));
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00264"/>00264 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00265"/>00265 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00266"/><link linkend="_class_lo_ra_class_1ada0d2844934062d1b09eca415f0ea28c">00266</link> <emphasis role="keywordtype">float</emphasis>&#32;<link linkend="_class_lo_ra_class_1ada0d2844934062d1b09eca415f0ea28c">LoRaClass::packetSnr</link>()&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00267"/>00267 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00268"/>00268 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;((int8_t)<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1ac09e4b4587ebc50f818bbeadc961190b">REG_PKT_SNR_VALUE</link>))&#32;*&#32;0.25;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00269"/>00269 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00270"/>00270 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00271"/><link linkend="_class_lo_ra_class_1af16e40f9c82f512287b7010d490e7b4c">00271</link> <emphasis role="keywordtype">long</emphasis>&#32;<link linkend="_class_lo_ra_class_1af16e40f9c82f512287b7010d490e7b4c">LoRaClass::packetFrequencyError</link>()&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00272"/>00272 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00273"/>00273 &#32;&#32;int32_t&#32;freqError&#32;=&#32;0;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00274"/>00274 &#32;&#32;freqError&#32;=&#32;<emphasis role="keyword">static_cast&lt;</emphasis>int32_t<emphasis role="keyword">&gt;</emphasis>(<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a68abf595e37eef3431180d7dcf995e94">REG_FREQ_ERROR_MSB</link>)&#32;&amp;&#32;0x111);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00275"/>00275 &#32;&#32;freqError&#32;&lt;&lt;=&#32;8L;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00276"/>00276 &#32;&#32;freqError&#32;+=&#32;<emphasis role="keyword">static_cast&lt;</emphasis>int32_t<emphasis role="keyword">&gt;</emphasis>(<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1ab90314a2632f20bf39a9d5d1ae628a29">REG_FREQ_ERROR_MID</link>));
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00277"/>00277 &#32;&#32;freqError&#32;&lt;&lt;=&#32;8L;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00278"/>00278 &#32;&#32;freqError&#32;+=&#32;<emphasis role="keyword">static_cast&lt;</emphasis>int32_t<emphasis role="keyword">&gt;</emphasis>(<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1adf50090774ec6247cc807d563d37d8c5">REG_FREQ_ERROR_LSB</link>));
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00279"/>00279 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00280"/>00280 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a68abf595e37eef3431180d7dcf995e94">REG_FREQ_ERROR_MSB</link>)&#32;&amp;&#32;0x1000)&#32;{&#32;<emphasis role="comment">//&#32;Sign&#32;bit&#32;is&#32;on</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00281"/>00281 &#32;&#32;&#32;&#32;freqError&#32;-=&#32;524288;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;B1000&apos;0000&apos;0000&apos;0000&apos;0000</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00282"/>00282 &#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00283"/>00283 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00284"/>00284 &#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;fXtal&#32;=&#32;32E6;&#32;<emphasis role="comment">//&#32;FXOSC:&#32;crystal&#32;oscillator&#32;(XTAL)&#32;frequency&#32;(2.5.&#32;Chip&#32;Specification,&#32;p.&#32;14)</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00285"/>00285 &#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;fError&#32;=&#32;((<emphasis role="keyword">static_cast&lt;</emphasis><emphasis role="keywordtype">float</emphasis><emphasis role="keyword">&gt;</emphasis>(freqError)&#32;*&#32;(1L&#32;&lt;&lt;&#32;24))&#32;/&#32;fXtal)&#32;*&#32;(<link linkend="_class_lo_ra_class_1a810b0f66f8589f7bcbbe08ce80f41959">getSignalBandwidth</link>()&#32;/&#32;500000.0f);&#32;<emphasis role="comment">//&#32;p.&#32;37</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00286"/>00286 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00287"/>00287 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">static_cast&lt;</emphasis><emphasis role="keywordtype">long</emphasis><emphasis role="keyword">&gt;</emphasis>(fError);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00288"/>00288 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00289"/>00289 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00290"/><link linkend="_class_lo_ra_class_1a67adcbfff786a1915d9ac46e1163d411">00290</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_lo_ra_class_1a67adcbfff786a1915d9ac46e1163d411">LoRaClass::rssi</link>()&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00291"/>00291 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00292"/>00292 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a654b5d2fa5cebad2d1ef983ad7558795">REG_RSSI_VALUE</link>)&#32;-&#32;(<link linkend="_class_lo_ra_class_1af6692e2833e9ae88808ee093c2b2c356">_frequency</link>&#32;&lt;&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1a100df52adef91841f0c5753899602bea">RF_MID_BAND_THRESHOLD</link>&#32;?&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1a6cbefc287f191571a510bff19fa2c39c">RSSI_OFFSET_LF_PORT</link>&#32;:&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1ae99d14507bbc0260f32ac7d55f1149b1">RSSI_OFFSET_HF_PORT</link>));
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00293"/>00293 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00294"/>00294 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00295"/><link linkend="_class_lo_ra_class_1a90b450cefff42e5522be08d159a93b44">00295</link> <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_lo_ra_class_1a90b450cefff42e5522be08d159a93b44">LoRaClass::write</link>(uint8_t&#32;<emphasis role="keywordtype">byte</emphasis>)&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00296"/>00296 {&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00297"/>00297 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_lo_ra_class_1a90b450cefff42e5522be08d159a93b44">write</link>(&amp;<emphasis role="keywordtype">byte</emphasis>,&#32;<emphasis role="keyword">sizeof</emphasis>(<emphasis role="keywordtype">byte</emphasis>));&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00298"/>00298 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00299"/>00299 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00300"/><link linkend="_class_lo_ra_class_1a4b251b35d67bd9363dc44b6324cfc69c">00300</link> <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_lo_ra_class_1a90b450cefff42e5522be08d159a93b44">LoRaClass::write</link>(<emphasis role="keyword">const</emphasis>&#32;uint8_t&#32;*<link linkend="_main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62">buffer</link>,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;size)&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00301"/>00301 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00302"/>00302 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;currentLength&#32;=&#32;<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a15806b85f58853b0d479576a3e069574">REG_PAYLOAD_LENGTH</link>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00303"/>00303 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00304"/>00304 &#32;&#32;<emphasis role="comment">//&#32;check&#32;size</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00305"/>00305 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;((currentLength&#32;+&#32;size)&#32;&gt;&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1a985153008ec048506fcc3b914d94617d">MAX_PKT_LENGTH</link>)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00306"/>00306 &#32;&#32;&#32;&#32;size&#32;=&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1a985153008ec048506fcc3b914d94617d">MAX_PKT_LENGTH</link>&#32;-&#32;currentLength;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00307"/>00307 &#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00308"/>00308 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00309"/>00309 &#32;&#32;<emphasis role="comment">//&#32;write&#32;data</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00310"/>00310 &#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">size_t</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;size;&#32;i++)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00311"/>00311 &#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a8ed1afe4fdc88a0f2626d9ee783e06e5">REG_FIFO</link>,&#32;<link linkend="_main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62">buffer</link>[i]);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00312"/>00312 &#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00313"/>00313 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00314"/>00314 &#32;&#32;<emphasis role="comment">//&#32;update&#32;length</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00315"/>00315 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a15806b85f58853b0d479576a3e069574">REG_PAYLOAD_LENGTH</link>,&#32;currentLength&#32;+&#32;size);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00316"/>00316 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00317"/>00317 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;size;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00318"/>00318 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00319"/>00319 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00320"/><link linkend="_class_lo_ra_class_1a99f2ee51a5ab27319cc965ebd575e58c">00320</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_lo_ra_class_1a99f2ee51a5ab27319cc965ebd575e58c">LoRaClass::available</link>()&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00321"/>00321 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00322"/>00322 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a45fdf1a8a55bf65cd5fc2af366dbb39a">REG_RX_NB_BYTES</link>)&#32;-&#32;<link linkend="_class_lo_ra_class_1a826b1370bbf70763b2cdb425b5692565">_packetIndex</link>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00323"/>00323 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00324"/>00324 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00325"/><link linkend="_class_lo_ra_class_1a79c869845ca0bab8bca42cc2a6ea96bb">00325</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_lo_ra_class_1a79c869845ca0bab8bca42cc2a6ea96bb">LoRaClass::read</link>()&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00326"/>00326 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00327"/>00327 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_lo_ra_class_1a99f2ee51a5ab27319cc965ebd575e58c">available</link>())&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00328"/>00328 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;-1;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00329"/>00329 &#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00330"/>00330 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00331"/>00331 &#32;&#32;<link linkend="_class_lo_ra_class_1a826b1370bbf70763b2cdb425b5692565">_packetIndex</link>++;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00332"/>00332 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00333"/>00333 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a8ed1afe4fdc88a0f2626d9ee783e06e5">REG_FIFO</link>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00334"/>00334 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00335"/>00335 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00336"/><link linkend="_class_lo_ra_class_1aef2cd89f65d2833bcfa6e6d1134982cd">00336</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_lo_ra_class_1aef2cd89f65d2833bcfa6e6d1134982cd">LoRaClass::peek</link>()&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00337"/>00337 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00338"/>00338 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_lo_ra_class_1a99f2ee51a5ab27319cc965ebd575e58c">available</link>())&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00339"/>00339 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;-1;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00340"/>00340 &#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00341"/>00341 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00342"/>00342 &#32;&#32;<emphasis role="comment">//&#32;store&#32;current&#32;FIFO&#32;address</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00343"/>00343 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;currentAddress&#32;=&#32;<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1af5e9aa6c1a6e12df72f48a896f6f67b3">REG_FIFO_ADDR_PTR</link>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00344"/>00344 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00345"/>00345 &#32;&#32;<emphasis role="comment">//&#32;read</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00346"/>00346 &#32;&#32;uint8_t&#32;b&#32;=&#32;<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a8ed1afe4fdc88a0f2626d9ee783e06e5">REG_FIFO</link>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00347"/>00347 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00348"/>00348 &#32;&#32;<emphasis role="comment">//&#32;restore&#32;FIFO&#32;address</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00349"/>00349 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1af5e9aa6c1a6e12df72f48a896f6f67b3">REG_FIFO_ADDR_PTR</link>,&#32;currentAddress);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00350"/>00350 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00351"/>00351 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;b;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00352"/>00352 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00353"/>00353 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00354"/><link linkend="_class_lo_ra_class_1a91c86c4a6e15c86d9343731b81dd0d25">00354</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1a91c86c4a6e15c86d9343731b81dd0d25">LoRaClass::flush</link>()&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00355"/>00355 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00356"/>00356 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00357"/>00357 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00358"/><link linkend="_class_lo_ra_class_1ac61f05896ad09462aa690fa5eb0f58b9">00358</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1ac61f05896ad09462aa690fa5eb0f58b9">LoRaClass::onReceive</link>(<emphasis role="keywordtype">void</emphasis>(*callback)(<emphasis role="keywordtype">int</emphasis>))&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00359"/>00359 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00360"/>00360 &#32;&#32;<link linkend="_class_lo_ra_class_1adf277d5d849f23e5a987ccf072f1701f">_onReceive</link>&#32;=&#32;callback;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00361"/>00361 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00362"/>00362 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(callback)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00363"/>00363 &#32;&#32;&#32;&#32;gpio_set_irq_enabled_with_callback(<link linkend="_class_lo_ra_class_1a4990cc8aaf2d588ec3bf73d6010026d5">_dio0</link>,&#32;GPIO_IRQ_EDGE_RISE,&#32;<emphasis role="keyword">true</emphasis>,&#32;&amp;<link linkend="_class_lo_ra_class_1adfc0af7af404b6de2d56129c5740bbfb">LoRaClass::onDio0Rise</link>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00364"/>00364 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00365"/>00365 &#32;&#32;&#32;&#32;gpio_set_irq_enabled(<link linkend="_class_lo_ra_class_1a4990cc8aaf2d588ec3bf73d6010026d5">_dio0</link>,&#32;GPIO_IRQ_EDGE_RISE,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00366"/>00366 &#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00367"/>00367 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00368"/>00368 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00369"/><link linkend="_class_lo_ra_class_1af2298ce6d5c4c2895ca681b360a9fef4">00369</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1af2298ce6d5c4c2895ca681b360a9fef4">LoRaClass::onCadDone</link>(<emphasis role="keywordtype">void</emphasis>(*callback)(<emphasis role="keywordtype">bool</emphasis>))&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00370"/>00370 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00371"/>00371 &#32;&#32;<link linkend="_class_lo_ra_class_1a072c4aa49f5668a8b781d6c666f1ceb2">_onCadDone</link>&#32;=&#32;callback;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00372"/>00372 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00373"/>00373 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(callback)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00374"/>00374 &#32;&#32;&#32;&#32;gpio_set_irq_enabled_with_callback(<link linkend="_class_lo_ra_class_1a4990cc8aaf2d588ec3bf73d6010026d5">_dio0</link>,&#32;GPIO_IRQ_EDGE_RISE,&#32;<emphasis role="keyword">true</emphasis>,
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00375"/>00375 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&amp;<link linkend="_class_lo_ra_class_1adfc0af7af404b6de2d56129c5740bbfb">LoRaClass::onDio0Rise</link>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00376"/>00376 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00377"/>00377 &#32;&#32;&#32;&#32;gpio_set_irq_enabled(<link linkend="_class_lo_ra_class_1a4990cc8aaf2d588ec3bf73d6010026d5">_dio0</link>,&#32;GPIO_IRQ_EDGE_RISE,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00378"/>00378 &#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00379"/>00379 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00380"/>00380 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00381"/><link linkend="_class_lo_ra_class_1a5f77504f5bca6479c019b2924dec9cc5">00381</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1a5f77504f5bca6479c019b2924dec9cc5">LoRaClass::onTxDone</link>(<emphasis role="keywordtype">void</emphasis>&#32;(*callback)())&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00382"/>00382 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00383"/>00383 &#32;&#32;<link linkend="_class_lo_ra_class_1a344a889ed61dd226b1bdd10dedf35a80">_onTxDone</link>&#32;=&#32;callback;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00384"/>00384 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00385"/>00385 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(callback)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00386"/>00386 &#32;&#32;&#32;&#32;gpio_set_irq_enabled_with_callback(<link linkend="_class_lo_ra_class_1a4990cc8aaf2d588ec3bf73d6010026d5">_dio0</link>,&#32;GPIO_IRQ_EDGE_RISE,&#32;<emphasis role="keyword">true</emphasis>,&#32;&amp;<link linkend="_class_lo_ra_class_1adfc0af7af404b6de2d56129c5740bbfb">LoRaClass::onDio0Rise</link>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00387"/>00387 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00388"/>00388 &#32;&#32;&#32;&#32;gpio_set_irq_enabled(<link linkend="_class_lo_ra_class_1a4990cc8aaf2d588ec3bf73d6010026d5">_dio0</link>,&#32;GPIO_IRQ_EDGE_RISE,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00389"/>00389 &#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00390"/>00390 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00391"/>00391 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00392"/><link linkend="_class_lo_ra_class_1a3a19d8829af07604d570f4085a4eec45">00392</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1a3a19d8829af07604d570f4085a4eec45">LoRaClass::receive</link>(<emphasis role="keywordtype">int</emphasis>&#32;size)&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00393"/>00393 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00394"/>00394 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00395"/>00395 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a668618a2983f1d1839eef58e27c9267a">REG_DIO_MAPPING_1</link>,&#32;0x00);&#32;<emphasis role="comment">//&#32;DIO0&#32;=&gt;&#32;RXDONE</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00396"/>00396 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00397"/>00397 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(size&#32;&gt;&#32;0)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00398"/>00398 &#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1ad06e31c18f7029e231d837a7eca7558e">implicitHeaderMode</link>();
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00399"/>00399 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00400"/>00400 &#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a15806b85f58853b0d479576a3e069574">REG_PAYLOAD_LENGTH</link>,&#32;size&#32;&amp;&#32;0xff);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00401"/>00401 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00402"/>00402 &#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a691417e927af503dacaa797a1bb9527f">explicitHeaderMode</link>();
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00403"/>00403 &#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00404"/>00404 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00405"/>00405 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a250bcedd7826aa7c25f80654368d0a72">REG_OP_MODE</link>,&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1a3fc02479d24561e80c3c13262de1c114">MODE_LONG_RANGE_MODE</link>&#32;|&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1ae279c0f7a0a5c9521a088b2dad0df969">MODE_RX_CONTINUOUS</link>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00406"/>00406 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00407"/>00407 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00408"/><link linkend="_class_lo_ra_class_1aa5cd2912f8561be3072b5306390a73e6">00408</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1aa5cd2912f8561be3072b5306390a73e6">LoRaClass::channelActivityDetection</link>(<emphasis role="keywordtype">void</emphasis>)&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00409"/>00409 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00410"/>00410 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a668618a2983f1d1839eef58e27c9267a">REG_DIO_MAPPING_1</link>,&#32;0x80);&#32;<emphasis role="comment">//&#32;DIO0&#32;=&gt;&#32;CADDONE</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00411"/>00411 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a250bcedd7826aa7c25f80654368d0a72">REG_OP_MODE</link>,&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1a3fc02479d24561e80c3c13262de1c114">MODE_LONG_RANGE_MODE</link>&#32;|&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1a773ee0daf508d7c93c4c99b62364de91">MODE_CAD</link>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00412"/>00412 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00413"/>00413 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00414"/><link linkend="_class_lo_ra_class_1ab0397413dc995dedb08f2c560e79b01c">00414</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1ab0397413dc995dedb08f2c560e79b01c">LoRaClass::idle</link>()&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00415"/>00415 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00416"/>00416 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a250bcedd7826aa7c25f80654368d0a72">REG_OP_MODE</link>,&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1a3fc02479d24561e80c3c13262de1c114">MODE_LONG_RANGE_MODE</link>&#32;|&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1a3569020d5ac8f1fb0e294ae9fda53535">MODE_STDBY</link>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00417"/>00417 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00418"/>00418 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00419"/><link linkend="_class_lo_ra_class_1a24390e2c96490b16ca8733e274164ae0">00419</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1a24390e2c96490b16ca8733e274164ae0">LoRaClass::sleep</link>()&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00420"/>00420 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00421"/>00421 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a250bcedd7826aa7c25f80654368d0a72">REG_OP_MODE</link>,&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1a3fc02479d24561e80c3c13262de1c114">MODE_LONG_RANGE_MODE</link>&#32;|&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1a2d957317ff490fa73cd4377d5ebf0b0d">MODE_SLEEP</link>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00422"/>00422 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00423"/>00423 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00424"/><link linkend="_class_lo_ra_class_1ae113ad79caf2255287433de45b0e5b5e">00424</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1ae113ad79caf2255287433de45b0e5b5e">LoRaClass::setTxPower</link>(<emphasis role="keywordtype">int</emphasis>&#32;level,&#32;<emphasis role="keywordtype">int</emphasis>&#32;outputPin)&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00425"/>00425 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00426"/>00426 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_pin__config_8h_1a2e3b6a161ad5eb403513d08741a1fbed">PA_OUTPUT_RFO_PIN</link>&#32;==&#32;outputPin)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00427"/>00427 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;RFO</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00428"/>00428 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(level&#32;&lt;&#32;0)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00429"/>00429 &#32;&#32;&#32;&#32;&#32;&#32;level&#32;=&#32;0;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00430"/>00430 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(level&#32;&gt;&#32;14)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00431"/>00431 &#32;&#32;&#32;&#32;&#32;&#32;level&#32;=&#32;14;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00432"/>00432 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00433"/>00433 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00434"/>00434 &#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1af32e257d44b43bf90a535379a12cab17">REG_PA_CONFIG</link>,&#32;0x70&#32;|&#32;level);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00435"/>00435 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00436"/>00436 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;PA&#32;BOOST</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00437"/>00437 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(level&#32;&gt;&#32;17)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00438"/>00438 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(level&#32;&gt;&#32;20)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00439"/>00439 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;level&#32;=&#32;20;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00440"/>00440 &#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00441"/>00441 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00442"/>00442 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;subtract&#32;3&#32;from&#32;level,&#32;so&#32;18&#32;-&#32;20&#32;maps&#32;to&#32;15&#32;-&#32;17</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00443"/>00443 &#32;&#32;&#32;&#32;&#32;&#32;level&#32;-=&#32;3;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00444"/>00444 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00445"/>00445 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;High&#32;Power&#32;+20&#32;dBm&#32;Operation&#32;(Semtech&#32;SX1276/77/78/79&#32;5.4.3.)</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00446"/>00446 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a9f8d15d83023df8b754745cff0050220">REG_PA_DAC</link>,&#32;0x87);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00447"/>00447 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1ac103b2909b8eb353b28b7982251881a3">setOCP</link>(140);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00448"/>00448 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00449"/>00449 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(level&#32;&lt;&#32;2)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00450"/>00450 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;level&#32;=&#32;2;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00451"/>00451 &#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00452"/>00452 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Default&#32;value&#32;PA_HF/LF&#32;or&#32;+17dBm</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00453"/>00453 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a9f8d15d83023df8b754745cff0050220">REG_PA_DAC</link>,&#32;0x84);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00454"/>00454 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1ac103b2909b8eb353b28b7982251881a3">setOCP</link>(100);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00455"/>00455 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00456"/>00456 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00457"/>00457 &#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1af32e257d44b43bf90a535379a12cab17">REG_PA_CONFIG</link>,&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1a39afdedd4b8d71d6dbe5d497cde2ffd3">PA_BOOST</link>&#32;|&#32;(level&#32;-&#32;2));
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00458"/>00458 &#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00459"/>00459 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00460"/>00460 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00461"/><link linkend="_class_lo_ra_class_1ab754b002b04a9761ff4bee201b9ff560">00461</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1ab754b002b04a9761ff4bee201b9ff560">LoRaClass::setFrequency</link>(<emphasis role="keywordtype">long</emphasis>&#32;frequency)&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00462"/>00462 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00463"/>00463 &#32;&#32;<link linkend="_class_lo_ra_class_1af6692e2833e9ae88808ee093c2b2c356">_frequency</link>&#32;=&#32;frequency;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00464"/>00464 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00465"/>00465 &#32;&#32;uint64_t&#32;frf&#32;=&#32;((uint64_t)frequency&#32;&lt;&lt;&#32;19)&#32;/&#32;32000000;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00466"/>00466 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00467"/>00467 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1aa9e79eeafee89809ae618e8c1442e24b">REG_FRF_MSB</link>,&#32;(uint8_t)(frf&#32;&gt;&gt;&#32;16));
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00468"/>00468 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1ae2f8700ed3931e4e487e7918c9827571">REG_FRF_MID</link>,&#32;(uint8_t)(frf&#32;&gt;&gt;&#32;8));
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00469"/>00469 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1ad221a315f543118438b59b8ee37f8b09">REG_FRF_LSB</link>,&#32;(uint8_t)(frf&#32;&gt;&gt;&#32;0));
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00470"/>00470 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00471"/>00471 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00472"/><link linkend="_class_lo_ra_class_1aa1b8dc4023526ec67c852555e6ed2593">00472</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_lo_ra_class_1aa1b8dc4023526ec67c852555e6ed2593">LoRaClass::getSpreadingFactor</link>()&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00473"/>00473 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00474"/>00474 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a913cd63eb0883fa14622cd288d16c934">REG_MODEM_CONFIG_2</link>)&#32;&gt;&gt;&#32;4;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00475"/>00475 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00476"/>00476 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00477"/><link linkend="_class_lo_ra_class_1aff3deaecc03da514af3a05e5e0c38e69">00477</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1aff3deaecc03da514af3a05e5e0c38e69">LoRaClass::setSpreadingFactor</link>(<emphasis role="keywordtype">int</emphasis>&#32;sf)&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00478"/>00478 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00479"/>00479 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(sf&#32;&lt;&#32;6)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00480"/>00480 &#32;&#32;&#32;&#32;sf&#32;=&#32;6;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00481"/>00481 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(sf&#32;&gt;&#32;12)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00482"/>00482 &#32;&#32;&#32;&#32;sf&#32;=&#32;12;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00483"/>00483 &#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00484"/>00484 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00485"/>00485 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(sf&#32;==&#32;6)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00486"/>00486 &#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1ad85116bd2d6ebf421a4296b9e551b663">REG_DETECTION_OPTIMIZE</link>,&#32;0xc5);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00487"/>00487 &#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a3c142b7e485eac98190fce78583eccd6">REG_DETECTION_THRESHOLD</link>,&#32;0x0c);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00488"/>00488 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00489"/>00489 &#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1ad85116bd2d6ebf421a4296b9e551b663">REG_DETECTION_OPTIMIZE</link>,&#32;0xc3);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00490"/>00490 &#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a3c142b7e485eac98190fce78583eccd6">REG_DETECTION_THRESHOLD</link>,&#32;0x0a);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00491"/>00491 &#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00492"/>00492 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00493"/>00493 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a913cd63eb0883fa14622cd288d16c934">REG_MODEM_CONFIG_2</link>,&#32;(<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a913cd63eb0883fa14622cd288d16c934">REG_MODEM_CONFIG_2</link>)&#32;&amp;&#32;0x0f)&#32;|&#32;((sf&#32;&lt;&lt;&#32;4)&#32;&amp;&#32;0xf0));
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00494"/>00494 &#32;&#32;<link linkend="_class_lo_ra_class_1aa299808b2da9819eded073c84e1b219e">setLdoFlag</link>();
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00495"/>00495 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00496"/>00496 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00497"/><link linkend="_class_lo_ra_class_1a810b0f66f8589f7bcbbe08ce80f41959">00497</link> <emphasis role="keywordtype">long</emphasis>&#32;<link linkend="_class_lo_ra_class_1a810b0f66f8589f7bcbbe08ce80f41959">LoRaClass::getSignalBandwidth</link>()&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00498"/>00498 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00499"/>00499 &#32;&#32;uint8_t&#32;bw&#32;=&#32;(<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a2f60143586b5145f84c53feb719be2e7">REG_MODEM_CONFIG_1</link>)&#32;&gt;&gt;&#32;4);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00500"/>00500 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00501"/>00501 &#32;&#32;<emphasis role="keywordflow">switch</emphasis>&#32;(bw)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00502"/>00502 &#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;0:&#32;<emphasis role="keywordflow">return</emphasis>&#32;7.8E3;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00503"/>00503 &#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;1:&#32;<emphasis role="keywordflow">return</emphasis>&#32;10.4E3;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00504"/>00504 &#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;2:&#32;<emphasis role="keywordflow">return</emphasis>&#32;15.6E3;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00505"/>00505 &#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;3:&#32;<emphasis role="keywordflow">return</emphasis>&#32;20.8E3;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00506"/>00506 &#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;4:&#32;<emphasis role="keywordflow">return</emphasis>&#32;31.25E3;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00507"/>00507 &#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;5:&#32;<emphasis role="keywordflow">return</emphasis>&#32;41.7E3;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00508"/>00508 &#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;6:&#32;<emphasis role="keywordflow">return</emphasis>&#32;62.5E3;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00509"/>00509 &#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;7:&#32;<emphasis role="keywordflow">return</emphasis>&#32;125E3;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00510"/>00510 &#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;8:&#32;<emphasis role="keywordflow">return</emphasis>&#32;250E3;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00511"/>00511 &#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;9:&#32;<emphasis role="keywordflow">return</emphasis>&#32;500E3;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00512"/>00512 &#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00513"/>00513 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00514"/>00514 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;-1;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00515"/>00515 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00516"/>00516 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00517"/><link linkend="_class_lo_ra_class_1ad4d841d74015f7fc1139ed0ad33dc4c2">00517</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1ad4d841d74015f7fc1139ed0ad33dc4c2">LoRaClass::setSignalBandwidth</link>(<emphasis role="keywordtype">long</emphasis>&#32;sbw)&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00518"/>00518 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00519"/>00519 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;bw;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00520"/>00520 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00521"/>00521 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(sbw&#32;&lt;=&#32;7.8E3)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00522"/>00522 &#32;&#32;&#32;&#32;bw&#32;=&#32;0;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00523"/>00523 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(sbw&#32;&lt;=&#32;10.4E3)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00524"/>00524 &#32;&#32;&#32;&#32;bw&#32;=&#32;1;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00525"/>00525 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(sbw&#32;&lt;=&#32;15.6E3)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00526"/>00526 &#32;&#32;&#32;&#32;bw&#32;=&#32;2;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00527"/>00527 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(sbw&#32;&lt;=&#32;20.8E3)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00528"/>00528 &#32;&#32;&#32;&#32;bw&#32;=&#32;3;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00529"/>00529 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(sbw&#32;&lt;=&#32;31.25E3)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00530"/>00530 &#32;&#32;&#32;&#32;bw&#32;=&#32;4;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00531"/>00531 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(sbw&#32;&lt;=&#32;41.7E3)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00532"/>00532 &#32;&#32;&#32;&#32;bw&#32;=&#32;5;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00533"/>00533 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(sbw&#32;&lt;=&#32;62.5E3)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00534"/>00534 &#32;&#32;&#32;&#32;bw&#32;=&#32;6;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00535"/>00535 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(sbw&#32;&lt;=&#32;125E3)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00536"/>00536 &#32;&#32;&#32;&#32;bw&#32;=&#32;7;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00537"/>00537 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(sbw&#32;&lt;=&#32;250E3)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00538"/>00538 &#32;&#32;&#32;&#32;bw&#32;=&#32;8;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00539"/>00539 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="comment">/*if&#32;(sbw&#32;&lt;=&#32;250E3)*/</emphasis>&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00540"/>00540 &#32;&#32;&#32;&#32;bw&#32;=&#32;9;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00541"/>00541 &#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00542"/>00542 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00543"/>00543 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a2f60143586b5145f84c53feb719be2e7">REG_MODEM_CONFIG_1</link>,&#32;(<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a2f60143586b5145f84c53feb719be2e7">REG_MODEM_CONFIG_1</link>)&#32;&amp;&#32;0x0f)&#32;|&#32;(bw&#32;&lt;&lt;&#32;4));
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00544"/>00544 &#32;&#32;<link linkend="_class_lo_ra_class_1aa299808b2da9819eded073c84e1b219e">setLdoFlag</link>();
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00545"/>00545 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00546"/>00546 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00547"/><link linkend="_class_lo_ra_class_1aa299808b2da9819eded073c84e1b219e">00547</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1aa299808b2da9819eded073c84e1b219e">LoRaClass::setLdoFlag</link>()&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00548"/>00548 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00549"/>00549 &#32;&#32;<emphasis role="keywordtype">long</emphasis>&#32;symbolDuration&#32;=&#32;1000&#32;/&#32;(&#32;<link linkend="_class_lo_ra_class_1a810b0f66f8589f7bcbbe08ce80f41959">getSignalBandwidth</link>()&#32;/&#32;(1L&#32;&lt;&lt;&#32;<link linkend="_class_lo_ra_class_1aa1b8dc4023526ec67c852555e6ed2593">getSpreadingFactor</link>())&#32;)&#32;;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00550"/>00550 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00551"/>00551 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;ldoOn&#32;=&#32;symbolDuration&#32;&gt;&#32;16;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00552"/>00552 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00553"/>00553 &#32;&#32;uint8_t&#32;config3&#32;=&#32;<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1af5ebb1a2fe299154f8bd88eca0c8d497">REG_MODEM_CONFIG_3</link>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00554"/>00554 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00555"/>00555 &#32;&#32;config3&#32;=&#32;ldoOn&#32;?&#32;config3&#32;|&#32;(1&#32;&lt;&lt;&#32;3)&#32;:&#32;config3&#32;&amp;&#32;~(1&#32;&lt;&lt;&#32;3);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00556"/>00556 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00557"/>00557 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1af5ebb1a2fe299154f8bd88eca0c8d497">REG_MODEM_CONFIG_3</link>,&#32;config3);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00558"/>00558 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00559"/>00559 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00560"/><link linkend="_class_lo_ra_class_1a178a3fdb566dfcc4377e783af868d255">00560</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1a178a3fdb566dfcc4377e783af868d255">LoRaClass::setCodingRate4</link>(<emphasis role="keywordtype">int</emphasis>&#32;denominator)&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00561"/>00561 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00562"/>00562 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(denominator&#32;&lt;&#32;5)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00563"/>00563 &#32;&#32;&#32;&#32;denominator&#32;=&#32;5;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00564"/>00564 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(denominator&#32;&gt;&#32;8)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00565"/>00565 &#32;&#32;&#32;&#32;denominator&#32;=&#32;8;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00566"/>00566 &#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00567"/>00567 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00568"/>00568 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;cr&#32;=&#32;denominator&#32;-&#32;4;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00569"/>00569 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00570"/>00570 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a2f60143586b5145f84c53feb719be2e7">REG_MODEM_CONFIG_1</link>,&#32;(<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a2f60143586b5145f84c53feb719be2e7">REG_MODEM_CONFIG_1</link>)&#32;&amp;&#32;0xf1)&#32;|&#32;(cr&#32;&lt;&lt;&#32;1));
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00571"/>00571 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00572"/>00572 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00573"/><link linkend="_class_lo_ra_class_1a2e9ead473d6afc40aafa280806052ffc">00573</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1a2e9ead473d6afc40aafa280806052ffc">LoRaClass::setPreambleLength</link>(<emphasis role="keywordtype">long</emphasis>&#32;length)&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00574"/>00574 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00575"/>00575 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a4e17da98cb7d494ef66c62c4a19f87c7">REG_PREAMBLE_MSB</link>,&#32;(uint8_t)(length&#32;&gt;&gt;&#32;8));
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00576"/>00576 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a35da5c14f9b27376e44a29f6f834e403">REG_PREAMBLE_LSB</link>,&#32;(uint8_t)(length&#32;&gt;&gt;&#32;0));
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00577"/>00577 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00578"/>00578 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00579"/><link linkend="_class_lo_ra_class_1a4e0190dbf43200a959ef38ff910aee2d">00579</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1a4e0190dbf43200a959ef38ff910aee2d">LoRaClass::setSyncWord</link>(<emphasis role="keywordtype">int</emphasis>&#32;sw)&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00580"/>00580 {&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00581"/>00581 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1ab366a2eab16aac633cfee0085fa97ae5">REG_SYNC_WORD</link>,&#32;sw);&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00582"/>00582 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00583"/>00583 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00584"/><link linkend="_class_lo_ra_class_1aee4f452ce8b4ff6d8e7c30aff7e77978">00584</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1aee4f452ce8b4ff6d8e7c30aff7e77978">LoRaClass::enableCrc</link>()&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00585"/>00585 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00586"/>00586 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a913cd63eb0883fa14622cd288d16c934">REG_MODEM_CONFIG_2</link>,&#32;<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a913cd63eb0883fa14622cd288d16c934">REG_MODEM_CONFIG_2</link>)&#32;|&#32;0x04);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00587"/>00587 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00588"/>00588 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00589"/><link linkend="_class_lo_ra_class_1a6dc289bf94ecbbaddb406e863533ab45">00589</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1a6dc289bf94ecbbaddb406e863533ab45">LoRaClass::disableCrc</link>()&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00590"/>00590 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00591"/>00591 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a913cd63eb0883fa14622cd288d16c934">REG_MODEM_CONFIG_2</link>,&#32;<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a913cd63eb0883fa14622cd288d16c934">REG_MODEM_CONFIG_2</link>)&#32;&amp;&#32;0xfb);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00592"/>00592 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00593"/>00593 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00594"/><link linkend="_class_lo_ra_class_1a97b3af3bb24f1be3300b74e3e3dc05bb">00594</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1a97b3af3bb24f1be3300b74e3e3dc05bb">LoRaClass::enableInvertIQ</link>()&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00595"/>00595 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00596"/>00596 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a86fb629735ba0d84e6d2f4468cf0f16b">REG_INVERTIQ</link>,&#32;&#32;0x66);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00597"/>00597 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1aa59b9a3c6ae32456984ba3067f5cef7e">REG_INVERTIQ2</link>,&#32;0x19);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00598"/>00598 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00599"/>00599 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00600"/><link linkend="_class_lo_ra_class_1ad1c288b5a9c4163682d5ebaf8b1d31e5">00600</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1ad1c288b5a9c4163682d5ebaf8b1d31e5">LoRaClass::disableInvertIQ</link>()&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00601"/>00601 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00602"/>00602 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a86fb629735ba0d84e6d2f4468cf0f16b">REG_INVERTIQ</link>,&#32;&#32;0x27);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00603"/>00603 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1aa59b9a3c6ae32456984ba3067f5cef7e">REG_INVERTIQ2</link>,&#32;0x1d);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00604"/>00604 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00605"/>00605 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00606"/><link linkend="_class_lo_ra_class_1ac103b2909b8eb353b28b7982251881a3">00606</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1ac103b2909b8eb353b28b7982251881a3">LoRaClass::setOCP</link>(uint8_t&#32;mA)&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00607"/>00607 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00608"/>00608 &#32;&#32;uint8_t&#32;ocpTrim&#32;=&#32;27;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00609"/>00609 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00610"/>00610 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(mA&#32;&lt;=&#32;120)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00611"/>00611 &#32;&#32;&#32;&#32;ocpTrim&#32;=&#32;(mA&#32;-&#32;45)&#32;/&#32;5;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00612"/>00612 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(mA&#32;&lt;=&#32;240)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00613"/>00613 &#32;&#32;&#32;&#32;ocpTrim&#32;=&#32;(mA&#32;+&#32;30)&#32;/&#32;10;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00614"/>00614 &#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00615"/>00615 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00616"/>00616 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a4e0e13619868140039378bb218aa5a3b">REG_OCP</link>,&#32;0x20&#32;|&#32;(0x1F&#32;&amp;&#32;ocpTrim));
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00617"/>00617 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00618"/>00618 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00619"/><link linkend="_class_lo_ra_class_1aae3ff6ac6b8e2150f3fa5975f391738b">00619</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1aae3ff6ac6b8e2150f3fa5975f391738b">LoRaClass::setGain</link>(uint8_t&#32;gain)&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00620"/>00620 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00621"/>00621 &#32;&#32;<emphasis role="comment">//&#32;check&#32;allowed&#32;range</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00622"/>00622 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(gain&#32;&gt;&#32;6)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00623"/>00623 &#32;&#32;&#32;&#32;gain&#32;=&#32;6;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00624"/>00624 &#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00625"/>00625 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00626"/>00626 &#32;&#32;<emphasis role="comment">//&#32;set&#32;to&#32;standby</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00627"/>00627 &#32;&#32;<link linkend="_class_lo_ra_class_1ab0397413dc995dedb08f2c560e79b01c">idle</link>();
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00628"/>00628 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00629"/>00629 &#32;&#32;<emphasis role="comment">//&#32;set&#32;gain</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00630"/>00630 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(gain&#32;==&#32;0)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00631"/>00631 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;if&#32;gain&#32;=&#32;0,&#32;enable&#32;AGC</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00632"/>00632 &#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1af5ebb1a2fe299154f8bd88eca0c8d497">REG_MODEM_CONFIG_3</link>,&#32;0x04);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00633"/>00633 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00634"/>00634 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;disable&#32;AGC</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00635"/>00635 &#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1af5ebb1a2fe299154f8bd88eca0c8d497">REG_MODEM_CONFIG_3</link>,&#32;0x00);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00636"/>00636 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00637"/>00637 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;clear&#32;Gain&#32;and&#32;set&#32;LNA&#32;boost</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00638"/>00638 &#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1ab08aa4c56ad75b3e715a1115330109ca">REG_LNA</link>,&#32;0x03);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00639"/>00639 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00640"/>00640 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;set&#32;gain</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00641"/>00641 &#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1ab08aa4c56ad75b3e715a1115330109ca">REG_LNA</link>,&#32;<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1ab08aa4c56ad75b3e715a1115330109ca">REG_LNA</link>)&#32;|&#32;(gain&#32;&lt;&lt;&#32;5));
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00642"/>00642 &#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00643"/>00643 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00644"/>00644 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00645"/><link linkend="_class_lo_ra_class_1abc9bb5ba3fd5c9602cad549a93855d76">00645</link> uint8_t&#32;<link linkend="_class_lo_ra_class_1abc9bb5ba3fd5c9602cad549a93855d76">LoRaClass::random</link>()&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00646"/>00646 {&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00647"/>00647 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a9e8da2c01379eab6f008f92af7841fe7">REG_RSSI_WIDEBAND</link>);&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00648"/>00648 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00649"/>00649 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00650"/><link linkend="_class_lo_ra_class_1ab725750b06ea934b082d83c757d1abef">00650</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1ab725750b06ea934b082d83c757d1abef">LoRaClass::setPins</link>(<emphasis role="keywordtype">int</emphasis>&#32;ss,&#32;<emphasis role="keywordtype">int</emphasis>&#32;reset,&#32;<emphasis role="keywordtype">int</emphasis>&#32;dio0)&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00651"/>00651 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00652"/>00652 &#32;&#32;<link linkend="_class_lo_ra_class_1a3c3500b12c72e9474b9fa557b14d4098">_ss</link>&#32;=&#32;ss;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00653"/>00653 &#32;&#32;<link linkend="_class_lo_ra_class_1af9c2d6ee80f8a2e989964255f5eac9c9">_reset</link>&#32;=&#32;reset;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00654"/>00654 &#32;&#32;<link linkend="_class_lo_ra_class_1a4990cc8aaf2d588ec3bf73d6010026d5">_dio0</link>&#32;=&#32;dio0;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00655"/>00655 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00656"/>00656 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00657"/><link linkend="_class_lo_ra_class_1a5e7d11bd4b3a73de00eadd2d77c26894">00657</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1a5e7d11bd4b3a73de00eadd2d77c26894">LoRaClass::setSPI</link>(spi_inst_t&amp;&#32;spi)&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00658"/>00658 {&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00659"/>00659 &#32;&#32;<link linkend="_class_lo_ra_class_1afde12da42c7d4fd446d7dc12977bb598">_spi</link>&#32;=&#32;&amp;spi;&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00660"/>00660 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00661"/>00661 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00662"/><link linkend="_class_lo_ra_class_1adf94520d09569eb210e2e96751242d14">00662</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1adf94520d09569eb210e2e96751242d14">LoRaClass::setSPIFrequency</link>(uint32_t&#32;frequency)
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00663"/>00663 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00664"/>00664 &#32;&#32;spi_set_baudrate(<link linkend="_pin__config_8h_1a8112c985f7444e82198d7571ce0a9160">SPI_PORT</link>,&#32;frequency);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00665"/>00665 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00666"/>00666 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00667"/><link linkend="_class_lo_ra_class_1a83cb2074d43650360c8199c5a393e3ba">00667</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1a83cb2074d43650360c8199c5a393e3ba">LoRaClass::dumpRegisters</link>()&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00668"/>00668 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00669"/>00669 &#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;128;&#32;i++)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00670"/>00670 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;0x%x:&#32;0x%x\n&quot;</emphasis>,&#32;i,&#32;<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(i));
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00671"/>00671 &#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00672"/>00672 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00673"/>00673 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00674"/><link linkend="_class_lo_ra_class_1a691417e927af503dacaa797a1bb9527f">00674</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1a691417e927af503dacaa797a1bb9527f">LoRaClass::explicitHeaderMode</link>()&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00675"/>00675 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00676"/>00676 &#32;&#32;<link linkend="_class_lo_ra_class_1ad8446dc91c11cb077e691f8574571c13">_implicitHeaderMode</link>&#32;=&#32;0;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00677"/>00677 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00678"/>00678 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a2f60143586b5145f84c53feb719be2e7">REG_MODEM_CONFIG_1</link>,&#32;<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a2f60143586b5145f84c53feb719be2e7">REG_MODEM_CONFIG_1</link>)&#32;&amp;&#32;0xfe);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00679"/>00679 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00680"/>00680 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00681"/><link linkend="_class_lo_ra_class_1ad06e31c18f7029e231d837a7eca7558e">00681</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1ad06e31c18f7029e231d837a7eca7558e">LoRaClass::implicitHeaderMode</link>()&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00682"/>00682 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00683"/>00683 &#32;&#32;<link linkend="_class_lo_ra_class_1ad8446dc91c11cb077e691f8574571c13">_implicitHeaderMode</link>&#32;=&#32;1;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00684"/>00684 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00685"/>00685 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a2f60143586b5145f84c53feb719be2e7">REG_MODEM_CONFIG_1</link>,&#32;<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a2f60143586b5145f84c53feb719be2e7">REG_MODEM_CONFIG_1</link>)&#32;|&#32;0x01);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00686"/>00686 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00687"/>00687 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00688"/><link linkend="_class_lo_ra_class_1a7e5a2b9f116b3e1d2bc38b3a796ee147">00688</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1a7e5a2b9f116b3e1d2bc38b3a796ee147">LoRaClass::handleDio0Rise</link>()&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00689"/>00689 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00690"/>00690 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;irqFlags&#32;=&#32;<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a098e2376499ff1140b6cdac8f022295c">REG_IRQ_FLAGS</link>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00691"/>00691 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00692"/>00692 &#32;&#32;<emphasis role="comment">//&#32;clear&#32;IRQ&apos;s</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00693"/>00693 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a098e2376499ff1140b6cdac8f022295c">REG_IRQ_FLAGS</link>,&#32;irqFlags);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00694"/>00694 &#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a098e2376499ff1140b6cdac8f022295c">REG_IRQ_FLAGS</link>,&#32;irqFlags);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00695"/>00695 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00696"/>00696 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;((irqFlags&#32;&amp;&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1aca372e6e19dfb0d0793801b0bc3734f2">IRQ_CAD_DONE_MASK</link>)&#32;!=&#32;0)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00697"/>00697 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_lo_ra_class_1a072c4aa49f5668a8b781d6c666f1ceb2">_onCadDone</link>)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00698"/>00698 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a072c4aa49f5668a8b781d6c666f1ceb2">_onCadDone</link>((irqFlags&#32;&amp;&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1a8acc167ac990f93d8dc07eb908d11521">IRQ_CAD_DETECTED_MASK</link>)&#32;!=&#32;0);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00699"/>00699 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00700"/>00700 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;((irqFlags&#32;&amp;&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1a1c6981a372ca499afd8f60023bd67564">IRQ_PAYLOAD_CRC_ERROR_MASK</link>)&#32;==&#32;0)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00701"/>00701 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00702"/>00702 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;((irqFlags&#32;&amp;&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1a79ac308f2a7c332325b9d4ab4b7399cb">IRQ_RX_DONE_MASK</link>)&#32;!=&#32;0)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00703"/>00703 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;received&#32;a&#32;packet</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00704"/>00704 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a826b1370bbf70763b2cdb425b5692565">_packetIndex</link>&#32;=&#32;0;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00705"/>00705 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00706"/>00706 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;read&#32;packet&#32;length</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00707"/>00707 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;packetLength&#32;=&#32;<link linkend="_class_lo_ra_class_1ad8446dc91c11cb077e691f8574571c13">_implicitHeaderMode</link>&#32;?&#32;<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a15806b85f58853b0d479576a3e069574">REG_PAYLOAD_LENGTH</link>)&#32;:&#32;<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a45fdf1a8a55bf65cd5fc2af366dbb39a">REG_RX_NB_BYTES</link>);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00708"/>00708 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00709"/>00709 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;set&#32;FIFO&#32;address&#32;to&#32;current&#32;RX&#32;address</emphasis>
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00710"/>00710 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">writeRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1af5e9aa6c1a6e12df72f48a896f6f67b3">REG_FIFO_ADDR_PTR</link>,&#32;<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">readRegister</link>(<link linkend="__lo_ra-_r_p2040_8cpp_1a5e931712eaa4377c0ea89af339147cd4">REG_FIFO_RX_CURRENT_ADDR</link>));
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00711"/>00711 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00712"/>00712 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_lo_ra_class_1adf277d5d849f23e5a987ccf072f1701f">_onReceive</link>)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00713"/>00713 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1adf277d5d849f23e5a987ccf072f1701f">_onReceive</link>(packetLength);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00714"/>00714 &#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00715"/>00715 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;((irqFlags&#32;&amp;&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1a5127cb2af4a6ecd93c81e9844a3b1f5e">IRQ_TX_DONE_MASK</link>)&#32;!=&#32;0)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00716"/>00716 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_lo_ra_class_1a344a889ed61dd226b1bdd10dedf35a80">_onTxDone</link>)&#32;{
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00717"/>00717 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_lo_ra_class_1a344a889ed61dd226b1bdd10dedf35a80">_onTxDone</link>();
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00718"/>00718 &#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00719"/>00719 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00720"/>00720 &#32;&#32;}
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00721"/>00721 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00722"/>00722 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00723"/><link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">00723</link> uint8_t&#32;<link linkend="_class_lo_ra_class_1add581bfe66dd75108e22b18a4d6f89bf">LoRaClass::readRegister</link>(uint8_t&#32;address)&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00724"/>00724 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00725"/>00725 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_lo_ra_class_1a3a0c0649c595b1176b5fb1ae41210ee3">singleTransfer</link>(address&#32;&amp;&#32;0x7f,&#32;0x00);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00726"/>00726 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00727"/>00727 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00728"/><link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">00728</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1a77e7c77aa54174b352a26e1510f66f98">LoRaClass::writeRegister</link>(uint8_t&#32;address,&#32;uint8_t&#32;value)&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00729"/>00729 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00730"/>00730 &#32;&#32;<link linkend="_class_lo_ra_class_1a3a0c0649c595b1176b5fb1ae41210ee3">singleTransfer</link>(address&#32;|&#32;0x80,&#32;value);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00731"/>00731 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00732"/>00732 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00733"/><link linkend="_class_lo_ra_class_1a3a0c0649c595b1176b5fb1ae41210ee3">00733</link> uint8_t&#32;<link linkend="_class_lo_ra_class_1a3a0c0649c595b1176b5fb1ae41210ee3">LoRaClass::singleTransfer</link>(uint8_t&#32;address,&#32;uint8_t&#32;value)&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00734"/>00734 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00735"/>00735 &#32;&#32;uint8_t&#32;response;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00736"/>00736 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00737"/>00737 &#32;&#32;gpio_put(<link linkend="_class_lo_ra_class_1a3c3500b12c72e9474b9fa557b14d4098">_ss</link>,&#32;0);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00738"/>00738 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00739"/>00739 &#32;&#32;spi_write_blocking(<link linkend="_pin__config_8h_1a8112c985f7444e82198d7571ce0a9160">SPI_PORT</link>,&#32;&amp;address,&#32;1);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00740"/>00740 &#32;&#32;spi_write_read_blocking(<link linkend="_pin__config_8h_1a8112c985f7444e82198d7571ce0a9160">SPI_PORT</link>,&#32;&amp;value,&#32;&amp;response,&#32;1);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00741"/>00741 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00742"/>00742 &#32;&#32;gpio_put(<link linkend="_class_lo_ra_class_1a3c3500b12c72e9474b9fa557b14d4098">_ss</link>,&#32;1);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00743"/>00743 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00744"/>00744 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;response;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00745"/>00745 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00746"/>00746 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00747"/><link linkend="_class_lo_ra_class_1adfc0af7af404b6de2d56129c5740bbfb">00747</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_lo_ra_class_1adfc0af7af404b6de2d56129c5740bbfb">LoRaClass::onDio0Rise</link>(uint&#32;gpio,&#32;uint32_t&#32;events)&#32;
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00748"/>00748 {
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00749"/>00749 &#32;&#32;gpio_acknowledge_irq(gpio,&#32;events);
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00750"/>00750 &#32;&#32;<link linkend="__lo_ra-_r_p2040_8h_1af4db0e30d2909faa29355167719f196c">LoRa</link>.handleDio0Rise();
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00751"/>00751 }
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00752"/>00752 
+<anchor xml:id="__lo_ra-_r_p2040_8cpp_source_1l00753"/><link linkend="__lo_ra-_r_p2040_8cpp_1af4db0e30d2909faa29355167719f196c">00753</link> <link linkend="_class_lo_ra_class">LoRaClass</link>&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1af4db0e30d2909faa29355167719f196c">LoRa</link>;
+</programlisting></section>

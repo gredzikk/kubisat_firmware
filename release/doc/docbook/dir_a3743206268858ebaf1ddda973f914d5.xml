@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_a3743206268858ebaf1ddda973f914d5" xml:lang="en-US">
+<title>lib/BH1750 Directory Reference</title>
+<indexterm><primary>lib/BH1750 Directory Reference</primary></indexterm>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="__b_h1750_8cpp">BH1750.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="__b_h1750_8h">BH1750.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="__b_h1750___w_r_a_p_p_e_r_8cpp">BH1750_WRAPPER.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="__b_h1750___w_r_a_p_p_e_r_8h">BH1750_WRAPPER.h</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

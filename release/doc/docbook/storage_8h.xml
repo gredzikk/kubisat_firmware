@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_storage_8h" xml:lang="en-US">
+<title>storage.h File Reference</title>
+<indexterm><primary>storage.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;stdio.h&gt;<?linebreak?>#include &lt;string.h&gt;<?linebreak?>#include &lt;hardware/clocks.h&gt;<?linebreak?>#include &lt;hardware/flash.h&gt;<?linebreak?>#include &quot;blockdevice/flash.h&quot;<?linebreak?>#include &quot;blockdevice/sd.h&quot;<?linebreak?>#include &quot;filesystem/littlefs.h&quot;<?linebreak?>#include &quot;filesystem/vfs.h&quot;<?linebreak?>#include &quot;pin_config.h&quot;<?linebreak?>#include &quot;lfs.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_struct_file_handle">FileHandle</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>bool <link linkend="_storage_8h_1afb19e37469a751aa61de3dcd0c70b4b0">fs_init</link> (void)</para>
+</listitem>
+            <listitem><para><link linkend="_struct_file_handle">FileHandle</link> <link linkend="_storage_8h_1a921d0d7089c0c7731762035e7feeb27a">fs_open_file</link> (const char *filename, const char *mode)</para>
+</listitem>
+            <listitem><para>ssize_t <link linkend="_storage_8h_1aab35cc4af25dd4a32624e51bf0fcda5b">fs_write_file</link> (<link linkend="_struct_file_handle">FileHandle</link> &amp;handle, const void *<link linkend="_main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62">buffer</link>, size_t size)</para>
+</listitem>
+            <listitem><para>ssize_t <link linkend="_storage_8h_1a259e40f946e1178329ed6cdf18c35b0c">fs_read_file</link> (<link linkend="_struct_file_handle">FileHandle</link> &amp;handle, void *<link linkend="_main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62">buffer</link>, size_t size)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_storage_8h_1a1ed8daa820da91b458072334ecec9618">fs_close_file</link> (<link linkend="_struct_file_handle">FileHandle</link> &amp;handle)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_storage_8h_1a4d0e5bbd1f57f47164521ca84c8e6fd1">fs_file_exists</link> (const char *filename)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_storage_8h_1a1ed8daa820da91b458072334ecec9618"/><section>
+    <title>fs_close_file()</title>
+<indexterm><primary>fs_close_file</primary><secondary>storage.h</secondary></indexterm>
+<indexterm><primary>storage.h</primary><secondary>fs_close_file</secondary></indexterm>
+<para><computeroutput>bool fs_close_file (<link linkend="_struct_file_handle">FileHandle</link> &amp; handle)</computeroutput></para><para>
+Definition at line <link linkend="_storage_8cpp_source_1l00082">82</link> of file <link linkend="_storage_8cpp_source">storage.cpp</link>.</para>
+</section>
+<anchor xml:id="_storage_8h_1a4d0e5bbd1f57f47164521ca84c8e6fd1"/><section>
+    <title>fs_file_exists()</title>
+<indexterm><primary>fs_file_exists</primary><secondary>storage.h</secondary></indexterm>
+<indexterm><primary>storage.h</primary><secondary>fs_file_exists</secondary></indexterm>
+<para><computeroutput>bool fs_file_exists (const char * filename)</computeroutput></para><para>
+Definition at line <link linkend="_storage_8cpp_source_1l00099">99</link> of file <link linkend="_storage_8cpp_source">storage.cpp</link>.</para>
+</section>
+<anchor xml:id="_storage_8h_1afb19e37469a751aa61de3dcd0c70b4b0"/><section>
+    <title>fs_init()</title>
+<indexterm><primary>fs_init</primary><secondary>storage.h</secondary></indexterm>
+<indexterm><primary>storage.h</primary><secondary>fs_init</secondary></indexterm>
+<para><computeroutput>bool fs_init (void )</computeroutput></para><para>
+Definition at line <link linkend="_storage_8cpp_source_1l00009">9</link> of file <link linkend="_storage_8cpp_source">storage.cpp</link>.</para>
+</section>
+<anchor xml:id="_storage_8h_1a921d0d7089c0c7731762035e7feeb27a"/><section>
+    <title>fs_open_file()</title>
+<indexterm><primary>fs_open_file</primary><secondary>storage.h</secondary></indexterm>
+<indexterm><primary>storage.h</primary><secondary>fs_open_file</secondary></indexterm>
+<para><computeroutput><link linkend="_struct_file_handle">FileHandle</link> fs_open_file (const char * filename, const char * mode)</computeroutput></para><para>
+Definition at line <link linkend="_storage_8cpp_source_1l00037">37</link> of file <link linkend="_storage_8cpp_source">storage.cpp</link>.</para>
+</section>
+<anchor xml:id="_storage_8h_1a259e40f946e1178329ed6cdf18c35b0c"/><section>
+    <title>fs_read_file()</title>
+<indexterm><primary>fs_read_file</primary><secondary>storage.h</secondary></indexterm>
+<indexterm><primary>storage.h</primary><secondary>fs_read_file</secondary></indexterm>
+<para><computeroutput>ssize_t fs_read_file (<link linkend="_struct_file_handle">FileHandle</link> &amp; handle, void * buffer, size_t size)</computeroutput></para><para>
+Definition at line <link linkend="_storage_8cpp_source_1l00070">70</link> of file <link linkend="_storage_8cpp_source">storage.cpp</link>.</para>
+</section>
+<anchor xml:id="_storage_8h_1aab35cc4af25dd4a32624e51bf0fcda5b"/><section>
+    <title>fs_write_file()</title>
+<indexterm><primary>fs_write_file</primary><secondary>storage.h</secondary></indexterm>
+<indexterm><primary>storage.h</primary><secondary>fs_write_file</secondary></indexterm>
+<para><computeroutput>ssize_t fs_write_file (<link linkend="_struct_file_handle">FileHandle</link> &amp; handle, const void * buffer, size_t size)</computeroutput></para><para>
+Definition at line <link linkend="_storage_8cpp_source_1l00058">58</link> of file <link linkend="_storage_8cpp_source">storage.cpp</link>.</para>
+</section>
+</section>
+</section>

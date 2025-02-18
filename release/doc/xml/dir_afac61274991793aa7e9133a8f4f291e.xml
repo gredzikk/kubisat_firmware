@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_afac61274991793aa7e9133a8f4f291e" kind="dir">
+    <compoundname>commands</compoundname>
+    <innerfile refid="clock__commands_8cpp">clock_commands.cpp</innerfile>
+    <innerfile refid="commands_8cpp">commands.cpp</innerfile>
+    <innerfile refid="commands_8h">commands.h</innerfile>
+    <innerfile refid="diagnostic__commands_8cpp">diagnostic_commands.cpp</innerfile>
+    <innerfile refid="event__commands_8cpp">event_commands.cpp</innerfile>
+    <innerfile refid="gps__commands_8cpp">gps_commands.cpp</innerfile>
+    <innerfile refid="power__commands_8cpp">power_commands.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="commands/"/>
+  </compounddef>
+</doxygen>

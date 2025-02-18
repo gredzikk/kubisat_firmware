@@ -1,0 +1,26 @@
+var annotated_dup =
+[
+    [ "BH1750", "class_b_h1750.html", "class_b_h1750" ],
+    [ "BH1750Wrapper", "class_b_h1750_wrapper.html", "class_b_h1750_wrapper" ],
+    [ "BME280", "class_b_m_e280.html", "class_b_m_e280" ],
+    [ "BME280CalibParam", "struct_b_m_e280_calib_param.html", "struct_b_m_e280_calib_param" ],
+    [ "BME280Wrapper", "class_b_m_e280_wrapper.html", "class_b_m_e280_wrapper" ],
+    [ "DateTime", "struct_date_time.html", "struct_date_time" ],
+    [ "DS3231", "class_d_s3231.html", "class_d_s3231" ],
+    [ "EventEmitter", "class_event_emitter.html", "class_event_emitter" ],
+    [ "EventLog", "class_event_log.html", "class_event_log" ],
+    [ "EventManager", "class_event_manager.html", "class_event_manager" ],
+    [ "EventManagerImpl", "class_event_manager_impl.html", "class_event_manager_impl" ],
+    [ "FileHandle", "struct_file_handle.html", "struct_file_handle" ],
+    [ "Frame", "struct_frame.html", "struct_frame" ],
+    [ "HMC5883L", "class_h_m_c5883_l.html", "class_h_m_c5883_l" ],
+    [ "HMC5883LWrapper", "class_h_m_c5883_l_wrapper.html", "class_h_m_c5883_l_wrapper" ],
+    [ "INA3221", "class_i_n_a3221.html", "class_i_n_a3221" ],
+    [ "ISensor", "class_i_sensor.html", "class_i_sensor" ],
+    [ "LoRaClass", "class_lo_ra_class.html", "class_lo_ra_class" ],
+    [ "MPU6050Wrapper", "class_m_p_u6050_wrapper.html", "class_m_p_u6050_wrapper" ],
+    [ "NMEAData", "class_n_m_e_a_data.html", "class_n_m_e_a_data" ],
+    [ "PowerManager", "class_power_manager.html", "class_power_manager" ],
+    [ "Print", "class_print.html", "class_print" ],
+    [ "SensorWrapper", "class_sensor_wrapper.html", "class_sensor_wrapper" ]
+];

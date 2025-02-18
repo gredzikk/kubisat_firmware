@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__b_h1750_8cpp_source" xml:lang="en-US">
+<title>BH1750.cpp</title>
+<indexterm><primary>lib/BH1750/BH1750.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__b_h1750_8cpp_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__b_h1750_8h">BH1750.h</link>&quot;</emphasis>
+<anchor xml:id="__b_h1750_8cpp_source_1l00002"/>00002 <emphasis role="preprocessor">#include&#32;&quot;pico/stdlib.h&quot;</emphasis>
+<anchor xml:id="__b_h1750_8cpp_source_1l00003"/>00003 <emphasis role="preprocessor">#include&#32;&lt;stdio.h&gt;</emphasis>
+<anchor xml:id="__b_h1750_8cpp_source_1l00004"/>00004 <emphasis role="preprocessor">#include&#32;&lt;iostream&gt;</emphasis>
+<anchor xml:id="__b_h1750_8cpp_source_1l00005"/>00005 
+<anchor xml:id="__b_h1750_8cpp_source_1l00006"/><link linkend="_class_b_h1750_1ad3621c02c56c15e4f3d40f0974a376f2">00006</link> <link linkend="_class_b_h1750_1ad3621c02c56c15e4f3d40f0974a376f2">BH1750::BH1750</link>(uint8_t&#32;addr)&#32;:&#32;<link linkend="_class_b_h1750_1ab332014adec6fccc44f11da4034e788e">_i2c_addr</link>(addr)&#32;{}
+<anchor xml:id="__b_h1750_8cpp_source_1l00007"/>00007 
+<anchor xml:id="__b_h1750_8cpp_source_1l00008"/><link linkend="_class_b_h1750_1ae0e57ed9ecc08464a6b98b733d420e11">00008</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_b_h1750_1ae0e57ed9ecc08464a6b98b733d420e11">BH1750::begin</link>(<link linkend="_class_b_h1750_1a8402147d4b96294da6362b538d4827c0">Mode</link>&#32;mode)&#32;{
+<anchor xml:id="__b_h1750_8cpp_source_1l00009"/>00009 &#32;&#32;&#32;&#32;<link linkend="_class_b_h1750_1a3208587c6a4e0a6428f53c176c0b2970">write8</link>(<emphasis role="keyword">static_cast&lt;</emphasis>uint8_t<emphasis role="keyword">&gt;</emphasis>(<link linkend="_class_b_h1750_1a8402147d4b96294da6362b538d4827c0a3d6fc432ff9e2d9b890c591179a4401e">Mode::POWER_ON</link>));
+<anchor xml:id="__b_h1750_8cpp_source_1l00010"/>00010 &#32;&#32;&#32;&#32;<link linkend="_class_b_h1750_1a3208587c6a4e0a6428f53c176c0b2970">write8</link>(<emphasis role="keyword">static_cast&lt;</emphasis>uint8_t<emphasis role="keyword">&gt;</emphasis>(<link linkend="_class_b_h1750_1a8402147d4b96294da6362b538d4827c0ab5859d8721cfdc0312b2838b9c985bc1">Mode::RESET</link>));
+<anchor xml:id="__b_h1750_8cpp_source_1l00011"/>00011 &#32;&#32;&#32;&#32;<link linkend="_class_b_h1750_1ab4f497d6aabaa34ba1ace42206bca286">configure</link>(mode);
+<anchor xml:id="__b_h1750_8cpp_source_1l00012"/>00012 &#32;&#32;&#32;&#32;<link linkend="_class_b_h1750_1ab4f497d6aabaa34ba1ace42206bca286">configure</link>(<link linkend="_class_b_h1750_1a8402147d4b96294da6362b538d4827c0a3d6fc432ff9e2d9b890c591179a4401e">BH1750::Mode::POWER_ON</link>);
+<anchor xml:id="__b_h1750_8cpp_source_1l00013"/>00013 &#32;&#32;&#32;&#32;uint8_t&#32;check&#32;=&#32;0;
+<anchor xml:id="__b_h1750_8cpp_source_1l00014"/>00014 &#32;&#32;&#32;&#32;uint8_t&#32;cmd&#32;=&#32;0x10;&#32;<emphasis role="comment">//&#32;Continuously&#32;H-Resolution&#32;Mode</emphasis>
+<anchor xml:id="__b_h1750_8cpp_source_1l00015"/>00015 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(i2c_write_blocking(i2c1,&#32;<link linkend="_class_b_h1750_1ab332014adec6fccc44f11da4034e788e">_i2c_addr</link>,&#32;&amp;cmd,&#32;1,&#32;<emphasis role="keyword">false</emphasis>)&#32;==&#32;1)&#32;{
+<anchor xml:id="__b_h1750_8cpp_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;BH1750&#32;sensor&#32;found&#32;at&#32;0x&quot;</emphasis>&#32;&lt;&lt;&#32;std::hex&#32;&lt;&lt;&#32;(int)<link linkend="_class_b_h1750_1ab332014adec6fccc44f11da4034e788e">_i2c_addr</link>&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="__b_h1750_8cpp_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__b_h1750_8cpp_source_1l00018"/>00018 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__b_h1750_8cpp_source_1l00019"/>00019 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__b_h1750_8cpp_source_1l00020"/>00020 }
+<anchor xml:id="__b_h1750_8cpp_source_1l00021"/>00021 
+<anchor xml:id="__b_h1750_8cpp_source_1l00022"/><link linkend="_class_b_h1750_1ab4f497d6aabaa34ba1ace42206bca286">00022</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_b_h1750_1ab4f497d6aabaa34ba1ace42206bca286">BH1750::configure</link>(<link linkend="_class_b_h1750_1a8402147d4b96294da6362b538d4827c0">Mode</link>&#32;mode)&#32;{
+<anchor xml:id="__b_h1750_8cpp_source_1l00023"/>00023 &#32;&#32;&#32;&#32;uint8_t&#32;modeVal&#32;=&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint8_t<emphasis role="keyword">&gt;</emphasis>(mode);
+<anchor xml:id="__b_h1750_8cpp_source_1l00024"/>00024 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">switch</emphasis>&#32;(mode)&#32;{
+<anchor xml:id="__b_h1750_8cpp_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_b_h1750_1a8402147d4b96294da6362b538d4827c0afd7abdb36f193409d2a88bf176763911">Mode::CONTINUOUS_HIGH_RES_MODE</link>:
+<anchor xml:id="__b_h1750_8cpp_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_b_h1750_1a8402147d4b96294da6362b538d4827c0ac12663db8fda5e471cb5b946171a20b1">Mode::CONTINUOUS_HIGH_RES_MODE_2</link>:
+<anchor xml:id="__b_h1750_8cpp_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_b_h1750_1a8402147d4b96294da6362b538d4827c0ac32e5d6f3f1a6561e874a4a8fd60723f">Mode::CONTINUOUS_LOW_RES_MODE</link>:
+<anchor xml:id="__b_h1750_8cpp_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_b_h1750_1a8402147d4b96294da6362b538d4827c0ae6af2d70de1e4c57254d72b3b1b57e35">Mode::ONE_TIME_HIGH_RES_MODE</link>:
+<anchor xml:id="__b_h1750_8cpp_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_b_h1750_1a8402147d4b96294da6362b538d4827c0a459f53ea14165ac4c845757c4c93022a">Mode::ONE_TIME_HIGH_RES_MODE_2</link>:
+<anchor xml:id="__b_h1750_8cpp_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_b_h1750_1a8402147d4b96294da6362b538d4827c0a4f81ddfb660e4f3e0bc4228c61ff6dc6">Mode::ONE_TIME_LOW_RES_MODE</link>:
+<anchor xml:id="__b_h1750_8cpp_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_b_h1750_1a3208587c6a4e0a6428f53c176c0b2970">write8</link>(modeVal);
+<anchor xml:id="__b_h1750_8cpp_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sleep_ms(10);
+<anchor xml:id="__b_h1750_8cpp_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__b_h1750_8cpp_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">default</emphasis>:
+<anchor xml:id="__b_h1750_8cpp_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Invalid&#32;measurement&#32;mode\n&quot;</emphasis>);
+<anchor xml:id="__b_h1750_8cpp_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__b_h1750_8cpp_source_1l00037"/>00037 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__b_h1750_8cpp_source_1l00038"/>00038 }
+<anchor xml:id="__b_h1750_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__b_h1750_8cpp_source_1l00040"/><link linkend="_class_b_h1750_1a15a9940a67c05b9f9a781b032fa4701e">00040</link> <emphasis role="keywordtype">float</emphasis>&#32;<link linkend="_class_b_h1750_1a15a9940a67c05b9f9a781b032fa4701e">BH1750::readLightLevel</link>()&#32;{
+<anchor xml:id="__b_h1750_8cpp_source_1l00041"/>00041 &#32;&#32;&#32;&#32;uint8_t&#32;<link linkend="_main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62">buffer</link>[2];
+<anchor xml:id="__b_h1750_8cpp_source_1l00042"/>00042 &#32;&#32;&#32;&#32;i2c_read_blocking(i2c_default,&#32;<link linkend="_class_b_h1750_1ab332014adec6fccc44f11da4034e788e">_i2c_addr</link>,&#32;<link linkend="_main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62">buffer</link>,&#32;2,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__b_h1750_8cpp_source_1l00043"/>00043 &#32;&#32;&#32;&#32;uint16_t&#32;level&#32;=&#32;(<link linkend="_main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62">buffer</link>[0]&#32;&lt;&lt;&#32;8)&#32;|&#32;<link linkend="_main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62">buffer</link>[1];
+<anchor xml:id="__b_h1750_8cpp_source_1l00044"/>00044 &#32;&#32;&#32;&#32;
+<anchor xml:id="__b_h1750_8cpp_source_1l00045"/>00045 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;lux&#32;=&#32;<emphasis role="keyword">static_cast&lt;</emphasis><emphasis role="keywordtype">float</emphasis><emphasis role="keyword">&gt;</emphasis>(level)&#32;/&#32;1.2f;
+<anchor xml:id="__b_h1750_8cpp_source_1l00046"/>00046 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;lux;
+<anchor xml:id="__b_h1750_8cpp_source_1l00047"/>00047 }
+<anchor xml:id="__b_h1750_8cpp_source_1l00048"/>00048 
+<anchor xml:id="__b_h1750_8cpp_source_1l00049"/><link linkend="_class_b_h1750_1a3208587c6a4e0a6428f53c176c0b2970">00049</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_b_h1750_1a3208587c6a4e0a6428f53c176c0b2970">BH1750::write8</link>(uint8_t&#32;data)&#32;{
+<anchor xml:id="__b_h1750_8cpp_source_1l00050"/>00050 &#32;&#32;&#32;&#32;uint8_t&#32;buf[1]&#32;=&#32;{data};
+<anchor xml:id="__b_h1750_8cpp_source_1l00051"/>00051 &#32;&#32;&#32;&#32;i2c_write_blocking(i2c_default,&#32;<link linkend="_class_b_h1750_1ab332014adec6fccc44f11da4034e788e">_i2c_addr</link>,&#32;buf,&#32;1,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__b_h1750_8cpp_source_1l00052"/>00052 }
+</programlisting></section>

@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="_b_m_e280___w_r_a_p_p_e_r_8h" kind="file" language="C++">
+    <compoundname>BME280_WRAPPER.h</compoundname>
+    <includes refid="_i_sensor_8h" local="yes">lib/ISensor.h</includes>
+    <includes refid="_b_m_e280_8h" local="yes">BME280.h</includes>
+    <includedby refid="includes_8h" local="yes">includes.h</includedby>
+    <includedby refid="_b_m_e280___w_r_a_p_p_e_r_8cpp" local="yes">lib/BME280/BME280_WRAPPER.cpp</includedby>
+    <includedby refid="_i_sensor_8cpp" local="yes">lib/ISensor.cpp</includedby>
+    <incdepgraph>
+      <node id="7">
+        <label>BME280.h</label>
+        <link refid="_b_m_e280_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>lib/BME280/BME280_WRAPPER.h</label>
+        <link refid="_b_m_e280___w_r_a_p_p_e_r_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>lib/ISensor.h</label>
+        <link refid="_i_sensor_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>cstdint</label>
+      </node>
+      <node id="4">
+        <label>hardware/i2c.h</label>
+      </node>
+      <node id="8">
+        <label>iostream</label>
+      </node>
+      <node id="5">
+        <label>map</label>
+      </node>
+      <node id="6">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>includes.h</label>
+        <link refid="includes_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>lib/BME280/BME280_WRAPPER.cpp</label>
+        <link refid="_b_m_e280___w_r_a_p_p_e_r_8cpp"/>
+      </node>
+      <node id="1">
+        <label>lib/BME280/BME280_WRAPPER.h</label>
+        <link refid="_b_m_e280___w_r_a_p_p_e_r_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>lib/ISensor.cpp</label>
+        <link refid="_i_sensor_8cpp"/>
+      </node>
+      <node id="3">
+        <label>main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_b_m_e280_wrapper" prot="public">BME280Wrapper</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>BME280_WRAPPER.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>BME280_WRAPPER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BME280_WRAPPER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_i_sensor_8h" kindref="compound">lib/ISensor.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_b_m_e280_8h" kindref="compound">BME280.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="class_b_m_e280_wrapper" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_b_m_e280_wrapper_1aae6146a4d2637870a28e2cc2391663f7" kindref="member">BME280Wrapper</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_i_sensor" kindref="compound">ISensor</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="10" refid="class_b_m_e280_wrapper_1ae9fee0cb8d5bc7f1b0a953d0ddc5fc09" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_b_m_e280" kindref="compound">BME280</ref><sp/><ref refid="class_b_m_e280_wrapper_1ae9fee0cb8d5bc7f1b0a953d0ddc5fc09" kindref="member">sensor</ref>;</highlight></codeline>
+<codeline lineno="11" refid="class_b_m_e280_wrapper_1ae2d7f4ac2d6e02784ec9a8b5982795f8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_b_m_e280_wrapper_1ae2d7f4ac2d6e02784ec9a8b5982795f8" kindref="member">initialized</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_b_m_e280_wrapper_1aae6146a4d2637870a28e2cc2391663f7" kindref="member">BME280Wrapper</ref>(i2c_inst_t*<sp/>i2c);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_b_m_e280_wrapper_1a06cd239056ccf58985bd545f684960bd" kindref="member">init</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="class_b_m_e280_wrapper_1af3e891953ad05fe0b83c0cb51aab2055" kindref="member">readData</ref>(<ref refid="_i_sensor_8h_1a21b0301bb3eb76855366980212c8ae5e" kindref="member">SensorDataTypeIdentifier</ref><sp/>type)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_b_m_e280_wrapper_1afa864237c62a7cd64d74cf18f9b7a2ac" kindref="member">isInitialized</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_i_sensor_8h_1a213c434cb928c4ca22513e2302632435" kindref="member">SensorType</ref><sp/><ref refid="class_b_m_e280_wrapper_1a7863eb6da292da01efdbffc4a93e4453" kindref="member">getType</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_b_m_e280_wrapper_1aa91a632101408df8031cf90b51ef8e3a" kindref="member">configure</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::map&lt;std::string,<sp/>std::string&gt;&amp;<sp/>config)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>BME280_WRAPPER_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="lib/BME280/BME280_WRAPPER.h"/>
+  </compounddef>
+</doxygen>

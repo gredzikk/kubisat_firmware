@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__d_s3231_8h_source" xml:lang="en-US">
+<title>DS3231.h</title>
+<indexterm><primary>lib/DS3231/DS3231.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__d_s3231_8h_source_1l00001"/>00001 <emphasis role="preprocessor">#ifndef&#32;DS3231_H</emphasis>
+<anchor xml:id="__d_s3231_8h_source_1l00002"/>00002 <emphasis role="preprocessor">#define&#32;DS3231_H</emphasis>
+<anchor xml:id="__d_s3231_8h_source_1l00003"/>00003 
+<anchor xml:id="__d_s3231_8h_source_1l00004"/>00004 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+<anchor xml:id="__d_s3231_8h_source_1l00005"/><link linkend="_class_d_s3231_1aaecfb4d1dafaed2f892bf579aadbd7a3">00005</link> <emphasis role="preprocessor">#include&#32;&lt;array&gt;</emphasis>
+<anchor xml:id="__d_s3231_8h_source_1l00006"/>00006 <emphasis role="preprocessor">#include&#32;&quot;pico/stdlib.h&quot;</emphasis>
+<anchor xml:id="__d_s3231_8h_source_1l00007"/>00007 <emphasis role="preprocessor">#include&#32;&quot;hardware/i2c.h&quot;</emphasis>
+<anchor xml:id="__d_s3231_8h_source_1l00008"/>00008 
+<anchor xml:id="__d_s3231_8h_source_1l00009"/><link linkend="_struct_date_time">00009</link> <emphasis role="keyword">struct&#32;</emphasis><link linkend="_struct_date_time">DateTime</link>&#32;{
+<anchor xml:id="__d_s3231_8h_source_1l00010"/><link linkend="_struct_date_time_1a0a61d60280541502e47f9a7fd6e1c8d2">00010</link> &#32;&#32;&#32;&#32;uint16_t&#32;<link linkend="_struct_date_time_1a0a61d60280541502e47f9a7fd6e1c8d2">year</link>;
+<anchor xml:id="__d_s3231_8h_source_1l00011"/><link linkend="_struct_date_time_1ac895afb51c74941c50205f746b709148">00011</link> &#32;&#32;&#32;&#32;uint8_t&#32;<link linkend="_struct_date_time_1ac895afb51c74941c50205f746b709148">month</link>;
+<anchor xml:id="__d_s3231_8h_source_1l00012"/><link linkend="_struct_date_time_1a727866b5ecdfda1edf946efe86aa74af">00012</link> &#32;&#32;&#32;&#32;uint8_t&#32;<link linkend="_struct_date_time_1a727866b5ecdfda1edf946efe86aa74af">day</link>;
+<anchor xml:id="__d_s3231_8h_source_1l00013"/><link linkend="_struct_date_time_1ad7812eb3752d2309263267d4bc3c79a0">00013</link> &#32;&#32;&#32;&#32;uint8_t&#32;<link linkend="_struct_date_time_1ad7812eb3752d2309263267d4bc3c79a0">hour</link>;
+<anchor xml:id="__d_s3231_8h_source_1l00014"/><link linkend="_struct_date_time_1abc5bfa47937548c7aaad1970ba759af3">00014</link> &#32;&#32;&#32;&#32;uint8_t&#32;<link linkend="_struct_date_time_1abc5bfa47937548c7aaad1970ba759af3">minute</link>;
+<anchor xml:id="__d_s3231_8h_source_1l00015"/><link linkend="_struct_date_time_1afb74c1792d0f0f9d3b0d2295554fa39d">00015</link> &#32;&#32;&#32;&#32;uint8_t&#32;<link linkend="_struct_date_time_1afb74c1792d0f0f9d3b0d2295554fa39d">second</link>;
+<anchor xml:id="__d_s3231_8h_source_1l00016"/><link linkend="_struct_date_time_1a5b762acddaaa0138a96b05159f2c2e23">00016</link> &#32;&#32;&#32;&#32;std::string&#32;<link linkend="_struct_date_time_1a5b762acddaaa0138a96b05159f2c2e23">weekday</link>;
+<anchor xml:id="__d_s3231_8h_source_1l00017"/>00017 };
+<anchor xml:id="__d_s3231_8h_source_1l00018"/>00018 
+<anchor xml:id="__d_s3231_8h_source_1l00019"/><link linkend="_class_d_s3231">00019</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_class_d_s3231_1ad78b99a37b67a9912f39602d8802a358">DS3231</link>&#32;{
+<anchor xml:id="__d_s3231_8h_source_1l00020"/>00020 <emphasis role="keyword">public</emphasis>:
+<anchor xml:id="__d_s3231_8h_source_1l00021"/>00021 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Weekday&#32;names</emphasis>
+<anchor xml:id="__d_s3231_8h_source_1l00022"/>00022 &#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;std::array&lt;std::string,&#32;7&gt;&#32;<link linkend="_class_d_s3231_1aaecfb4d1dafaed2f892bf579aadbd7a3">WEEKDAYS</link>;
+<anchor xml:id="__d_s3231_8h_source_1l00023"/>00023 &#32;&#32;&#32;&#32;
+<anchor xml:id="__d_s3231_8h_source_1l00024"/>00024 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Constructor</emphasis>
+<anchor xml:id="__d_s3231_8h_source_1l00025"/>00025 &#32;&#32;&#32;&#32;<link linkend="_class_d_s3231_1ad78b99a37b67a9912f39602d8802a358">DS3231</link>(i2c_inst_t&#32;*<link linkend="_class_d_s3231_1afff19e512928fce8a6f9b50885df3732">i2c</link>,&#32;uint8_t&#32;<link linkend="_class_d_s3231_1a220290093650973f7ba16872e33b8b96">address</link>&#32;=&#32;0x68);
+<anchor xml:id="__d_s3231_8h_source_1l00026"/>00026 
+<anchor xml:id="__d_s3231_8h_source_1l00027"/>00027 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Set&#32;time&#32;using&#32;binary-coded&#32;decimal&#32;format</emphasis>
+<anchor xml:id="__d_s3231_8h_source_1l00028"/>00028 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_s3231_1a6ead725bcb29001cfbf4279f249d6983">setTime</link>(uint8_t&#32;sec,&#32;uint8_t&#32;min,&#32;uint8_t&#32;hour,&#32;
+<anchor xml:id="__d_s3231_8h_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;weekday,&#32;uint8_t&#32;day,&#32;uint8_t&#32;month,&#32;uint16_t&#32;year);
+<anchor xml:id="__d_s3231_8h_source_1l00030"/>00030 &#32;&#32;&#32;&#32;
+<anchor xml:id="__d_s3231_8h_source_1l00031"/>00031 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Get&#32;time&#32;in&#32;two&#32;formats</emphasis>
+<anchor xml:id="__d_s3231_8h_source_1l00032"/>00032 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_s3231_1aedd5fa550aa8b38fabe4d44d9ba5a0af">getTime</link>(uint8_t&amp;&#32;sec,&#32;uint8_t&amp;&#32;min,&#32;uint8_t&amp;&#32;hour,
+<anchor xml:id="__d_s3231_8h_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&amp;&#32;weekday,&#32;uint8_t&amp;&#32;day,&#32;uint8_t&amp;&#32;month,&#32;uint16_t&amp;&#32;year);
+<anchor xml:id="__d_s3231_8h_source_1l00034"/>00034 &#32;&#32;&#32;&#32;std::string&#32;<link linkend="_class_d_s3231_1af7eb8bade221416e4035f1e7139b6154">getTimeString</link>();
+<anchor xml:id="__d_s3231_8h_source_1l00035"/>00035 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_s3231_1a569f69050349e21823276ef29ff07a76">setTimeUnix</link>(uint32_t&#32;unixTime);
+<anchor xml:id="__d_s3231_8h_source_1l00036"/>00036 &#32;&#32;&#32;&#32;uint32_t&#32;<link linkend="_class_d_s3231_1a93399e0145a53c558e316f6f95a20679">getTimeUnix</link>();
+<anchor xml:id="__d_s3231_8h_source_1l00037"/>00037 &#32;&#32;&#32;&#32;<link linkend="_struct_date_time">DateTime</link>&#32;<link linkend="_class_d_s3231_1aa19b08f3978eea489bc8af3a84d67e59">getDateTime</link>();
+<anchor xml:id="__d_s3231_8h_source_1l00038"/>00038 &#32;&#32;&#32;&#32;uint64_t&#32;<link linkend="_class_d_s3231_1ac5680bedcb5cd48da26a4c0afcddb830">getTimeInteger</link>();&#32;<emphasis role="comment">//&#32;Returns&#32;YYYYMMDDHHMMSS</emphasis>
+<anchor xml:id="__d_s3231_8h_source_1l00039"/>00039 
+<anchor xml:id="__d_s3231_8h_source_1l00040"/><link linkend="_class_d_s3231_1a36868c55914308805cd333742bb2ee20">00040</link> &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_d_s3231_1a36868c55914308805cd333742bb2ee20">setTimezoneOffset</link>(int16_t&#32;offsetMinutes)&#32;{&#32;<link linkend="_class_d_s3231_1a330fb98438d9762df3d7da7ed2f38d25">timezoneOffset</link>&#32;=&#32;offsetMinutes;&#32;}
+<anchor xml:id="__d_s3231_8h_source_1l00041"/><link linkend="_class_d_s3231_1afb09486c2788bfc7773295e6af83cb21">00041</link> &#32;&#32;&#32;&#32;int16_t&#32;<link linkend="_class_d_s3231_1afb09486c2788bfc7773295e6af83cb21">getTimezoneOffset</link>()<emphasis role="keyword">&#32;const&#32;</emphasis>{&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_d_s3231_1a330fb98438d9762df3d7da7ed2f38d25">timezoneOffset</link>;&#32;}
+<anchor xml:id="__d_s3231_8h_source_1l00042"/>00042 &#32;&#32;&#32;&#32;
+<anchor xml:id="__d_s3231_8h_source_1l00043"/>00043 &#32;&#32;&#32;&#32;uint32_t&#32;<link linkend="_class_d_s3231_1ad95e3e60f1d82c37e7c03fac84249bc6">getTimeUnixLocal</link>();
+<anchor xml:id="__d_s3231_8h_source_1l00044"/>00044 &#32;&#32;&#32;&#32;<link linkend="_struct_date_time">DateTime</link>&#32;<link linkend="_class_d_s3231_1a4b893299918613d8fb3521793b848d6d">getDateTimeLocal</link>();
+<anchor xml:id="__d_s3231_8h_source_1l00045"/>00045 &#32;&#32;&#32;&#32;
+<anchor xml:id="__d_s3231_8h_source_1l00046"/><link linkend="_class_d_s3231_1a2f052be5b03cb0c5fea045f49b770cc8">00046</link> &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_d_s3231_1a2f052be5b03cb0c5fea045f49b770cc8">setClockSyncInterval</link>(uint32_t&#32;intervalSeconds)&#32;{&#32;<link linkend="_class_d_s3231_1a1a30fcf3e2d4b9c4951129ac09c1ce4c">syncInterval</link>&#32;=&#32;intervalSeconds;&#32;}
+<anchor xml:id="__d_s3231_8h_source_1l00047"/><link linkend="_class_d_s3231_1a82a03a071b6b21c5271d9856f7c9396e">00047</link> &#32;&#32;&#32;&#32;uint32_t&#32;<link linkend="_class_d_s3231_1a82a03a071b6b21c5271d9856f7c9396e">getClockSyncInterval</link>()<emphasis role="keyword">&#32;const&#32;</emphasis>{&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_d_s3231_1a1a30fcf3e2d4b9c4951129ac09c1ce4c">syncInterval</link>;&#32;}
+<anchor xml:id="__d_s3231_8h_source_1l00048"/>00048 &#32;&#32;&#32;&#32;
+<anchor xml:id="__d_s3231_8h_source_1l00049"/><link linkend="_class_d_s3231_1a902d42a635136368ad7987d7d6d84f19">00049</link> &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_d_s3231_1a902d42a635136368ad7987d7d6d84f19">setLastSyncTime</link>(uint32_t&#32;unixTime)&#32;{&#32;<link linkend="_class_d_s3231_1ab05e9cb92a0de071fc81a3d8e6488b73">lastSyncTime</link>&#32;=&#32;unixTime;&#32;}
+<anchor xml:id="__d_s3231_8h_source_1l00050"/><link linkend="_class_d_s3231_1a564eaf6a11ee0f1a8c8aad30cd49af6f">00050</link> &#32;&#32;&#32;&#32;uint32_t&#32;<link linkend="_class_d_s3231_1a564eaf6a11ee0f1a8c8aad30cd49af6f">getLastSyncTime</link>()<emphasis role="keyword">&#32;const&#32;</emphasis>{&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_d_s3231_1ab05e9cb92a0de071fc81a3d8e6488b73">lastSyncTime</link>;&#32;}
+<anchor xml:id="__d_s3231_8h_source_1l00051"/>00051 &#32;&#32;&#32;&#32;
+<anchor xml:id="__d_s3231_8h_source_1l00052"/><link linkend="_class_d_s3231_1a5dc268764fd4d0afe785aed25d97669e">00052</link> &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_d_s3231_1a5dc268764fd4d0afe785aed25d97669e">setClockDrift</link>(<emphasis role="keywordtype">float</emphasis>&#32;ppmDrift)&#32;{&#32;<link linkend="_class_d_s3231_1a1d9b76de3a1a01b5b08464f23481c004">clockDrift</link>&#32;=&#32;ppmDrift;&#32;}
+<anchor xml:id="__d_s3231_8h_source_1l00053"/><link linkend="_class_d_s3231_1a546ac8331853889ebce90bda8edbb9d9">00053</link> &#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;<link linkend="_class_d_s3231_1a546ac8331853889ebce90bda8edbb9d9">getClockDrift</link>()<emphasis role="keyword">&#32;const&#32;</emphasis>{&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_d_s3231_1a1d9b76de3a1a01b5b08464f23481c004">clockDrift</link>;&#32;}
+<anchor xml:id="__d_s3231_8h_source_1l00054"/>00054 &#32;&#32;&#32;&#32;
+<anchor xml:id="__d_s3231_8h_source_1l00055"/>00055 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_s3231_1a8674f4e63775d5d5ea7e597d0f2ab2c9">needsSync</link>();
+<anchor xml:id="__d_s3231_8h_source_1l00056"/>00056 
+<anchor xml:id="__d_s3231_8h_source_1l00057"/>00057 
+<anchor xml:id="__d_s3231_8h_source_1l00058"/>00058 <emphasis role="keyword">private</emphasis>:
+<anchor xml:id="__d_s3231_8h_source_1l00059"/><link linkend="_class_d_s3231_1afff19e512928fce8a6f9b50885df3732">00059</link> &#32;&#32;&#32;&#32;i2c_inst_t*&#32;<link linkend="_class_d_s3231_1afff19e512928fce8a6f9b50885df3732">i2c</link>;
+<anchor xml:id="__d_s3231_8h_source_1l00060"/><link linkend="_class_d_s3231_1a220290093650973f7ba16872e33b8b96">00060</link> &#32;&#32;&#32;&#32;uint8_t&#32;<link linkend="_class_d_s3231_1a220290093650973f7ba16872e33b8b96">address</link>;
+<anchor xml:id="__d_s3231_8h_source_1l00061"/><link linkend="_class_d_s3231_1af87c9b9232490e63de80b4e4c8aec81f">00061</link> &#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">constexpr</emphasis>&#32;uint8_t&#32;<link linkend="_class_d_s3231_1af87c9b9232490e63de80b4e4c8aec81f">RTC_REGISTER</link>&#32;=&#32;0x00;
+<anchor xml:id="__d_s3231_8h_source_1l00062"/>00062 
+<anchor xml:id="__d_s3231_8h_source_1l00063"/><link linkend="_class_d_s3231_1a330fb98438d9762df3d7da7ed2f38d25">00063</link> &#32;&#32;&#32;&#32;int16_t&#32;<link linkend="_class_d_s3231_1a330fb98438d9762df3d7da7ed2f38d25">timezoneOffset</link>&#32;=&#32;0;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Offset&#32;in&#32;minutes&#32;from&#32;UTC</emphasis>
+<anchor xml:id="__d_s3231_8h_source_1l00064"/><link linkend="_class_d_s3231_1a1a30fcf3e2d4b9c4951129ac09c1ce4c">00064</link> &#32;&#32;&#32;&#32;uint32_t&#32;<link linkend="_class_d_s3231_1a1a30fcf3e2d4b9c4951129ac09c1ce4c">syncInterval</link>&#32;=&#32;86400;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Default&#32;sync&#32;interval:&#32;24&#32;hours</emphasis>
+<anchor xml:id="__d_s3231_8h_source_1l00065"/><link linkend="_class_d_s3231_1ab05e9cb92a0de071fc81a3d8e6488b73">00065</link> &#32;&#32;&#32;&#32;uint32_t&#32;<link linkend="_class_d_s3231_1ab05e9cb92a0de071fc81a3d8e6488b73">lastSyncTime</link>&#32;=&#32;0;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Last&#32;successful&#32;GPS&#32;sync&#32;time</emphasis>
+<anchor xml:id="__d_s3231_8h_source_1l00066"/><link linkend="_class_d_s3231_1a1d9b76de3a1a01b5b08464f23481c004">00066</link> &#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;<link linkend="_class_d_s3231_1a1d9b76de3a1a01b5b08464f23481c004">clockDrift</link>&#32;=&#32;0.0f;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Clock&#32;drift&#32;in&#32;PPM</emphasis>
+<anchor xml:id="__d_s3231_8h_source_1l00067"/>00067 &#32;&#32;&#32;&#32;
+<anchor xml:id="__d_s3231_8h_source_1l00068"/>00068 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Utility&#32;functions</emphasis>
+<anchor xml:id="__d_s3231_8h_source_1l00069"/>00069 &#32;&#32;&#32;&#32;uint8_t&#32;<link linkend="_class_d_s3231_1a389e756fdd8f645d6025906bbce5abd8">bcd2bin</link>(uint8_t&#32;val);
+<anchor xml:id="__d_s3231_8h_source_1l00070"/>00070 &#32;&#32;&#32;&#32;uint8_t&#32;<link linkend="_class_d_s3231_1a41f5aabf74e5a66093116999648806ab">bin2bcd</link>(uint8_t&#32;val);
+<anchor xml:id="__d_s3231_8h_source_1l00071"/>00071 &#32;&#32;&#32;&#32;std::string&#32;<link linkend="_class_d_s3231_1ada371a466a46dd550e6eded5217627b5">preZero</link>(uint8_t&#32;val);
+<anchor xml:id="__d_s3231_8h_source_1l00072"/>00072 &#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;uint32_t&#32;<link linkend="_class_d_s3231_1ae6c4f2144a772c44f7adbace7f86dfa1">dateTimeToUnix</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_date_time">DateTime</link>&amp;&#32;dt);
+<anchor xml:id="__d_s3231_8h_source_1l00073"/>00073 &#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_struct_date_time">DateTime</link>&#32;<link linkend="_class_d_s3231_1a40a965b965496e5b0e7758040c5d9ce7">unixToDateTime</link>(uint32_t&#32;unixTime);
+<anchor xml:id="__d_s3231_8h_source_1l00074"/>00074 &#32;&#32;&#32;&#32;<link linkend="_struct_date_time">DateTime</link>&#32;<link linkend="_class_d_s3231_1accd8b405f5d30b7b26bb2ca4d84a8fa8">applyTimezone</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_date_time">DateTime</link>&amp;&#32;utc,&#32;int16_t&#32;offsetMinutes);
+<anchor xml:id="__d_s3231_8h_source_1l00075"/>00075 
+<anchor xml:id="__d_s3231_8h_source_1l00076"/>00076 };
+<anchor xml:id="__d_s3231_8h_source_1l00077"/>00077 
+<anchor xml:id="__d_s3231_8h_source_1l00078"/>00078 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

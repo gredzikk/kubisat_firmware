@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_send_8cpp_source" xml:lang="en-US">
+<title>send.cpp</title>
+<indexterm><primary>frame_model/send.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_send_8cpp_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_communication_8h">communication.h</link>&quot;</emphasis>
+<anchor xml:id="_send_8cpp_source_1l00002"/>00002 
+<anchor xml:id="_send_8cpp_source_1l00003"/><link linkend="_send_8cpp_1adcc720dc971ce8b237b26df434b65bb2">00003</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_send_8cpp_1adcc720dc971ce8b237b26df434b65bb2">sendMessage</link>(<emphasis role="keywordtype">string</emphasis>&#32;<link linkend="_communication_8cpp_1a13c45747091f32644e83d65348c61232">outgoing</link>)
+<anchor xml:id="_send_8cpp_source_1l00004"/>00004 {
+<anchor xml:id="_send_8cpp_source_1l00005"/>00005 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;n&#32;=&#32;<link linkend="_communication_8cpp_1a13c45747091f32644e83d65348c61232">outgoing</link>.length();
+<anchor xml:id="_send_8cpp_source_1l00006"/>00006 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;send[n&#32;+&#32;1];
+<anchor xml:id="_send_8cpp_source_1l00007"/>00007 &#32;&#32;&#32;&#32;strcpy(send,&#32;<link linkend="_communication_8cpp_1a13c45747091f32644e83d65348c61232">outgoing</link>.c_str());
+<anchor xml:id="_send_8cpp_source_1l00008"/>00008 
+<anchor xml:id="_send_8cpp_source_1l00009"/>00009 &#32;&#32;&#32;&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1af4db0e30d2909faa29355167719f196c">LoRa</link>.beginPacket();&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;start&#32;packet</emphasis>
+<anchor xml:id="_send_8cpp_source_1l00010"/>00010 &#32;&#32;&#32;&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1af4db0e30d2909faa29355167719f196c">LoRa</link>.write(<link linkend="_pin__config_8cpp_1a42676c2cae17bc2fa151feea9e192342">destination</link>);&#32;&#32;<emphasis role="comment">//&#32;add&#32;destination&#32;address</emphasis>
+<anchor xml:id="_send_8cpp_source_1l00011"/>00011 &#32;&#32;&#32;&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1af4db0e30d2909faa29355167719f196c">LoRa</link>.write(<link linkend="_pin__config_8cpp_1a91a4799f60e5d2bbf7a0ee600912f51f">localAddress</link>);&#32;<emphasis role="comment">//&#32;add&#32;sender&#32;address</emphasis>
+<anchor xml:id="_send_8cpp_source_1l00012"/>00012 &#32;&#32;&#32;&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1af4db0e30d2909faa29355167719f196c">LoRa</link>.print(send);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;add&#32;payload</emphasis>
+<anchor xml:id="_send_8cpp_source_1l00013"/>00013 &#32;&#32;&#32;&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1af4db0e30d2909faa29355167719f196c">LoRa</link>.endPacket(<emphasis role="keyword">false</emphasis>);&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;finish&#32;packet&#32;and&#32;send&#32;it</emphasis>
+<anchor xml:id="_send_8cpp_source_1l00014"/>00014 
+<anchor xml:id="_send_8cpp_source_1l00015"/>00015 &#32;&#32;&#32;&#32;std::string&#32;messageToLog&#32;=&#32;<emphasis role="stringliteral">&quot;Sent&#32;message&#32;of&#32;size&#32;&quot;</emphasis>&#32;+&#32;std::to_string(n);
+<anchor xml:id="_send_8cpp_source_1l00016"/>00016 &#32;&#32;&#32;&#32;messageToLog&#32;+=&#32;<emphasis role="stringliteral">&quot;&#32;to&#32;0x&quot;</emphasis>&#32;+&#32;std::to_string(<link linkend="_pin__config_8cpp_1a42676c2cae17bc2fa151feea9e192342">destination</link>);
+<anchor xml:id="_send_8cpp_source_1l00017"/>00017 &#32;&#32;&#32;&#32;messageToLog&#32;+=&#32;<emphasis role="stringliteral">&quot;&#32;containing:&#32;&quot;</emphasis>&#32;+&#32;string(send);
+<anchor xml:id="_send_8cpp_source_1l00018"/>00018 
+<anchor xml:id="_send_8cpp_source_1l00019"/>00019 &#32;&#32;&#32;&#32;<link linkend="_utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706">uartPrint</link>(messageToLog);
+<anchor xml:id="_send_8cpp_source_1l00020"/>00020 &#32;&#32;&#32;&#32;
+<anchor xml:id="_send_8cpp_source_1l00021"/>00021 &#32;&#32;&#32;&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1af4db0e30d2909faa29355167719f196c">LoRa</link>.flush();
+<anchor xml:id="_send_8cpp_source_1l00022"/>00022 }
+<anchor xml:id="_send_8cpp_source_1l00023"/>00023 
+<anchor xml:id="_send_8cpp_source_1l00024"/>00024 <emphasis role="comment">//&#32;Sends&#32;a&#32;Frame&#32;using&#32;LoRa&#32;by&#32;encoding&#32;it&#32;into&#32;bytes.</emphasis>
+<anchor xml:id="_send_8cpp_source_1l00025"/><link linkend="_communication_8h_1a752e7cc27f52d4ba064e691b3e240ed8">00025</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_send_8cpp_1a752e7cc27f52d4ba064e691b3e240ed8">sendFrame</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_frame">Frame</link>&amp;&#32;frame)&#32;{
+<anchor xml:id="_send_8cpp_source_1l00026"/>00026 &#32;&#32;&#32;&#32;std::string&#32;encodedFrame&#32;=&#32;<link linkend="_communication_8h_1ab53898fb6f45dfc657837a665a070959">encodeFrame</link>(frame);
+<anchor xml:id="_send_8cpp_source_1l00027"/>00027 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;sendLargePacket(data,&#32;encodedFrame);</emphasis>
+<anchor xml:id="_send_8cpp_source_1l00028"/>00028 &#32;&#32;&#32;&#32;<link linkend="_send_8cpp_1adcc720dc971ce8b237b26df434b65bb2">sendMessage</link>(encodedFrame);
+<anchor xml:id="_send_8cpp_source_1l00029"/>00029 }
+<anchor xml:id="_send_8cpp_source_1l00030"/>00030 
+<anchor xml:id="_send_8cpp_source_1l00031"/><link linkend="_communication_8h_1a252a4ea5f222c6879d281cc2f9357b46">00031</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_send_8cpp_1a252a4ea5f222c6879d281cc2f9357b46">sendLargePacket</link>(<emphasis role="keyword">const</emphasis>&#32;uint8_t*&#32;data,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;length)
+<anchor xml:id="_send_8cpp_source_1l00032"/>00032 {
+<anchor xml:id="_send_8cpp_source_1l00033"/>00033 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;MAX_PKT_SIZE&#32;=&#32;255;
+<anchor xml:id="_send_8cpp_source_1l00034"/>00034 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;offset&#32;=&#32;0;
+<anchor xml:id="_send_8cpp_source_1l00035"/>00035 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(offset&#32;&lt;&#32;length)
+<anchor xml:id="_send_8cpp_source_1l00036"/>00036 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_send_8cpp_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;chunkSize&#32;=&#32;((length&#32;-&#32;offset)&#32;&lt;&#32;MAX_PKT_SIZE)&#32;?&#32;(length&#32;-&#32;offset)&#32;:&#32;MAX_PKT_SIZE;
+<anchor xml:id="_send_8cpp_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1af4db0e30d2909faa29355167719f196c">LoRa</link>.beginPacket();
+<anchor xml:id="_send_8cpp_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1af4db0e30d2909faa29355167719f196c">LoRa</link>.write(&amp;data[offset],&#32;chunkSize);
+<anchor xml:id="_send_8cpp_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__lo_ra-_r_p2040_8cpp_1af4db0e30d2909faa29355167719f196c">LoRa</link>.endPacket();
+<anchor xml:id="_send_8cpp_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;offset&#32;+=&#32;chunkSize;
+<anchor xml:id="_send_8cpp_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sleep_ms(100);
+<anchor xml:id="_send_8cpp_source_1l00043"/>00043 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_send_8cpp_source_1l00044"/>00044 }
+</programlisting></section>

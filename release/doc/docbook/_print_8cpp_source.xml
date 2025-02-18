@@ -1,0 +1,349 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__print_8cpp_source" xml:lang="en-US">
+<title>Print.cpp</title>
+<indexterm><primary>lib/LoRa/Print.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__print_8cpp_source_1l00001"/>00001 <emphasis role="comment">/*</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00002"/>00002 <emphasis role="comment">&#32;&#32;Copyright&#32;(c)&#32;2014&#32;Arduino.&#32;&#32;All&#32;right&#32;reserved.</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00003"/>00003 <emphasis role="comment"></emphasis>
+<anchor xml:id="__print_8cpp_source_1l00004"/>00004 <emphasis role="comment">&#32;&#32;This&#32;library&#32;is&#32;free&#32;software;&#32;you&#32;can&#32;redistribute&#32;it&#32;and/or</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00005"/>00005 <emphasis role="comment">&#32;&#32;modify&#32;it&#32;under&#32;the&#32;terms&#32;of&#32;the&#32;GNU&#32;Lesser&#32;General&#32;Public</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00006"/>00006 <emphasis role="comment">&#32;&#32;License&#32;as&#32;published&#32;by&#32;the&#32;Free&#32;Software&#32;Foundation;&#32;either</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00007"/>00007 <emphasis role="comment">&#32;&#32;version&#32;2.1&#32;of&#32;the&#32;License,&#32;or&#32;(at&#32;your&#32;option)&#32;any&#32;later&#32;version.</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00008"/>00008 <emphasis role="comment"></emphasis>
+<anchor xml:id="__print_8cpp_source_1l00009"/>00009 <emphasis role="comment">&#32;&#32;This&#32;library&#32;is&#32;distributed&#32;in&#32;the&#32;hope&#32;that&#32;it&#32;will&#32;be&#32;useful,</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00010"/>00010 <emphasis role="comment">&#32;&#32;but&#32;WITHOUT&#32;ANY&#32;WARRANTY;&#32;without&#32;even&#32;the&#32;implied&#32;warranty&#32;of</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00011"/>00011 <emphasis role="comment">&#32;&#32;MERCHANTABILITY&#32;or&#32;FITNESS&#32;FOR&#32;A&#32;PARTICULAR&#32;PURPOSE.</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00012"/>00012 <emphasis role="comment">&#32;&#32;See&#32;the&#32;GNU&#32;Lesser&#32;General&#32;Public&#32;License&#32;for&#32;more&#32;details.</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00013"/>00013 <emphasis role="comment"></emphasis>
+<anchor xml:id="__print_8cpp_source_1l00014"/>00014 <emphasis role="comment">&#32;&#32;You&#32;should&#32;have&#32;received&#32;a&#32;copy&#32;of&#32;the&#32;GNU&#32;Lesser&#32;General&#32;Public</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00015"/>00015 <emphasis role="comment">&#32;&#32;License&#32;along&#32;with&#32;this&#32;library;&#32;if&#32;not,&#32;write&#32;to&#32;the&#32;Free&#32;Software</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00016"/>00016 <emphasis role="comment">&#32;&#32;Foundation,&#32;Inc.,&#32;51&#32;Franklin&#32;St,&#32;Fifth&#32;Floor,&#32;Boston,&#32;MA&#32;&#32;02110-1301&#32;&#32;USA</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00017"/>00017 <emphasis role="comment">*/</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00018"/>00018 
+<anchor xml:id="__print_8cpp_source_1l00019"/>00019 <emphasis role="preprocessor">#include&#32;&lt;stdlib.h&gt;</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00020"/>00020 <emphasis role="preprocessor">#include&#32;&lt;stdio.h&gt;</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00021"/>00021 <emphasis role="preprocessor">#include&#32;&lt;string.h&gt;</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00022"/>00022 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00023"/>00023 <emphasis role="preprocessor">#include&#32;&lt;math.h&gt;</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00024"/>00024 
+<anchor xml:id="__print_8cpp_source_1l00025"/>00025 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__print_8h">Print.h</link>&quot;</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00026"/>00026 
+<anchor xml:id="__print_8cpp_source_1l00027"/>00027 <emphasis role="keyword">using&#32;</emphasis>std::string;
+<anchor xml:id="__print_8cpp_source_1l00028"/>00028 <emphasis role="comment">//&#32;Public&#32;Methods&#32;//////////////////////////////////////////////////////////////</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00029"/>00029 
+<anchor xml:id="__print_8cpp_source_1l00030"/>00030 <emphasis role="comment">/*&#32;default&#32;implementation:&#32;may&#32;be&#32;overridden&#32;*/</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00031"/><link linkend="_class_print_1ad98d820df11e2697be1e4b1ea30b4a23">00031</link> <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_print_1a5be30d49adae2406a270c29ba9a3e0a3">Print::write</link>(<emphasis role="keyword">const</emphasis>&#32;uint8_t&#32;*<link linkend="_main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62">buffer</link>,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;size)
+<anchor xml:id="__print_8cpp_source_1l00032"/>00032 {
+<anchor xml:id="__print_8cpp_source_1l00033"/>00033 &#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;n&#32;=&#32;0;
+<anchor xml:id="__print_8cpp_source_1l00034"/>00034 &#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(size--)&#32;{
+<anchor xml:id="__print_8cpp_source_1l00035"/>00035 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_print_1a5be30d49adae2406a270c29ba9a3e0a3">write</link>(*<link linkend="_main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62">buffer</link>++))&#32;n++;
+<anchor xml:id="__print_8cpp_source_1l00036"/>00036 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__print_8cpp_source_1l00037"/>00037 &#32;&#32;}
+<anchor xml:id="__print_8cpp_source_1l00038"/>00038 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;n;
+<anchor xml:id="__print_8cpp_source_1l00039"/>00039 }
+<anchor xml:id="__print_8cpp_source_1l00040"/>00040 
+<anchor xml:id="__print_8cpp_source_1l00041"/><link linkend="_class_print_1ae50ed3394583e660f6fed94c12758426">00041</link> <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">Print::print</link>(<emphasis role="keywordtype">string</emphasis>&#32;str)
+<anchor xml:id="__print_8cpp_source_1l00042"/>00042 {
+<anchor xml:id="__print_8cpp_source_1l00043"/>00043 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_print_1a5be30d49adae2406a270c29ba9a3e0a3">write</link>(str.c_str(),&#32;str.size());
+<anchor xml:id="__print_8cpp_source_1l00044"/>00044 }
+<anchor xml:id="__print_8cpp_source_1l00045"/>00045 
+<anchor xml:id="__print_8cpp_source_1l00046"/>00046 <emphasis role="comment">//&#32;size_t&#32;Print::print(const&#32;char&#32;str[])</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00047"/>00047 <emphasis role="comment">//&#32;{</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00048"/>00048 <emphasis role="comment">//&#32;&#32;&#32;return&#32;write(str);</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00049"/>00049 <emphasis role="comment">//&#32;}</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00050"/>00050 
+<anchor xml:id="__print_8cpp_source_1l00051"/><link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">00051</link> <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">Print::print</link>(<emphasis role="keywordtype">char</emphasis>&#32;c)
+<anchor xml:id="__print_8cpp_source_1l00052"/>00052 {
+<anchor xml:id="__print_8cpp_source_1l00053"/>00053 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_print_1a5be30d49adae2406a270c29ba9a3e0a3">write</link>(c);
+<anchor xml:id="__print_8cpp_source_1l00054"/>00054 }
+<anchor xml:id="__print_8cpp_source_1l00055"/>00055 
+<anchor xml:id="__print_8cpp_source_1l00056"/><link linkend="_class_print_1aba208d0aaf8ad070829bdd0e4a7cd092">00056</link> <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">Print::print</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;c){
+<anchor xml:id="__print_8cpp_source_1l00057"/>00057 &#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_print_1a5be30d49adae2406a270c29ba9a3e0a3">write</link>(c);
+<anchor xml:id="__print_8cpp_source_1l00058"/>00058 }
+<anchor xml:id="__print_8cpp_source_1l00059"/>00059 
+<anchor xml:id="__print_8cpp_source_1l00060"/>00060 
+<anchor xml:id="__print_8cpp_source_1l00061"/><link linkend="_class_print_1a97bd44df9222fa4a51a1266fab8d3bc1">00061</link> <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">Print::print</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;b,&#32;<emphasis role="keywordtype">int</emphasis>&#32;base)
+<anchor xml:id="__print_8cpp_source_1l00062"/>00062 {
+<anchor xml:id="__print_8cpp_source_1l00063"/>00063 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">print</link>((<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>)&#32;b,&#32;base);
+<anchor xml:id="__print_8cpp_source_1l00064"/>00064 }
+<anchor xml:id="__print_8cpp_source_1l00065"/>00065 
+<anchor xml:id="__print_8cpp_source_1l00066"/><link linkend="_class_print_1a32cb3cf32d701c797b2b2d1080052dfe">00066</link> <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">Print::print</link>(<emphasis role="keywordtype">int</emphasis>&#32;n,&#32;<emphasis role="keywordtype">int</emphasis>&#32;base)
+<anchor xml:id="__print_8cpp_source_1l00067"/>00067 {
+<anchor xml:id="__print_8cpp_source_1l00068"/>00068 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_print_1a32cb3cf32d701c797b2b2d1080052dfe">print</link>((<emphasis role="keywordtype">long</emphasis>)&#32;n,&#32;base);
+<anchor xml:id="__print_8cpp_source_1l00069"/>00069 }
+<anchor xml:id="__print_8cpp_source_1l00070"/>00070 
+<anchor xml:id="__print_8cpp_source_1l00071"/><link linkend="_class_print_1a87275de35583868a370f43ce1c887750">00071</link> <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">Print::print</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;n,&#32;<emphasis role="keywordtype">int</emphasis>&#32;base)
+<anchor xml:id="__print_8cpp_source_1l00072"/>00072 {
+<anchor xml:id="__print_8cpp_source_1l00073"/>00073 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">print</link>((<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>)&#32;n,&#32;base);
+<anchor xml:id="__print_8cpp_source_1l00074"/>00074 }
+<anchor xml:id="__print_8cpp_source_1l00075"/>00075 
+<anchor xml:id="__print_8cpp_source_1l00076"/><link linkend="_class_print_1ab1fb2a2384c7b9f628943f5046e7d1c1">00076</link> <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">Print::print</link>(<emphasis role="keywordtype">long</emphasis>&#32;n,&#32;<emphasis role="keywordtype">int</emphasis>&#32;base)
+<anchor xml:id="__print_8cpp_source_1l00077"/>00077 {
+<anchor xml:id="__print_8cpp_source_1l00078"/>00078 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(base&#32;==&#32;0)&#32;{
+<anchor xml:id="__print_8cpp_source_1l00079"/>00079 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_print_1a5be30d49adae2406a270c29ba9a3e0a3">write</link>(n);
+<anchor xml:id="__print_8cpp_source_1l00080"/>00080 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(base&#32;==&#32;10)&#32;{
+<anchor xml:id="__print_8cpp_source_1l00081"/>00081 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(n&#32;&lt;&#32;0)&#32;{
+<anchor xml:id="__print_8cpp_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;t&#32;=&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">print</link>(<emphasis role="charliteral">&apos;-&apos;</emphasis>);
+<anchor xml:id="__print_8cpp_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;n&#32;=&#32;-n;
+<anchor xml:id="__print_8cpp_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_print_1abe7ee1c0946399820a61e1ec39419ee2">printNumber</link>(n,&#32;10)&#32;+&#32;t;
+<anchor xml:id="__print_8cpp_source_1l00085"/>00085 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__print_8cpp_source_1l00086"/>00086 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_print_1abe7ee1c0946399820a61e1ec39419ee2">printNumber</link>(n,&#32;10);
+<anchor xml:id="__print_8cpp_source_1l00087"/>00087 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+<anchor xml:id="__print_8cpp_source_1l00088"/>00088 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_print_1abe7ee1c0946399820a61e1ec39419ee2">printNumber</link>(n,&#32;base);
+<anchor xml:id="__print_8cpp_source_1l00089"/>00089 &#32;&#32;}
+<anchor xml:id="__print_8cpp_source_1l00090"/>00090 }
+<anchor xml:id="__print_8cpp_source_1l00091"/>00091 
+<anchor xml:id="__print_8cpp_source_1l00092"/><link linkend="_class_print_1a26a40be7a557c0bc391a15dce9f06954">00092</link> <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">Print::print</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;n,&#32;<emphasis role="keywordtype">int</emphasis>&#32;base)
+<anchor xml:id="__print_8cpp_source_1l00093"/>00093 {
+<anchor xml:id="__print_8cpp_source_1l00094"/>00094 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(base&#32;==&#32;0)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_print_1a5be30d49adae2406a270c29ba9a3e0a3">write</link>(n);
+<anchor xml:id="__print_8cpp_source_1l00095"/>00095 &#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_print_1abe7ee1c0946399820a61e1ec39419ee2">printNumber</link>(n,&#32;base);
+<anchor xml:id="__print_8cpp_source_1l00096"/>00096 }
+<anchor xml:id="__print_8cpp_source_1l00097"/>00097 
+<anchor xml:id="__print_8cpp_source_1l00098"/><link linkend="_class_print_1a669dd47fc762118a5a2052bf77d54dc8">00098</link> <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">Print::print</link>(<emphasis role="keywordtype">long</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;n,&#32;<emphasis role="keywordtype">int</emphasis>&#32;base)
+<anchor xml:id="__print_8cpp_source_1l00099"/>00099 {
+<anchor xml:id="__print_8cpp_source_1l00100"/>00100 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(base&#32;==&#32;0)&#32;{
+<anchor xml:id="__print_8cpp_source_1l00101"/>00101 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_print_1a5be30d49adae2406a270c29ba9a3e0a3">write</link>(n);
+<anchor xml:id="__print_8cpp_source_1l00102"/>00102 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(base&#32;==&#32;10)&#32;{
+<anchor xml:id="__print_8cpp_source_1l00103"/>00103 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(n&#32;&lt;&#32;0)&#32;{
+<anchor xml:id="__print_8cpp_source_1l00104"/>00104 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;t&#32;=&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">print</link>(<emphasis role="charliteral">&apos;-&apos;</emphasis>);
+<anchor xml:id="__print_8cpp_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;n&#32;=&#32;-n;
+<anchor xml:id="__print_8cpp_source_1l00106"/>00106 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_print_1a4a26b81eecc506213e4d20959c71601d">printULLNumber</link>(n,&#32;10)&#32;+&#32;t;
+<anchor xml:id="__print_8cpp_source_1l00107"/>00107 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__print_8cpp_source_1l00108"/>00108 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_print_1a4a26b81eecc506213e4d20959c71601d">printULLNumber</link>(n,&#32;10);
+<anchor xml:id="__print_8cpp_source_1l00109"/>00109 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+<anchor xml:id="__print_8cpp_source_1l00110"/>00110 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_print_1a4a26b81eecc506213e4d20959c71601d">printULLNumber</link>(n,&#32;base);
+<anchor xml:id="__print_8cpp_source_1l00111"/>00111 &#32;&#32;}
+<anchor xml:id="__print_8cpp_source_1l00112"/>00112 }
+<anchor xml:id="__print_8cpp_source_1l00113"/>00113 
+<anchor xml:id="__print_8cpp_source_1l00114"/><link linkend="_class_print_1a74a51acdc4faa11f63bc5302fb974844">00114</link> <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">Print::print</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;n,&#32;<emphasis role="keywordtype">int</emphasis>&#32;base)
+<anchor xml:id="__print_8cpp_source_1l00115"/>00115 {
+<anchor xml:id="__print_8cpp_source_1l00116"/>00116 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(base&#32;==&#32;0)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_print_1a5be30d49adae2406a270c29ba9a3e0a3">write</link>(n);
+<anchor xml:id="__print_8cpp_source_1l00117"/>00117 &#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_print_1a4a26b81eecc506213e4d20959c71601d">printULLNumber</link>(n,&#32;base);
+<anchor xml:id="__print_8cpp_source_1l00118"/>00118 }
+<anchor xml:id="__print_8cpp_source_1l00119"/>00119 
+<anchor xml:id="__print_8cpp_source_1l00120"/><link linkend="_class_print_1ae8b4c025786c820afe0a90aeea01c9c5">00120</link> <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">Print::print</link>(<emphasis role="keywordtype">double</emphasis>&#32;n,&#32;<emphasis role="keywordtype">int</emphasis>&#32;digits)
+<anchor xml:id="__print_8cpp_source_1l00121"/>00121 {
+<anchor xml:id="__print_8cpp_source_1l00122"/>00122 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_print_1adb44122cacb3fbd2338858efb54ffdef">printFloat</link>(n,&#32;digits);
+<anchor xml:id="__print_8cpp_source_1l00123"/>00123 }
+<anchor xml:id="__print_8cpp_source_1l00124"/>00124 
+<anchor xml:id="__print_8cpp_source_1l00125"/><link linkend="_class_print_1a169b128f9e22f0c15883768f580541a2">00125</link> <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_print_1a169b128f9e22f0c15883768f580541a2">Print::println</link>(<emphasis role="keywordtype">void</emphasis>)
+<anchor xml:id="__print_8cpp_source_1l00126"/>00126 {
+<anchor xml:id="__print_8cpp_source_1l00127"/>00127 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_print_1a5be30d49adae2406a270c29ba9a3e0a3">write</link>(<emphasis role="stringliteral">&quot;\r\n&quot;</emphasis>);
+<anchor xml:id="__print_8cpp_source_1l00128"/>00128 }
+<anchor xml:id="__print_8cpp_source_1l00129"/>00129 
+<anchor xml:id="__print_8cpp_source_1l00130"/><link linkend="_class_print_1ad337ce3f7977411b7d34d47a51e5737e">00130</link> <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_print_1a169b128f9e22f0c15883768f580541a2">Print::println</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;c[])
+<anchor xml:id="__print_8cpp_source_1l00131"/>00131 {
+<anchor xml:id="__print_8cpp_source_1l00132"/>00132 &#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;n&#32;=&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">print</link>(c);
+<anchor xml:id="__print_8cpp_source_1l00133"/>00133 &#32;&#32;n&#32;+=&#32;<link linkend="_class_print_1a169b128f9e22f0c15883768f580541a2">println</link>();
+<anchor xml:id="__print_8cpp_source_1l00134"/>00134 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;n;
+<anchor xml:id="__print_8cpp_source_1l00135"/>00135 }
+<anchor xml:id="__print_8cpp_source_1l00136"/>00136 
+<anchor xml:id="__print_8cpp_source_1l00137"/><link linkend="_class_print_1a554896a71162f967b5794401239d7a01">00137</link> <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_print_1a169b128f9e22f0c15883768f580541a2">Print::println</link>(<emphasis role="keywordtype">char</emphasis>&#32;c)
+<anchor xml:id="__print_8cpp_source_1l00138"/>00138 {
+<anchor xml:id="__print_8cpp_source_1l00139"/>00139 &#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;n&#32;=&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">print</link>(c);
+<anchor xml:id="__print_8cpp_source_1l00140"/>00140 &#32;&#32;n&#32;+=&#32;<link linkend="_class_print_1a169b128f9e22f0c15883768f580541a2">println</link>();
+<anchor xml:id="__print_8cpp_source_1l00141"/>00141 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;n;
+<anchor xml:id="__print_8cpp_source_1l00142"/>00142 }
+<anchor xml:id="__print_8cpp_source_1l00143"/>00143 
+<anchor xml:id="__print_8cpp_source_1l00144"/><link linkend="_class_print_1ac9afe80f50f0118d735295aec7727e50">00144</link> <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_print_1a169b128f9e22f0c15883768f580541a2">Print::println</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;b,&#32;<emphasis role="keywordtype">int</emphasis>&#32;base)
+<anchor xml:id="__print_8cpp_source_1l00145"/>00145 {
+<anchor xml:id="__print_8cpp_source_1l00146"/>00146 &#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;n&#32;=&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">print</link>(b,&#32;base);
+<anchor xml:id="__print_8cpp_source_1l00147"/>00147 &#32;&#32;n&#32;+=&#32;<link linkend="_class_print_1a169b128f9e22f0c15883768f580541a2">println</link>();
+<anchor xml:id="__print_8cpp_source_1l00148"/>00148 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;n;
+<anchor xml:id="__print_8cpp_source_1l00149"/>00149 }
+<anchor xml:id="__print_8cpp_source_1l00150"/>00150 
+<anchor xml:id="__print_8cpp_source_1l00151"/><link linkend="_class_print_1a738c88471cfb8eac7c8a804699971413">00151</link> <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_print_1a169b128f9e22f0c15883768f580541a2">Print::println</link>(<emphasis role="keywordtype">int</emphasis>&#32;num,&#32;<emphasis role="keywordtype">int</emphasis>&#32;base)
+<anchor xml:id="__print_8cpp_source_1l00152"/>00152 {
+<anchor xml:id="__print_8cpp_source_1l00153"/>00153 &#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;n&#32;=&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">print</link>(num,&#32;base);
+<anchor xml:id="__print_8cpp_source_1l00154"/>00154 &#32;&#32;n&#32;+=&#32;<link linkend="_class_print_1a169b128f9e22f0c15883768f580541a2">println</link>();
+<anchor xml:id="__print_8cpp_source_1l00155"/>00155 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;n;
+<anchor xml:id="__print_8cpp_source_1l00156"/>00156 }
+<anchor xml:id="__print_8cpp_source_1l00157"/>00157 
+<anchor xml:id="__print_8cpp_source_1l00158"/><link linkend="_class_print_1ac87eed1fcb78641169ba2244278c899e">00158</link> <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_print_1a169b128f9e22f0c15883768f580541a2">Print::println</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;num,&#32;<emphasis role="keywordtype">int</emphasis>&#32;base)
+<anchor xml:id="__print_8cpp_source_1l00159"/>00159 {
+<anchor xml:id="__print_8cpp_source_1l00160"/>00160 &#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;n&#32;=&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">print</link>(num,&#32;base);
+<anchor xml:id="__print_8cpp_source_1l00161"/>00161 &#32;&#32;n&#32;+=&#32;<link linkend="_class_print_1a169b128f9e22f0c15883768f580541a2">println</link>();
+<anchor xml:id="__print_8cpp_source_1l00162"/>00162 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;n;
+<anchor xml:id="__print_8cpp_source_1l00163"/>00163 }
+<anchor xml:id="__print_8cpp_source_1l00164"/>00164 
+<anchor xml:id="__print_8cpp_source_1l00165"/><link linkend="_class_print_1a833fbec3ceba92e3ec95f51e026e4569">00165</link> <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_print_1a169b128f9e22f0c15883768f580541a2">Print::println</link>(<emphasis role="keywordtype">long</emphasis>&#32;num,&#32;<emphasis role="keywordtype">int</emphasis>&#32;base)
+<anchor xml:id="__print_8cpp_source_1l00166"/>00166 {
+<anchor xml:id="__print_8cpp_source_1l00167"/>00167 &#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;n&#32;=&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">print</link>(num,&#32;base);
+<anchor xml:id="__print_8cpp_source_1l00168"/>00168 &#32;&#32;n&#32;+=&#32;<link linkend="_class_print_1a169b128f9e22f0c15883768f580541a2">println</link>();
+<anchor xml:id="__print_8cpp_source_1l00169"/>00169 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;n;
+<anchor xml:id="__print_8cpp_source_1l00170"/>00170 }
+<anchor xml:id="__print_8cpp_source_1l00171"/>00171 
+<anchor xml:id="__print_8cpp_source_1l00172"/><link linkend="_class_print_1aebee3c33ee5d8f10b6f378d5273742d0">00172</link> <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_print_1a169b128f9e22f0c15883768f580541a2">Print::println</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;num,&#32;<emphasis role="keywordtype">int</emphasis>&#32;base)
+<anchor xml:id="__print_8cpp_source_1l00173"/>00173 {
+<anchor xml:id="__print_8cpp_source_1l00174"/>00174 &#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;n&#32;=&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">print</link>(num,&#32;base);
+<anchor xml:id="__print_8cpp_source_1l00175"/>00175 &#32;&#32;n&#32;+=&#32;<link linkend="_class_print_1a169b128f9e22f0c15883768f580541a2">println</link>();
+<anchor xml:id="__print_8cpp_source_1l00176"/>00176 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;n;
+<anchor xml:id="__print_8cpp_source_1l00177"/>00177 }
+<anchor xml:id="__print_8cpp_source_1l00178"/>00178 
+<anchor xml:id="__print_8cpp_source_1l00179"/><link linkend="_class_print_1a3d0a0f3da98e9401d25b959b726e94ac">00179</link> <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_print_1a169b128f9e22f0c15883768f580541a2">Print::println</link>(<emphasis role="keywordtype">long</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;num,&#32;<emphasis role="keywordtype">int</emphasis>&#32;base)
+<anchor xml:id="__print_8cpp_source_1l00180"/>00180 {
+<anchor xml:id="__print_8cpp_source_1l00181"/>00181 &#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;n&#32;=&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">print</link>(num,&#32;base);
+<anchor xml:id="__print_8cpp_source_1l00182"/>00182 &#32;&#32;n&#32;+=&#32;<link linkend="_class_print_1a169b128f9e22f0c15883768f580541a2">println</link>();
+<anchor xml:id="__print_8cpp_source_1l00183"/>00183 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;n;
+<anchor xml:id="__print_8cpp_source_1l00184"/>00184 }
+<anchor xml:id="__print_8cpp_source_1l00185"/>00185 
+<anchor xml:id="__print_8cpp_source_1l00186"/><link linkend="_class_print_1ab3b823d47192f2c87b54f485ee1a3617">00186</link> <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_print_1a169b128f9e22f0c15883768f580541a2">Print::println</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;num,&#32;<emphasis role="keywordtype">int</emphasis>&#32;base)
+<anchor xml:id="__print_8cpp_source_1l00187"/>00187 {
+<anchor xml:id="__print_8cpp_source_1l00188"/>00188 &#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;n&#32;=&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">print</link>(num,&#32;base);
+<anchor xml:id="__print_8cpp_source_1l00189"/>00189 &#32;&#32;n&#32;+=&#32;<link linkend="_class_print_1a169b128f9e22f0c15883768f580541a2">println</link>();
+<anchor xml:id="__print_8cpp_source_1l00190"/>00190 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;n;
+<anchor xml:id="__print_8cpp_source_1l00191"/>00191 }
+<anchor xml:id="__print_8cpp_source_1l00192"/>00192 
+<anchor xml:id="__print_8cpp_source_1l00193"/><link linkend="_class_print_1a56e976b079361b6021ef7c2bedb397a2">00193</link> <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_print_1a169b128f9e22f0c15883768f580541a2">Print::println</link>(<emphasis role="keywordtype">double</emphasis>&#32;num,&#32;<emphasis role="keywordtype">int</emphasis>&#32;digits)
+<anchor xml:id="__print_8cpp_source_1l00194"/>00194 {
+<anchor xml:id="__print_8cpp_source_1l00195"/>00195 &#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;n&#32;=&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">print</link>(num,&#32;digits);
+<anchor xml:id="__print_8cpp_source_1l00196"/>00196 &#32;&#32;n&#32;+=&#32;<link linkend="_class_print_1a169b128f9e22f0c15883768f580541a2">println</link>();
+<anchor xml:id="__print_8cpp_source_1l00197"/>00197 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;n;
+<anchor xml:id="__print_8cpp_source_1l00198"/>00198 }
+<anchor xml:id="__print_8cpp_source_1l00199"/>00199 
+<anchor xml:id="__print_8cpp_source_1l00200"/>00200 
+<anchor xml:id="__print_8cpp_source_1l00201"/>00201 <emphasis role="comment">//&#32;Private&#32;Methods&#32;/////////////////////////////////////////////////////////////</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00202"/>00202 
+<anchor xml:id="__print_8cpp_source_1l00203"/><link linkend="_class_print_1abe7ee1c0946399820a61e1ec39419ee2">00203</link> <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_print_1abe7ee1c0946399820a61e1ec39419ee2">Print::printNumber</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;n,&#32;uint8_t&#32;base)
+<anchor xml:id="__print_8cpp_source_1l00204"/>00204 {
+<anchor xml:id="__print_8cpp_source_1l00205"/>00205 &#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;buf[8&#32;*&#32;<emphasis role="keyword">sizeof</emphasis>(long)&#32;+&#32;1];&#32;<emphasis role="comment">//&#32;Assumes&#32;8-bit&#32;chars&#32;plus&#32;zero&#32;byte.</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00206"/>00206 &#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;*str&#32;=&#32;&amp;buf[<emphasis role="keyword">sizeof</emphasis>(buf)&#32;-&#32;1];
+<anchor xml:id="__print_8cpp_source_1l00207"/>00207 
+<anchor xml:id="__print_8cpp_source_1l00208"/>00208 &#32;&#32;*str&#32;=&#32;<emphasis role="charliteral">&apos;\0&apos;</emphasis>;
+<anchor xml:id="__print_8cpp_source_1l00209"/>00209 
+<anchor xml:id="__print_8cpp_source_1l00210"/>00210 &#32;&#32;<emphasis role="comment">//&#32;prevent&#32;crash&#32;if&#32;called&#32;with&#32;base&#32;==&#32;1</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00211"/>00211 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(base&#32;&lt;&#32;2)&#32;base&#32;=&#32;10;
+<anchor xml:id="__print_8cpp_source_1l00212"/>00212 
+<anchor xml:id="__print_8cpp_source_1l00213"/>00213 &#32;&#32;<emphasis role="keywordflow">do</emphasis>&#32;{
+<anchor xml:id="__print_8cpp_source_1l00214"/>00214 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;c&#32;=&#32;n&#32;%&#32;base;
+<anchor xml:id="__print_8cpp_source_1l00215"/>00215 &#32;&#32;&#32;&#32;n&#32;/=&#32;base;
+<anchor xml:id="__print_8cpp_source_1l00216"/>00216 
+<anchor xml:id="__print_8cpp_source_1l00217"/>00217 &#32;&#32;&#32;&#32;*--str&#32;=&#32;c&#32;&lt;&#32;10&#32;?&#32;c&#32;+&#32;<emphasis role="charliteral">&apos;0&apos;</emphasis>&#32;:&#32;c&#32;+&#32;<emphasis role="charliteral">&apos;A&apos;</emphasis>&#32;-&#32;10;
+<anchor xml:id="__print_8cpp_source_1l00218"/>00218 &#32;&#32;}&#32;<emphasis role="keywordflow">while</emphasis>(n);
+<anchor xml:id="__print_8cpp_source_1l00219"/>00219 
+<anchor xml:id="__print_8cpp_source_1l00220"/>00220 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_print_1a5be30d49adae2406a270c29ba9a3e0a3">write</link>(str);
+<anchor xml:id="__print_8cpp_source_1l00221"/>00221 }
+<anchor xml:id="__print_8cpp_source_1l00222"/>00222 
+<anchor xml:id="__print_8cpp_source_1l00223"/>00223 <emphasis role="comment">//&#32;REFERENCE&#32;IMPLEMENTATION&#32;FOR&#32;ULL</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00224"/>00224 <emphasis role="comment">//&#32;size_t&#32;Print::printULLNumber(unsigned&#32;long&#32;long&#32;n,&#32;uint8_t&#32;base)</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00225"/>00225 <emphasis role="comment">//&#32;{</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00226"/>00226 &#32;&#32;<emphasis role="comment">//&#32;//&#32;if&#32;limited&#32;to&#32;base&#32;10&#32;and&#32;16&#32;the&#32;bufsize&#32;can&#32;be&#32;smaller</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00227"/>00227 &#32;&#32;<emphasis role="comment">//&#32;char&#32;buf[65];</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00228"/>00228 &#32;&#32;<emphasis role="comment">//&#32;char&#32;*str&#32;=&#32;&amp;buf[64];</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00229"/>00229 
+<anchor xml:id="__print_8cpp_source_1l00230"/>00230 &#32;&#32;<emphasis role="comment">//&#32;*str&#32;=&#32;&apos;\0&apos;;</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00231"/>00231 
+<anchor xml:id="__print_8cpp_source_1l00232"/>00232 &#32;&#32;<emphasis role="comment">//&#32;//&#32;prevent&#32;crash&#32;if&#32;called&#32;with&#32;base&#32;==&#32;1</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00233"/>00233 &#32;&#32;<emphasis role="comment">//&#32;if&#32;(base&#32;&lt;&#32;2)&#32;base&#32;=&#32;10;</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00234"/>00234 
+<anchor xml:id="__print_8cpp_source_1l00235"/>00235 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;do&#32;{</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00236"/>00236 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;unsigned&#32;long&#32;long&#32;t&#32;=&#32;n&#32;/&#32;base;</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00237"/>00237 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;char&#32;c&#32;=&#32;n&#32;-&#32;t&#32;*&#32;base;&#32;&#32;//&#32;faster&#32;than&#32;c&#32;=&#32;n%base;</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00238"/>00238 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;n&#32;=&#32;t;</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00239"/>00239 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;*--str&#32;=&#32;c&#32;&lt;&#32;10&#32;?&#32;c&#32;+&#32;&apos;0&apos;&#32;:&#32;c&#32;+&#32;&apos;A&apos;&#32;-&#32;10;</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00240"/>00240 &#32;&#32;<emphasis role="comment">//&#32;}&#32;while(n);</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00241"/>00241 
+<anchor xml:id="__print_8cpp_source_1l00242"/>00242 &#32;&#32;<emphasis role="comment">//&#32;return&#32;write(str);</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00243"/>00243 <emphasis role="comment">//&#32;}</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00244"/>00244 
+<anchor xml:id="__print_8cpp_source_1l00245"/>00245 <emphasis role="comment">//&#32;FAST&#32;IMPLEMENTATION&#32;FOR&#32;ULL</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00246"/><link linkend="_class_print_1a4a26b81eecc506213e4d20959c71601d">00246</link> <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_print_1a4a26b81eecc506213e4d20959c71601d">Print::printULLNumber</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;n64,&#32;uint8_t&#32;base)
+<anchor xml:id="__print_8cpp_source_1l00247"/>00247 {
+<anchor xml:id="__print_8cpp_source_1l00248"/>00248 &#32;&#32;<emphasis role="comment">//&#32;if&#32;limited&#32;to&#32;base&#32;10&#32;and&#32;16&#32;the&#32;bufsize&#32;can&#32;be&#32;20</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00249"/>00249 &#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;buf[64];
+<anchor xml:id="__print_8cpp_source_1l00250"/>00250 &#32;&#32;uint8_t&#32;i&#32;=&#32;0;
+<anchor xml:id="__print_8cpp_source_1l00251"/>00251 &#32;&#32;uint8_t&#32;innerLoops&#32;=&#32;0;
+<anchor xml:id="__print_8cpp_source_1l00252"/>00252 
+<anchor xml:id="__print_8cpp_source_1l00253"/>00253 &#32;&#32;<emphasis role="comment">//&#32;prevent&#32;crash&#32;if&#32;called&#32;with&#32;base&#32;==&#32;1</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00254"/>00254 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(base&#32;&lt;&#32;2)&#32;base&#32;=&#32;10;
+<anchor xml:id="__print_8cpp_source_1l00255"/>00255 
+<anchor xml:id="__print_8cpp_source_1l00256"/>00256 &#32;&#32;<emphasis role="comment">//&#32;process&#32;chunks&#32;that&#32;fit&#32;in&#32;&quot;16&#32;bit&#32;math&quot;.</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00257"/>00257 &#32;&#32;uint16_t&#32;top&#32;=&#32;0xFFFF&#32;/&#32;base;
+<anchor xml:id="__print_8cpp_source_1l00258"/>00258 &#32;&#32;uint16_t&#32;th16&#32;=&#32;1;
+<anchor xml:id="__print_8cpp_source_1l00259"/>00259 &#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(th16&#32;&lt;&#32;top)
+<anchor xml:id="__print_8cpp_source_1l00260"/>00260 &#32;&#32;{
+<anchor xml:id="__print_8cpp_source_1l00261"/>00261 &#32;&#32;&#32;&#32;th16&#32;*=&#32;base;
+<anchor xml:id="__print_8cpp_source_1l00262"/>00262 &#32;&#32;&#32;&#32;innerLoops++;
+<anchor xml:id="__print_8cpp_source_1l00263"/>00263 &#32;&#32;}
+<anchor xml:id="__print_8cpp_source_1l00264"/>00264 
+<anchor xml:id="__print_8cpp_source_1l00265"/>00265 &#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(n64&#32;&gt;&#32;th16)
+<anchor xml:id="__print_8cpp_source_1l00266"/>00266 &#32;&#32;{
+<anchor xml:id="__print_8cpp_source_1l00267"/>00267 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;64&#32;bit&#32;math&#32;part</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00268"/>00268 &#32;&#32;&#32;&#32;uint64_t&#32;q&#32;=&#32;n64&#32;/&#32;th16;
+<anchor xml:id="__print_8cpp_source_1l00269"/>00269 &#32;&#32;&#32;&#32;uint16_t&#32;r&#32;=&#32;n64&#32;-&#32;q*th16;
+<anchor xml:id="__print_8cpp_source_1l00270"/>00270 &#32;&#32;&#32;&#32;n64&#32;=&#32;q;
+<anchor xml:id="__print_8cpp_source_1l00271"/>00271 
+<anchor xml:id="__print_8cpp_source_1l00272"/>00272 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;16&#32;bit&#32;math&#32;loop&#32;to&#32;do&#32;remainder.&#32;(note&#32;buffer&#32;is&#32;filled&#32;reverse)</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00273"/>00273 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(uint8_t&#32;j=0;&#32;j&#32;&lt;&#32;innerLoops;&#32;j++)
+<anchor xml:id="__print_8cpp_source_1l00274"/>00274 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__print_8cpp_source_1l00275"/>00275 &#32;&#32;&#32;&#32;&#32;&#32;uint16_t&#32;qq&#32;=&#32;r/base;
+<anchor xml:id="__print_8cpp_source_1l00276"/>00276 &#32;&#32;&#32;&#32;&#32;&#32;buf[i++]&#32;=&#32;r&#32;-&#32;qq*base;
+<anchor xml:id="__print_8cpp_source_1l00277"/>00277 &#32;&#32;&#32;&#32;&#32;&#32;r&#32;=&#32;qq;
+<anchor xml:id="__print_8cpp_source_1l00278"/>00278 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__print_8cpp_source_1l00279"/>00279 &#32;&#32;}
+<anchor xml:id="__print_8cpp_source_1l00280"/>00280 
+<anchor xml:id="__print_8cpp_source_1l00281"/>00281 &#32;&#32;uint16_t&#32;n16&#32;=&#32;n64;
+<anchor xml:id="__print_8cpp_source_1l00282"/>00282 &#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(n16&#32;&gt;&#32;0)
+<anchor xml:id="__print_8cpp_source_1l00283"/>00283 &#32;&#32;{
+<anchor xml:id="__print_8cpp_source_1l00284"/>00284 &#32;&#32;&#32;&#32;uint16_t&#32;qq&#32;=&#32;n16/base;
+<anchor xml:id="__print_8cpp_source_1l00285"/>00285 &#32;&#32;&#32;&#32;buf[i++]&#32;=&#32;n16&#32;-&#32;qq*base;
+<anchor xml:id="__print_8cpp_source_1l00286"/>00286 &#32;&#32;&#32;&#32;n16&#32;=&#32;qq;
+<anchor xml:id="__print_8cpp_source_1l00287"/>00287 &#32;&#32;}
+<anchor xml:id="__print_8cpp_source_1l00288"/>00288 
+<anchor xml:id="__print_8cpp_source_1l00289"/>00289 &#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;bytes&#32;=&#32;i;
+<anchor xml:id="__print_8cpp_source_1l00290"/>00290 &#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(;&#32;i&#32;&gt;&#32;0;&#32;i--)
+<anchor xml:id="__print_8cpp_source_1l00291"/>00291 &#32;&#32;&#32;&#32;<link linkend="_class_print_1a5be30d49adae2406a270c29ba9a3e0a3">write</link>((<emphasis role="keywordtype">char</emphasis>)&#32;(buf[i&#32;-&#32;1]&#32;&lt;&#32;10&#32;?
+<anchor xml:id="__print_8cpp_source_1l00292"/>00292 &#32;&#32;&#32;&#32;<emphasis role="charliteral">&apos;0&apos;</emphasis>&#32;+&#32;buf[i&#32;-&#32;1]&#32;:
+<anchor xml:id="__print_8cpp_source_1l00293"/>00293 &#32;&#32;&#32;&#32;<emphasis role="charliteral">&apos;A&apos;</emphasis>&#32;+&#32;buf[i&#32;-&#32;1]&#32;-&#32;10));
+<anchor xml:id="__print_8cpp_source_1l00294"/>00294 
+<anchor xml:id="__print_8cpp_source_1l00295"/>00295 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;bytes;
+<anchor xml:id="__print_8cpp_source_1l00296"/>00296 }
+<anchor xml:id="__print_8cpp_source_1l00297"/>00297 
+<anchor xml:id="__print_8cpp_source_1l00298"/><link linkend="_class_print_1adb44122cacb3fbd2338858efb54ffdef">00298</link> <emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_print_1adb44122cacb3fbd2338858efb54ffdef">Print::printFloat</link>(<emphasis role="keywordtype">double</emphasis>&#32;number,&#32;<emphasis role="keywordtype">int</emphasis>&#32;digits)
+<anchor xml:id="__print_8cpp_source_1l00299"/>00299 {
+<anchor xml:id="__print_8cpp_source_1l00300"/>00300 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(digits&#32;&lt;&#32;0)
+<anchor xml:id="__print_8cpp_source_1l00301"/>00301 &#32;&#32;&#32;&#32;digits&#32;=&#32;2;
+<anchor xml:id="__print_8cpp_source_1l00302"/>00302 
+<anchor xml:id="__print_8cpp_source_1l00303"/>00303 &#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;n&#32;=&#32;0;
+<anchor xml:id="__print_8cpp_source_1l00304"/>00304 
+<anchor xml:id="__print_8cpp_source_1l00305"/>00305 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(isnan(number))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">print</link>(<emphasis role="stringliteral">&quot;nan&quot;</emphasis>);
+<anchor xml:id="__print_8cpp_source_1l00306"/>00306 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(isinf(number))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">print</link>(<emphasis role="stringliteral">&quot;inf&quot;</emphasis>);
+<anchor xml:id="__print_8cpp_source_1l00307"/>00307 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(number&#32;&gt;&#32;4294967040.0)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">print</link>&#32;(<emphasis role="stringliteral">&quot;ovf&quot;</emphasis>);&#32;&#32;<emphasis role="comment">//&#32;constant&#32;determined&#32;empirically</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00308"/>00308 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(number&#32;&lt;-4294967040.0)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">print</link>&#32;(<emphasis role="stringliteral">&quot;ovf&quot;</emphasis>);&#32;&#32;<emphasis role="comment">//&#32;constant&#32;determined&#32;empirically</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00309"/>00309 
+<anchor xml:id="__print_8cpp_source_1l00310"/>00310 &#32;&#32;<emphasis role="comment">//&#32;Handle&#32;negative&#32;numbers</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00311"/>00311 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(number&#32;&lt;&#32;0.0)
+<anchor xml:id="__print_8cpp_source_1l00312"/>00312 &#32;&#32;{
+<anchor xml:id="__print_8cpp_source_1l00313"/>00313 &#32;&#32;&#32;&#32;&#32;n&#32;+=&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">print</link>(<emphasis role="charliteral">&apos;-&apos;</emphasis>);
+<anchor xml:id="__print_8cpp_source_1l00314"/>00314 &#32;&#32;&#32;&#32;&#32;number&#32;=&#32;-number;
+<anchor xml:id="__print_8cpp_source_1l00315"/>00315 &#32;&#32;}
+<anchor xml:id="__print_8cpp_source_1l00316"/>00316 
+<anchor xml:id="__print_8cpp_source_1l00317"/>00317 &#32;&#32;<emphasis role="comment">//&#32;Round&#32;correctly&#32;so&#32;that&#32;print(1.999,&#32;2)&#32;prints&#32;as&#32;&quot;2.00&quot;</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00318"/>00318 &#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;rounding&#32;=&#32;0.5;
+<anchor xml:id="__print_8cpp_source_1l00319"/>00319 &#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(uint8_t&#32;i=0;&#32;i&lt;digits;&#32;++i)
+<anchor xml:id="__print_8cpp_source_1l00320"/>00320 &#32;&#32;&#32;&#32;rounding&#32;/=&#32;10.0;
+<anchor xml:id="__print_8cpp_source_1l00321"/>00321 
+<anchor xml:id="__print_8cpp_source_1l00322"/>00322 &#32;&#32;number&#32;+=&#32;rounding;
+<anchor xml:id="__print_8cpp_source_1l00323"/>00323 
+<anchor xml:id="__print_8cpp_source_1l00324"/>00324 &#32;&#32;<emphasis role="comment">//&#32;Extract&#32;the&#32;integer&#32;part&#32;of&#32;the&#32;number&#32;and&#32;print&#32;it</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00325"/>00325 &#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;int_part&#32;=&#32;(<emphasis role="keywordtype">unsigned</emphasis>&#32;long)number;
+<anchor xml:id="__print_8cpp_source_1l00326"/>00326 &#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;remainder&#32;=&#32;number&#32;-&#32;(double)int_part;
+<anchor xml:id="__print_8cpp_source_1l00327"/>00327 &#32;&#32;n&#32;+=&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">print</link>(int_part);
+<anchor xml:id="__print_8cpp_source_1l00328"/>00328 
+<anchor xml:id="__print_8cpp_source_1l00329"/>00329 &#32;&#32;<emphasis role="comment">//&#32;Print&#32;the&#32;decimal&#32;point,&#32;but&#32;only&#32;if&#32;there&#32;are&#32;digits&#32;beyond</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00330"/>00330 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(digits&#32;&gt;&#32;0)&#32;{
+<anchor xml:id="__print_8cpp_source_1l00331"/>00331 &#32;&#32;&#32;&#32;n&#32;+=&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">print</link>(<emphasis role="stringliteral">&quot;.&quot;</emphasis>);
+<anchor xml:id="__print_8cpp_source_1l00332"/>00332 &#32;&#32;}
+<anchor xml:id="__print_8cpp_source_1l00333"/>00333 
+<anchor xml:id="__print_8cpp_source_1l00334"/>00334 &#32;&#32;<emphasis role="comment">//&#32;Extract&#32;digits&#32;from&#32;the&#32;remainder&#32;one&#32;at&#32;a&#32;time</emphasis>
+<anchor xml:id="__print_8cpp_source_1l00335"/>00335 &#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(digits--&#32;&gt;&#32;0)
+<anchor xml:id="__print_8cpp_source_1l00336"/>00336 &#32;&#32;{
+<anchor xml:id="__print_8cpp_source_1l00337"/>00337 &#32;&#32;&#32;&#32;remainder&#32;*=&#32;10.0;
+<anchor xml:id="__print_8cpp_source_1l00338"/>00338 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;toPrint&#32;=&#32;(<emphasis role="keywordtype">unsigned</emphasis>&#32;int)remainder;
+<anchor xml:id="__print_8cpp_source_1l00339"/>00339 &#32;&#32;&#32;&#32;n&#32;+=&#32;<link linkend="_class_print_1a1e411d07a8ffec5faf7ce485bac0f029">print</link>(toPrint);
+<anchor xml:id="__print_8cpp_source_1l00340"/>00340 &#32;&#32;&#32;&#32;remainder&#32;-=&#32;toPrint;
+<anchor xml:id="__print_8cpp_source_1l00341"/>00341 &#32;&#32;}
+<anchor xml:id="__print_8cpp_source_1l00342"/>00342 
+<anchor xml:id="__print_8cpp_source_1l00343"/>00343 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;n;
+<anchor xml:id="__print_8cpp_source_1l00344"/>00344 }
+</programlisting></section>

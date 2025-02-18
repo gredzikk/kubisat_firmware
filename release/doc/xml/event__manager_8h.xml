@@ -1,0 +1,872 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="event__manager_8h" kind="file" language="C++">
+    <compoundname>event_manager.h</compoundname>
+    <includes refid="_power_manager_8h" local="yes">PowerManager.h</includes>
+    <includes local="no">cstdint</includes>
+    <includes local="no">string</includes>
+    <includes local="yes">pico/mutex.h</includes>
+    <includedby refid="event__commands_8cpp" local="yes">commands/event_commands.cpp</includedby>
+    <includedby refid="event__manager_8cpp" local="yes">event_manager.cpp</includedby>
+    <includedby refid="communication_8h" local="yes">frame_model/communication.h</includedby>
+    <includedby refid="includes_8h" local="yes">includes.h</includedby>
+    <includedby refid="gps__collector_8cpp" local="yes">lib/GPS/gps_collector.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>event_manager.h</label>
+        <link refid="event__manager_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>INA3221.h</label>
+        <link refid="_i_n_a3221_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>PowerManager.h</label>
+        <link refid="_power_manager_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>cstdint</label>
+      </node>
+      <node id="6">
+        <label>hardware/i2c.h</label>
+      </node>
+      <node id="5">
+        <label>iostream</label>
+      </node>
+      <node id="7">
+        <label>map</label>
+      </node>
+      <node id="11">
+        <label>pico/mutex.h</label>
+      </node>
+      <node id="9">
+        <label>pico/stdlib.h</label>
+      </node>
+      <node id="4">
+        <label>stdint.h</label>
+      </node>
+      <node id="8">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="5">
+        <label>commands/clock_commands.cpp</label>
+        <link refid="clock__commands_8cpp"/>
+      </node>
+      <node id="6">
+        <label>commands/commands.cpp</label>
+        <link refid="commands_8cpp"/>
+      </node>
+      <node id="7">
+        <label>commands/diagnostic_commands.cpp</label>
+        <link refid="diagnostic__commands_8cpp"/>
+      </node>
+      <node id="2">
+        <label>commands/event_commands.cpp</label>
+        <link refid="event__commands_8cpp"/>
+      </node>
+      <node id="8">
+        <label>commands/gps_commands.cpp</label>
+        <link refid="gps__commands_8cpp"/>
+      </node>
+      <node id="9">
+        <label>commands/power_commands.cpp</label>
+        <link refid="power__commands_8cpp"/>
+      </node>
+      <node id="3">
+        <label>event_manager.cpp</label>
+        <link refid="event__manager_8cpp"/>
+      </node>
+      <node id="1">
+        <label>event_manager.h</label>
+        <link refid="event__manager_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>frame_model/communication.cpp</label>
+        <link refid="communication_8cpp"/>
+      </node>
+      <node id="4">
+        <label>frame_model/communication.h</label>
+        <link refid="communication_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>frame_model/frame.cpp</label>
+        <link refid="frame_8cpp"/>
+      </node>
+      <node id="12">
+        <label>frame_model/receive.cpp</label>
+        <link refid="receive_8cpp"/>
+      </node>
+      <node id="13">
+        <label>frame_model/send.cpp</label>
+        <link refid="send_8cpp"/>
+      </node>
+      <node id="14">
+        <label>frame_model/utils_converters.cpp</label>
+        <link refid="utils__converters_8cpp"/>
+      </node>
+      <node id="15">
+        <label>includes.h</label>
+        <link refid="includes_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>lib/GPS/gps_collector.cpp</label>
+        <link refid="gps__collector_8cpp"/>
+      </node>
+      <node id="16">
+        <label>main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_event_log" prot="public">EventLog</innerclass>
+    <innerclass refid="class_event_manager" prot="public">EventManager</innerclass>
+    <innerclass refid="class_event_manager_impl" prot="public">EventManagerImpl</innerclass>
+    <innerclass refid="class_event_emitter" prot="public">EventEmitter</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="event__manager_8h_1acc4dda1aaabc9862fe79fd94e0b722bf" prot="public" static="no">
+        <name>EVENT_BUFFER_SIZE</name>
+        <initializer>1000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.h" line="9" column="9" bodyfile="event_manager.h" bodystart="9" bodyend="-1"/>
+        <referencedby refid="class_event_manager_1a00648cfe8c39fbd59cc4c593113e5573" compoundref="event__manager_8cpp" startline="56" endline="71">EventManager::getEvent</referencedby>
+        <referencedby refid="group___event_commands_1gad921fe7254d7ec43f16a6fb21f5c385a" compoundref="event__commands_8cpp" startline="29" endline="68">handleGetLastEvents</referencedby>
+        <referencedby refid="class_event_manager_1ae73a56091dc8713bb86a11abb6742a14" compoundref="event__manager_8cpp" startline="28" endline="54">EventManager::logEvent</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>EventGroup</name>
+        <enumvalue id="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7afa177138f94a7ea01f549b1aa7893d03" prot="public">
+          <name>SYSTEM</name>
+          <initializer>= 0x00</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7ac9c9c146c630ca5ef9197c73c032f4a6" prot="public">
+          <name>POWER</name>
+          <initializer>= 0x01</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7ac9546343e8e677d92812a4443b3a1bd1" prot="public">
+          <name>COMMS</name>
+          <initializer>= 0x02</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7a8c578de37278ada488d763ea86c5cf20" prot="public">
+          <name>GPS</name>
+          <initializer>= 0x03</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7aca6c44800b2dc123e0d4389a867e8686" prot="public">
+          <name>CLOCK</name>
+          <initializer>= 0x04</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.h" line="12" column="1" bodyfile="event_manager.h" bodystart="12" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="enum" id="event__manager_8h_1a77219d2f280eaad8c79825f50cf78785" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>SystemEvent</name>
+        <enumvalue id="event__manager_8h_1a77219d2f280eaad8c79825f50cf78785adf9a77cdc2fe29972274b189cf7bac7c" prot="public">
+          <name>BOOT</name>
+          <initializer>= 0x01</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="event__manager_8h_1a77219d2f280eaad8c79825f50cf78785ab9984206799a7f9fe4bd1b6c18db8112" prot="public">
+          <name>SHUTDOWN</name>
+          <initializer>= 0x02</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="event__manager_8h_1a77219d2f280eaad8c79825f50cf78785aeaa5ce6b67cf5155de76d00a3bb3ff71" prot="public">
+          <name>WATCHDOG_RESET</name>
+          <initializer>= 0x03</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="event__manager_8h_1a77219d2f280eaad8c79825f50cf78785a8021d59157f0850e2f519e17235a286e" prot="public">
+          <name>CORE1_START</name>
+          <initializer>= 0x04</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="event__manager_8h_1a77219d2f280eaad8c79825f50cf78785a187bb9570e10c85b4a616f289f49837c" prot="public">
+          <name>CORE1_STOP</name>
+          <initializer>= 0x05</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.h" line="21" column="1" bodyfile="event_manager.h" bodystart="21" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="enum" id="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>PowerEvent</name>
+        <enumvalue id="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a36d76a2d86f6dbf2035366b3572f025c" prot="public">
+          <name>LOW_BATTERY</name>
+          <initializer>= 0x01</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a575fea54d116603bb4c778db18fbde98" prot="public">
+          <name>OVERCHARGE</name>
+          <initializer>= 0x02</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a8700d6b962e860d93b3c89489b9aac21" prot="public">
+          <name>POWER_FALLING</name>
+          <initializer>= 0x03</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a91d809be807947101ea242de92b64a87" prot="public">
+          <name>POWER_NORMAL</name>
+          <initializer>= 0x04</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6aa45a91985c176d6b5d3669bdf41b7e3b" prot="public">
+          <name>SOLAR_ACTIVE</name>
+          <initializer>= 0x05</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a35899506cd4cd1e676d022eb14ecb669" prot="public">
+          <name>SOLAR_INACTIVE</name>
+          <initializer>= 0x06</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6aea2afd0110180e8af5bf95a583f9dd13" prot="public">
+          <name>USB_CONNECTED</name>
+          <initializer>= 0x07</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a3a026550c6805c690d88a618aff891c9" prot="public">
+          <name>USB_DISCONNECTED</name>
+          <initializer>= 0x08</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.h" line="30" column="1" bodyfile="event_manager.h" bodystart="30" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="enum" id="event__manager_8h_1a0270a0464efae26aefb8cf32a45e20ad" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>CommsEvent</name>
+        <enumvalue id="event__manager_8h_1a0270a0464efae26aefb8cf32a45e20ada6651a96516b323db8bad9897081d76ed" prot="public">
+          <name>RADIO_INIT</name>
+          <initializer>= 0x01</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="event__manager_8h_1a0270a0464efae26aefb8cf32a45e20ada3b9824cc8a230f50d285d16795daa859" prot="public">
+          <name>RADIO_ERROR</name>
+          <initializer>= 0x02</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="event__manager_8h_1a0270a0464efae26aefb8cf32a45e20adaca7aa0062ea158ea48dfc6bc919193bd" prot="public">
+          <name>MSG_RECEIVED</name>
+          <initializer>= 0x03</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="event__manager_8h_1a0270a0464efae26aefb8cf32a45e20adaae15180da5243a7f3be270d71d5eed28" prot="public">
+          <name>MSG_SENT</name>
+          <initializer>= 0x04</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="event__manager_8h_1a0270a0464efae26aefb8cf32a45e20adae7987a4741412b725a5a1a24867f9b62" prot="public">
+          <name>UART_ERROR</name>
+          <initializer>= 0x06</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.h" line="42" column="1" bodyfile="event_manager.h" bodystart="42" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="enum" id="event__manager_8h_1ac4e11c8779c20adc9210532538cdc463" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>GPSEvent</name>
+        <enumvalue id="event__manager_8h_1ac4e11c8779c20adc9210532538cdc463af510b97de4ace11844b85f23d0fc012f" prot="public">
+          <name>LOCK</name>
+          <initializer>= 0x01</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="event__manager_8h_1ac4e11c8779c20adc9210532538cdc463ac6daca30aef2af1d72715733825806a3" prot="public">
+          <name>LOST</name>
+          <initializer>= 0x02</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="event__manager_8h_1ac4e11c8779c20adc9210532538cdc463abb1ca97ec761fc37101737ba0aa2e7c5" prot="public">
+          <name>ERROR</name>
+          <initializer>= 0x03</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="event__manager_8h_1ac4e11c8779c20adc9210532538cdc463a3d6fc432ff9e2d9b890c591179a4401e" prot="public">
+          <name>POWER_ON</name>
+          <initializer>= 0x04</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="event__manager_8h_1ac4e11c8779c20adc9210532538cdc463aa15cea80d926d7282b831d451ba8aee8" prot="public">
+          <name>POWER_OFF</name>
+          <initializer>= 0x05</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="event__manager_8h_1ac4e11c8779c20adc9210532538cdc463a8ee0c87d41412c8df555d1b18ff43e63" prot="public">
+          <name>DATA_READY</name>
+          <initializer>= 0x06</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="event__manager_8h_1ac4e11c8779c20adc9210532538cdc463aad25373b52902ffec9bef3591da75390" prot="public">
+          <name>PASS_THROUGH_START</name>
+          <initializer>= 0x07</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="event__manager_8h_1ac4e11c8779c20adc9210532538cdc463a2806fc6062c22a550a6d2039ab209e4c" prot="public">
+          <name>PASS_THROUGH_END</name>
+          <initializer>= 0x08</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.h" line="51" column="1" bodyfile="event_manager.h" bodystart="51" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="enum" id="event__manager_8h_1a163ce349de3451c81f50080e5fbe62a2" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>ClockEvent</name>
+        <enumvalue id="event__manager_8h_1a163ce349de3451c81f50080e5fbe62a2ae6b94e58bfd13b21bc786578d9f8ba4a" prot="public">
+          <name>CHANGED</name>
+          <initializer>= 0x01</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="event__manager_8h_1a163ce349de3451c81f50080e5fbe62a2a2d05bfe5f19cdad10f55634937f0b61e" prot="public">
+          <name>GPS_SYNC</name>
+          <initializer>= 0x02</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.h" line="63" column="1" bodyfile="event_manager.h" bodystart="63" bodyend="66"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="event__manager_8h_1a4fc3a0c58dfbd1e68224521185cb9384" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.h" line="1" column="14" bodyfile="event_manager.h" bodystart="1" bodyend="-1"/>
+        <referencedby refid="class_i_n_a3221_1a51772309bee047d9922eb03084238a96" compoundref="_i_n_a3221_8cpp" startline="174" endline="178">INA3221::getDieID</referencedby>
+        <referencedby refid="class_i_n_a3221_1a89d26c4f5610b1b21ba86d84dde71e53" compoundref="_i_n_a3221_8cpp" startline="168" endline="172">INA3221::getManufID</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="event__manager_8h_1ab20b0c7772544cf5d318507f34231fbe" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t timestamp</definition>
+        <argsstring></argsstring>
+        <name>timestamp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.h" line="2" column="14" bodyfile="event_manager.h" bodystart="2" bodyend="-1"/>
+        <referencedby refid="utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706" compoundref="utils_8cpp" startline="9" endline="26">uartPrint</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="event__manager_8h_1ad4291fcb880eb5ecb178b53e32f55741" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t group</definition>
+        <argsstring></argsstring>
+        <name>group</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.h" line="3" column="13" bodyfile="event_manager.h" bodystart="3" bodyend="-1"/>
+        <referencedby refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" compoundref="frame_8cpp" startline="113" endline="146">buildFrame</referencedby>
+        <referencedby refid="communication_8h_1a6272bef4a482127bfe7c1b50d723d69d">determineUnit</referencedby>
+        <referencedby refid="class_event_emitter_1a539d733505f9a793439a9cfc4f2af079" compoundref="event__manager_8h" startline="142" endline="147">EventEmitter::emit</referencedby>
+        <referencedby refid="communication_8h_1a3ea1f464aef22cd9918b6fe75659c535">handleCommandFrame</referencedby>
+        <referencedby refid="group___diagnostic_commands_1gade74b82cf2c20d93c5e0ce624cd7ca77" compoundref="diagnostic__commands_8cpp" startline="19" endline="42">handleListCommands</referencedby>
+        <referencedby refid="class_event_manager_1ae73a56091dc8713bb86a11abb6742a14" compoundref="event__manager_8cpp" startline="28" endline="54">EventManager::logEvent</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="event__manager_8h_1aeef6900f411bc223febdd92c9435693b" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t event</definition>
+        <argsstring></argsstring>
+        <name>event</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.h" line="4" column="13" bodyfile="event_manager.h" bodystart="4" bodyend="-1"/>
+        <referencedby refid="class_event_emitter_1a539d733505f9a793439a9cfc4f2af079" compoundref="event__manager_8h" startline="142" endline="147">EventEmitter::emit</referencedby>
+        <referencedby refid="class_event_manager_1ae73a56091dc8713bb86a11abb6742a14" compoundref="event__manager_8cpp" startline="28" endline="54">EventManager::logEvent</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="event__manager_8h_1a179817c61d3e66c0f67cd6bfe5e84c1b" prot="public" static="no" mutable="no">
+        <type>class <ref refid="class_event_manager" kindref="compound">EventManager</ref></type>
+        <definition>class EventManager __attribute__</definition>
+        <argsstring></argsstring>
+        <name>__attribute__</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.h" line="117" column="1"/>
+      </memberdef>
+      <memberdef kind="variable" id="event__manager_8h_1a2a686792b51ec2b9e1b7bfc9faef92f7" prot="public" static="no" extern="yes" mutable="no">
+        <type><ref refid="class_event_manager_impl" kindref="compound">EventManagerImpl</ref></type>
+        <definition>EventManagerImpl eventManager</definition>
+        <argsstring></argsstring>
+        <name>eventManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.h" line="137" column="25" bodyfile="event_manager.cpp" bodystart="26" bodyend="-1" declfile="event_manager.h" declline="137" declcolumn="25"/>
+        <referencedby refid="class_event_emitter_1a539d733505f9a793439a9cfc4f2af079" compoundref="event__manager_8h" startline="142" endline="147">EventEmitter::emit</referencedby>
+        <referencedby refid="group___event_commands_1ga6f817db327c7b16cf49575635e595004" compoundref="event__commands_8cpp" startline="82" endline="89">handleGetEventCount</referencedby>
+        <referencedby refid="group___event_commands_1gad921fe7254d7ec43f16a6fb21f5c385a" compoundref="event__commands_8cpp" startline="29" endline="68">handleGetLastEvents</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="event__manager_8h_1a7984471c52fd4915392929f854c6620c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class <ref refid="class_event_log" kindref="compound">EventLog</ref></type>
+        <definition>class EventLog __attribute__</definition>
+        <argsstring>((packed))</argsstring>
+        <name>__attribute__</name>
+        <param>
+          <type>(packed)</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.h" line="1" column="0" declfile="event_manager.h" declline="1" declcolumn="0"/>
+      </memberdef>
+      <memberdef kind="function" id="event__manager_8h_1a6bbf13289f6c919d96bae17ef018f988" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string __attribute__::toString</definition>
+        <argsstring>() const</argsstring>
+        <name>toString</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.h" line="6" column="17" bodyfile="event_manager.h" bodystart="6" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="event__manager_8h_1a467714d66058f52e4ac7aeb6df46b433" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void checkPowerEvents</definition>
+        <argsstring>(PowerManager &amp;pm)</argsstring>
+        <name>checkPowerEvents</name>
+        <param>
+          <type><ref refid="class_power_manager" kindref="compound">PowerManager</ref> &amp;</type>
+          <declname>pm</declname>
+        </param>
+        <briefdescription>
+<para>Checks power statuses and triggers events based on voltage trends. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to the <ref refid="class_power_manager" kindref="compound">PowerManager</ref> object. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.h" line="150" column="6" bodyfile="event_manager.cpp" bodystart="77" bodyend="140" declfile="event_manager.h" declline="150" declcolumn="6"/>
+        <references refid="class_event_emitter_1a539d733505f9a793439a9cfc4f2af079" compoundref="event__manager_8h" startline="142" endline="147">EventEmitter::emit</references>
+        <references refid="event__manager_8cpp_1a234988dfb88db38997bd921cd5c32457" compoundref="event__manager_8cpp" startline="13">FALL_RATE_THRESHOLD</references>
+        <references refid="event__manager_8cpp_1ae4e7da8cdf52e447acd5705d930759cf" compoundref="event__manager_8cpp" startline="14">FALLING_TREND_REQUIRED</references>
+        <references refid="event__manager_8cpp_1ad4a2e48e0a0e0d5aa49dd6c2aa12d8fb" compoundref="event__manager_8cpp" startline="19">fallingTrendCount</references>
+        <references refid="class_power_manager_1ae0e4303ddaba328047fb40d8d925c7dd" compoundref="_power_manager_8cpp" startline="24" endline="27">PowerManager::getVoltage5V</references>
+        <references refid="class_power_manager_1a33ea0aaa75b4654b0ee05250119bf083" compoundref="_power_manager_8cpp" startline="76" endline="79">PowerManager::isSolarActive</references>
+        <references refid="class_power_manager_1a0548ae14a668bb06e4cc13e0295ad5c8" compoundref="_power_manager_8cpp" startline="81" endline="84">PowerManager::isUSBConnected</references>
+        <references refid="event__manager_8cpp_1a2d4329f1e2606ca8f8535dae8c08afe5" compoundref="event__manager_8cpp" startline="11">lastPowerState</references>
+        <references refid="event__manager_8cpp_1a908d9cb4eb9ec61d273f6770660bbb8e" compoundref="event__manager_8cpp" startline="21">lastSolarState</references>
+        <references refid="event__manager_8cpp_1a0592f758055ae8683676ff86ae7ae9e1" compoundref="event__manager_8cpp" startline="22">lastUSBState</references>
+        <references refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a36d76a2d86f6dbf2035366b3572f025c" compoundref="event__manager_8h" startline="31">LOW_BATTERY</references>
+        <references refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a575fea54d116603bb4c778db18fbde98" compoundref="event__manager_8h" startline="32">OVERCHARGE</references>
+        <references refid="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7ac9c9c146c630ca5ef9197c73c032f4a6" compoundref="event__manager_8h" startline="14">POWER</references>
+        <references refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a8700d6b962e860d93b3c89489b9aac21" compoundref="event__manager_8h" startline="33">POWER_FALLING</references>
+        <references refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a91d809be807947101ea242de92b64a87" compoundref="event__manager_8h" startline="34">POWER_NORMAL</references>
+        <references refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6aa45a91985c176d6b5d3669bdf41b7e3b" compoundref="event__manager_8h" startline="35">SOLAR_ACTIVE</references>
+        <references refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a35899506cd4cd1e676d022eb14ecb669" compoundref="event__manager_8h" startline="36">SOLAR_INACTIVE</references>
+        <references refid="utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706" compoundref="utils_8cpp" startline="9" endline="26">uartPrint</references>
+        <references refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6aea2afd0110180e8af5bf95a583f9dd13" compoundref="event__manager_8h" startline="37">USB_CONNECTED</references>
+        <references refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a3a026550c6805c690d88a618aff891c9" compoundref="event__manager_8h" startline="38">USB_DISCONNECTED</references>
+        <references refid="class_power_manager_1a426dcedc762549ed6c408708bd61b94e" compoundref="_power_manager_8h" startline="28">PowerManager::VOLTAGE_LOW_THRESHOLD</references>
+        <references refid="class_power_manager_1a4e28f40bee3fd8e6df12178663159783" compoundref="_power_manager_8h" startline="29">PowerManager::VOLTAGE_OVERCHARGE_THRESHOLD</references>
+        <referencedby refid="main_8cpp_1a9f153132b8b4afad133b952111e18bd9" compoundref="main_8cpp" startline="11" endline="16">core1_entry</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="event__manager_8h_1a7984471c52fd4915392929f854c6620c" refkind="member"><highlight class="preprocessor">#ifndef<sp/>EVENT_MANAGER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2" refid="event__manager_8h_1ab20b0c7772544cf5d318507f34231fbe" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EVENT_MANAGER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3" refid="event__manager_8h_1ad4291fcb880eb5ecb178b53e32f55741" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4" refid="event__manager_8h_1aeef6900f411bc223febdd92c9435693b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_power_manager_8h" kindref="compound">PowerManager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="event__manager_8h_1a6bbf13289f6c919d96bae17ef018f988" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;pico/mutex.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="event__manager_8h_1acc4dda1aaabc9862fe79fd94e0b722bf" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EVENT_BUFFER_SIZE<sp/>1000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Event<sp/>Groups</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7" kindref="member">EventGroup</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="13" refid="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7afa177138f94a7ea01f549b1aa7893d03" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7afa177138f94a7ea01f549b1aa7893d03" kindref="member">SYSTEM</ref><sp/><sp/>=<sp/>0x00,</highlight></codeline>
+<codeline lineno="14" refid="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7ac9c9c146c630ca5ef9197c73c032f4a6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7ac9c9c146c630ca5ef9197c73c032f4a6" kindref="member">POWER</ref><sp/><sp/><sp/>=<sp/>0x01,</highlight></codeline>
+<codeline lineno="15" refid="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7ac9546343e8e677d92812a4443b3a1bd1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7ac9546343e8e677d92812a4443b3a1bd1" kindref="member">COMMS</ref><sp/><sp/><sp/>=<sp/>0x02,</highlight></codeline>
+<codeline lineno="16" refid="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7a8c578de37278ada488d763ea86c5cf20" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7a8c578de37278ada488d763ea86c5cf20" kindref="member">GPS</ref><sp/><sp/><sp/><sp/><sp/>=<sp/>0x03,</highlight></codeline>
+<codeline lineno="17" refid="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7aca6c44800b2dc123e0d4389a867e8686" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7aca6c44800b2dc123e0d4389a867e8686" kindref="member">CLOCK</ref><sp/><sp/><sp/>=<sp/>0x04</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>System<sp/>Events</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="event__manager_8h_1a77219d2f280eaad8c79825f50cf78785" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="event__manager_8h_1a77219d2f280eaad8c79825f50cf78785" kindref="member">SystemEvent</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="22" refid="event__manager_8h_1a77219d2f280eaad8c79825f50cf78785adf9a77cdc2fe29972274b189cf7bac7c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1a77219d2f280eaad8c79825f50cf78785adf9a77cdc2fe29972274b189cf7bac7c" kindref="member">BOOT</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x01,</highlight></codeline>
+<codeline lineno="23" refid="event__manager_8h_1a77219d2f280eaad8c79825f50cf78785ab9984206799a7f9fe4bd1b6c18db8112" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1a77219d2f280eaad8c79825f50cf78785ab9984206799a7f9fe4bd1b6c18db8112" kindref="member">SHUTDOWN</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x02,</highlight></codeline>
+<codeline lineno="24" refid="event__manager_8h_1a77219d2f280eaad8c79825f50cf78785aeaa5ce6b67cf5155de76d00a3bb3ff71" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1a77219d2f280eaad8c79825f50cf78785aeaa5ce6b67cf5155de76d00a3bb3ff71" kindref="member">WATCHDOG_RESET</ref><sp/>=<sp/>0x03,</highlight></codeline>
+<codeline lineno="25" refid="event__manager_8h_1a77219d2f280eaad8c79825f50cf78785a8021d59157f0850e2f519e17235a286e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1a77219d2f280eaad8c79825f50cf78785a8021d59157f0850e2f519e17235a286e" kindref="member">CORE1_START</ref><sp/><sp/><sp/>=<sp/>0x04,</highlight></codeline>
+<codeline lineno="26" refid="event__manager_8h_1a77219d2f280eaad8c79825f50cf78785a187bb9570e10c85b4a616f289f49837c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1a77219d2f280eaad8c79825f50cf78785a187bb9570e10c85b4a616f289f49837c" kindref="member">CORE1_STOP</ref><sp/><sp/><sp/><sp/>=<sp/>0x05</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Power<sp/>Events</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6" kindref="member">PowerEvent</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="31" refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a36d76a2d86f6dbf2035366b3572f025c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a36d76a2d86f6dbf2035366b3572f025c" kindref="member">LOW_BATTERY</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x01,</highlight></codeline>
+<codeline lineno="32" refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a575fea54d116603bb4c778db18fbde98" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a575fea54d116603bb4c778db18fbde98" kindref="member">OVERCHARGE</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x02,</highlight></codeline>
+<codeline lineno="33" refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a8700d6b962e860d93b3c89489b9aac21" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a8700d6b962e860d93b3c89489b9aac21" kindref="member">POWER_FALLING</ref><sp/><sp/><sp/><sp/>=<sp/>0x03,</highlight></codeline>
+<codeline lineno="34" refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a91d809be807947101ea242de92b64a87" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a91d809be807947101ea242de92b64a87" kindref="member">POWER_NORMAL</ref><sp/><sp/><sp/><sp/><sp/>=<sp/>0x04,</highlight></codeline>
+<codeline lineno="35" refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6aa45a91985c176d6b5d3669bdf41b7e3b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6aa45a91985c176d6b5d3669bdf41b7e3b" kindref="member">SOLAR_ACTIVE</ref><sp/><sp/><sp/><sp/><sp/>=<sp/>0x05,</highlight></codeline>
+<codeline lineno="36" refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a35899506cd4cd1e676d022eb14ecb669" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a35899506cd4cd1e676d022eb14ecb669" kindref="member">SOLAR_INACTIVE</ref><sp/><sp/><sp/>=<sp/>0x06,</highlight></codeline>
+<codeline lineno="37" refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6aea2afd0110180e8af5bf95a583f9dd13" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6aea2afd0110180e8af5bf95a583f9dd13" kindref="member">USB_CONNECTED</ref><sp/><sp/><sp/><sp/>=<sp/>0x07,</highlight></codeline>
+<codeline lineno="38" refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a3a026550c6805c690d88a618aff891c9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1a8b04683add0105a3bf3200eee3d9d3e6a3a026550c6805c690d88a618aff891c9" kindref="member">USB_DISCONNECTED</ref><sp/>=<sp/>0x08</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Communication<sp/>Events</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="event__manager_8h_1a0270a0464efae26aefb8cf32a45e20ad" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="event__manager_8h_1a0270a0464efae26aefb8cf32a45e20ad" kindref="member">CommsEvent</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="43" refid="event__manager_8h_1a0270a0464efae26aefb8cf32a45e20ada6651a96516b323db8bad9897081d76ed" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1a0270a0464efae26aefb8cf32a45e20ada6651a96516b323db8bad9897081d76ed" kindref="member">RADIO_INIT</ref><sp/><sp/><sp/><sp/>=<sp/>0x01,</highlight></codeline>
+<codeline lineno="44" refid="event__manager_8h_1a0270a0464efae26aefb8cf32a45e20ada3b9824cc8a230f50d285d16795daa859" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1a0270a0464efae26aefb8cf32a45e20ada3b9824cc8a230f50d285d16795daa859" kindref="member">RADIO_ERROR</ref><sp/><sp/><sp/>=<sp/>0x02,</highlight></codeline>
+<codeline lineno="45" refid="event__manager_8h_1a0270a0464efae26aefb8cf32a45e20adaca7aa0062ea158ea48dfc6bc919193bd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1a0270a0464efae26aefb8cf32a45e20adaca7aa0062ea158ea48dfc6bc919193bd" kindref="member">MSG_RECEIVED</ref><sp/><sp/>=<sp/>0x03,</highlight></codeline>
+<codeline lineno="46" refid="event__manager_8h_1a0270a0464efae26aefb8cf32a45e20adaae15180da5243a7f3be270d71d5eed28" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1a0270a0464efae26aefb8cf32a45e20adaae15180da5243a7f3be270d71d5eed28" kindref="member">MSG_SENT</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x04,</highlight></codeline>
+<codeline lineno="47" refid="event__manager_8h_1a0270a0464efae26aefb8cf32a45e20adae7987a4741412b725a5a1a24867f9b62" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1a0270a0464efae26aefb8cf32a45e20adae7987a4741412b725a5a1a24867f9b62" kindref="member">UART_ERROR</ref><sp/><sp/><sp/><sp/>=<sp/>0x06</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//<sp/>GPS<sp/>Events</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="event__manager_8h_1ac4e11c8779c20adc9210532538cdc463" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="event__manager_8h_1ac4e11c8779c20adc9210532538cdc463" kindref="member">GPSEvent</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="52" refid="event__manager_8h_1ac4e11c8779c20adc9210532538cdc463af510b97de4ace11844b85f23d0fc012f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1ac4e11c8779c20adc9210532538cdc463af510b97de4ace11844b85f23d0fc012f" kindref="member">LOCK</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x01,</highlight></codeline>
+<codeline lineno="53" refid="event__manager_8h_1ac4e11c8779c20adc9210532538cdc463ac6daca30aef2af1d72715733825806a3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1ac4e11c8779c20adc9210532538cdc463ac6daca30aef2af1d72715733825806a3" kindref="member">LOST</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x02,</highlight></codeline>
+<codeline lineno="54" refid="event__manager_8h_1ac4e11c8779c20adc9210532538cdc463abb1ca97ec761fc37101737ba0aa2e7c5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1ac4e11c8779c20adc9210532538cdc463abb1ca97ec761fc37101737ba0aa2e7c5" kindref="member">ERROR</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x03,</highlight></codeline>
+<codeline lineno="55" refid="event__manager_8h_1ac4e11c8779c20adc9210532538cdc463a3d6fc432ff9e2d9b890c591179a4401e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1ac4e11c8779c20adc9210532538cdc463a3d6fc432ff9e2d9b890c591179a4401e" kindref="member">POWER_ON</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x04,</highlight></codeline>
+<codeline lineno="56" refid="event__manager_8h_1ac4e11c8779c20adc9210532538cdc463aa15cea80d926d7282b831d451ba8aee8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1ac4e11c8779c20adc9210532538cdc463aa15cea80d926d7282b831d451ba8aee8" kindref="member">POWER_OFF</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x05,</highlight></codeline>
+<codeline lineno="57" refid="event__manager_8h_1ac4e11c8779c20adc9210532538cdc463a8ee0c87d41412c8df555d1b18ff43e63" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1ac4e11c8779c20adc9210532538cdc463a8ee0c87d41412c8df555d1b18ff43e63" kindref="member">DATA_READY</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x06,</highlight></codeline>
+<codeline lineno="58" refid="event__manager_8h_1ac4e11c8779c20adc9210532538cdc463aad25373b52902ffec9bef3591da75390" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1ac4e11c8779c20adc9210532538cdc463aad25373b52902ffec9bef3591da75390" kindref="member">PASS_THROUGH_START</ref><sp/><sp/>=<sp/>0x07,</highlight></codeline>
+<codeline lineno="59" refid="event__manager_8h_1ac4e11c8779c20adc9210532538cdc463a2806fc6062c22a550a6d2039ab209e4c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1ac4e11c8779c20adc9210532538cdc463a2806fc6062c22a550a6d2039ab209e4c" kindref="member">PASS_THROUGH_END</ref><sp/><sp/><sp/><sp/>=<sp/>0x08,</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Clock<sp/>Events</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="event__manager_8h_1a163ce349de3451c81f50080e5fbe62a2" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="event__manager_8h_1a163ce349de3451c81f50080e5fbe62a2" kindref="member">ClockEvent</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="64" refid="event__manager_8h_1a163ce349de3451c81f50080e5fbe62a2ae6b94e58bfd13b21bc786578d9f8ba4a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1a163ce349de3451c81f50080e5fbe62a2ae6b94e58bfd13b21bc786578d9f8ba4a" kindref="member">CHANGED</ref><sp/><sp/>=<sp/>0x01,</highlight></codeline>
+<codeline lineno="65" refid="event__manager_8h_1a163ce349de3451c81f50080e5fbe62a2a2d05bfe5f19cdad10f55634937f0b61e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1a163ce349de3451c81f50080e5fbe62a2a2d05bfe5f19cdad10f55634937f0b61e" kindref="member">GPS_SYNC</ref><sp/>=<sp/>0x02</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="class_event_log" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_event_log" kindref="compound">EventLog</ref><sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="71" refid="class_event_log_1a5e0923e12450e6b7c782c7f6630f4563" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="class_event_log_1a5e0923e12450e6b7c782c7f6630f4563" kindref="member">id</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Sequence<sp/>number</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="class_event_log_1aea248a425dedf15b5cee31ce2884db40" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="class_event_log_1aea248a425dedf15b5cee31ce2884db40" kindref="member">timestamp</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Unix<sp/>timestamp<sp/>or<sp/>system<sp/>time</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="class_event_log_1a5209ffdb8dc4bf7f87f3ec44b2ae63e3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="class_event_log_1a5209ffdb8dc4bf7f87f3ec44b2ae63e3" kindref="member">group</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Event<sp/>group<sp/>identifier</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="class_event_log_1a4ba1b6d820bf66740aac49fd299f1ea2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="class_event_log_1a4ba1b6d820bf66740aac49fd299f1ea2" kindref="member">event</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Specific<sp/>event<sp/>identifier</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="class_event_log_1adb17c412276c8678289395607c493e7e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="class_event_log_1adb17c412276c8678289395607c493e7e" kindref="member">toString</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62" kindref="member">buffer</ref>[256];</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>snprintf(<ref refid="main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62" kindref="member">buffer</ref>,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62" kindref="member">buffer</ref>),</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;EventLog:<sp/>id=%u,<sp/>timestamp=%lu,<sp/>group=%u,<sp/>event=%u&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/><ref refid="class_event_log_1aea248a425dedf15b5cee31ce2884db40" kindref="member">timestamp</ref>,<sp/><ref refid="class_event_log_1a5209ffdb8dc4bf7f87f3ec44b2ae63e3" kindref="member">group</ref>,<sp/><ref refid="class_event_log_1a4ba1b6d820bf66740aac49fd299f1ea2" kindref="member">event</ref>);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::string(<ref refid="main_8cpp_1af00b615ca097c43dbb02ae3a00ea3a62" kindref="member">buffer</ref>);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">}<sp/><ref refid="event__manager_8h_1a179817c61d3e66c0f67cd6bfe5e84c1b" kindref="member">__attribute__</ref>((packed));</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="85" refid="class_event_manager" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_event_manager_1a89099b22114f158b5c530edfea52371d" kindref="member">EventManager</ref><sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="87" refid="class_event_manager_1a89099b22114f158b5c530edfea52371d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_event_manager_1a89099b22114f158b5c530edfea52371d" kindref="member">EventManager</ref>()<sp/></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="class_event_manager_1ab74418c8064525f34692dff74dd28d82" kindref="member">eventCount</ref>(0)</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/><ref refid="class_event_manager_1ad97f788895da6e30b3237982a7bcd810" kindref="member">writeIndex</ref>(0)</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/><ref refid="class_event_manager_1a31b1b079c272a1d7022ed84b01927186" kindref="member">nextEventId</ref>(0)</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/><ref refid="class_event_manager_1aed2eb3a8bc611f5594eb62304c7b4754" kindref="member">needsPersistence</ref>(false)<sp/></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mutex_init(&amp;<ref refid="class_event_manager_1a970381a54ae432d262830ad74048c94e" kindref="member">eventMutex</ref>);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="class_event_manager_1ade6acde43327a4e792bb8256dd6350f0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="class_event_manager_1ade6acde43327a4e792bb8256dd6350f0" kindref="member">~EventManager</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Add<sp/>initialization<sp/>method</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="class_event_manager_1ab9c4d0fbfc9cf7743eac02bee6223728" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_event_manager_1ab9c4d0fbfc9cf7743eac02bee6223728" kindref="member">init</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_event_manager_1a6722258e4e3df939224d07786427afc9" kindref="member">loadFromStorage</ref>();</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_event_manager_1ae73a56091dc8713bb86a11abb6742a14" kindref="member">logEvent</ref>(uint8_t<sp/><ref refid="event__manager_8h_1ad4291fcb880eb5ecb178b53e32f55741" kindref="member">group</ref>,<sp/>uint8_t<sp/><ref refid="event__manager_8h_1aeef6900f411bc223febdd92c9435693b" kindref="member">event</ref>);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_event_log" kindref="compound">EventLog</ref>&amp;<sp/><ref refid="class_event_manager_1a00648cfe8c39fbd59cc4c593113e5573" kindref="member">getEvent</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>index)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="105" refid="class_event_manager_1abd8630355ef48f46c5286f232adb5993" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="class_event_manager_1abd8630355ef48f46c5286f232adb5993" kindref="member">getEventCount</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_event_manager_1ab74418c8064525f34692dff74dd28d82" kindref="member">eventCount</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="107" refid="class_event_manager_1ad369ac9b7ab0251070e0075745836a40" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_event_manager_1ad369ac9b7ab0251070e0075745836a40" kindref="member">saveToStorage</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="108" refid="class_event_manager_1a6722258e4e3df939224d07786427afc9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_event_manager_1a6722258e4e3df939224d07786427afc9" kindref="member">loadFromStorage</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="111" refid="class_event_manager_1a9d82f66074e141f352bb852654673536" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_event_log" kindref="compound">EventLog</ref><sp/><ref refid="class_event_manager_1a9d82f66074e141f352bb852654673536" kindref="member">events</ref>[<ref refid="event__manager_8h_1acc4dda1aaabc9862fe79fd94e0b722bf" kindref="member">EVENT_BUFFER_SIZE</ref>];</highlight></codeline>
+<codeline lineno="112" refid="class_event_manager_1ab74418c8064525f34692dff74dd28d82" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="class_event_manager_1ab74418c8064525f34692dff74dd28d82" kindref="member">eventCount</ref>;</highlight></codeline>
+<codeline lineno="113" refid="class_event_manager_1ad97f788895da6e30b3237982a7bcd810" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="class_event_manager_1ad97f788895da6e30b3237982a7bcd810" kindref="member">writeIndex</ref>;</highlight></codeline>
+<codeline lineno="114" refid="class_event_manager_1a970381a54ae432d262830ad74048c94e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_t<sp/><ref refid="class_event_manager_1a970381a54ae432d262830ad74048c94e" kindref="member">eventMutex</ref>;</highlight></codeline>
+<codeline lineno="115" refid="class_event_manager_1a31b1b079c272a1d7022ed84b01927186" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>uint16_t<sp/><ref refid="class_event_manager_1a31b1b079c272a1d7022ed84b01927186" kindref="member">nextEventId</ref>;</highlight></codeline>
+<codeline lineno="116" refid="class_event_manager_1aed2eb3a8bc611f5594eb62304c7b4754" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_event_manager_1aed2eb3a8bc611f5594eb62304c7b4754" kindref="member">needsPersistence</ref>;</highlight></codeline>
+<codeline lineno="117" refid="event__manager_8h_1a179817c61d3e66c0f67cd6bfe5e84c1b" refkind="member"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="119" refid="class_event_manager_impl" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_event_manager_impl_1a07861026e9c06832168372f64e958073" kindref="member">EventManagerImpl</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_event_manager_1a89099b22114f158b5c530edfea52371d" kindref="member">EventManager</ref><sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="121" refid="class_event_manager_impl_1a07861026e9c06832168372f64e958073" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_event_manager_impl_1a07861026e9c06832168372f64e958073" kindref="member">EventManagerImpl</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_event_manager_1ab9c4d0fbfc9cf7743eac02bee6223728" kindref="member">init</ref>();<sp/></highlight><highlight class="comment">//<sp/>Safe<sp/>to<sp/>call<sp/>virtual<sp/>functions<sp/>here</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125" refid="class_event_manager_impl_1a8bd15b8b1b4d2439740934f087d97f98" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_event_manager_impl_1a8bd15b8b1b4d2439740934f087d97f98" kindref="member">saveToStorage</ref>()</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>Implement<sp/>based<sp/>on<sp/>chosen<sp/>storage<sp/>(SD/EEPROM)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_event_manager_1aed2eb3a8bc611f5594eb62304c7b4754" kindref="member">needsPersistence</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="131" refid="class_event_manager_impl_1ada54a3fd8ad03891318e203ad0a82155" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_event_manager_impl_1ada54a3fd8ad03891318e203ad0a82155" kindref="member">loadFromStorage</ref>()</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>Implement<sp/>based<sp/>on<sp/>chosen<sp/>storage<sp/>(SD/EEPROM)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="class_event_manager_impl" kindref="compound">EventManagerImpl</ref><sp/><ref refid="event__manager_8cpp_1a2a686792b51ec2b9e1b7bfc9faef92f7" kindref="member">eventManager</ref>;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139" refid="class_event_emitter" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_event_emitter" kindref="compound">EventEmitter</ref><sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="142" refid="class_event_emitter_1a539d733505f9a793439a9cfc4f2af079" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_event_emitter_1a539d733505f9a793439a9cfc4f2af079" kindref="member">emit</ref>(<ref refid="event__manager_8h_1a87aefa0e7b725125ea1a741c80858aa7" kindref="member">EventGroup</ref><sp/><ref refid="event__manager_8h_1ad4291fcb880eb5ecb178b53e32f55741" kindref="member">group</ref>,<sp/>T<sp/><ref refid="event__manager_8h_1aeef6900f411bc223febdd92c9435693b" kindref="member">event</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="event__manager_8h_1a2a686792b51ec2b9e1b7bfc9faef92f7" kindref="member">eventManager</ref>.logEvent(</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">uint8_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="event__manager_8h_1ad4291fcb880eb5ecb178b53e32f55741" kindref="member">group</ref>),<sp/></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">uint8_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="event__manager_8h_1aeef6900f411bc223febdd92c9435693b" kindref="member">event</ref>)</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="event__manager_8h_1a467714d66058f52e4ac7aeb6df46b433" kindref="member">checkPowerEvents</ref>(<ref refid="class_power_manager" kindref="compound">PowerManager</ref>&amp;<sp/>pm);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="event_manager.h"/>
+  </compounddef>
+</doxygen>

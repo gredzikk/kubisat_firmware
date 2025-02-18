@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_97aefd0d527b934f1d99a682da8fe6a9" xml:lang="en-US">
+<title>lib Directory Reference</title>
+<indexterm><primary>lib Directory Reference</primary></indexterm>
+<simplesect>
+    <title>Directories    </title>
+        <itemizedlist>
+            <listitem><para>directory <link linkend="_dir_a3743206268858ebaf1ddda973f914d5">BH1750</link></para>
+</listitem>
+            <listitem><para>directory <link linkend="_dir_11ac7d464a41fa97a513b03438ff6e6b">BME280</link></para>
+</listitem>
+            <listitem><para>directory <link linkend="_dir_5adaf3ebcdff6f0f53d7edb9797c1a53">DS3231</link></para>
+</listitem>
+            <listitem><para>directory <link linkend="_dir_e9d5c4390a5fafe6614a6d2c5a68b64e">GPS</link></para>
+</listitem>
+            <listitem><para>directory <link linkend="_dir_1eb17e6be4086ae071715021871ae373">HMC5883L</link></para>
+</listitem>
+            <listitem><para>directory <link linkend="_dir_f5960531a42da83bf3626658025b2711">INA3221</link></para>
+</listitem>
+            <listitem><para>directory <link linkend="_dir_d18eadf3fed7f4c99e2274d90a2533f7">LoRa</link></para>
+</listitem>
+            <listitem><para>directory <link linkend="_dir_e6ae08e7796cab9634fb3340ed5645cf">MPU6050</link></para>
+</listitem>
+            <listitem><para>directory <link linkend="_dir_8e72d4e3b06f08a3c4f6f1c3aa4b27cd">PowerManager</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="__i_sensor_8cpp">ISensor.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="__i_sensor_8h">ISensor.h</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

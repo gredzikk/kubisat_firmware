@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_commands_8cpp" xml:lang="en-US">
+<title>commands/commands.cpp File Reference</title>
+<indexterm><primary>commands/commands.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;commands.h&quot;<?linebreak?>#include &quot;communication.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para>using <link linkend="_commands_8cpp_1afd50beeb0940251ffa11aba67ae299bd">CommandHandler</link> = std::function&lt;<link linkend="_struct_frame">Frame</link>(const std::string&amp;, <link linkend="_protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</link>)&gt;</para>
+</listitem>
+            <listitem><para>using <link linkend="_commands_8cpp_1ab43172cf2203676150a5d2bfc4c1e88a">CommandMap</link> = std::map&lt;uint32_t, <link linkend="_commands_8cpp_1afd50beeb0940251ffa11aba67ae299bd">CommandHandler</link>&gt;</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_struct_frame">Frame</link> <link linkend="_commands_8cpp_1a1907d400d2c8d8d054ba95bcf43276ea">executeCommand</link> (uint32_t commandKey, const std::string &amp;param, <link linkend="_protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</link> operationType)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_commands_8cpp_1ab43172cf2203676150a5d2bfc4c1e88a">CommandMap</link> <link linkend="_commands_8cpp_1a04a0515603ba347ef314678876f3fa26">commandHandlers</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Typedef Documentation</title>
+<anchor xml:id="_commands_8cpp_1afd50beeb0940251ffa11aba67ae299bd"/><section>
+    <title>CommandHandler</title>
+<indexterm><primary>CommandHandler</primary><secondary>commands.cpp</secondary></indexterm>
+<indexterm><primary>commands.cpp</primary><secondary>CommandHandler</secondary></indexterm>
+<para><computeroutput>using <link linkend="_commands_8cpp_1afd50beeb0940251ffa11aba67ae299bd">CommandHandler</link> = std::function&lt;<link linkend="_struct_frame">Frame</link>(const std::string&amp;, <link linkend="_protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</link>)&gt;</computeroutput></para><para>
+Definition at line <link linkend="_commands_8cpp_source_1l00006">6</link> of file <link linkend="_commands_8cpp_source">commands.cpp</link>.</para>
+</section>
+<anchor xml:id="_commands_8cpp_1ab43172cf2203676150a5d2bfc4c1e88a"/><section>
+    <title>CommandMap</title>
+<indexterm><primary>CommandMap</primary><secondary>commands.cpp</secondary></indexterm>
+<indexterm><primary>commands.cpp</primary><secondary>CommandMap</secondary></indexterm>
+<para><computeroutput>using <link linkend="_commands_8cpp_1ab43172cf2203676150a5d2bfc4c1e88a">CommandMap</link> = std::map&lt;uint32_t, <link linkend="_commands_8cpp_1afd50beeb0940251ffa11aba67ae299bd">CommandHandler</link>&gt;</computeroutput></para><para>
+Definition at line <link linkend="_commands_8cpp_source_1l00007">7</link> of file <link linkend="_commands_8cpp_source">commands.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_commands_8cpp_1a1907d400d2c8d8d054ba95bcf43276ea"/><section>
+    <title>executeCommand()</title>
+<indexterm><primary>executeCommand</primary><secondary>commands.cpp</secondary></indexterm>
+<indexterm><primary>commands.cpp</primary><secondary>executeCommand</secondary></indexterm>
+<para><computeroutput><link linkend="_struct_frame">Frame</link> executeCommand (uint32_t commandKey, const std::string &amp; param, <link linkend="_protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</link> operationType)</computeroutput></para><para>
+Definition at line <link linkend="_commands_8cpp_source_1l00037">37</link> of file <link linkend="_commands_8cpp_source">commands.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="_commands_8cpp_1a04a0515603ba347ef314678876f3fa26"/><section>
+    <title>commandHandlers</title>
+<indexterm><primary>commandHandlers</primary><secondary>commands.cpp</secondary></indexterm>
+<indexterm><primary>commands.cpp</primary><secondary>commandHandlers</secondary></indexterm>
+<para><computeroutput><link linkend="_commands_8cpp_1ab43172cf2203676150a5d2bfc4c1e88a">CommandMap</link> commandHandlers</computeroutput></para><emphasis role="strong">Initial value:</emphasis><programlisting linenumbering="unnumbered">=&#32;{
+&#32;&#32;&#32;&#32;{((<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(1)&#32;&lt;&lt;&#32;8)&#32;|&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(0)),&#32;<link linkend="_group___diagnostic_commands_1gade74b82cf2c20d93c5e0ce624cd7ca77">handleListCommands</link>},&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+&#32;&#32;&#32;&#32;{((<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(1)&#32;&lt;&lt;&#32;8)&#32;|&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(1)),&#32;<link linkend="_group___diagnostic_commands_1ga5ebac5711334cb3584974b2b74556543">handleGetBuildVersion</link>},&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+&#32;&#32;&#32;&#32;{((<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(1)&#32;&lt;&lt;&#32;8)&#32;|&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(9)),&#32;<link linkend="_group___diagnostic_commands_1ga3a6c6092cd01fd9c13ab429f4a34326d">handleEnterBootloaderMode</link>},&#32;&#32;&#32;&#32;&#32;&#32;
+&#32;&#32;&#32;&#32;{((<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(2)&#32;&lt;&lt;&#32;8)&#32;|&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(0)),&#32;<link linkend="_group___power_commands_1gafef922e13071e5fb67da78207a9f22a4">handleGetPowerManagerIDs</link>},&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+&#32;&#32;&#32;&#32;{((<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(2)&#32;&lt;&lt;&#32;8)&#32;|&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(2)),&#32;<link linkend="_group___power_commands_1gad301b8c13cafa148a6f3e80e9b0bcf1a">handleGetVoltageBattery</link>},&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+&#32;&#32;&#32;&#32;{((<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(2)&#32;&lt;&lt;&#32;8)&#32;|&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(3)),&#32;<link linkend="_group___power_commands_1ga9f2b608f46080fcdae38a1a8454938b8">handleGetVoltage5V</link>},&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+&#32;&#32;&#32;&#32;{((<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(2)&#32;&lt;&lt;&#32;8)&#32;|&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(4)),&#32;<link linkend="_group___power_commands_1ga3f38c538065bf67dbec1142fdb866d16">handleGetCurrentChargeUSB</link>},&#32;&#32;&#32;&#32;&#32;&#32;
+&#32;&#32;&#32;&#32;{((<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(2)&#32;&lt;&lt;&#32;8)&#32;|&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(5)),&#32;<link linkend="_group___power_commands_1ga6fbaf484e68c9561ad7fabef21def37b">handleGetCurrentChargeSolar</link>},&#32;&#32;&#32;&#32;
+&#32;&#32;&#32;&#32;{((<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(2)&#32;&lt;&lt;&#32;8)&#32;|&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(6)),&#32;<link linkend="_group___power_commands_1ga83596ea837df6cf7b15e673b95bf524f">handleGetCurrentChargeTotal</link>},&#32;&#32;&#32;&#32;
+&#32;&#32;&#32;&#32;{((<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(2)&#32;&lt;&lt;&#32;8)&#32;|&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(7)),&#32;<link linkend="_group___power_commands_1gabd6610f557fe9deaa9f80d9405738226">handleGetCurrentDraw</link>},&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+&#32;&#32;&#32;&#32;{((<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(3)&#32;&lt;&lt;&#32;8)&#32;|&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(0)),&#32;<link linkend="_clock__commands_8cpp_1a1eefb8c4d539d50c787b4db3f6ebb093">handleTime</link>},&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+&#32;&#32;&#32;&#32;{((<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(3)&#32;&lt;&lt;&#32;8)&#32;|&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(1)),&#32;<link linkend="_clock__commands_8cpp_1acc9239d946ee18d2ff19af2c6a2177f0">handleGetTimezoneOffset</link>},&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+&#32;&#32;&#32;&#32;{((<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(3)&#32;&lt;&lt;&#32;8)&#32;|&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(2)),&#32;<link linkend="_clock__commands_8cpp_1a9e802e312d0779aab74966074e81eb30">handleSetTimezoneOffset</link>},&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+&#32;&#32;&#32;&#32;{((<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(3)&#32;&lt;&lt;&#32;8)&#32;|&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(3)),&#32;<link linkend="_clock__commands_8cpp_1add8778da60c0dc5c0add2c7b2ccdc57e">handleGetClockSyncInterval</link>},&#32;&#32;&#32;&#32;&#32;
+&#32;&#32;&#32;&#32;{((<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(3)&#32;&lt;&lt;&#32;8)&#32;|&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(4)),&#32;<link linkend="_clock__commands_8cpp_1a00137f0d4c6a83ee5c0df49c7370fe65">handleSetClockSyncInterval</link>},&#32;&#32;&#32;&#32;&#32;
+&#32;&#32;&#32;&#32;{((<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(3)&#32;&lt;&lt;&#32;8)&#32;|&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(5)),&#32;<link linkend="_clock__commands_8cpp_1a6def0bf9e591d66bd98b752f731d44ba">handleGetClockDrift</link>},&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+&#32;&#32;&#32;&#32;{((<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(3)&#32;&lt;&lt;&#32;8)&#32;|&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(6)),&#32;<link linkend="_clock__commands_8cpp_1ae4cd7f745d6f9e2cadef70e21d8a9fcb">handleSetClockDrift</link>},&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+&#32;&#32;&#32;&#32;{((<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(3)&#32;&lt;&lt;&#32;8)&#32;|&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(7)),&#32;<link linkend="_clock__commands_8cpp_1a17274560343c34119630b27d88ef475e">handleGetLastSyncTime</link>},&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+&#32;&#32;&#32;&#32;{((<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(5)&#32;&lt;&lt;&#32;8)&#32;|&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(1)),&#32;<link linkend="_group___event_commands_1gad921fe7254d7ec43f16a6fb21f5c385a">handleGetLastEvents</link>},&#32;&#32;&#32;&#32;
+&#32;&#32;&#32;&#32;{((<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(5)&#32;&lt;&lt;&#32;8)&#32;|&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(2)),&#32;<link linkend="_group___event_commands_1ga6f817db327c7b16cf49575635e595004">handleGetEventCount</link>},&#32;&#32;&#32;&#32;
+&#32;&#32;&#32;&#32;{((<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(7)&#32;&lt;&lt;&#32;8)&#32;|&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(1)),&#32;<link linkend="_group___g_p_s_commands_1gaa4c13d7d324ffb354badf45e9ceffb1c">handleGPSPowerStatus</link>},&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+&#32;&#32;&#32;&#32;{((<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(7)&#32;&lt;&lt;&#32;8)&#32;|&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(2)),&#32;<link linkend="_group___g_p_s_commands_1gad12f2e18bdfecbd5b6e8d8a84bb9cd77">handleEnableGPSTransparentMode</link>},&#32;
+&#32;&#32;&#32;&#32;{((<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(7)&#32;&lt;&lt;&#32;8)&#32;|&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(3)),&#32;<link linkend="_group___g_p_s_commands_1ga71881bd1a0a285e4149db732a3f1b533">handleGetRMCData</link>},&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+&#32;&#32;&#32;&#32;{((<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(7)&#32;&lt;&lt;&#32;8)&#32;|&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(4)),&#32;<link linkend="_group___g_p_s_commands_1gaf1f6c0fb4266518353e088e8781ed143">handleGetGGAData</link>},&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+}
+</programlisting><para>
+Definition at line <link linkend="_commands_8cpp_source_1l00009">9</link> of file <link linkend="_commands_8cpp_source">commands.cpp</link>.</para>
+</section>
+</section>
+</section>

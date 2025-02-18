@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_f5960531a42da83bf3626658025b2711" xml:lang="en-US">
+<title>lib/INA3221 Directory Reference</title>
+<indexterm><primary>lib/INA3221 Directory Reference</primary></indexterm>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="__i_n_a3221_8cpp">INA3221.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="__i_n_a3221_8h">INA3221.h</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

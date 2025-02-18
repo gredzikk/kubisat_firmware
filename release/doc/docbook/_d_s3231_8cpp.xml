@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__d_s3231_8cpp" xml:lang="en-US">
+<title>lib/DS3231/DS3231.cpp File Reference</title>
+<indexterm><primary>lib/DS3231/DS3231.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;DS3231.h&quot;<?linebreak?>#include &lt;iomanip&gt;<?linebreak?>#include &lt;sstream&gt;<?linebreak?></programlisting></section>

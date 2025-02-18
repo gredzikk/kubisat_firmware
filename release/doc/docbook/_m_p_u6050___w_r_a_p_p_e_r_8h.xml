@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__m_p_u6050___w_r_a_p_p_e_r_8h" xml:lang="en-US">
+<title>lib/MPU6050/MPU6050_WRAPPER.h File Reference</title>
+<indexterm><primary>lib/MPU6050/MPU6050_WRAPPER.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;ISensor.h&quot;<?linebreak?>#include &quot;MPU6050.h&quot;<?linebreak?>#include &lt;map&gt;<?linebreak?>#include &lt;string&gt;<?linebreak?></programlisting><simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_class_m_p_u6050_wrapper">MPU6050Wrapper</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

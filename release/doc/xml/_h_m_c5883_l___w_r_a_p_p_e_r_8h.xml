@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="_h_m_c5883_l___w_r_a_p_p_e_r_8h" kind="file" language="C++">
+    <compoundname>HMC5883L_WRAPPER.h</compoundname>
+    <includes refid="_i_sensor_8h" local="yes">lib/ISensor.h</includes>
+    <includes refid="_h_m_c5883_l_8h" local="yes">HMC5883L.h</includes>
+    <includedby refid="includes_8h" local="yes">includes.h</includedby>
+    <includedby refid="_h_m_c5883_l___w_r_a_p_p_e_r_8cpp" local="yes">lib/HMC5883L/HMC5883L_WRAPPER.cpp</includedby>
+    <includedby refid="_i_sensor_8cpp" local="yes">lib/ISensor.cpp</includedby>
+    <incdepgraph>
+      <node id="7">
+        <label>HMC5883L.h</label>
+        <link refid="_h_m_c5883_l_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>lib/HMC5883L/HMC5883L_WRAPPER.h</label>
+        <link refid="_h_m_c5883_l___w_r_a_p_p_e_r_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>lib/ISensor.h</label>
+        <link refid="_i_sensor_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>cstdint</label>
+      </node>
+      <node id="4">
+        <label>hardware/i2c.h</label>
+      </node>
+      <node id="5">
+        <label>map</label>
+      </node>
+      <node id="6">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>includes.h</label>
+        <link refid="includes_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>lib/HMC5883L/HMC5883L_WRAPPER.cpp</label>
+        <link refid="_h_m_c5883_l___w_r_a_p_p_e_r_8cpp"/>
+      </node>
+      <node id="1">
+        <label>lib/HMC5883L/HMC5883L_WRAPPER.h</label>
+        <link refid="_h_m_c5883_l___w_r_a_p_p_e_r_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>lib/ISensor.cpp</label>
+        <link refid="_i_sensor_8cpp"/>
+      </node>
+      <node id="3">
+        <label>main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_h_m_c5883_l_wrapper" prot="public">HMC5883LWrapper</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>HMC5883L_WRAPPER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HMC5883L_WRAPPER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_i_sensor_8h" kindref="compound">lib/ISensor.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_h_m_c5883_l_8h" kindref="compound">HMC5883L.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="class_h_m_c5883_l_wrapper" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_h_m_c5883_l_wrapper_1af0a0709fd3f48d8343794da5b3ee4f32" kindref="member">HMC5883LWrapper</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_i_sensor" kindref="compound">ISensor</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_h_m_c5883_l_wrapper_1af0a0709fd3f48d8343794da5b3ee4f32" kindref="member">HMC5883LWrapper</ref>(i2c_inst_t*<sp/>i2c);</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_h_m_c5883_l_wrapper_1ab7a5997ae98ed9bc37fdd5ab0afe2fb2" kindref="member">init</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="class_h_m_c5883_l_wrapper_1a76c63b1af36c160c9e7ebf7dc10f872b" kindref="member">readData</ref>(<ref refid="_i_sensor_8h_1a21b0301bb3eb76855366980212c8ae5e" kindref="member">SensorDataTypeIdentifier</ref><sp/>type)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_h_m_c5883_l_wrapper_1abacf4eeaaff893112e1aa3c20b23ce38" kindref="member">isInitialized</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_i_sensor_8h_1a213c434cb928c4ca22513e2302632435" kindref="member">SensorType</ref><sp/><ref refid="class_h_m_c5883_l_wrapper_1a655c92b4d2040e76636a96f9ba63c56a" kindref="member">getType</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_h_m_c5883_l_wrapper_1aae28a5412098db267c5f61a638fa3ef6" kindref="member">configure</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::map&lt;std::string,<sp/>std::string&gt;&amp;<sp/>config)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="17" refid="class_h_m_c5883_l_wrapper_1a676ad07965bad428b637c46152b7c6eb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_h_m_c5883_l" kindref="compound">HMC5883L</ref><sp/><ref refid="class_h_m_c5883_l_wrapper_1a676ad07965bad428b637c46152b7c6eb" kindref="member">sensor</ref>;</highlight></codeline>
+<codeline lineno="18" refid="class_h_m_c5883_l_wrapper_1af52be1c1aad99526965b952521da56f6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_h_m_c5883_l_wrapper_1af52be1c1aad99526965b952521da56f6" kindref="member">initialized</ref>;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="lib/HMC5883L/HMC5883L_WRAPPER.h"/>
+  </compounddef>
+</doxygen>

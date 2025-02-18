@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_e9d5c4390a5fafe6614a6d2c5a68b64e" kind="dir">
+    <compoundname>lib/GPS</compoundname>
+    <innerdir refid="dir_e49ac814af3ac0bc8a0b0badcbd05502">lib/GPS/NMEA</innerdir>
+    <innerfile refid="gps__collector_8cpp">gps_collector.cpp</innerfile>
+    <innerfile refid="gps__collector_8h">gps_collector.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="lib/GPS/"/>
+  </compounddef>
+</doxygen>

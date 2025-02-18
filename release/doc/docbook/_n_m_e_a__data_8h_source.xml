@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__n_m_e_a__data_8h_source" xml:lang="en-US">
+<title>NMEA_data.h</title>
+<indexterm><primary>lib/GPS/NMEA/NMEA_data.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__n_m_e_a__data_8h_source_1l00001"/>00001 <emphasis role="comment">//&#32;filepath:&#32;/c:/Users/Kuba/Desktop/inz/kubisat/software/kubisat_firmware/lib/GPS/nmea_data.h</emphasis>
+<anchor xml:id="__n_m_e_a__data_8h_source_1l00002"/>00002 <emphasis role="preprocessor">#ifndef&#32;NMEA_DATA_H</emphasis>
+<anchor xml:id="__n_m_e_a__data_8h_source_1l00003"/>00003 <emphasis role="preprocessor">#define&#32;NMEA_DATA_H</emphasis>
+<anchor xml:id="__n_m_e_a__data_8h_source_1l00004"/>00004 
+<anchor xml:id="__n_m_e_a__data_8h_source_1l00005"/>00005 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
+<anchor xml:id="__n_m_e_a__data_8h_source_1l00006"/>00006 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+<anchor xml:id="__n_m_e_a__data_8h_source_1l00007"/>00007 <emphasis role="preprocessor">#include&#32;&quot;pico/sync.h&quot;</emphasis>
+<anchor xml:id="__n_m_e_a__data_8h_source_1l00008"/>00008 
+<anchor xml:id="__n_m_e_a__data_8h_source_1l00009"/><link linkend="_class_n_m_e_a_data">00009</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_class_n_m_e_a_data_1aff10b3badea9258591a2d1eeb601e519">NMEAData</link>&#32;{
+<anchor xml:id="__n_m_e_a__data_8h_source_1l00010"/>00010 <emphasis role="keyword">public</emphasis>:
+<anchor xml:id="__n_m_e_a__data_8h_source_1l00011"/>00011 &#32;&#32;&#32;&#32;<link linkend="_class_n_m_e_a_data_1aff10b3badea9258591a2d1eeb601e519">NMEAData</link>();
+<anchor xml:id="__n_m_e_a__data_8h_source_1l00012"/>00012 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_n_m_e_a_data_1ace48ac42e9e5af14820ea685b90fcf85">updateRmcTokens</link>(<emphasis role="keyword">const</emphasis>&#32;std::vector&lt;std::string&gt;&amp;&#32;tokens);
+<anchor xml:id="__n_m_e_a__data_8h_source_1l00013"/>00013 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_n_m_e_a_data_1a8a15909a8db61c8c49e18ddf150ab72c">updateGgaTokens</link>(<emphasis role="keyword">const</emphasis>&#32;std::vector&lt;std::string&gt;&amp;&#32;tokens);
+<anchor xml:id="__n_m_e_a__data_8h_source_1l00014"/>00014 
+<anchor xml:id="__n_m_e_a__data_8h_source_1l00015"/>00015 &#32;&#32;&#32;&#32;std::vector&lt;std::string&gt;&#32;<link linkend="_class_n_m_e_a_data_1a40e87615a984c58bf46242915a288fdc">getRmcTokens</link>()&#32;<emphasis role="keyword">const</emphasis>;
+<anchor xml:id="__n_m_e_a__data_8h_source_1l00016"/>00016 &#32;&#32;&#32;&#32;std::vector&lt;std::string&gt;&#32;<link linkend="_class_n_m_e_a_data_1af3ac48985760c1b78f503d225ad79028">getGgaTokens</link>()&#32;<emphasis role="keyword">const</emphasis>;
+<anchor xml:id="__n_m_e_a__data_8h_source_1l00017"/>00017 
+<anchor xml:id="__n_m_e_a__data_8h_source_1l00018"/>00018 <emphasis role="keyword">private</emphasis>:
+<anchor xml:id="__n_m_e_a__data_8h_source_1l00019"/><link linkend="_class_n_m_e_a_data_1a8010adc7a34a3d04c06c428f28f5b498">00019</link> &#32;&#32;&#32;&#32;std::vector&lt;std::string&gt;&#32;<link linkend="_class_n_m_e_a_data_1a8010adc7a34a3d04c06c428f28f5b498">rmcTokens</link>;
+<anchor xml:id="__n_m_e_a__data_8h_source_1l00020"/><link linkend="_class_n_m_e_a_data_1a26084e69305d4565dd1372e2004d6c98">00020</link> &#32;&#32;&#32;&#32;std::vector&lt;std::string&gt;&#32;<link linkend="_class_n_m_e_a_data_1a26084e69305d4565dd1372e2004d6c98">ggaTokens</link>;
+<anchor xml:id="__n_m_e_a__data_8h_source_1l00021"/><link linkend="_class_n_m_e_a_data_1aa355456dd1bdd1e9af6c37ae9c4ef4f0">00021</link> &#32;&#32;&#32;&#32;mutex_t&#32;<link linkend="_class_n_m_e_a_data_1aa355456dd1bdd1e9af6c37ae9c4ef4f0">rmc_mutex</link>;
+<anchor xml:id="__n_m_e_a__data_8h_source_1l00022"/><link linkend="_class_n_m_e_a_data_1afe04b61742fac871746c1c2d4ef0aa17">00022</link> &#32;&#32;&#32;&#32;mutex_t&#32;<link linkend="_class_n_m_e_a_data_1afe04b61742fac871746c1c2d4ef0aa17">gga_mutex</link>;
+<anchor xml:id="__n_m_e_a__data_8h_source_1l00023"/>00023 };
+<anchor xml:id="__n_m_e_a__data_8h_source_1l00024"/>00024 
+<anchor xml:id="__n_m_e_a__data_8h_source_1l00025"/>00025 <emphasis role="keyword">extern</emphasis>&#32;<link linkend="_class_n_m_e_a_data">NMEAData</link>&#32;<link linkend="_gps__collector_8cpp_1af2b979012abe80d338fef98209f87b78">nmea_data</link>;
+<anchor xml:id="__n_m_e_a__data_8h_source_1l00026"/>00026 
+<anchor xml:id="__n_m_e_a__data_8h_source_1l00027"/>00027 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_utils_8h_source" xml:lang="en-US">
+<title>utils.h</title>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_utils_8h_source_1l00001"/>00001 <emphasis role="preprocessor">#ifndef&#32;UTILS_H</emphasis>
+<anchor xml:id="_utils_8h_source_1l00002"/>00002 <emphasis role="preprocessor">#define&#32;UTILS_H</emphasis>
+<anchor xml:id="_utils_8h_source_1l00003"/>00003 
+<anchor xml:id="_utils_8h_source_1l00004"/>00004 <emphasis role="preprocessor">#include&#32;&lt;stdio.h&gt;</emphasis>
+<anchor xml:id="_utils_8h_source_1l00005"/>00005 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+<anchor xml:id="_utils_8h_source_1l00006"/>00006 <emphasis role="preprocessor">#include&#32;&quot;pico/stdlib.h&quot;</emphasis>
+<anchor xml:id="_utils_8h_source_1l00007"/>00007 <emphasis role="preprocessor">#include&#32;&quot;hardware/uart.h&quot;</emphasis>
+<anchor xml:id="_utils_8h_source_1l00008"/>00008 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_pin__config_8h">pin_config.h</link>&quot;</emphasis>
+<anchor xml:id="_utils_8h_source_1l00009"/>00009 
+<anchor xml:id="_utils_8h_source_1l00010"/>00010 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_utils_8h_1a581207ee5c53ce94cdf3279a0f66f564">uartPrint</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;msg,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;logToFile&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;uart_inst_t*&#32;uart&#32;=&#32;<link linkend="_pin__config_8h_1a1c9052d1656e86f50326fd275c54ca67">DEBUG_UART_PORT</link>);
+<anchor xml:id="_utils_8h_source_1l00011"/>00011 uint16_t&#32;<link linkend="_utils_8h_1a662798a1967f4a4ea55257255d0fbbf4">crc16</link>(<emphasis role="keyword">const</emphasis>&#32;uint8_t&#32;*data,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;length);
+<anchor xml:id="_utils_8h_source_1l00012"/>00012 
+<anchor xml:id="_utils_8h_source_1l00013"/>00013 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

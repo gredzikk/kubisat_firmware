@@ -1,0 +1,185 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_struct_b_m_e280_calib_param" xml:lang="en-US">
+<title>BME280CalibParam Struct Reference</title>
+<indexterm><primary>BME280CalibParam</primary></indexterm>
+<para>
+<computeroutput>#include &lt;BME280.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>uint16_t <link linkend="_struct_b_m_e280_calib_param_1afbeeeb1ce65458659a5ba34a183920e6">dig_t1</link></para>
+</listitem>
+            <listitem><para>int16_t <link linkend="_struct_b_m_e280_calib_param_1a941c68e822ef43924d09131723141e91">dig_t2</link></para>
+</listitem>
+            <listitem><para>int16_t <link linkend="_struct_b_m_e280_calib_param_1aca269be642c7d623650b30c8afbaa36d">dig_t3</link></para>
+</listitem>
+            <listitem><para>uint16_t <link linkend="_struct_b_m_e280_calib_param_1a8917b5f02076019fdfcc3631a74bd5a4">dig_p1</link></para>
+</listitem>
+            <listitem><para>int16_t <link linkend="_struct_b_m_e280_calib_param_1ada88f13a717a1fae02a350564fd9dcb6">dig_p2</link></para>
+</listitem>
+            <listitem><para>int16_t <link linkend="_struct_b_m_e280_calib_param_1a672a132ba7f8bad5baf71f13cb8fc9a6">dig_p3</link></para>
+</listitem>
+            <listitem><para>int16_t <link linkend="_struct_b_m_e280_calib_param_1a4c246ab51ee910992d2478c5ef436d46">dig_p4</link></para>
+</listitem>
+            <listitem><para>int16_t <link linkend="_struct_b_m_e280_calib_param_1a9a115f01ee13c0a3c41ff2622e6139e1">dig_p5</link></para>
+</listitem>
+            <listitem><para>int16_t <link linkend="_struct_b_m_e280_calib_param_1a7055059520adb0c5589d01576bc0e94e">dig_p6</link></para>
+</listitem>
+            <listitem><para>int16_t <link linkend="_struct_b_m_e280_calib_param_1a284ebff265af617c7fb5f89c6786247e">dig_p7</link></para>
+</listitem>
+            <listitem><para>int16_t <link linkend="_struct_b_m_e280_calib_param_1a685ef7ec33a5bd9cbcc062ed3b5325d7">dig_p8</link></para>
+</listitem>
+            <listitem><para>int16_t <link linkend="_struct_b_m_e280_calib_param_1af2e49680647943c781a8fe80bd88386b">dig_p9</link></para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="_struct_b_m_e280_calib_param_1a38419a07942da4717394516a883441d7">dig_h1</link></para>
+</listitem>
+            <listitem><para>int16_t <link linkend="_struct_b_m_e280_calib_param_1a87481b9ca1a2cbb278432f576f3e69c3">dig_h2</link></para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="_struct_b_m_e280_calib_param_1afd7a60c148d4caa6cd5a6d0ae82bc6b2">dig_h3</link></para>
+</listitem>
+            <listitem><para>int16_t <link linkend="_struct_b_m_e280_calib_param_1a110bc26b75614d7798ed2448b167320c">dig_h4</link></para>
+</listitem>
+            <listitem><para>int16_t <link linkend="_struct_b_m_e280_calib_param_1af2eac180fdbfe98caa51d2ed77d6e26e">dig_h5</link></para>
+</listitem>
+            <listitem><para>int8_t <link linkend="_struct_b_m_e280_calib_param_1a385c601b7cfd409f7174ae298ef77164">dig_h6</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00011">11</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_struct_b_m_e280_calib_param_1a38419a07942da4717394516a883441d7"/><section>
+    <title>dig_h1</title>
+<indexterm><primary>dig_h1</primary><secondary>BME280CalibParam</secondary></indexterm>
+<indexterm><primary>BME280CalibParam</primary><secondary>dig_h1</secondary></indexterm>
+<para><computeroutput>uint8_t BME280CalibParam::dig_h1</computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00029">29</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_struct_b_m_e280_calib_param_1a87481b9ca1a2cbb278432f576f3e69c3"/><section>
+    <title>dig_h2</title>
+<indexterm><primary>dig_h2</primary><secondary>BME280CalibParam</secondary></indexterm>
+<indexterm><primary>BME280CalibParam</primary><secondary>dig_h2</secondary></indexterm>
+<para><computeroutput>int16_t BME280CalibParam::dig_h2</computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00030">30</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_struct_b_m_e280_calib_param_1afd7a60c148d4caa6cd5a6d0ae82bc6b2"/><section>
+    <title>dig_h3</title>
+<indexterm><primary>dig_h3</primary><secondary>BME280CalibParam</secondary></indexterm>
+<indexterm><primary>BME280CalibParam</primary><secondary>dig_h3</secondary></indexterm>
+<para><computeroutput>uint8_t BME280CalibParam::dig_h3</computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00031">31</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_struct_b_m_e280_calib_param_1a110bc26b75614d7798ed2448b167320c"/><section>
+    <title>dig_h4</title>
+<indexterm><primary>dig_h4</primary><secondary>BME280CalibParam</secondary></indexterm>
+<indexterm><primary>BME280CalibParam</primary><secondary>dig_h4</secondary></indexterm>
+<para><computeroutput>int16_t BME280CalibParam::dig_h4</computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00032">32</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_struct_b_m_e280_calib_param_1af2eac180fdbfe98caa51d2ed77d6e26e"/><section>
+    <title>dig_h5</title>
+<indexterm><primary>dig_h5</primary><secondary>BME280CalibParam</secondary></indexterm>
+<indexterm><primary>BME280CalibParam</primary><secondary>dig_h5</secondary></indexterm>
+<para><computeroutput>int16_t BME280CalibParam::dig_h5</computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00033">33</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_struct_b_m_e280_calib_param_1a385c601b7cfd409f7174ae298ef77164"/><section>
+    <title>dig_h6</title>
+<indexterm><primary>dig_h6</primary><secondary>BME280CalibParam</secondary></indexterm>
+<indexterm><primary>BME280CalibParam</primary><secondary>dig_h6</secondary></indexterm>
+<para><computeroutput>int8_t BME280CalibParam::dig_h6</computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00034">34</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_struct_b_m_e280_calib_param_1a8917b5f02076019fdfcc3631a74bd5a4"/><section>
+    <title>dig_p1</title>
+<indexterm><primary>dig_p1</primary><secondary>BME280CalibParam</secondary></indexterm>
+<indexterm><primary>BME280CalibParam</primary><secondary>dig_p1</secondary></indexterm>
+<para><computeroutput>uint16_t BME280CalibParam::dig_p1</computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00018">18</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_struct_b_m_e280_calib_param_1ada88f13a717a1fae02a350564fd9dcb6"/><section>
+    <title>dig_p2</title>
+<indexterm><primary>dig_p2</primary><secondary>BME280CalibParam</secondary></indexterm>
+<indexterm><primary>BME280CalibParam</primary><secondary>dig_p2</secondary></indexterm>
+<para><computeroutput>int16_t BME280CalibParam::dig_p2</computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00019">19</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_struct_b_m_e280_calib_param_1a672a132ba7f8bad5baf71f13cb8fc9a6"/><section>
+    <title>dig_p3</title>
+<indexterm><primary>dig_p3</primary><secondary>BME280CalibParam</secondary></indexterm>
+<indexterm><primary>BME280CalibParam</primary><secondary>dig_p3</secondary></indexterm>
+<para><computeroutput>int16_t BME280CalibParam::dig_p3</computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00020">20</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_struct_b_m_e280_calib_param_1a4c246ab51ee910992d2478c5ef436d46"/><section>
+    <title>dig_p4</title>
+<indexterm><primary>dig_p4</primary><secondary>BME280CalibParam</secondary></indexterm>
+<indexterm><primary>BME280CalibParam</primary><secondary>dig_p4</secondary></indexterm>
+<para><computeroutput>int16_t BME280CalibParam::dig_p4</computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00021">21</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_struct_b_m_e280_calib_param_1a9a115f01ee13c0a3c41ff2622e6139e1"/><section>
+    <title>dig_p5</title>
+<indexterm><primary>dig_p5</primary><secondary>BME280CalibParam</secondary></indexterm>
+<indexterm><primary>BME280CalibParam</primary><secondary>dig_p5</secondary></indexterm>
+<para><computeroutput>int16_t BME280CalibParam::dig_p5</computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00022">22</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_struct_b_m_e280_calib_param_1a7055059520adb0c5589d01576bc0e94e"/><section>
+    <title>dig_p6</title>
+<indexterm><primary>dig_p6</primary><secondary>BME280CalibParam</secondary></indexterm>
+<indexterm><primary>BME280CalibParam</primary><secondary>dig_p6</secondary></indexterm>
+<para><computeroutput>int16_t BME280CalibParam::dig_p6</computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00023">23</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_struct_b_m_e280_calib_param_1a284ebff265af617c7fb5f89c6786247e"/><section>
+    <title>dig_p7</title>
+<indexterm><primary>dig_p7</primary><secondary>BME280CalibParam</secondary></indexterm>
+<indexterm><primary>BME280CalibParam</primary><secondary>dig_p7</secondary></indexterm>
+<para><computeroutput>int16_t BME280CalibParam::dig_p7</computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00024">24</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_struct_b_m_e280_calib_param_1a685ef7ec33a5bd9cbcc062ed3b5325d7"/><section>
+    <title>dig_p8</title>
+<indexterm><primary>dig_p8</primary><secondary>BME280CalibParam</secondary></indexterm>
+<indexterm><primary>BME280CalibParam</primary><secondary>dig_p8</secondary></indexterm>
+<para><computeroutput>int16_t BME280CalibParam::dig_p8</computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00025">25</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_struct_b_m_e280_calib_param_1af2e49680647943c781a8fe80bd88386b"/><section>
+    <title>dig_p9</title>
+<indexterm><primary>dig_p9</primary><secondary>BME280CalibParam</secondary></indexterm>
+<indexterm><primary>BME280CalibParam</primary><secondary>dig_p9</secondary></indexterm>
+<para><computeroutput>int16_t BME280CalibParam::dig_p9</computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00026">26</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_struct_b_m_e280_calib_param_1afbeeeb1ce65458659a5ba34a183920e6"/><section>
+    <title>dig_t1</title>
+<indexterm><primary>dig_t1</primary><secondary>BME280CalibParam</secondary></indexterm>
+<indexterm><primary>BME280CalibParam</primary><secondary>dig_t1</secondary></indexterm>
+<para><computeroutput>uint16_t BME280CalibParam::dig_t1</computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00013">13</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_struct_b_m_e280_calib_param_1a941c68e822ef43924d09131723141e91"/><section>
+    <title>dig_t2</title>
+<indexterm><primary>dig_t2</primary><secondary>BME280CalibParam</secondary></indexterm>
+<indexterm><primary>BME280CalibParam</primary><secondary>dig_t2</secondary></indexterm>
+<para><computeroutput>int16_t BME280CalibParam::dig_t2</computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00014">14</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_struct_b_m_e280_calib_param_1aca269be642c7d623650b30c8afbaa36d"/><section>
+    <title>dig_t3</title>
+<indexterm><primary>dig_t3</primary><secondary>BME280CalibParam</secondary></indexterm>
+<indexterm><primary>BME280CalibParam</primary><secondary>dig_t3</secondary></indexterm>
+<para><computeroutput>int16_t BME280CalibParam::dig_t3</computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00015">15</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+lib/BME280/<link linkend="__b_m_e280_8h">BME280.h</link></section>
+</section>

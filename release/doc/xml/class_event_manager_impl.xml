@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="class_event_manager_impl" kind="class" language="C++" prot="public">
+    <compoundname>EventManagerImpl</compoundname>
+    <basecompoundref refid="class_event_manager" prot="public" virt="non-virtual">EventManager</basecompoundref>
+    <includes refid="event__manager_8h" local="no">event_manager.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_event_manager_impl_1a07861026e9c06832168372f64e958073" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>EventManagerImpl::EventManagerImpl</definition>
+        <argsstring>()</argsstring>
+        <name>EventManagerImpl</name>
+        <qualifiedname>EventManagerImpl::EventManagerImpl</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.h" line="121" column="5" bodyfile="event_manager.h" bodystart="121" bodyend="123"/>
+        <references refid="class_event_manager_1ab9c4d0fbfc9cf7743eac02bee6223728" compoundref="event__manager_8h" startline="99" endline="101">EventManager::init</references>
+      </memberdef>
+      <memberdef kind="function" id="class_event_manager_impl_1a8bd15b8b1b4d2439740934f087d97f98" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool EventManagerImpl::saveToStorage</definition>
+        <argsstring>() override</argsstring>
+        <name>saveToStorage</name>
+        <qualifiedname>EventManagerImpl::saveToStorage</qualifiedname>
+        <reimplements refid="class_event_manager_1ad369ac9b7ab0251070e0075745836a40">saveToStorage</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.h" line="125" column="10" bodyfile="event_manager.h" bodystart="125" bodyend="129"/>
+        <references refid="class_event_manager_1aed2eb3a8bc611f5594eb62304c7b4754" compoundref="event__manager_8h" startline="116">EventManager::needsPersistence</references>
+      </memberdef>
+      <memberdef kind="function" id="class_event_manager_impl_1ada54a3fd8ad03891318e203ad0a82155" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool EventManagerImpl::loadFromStorage</definition>
+        <argsstring>() override</argsstring>
+        <name>loadFromStorage</name>
+        <qualifiedname>EventManagerImpl::loadFromStorage</qualifiedname>
+        <reimplements refid="class_event_manager_1a6722258e4e3df939224d07786427afc9">loadFromStorage</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="event_manager.h" line="131" column="10" bodyfile="event_manager.h" bodystart="131" bodyend="134"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>EventManager</label>
+        <link refid="class_event_manager"/>
+      </node>
+      <node id="1">
+        <label>EventManagerImpl</label>
+        <link refid="class_event_manager_impl"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>EventLog</label>
+        <link refid="class_event_log"/>
+      </node>
+      <node id="2">
+        <label>EventManager</label>
+        <link refid="class_event_manager"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>events</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>EventManagerImpl</label>
+        <link refid="class_event_manager_impl"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="event_manager.h" line="119" column="1" bodyfile="event_manager.h" bodystart="119" bodyend="135"/>
+    <listofallmembers>
+      <member refid="class_event_manager_1ab74418c8064525f34692dff74dd28d82" prot="protected" virt="non-virtual"><scope>EventManagerImpl</scope><name>eventCount</name></member>
+      <member refid="class_event_manager_1a89099b22114f158b5c530edfea52371d" prot="public" virt="non-virtual"><scope>EventManagerImpl</scope><name>EventManager</name></member>
+      <member refid="class_event_manager_impl_1a07861026e9c06832168372f64e958073" prot="public" virt="non-virtual"><scope>EventManagerImpl</scope><name>EventManagerImpl</name></member>
+      <member refid="class_event_manager_1a970381a54ae432d262830ad74048c94e" prot="protected" virt="non-virtual"><scope>EventManagerImpl</scope><name>eventMutex</name></member>
+      <member refid="class_event_manager_1a9d82f66074e141f352bb852654673536" prot="protected" virt="non-virtual"><scope>EventManagerImpl</scope><name>events</name></member>
+      <member refid="class_event_manager_1a00648cfe8c39fbd59cc4c593113e5573" prot="public" virt="non-virtual"><scope>EventManagerImpl</scope><name>getEvent</name></member>
+      <member refid="class_event_manager_1abd8630355ef48f46c5286f232adb5993" prot="public" virt="non-virtual"><scope>EventManagerImpl</scope><name>getEventCount</name></member>
+      <member refid="class_event_manager_1ab9c4d0fbfc9cf7743eac02bee6223728" prot="public" virt="virtual"><scope>EventManagerImpl</scope><name>init</name></member>
+      <member refid="class_event_manager_impl_1ada54a3fd8ad03891318e203ad0a82155" prot="public" virt="virtual"><scope>EventManagerImpl</scope><name>loadFromStorage</name></member>
+      <member refid="class_event_manager_1ae73a56091dc8713bb86a11abb6742a14" prot="public" virt="non-virtual"><scope>EventManagerImpl</scope><name>logEvent</name></member>
+      <member refid="class_event_manager_1aed2eb3a8bc611f5594eb62304c7b4754" prot="protected" virt="non-virtual"><scope>EventManagerImpl</scope><name>needsPersistence</name></member>
+      <member refid="class_event_manager_1a31b1b079c272a1d7022ed84b01927186" prot="protected" virt="non-virtual"><scope>EventManagerImpl</scope><name>nextEventId</name></member>
+      <member refid="class_event_manager_impl_1a8bd15b8b1b4d2439740934f087d97f98" prot="public" virt="virtual"><scope>EventManagerImpl</scope><name>saveToStorage</name></member>
+      <member refid="class_event_manager_1ad97f788895da6e30b3237982a7bcd810" prot="protected" virt="non-virtual"><scope>EventManagerImpl</scope><name>writeIndex</name></member>
+      <member refid="class_event_manager_1ade6acde43327a4e792bb8256dd6350f0" prot="public" virt="virtual"><scope>EventManagerImpl</scope><name>~EventManager</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

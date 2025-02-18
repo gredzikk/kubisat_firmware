@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_group___event_commands" xml:lang="en-US">
+<title>Event Commands</title>
+<indexterm><primary>Event Commands</primary></indexterm>
+<para>
+
+<para>Commands for accessing and managing system event logs. </para>
+ 
+</para>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_struct_frame">Frame</link> <link linkend="_group___event_commands_1gad921fe7254d7ec43f16a6fb21f5c385a">handleGetLastEvents</link> (const std::string &amp;param, <link linkend="_protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</link> operationType)</para>
+
+<para>Handler for retrieving last N events from the event log. </para>
+</listitem>
+            <listitem><para><link linkend="_struct_frame">Frame</link> <link linkend="_group___event_commands_1ga6f817db327c7b16cf49575635e595004">handleGetEventCount</link> (const std::string &amp;param, <link linkend="_protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</link> operationType)</para>
+
+<para>Handler for getting total number of events in the log. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Commands for accessing and managing system event logs. </para>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_group___event_commands_1ga6f817db327c7b16cf49575635e595004"/><section>
+    <title>handleGetEventCount()</title>
+<indexterm><primary>handleGetEventCount</primary><secondary>Event Commands</secondary></indexterm>
+<indexterm><primary>Event Commands</primary><secondary>handleGetEventCount</secondary></indexterm>
+<para><computeroutput><link linkend="_struct_frame">Frame</link> handleGetEventCount (const std::string &amp; param, <link linkend="_protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</link> operationType)</computeroutput></para><para>
+
+<para>Handler for getting total number of events in the log. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>param</entry><entry>
+<para>Empty string expected </para>
+</entry>
+                            </row>
+                            <row>
+<entry>operationType</entry><entry>
+<para>GET </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><link linkend="_struct_frame">Frame</link> containing:<itemizedlist>
+<listitem>
+<para>Success: Number of events currently in the log</para>
+</listitem><listitem>
+<para>Error: &quot;INVALID REQUEST&quot; </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+<note><title>Note</title>
+
+<para>KBST;0;GET;5;2;;TSBK</para>
+</note>
+<para><link linkend="_command_1_command000005">Command</link> 
+<para>Command ID: 5.2 </para>
+</para></para>
+<para>
+Definition at line <link linkend="_event__commands_8cpp_source_1l00082">82</link> of file <link linkend="_event__commands_8cpp_source">event_commands.cpp</link>.</para>
+</section>
+<anchor xml:id="_group___event_commands_1gad921fe7254d7ec43f16a6fb21f5c385a"/><section>
+    <title>handleGetLastEvents()</title>
+<indexterm><primary>handleGetLastEvents</primary><secondary>Event Commands</secondary></indexterm>
+<indexterm><primary>Event Commands</primary><secondary>handleGetLastEvents</secondary></indexterm>
+<para><computeroutput><link linkend="_struct_frame">Frame</link> handleGetLastEvents (const std::string &amp; param, <link linkend="_protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</link> operationType)</computeroutput></para><para>
+
+<para>Handler for retrieving last N events from the event log. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>param</entry><entry>
+<para>Number of events to retrieve (optional, default 10) </para>
+</entry>
+                            </row>
+                            <row>
+<entry>operationType</entry><entry>
+<para>GET </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><link linkend="_struct_frame">Frame</link> containing:<itemizedlist>
+<listitem>
+<para>Success: Hex-encoded events in format IIIITTTTTTTTGGEE separated by &apos;-&apos; where:<itemizedlist>
+<listitem>
+<para>IIII: Event ID (16-bit)</para>
+</listitem><listitem>
+<para>TTTTTTTT: Unix Timestamp (32-bit)</para>
+</listitem><listitem>
+<para>GG: Event Group (8-bit)</para>
+</listitem><listitem>
+<para>EE: Event Type (8-bit)</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem>
+<para>Error: &quot;INVALID OPERATION&quot;, &quot;INVALID COUNT&quot;, or &quot;INVALID PARAMETER&quot; </para>
+</listitem></itemizedlist>
+</para>
+</formalpara>
+<note><title>Note</title>
+
+<para>KBST;0;GET;5;1;20;TSBK Returns up to 20 most recent events</para>
+</note>
+<para><link linkend="_command_1_command000004">Command</link> 
+<para>Command ID: 5.1 </para>
+</para></para>
+<para>
+Definition at line <link linkend="_event__commands_8cpp_source_1l00029">29</link> of file <link linkend="_event__commands_8cpp_source">event_commands.cpp</link>.</para>
+</section>
+</section>
+</section>

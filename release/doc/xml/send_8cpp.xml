@@ -1,0 +1,338 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="send_8cpp" kind="file" language="C++">
+    <compoundname>send.cpp</compoundname>
+    <includes refid="communication_8h" local="yes">communication.h</includes>
+    <incdepgraph>
+      <node id="24">
+        <label>build_number.h</label>
+        <link refid="build__number_8h"/>
+      </node>
+      <node id="32">
+        <label>event_manager.h</label>
+        <link refid="event__manager_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>communication.h</label>
+        <link refid="communication_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>protocol.h</label>
+        <link refid="protocol_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>frame_model/send.cpp</label>
+        <link refid="send_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>INA3221.h</label>
+        <link refid="_i_n_a3221_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>LoRa-RP2040.h</label>
+        <link refid="_lo_ra-_r_p2040_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>Print.h</label>
+        <link refid="_print_8h"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>PowerManager.h</label>
+        <link refid="_power_manager_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>pin_config.h</label>
+        <link refid="pin__config_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>cstdint</label>
+      </node>
+      <node id="17">
+        <label>cstdio</label>
+      </node>
+      <node id="18">
+        <label>cstdlib</label>
+      </node>
+      <node id="19">
+        <label>cstring</label>
+      </node>
+      <node id="7">
+        <label>functional</label>
+      </node>
+      <node id="27">
+        <label>hardware/gpio.h</label>
+      </node>
+      <node id="15">
+        <label>hardware/i2c.h</label>
+      </node>
+      <node id="28">
+        <label>hardware/spi.h</label>
+      </node>
+      <node id="22">
+        <label>hardware/uart.h</label>
+      </node>
+      <node id="31">
+        <label>inttypes.h</label>
+      </node>
+      <node id="9">
+        <label>iomanip</label>
+      </node>
+      <node id="14">
+        <label>iostream</label>
+      </node>
+      <node id="6">
+        <label>map</label>
+      </node>
+      <node id="26">
+        <label>pico/binary_info.h</label>
+      </node>
+      <node id="33">
+        <label>pico/mutex.h</label>
+      </node>
+      <node id="16">
+        <label>pico/stdlib.h</label>
+      </node>
+      <node id="11">
+        <label>stdint.h</label>
+      </node>
+      <node id="21">
+        <label>stdio.h</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+      <node id="29">
+        <label>string.h</label>
+      </node>
+      <node id="23">
+        <label>time.h</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="send_8cpp_1adcc720dc971ce8b237b26df434b65bb2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sendMessage</definition>
+        <argsstring>(string outgoing)</argsstring>
+        <name>sendMessage</name>
+        <param>
+          <type>string</type>
+          <declname>outgoing</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="frame_model/send.cpp" line="3" column="6" bodyfile="frame_model/send.cpp" bodystart="3" bodyend="22"/>
+        <references refid="pin__config_8cpp_1a42676c2cae17bc2fa151feea9e192342" compoundref="pin__config_8cpp" startline="9">destination</references>
+        <references refid="pin__config_8cpp_1a91a4799f60e5d2bbf7a0ee600912f51f" compoundref="pin__config_8cpp" startline="8">localAddress</references>
+        <references refid="_lo_ra-_r_p2040_8cpp_1af4db0e30d2909faa29355167719f196c" compoundref="_lo_ra-_r_p2040_8cpp" startline="753">LoRa</references>
+        <references refid="communication_8cpp_1a13c45747091f32644e83d65348c61232" compoundref="communication_8cpp" startline="3">outgoing</references>
+        <references refid="utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706" compoundref="utils_8cpp" startline="9" endline="26">uartPrint</references>
+        <referencedby refid="communication_8h_1a752e7cc27f52d4ba064e691b3e240ed8" compoundref="send_8cpp" startline="25" endline="29">sendFrame</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="send_8cpp_1a752e7cc27f52d4ba064e691b3e240ed8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sendFrame</definition>
+        <argsstring>(const Frame &amp;frame)</argsstring>
+        <name>sendFrame</name>
+        <param>
+          <type>const <ref refid="struct_frame" kindref="compound">Frame</ref> &amp;</type>
+          <declname>frame</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="frame_model/send.cpp" line="25" column="6" bodyfile="frame_model/send.cpp" bodystart="25" bodyend="29"/>
+        <references refid="communication_8h_1ab53898fb6f45dfc657837a665a070959" compoundref="frame_8cpp" startline="6" endline="19">encodeFrame</references>
+        <references refid="send_8cpp_1adcc720dc971ce8b237b26df434b65bb2" compoundref="send_8cpp" startline="3" endline="22">sendMessage</references>
+        <referencedby refid="communication_8h_1a8f34bc31494430539db21206f084d39d" compoundref="frame_8cpp" startline="24" endline="71">decodeFrame</referencedby>
+        <referencedby refid="group___diagnostic_commands_1ga3a6c6092cd01fd9c13ab429f4a34326d" compoundref="diagnostic__commands_8cpp" startline="70" endline="94">handleEnterBootloaderMode</referencedby>
+        <referencedby refid="main_8cpp_1a21af2d50d7779336997d5f3456352431" compoundref="main_8cpp" startline="18" endline="54">initSystems</referencedby>
+        <referencedby refid="main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" compoundref="main_8cpp" startline="58" endline="123">main</referencedby>
+        <referencedby refid="communication_8h_1a8b9407b2f579031cf4b705f1ac03ac31" compoundref="frame_8cpp" startline="79" endline="91">processFrameData</referencedby>
+        <referencedby refid="communication_8h_1a6005ddd6320bebe2a680fa6b8efff6dd" compoundref="frame_8cpp" startline="98" endline="111">sendEventRegister</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="send_8cpp_1a252a4ea5f222c6879d281cc2f9357b46" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sendLargePacket</definition>
+        <argsstring>(const uint8_t *data, size_t length)</argsstring>
+        <name>sendLargePacket</name>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="frame_model/send.cpp" line="31" column="6" bodyfile="frame_model/send.cpp" bodystart="31" bodyend="44"/>
+        <references refid="_lo_ra-_r_p2040_8cpp_1af4db0e30d2909faa29355167719f196c" compoundref="_lo_ra-_r_p2040_8cpp" startline="753">LoRa</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="communication_8h" kindref="compound">communication.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3" refid="send_8cpp_1adcc720dc971ce8b237b26df434b65bb2" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="send_8cpp_1adcc720dc971ce8b237b26df434b65bb2" kindref="member">sendMessage</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="communication_8cpp_1a13c45747091f32644e83d65348c61232" kindref="member">outgoing</ref>)</highlight></codeline>
+<codeline lineno="4"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n<sp/>=<sp/><ref refid="communication_8cpp_1a13c45747091f32644e83d65348c61232" kindref="member">outgoing</ref>.length();</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>send[n<sp/>+<sp/>1];</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/>strcpy(send,<sp/><ref refid="communication_8cpp_1a13c45747091f32644e83d65348c61232" kindref="member">outgoing</ref>.c_str());</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_lo_ra-_r_p2040_8cpp_1af4db0e30d2909faa29355167719f196c" kindref="member">LoRa</ref>.beginPacket();<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>start<sp/>packet</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_lo_ra-_r_p2040_8cpp_1af4db0e30d2909faa29355167719f196c" kindref="member">LoRa</ref>.write(<ref refid="pin__config_8cpp_1a42676c2cae17bc2fa151feea9e192342" kindref="member">destination</ref>);<sp/><sp/></highlight><highlight class="comment">//<sp/>add<sp/>destination<sp/>address</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_lo_ra-_r_p2040_8cpp_1af4db0e30d2909faa29355167719f196c" kindref="member">LoRa</ref>.write(<ref refid="pin__config_8cpp_1a91a4799f60e5d2bbf7a0ee600912f51f" kindref="member">localAddress</ref>);<sp/></highlight><highlight class="comment">//<sp/>add<sp/>sender<sp/>address</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_lo_ra-_r_p2040_8cpp_1af4db0e30d2909faa29355167719f196c" kindref="member">LoRa</ref>.print(send);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>add<sp/>payload</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_lo_ra-_r_p2040_8cpp_1af4db0e30d2909faa29355167719f196c" kindref="member">LoRa</ref>.endPacket(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>finish<sp/>packet<sp/>and<sp/>send<sp/>it</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>messageToLog<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Sent<sp/>message<sp/>of<sp/>size<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(n);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>messageToLog<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>to<sp/>0x&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(<ref refid="pin__config_8cpp_1a42676c2cae17bc2fa151feea9e192342" kindref="member">destination</ref>);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>messageToLog<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>containing:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>string(send);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706" kindref="member">uartPrint</ref>(messageToLog);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_lo_ra-_r_p2040_8cpp_1af4db0e30d2909faa29355167719f196c" kindref="member">LoRa</ref>.flush();</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Sends<sp/>a<sp/>Frame<sp/>using<sp/>LoRa<sp/>by<sp/>encoding<sp/>it<sp/>into<sp/>bytes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="communication_8h_1a752e7cc27f52d4ba064e691b3e240ed8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="send_8cpp_1a752e7cc27f52d4ba064e691b3e240ed8" kindref="member">sendFrame</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_frame" kindref="compound">Frame</ref>&amp;<sp/>frame)<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>encodedFrame<sp/>=<sp/><ref refid="communication_8h_1ab53898fb6f45dfc657837a665a070959" kindref="member">encodeFrame</ref>(frame);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>sendLargePacket(data,<sp/>encodedFrame);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="send_8cpp_1adcc720dc971ce8b237b26df434b65bb2" kindref="member">sendMessage</ref>(encodedFrame);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="communication_8h_1a252a4ea5f222c6879d281cc2f9357b46" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="send_8cpp_1a252a4ea5f222c6879d281cc2f9357b46" kindref="member">sendLargePacket</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t*<sp/>data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>length)</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>MAX_PKT_SIZE<sp/>=<sp/>255;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>offset<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(offset<sp/>&lt;<sp/>length)</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>chunkSize<sp/>=<sp/>((length<sp/>-<sp/>offset)<sp/>&lt;<sp/>MAX_PKT_SIZE)<sp/>?<sp/>(length<sp/>-<sp/>offset)<sp/>:<sp/>MAX_PKT_SIZE;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_lo_ra-_r_p2040_8cpp_1af4db0e30d2909faa29355167719f196c" kindref="member">LoRa</ref>.beginPacket();</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_lo_ra-_r_p2040_8cpp_1af4db0e30d2909faa29355167719f196c" kindref="member">LoRa</ref>.write(&amp;data[offset],<sp/>chunkSize);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_lo_ra-_r_p2040_8cpp_1af4db0e30d2909faa29355167719f196c" kindref="member">LoRa</ref>.endPacket();</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>offset<sp/>+=<sp/>chunkSize;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sleep_ms(100);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="frame_model/send.cpp"/>
+  </compounddef>
+</doxygen>

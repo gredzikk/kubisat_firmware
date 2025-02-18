@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_8e72d4e3b06f08a3c4f6f1c3aa4b27cd" xml:lang="en-US">
+<title>lib/PowerManager Directory Reference</title>
+<indexterm><primary>lib/PowerManager Directory Reference</primary></indexterm>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="__power_manager_8cpp">PowerManager.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="__power_manager_8h">PowerManager.h</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

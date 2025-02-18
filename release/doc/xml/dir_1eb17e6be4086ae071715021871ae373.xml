@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_1eb17e6be4086ae071715021871ae373" kind="dir">
+    <compoundname>lib/HMC5883L</compoundname>
+    <innerfile refid="_h_m_c5883_l_8cpp">HMC5883L.cpp</innerfile>
+    <innerfile refid="_h_m_c5883_l_8h">HMC5883L.h</innerfile>
+    <innerfile refid="_h_m_c5883_l___w_r_a_p_p_e_r_8cpp">HMC5883L_WRAPPER.cpp</innerfile>
+    <innerfile refid="_h_m_c5883_l___w_r_a_p_p_e_r_8h">HMC5883L_WRAPPER.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="lib/HMC5883L/"/>
+  </compounddef>
+</doxygen>

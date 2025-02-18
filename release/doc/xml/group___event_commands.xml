@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="group___event_commands" kind="group">
+    <compoundname>EventCommands</compoundname>
+    <title>Event Commands</title>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group___event_commands_1gad921fe7254d7ec43f16a6fb21f5c385a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_frame" kindref="compound">Frame</ref></type>
+        <definition>Frame handleGetLastEvents</definition>
+        <argsstring>(const std::string &amp;param, OperationType operationType)</argsstring>
+        <name>handleGetLastEvents</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>param</declname>
+        </param>
+        <param>
+          <type><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047" kindref="member">OperationType</ref></type>
+          <declname>operationType</declname>
+        </param>
+        <briefdescription>
+<para>Handler for retrieving last N events from the event log. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>param</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of events to retrieve (optional, default 10) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>operationType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>GET </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="struct_frame" kindref="compound">Frame</ref> containing:<itemizedlist>
+<listitem><para>Success: Hex-encoded events in format IIIITTTTTTTTGGEE separated by &apos;-&apos; where:<itemizedlist>
+<listitem><para>IIII: Event ID (16-bit)</para>
+</listitem><listitem><para>TTTTTTTT: Unix Timestamp (32-bit)</para>
+</listitem><listitem><para>GG: Event Group (8-bit)</para>
+</listitem><listitem><para>EE: Event Type (8-bit)</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>Error: &quot;INVALID OPERATION&quot;, &quot;INVALID COUNT&quot;, or &quot;INVALID PARAMETER&quot; </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+<simplesect kind="note"><para>KBST;0;GET;5;1;20;TSBK Returns up to 20 most recent events</para>
+</simplesect>
+<xrefsect id="command_1_command000004"><xreftitle>Command</xreftitle><xrefdescription><para>Command ID: 5.1 </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="commands/event_commands.cpp" line="29" column="7" bodyfile="commands/event_commands.cpp" bodystart="29" bodyend="68"/>
+        <references refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" compoundref="frame_8cpp" startline="113" endline="146">buildFrame</references>
+        <references refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" compoundref="protocol_8h" startline="28">ERROR</references>
+        <references refid="event__manager_8h_1acc4dda1aaabc9862fe79fd94e0b722bf" compoundref="event__manager_8h" startline="9">EVENT_BUFFER_SIZE</references>
+        <references refid="event__manager_8cpp_1a2a686792b51ec2b9e1b7bfc9faef92f7" compoundref="event__manager_8cpp" startline="26">eventManager</references>
+        <references refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8" compoundref="protocol_8h" startline="33">GET</references>
+        <references refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c" compoundref="protocol_8h" startline="27">SUCCESS</references>
+      </memberdef>
+      <memberdef kind="function" id="group___event_commands_1ga6f817db327c7b16cf49575635e595004" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_frame" kindref="compound">Frame</ref></type>
+        <definition>Frame handleGetEventCount</definition>
+        <argsstring>(const std::string &amp;param, OperationType operationType)</argsstring>
+        <name>handleGetEventCount</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>param</declname>
+        </param>
+        <param>
+          <type><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047" kindref="member">OperationType</ref></type>
+          <declname>operationType</declname>
+        </param>
+        <briefdescription>
+<para>Handler for getting total number of events in the log. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>param</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Empty string expected </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>operationType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>GET </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="struct_frame" kindref="compound">Frame</ref> containing:<itemizedlist>
+<listitem><para>Success: Number of events currently in the log</para>
+</listitem><listitem><para>Error: &quot;INVALID REQUEST&quot; </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+<simplesect kind="note"><para>KBST;0;GET;5;2;;TSBK</para>
+</simplesect>
+<xrefsect id="command_1_command000005"><xreftitle>Command</xreftitle><xrefdescription><para>Command ID: 5.2 </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="commands/event_commands.cpp" line="82" column="7" bodyfile="commands/event_commands.cpp" bodystart="82" bodyend="89"/>
+        <references refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" compoundref="frame_8cpp" startline="113" endline="146">buildFrame</references>
+        <references refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" compoundref="protocol_8h" startline="28">ERROR</references>
+        <references refid="event__manager_8cpp_1a2a686792b51ec2b9e1b7bfc9faef92f7" compoundref="event__manager_8cpp" startline="26">eventManager</references>
+        <references refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8" compoundref="protocol_8h" startline="33">GET</references>
+        <references refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c" compoundref="protocol_8h" startline="27">SUCCESS</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Commands for accessing and managing system event logs. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

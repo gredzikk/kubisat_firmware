@@ -2,6 +2,30 @@
 #include "event_manager.h"
 #include <sstream>
 
+
+/**
+ * @defgroup EventCommands Event Commands
+ * @brief Commands for accessing and managing system event logs
+ * @{
+ */
+
+/**
+ * @brief Handler for retrieving last N events from the event log
+ * @param param Number of events to retrieve (optional, default 10)
+ * @param operationType GET
+ * @return Frame containing:
+ *         - Success: Hex-encoded events in format IIIITTTTTTTTGGEE separated by '-'
+ *           where:
+ *           - IIII: Event ID (16-bit)
+ *           - TTTTTTTT: Unix Timestamp (32-bit)
+ *           - GG: Event Group (8-bit)
+ *           - EE: Event Type (8-bit)
+ *         - Error: "INVALID OPERATION", "INVALID COUNT", or "INVALID PARAMETER"
+ * @note KBST;0;GET;5;1;20;TSBK
+ *       Returns up to 20 most recent events
+ * @ingroup EventCommands
+ * @xrefitem command "Command" "List of Commands" Command ID: 5.1
+ */
 Frame handleGetLastEvents(const std::string& param, OperationType operationType) {
     if (operationType != OperationType::GET) {
         return buildFrame(ExecutionResult::ERROR, 5, 1, "INVALID OPERATION");
@@ -43,6 +67,18 @@ Frame handleGetLastEvents(const std::string& param, OperationType operationType)
     return buildFrame(ExecutionResult::SUCCESS, 5, 1, ss.str());
 }
 
+
+/**
+ * @brief Handler for getting total number of events in the log
+ * @param param Empty string expected
+ * @param operationType GET
+ * @return Frame containing:
+ *         - Success: Number of events currently in the log
+ *         - Error: "INVALID REQUEST"
+ * @note KBST;0;GET;5;2;;TSBK
+ * @ingroup EventCommands
+ * @xrefitem command "Command" "List of Commands" Command ID: 5.2
+ */
 Frame handleGetEventCount(const std::string& param, OperationType operationType) {
     if (operationType != OperationType::GET || !param.empty()) {
         return buildFrame(ExecutionResult::ERROR, 5, 2, "INVALID REQUEST");
@@ -51,3 +87,4 @@ Frame handleGetEventCount(const std::string& param, OperationType operationType)
     return buildFrame(ExecutionResult::SUCCESS, 5, 2, 
                      std::to_string(eventManager.getEventCount()));
 }
+/** @} */ // end of EventCommands group

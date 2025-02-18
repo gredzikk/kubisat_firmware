@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="_n_m_e_a__data_8cpp" kind="file" language="C++">
+    <compoundname>NMEA_data.cpp</compoundname>
+    <includes refid="_n_m_e_a__data_8h" local="yes">lib/GPS/NMEA/NMEA_data.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>lib/GPS/NMEA/NMEA_data.cpp</label>
+        <link refid="_n_m_e_a__data_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>lib/GPS/NMEA/NMEA_data.h</label>
+        <link refid="_n_m_e_a__data_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>pico/sync.h</label>
+      </node>
+      <node id="4">
+        <label>string</label>
+      </node>
+      <node id="3">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="_n_m_e_a__data_8cpp_1af2b979012abe80d338fef98209f87b78" prot="public" static="no" mutable="no">
+        <type><ref refid="class_n_m_e_a_data" kindref="compound">NMEAData</ref></type>
+        <definition>NMEAData nmea_data</definition>
+        <argsstring></argsstring>
+        <name>nmea_data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/GPS/NMEA/NMEA_data.cpp" line="3" column="10" bodyfile="lib/GPS/NMEA/NMEA_data.cpp" bodystart="3" bodyend="-1"/>
+        <referencedby refid="gps__collector_8cpp_1abe46d88c89b1f730f6c9a230acac2a6a" compoundref="gps__collector_8cpp" startline="27" endline="65">collectGPSData</referencedby>
+        <referencedby refid="group___g_p_s_commands_1gaf1f6c0fb4266518353e088e8781ed143" compoundref="gps__commands_8cpp" startline="206" endline="230">handleGetGGAData</referencedby>
+        <referencedby refid="group___g_p_s_commands_1ga71881bd1a0a285e4149db732a3f1b533" compoundref="gps__commands_8cpp" startline="168" endline="192">handleGetRMCData</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_n_m_e_a__data_8h" kindref="compound">lib/GPS/NMEA/NMEA_data.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3" refid="gps__collector_8cpp_1af2b979012abe80d338fef98209f87b78" refkind="member"><highlight class="normal"><ref refid="class_n_m_e_a_data" kindref="compound">NMEAData</ref><sp/><ref refid="gps__collector_8cpp_1af2b979012abe80d338fef98209f87b78" kindref="member">nmea_data</ref>;<sp/></highlight><highlight class="comment">//<sp/>Define<sp/>the<sp/>global<sp/>instance</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="class_n_m_e_a_data_1aff10b3badea9258591a2d1eeb601e519" refkind="member"><highlight class="normal"><ref refid="class_n_m_e_a_data_1aff10b3badea9258591a2d1eeb601e519" kindref="member">NMEAData::NMEAData</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_init(&amp;<ref refid="class_n_m_e_a_data_1aa355456dd1bdd1e9af6c37ae9c4ef4f0" kindref="member">rmc_mutex</ref>);</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_init(&amp;<ref refid="class_n_m_e_a_data_1afe04b61742fac871746c1c2d4ef0aa17" kindref="member">gga_mutex</ref>);</highlight></codeline>
+<codeline lineno="8"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="class_n_m_e_a_data_1ace48ac42e9e5af14820ea685b90fcf85" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_n_m_e_a_data_1ace48ac42e9e5af14820ea685b90fcf85" kindref="member">NMEAData::updateRmcTokens</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;&amp;<sp/>tokens)<sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_enter_blocking(&amp;<ref refid="class_n_m_e_a_data_1aa355456dd1bdd1e9af6c37ae9c4ef4f0" kindref="member">rmc_mutex</ref>);</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_n_m_e_a_data_1a8010adc7a34a3d04c06c428f28f5b498" kindref="member">rmcTokens</ref><sp/>=<sp/>tokens;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_exit(&amp;<ref refid="class_n_m_e_a_data_1aa355456dd1bdd1e9af6c37ae9c4ef4f0" kindref="member">rmc_mutex</ref>);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="class_n_m_e_a_data_1a8a15909a8db61c8c49e18ddf150ab72c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_n_m_e_a_data_1a8a15909a8db61c8c49e18ddf150ab72c" kindref="member">NMEAData::updateGgaTokens</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;&amp;<sp/>tokens)<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_enter_blocking(&amp;<ref refid="class_n_m_e_a_data_1afe04b61742fac871746c1c2d4ef0aa17" kindref="member">gga_mutex</ref>);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_n_m_e_a_data_1a26084e69305d4565dd1372e2004d6c98" kindref="member">ggaTokens</ref><sp/>=<sp/>tokens;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_exit(&amp;<ref refid="class_n_m_e_a_data_1afe04b61742fac871746c1c2d4ef0aa17" kindref="member">gga_mutex</ref>);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="class_n_m_e_a_data_1a40e87615a984c58bf46242915a288fdc" refkind="member"><highlight class="normal">std::vector&lt;std::string&gt;<sp/><ref refid="class_n_m_e_a_data_1a40e87615a984c58bf46242915a288fdc" kindref="member">NMEAData::getRmcTokens</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_enter_blocking(</highlight><highlight class="keyword">const_cast&lt;</highlight><highlight class="normal">mutex_t*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(&amp;<ref refid="class_n_m_e_a_data_1aa355456dd1bdd1e9af6c37ae9c4ef4f0" kindref="member">rmc_mutex</ref>));</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>copy<sp/>=<sp/><ref refid="class_n_m_e_a_data_1a8010adc7a34a3d04c06c428f28f5b498" kindref="member">rmcTokens</ref>;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_exit(</highlight><highlight class="keyword">const_cast&lt;</highlight><highlight class="normal">mutex_t*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(&amp;<ref refid="class_n_m_e_a_data_1aa355456dd1bdd1e9af6c37ae9c4ef4f0" kindref="member">rmc_mutex</ref>));</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>copy;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="class_n_m_e_a_data_1af3ac48985760c1b78f503d225ad79028" refkind="member"><highlight class="normal">std::vector&lt;std::string&gt;<sp/><ref refid="class_n_m_e_a_data_1af3ac48985760c1b78f503d225ad79028" kindref="member">NMEAData::getGgaTokens</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_enter_blocking(</highlight><highlight class="keyword">const_cast&lt;</highlight><highlight class="normal">mutex_t*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(&amp;<ref refid="class_n_m_e_a_data_1afe04b61742fac871746c1c2d4ef0aa17" kindref="member">gga_mutex</ref>));</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>copy<sp/>=<sp/><ref refid="class_n_m_e_a_data_1a26084e69305d4565dd1372e2004d6c98" kindref="member">ggaTokens</ref>;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_exit(</highlight><highlight class="keyword">const_cast&lt;</highlight><highlight class="normal">mutex_t*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(&amp;<ref refid="class_n_m_e_a_data_1afe04b61742fac871746c1c2d4ef0aa17" kindref="member">gga_mutex</ref>));</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>copy;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="lib/GPS/NMEA/NMEA_data.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,318 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="diagnostic__commands_8cpp" kind="file" language="C++">
+    <compoundname>diagnostic_commands.cpp</compoundname>
+    <includes refid="communication_8h" local="yes">communication.h</includes>
+    <includes refid="commands_8h" local="yes">commands.h</includes>
+    <includes local="yes">pico/stdlib.h</includes>
+    <includes local="yes">pico/bootrom.h</includes>
+    <incdepgraph>
+      <node id="24">
+        <label>build_number.h</label>
+        <link refid="build__number_8h"/>
+      </node>
+      <node id="34">
+        <label>commands.h</label>
+        <link refid="commands_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>commands/diagnostic_commands.cpp</label>
+        <link refid="diagnostic__commands_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>event_manager.h</label>
+        <link refid="event__manager_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>communication.h</label>
+        <link refid="communication_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>protocol.h</label>
+        <link refid="protocol_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>INA3221.h</label>
+        <link refid="_i_n_a3221_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>LoRa-RP2040.h</label>
+        <link refid="_lo_ra-_r_p2040_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>Print.h</label>
+        <link refid="_print_8h"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>PowerManager.h</label>
+        <link refid="_power_manager_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>pin_config.h</label>
+        <link refid="pin__config_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>cstdint</label>
+      </node>
+      <node id="17">
+        <label>cstdio</label>
+      </node>
+      <node id="18">
+        <label>cstdlib</label>
+      </node>
+      <node id="19">
+        <label>cstring</label>
+      </node>
+      <node id="7">
+        <label>functional</label>
+      </node>
+      <node id="27">
+        <label>hardware/gpio.h</label>
+      </node>
+      <node id="15">
+        <label>hardware/i2c.h</label>
+      </node>
+      <node id="28">
+        <label>hardware/spi.h</label>
+      </node>
+      <node id="22">
+        <label>hardware/uart.h</label>
+      </node>
+      <node id="31">
+        <label>inttypes.h</label>
+      </node>
+      <node id="9">
+        <label>iomanip</label>
+      </node>
+      <node id="14">
+        <label>iostream</label>
+      </node>
+      <node id="6">
+        <label>map</label>
+      </node>
+      <node id="26">
+        <label>pico/binary_info.h</label>
+      </node>
+      <node id="35">
+        <label>pico/bootrom.h</label>
+      </node>
+      <node id="33">
+        <label>pico/mutex.h</label>
+      </node>
+      <node id="16">
+        <label>pico/stdlib.h</label>
+      </node>
+      <node id="11">
+        <label>stdint.h</label>
+      </node>
+      <node id="21">
+        <label>stdio.h</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+      <node id="29">
+        <label>string.h</label>
+      </node>
+      <node id="23">
+        <label>time.h</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="func">
+      <member refid="group___diagnostic_commands_1gade74b82cf2c20d93c5e0ce624cd7ca77" kind="function"><name>handleListCommands</name></member>
+      <member refid="group___diagnostic_commands_1ga5ebac5711334cb3584974b2b74556543" kind="function"><name>handleGetBuildVersion</name></member>
+      <member refid="group___diagnostic_commands_1ga3a6c6092cd01fd9c13ab429f4a34326d" kind="function"><name>handleEnterBootloaderMode</name></member>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="communication_8h" kindref="compound">communication.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="commands_8h" kindref="compound">commands.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;pico/stdlib.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;pico/bootrom.h&quot;</highlight><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="group___diagnostic_commands_1gade74b82cf2c20d93c5e0ce624cd7ca77" refkind="member"><highlight class="normal"><ref refid="struct_frame" kindref="compound">Frame</ref><sp/><ref refid="group___diagnostic_commands_1gade74b82cf2c20d93c5e0ce624cd7ca77" kindref="member">handleListCommands</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>param,<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047" kindref="member">OperationType</ref><sp/>operationType)<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!param.empty())<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" kindref="member">ExecutionResult::ERROR</ref>,<sp/>1,<sp/>0,<sp/></highlight><highlight class="stringliteral">&quot;PARAM<sp/>UNNECESSARY&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!(operationType<sp/>==<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8" kindref="member">OperationType::GET</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" kindref="member">ExecutionResult::ERROR</ref>,<sp/>1,<sp/>0,<sp/></highlight><highlight class="stringliteral">&quot;INVALID<sp/>OPERATION&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>std::stringstream<sp/>ss;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>entry<sp/>:<sp/><ref refid="commands_8cpp_1a04a0515603ba347ef314678876f3fa26" kindref="member">commandHandlers</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>commandKey<sp/>=<sp/>entry.first;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="event__manager_8h_1ad4291fcb880eb5ecb178b53e32f55741" kindref="member">group</ref><sp/>=<sp/>(commandKey<sp/>&gt;&gt;<sp/>8)<sp/>&amp;<sp/>0xFF;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>command<sp/>=<sp/>commandKey<sp/>&amp;<sp/>0xFF;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ss<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Group:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="event__manager_8h_1ad4291fcb880eb5ecb178b53e32f55741" kindref="member">group</ref>)</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>Command:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(command)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>commandList<sp/>=<sp/>ss.str();</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706" kindref="member">uartPrint</ref>(commandList,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);<sp/></highlight><highlight class="comment">//<sp/>Print<sp/>to<sp/>UART</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c" kindref="member">ExecutionResult::SUCCESS</ref>,<sp/>1,<sp/>0,<sp/></highlight><highlight class="stringliteral">&quot;Commands<sp/>listed<sp/>on<sp/>UART&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="group___diagnostic_commands_1ga5ebac5711334cb3584974b2b74556543" refkind="member"><highlight class="normal"><ref refid="struct_frame" kindref="compound">Frame</ref><sp/><ref refid="group___diagnostic_commands_1ga5ebac5711334cb3584974b2b74556543" kindref="member">handleGetBuildVersion</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>param,<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047" kindref="member">OperationType</ref><sp/>operationType)<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!param.empty())<sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" kindref="member">ExecutionResult::ERROR</ref>,<sp/>1,<sp/>1,<sp/></highlight><highlight class="stringliteral">&quot;PARAM<sp/>UNECESSARY&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(operationType<sp/>==<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8" kindref="member">OperationType::GET</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c" kindref="member">ExecutionResult::SUCCESS</ref>,<sp/>1,<sp/>1,<sp/>std::to_string(<ref refid="build__number_8h_1ae7f90861d8c4d5b1cbdcf71d325feea2" kindref="member">BUILD_NUMBER</ref>));</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" kindref="member">ExecutionResult::ERROR</ref>,<sp/>1,<sp/>1,<sp/></highlight><highlight class="stringliteral">&quot;INVALID<sp/>OPERATION&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="group___diagnostic_commands_1ga3a6c6092cd01fd9c13ab429f4a34326d" refkind="member"><highlight class="normal"><ref refid="struct_frame" kindref="compound">Frame</ref><sp/><ref refid="group___diagnostic_commands_1ga3a6c6092cd01fd9c13ab429f4a34326d" kindref="member">handleEnterBootloaderMode</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>param,<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047" kindref="member">OperationType</ref><sp/>operationType)<sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!param.empty())<sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" kindref="member">ExecutionResult::ERROR</ref>,<sp/>1,<sp/>9,<sp/></highlight><highlight class="stringliteral">&quot;PARAM<sp/>UNNECESSARY&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(operationType<sp/>!=<sp/><ref refid="protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047a8c52684db8f49511e9b44471716bf164" kindref="member">OperationType::SET</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5" kindref="member">ExecutionResult::ERROR</ref>,<sp/>1,<sp/>9,<sp/></highlight><highlight class="stringliteral">&quot;INVALID<sp/>OPERATION&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>the<sp/>success<sp/>frame<sp/>*before*<sp/>resetting</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_frame" kindref="compound">Frame</ref><sp/>successFrame<sp/>=<sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c" kindref="member">ExecutionResult::SUCCESS</ref>,<sp/>1,<sp/>9,<sp/></highlight><highlight class="stringliteral">&quot;REBOOT<sp/>BOOTSEL&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Send<sp/>the<sp/>success<sp/>frame</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706" kindref="member">uartPrint</ref>(</highlight><highlight class="stringliteral">&quot;Sending<sp/>BOOTSEL<sp/>confirmation...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="communication_8h_1a752e7cc27f52d4ba064e691b3e240ed8" kindref="member">sendFrame</ref>(successFrame);<sp/></highlight><highlight class="comment">//<sp/>Assuming<sp/>you<sp/>have<sp/>a<sp/>sendFrame<sp/>function</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Delay<sp/>to<sp/>ensure<sp/>the<sp/>frame<sp/>is<sp/>sent</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>sleep_ms(100);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706" kindref="member">uartPrint</ref>(</highlight><highlight class="stringliteral">&quot;Entering<sp/>BOOTSEL<sp/>mode...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>reset_usb_boot(0,<sp/>0);<sp/></highlight><highlight class="comment">//<sp/>Trigger<sp/>BOOTSEL<sp/>mode</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>code<sp/>will<sp/>never<sp/>reach<sp/>here<sp/>because<sp/>the<sp/>Pico<sp/>will<sp/>reset</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="communication_8h_1a54afeb73435419551a1b51a3fd5c3266" kindref="member">buildFrame</ref>(<ref refid="protocol_8h_1ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c" kindref="member">ExecutionResult::SUCCESS</ref>,<sp/>1,<sp/>9,<sp/></highlight><highlight class="stringliteral">&quot;Entering<sp/>BOOTSEL<sp/>mode&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/></highlight></codeline>
+    </programlisting>
+    <location file="commands/diagnostic_commands.cpp"/>
+  </compounddef>
+</doxygen>

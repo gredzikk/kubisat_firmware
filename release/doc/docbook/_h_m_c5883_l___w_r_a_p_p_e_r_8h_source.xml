@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8h_source" xml:lang="en-US">
+<title>HMC5883L_WRAPPER.h</title>
+<indexterm><primary>lib/HMC5883L/HMC5883L_WRAPPER.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8h_source_1l00001"/>00001 <emphasis role="preprocessor">#ifndef&#32;HMC5883L_WRAPPER_H</emphasis>
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8h_source_1l00002"/>00002 <emphasis role="preprocessor">#define&#32;HMC5883L_WRAPPER_H</emphasis>
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8h_source_1l00003"/>00003 
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8h_source_1l00004"/>00004 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__i_sensor_8h">lib/ISensor.h</link>&quot;</emphasis>
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8h_source_1l00005"/>00005 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__h_m_c5883_l_8h">HMC5883L.h</link>&quot;</emphasis>
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8h_source_1l00006"/>00006 
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8h_source_1l00007"/><link linkend="_class_h_m_c5883_l_wrapper">00007</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_class_h_m_c5883_l_wrapper_1af0a0709fd3f48d8343794da5b3ee4f32">HMC5883LWrapper</link>&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_i_sensor">ISensor</link>&#32;{
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8h_source_1l00008"/>00008 <emphasis role="keyword">public</emphasis>:
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8h_source_1l00009"/>00009 &#32;&#32;&#32;&#32;<link linkend="_class_h_m_c5883_l_wrapper_1af0a0709fd3f48d8343794da5b3ee4f32">HMC5883LWrapper</link>(i2c_inst_t*&#32;i2c);
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8h_source_1l00010"/>00010 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_h_m_c5883_l_wrapper_1ab7a5997ae98ed9bc37fdd5ab0afe2fb2">init</link>()&#32;<emphasis role="keyword">override</emphasis>;
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8h_source_1l00011"/>00011 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;<link linkend="_class_h_m_c5883_l_wrapper_1a76c63b1af36c160c9e7ebf7dc10f872b">readData</link>(<link linkend="__i_sensor_8h_1a21b0301bb3eb76855366980212c8ae5e">SensorDataTypeIdentifier</link>&#32;type)&#32;<emphasis role="keyword">override</emphasis>;
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8h_source_1l00012"/>00012 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_h_m_c5883_l_wrapper_1abacf4eeaaff893112e1aa3c20b23ce38">isInitialized</link>()&#32;<emphasis role="keyword">const&#32;override</emphasis>;
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8h_source_1l00013"/>00013 &#32;&#32;&#32;&#32;<link linkend="__i_sensor_8h_1a213c434cb928c4ca22513e2302632435">SensorType</link>&#32;<link linkend="_class_h_m_c5883_l_wrapper_1a655c92b4d2040e76636a96f9ba63c56a">getType</link>()&#32;<emphasis role="keyword">const&#32;override</emphasis>;
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8h_source_1l00014"/>00014 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_h_m_c5883_l_wrapper_1aae28a5412098db267c5f61a638fa3ef6">configure</link>(<emphasis role="keyword">const</emphasis>&#32;std::map&lt;std::string,&#32;std::string&gt;&amp;&#32;config)&#32;<emphasis role="keyword">override</emphasis>;
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8h_source_1l00015"/>00015 
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8h_source_1l00016"/>00016 <emphasis role="keyword">private</emphasis>:
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8h_source_1l00017"/><link linkend="_class_h_m_c5883_l_wrapper_1a676ad07965bad428b637c46152b7c6eb">00017</link> &#32;&#32;&#32;&#32;<link linkend="_class_h_m_c5883_l">HMC5883L</link>&#32;<link linkend="_class_h_m_c5883_l_wrapper_1a676ad07965bad428b637c46152b7c6eb">sensor</link>;
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8h_source_1l00018"/><link linkend="_class_h_m_c5883_l_wrapper_1af52be1c1aad99526965b952521da56f6">00018</link> &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_h_m_c5883_l_wrapper_1af52be1c1aad99526965b952521da56f6">initialized</link>;
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8h_source_1l00019"/>00019 };
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8h_source_1l00020"/>00020 
+<anchor xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8h_source_1l00021"/>00021 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

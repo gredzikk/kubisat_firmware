@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_logging_8cpp_source" xml:lang="en-US">
+<title>logging.cpp</title>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_logging_8cpp_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&lt;stdio.h&gt;</emphasis>
+<anchor xml:id="_logging_8cpp_source_1l00002"/>00002 <emphasis role="preprocessor">#include&#32;&quot;pico/stdlib.h&quot;</emphasis>
+<anchor xml:id="_logging_8cpp_source_1l00003"/>00003 <emphasis role="preprocessor">#include&#32;&quot;pico/multicore.h&quot;</emphasis>
+<anchor xml:id="_logging_8cpp_source_1l00004"/>00004 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_utils_8h">utils.h</link>&quot;</emphasis>
+<anchor xml:id="_logging_8cpp_source_1l00005"/>00005 
+<anchor xml:id="_logging_8cpp_source_1l00006"/><link linkend="_logging_8cpp_1a905b7c29adff0a55966dc2bdd1578a6c">00006</link> <emphasis role="preprocessor">#define&#32;LOG_FILENAME&#32;&quot;log.txt&quot;</emphasis>
+<anchor xml:id="_logging_8cpp_source_1l00007"/><link linkend="_logging_8cpp_1a985a48e0894b9d0ff7e173b0d2119c27">00007</link> <emphasis role="preprocessor">#define&#32;EVENT_LOG_FILENAME&#32;&quot;event_log.txt&quot;&#32;</emphasis><emphasis role="comment">//&#32;Define&#32;event&#32;log&#32;filename</emphasis>
+<anchor xml:id="_logging_8cpp_source_1l00008"/><link linkend="_logging_8cpp_1a381c342b2b34df0b1a5b39c0d94da4e1">00008</link> <emphasis role="preprocessor">#define&#32;LOG_BUFFER_SIZE&#32;512</emphasis>
+<anchor xml:id="_logging_8cpp_source_1l00009"/>00009 
+<anchor xml:id="_logging_8cpp_source_1l00010"/>00010 <emphasis role="comment">//&#32;Define&#32;the&#32;power&#32;falling&#32;signal&#32;(must&#32;match&#32;event_manager.cpp)</emphasis>
+<anchor xml:id="_logging_8cpp_source_1l00011"/><link linkend="_logging_8cpp_1a810be14c2f8d4a1b059e934dc8822e88">00011</link> <emphasis role="preprocessor">#define&#32;POWER_FALLING_SIGNAL&#32;0x01</emphasis>
+<anchor xml:id="_logging_8cpp_source_1l00012"/>00012 
+<anchor xml:id="_logging_8cpp_source_1l00013"/>00013 <emphasis role="comment">//&#32;Define&#32;a&#32;signal&#32;to&#32;indicate&#32;an&#32;event&#32;log&#32;message</emphasis>
+<anchor xml:id="_logging_8cpp_source_1l00014"/><link linkend="_logging_8cpp_1a58d8ea357a3c26987becb7e6e4ab332f">00014</link> <emphasis role="preprocessor">#define&#32;EVENT_LOG_SIGNAL&#32;0x02&#32;</emphasis><emphasis role="comment">//&#32;Choose&#32;a&#32;different&#32;signal&#32;value</emphasis>
+<anchor xml:id="_logging_8cpp_source_1l00015"/>00015 
+<anchor xml:id="_logging_8cpp_source_1l00016"/><link linkend="_logging_8cpp_1a01a8b38ee1cf3fd44cedf3f5a8f1dbde">00016</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_logging_8cpp_1a01a8b38ee1cf3fd44cedf3f5a8f1dbde">loggingRoutine</link>()&#32;{
+<anchor xml:id="_logging_8cpp_source_1l00017"/>00017 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;//&#32;Initialize&#32;SD&#32;card&#32;driver</emphasis>
+<anchor xml:id="_logging_8cpp_source_1l00018"/>00018 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;if&#32;(!initializeSDCard(buf))&#32;{</emphasis>
+<anchor xml:id="_logging_8cpp_source_1l00019"/>00019 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;uartPrint(&quot;SD&#32;card&#32;driver&#32;initialization&#32;failed!\n&quot;);</emphasis>
+<anchor xml:id="_logging_8cpp_source_1l00020"/>00020 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;return;</emphasis>
+<anchor xml:id="_logging_8cpp_source_1l00021"/>00021 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;}</emphasis>
+<anchor xml:id="_logging_8cpp_source_1l00022"/>00022 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;sd_initialized&#32;=&#32;true;</emphasis>
+<anchor xml:id="_logging_8cpp_source_1l00023"/>00023 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;uartPrint(&quot;SD&#32;card&#32;driver&#32;initialized.&quot;);</emphasis>
+<anchor xml:id="_logging_8cpp_source_1l00024"/>00024 
+<anchor xml:id="_logging_8cpp_source_1l00025"/>00025 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;//&#32;Mount&#32;the&#32;file&#32;system</emphasis>
+<anchor xml:id="_logging_8cpp_source_1l00026"/>00026 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;if&#32;(!mountDrive(fs,&#32;buf))&#32;{</emphasis>
+<anchor xml:id="_logging_8cpp_source_1l00027"/>00027 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;uartPrint(&quot;SD&#32;card&#32;mount&#32;failed!\n&quot;);</emphasis>
+<anchor xml:id="_logging_8cpp_source_1l00028"/>00028 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;return;</emphasis>
+<anchor xml:id="_logging_8cpp_source_1l00029"/>00029 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;}</emphasis>
+<anchor xml:id="_logging_8cpp_source_1l00030"/>00030 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;sd_mounted&#32;=&#32;true;</emphasis>
+<anchor xml:id="_logging_8cpp_source_1l00031"/>00031 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;uartPrint(&quot;SD&#32;card&#32;mounted.&quot;);</emphasis>
+<anchor xml:id="_logging_8cpp_source_1l00032"/>00032 
+<anchor xml:id="_logging_8cpp_source_1l00033"/>00033 &#32;&#32;&#32;&#32;<link linkend="_utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706">uartPrint</link>(<emphasis role="stringliteral">&quot;Logging&#32;routine&#32;started.&quot;</emphasis>);
+<anchor xml:id="_logging_8cpp_source_1l00034"/>00034 
+<anchor xml:id="_logging_8cpp_source_1l00035"/>00035 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(<emphasis role="keyword">true</emphasis>)&#32;{
+<anchor xml:id="_logging_8cpp_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Read&#32;from&#32;the&#32;FIFO</emphasis>
+<anchor xml:id="_logging_8cpp_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;c&#32;=&#32;multicore_fifo_pop_blocking();
+<anchor xml:id="_logging_8cpp_source_1l00038"/>00038 
+<anchor xml:id="_logging_8cpp_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(c&#32;==&#32;<link linkend="_logging_8cpp_1a810be14c2f8d4a1b059e934dc8822e88">POWER_FALLING_SIGNAL</link>)&#32;{
+<anchor xml:id="_logging_8cpp_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Power&#32;falling&#32;signal&#32;received!</emphasis>
+<anchor xml:id="_logging_8cpp_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706">uartPrint</link>(<emphasis role="stringliteral">&quot;Power&#32;falling&#32;signal&#32;received.&#32;Closing&#32;log&#32;file&#32;and&#32;unmounting&#32;SD&#32;card.\n&quot;</emphasis>);
+<anchor xml:id="_logging_8cpp_source_1l00042"/>00042 
+<anchor xml:id="_logging_8cpp_source_1l00043"/>00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;&#32;<emphasis role="comment">//&#32;Exit&#32;the&#32;logging&#32;routine</emphasis>
+<anchor xml:id="_logging_8cpp_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(c&#32;==&#32;<link linkend="_logging_8cpp_1a58d8ea357a3c26987becb7e6e4ab332f">EVENT_LOG_SIGNAL</link>)&#32;{
+<anchor xml:id="_logging_8cpp_source_1l00045"/>00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706">uartPrint</link>(<emphasis role="stringliteral">&quot;Event&#32;log&#32;signal&#32;received.&quot;</emphasis>);
+<anchor xml:id="_logging_8cpp_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Event&#32;log&#32;signal&#32;received</emphasis>
+<anchor xml:id="_logging_8cpp_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Read&#32;the&#32;length&#32;of&#32;the&#32;message&#32;from&#32;the&#32;FIFO</emphasis>
+<anchor xml:id="_logging_8cpp_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_logging_8cpp_source_1l00049"/>00049 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_logging_8cpp_source_1l00050"/>00050 }
+</programlisting></section>

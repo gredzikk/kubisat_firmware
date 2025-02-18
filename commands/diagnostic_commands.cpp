@@ -3,6 +3,19 @@
 #include "pico/stdlib.h"
 #include "pico/bootrom.h" 
 
+/**
+ * @defgroup DiagnosticCommands Diagnostic Commands
+ * @{
+ */
+
+/**
+ * @brief Handler for listing all available commands on UART
+ * @param param Empty string expected
+ * @param operationType Must be GET
+ * @return Frame containing success/error and command list
+ * @ingroup DiagnosticCommands
+ * @xrefitem command "Command" "List of Commands" Command ID: 0
+ */
 Frame handleListCommands(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
         return buildFrame(ExecutionResult::ERROR, 1, 0, "PARAM UNNECESSARY");
@@ -28,6 +41,14 @@ Frame handleListCommands(const std::string& param, OperationType operationType) 
     return buildFrame(ExecutionResult::SUCCESS, 1, 0, "Commands listed on UART");
 }
 
+/**
+ * @brief Get firmware build version
+ * @param param Empty string expected
+ * @param operationType Must be GET
+ * @return Frame containing build number
+ * @ingroup DiagnosticCommands
+ * @xrefitem command "Command" "List of Commands" Command ID: 1
+ */
 Frame handleGetBuildVersion(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
         return buildFrame(ExecutionResult::ERROR, 1, 1, "PARAM UNECESSARY");
@@ -38,6 +59,14 @@ Frame handleGetBuildVersion(const std::string& param, OperationType operationTyp
     return buildFrame(ExecutionResult::ERROR, 1, 1, "INVALID OPERATION");
 }
 
+/**
+ * @brief Reboot system to USB firmware loader
+ * @param param Empty string expected
+ * @param operationType Must be SET
+ * @return Frame with operation result
+ * @ingroup DiagnosticCommands
+ * @xrefitem command "Command" "List of Commands" Command ID: 2
+ */
 Frame handleEnterBootloaderMode(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
         return buildFrame(ExecutionResult::ERROR, 1, 9, "PARAM UNNECESSARY");
@@ -63,3 +92,5 @@ Frame handleEnterBootloaderMode(const std::string& param, OperationType operatio
     // The code will never reach here because the Pico will reset
     return buildFrame(ExecutionResult::SUCCESS, 1, 9, "Entering BOOTSEL mode");
 }
+
+/** @} */ 

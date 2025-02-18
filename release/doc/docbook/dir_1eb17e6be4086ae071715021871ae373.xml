@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_1eb17e6be4086ae071715021871ae373" xml:lang="en-US">
+<title>lib/HMC5883L Directory Reference</title>
+<indexterm><primary>lib/HMC5883L Directory Reference</primary></indexterm>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="__h_m_c5883_l_8cpp">HMC5883L.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="__h_m_c5883_l_8h">HMC5883L.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp">HMC5883L_WRAPPER.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="__h_m_c5883_l___w_r_a_p_p_e_r_8h">HMC5883L_WRAPPER.h</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

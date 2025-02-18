@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="_b_h1750___w_r_a_p_p_e_r_8h" kind="file" language="C++">
+    <compoundname>BH1750_WRAPPER.h</compoundname>
+    <includes refid="_i_sensor_8h" local="yes">lib/ISensor.h</includes>
+    <includes refid="_b_h1750_8h" local="yes">BH1750.h</includes>
+    <includes local="no">map</includes>
+    <includes local="no">string</includes>
+    <includedby refid="includes_8h" local="yes">includes.h</includedby>
+    <includedby refid="_b_h1750___w_r_a_p_p_e_r_8cpp" local="yes">lib/BH1750/BH1750_WRAPPER.cpp</includedby>
+    <includedby refid="_i_sensor_8cpp" local="yes">lib/ISensor.cpp</includedby>
+    <incdepgraph>
+      <node id="7">
+        <label>BH1750.h</label>
+        <link refid="_b_h1750_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>lib/BH1750/BH1750_WRAPPER.h</label>
+        <link refid="_b_h1750___w_r_a_p_p_e_r_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>lib/ISensor.h</label>
+        <link refid="_i_sensor_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>cstdint</label>
+      </node>
+      <node id="4">
+        <label>hardware/i2c.h</label>
+      </node>
+      <node id="5">
+        <label>map</label>
+      </node>
+      <node id="6">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>includes.h</label>
+        <link refid="includes_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>lib/BH1750/BH1750_WRAPPER.cpp</label>
+        <link refid="_b_h1750___w_r_a_p_p_e_r_8cpp"/>
+      </node>
+      <node id="1">
+        <label>lib/BH1750/BH1750_WRAPPER.h</label>
+        <link refid="_b_h1750___w_r_a_p_p_e_r_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>lib/ISensor.cpp</label>
+        <link refid="_i_sensor_8cpp"/>
+      </node>
+      <node id="3">
+        <label>main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_b_h1750_wrapper" prot="public">BH1750Wrapper</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>BH1750_WRAPPER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BH1750_WRAPPER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_i_sensor_8h" kindref="compound">lib/ISensor.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_b_h1750_8h" kindref="compound">BH1750.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="class_b_h1750_wrapper" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_b_h1750_wrapper_1a269ed77d8ed445c6fb4a9aa6f33b39df" kindref="member">BH1750Wrapper</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_i_sensor" kindref="compound">ISensor</ref><sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="11" refid="class_b_h1750_wrapper_1a254f46eb45a19e87f32ae62ca4ef0135" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_b_h1750" kindref="compound">BH1750</ref><sp/><ref refid="class_b_h1750_wrapper_1a254f46eb45a19e87f32ae62ca4ef0135" kindref="member">sensor</ref>;</highlight></codeline>
+<codeline lineno="12" refid="class_b_h1750_wrapper_1a260b8f66366a5174cc8b0b92dda72e31" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_b_h1750_wrapper_1a260b8f66366a5174cc8b0b92dda72e31" kindref="member">initialized</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_b_h1750_wrapper_1a269ed77d8ed445c6fb4a9aa6f33b39df" kindref="member">BH1750Wrapper</ref>();</highlight></codeline>
+<codeline lineno="16" refid="class_b_h1750_wrapper_1abf1afbdda5863d3830fb3e54ce6813f1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_b_h1750_wrapper_1abf1afbdda5863d3830fb3e54ce6813f1" kindref="member">get_i2c_addr</ref>();</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_b_h1750_wrapper_1a2f9561a5cce4fe2241a0e74f69e4dadb" kindref="member">init</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="class_b_h1750_wrapper_1a150e9bb5fb1185d6b1619565c66c5f62" kindref="member">readData</ref>(<ref refid="_i_sensor_8h_1a21b0301bb3eb76855366980212c8ae5e" kindref="member">SensorDataTypeIdentifier</ref><sp/>type)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_b_h1750_wrapper_1a17eee3fe5b77e07d5aceed51c5277709" kindref="member">isInitialized</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_i_sensor_8h_1a213c434cb928c4ca22513e2302632435" kindref="member">SensorType</ref><sp/><ref refid="class_b_h1750_wrapper_1aa107682828326c965d10db863e704bde" kindref="member">getType</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_b_h1750_wrapper_1a721289913582b5222ca375cbbe6b43d6" kindref="member">configure</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::map&lt;std::string,<sp/>std::string&gt;&amp;<sp/>config);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>BH1750_WRAPPER_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="lib/BH1750/BH1750_WRAPPER.h"/>
+  </compounddef>
+</doxygen>

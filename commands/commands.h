@@ -29,7 +29,6 @@ Frame handleEnableGPSTransparentMode(const std::string& param, OperationType ope
 Frame handleGetRMCData(const std::string& param, OperationType operationType);
 Frame handleGetGGAData(const std::string& param, OperationType operationType);
 
-
 // POWER
 Frame handleGetPowerManagerIDs(const std::string& param, OperationType operationType);
 Frame handleGetVoltageBattery(const std::string& param, OperationType operationType);

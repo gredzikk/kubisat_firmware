@@ -1,0 +1,536 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_b_m_e280" xml:lang="en-US">
+<title>BME280 Class Reference</title>
+<indexterm><primary>BME280</primary></indexterm>
+<para>
+<computeroutput>#include &lt;BME280.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_b_m_e280_1a2f0c3415c853ed9303529b75d5d7236b">BME280</link> (i2c_inst_t *i2cPort, uint8_t address=<link linkend="_class_b_m_e280_1a328e1cfc7421d11670a772f68f7181b9">ADDR_SDO_LOW</link>)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_b_m_e280_1a549f7c534b3c0168148188bca5c30e7b">init</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_b_m_e280_1a9a95fc3d574a66657c1ad050e697545c">reset</link> ()</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_b_m_e280_1af22a2c195c0dfb39f457049ffb7e8f09">read_raw_all</link> (int32_t *temperature, int32_t *pressure, int32_t *humidity)</para>
+</listitem>
+            <listitem><para>float <link linkend="_class_b_m_e280_1a77faa64e2670bedae42db2aff8bce837">convert_temperature</link> (int32_t temp_raw) const</para>
+</listitem>
+            <listitem><para>float <link linkend="_class_b_m_e280_1a132f9daccc10c1b3f973c8740f064f4f">convert_pressure</link> (int32_t pressure_raw) const</para>
+</listitem>
+            <listitem><para>float <link linkend="_class_b_m_e280_1a54d06d8e21f2d14cd136fdbc9121cb32">convert_humidity</link> (int32_t humidity_raw) const</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1a328e1cfc7421d11670a772f68f7181b9">ADDR_SDO_LOW</link> = 0x76</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1a9dd91f7d1c5ed613d89aaf38be0bd362">ADDR_SDO_HIGH</link> = 0x77</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>bool <link linkend="_class_b_m_e280_1aba168dd8fb74f3b101922c50e60542cb">configure_sensor</link> ()</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_b_m_e280_1a9bdaf8aa0c2a67ab6fd0b611c69753e6">get_calibration_parameters</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>i2c_inst_t * <link linkend="_class_b_m_e280_1ac402b86b5376fcfebefad1c8cec948b2">i2c_port</link></para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="_class_b_m_e280_1ae8a52ae32e8cefd398dedf8913737626">device_addr</link></para>
+</listitem>
+            <listitem><para><link linkend="_struct_b_m_e280_calib_param">BME280CalibParam</link> <link linkend="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f">calib_params</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_b_m_e280_1a34b991139b081ff5ebe7943383ac9a97">initialized</link></para>
+</listitem>
+            <listitem><para>int32_t <link linkend="_class_b_m_e280_1ad20f44914b78395f4d4bc64f4a68b369">t_fine</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1a2b3d50ae8af2aea11c8ed21f1bec4ac8">REG_CONFIG</link> = 0xF5</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1ab635154b47baca711a2b03fa7d469092">REG_CTRL_MEAS</link> = 0xF4</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1a79967643d3432d070edb2af1d0082a1f">REG_CTRL_HUM</link> = 0xF2</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1ae19b16edfdfce1d75578eabb9d42188f">REG_RESET</link> = 0xE0</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1a2e17033617efa62019561b3152ccfd5e">REG_PRESSURE_MSB</link> = 0xF7</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1a45770a88a9613f8de93d69ae47a9f7c4">REG_TEMPERATURE_MSB</link> = 0xFA</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1ae17831aa32ba8a42caf7c87f636ca080">REG_HUMIDITY_MSB</link> = 0xFD</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1aef2d471c9d214ac18674f634708bf74a">REG_DIG_T1_LSB</link> = 0x88</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1a3810750131dbc8c729ecda9b60cc757b">REG_DIG_T1_MSB</link> = 0x89</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1ab007919d127d74de26d742e2aa2762b7">REG_DIG_T2_LSB</link> = 0x8A</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1ac5c23e02b07b5a129bdde1ba8dc0bc77">REG_DIG_T2_MSB</link> = 0x8B</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1a4e67751a215b35765196d996342cc6bc">REG_DIG_T3_LSB</link> = 0x8C</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1a766e1bc1b4fe5160dda8561fb2a7885b">REG_DIG_T3_MSB</link> = 0x8D</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1acf3ed69a71bdb905992ceae0c4ea6d2c">REG_DIG_P1_LSB</link> = 0x8E</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1aacfdcc6b95bb0c410ae00d1572f4d38a">REG_DIG_P1_MSB</link> = 0x8F</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1af05e5454db8eddf7cc5b18bbc615d139">REG_DIG_P2_LSB</link> = 0x90</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1afef9fa1d5ad949e43c2eed57e17e8aec">REG_DIG_P2_MSB</link> = 0x91</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1a506faf5ebf59b8e30e58538f8b0ae5a9">REG_DIG_P3_LSB</link> = 0x92</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1a26797cbc56e7fe24148c18cce9297af0">REG_DIG_P3_MSB</link> = 0x93</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1aeb032dce1cedac64b5cf88a5d3d4d0d4">REG_DIG_P4_LSB</link> = 0x94</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1adca3aacad9b831df0a71804c8f772e23">REG_DIG_P4_MSB</link> = 0x95</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1a91566c238134df4777b5672a9f5ed5f1">REG_DIG_P5_LSB</link> = 0x96</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1a06df57d770a3d0f775ef9a05386e4826">REG_DIG_P5_MSB</link> = 0x97</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1ad8aee64c10c780aad5a0a09d30c92ebc">REG_DIG_P6_LSB</link> = 0x98</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1a3eb00425eaf71795251cf98f72793fb7">REG_DIG_P6_MSB</link> = 0x99</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1a6569eafa6046ea4ad6da5bdb81518369">REG_DIG_P7_LSB</link> = 0x9A</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1a4b1ec591a5fedd807949d6363bae3784">REG_DIG_P7_MSB</link> = 0x9B</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1a7481c9cc5039ee003c6268c6aa761109">REG_DIG_P8_LSB</link> = 0x9C</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1a8ac1bf6e006e031e46f80feaf1141e64">REG_DIG_P8_MSB</link> = 0x9D</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1a1aeedd3baa6678f0a6f869b877030a89">REG_DIG_P9_LSB</link> = 0x9E</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1a2a102c61c7dd155001fe6907f403b3b2">REG_DIG_P9_MSB</link> = 0x9F</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1a989b372f944bf3f79060e3a1a83683a0">REG_DIG_H1</link> = 0xA1</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1aa7a9293a90ef27127f306624afc8065b">REG_DIG_H2</link> = 0xE1</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1a47c2024625c6a62f434e75467b5fb9a3">REG_DIG_H3</link> = 0xE3</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1a3c372b551cb63ba0a2fad80f7ba73ca6">REG_DIG_H4</link> = 0xE4</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1a9c5b1e73997f299d373ad09cc57e4760">REG_DIG_H5</link> = 0xE5</para>
+</listitem>
+            <listitem><para>static constexpr uint8_t <link linkend="_class_b_m_e280_1aa07e7bc61df07fd417644edd0ed220e4">REG_DIG_H6</link> = 0xE7</para>
+</listitem>
+            <listitem><para>static constexpr size_t <link linkend="_class_b_m_e280_1a816c288ebe1028b532c7e97b0582bd09">NUM_CALIB_PARAMS</link> = 24</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00038">38</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_class_b_m_e280_1a2f0c3415c853ed9303529b75d5d7236b"/><section>
+    <title>BME280()</title>
+<indexterm><primary>BME280</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>BME280</secondary></indexterm>
+<para><computeroutput>BME280::BME280 (i2c_inst_t * i2cPort, uint8_t address = <computeroutput><link linkend="_class_b_m_e280_1a328e1cfc7421d11670a772f68f7181b9">ADDR_SDO_LOW</link></computeroutput>
+)</computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8cpp_source_1l00014">14</link> of file <link linkend="__b_m_e280_8cpp_source">BME280.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_b_m_e280_1aba168dd8fb74f3b101922c50e60542cb"/><section>
+    <title>configure_sensor()</title>
+<indexterm><primary>configure_sensor</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>configure_sensor</secondary></indexterm>
+<para><computeroutput>bool BME280::configure_sensor ( )<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8cpp_source_1l00201">201</link> of file <link linkend="__b_m_e280_8cpp_source">BME280.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a54d06d8e21f2d14cd136fdbc9121cb32"/><section>
+    <title>convert_humidity()</title>
+<indexterm><primary>convert_humidity</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>convert_humidity</secondary></indexterm>
+<para><computeroutput>float BME280::convert_humidity (int32_t humidity_raw) const</computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8cpp_source_1l00131">131</link> of file <link linkend="__b_m_e280_8cpp_source">BME280.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a132f9daccc10c1b3f973c8740f064f4f"/><section>
+    <title>convert_pressure()</title>
+<indexterm><primary>convert_pressure</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>convert_pressure</secondary></indexterm>
+<para><computeroutput>float BME280::convert_pressure (int32_t pressure_raw) const</computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8cpp_source_1l00110">110</link> of file <link linkend="__b_m_e280_8cpp_source">BME280.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a77faa64e2670bedae42db2aff8bce837"/><section>
+    <title>convert_temperature()</title>
+<indexterm><primary>convert_temperature</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>convert_temperature</secondary></indexterm>
+<para><computeroutput>float BME280::convert_temperature (int32_t temp_raw) const</computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8cpp_source_1l00101">101</link> of file <link linkend="__b_m_e280_8cpp_source">BME280.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a9bdaf8aa0c2a67ab6fd0b611c69753e6"/><section>
+    <title>get_calibration_parameters()</title>
+<indexterm><primary>get_calibration_parameters</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>get_calibration_parameters</secondary></indexterm>
+<para><computeroutput>bool BME280::get_calibration_parameters ( )<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8cpp_source_1l00143">143</link> of file <link linkend="__b_m_e280_8cpp_source">BME280.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a549f7c534b3c0168148188bca5c30e7b"/><section>
+    <title>init()</title>
+<indexterm><primary>init</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>init</secondary></indexterm>
+<para><computeroutput>bool BME280::init ( )</computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8cpp_source_1l00018">18</link> of file <link linkend="__b_m_e280_8cpp_source">BME280.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1af22a2c195c0dfb39f457049ffb7e8f09"/><section>
+    <title>read_raw_all()</title>
+<indexterm><primary>read_raw_all</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>read_raw_all</secondary></indexterm>
+<para><computeroutput>bool BME280::read_raw_all (int32_t * temperature, int32_t * pressure, int32_t * humidity)</computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8cpp_source_1l00068">68</link> of file <link linkend="__b_m_e280_8cpp_source">BME280.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a9a95fc3d574a66657c1ad050e697545c"/><section>
+    <title>reset()</title>
+<indexterm><primary>reset</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>reset</secondary></indexterm>
+<para><computeroutput>void BME280::reset ( )</computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8cpp_source_1l00059">59</link> of file <link linkend="__b_m_e280_8cpp_source">BME280.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_class_b_m_e280_1a9dd91f7d1c5ed613d89aaf38be0bd362"/><section>
+    <title>ADDR_SDO_HIGH</title>
+<indexterm><primary>ADDR_SDO_HIGH</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>ADDR_SDO_HIGH</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::ADDR_SDO_HIGH = 0x77<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00042">42</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a328e1cfc7421d11670a772f68f7181b9"/><section>
+    <title>ADDR_SDO_LOW</title>
+<indexterm><primary>ADDR_SDO_LOW</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>ADDR_SDO_LOW</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::ADDR_SDO_LOW = 0x76<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00041">41</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1ab61c36455871833809cff71b5fd3397f"/><section>
+    <title>calib_params</title>
+<indexterm><primary>calib_params</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>calib_params</secondary></indexterm>
+<para><computeroutput><link linkend="_struct_b_m_e280_calib_param">BME280CalibParam</link> BME280::calib_params<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00073">73</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1ae8a52ae32e8cefd398dedf8913737626"/><section>
+    <title>device_addr</title>
+<indexterm><primary>device_addr</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>device_addr</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::device_addr<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00070">70</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1ac402b86b5376fcfebefad1c8cec948b2"/><section>
+    <title>i2c_port</title>
+<indexterm><primary>i2c_port</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>i2c_port</secondary></indexterm>
+<para><computeroutput>i2c_inst_t* BME280::i2c_port<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00069">69</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a34b991139b081ff5ebe7943383ac9a97"/><section>
+    <title>initialized</title>
+<indexterm><primary>initialized</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>initialized</secondary></indexterm>
+<para><computeroutput>bool BME280::initialized<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00076">76</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a816c288ebe1028b532c7e97b0582bd09"/><section>
+    <title>NUM_CALIB_PARAMS</title>
+<indexterm><primary>NUM_CALIB_PARAMS</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>NUM_CALIB_PARAMS</secondary></indexterm>
+<para><computeroutput>size_t BME280::NUM_CALIB_PARAMS = 24<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00127">127</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a2b3d50ae8af2aea11c8ed21f1bec4ac8"/><section>
+    <title>REG_CONFIG</title>
+<indexterm><primary>REG_CONFIG</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_CONFIG</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_CONFIG = 0xF5<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00082">82</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a79967643d3432d070edb2af1d0082a1f"/><section>
+    <title>REG_CTRL_HUM</title>
+<indexterm><primary>REG_CTRL_HUM</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_CTRL_HUM</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_CTRL_HUM = 0xF2<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00084">84</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1ab635154b47baca711a2b03fa7d469092"/><section>
+    <title>REG_CTRL_MEAS</title>
+<indexterm><primary>REG_CTRL_MEAS</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_CTRL_MEAS</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_CTRL_MEAS = 0xF4<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00083">83</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a989b372f944bf3f79060e3a1a83683a0"/><section>
+    <title>REG_DIG_H1</title>
+<indexterm><primary>REG_DIG_H1</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_DIG_H1</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_DIG_H1 = 0xA1<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00119">119</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1aa7a9293a90ef27127f306624afc8065b"/><section>
+    <title>REG_DIG_H2</title>
+<indexterm><primary>REG_DIG_H2</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_DIG_H2</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_DIG_H2 = 0xE1<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00120">120</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a47c2024625c6a62f434e75467b5fb9a3"/><section>
+    <title>REG_DIG_H3</title>
+<indexterm><primary>REG_DIG_H3</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_DIG_H3</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_DIG_H3 = 0xE3<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00121">121</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a3c372b551cb63ba0a2fad80f7ba73ca6"/><section>
+    <title>REG_DIG_H4</title>
+<indexterm><primary>REG_DIG_H4</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_DIG_H4</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_DIG_H4 = 0xE4<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00122">122</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a9c5b1e73997f299d373ad09cc57e4760"/><section>
+    <title>REG_DIG_H5</title>
+<indexterm><primary>REG_DIG_H5</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_DIG_H5</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_DIG_H5 = 0xE5<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00123">123</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1aa07e7bc61df07fd417644edd0ed220e4"/><section>
+    <title>REG_DIG_H6</title>
+<indexterm><primary>REG_DIG_H6</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_DIG_H6</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_DIG_H6 = 0xE7<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00124">124</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1acf3ed69a71bdb905992ceae0c4ea6d2c"/><section>
+    <title>REG_DIG_P1_LSB</title>
+<indexterm><primary>REG_DIG_P1_LSB</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_DIG_P1_LSB</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_DIG_P1_LSB = 0x8E<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00099">99</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1aacfdcc6b95bb0c410ae00d1572f4d38a"/><section>
+    <title>REG_DIG_P1_MSB</title>
+<indexterm><primary>REG_DIG_P1_MSB</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_DIG_P1_MSB</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_DIG_P1_MSB = 0x8F<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00100">100</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1af05e5454db8eddf7cc5b18bbc615d139"/><section>
+    <title>REG_DIG_P2_LSB</title>
+<indexterm><primary>REG_DIG_P2_LSB</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_DIG_P2_LSB</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_DIG_P2_LSB = 0x90<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00101">101</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1afef9fa1d5ad949e43c2eed57e17e8aec"/><section>
+    <title>REG_DIG_P2_MSB</title>
+<indexterm><primary>REG_DIG_P2_MSB</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_DIG_P2_MSB</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_DIG_P2_MSB = 0x91<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00102">102</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a506faf5ebf59b8e30e58538f8b0ae5a9"/><section>
+    <title>REG_DIG_P3_LSB</title>
+<indexterm><primary>REG_DIG_P3_LSB</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_DIG_P3_LSB</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_DIG_P3_LSB = 0x92<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00103">103</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a26797cbc56e7fe24148c18cce9297af0"/><section>
+    <title>REG_DIG_P3_MSB</title>
+<indexterm><primary>REG_DIG_P3_MSB</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_DIG_P3_MSB</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_DIG_P3_MSB = 0x93<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00104">104</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1aeb032dce1cedac64b5cf88a5d3d4d0d4"/><section>
+    <title>REG_DIG_P4_LSB</title>
+<indexterm><primary>REG_DIG_P4_LSB</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_DIG_P4_LSB</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_DIG_P4_LSB = 0x94<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00105">105</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1adca3aacad9b831df0a71804c8f772e23"/><section>
+    <title>REG_DIG_P4_MSB</title>
+<indexterm><primary>REG_DIG_P4_MSB</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_DIG_P4_MSB</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_DIG_P4_MSB = 0x95<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00106">106</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a91566c238134df4777b5672a9f5ed5f1"/><section>
+    <title>REG_DIG_P5_LSB</title>
+<indexterm><primary>REG_DIG_P5_LSB</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_DIG_P5_LSB</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_DIG_P5_LSB = 0x96<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00107">107</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a06df57d770a3d0f775ef9a05386e4826"/><section>
+    <title>REG_DIG_P5_MSB</title>
+<indexterm><primary>REG_DIG_P5_MSB</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_DIG_P5_MSB</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_DIG_P5_MSB = 0x97<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00108">108</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1ad8aee64c10c780aad5a0a09d30c92ebc"/><section>
+    <title>REG_DIG_P6_LSB</title>
+<indexterm><primary>REG_DIG_P6_LSB</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_DIG_P6_LSB</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_DIG_P6_LSB = 0x98<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00109">109</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a3eb00425eaf71795251cf98f72793fb7"/><section>
+    <title>REG_DIG_P6_MSB</title>
+<indexterm><primary>REG_DIG_P6_MSB</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_DIG_P6_MSB</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_DIG_P6_MSB = 0x99<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00110">110</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a6569eafa6046ea4ad6da5bdb81518369"/><section>
+    <title>REG_DIG_P7_LSB</title>
+<indexterm><primary>REG_DIG_P7_LSB</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_DIG_P7_LSB</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_DIG_P7_LSB = 0x9A<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00111">111</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a4b1ec591a5fedd807949d6363bae3784"/><section>
+    <title>REG_DIG_P7_MSB</title>
+<indexterm><primary>REG_DIG_P7_MSB</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_DIG_P7_MSB</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_DIG_P7_MSB = 0x9B<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00112">112</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a7481c9cc5039ee003c6268c6aa761109"/><section>
+    <title>REG_DIG_P8_LSB</title>
+<indexterm><primary>REG_DIG_P8_LSB</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_DIG_P8_LSB</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_DIG_P8_LSB = 0x9C<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00113">113</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a8ac1bf6e006e031e46f80feaf1141e64"/><section>
+    <title>REG_DIG_P8_MSB</title>
+<indexterm><primary>REG_DIG_P8_MSB</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_DIG_P8_MSB</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_DIG_P8_MSB = 0x9D<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00114">114</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a1aeedd3baa6678f0a6f869b877030a89"/><section>
+    <title>REG_DIG_P9_LSB</title>
+<indexterm><primary>REG_DIG_P9_LSB</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_DIG_P9_LSB</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_DIG_P9_LSB = 0x9E<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00115">115</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a2a102c61c7dd155001fe6907f403b3b2"/><section>
+    <title>REG_DIG_P9_MSB</title>
+<indexterm><primary>REG_DIG_P9_MSB</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_DIG_P9_MSB</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_DIG_P9_MSB = 0x9F<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00116">116</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1aef2d471c9d214ac18674f634708bf74a"/><section>
+    <title>REG_DIG_T1_LSB</title>
+<indexterm><primary>REG_DIG_T1_LSB</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_DIG_T1_LSB</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_DIG_T1_LSB = 0x88<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00092">92</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a3810750131dbc8c729ecda9b60cc757b"/><section>
+    <title>REG_DIG_T1_MSB</title>
+<indexterm><primary>REG_DIG_T1_MSB</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_DIG_T1_MSB</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_DIG_T1_MSB = 0x89<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00093">93</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1ab007919d127d74de26d742e2aa2762b7"/><section>
+    <title>REG_DIG_T2_LSB</title>
+<indexterm><primary>REG_DIG_T2_LSB</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_DIG_T2_LSB</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_DIG_T2_LSB = 0x8A<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00094">94</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1ac5c23e02b07b5a129bdde1ba8dc0bc77"/><section>
+    <title>REG_DIG_T2_MSB</title>
+<indexterm><primary>REG_DIG_T2_MSB</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_DIG_T2_MSB</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_DIG_T2_MSB = 0x8B<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00095">95</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a4e67751a215b35765196d996342cc6bc"/><section>
+    <title>REG_DIG_T3_LSB</title>
+<indexterm><primary>REG_DIG_T3_LSB</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_DIG_T3_LSB</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_DIG_T3_LSB = 0x8C<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00096">96</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a766e1bc1b4fe5160dda8561fb2a7885b"/><section>
+    <title>REG_DIG_T3_MSB</title>
+<indexterm><primary>REG_DIG_T3_MSB</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_DIG_T3_MSB</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_DIG_T3_MSB = 0x8D<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00097">97</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1ae17831aa32ba8a42caf7c87f636ca080"/><section>
+    <title>REG_HUMIDITY_MSB</title>
+<indexterm><primary>REG_HUMIDITY_MSB</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_HUMIDITY_MSB</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_HUMIDITY_MSB = 0xFD<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00089">89</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a2e17033617efa62019561b3152ccfd5e"/><section>
+    <title>REG_PRESSURE_MSB</title>
+<indexterm><primary>REG_PRESSURE_MSB</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_PRESSURE_MSB</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_PRESSURE_MSB = 0xF7<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00087">87</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1ae19b16edfdfce1d75578eabb9d42188f"/><section>
+    <title>REG_RESET</title>
+<indexterm><primary>REG_RESET</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_RESET</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_RESET = 0xE0<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00085">85</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1a45770a88a9613f8de93d69ae47a9f7c4"/><section>
+    <title>REG_TEMPERATURE_MSB</title>
+<indexterm><primary>REG_TEMPERATURE_MSB</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>REG_TEMPERATURE_MSB</secondary></indexterm>
+<para><computeroutput>uint8_t BME280::REG_TEMPERATURE_MSB = 0xFA<computeroutput>[static]</computeroutput>, <computeroutput>[constexpr]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00088">88</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<anchor xml:id="_class_b_m_e280_1ad20f44914b78395f4d4bc64f4a68b369"/><section>
+    <title>t_fine</title>
+<indexterm><primary>t_fine</primary><secondary>BME280</secondary></indexterm>
+<indexterm><primary>BME280</primary><secondary>t_fine</secondary></indexterm>
+<para><computeroutput>int32_t BME280::t_fine<computeroutput>[mutable]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__b_m_e280_8h_source_1l00079">79</link> of file <link linkend="__b_m_e280_8h_source">BME280.h</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+lib/BME280/<link linkend="__b_m_e280_8h">BME280.h</link>lib/BME280/<link linkend="__b_m_e280_8cpp">BME280.cpp</link></section>
+</section>

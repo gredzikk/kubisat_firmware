@@ -1,5 +1,23 @@
 #include "communication.h"
 
+
+/**
+ * @defgroup PowerCommands Power Commands
+ * @brief Commands for monitoring power subsystem and battery management
+ * @{
+ */
+
+/**
+ * @brief Handler for retrieving Power Manager IDs
+ * @param param Empty string expected
+ * @param operationType GET
+ * @return Frame containing:
+ *         - Success: String of Power Manager IDs
+ *         - Error: Error message
+ * @note KBST;0;GET;2;0;;TSBK
+ * @ingroup PowerCommands
+ * @xrefitem command "Command" "List of Commands" Command ID: 2.0
+ */
 Frame handleGetPowerManagerIDs(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
         return buildFrame(ExecutionResult::ERROR, 2, 0, "PARAM UNECESSARY");
@@ -14,6 +32,18 @@ Frame handleGetPowerManagerIDs(const std::string& param, OperationType operation
     return buildFrame(ExecutionResult::SUCCESS, 2, 0, powerManagerIDS);
 }
 
+
+/**
+ * @brief Handler for getting battery voltage
+ * @param param Empty string expected
+ * @param operationType GET
+ * @return Frame containing:
+ *         - Success: Battery voltage in Volts
+ *         - Error: Error message
+ * @note KBST;0;GET;2;2;;TSBK
+ * @ingroup PowerCommands
+ * @xrefitem command "Command" "List of Commands" Command ID: 2.2
+ */
 Frame handleGetVoltageBattery(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
         return buildFrame(ExecutionResult::ERROR, 2, 2, "PARAM UNNECESSARY");
@@ -30,6 +60,18 @@ Frame handleGetVoltageBattery(const std::string& param, OperationType operationT
     return buildFrame(ExecutionResult::SUCCESS, 2, 2, std::to_string(voltage), ValueUnit::VOLT);
 }
 
+
+/**
+ * @brief Handler for getting 5V rail voltage
+ * @param param Empty string expected
+ * @param operationType GET
+ * @return Frame containing:
+ *         - Success: 5V rail voltage in Volts
+ *         - Error: Error message
+ * @note KBST;0;GET;2;3;;TSBK
+ * @ingroup PowerCommands
+ * @xrefitem command "Command" "List of Commands" Command ID: 2.3
+ */
 Frame handleGetVoltage5V(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
         return buildFrame(ExecutionResult::ERROR, 2, 3, "PARAM UNNECESSARY");
@@ -46,6 +88,18 @@ Frame handleGetVoltage5V(const std::string& param, OperationType operationType) 
     return buildFrame(ExecutionResult::SUCCESS, 2, 3, std::to_string(voltage), ValueUnit::VOLT);
 }
 
+
+/**
+ * @brief Handler for getting USB charge current
+ * @param param Empty string expected
+ * @param operationType GET
+ * @return Frame containing:
+ *         - Success: USB charge current in milliamps
+ *         - Error: Error message
+ * @note KBST;0;GET;2;4;;TSBK
+ * @ingroup PowerCommands
+ * @xrefitem command "Command" "List of Commands" Command ID: 2.4
+ */
 Frame handleGetCurrentChargeUSB(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
         return buildFrame(ExecutionResult::ERROR, 2, 4, "PARAM UNNECESSARY");
@@ -62,6 +116,18 @@ Frame handleGetCurrentChargeUSB(const std::string& param, OperationType operatio
     return buildFrame(ExecutionResult::SUCCESS, 2, 4, std::to_string(chargeCurrent), ValueUnit::MILIAMP);
 }
 
+
+/**
+ * @brief Handler for getting solar panel charge current
+ * @param param Empty string expected
+ * @param operationType GET
+ * @return Frame containing:
+ *         - Success: Solar charge current in milliamps
+ *         - Error: Error message
+ * @note KBST;0;GET;2;5;;TSBK
+ * @ingroup PowerCommands
+ * @xrefitem command "Command" "List of Commands" Command ID: 2.5
+ */
 Frame handleGetCurrentChargeSolar(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
         return buildFrame(ExecutionResult::ERROR, 2, 5, "PARAM UNNECESSARY");
@@ -78,6 +144,18 @@ Frame handleGetCurrentChargeSolar(const std::string& param, OperationType operat
     return buildFrame(ExecutionResult::SUCCESS, 2, 5, std::to_string(chargeCurrent), ValueUnit::MILIAMP);
 }
 
+
+/**
+ * @brief Handler for getting total charge current
+ * @param param Empty string expected
+ * @param operationType GET
+ * @return Frame containing:
+ *         - Success: Total charge current (USB + Solar) in milliamps
+ *         - Error: Error message
+ * @note KBST;0;GET;2;6;;TSBK
+ * @ingroup PowerCommands
+ * @xrefitem command "Command" "List of Commands" Command ID: 2.6
+ */
 Frame handleGetCurrentChargeTotal(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
         return buildFrame(ExecutionResult::ERROR, 2, 6, "PARAM UNNECESSARY");
@@ -94,6 +172,18 @@ Frame handleGetCurrentChargeTotal(const std::string& param, OperationType operat
     return buildFrame(ExecutionResult::SUCCESS, 2, 6, std::to_string(chargeCurrent), ValueUnit::MILIAMP);
 }
 
+
+/**
+ * @brief Handler for getting system current draw
+ * @param param Empty string expected
+ * @param operationType GET
+ * @return Frame containing:
+ *         - Success: System current consumption in milliamps
+ *         - Error: Error message
+ * @note KBST;0;GET;2;7;;TSBK
+ * @ingroup PowerCommands
+ * @xrefitem command "Command" "List of Commands" Command ID: 2.7
+ */
 Frame handleGetCurrentDraw(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
         return buildFrame(ExecutionResult::ERROR, 2, 7, "PARAM UNNECESSARY");
@@ -109,3 +199,4 @@ Frame handleGetCurrentDraw(const std::string& param, OperationType operationType
     float currentDraw = powerManager.getCurrentDraw();
     return buildFrame(ExecutionResult::SUCCESS, 2, 7, std::to_string(currentDraw), ValueUnit::MILIAMP);
 }
+/** @} */ // end of PowerCommands group

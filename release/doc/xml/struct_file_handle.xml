@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="struct_file_handle" kind="struct" language="C++" prot="public">
+    <compoundname>FileHandle</compoundname>
+    <includes refid="storage_8h" local="no">storage.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_file_handle_1afc2bbe66c168d4d264f3af1ec037b122" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int FileHandle::fd</definition>
+        <argsstring></argsstring>
+        <name>fd</name>
+        <qualifiedname>FileHandle::fd</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="storage.h" line="16" column="9" bodyfile="storage.h" bodystart="16" bodyend="-1"/>
+        <referencedby refid="storage_8cpp_1a1ed8daa820da91b458072334ecec9618" compoundref="storage_8cpp" startline="82" endline="96">fs_close_file</referencedby>
+        <referencedby refid="storage_8cpp_1a921d0d7089c0c7731762035e7feeb27a" compoundref="storage_8cpp" startline="37" endline="56">fs_open_file</referencedby>
+        <referencedby refid="storage_8cpp_1a259e40f946e1178329ed6cdf18c35b0c" compoundref="storage_8cpp" startline="70" endline="80">fs_read_file</referencedby>
+        <referencedby refid="storage_8cpp_1aab35cc4af25dd4a32624e51bf0fcda5b" compoundref="storage_8cpp" startline="58" endline="68">fs_write_file</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="struct_file_handle_1a1c2451d05e2d2937da92fe194e9281cf" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool FileHandle::is_open</definition>
+        <argsstring></argsstring>
+        <name>is_open</name>
+        <qualifiedname>FileHandle::is_open</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="storage.h" line="17" column="10" bodyfile="storage.h" bodystart="17" bodyend="-1"/>
+        <referencedby refid="storage_8cpp_1a1ed8daa820da91b458072334ecec9618" compoundref="storage_8cpp" startline="82" endline="96">fs_close_file</referencedby>
+        <referencedby refid="storage_8cpp_1a921d0d7089c0c7731762035e7feeb27a" compoundref="storage_8cpp" startline="37" endline="56">fs_open_file</referencedby>
+        <referencedby refid="storage_8cpp_1a259e40f946e1178329ed6cdf18c35b0c" compoundref="storage_8cpp" startline="70" endline="80">fs_read_file</referencedby>
+        <referencedby refid="storage_8cpp_1aab35cc4af25dd4a32624e51bf0fcda5b" compoundref="storage_8cpp" startline="58" endline="68">fs_write_file</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="storage.h" line="15" column="1" bodyfile="storage.h" bodystart="15" bodyend="18"/>
+    <listofallmembers>
+      <member refid="struct_file_handle_1afc2bbe66c168d4d264f3af1ec037b122" prot="public" virt="non-virtual"><scope>FileHandle</scope><name>fd</name></member>
+      <member refid="struct_file_handle_1a1c2451d05e2d2937da92fe194e9281cf" prot="public" virt="non-virtual"><scope>FileHandle</scope><name>is_open</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,252 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="_power_manager_8h" kind="file" language="C++">
+    <compoundname>PowerManager.h</compoundname>
+    <includes refid="_i_n_a3221_8h" local="yes">INA3221.h</includes>
+    <includes local="no">map</includes>
+    <includes local="no">string</includes>
+    <includes local="no">hardware/i2c.h</includes>
+    <includes local="yes">pico/stdlib.h</includes>
+    <includedby refid="event__manager_8h" local="yes">event_manager.h</includedby>
+    <includedby refid="protocol_8h" local="yes">frame_model/protocol.h</includedby>
+    <includedby refid="includes_8h" local="yes">includes.h</includedby>
+    <includedby refid="_power_manager_8cpp" local="yes">lib/PowerManager/PowerManager.cpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>INA3221.h</label>
+        <link refid="_i_n_a3221_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>lib/PowerManager/PowerManager.h</label>
+        <link refid="_power_manager_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>hardware/i2c.h</label>
+      </node>
+      <node id="4">
+        <label>iostream</label>
+      </node>
+      <node id="6">
+        <label>map</label>
+      </node>
+      <node id="8">
+        <label>pico/stdlib.h</label>
+      </node>
+      <node id="3">
+        <label>stdint.h</label>
+      </node>
+      <node id="7">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="6">
+        <label>commands/clock_commands.cpp</label>
+        <link refid="clock__commands_8cpp"/>
+      </node>
+      <node id="7">
+        <label>commands/commands.cpp</label>
+        <link refid="commands_8cpp"/>
+      </node>
+      <node id="20">
+        <label>commands/commands.h</label>
+        <link refid="commands_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>commands/diagnostic_commands.cpp</label>
+        <link refid="diagnostic__commands_8cpp"/>
+      </node>
+      <node id="3">
+        <label>commands/event_commands.cpp</label>
+        <link refid="event__commands_8cpp"/>
+      </node>
+      <node id="9">
+        <label>commands/gps_commands.cpp</label>
+        <link refid="gps__commands_8cpp"/>
+      </node>
+      <node id="10">
+        <label>commands/power_commands.cpp</label>
+        <link refid="power__commands_8cpp"/>
+      </node>
+      <node id="4">
+        <label>event_manager.cpp</label>
+        <link refid="event__manager_8cpp"/>
+      </node>
+      <node id="2">
+        <label>event_manager.h</label>
+        <link refid="event__manager_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>frame_model/communication.cpp</label>
+        <link refid="communication_8cpp"/>
+      </node>
+      <node id="5">
+        <label>frame_model/communication.h</label>
+        <link refid="communication_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>frame_model/frame.cpp</label>
+        <link refid="frame_8cpp"/>
+      </node>
+      <node id="19">
+        <label>frame_model/protocol.h</label>
+        <link refid="protocol_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>frame_model/receive.cpp</label>
+        <link refid="receive_8cpp"/>
+      </node>
+      <node id="14">
+        <label>frame_model/send.cpp</label>
+        <link refid="send_8cpp"/>
+      </node>
+      <node id="15">
+        <label>frame_model/utils_converters.cpp</label>
+        <link refid="utils__converters_8cpp"/>
+      </node>
+      <node id="16">
+        <label>includes.h</label>
+        <link refid="includes_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>lib/GPS/gps_collector.cpp</label>
+        <link refid="gps__collector_8cpp"/>
+      </node>
+      <node id="21">
+        <label>lib/PowerManager/PowerManager.cpp</label>
+        <link refid="_power_manager_8cpp"/>
+      </node>
+      <node id="1">
+        <label>lib/PowerManager/PowerManager.h</label>
+        <link refid="_power_manager_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_power_manager" prot="public">PowerManager</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>[lib/PowerManager/PowerManager.h](lib/PowerManager/PowerManager.h)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>POWER_MANAGER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POWER_MANAGER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_i_n_a3221_8h" kindref="compound">INA3221.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;hardware/i2c.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;pico/stdlib.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="class_power_manager" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_power_manager_1aa9ea91634936a20fb03d65ff8878867e" kindref="member">PowerManager</ref><sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_power_manager_1aa9ea91634936a20fb03d65ff8878867e" kindref="member">PowerManager</ref>(i2c_inst_t*<sp/>i2c);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_power_manager_1a217939b880543bfff917203a06d45258" kindref="member">initialize</ref>();</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="class_power_manager_1a885c7374cb22e940ef77c0453da5f622" kindref="member">readIDs</ref>();</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="class_power_manager_1a097734aac2bcc228d6cf22c00e3acb1a" kindref="member">getCurrentChargeSolar</ref>();</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="class_power_manager_1a3f9587ee81469642a2e595ef3805e801" kindref="member">getCurrentChargeUSB</ref>();</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="class_power_manager_1acad2f0f2daff3bd609952530d202c78b" kindref="member">getCurrentChargeTotal</ref>();</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="class_power_manager_1a1ebc18dd508b23614c4c7193fbddd962" kindref="member">getCurrentDraw</ref>();</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="class_power_manager_1af0d877a74a39cf29cb94d34088641ff9" kindref="member">getVoltageBattery</ref>();</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="class_power_manager_1ae0e4303ddaba328047fb40d8d925c7dd" kindref="member">getVoltage5V</ref>();</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_power_manager_1ae61a45a190d5293029e17c751f88bcd0" kindref="member">configure</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::map&lt;std::string,<sp/>std::string&gt;&amp;<sp/>config);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_power_manager_1a33ea0aaa75b4654b0ee05250119bf083" kindref="member">isSolarActive</ref>();</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_power_manager_1a0548ae14a668bb06e4cc13e0295ad5c8" kindref="member">isUSBConnected</ref>();</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="26" refid="class_power_manager_1aeb488c42ec47e1a8de0446717d339cce" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="class_power_manager_1aeb488c42ec47e1a8de0446717d339cce" kindref="member">SOLAR_CURRENT_THRESHOLD</ref><sp/>=<sp/>50.0f;<sp/><sp/></highlight><highlight class="comment">//<sp/>mA</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="class_power_manager_1afc4246cc3b434053c59cf2dcccf4bc64" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="class_power_manager_1afc4246cc3b434053c59cf2dcccf4bc64" kindref="member">USB_CURRENT_THRESHOLD</ref><sp/>=<sp/>50.0f;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>mA</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="class_power_manager_1a426dcedc762549ed6c408708bd61b94e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="class_power_manager_1a426dcedc762549ed6c408708bd61b94e" kindref="member">VOLTAGE_LOW_THRESHOLD</ref><sp/>=<sp/>4.7f;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>V</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="class_power_manager_1a4e28f40bee3fd8e6df12178663159783" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="class_power_manager_1a4e28f40bee3fd8e6df12178663159783" kindref="member">VOLTAGE_OVERCHARGE_THRESHOLD</ref><sp/>=<sp/>5.3f;<sp/></highlight><highlight class="comment">//<sp/>V</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="class_power_manager_1aae449340ac8e77b181ef2f0abd2d96ed" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="class_power_manager_1aae449340ac8e77b181ef2f0abd2d96ed" kindref="member">FALL_RATE_THRESHOLD</ref><sp/>=<sp/>-0.02f;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>V/sample</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="class_power_manager_1a17e01551bc0f14820b2430d697c4c6d2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_power_manager_1a17e01551bc0f14820b2430d697c4c6d2" kindref="member">FALLING_TREND_REQUIRED</ref><sp/>=<sp/>3;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>samples</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="34" refid="class_power_manager_1a5917758068dfeead4ae68840f5bfb493" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_i_n_a3221" kindref="compound">INA3221</ref><sp/><ref refid="class_power_manager_1a5917758068dfeead4ae68840f5bfb493" kindref="member">ina3221</ref>;</highlight></codeline>
+<codeline lineno="35" refid="class_power_manager_1a5cf8825fbe9a81810be2f444dff008f1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_power_manager_1a5cf8825fbe9a81810be2f444dff008f1" kindref="member">initialized</ref>;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="class_power_manager_1a521e99a9e28cca2525988f572379c936" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_power_manager_1a521e99a9e28cca2525988f572379c936" kindref="member">solarActive</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="38" refid="class_power_manager_1a3676187deac57a79034f59f58ac4b746" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_power_manager_1a3676187deac57a79034f59f58ac4b746" kindref="member">usbConnected</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>POWER_MANAGER_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="lib/PowerManager/PowerManager.h"/>
+  </compounddef>
+</doxygen>

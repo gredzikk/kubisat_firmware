@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="class_i_sensor" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>ISensor</compoundname>
+    <derivedcompoundref refid="class_b_h1750_wrapper" prot="public" virt="non-virtual">BH1750Wrapper</derivedcompoundref>
+    <derivedcompoundref refid="class_b_m_e280_wrapper" prot="public" virt="non-virtual">BME280Wrapper</derivedcompoundref>
+    <derivedcompoundref refid="class_h_m_c5883_l_wrapper" prot="public" virt="non-virtual">HMC5883LWrapper</derivedcompoundref>
+    <derivedcompoundref refid="class_m_p_u6050_wrapper" prot="public" virt="non-virtual">MPU6050Wrapper</derivedcompoundref>
+    <includes refid="_i_sensor_8h" local="no">ISensor.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_i_sensor_1adbd5b40ebbf9a78b9845d22dddfac351" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual ISensor::~ISensor</definition>
+        <argsstring>()=default</argsstring>
+        <name>~ISensor</name>
+        <qualifiedname>ISensor::~ISensor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/ISensor.h" line="35" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_i_sensor_1a28051b0215d618d82556c8bb2c0abd29" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool ISensor::init</definition>
+        <argsstring>()=0</argsstring>
+        <name>init</name>
+        <qualifiedname>ISensor::init</qualifiedname>
+        <reimplementedby refid="class_b_h1750_wrapper_1a2f9561a5cce4fe2241a0e74f69e4dadb">init</reimplementedby>
+        <reimplementedby refid="class_b_m_e280_wrapper_1a06cd239056ccf58985bd545f684960bd">init</reimplementedby>
+        <reimplementedby refid="class_h_m_c5883_l_wrapper_1ab7a5997ae98ed9bc37fdd5ab0afe2fb2">init</reimplementedby>
+        <reimplementedby refid="class_m_p_u6050_wrapper_1a9c0278899b5d7899fbb5ceb9b2f9e957">init</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/ISensor.h" line="36" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="class_i_sensor_1ae8363f6253e47aa23d04c07334f49b5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>float</type>
+        <definition>virtual float ISensor::readData</definition>
+        <argsstring>(SensorDataTypeIdentifier type)=0</argsstring>
+        <name>readData</name>
+        <qualifiedname>ISensor::readData</qualifiedname>
+        <reimplementedby refid="class_b_h1750_wrapper_1a150e9bb5fb1185d6b1619565c66c5f62">readData</reimplementedby>
+        <reimplementedby refid="class_b_m_e280_wrapper_1af3e891953ad05fe0b83c0cb51aab2055">readData</reimplementedby>
+        <reimplementedby refid="class_h_m_c5883_l_wrapper_1a76c63b1af36c160c9e7ebf7dc10f872b">readData</reimplementedby>
+        <reimplementedby refid="class_m_p_u6050_wrapper_1a80ab2265d434c951fb99f29bdb0e965a">readData</reimplementedby>
+        <param>
+          <type><ref refid="_i_sensor_8h_1a21b0301bb3eb76855366980212c8ae5e" kindref="member">SensorDataTypeIdentifier</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/ISensor.h" line="37" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="class_i_sensor_1a35a720334040ca754deb0931fc6f1b50" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool ISensor::isInitialized</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isInitialized</name>
+        <qualifiedname>ISensor::isInitialized</qualifiedname>
+        <reimplementedby refid="class_b_h1750_wrapper_1a17eee3fe5b77e07d5aceed51c5277709">isInitialized</reimplementedby>
+        <reimplementedby refid="class_b_m_e280_wrapper_1afa864237c62a7cd64d74cf18f9b7a2ac">isInitialized</reimplementedby>
+        <reimplementedby refid="class_h_m_c5883_l_wrapper_1abacf4eeaaff893112e1aa3c20b23ce38">isInitialized</reimplementedby>
+        <reimplementedby refid="class_m_p_u6050_wrapper_1a56ac18f3459bcbfcfcc42c8c1b6a6be7">isInitialized</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/ISensor.h" line="38" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="class_i_sensor_1a649cfa6c1888996f392f401e7d26125c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="_i_sensor_8h_1a213c434cb928c4ca22513e2302632435" kindref="member">SensorType</ref></type>
+        <definition>virtual SensorType ISensor::getType</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getType</name>
+        <qualifiedname>ISensor::getType</qualifiedname>
+        <reimplementedby refid="class_b_h1750_wrapper_1aa107682828326c965d10db863e704bde">getType</reimplementedby>
+        <reimplementedby refid="class_b_m_e280_wrapper_1a7863eb6da292da01efdbffc4a93e4453">getType</reimplementedby>
+        <reimplementedby refid="class_h_m_c5883_l_wrapper_1a655c92b4d2040e76636a96f9ba63c56a">getType</reimplementedby>
+        <reimplementedby refid="class_m_p_u6050_wrapper_1a922032d7b37976611de3a745e16fafde">getType</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/ISensor.h" line="39" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="class_i_sensor_1aa5fd04ca51fa10cb8d0bcc835b14fb33" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool ISensor::configure</definition>
+        <argsstring>(const std::map&lt; std::string, std::string &gt; &amp;config)=0</argsstring>
+        <name>configure</name>
+        <qualifiedname>ISensor::configure</qualifiedname>
+        <reimplementedby refid="class_b_h1750_wrapper_1a721289913582b5222ca375cbbe6b43d6">configure</reimplementedby>
+        <reimplementedby refid="class_b_m_e280_wrapper_1aa91a632101408df8031cf90b51ef8e3a">configure</reimplementedby>
+        <reimplementedby refid="class_h_m_c5883_l_wrapper_1aae28a5412098db267c5f61a638fa3ef6">configure</reimplementedby>
+        <reimplementedby refid="class_m_p_u6050_wrapper_1ab8fc4351ba80016c273c3e284dd5e3eb">configure</reimplementedby>
+        <param>
+          <type>const std::map&lt; std::string, std::string &gt; &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/ISensor.h" line="40" column="18"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>BH1750Wrapper</label>
+        <link refid="class_b_h1750_wrapper"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>BME280Wrapper</label>
+        <link refid="class_b_m_e280_wrapper"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>HMC5883LWrapper</label>
+        <link refid="class_h_m_c5883_l_wrapper"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>ISensor</label>
+        <link refid="class_i_sensor"/>
+      </node>
+      <node id="5">
+        <label>MPU6050Wrapper</label>
+        <link refid="class_m_p_u6050_wrapper"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="lib/ISensor.h" line="33" column="1" bodyfile="lib/ISensor.h" bodystart="33" bodyend="41"/>
+    <listofallmembers>
+      <member refid="class_i_sensor_1aa5fd04ca51fa10cb8d0bcc835b14fb33" prot="public" virt="pure-virtual"><scope>ISensor</scope><name>configure</name></member>
+      <member refid="class_i_sensor_1a649cfa6c1888996f392f401e7d26125c" prot="public" virt="pure-virtual"><scope>ISensor</scope><name>getType</name></member>
+      <member refid="class_i_sensor_1a28051b0215d618d82556c8bb2c0abd29" prot="public" virt="pure-virtual"><scope>ISensor</scope><name>init</name></member>
+      <member refid="class_i_sensor_1a35a720334040ca754deb0931fc6f1b50" prot="public" virt="pure-virtual"><scope>ISensor</scope><name>isInitialized</name></member>
+      <member refid="class_i_sensor_1ae8363f6253e47aa23d04c07334f49b5d" prot="public" virt="pure-virtual"><scope>ISensor</scope><name>readData</name></member>
+      <member refid="class_i_sensor_1adbd5b40ebbf9a78b9845d22dddfac351" prot="public" virt="virtual"><scope>ISensor</scope><name>~ISensor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

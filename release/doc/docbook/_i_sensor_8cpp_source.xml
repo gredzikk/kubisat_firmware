@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__i_sensor_8cpp_source" xml:lang="en-US">
+<title>ISensor.cpp</title>
+<indexterm><primary>lib/ISensor.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__i_sensor_8cpp_source_1l00001"/>00001 <emphasis role="comment">//&#32;ISensor.cpp</emphasis>
+<anchor xml:id="__i_sensor_8cpp_source_1l00002"/>00002 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__i_sensor_8h">ISensor.h</link>&quot;</emphasis>
+<anchor xml:id="__i_sensor_8cpp_source_1l00003"/>00003 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__b_h1750___w_r_a_p_p_e_r_8h">lib/BH1750/BH1750_WRAPPER.h</link>&quot;</emphasis>
+<anchor xml:id="__i_sensor_8cpp_source_1l00004"/>00004 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__b_m_e280___w_r_a_p_p_e_r_8h">lib/BME280/BME280_WRAPPER.h</link>&quot;</emphasis>
+<anchor xml:id="__i_sensor_8cpp_source_1l00005"/>00005 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__h_m_c5883_l___w_r_a_p_p_e_r_8h">lib/HMC5883L/HMC5883L_WRAPPER.h</link>&quot;</emphasis>
+<anchor xml:id="__i_sensor_8cpp_source_1l00006"/>00006 
+<anchor xml:id="__i_sensor_8cpp_source_1l00011"/><link linkend="_class_sensor_wrapper_1adac086bdfb57168899df56fc431c5f41">00011</link> <link linkend="_class_sensor_wrapper_1a1702516a09884caf599fad7761dd04c1">SensorWrapper</link>&amp;&#32;<link linkend="_class_sensor_wrapper_1adac086bdfb57168899df56fc431c5f41">SensorWrapper::getInstance</link>()&#32;{
+<anchor xml:id="__i_sensor_8cpp_source_1l00012"/>00012 &#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_sensor_wrapper_1a1702516a09884caf599fad7761dd04c1">SensorWrapper</link>&#32;instance;
+<anchor xml:id="__i_sensor_8cpp_source_1l00013"/>00013 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;instance;
+<anchor xml:id="__i_sensor_8cpp_source_1l00014"/>00014 }
+<anchor xml:id="__i_sensor_8cpp_source_1l00015"/>00015 
+<anchor xml:id="__i_sensor_8cpp_source_1l00019"/>00019 <link linkend="_class_sensor_wrapper_1a1702516a09884caf599fad7761dd04c1">SensorWrapper::SensorWrapper</link>()&#32;=&#32;<emphasis role="keywordflow">default</emphasis>;
+<anchor xml:id="__i_sensor_8cpp_source_1l00020"/>00020 
+<anchor xml:id="__i_sensor_8cpp_source_1l00027"/><link linkend="_class_sensor_wrapper_1acbec9bb41e3edd34146eacbf23a807a1">00027</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_sensor_wrapper_1acbec9bb41e3edd34146eacbf23a807a1">SensorWrapper::initSensor</link>(<link linkend="__i_sensor_8h_1a213c434cb928c4ca22513e2302632435">SensorType</link>&#32;type,&#32;i2c_inst_t*&#32;i2c)&#32;{
+<anchor xml:id="__i_sensor_8cpp_source_1l00028"/>00028 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">switch</emphasis>(type)&#32;{
+<anchor xml:id="__i_sensor_8cpp_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__i_sensor_8h_1a213c434cb928c4ca22513e2302632435af8589806bbf66241917092b2a6e18c6f">SensorType::LIGHT</link>:
+<anchor xml:id="__i_sensor_8cpp_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_sensor_wrapper_1ae06e367395181a74d676c533393b47be">sensors</link>[type]&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_b_h1750_wrapper">BH1750Wrapper</link>();
+<anchor xml:id="__i_sensor_8cpp_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__i_sensor_8cpp_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__i_sensor_8h_1a213c434cb928c4ca22513e2302632435a889a65415d92b72cffa7df3f8ecf13f9">SensorType::ENVIRONMENT</link>:
+<anchor xml:id="__i_sensor_8cpp_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_sensor_wrapper_1ae06e367395181a74d676c533393b47be">sensors</link>[type]&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_b_m_e280_wrapper">BME280Wrapper</link>(i2c);
+<anchor xml:id="__i_sensor_8cpp_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__i_sensor_8cpp_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__i_sensor_8h_1a213c434cb928c4ca22513e2302632435aadce094d314507ad8b234a286aeff254">SensorType::IMU</link>:
+<anchor xml:id="__i_sensor_8cpp_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//sensors[type]&#32;=&#32;new&#32;MPU6050Wrapper(i2c);</emphasis>
+<anchor xml:id="__i_sensor_8cpp_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__i_sensor_8cpp_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__i_sensor_8h_1a213c434cb928c4ca22513e2302632435acf29c1440f69cc71f0169036831ef688">SensorType::MAGNETOMETER</link>:
+<anchor xml:id="__i_sensor_8cpp_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_sensor_wrapper_1ae06e367395181a74d676c533393b47be">sensors</link>[type]&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_h_m_c5883_l_wrapper">HMC5883LWrapper</link>(i2c);
+<anchor xml:id="__i_sensor_8cpp_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__i_sensor_8cpp_source_1l00041"/>00041 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__i_sensor_8cpp_source_1l00042"/>00042 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_sensor_wrapper_1ae06e367395181a74d676c533393b47be">sensors</link>[type]-&gt;init();
+<anchor xml:id="__i_sensor_8cpp_source_1l00043"/>00043 }
+<anchor xml:id="__i_sensor_8cpp_source_1l00044"/>00044 
+<anchor xml:id="__i_sensor_8cpp_source_1l00051"/><link linkend="_class_sensor_wrapper_1aeaa7bbc1f7d31212348fd617392cc8d4">00051</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_sensor_wrapper_1aeaa7bbc1f7d31212348fd617392cc8d4">SensorWrapper::configureSensor</link>(<link linkend="__i_sensor_8h_1a213c434cb928c4ca22513e2302632435">SensorType</link>&#32;type,&#32;<emphasis role="keyword">const</emphasis>&#32;std::map&lt;std::string,&#32;std::string&gt;&amp;&#32;config)&#32;{
+<anchor xml:id="__i_sensor_8cpp_source_1l00052"/>00052 &#32;&#32;&#32;&#32;<emphasis role="keyword">auto</emphasis>&#32;it&#32;=&#32;<link linkend="_class_sensor_wrapper_1ae06e367395181a74d676c533393b47be">sensors</link>.find(type);
+<anchor xml:id="__i_sensor_8cpp_source_1l00053"/>00053 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(it&#32;!=&#32;<link linkend="_class_sensor_wrapper_1ae06e367395181a74d676c533393b47be">sensors</link>.end()&#32;&amp;&amp;&#32;it-&gt;second-&gt;isInitialized())&#32;{
+<anchor xml:id="__i_sensor_8cpp_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;it-&gt;second-&gt;configure(config);
+<anchor xml:id="__i_sensor_8cpp_source_1l00055"/>00055 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__i_sensor_8cpp_source_1l00056"/>00056 &#32;&#32;&#32;&#32;std::cerr&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Sensor&#32;not&#32;initialized&#32;or&#32;not&#32;found:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;<emphasis role="keyword">static_cast&lt;</emphasis><emphasis role="keywordtype">int</emphasis><emphasis role="keyword">&gt;</emphasis>(type)&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="__i_sensor_8cpp_source_1l00057"/>00057 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__i_sensor_8cpp_source_1l00058"/>00058 }
+<anchor xml:id="__i_sensor_8cpp_source_1l00059"/>00059 
+<anchor xml:id="__i_sensor_8cpp_source_1l00066"/><link linkend="_class_sensor_wrapper_1a1b30eac9a56098470f130754134057b9">00066</link> <emphasis role="keywordtype">float</emphasis>&#32;<link linkend="_class_sensor_wrapper_1a1b30eac9a56098470f130754134057b9">SensorWrapper::readSensorData</link>(<link linkend="__i_sensor_8h_1a213c434cb928c4ca22513e2302632435">SensorType</link>&#32;sensorType,&#32;<link linkend="__i_sensor_8h_1a21b0301bb3eb76855366980212c8ae5e">SensorDataTypeIdentifier</link>&#32;dataType)&#32;{
+<anchor xml:id="__i_sensor_8cpp_source_1l00067"/>00067 &#32;&#32;&#32;&#32;<emphasis role="keyword">auto</emphasis>&#32;it&#32;=&#32;<link linkend="_class_sensor_wrapper_1ae06e367395181a74d676c533393b47be">sensors</link>.find(sensorType);
+<anchor xml:id="__i_sensor_8cpp_source_1l00068"/>00068 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(it&#32;!=&#32;<link linkend="_class_sensor_wrapper_1ae06e367395181a74d676c533393b47be">sensors</link>.end()&#32;&amp;&amp;&#32;it-&gt;second-&gt;isInitialized())&#32;{
+<anchor xml:id="__i_sensor_8cpp_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;it-&gt;second-&gt;readData(dataType);
+<anchor xml:id="__i_sensor_8cpp_source_1l00070"/>00070 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__i_sensor_8cpp_source_1l00071"/>00071 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0.0f;
+<anchor xml:id="__i_sensor_8cpp_source_1l00072"/>00072 }
+</programlisting></section>

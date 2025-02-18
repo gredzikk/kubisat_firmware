@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="class_m_p_u6050_wrapper" kind="class" language="C++" prot="public">
+    <compoundname>MPU6050Wrapper</compoundname>
+    <basecompoundref refid="class_i_sensor" prot="public" virt="non-virtual">ISensor</basecompoundref>
+    <includes refid="_m_p_u6050___w_r_a_p_p_e_r_8h" local="no">MPU6050_WRAPPER.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_m_p_u6050_wrapper_1abcd0f6b03f36a595e65c8ac1526a69cd" prot="private" static="no" mutable="no">
+        <type>MPU6050</type>
+        <definition>MPU6050 MPU6050Wrapper::sensor</definition>
+        <argsstring></argsstring>
+        <name>sensor</name>
+        <qualifiedname>MPU6050Wrapper::sensor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/MPU6050/MPU6050_WRAPPER.h" line="11" column="13" bodyfile="lib/MPU6050/MPU6050_WRAPPER.h" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_m_p_u6050_wrapper_1a39989e57457ea5c1a230aede7d3f4921" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool MPU6050Wrapper::initialized</definition>
+        <argsstring></argsstring>
+        <name>initialized</name>
+        <qualifiedname>MPU6050Wrapper::initialized</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/MPU6050/MPU6050_WRAPPER.h" line="12" column="10" bodyfile="lib/MPU6050/MPU6050_WRAPPER.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_m_p_u6050_wrapper_1a6f277b2721235fd28dca313699f87cd6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MPU6050Wrapper::MPU6050Wrapper</definition>
+        <argsstring>()</argsstring>
+        <name>MPU6050Wrapper</name>
+        <qualifiedname>MPU6050Wrapper::MPU6050Wrapper</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/MPU6050/MPU6050_WRAPPER.h" line="15" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="class_m_p_u6050_wrapper_1a9c0278899b5d7899fbb5ceb9b2f9e957" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool MPU6050Wrapper::init</definition>
+        <argsstring>() override</argsstring>
+        <name>init</name>
+        <qualifiedname>MPU6050Wrapper::init</qualifiedname>
+        <reimplements refid="class_i_sensor_1a28051b0215d618d82556c8bb2c0abd29">init</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/MPU6050/MPU6050_WRAPPER.h" line="17" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="class_m_p_u6050_wrapper_1a80ab2265d434c951fb99f29bdb0e965a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>float</type>
+        <definition>float MPU6050Wrapper::readData</definition>
+        <argsstring>(SensorDataTypeIdentifier type) override</argsstring>
+        <name>readData</name>
+        <qualifiedname>MPU6050Wrapper::readData</qualifiedname>
+        <reimplements refid="class_i_sensor_1ae8363f6253e47aa23d04c07334f49b5d">readData</reimplements>
+        <param>
+          <type><ref refid="_i_sensor_8h_1a21b0301bb3eb76855366980212c8ae5e" kindref="member">SensorDataTypeIdentifier</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/MPU6050/MPU6050_WRAPPER.h" line="18" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="class_m_p_u6050_wrapper_1a56ac18f3459bcbfcfcc42c8c1b6a6be7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool MPU6050Wrapper::isInitialized</definition>
+        <argsstring>() const override</argsstring>
+        <name>isInitialized</name>
+        <qualifiedname>MPU6050Wrapper::isInitialized</qualifiedname>
+        <reimplements refid="class_i_sensor_1a35a720334040ca754deb0931fc6f1b50">isInitialized</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/MPU6050/MPU6050_WRAPPER.h" line="19" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="class_m_p_u6050_wrapper_1a922032d7b37976611de3a745e16fafde" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="_i_sensor_8h_1a213c434cb928c4ca22513e2302632435" kindref="member">SensorType</ref></type>
+        <definition>SensorType MPU6050Wrapper::getType</definition>
+        <argsstring>() const override</argsstring>
+        <name>getType</name>
+        <qualifiedname>MPU6050Wrapper::getType</qualifiedname>
+        <reimplements refid="class_i_sensor_1a649cfa6c1888996f392f401e7d26125c">getType</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/MPU6050/MPU6050_WRAPPER.h" line="20" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="class_m_p_u6050_wrapper_1ab8fc4351ba80016c273c3e284dd5e3eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool MPU6050Wrapper::configure</definition>
+        <argsstring>(const std::map&lt; std::string, std::string &gt; &amp;config)</argsstring>
+        <name>configure</name>
+        <qualifiedname>MPU6050Wrapper::configure</qualifiedname>
+        <reimplements refid="class_i_sensor_1aa5fd04ca51fa10cb8d0bcc835b14fb33">configure</reimplements>
+        <param>
+          <type>const std::map&lt; std::string, std::string &gt; &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/MPU6050/MPU6050_WRAPPER.h" line="22" column="10"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>ISensor</label>
+        <link refid="class_i_sensor"/>
+      </node>
+      <node id="1">
+        <label>MPU6050Wrapper</label>
+        <link refid="class_m_p_u6050_wrapper"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>ISensor</label>
+        <link refid="class_i_sensor"/>
+      </node>
+      <node id="1">
+        <label>MPU6050Wrapper</label>
+        <link refid="class_m_p_u6050_wrapper"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="lib/MPU6050/MPU6050_WRAPPER.h" line="9" column="1" bodyfile="lib/MPU6050/MPU6050_WRAPPER.h" bodystart="9" bodyend="23"/>
+    <listofallmembers>
+      <member refid="class_m_p_u6050_wrapper_1ab8fc4351ba80016c273c3e284dd5e3eb" prot="public" virt="virtual"><scope>MPU6050Wrapper</scope><name>configure</name></member>
+      <member refid="class_m_p_u6050_wrapper_1a922032d7b37976611de3a745e16fafde" prot="public" virt="virtual"><scope>MPU6050Wrapper</scope><name>getType</name></member>
+      <member refid="class_m_p_u6050_wrapper_1a9c0278899b5d7899fbb5ceb9b2f9e957" prot="public" virt="virtual"><scope>MPU6050Wrapper</scope><name>init</name></member>
+      <member refid="class_m_p_u6050_wrapper_1a39989e57457ea5c1a230aede7d3f4921" prot="private" virt="non-virtual"><scope>MPU6050Wrapper</scope><name>initialized</name></member>
+      <member refid="class_m_p_u6050_wrapper_1a56ac18f3459bcbfcfcc42c8c1b6a6be7" prot="public" virt="virtual"><scope>MPU6050Wrapper</scope><name>isInitialized</name></member>
+      <member refid="class_m_p_u6050_wrapper_1a6f277b2721235fd28dca313699f87cd6" prot="public" virt="non-virtual"><scope>MPU6050Wrapper</scope><name>MPU6050Wrapper</name></member>
+      <member refid="class_m_p_u6050_wrapper_1a80ab2265d434c951fb99f29bdb0e965a" prot="public" virt="virtual"><scope>MPU6050Wrapper</scope><name>readData</name></member>
+      <member refid="class_m_p_u6050_wrapper_1abcd0f6b03f36a595e65c8ac1526a69cd" prot="private" virt="non-virtual"><scope>MPU6050Wrapper</scope><name>sensor</name></member>
+      <member refid="class_i_sensor_1adbd5b40ebbf9a78b9845d22dddfac351" prot="public" virt="virtual"><scope>MPU6050Wrapper</scope><name>~ISensor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

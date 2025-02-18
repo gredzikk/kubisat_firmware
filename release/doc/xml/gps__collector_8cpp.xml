@@ -1,0 +1,330 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="gps__collector_8cpp" kind="file" language="C++">
+    <compoundname>gps_collector.cpp</compoundname>
+    <includes refid="gps__collector_8h" local="yes">lib/GPS/gps_collector.h</includes>
+    <includes refid="utils_8h" local="yes">utils.h</includes>
+    <includes local="yes">pico/time.h</includes>
+    <includes refid="_n_m_e_a__data_8h" local="yes">lib/GPS/NMEA/nmea_data.h</includes>
+    <includes refid="event__manager_8h" local="yes">event_manager.h</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">ctime</includes>
+    <includes local="no">cstring</includes>
+    <includes refid="_d_s3231_8h" local="yes">DS3231.h</includes>
+    <includes local="no">sstream</includes>
+    <incdepgraph>
+      <node id="14">
+        <label>event_manager.h</label>
+        <link refid="event__manager_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>DS3231.h</label>
+        <link refid="_d_s3231_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>lib/GPS/NMEA/nmea_data.h</label>
+        <link refid="_n_m_e_a__data_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>lib/GPS/gps_collector.cpp</label>
+        <link refid="gps__collector_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>lib/GPS/gps_collector.h</label>
+        <link refid="gps__collector_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>INA3221.h</label>
+        <link refid="_i_n_a3221_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>PowerManager.h</label>
+        <link refid="_power_manager_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>pin_config.h</label>
+        <link refid="pin__config_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>array</label>
+      </node>
+      <node id="20">
+        <label>cstdint</label>
+      </node>
+      <node id="23">
+        <label>cstring</label>
+      </node>
+      <node id="22">
+        <label>ctime</label>
+      </node>
+      <node id="18">
+        <label>hardware/i2c.h</label>
+      </node>
+      <node id="4">
+        <label>hardware/uart.h</label>
+      </node>
+      <node id="17">
+        <label>iostream</label>
+      </node>
+      <node id="19">
+        <label>map</label>
+      </node>
+      <node id="21">
+        <label>pico/mutex.h</label>
+      </node>
+      <node id="12">
+        <label>pico/stdlib.h</label>
+      </node>
+      <node id="7">
+        <label>pico/sync.h</label>
+      </node>
+      <node id="13">
+        <label>pico/time.h</label>
+      </node>
+      <node id="26">
+        <label>sstream</label>
+      </node>
+      <node id="9">
+        <label>stdint.h</label>
+      </node>
+      <node id="11">
+        <label>stdio.h</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+      <node id="6">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="gps__collector_8cpp_1a72dde6c82b28027b8cc37e6a827306a7" prot="public" static="no">
+        <name>MAX_RAW_DATA_LENGTH</name>
+        <initializer>1024</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/GPS/gps_collector.cpp" line="13" column="9" bodyfile="lib/GPS/gps_collector.cpp" bodystart="13" bodyend="-1"/>
+        <referencedby refid="gps__collector_8cpp_1abe46d88c89b1f730f6c9a230acac2a6a" compoundref="gps__collector_8cpp" startline="27" endline="65">collectGPSData</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="gps__collector_8cpp_1af2b979012abe80d338fef98209f87b78" prot="public" static="no" extern="yes" mutable="no">
+        <type><ref refid="class_n_m_e_a_data" kindref="compound">NMEAData</ref></type>
+        <definition>NMEAData nmea_data</definition>
+        <argsstring></argsstring>
+        <name>nmea_data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/GPS/gps_collector.cpp" line="15" column="17" bodyfile="lib/GPS/NMEA/NMEA_data.cpp" bodystart="3" bodyend="-1" declfile="lib/GPS/gps_collector.cpp" declline="15" declcolumn="17"/>
+        <referencedby refid="gps__collector_8cpp_1abe46d88c89b1f730f6c9a230acac2a6a" compoundref="gps__collector_8cpp" startline="27" endline="65">collectGPSData</referencedby>
+        <referencedby refid="group___g_p_s_commands_1gaf1f6c0fb4266518353e088e8781ed143" compoundref="gps__commands_8cpp" startline="206" endline="230">handleGetGGAData</referencedby>
+        <referencedby refid="group___g_p_s_commands_1ga71881bd1a0a285e4149db732a3f1b533" compoundref="gps__commands_8cpp" startline="168" endline="192">handleGetRMCData</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="gps__collector_8cpp_1a0509cbb838eb47985372ff8889e507f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt; std::string &gt; splitString</definition>
+        <argsstring>(const std::string &amp;str, char delimiter)</argsstring>
+        <name>splitString</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>delimiter</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/GPS/gps_collector.cpp" line="17" column="13" bodyfile="lib/GPS/gps_collector.cpp" bodystart="17" bodyend="25"/>
+        <referencedby refid="gps__collector_8cpp_1abe46d88c89b1f730f6c9a230acac2a6a" compoundref="gps__collector_8cpp" startline="27" endline="65">collectGPSData</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="gps__collector_8cpp_1abe46d88c89b1f730f6c9a230acac2a6a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void collectGPSData</definition>
+        <argsstring>()</argsstring>
+        <name>collectGPSData</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="lib/GPS/gps_collector.cpp" line="27" column="6" bodyfile="lib/GPS/gps_collector.cpp" bodystart="27" bodyend="65"/>
+        <references refid="pin__config_8h_1a31bae3288bdf1b7a767c494f2b049779" compoundref="pin__config_8h" startline="19">GPS_UART_PORT</references>
+        <references refid="gps__collector_8cpp_1a72dde6c82b28027b8cc37e6a827306a7" compoundref="gps__collector_8cpp" startline="13">MAX_RAW_DATA_LENGTH</references>
+        <references refid="gps__collector_8cpp_1af2b979012abe80d338fef98209f87b78" compoundref="_n_m_e_a__data_8cpp" startline="3">nmea_data</references>
+        <references refid="gps__collector_8cpp_1a0509cbb838eb47985372ff8889e507f5" compoundref="gps__collector_8cpp" startline="17" endline="25">splitString</references>
+        <references refid="utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706" compoundref="utils_8cpp" startline="9" endline="26">uartPrint</references>
+        <referencedby refid="main_8cpp_1a9f153132b8b4afad133b952111e18bd9" compoundref="main_8cpp" startline="11" endline="16">core1_entry</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>filepath:<sp/>/c:/Users/Kuba/Desktop/inz/kubisat/software/kubisat_firmware/lib/GPS/gps_collector.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gps__collector_8h" kindref="compound">lib/GPS/gps_collector.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="utils_8h" kindref="compound">utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;pico/time.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_n_m_e_a__data_8h" kindref="compound">lib/GPS/NMEA/nmea_data.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="event__manager_8h" kindref="compound">event_manager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ctime&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_d_s3231_8h" kindref="compound">DS3231.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="gps__collector_8cpp_1a72dde6c82b28027b8cc37e6a827306a7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_RAW_DATA_LENGTH<sp/>1024</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="class_n_m_e_a_data" kindref="compound">NMEAData</ref><sp/><ref refid="gps__collector_8cpp_1af2b979012abe80d338fef98209f87b78" kindref="member">nmea_data</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="gps__collector_8cpp_1a0509cbb838eb47985372ff8889e507f5" refkind="member"><highlight class="normal">std::vector&lt;std::string&gt;<sp/><ref refid="gps__collector_8cpp_1a0509cbb838eb47985372ff8889e507f5" kindref="member">splitString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>str,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>delimiter)<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>tokens;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>std::stringstream<sp/>ss(str);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>token;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(std::getline(ss,<sp/>token,<sp/>delimiter))<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tokens.push_back(token);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>tokens;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="gps__collector_8cpp_1abe46d88c89b1f730f6c9a230acac2a6a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="gps__collector_8cpp_1abe46d88c89b1f730f6c9a230acac2a6a" kindref="member">collectGPSData</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>raw_data_buffer[<ref refid="gps__collector_8cpp_1a72dde6c82b28027b8cc37e6a827306a7" kindref="member">MAX_RAW_DATA_LENGTH</ref>];</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>raw_data_index<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(uart_is_readable(<ref refid="pin__config_8h_1a31bae3288bdf1b7a767c494f2b049779" kindref="member">GPS_UART_PORT</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>c<sp/>=<sp/>uart_getc(<ref refid="pin__config_8h_1a31bae3288bdf1b7a767c494f2b049779" kindref="member">GPS_UART_PORT</ref>);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(c<sp/>==<sp/></highlight><highlight class="charliteral">&apos;\r&apos;</highlight><highlight class="normal"><sp/>||<sp/>c<sp/>==<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>End<sp/>of<sp/>message</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(raw_data_index<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>raw_data_buffer[raw_data_index]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;\0&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>message(raw_data_buffer);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>raw_data_index<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Split<sp/>the<sp/>message<sp/>into<sp/>tokens</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>tokens<sp/>=<sp/><ref refid="gps__collector_8cpp_1a0509cbb838eb47985372ff8889e507f5" kindref="member">splitString</ref>(message,<sp/></highlight><highlight class="charliteral">&apos;,&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>the<sp/>global<sp/>vectors<sp/>based<sp/>on<sp/>the<sp/>sentence<sp/>type</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(message.find(</highlight><highlight class="stringliteral">&quot;$GPRMC&quot;</highlight><highlight class="normal">)<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="gps__collector_8cpp_1af2b979012abe80d338fef98209f87b78" kindref="member">nmea_data</ref>.updateRmcTokens(tokens);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706" kindref="member">uartPrint</ref>(</highlight><highlight class="stringliteral">&quot;RMC<sp/>data<sp/>received!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706" kindref="member">uartPrint</ref>(message.c_str());</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(message.find(</highlight><highlight class="stringliteral">&quot;$GPGGA&quot;</highlight><highlight class="normal">)<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="gps__collector_8cpp_1af2b979012abe80d338fef98209f87b78" kindref="member">nmea_data</ref>.updateGgaTokens(tokens);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706" kindref="member">uartPrint</ref>(</highlight><highlight class="stringliteral">&quot;GGA<sp/>data<sp/>received!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706" kindref="member">uartPrint</ref>(message.c_str());</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Append<sp/>to<sp/>buffer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(raw_data_index<sp/>&lt;<sp/><ref refid="gps__collector_8cpp_1a72dde6c82b28027b8cc37e6a827306a7" kindref="member">MAX_RAW_DATA_LENGTH</ref><sp/>-<sp/>1)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>raw_data_buffer[raw_data_index++]<sp/>=<sp/>c;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="utils_8cpp_1aacbcecbe6b5428e3571b06ab2104e706" kindref="member">uartPrint</ref>(</highlight><highlight class="stringliteral">&quot;GPS<sp/>data<sp/>overflow!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>raw_data_index<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="lib/GPS/gps_collector.cpp"/>
+  </compounddef>
+</doxygen>

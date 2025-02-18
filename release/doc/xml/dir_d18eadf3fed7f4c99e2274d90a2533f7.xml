@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="dir_d18eadf3fed7f4c99e2274d90a2533f7" kind="dir">
+    <compoundname>lib/LoRa</compoundname>
+    <innerfile refid="_lo_ra-_r_p2040_8cpp">LoRa-RP2040.cpp</innerfile>
+    <innerfile refid="_lo_ra-_r_p2040_8h">LoRa-RP2040.h</innerfile>
+    <innerfile refid="_print_8cpp">Print.cpp</innerfile>
+    <innerfile refid="_print_8h">Print.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="lib/LoRa/"/>
+  </compounddef>
+</doxygen>

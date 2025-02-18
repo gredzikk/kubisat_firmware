@@ -1,0 +1,160 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_group___diagnostic_commands" xml:lang="en-US">
+<title>Diagnostic Commands</title>
+<indexterm><primary>Diagnostic Commands</primary></indexterm>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_struct_frame">Frame</link> <link linkend="_group___diagnostic_commands_1gade74b82cf2c20d93c5e0ce624cd7ca77">handleListCommands</link> (const std::string &amp;param, <link linkend="_protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</link> operationType)</para>
+
+<para>Handler for listing all available commands on UART. </para>
+</listitem>
+            <listitem><para><link linkend="_struct_frame">Frame</link> <link linkend="_group___diagnostic_commands_1ga5ebac5711334cb3584974b2b74556543">handleGetBuildVersion</link> (const std::string &amp;param, <link linkend="_protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</link> operationType)</para>
+
+<para>Get firmware build version. </para>
+</listitem>
+            <listitem><para><link linkend="_struct_frame">Frame</link> <link linkend="_group___diagnostic_commands_1ga3a6c6092cd01fd9c13ab429f4a34326d">handleEnterBootloaderMode</link> (const std::string &amp;param, <link linkend="_protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</link> operationType)</para>
+
+<para>Reboot system to USB firmware loader. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_group___diagnostic_commands_1ga3a6c6092cd01fd9c13ab429f4a34326d"/><section>
+    <title>handleEnterBootloaderMode()</title>
+<indexterm><primary>handleEnterBootloaderMode</primary><secondary>Diagnostic Commands</secondary></indexterm>
+<indexterm><primary>Diagnostic Commands</primary><secondary>handleEnterBootloaderMode</secondary></indexterm>
+<para><computeroutput><link linkend="_struct_frame">Frame</link> handleEnterBootloaderMode (const std::string &amp; param, <link linkend="_protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</link> operationType)</computeroutput></para><para>
+
+<para>Reboot system to USB firmware loader. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>param</entry><entry>
+<para>Empty string expected </para>
+</entry>
+                            </row>
+                            <row>
+<entry>operationType</entry><entry>
+<para>Must be SET </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><link linkend="_struct_frame">Frame</link> with operation result</para>
+</formalpara>
+<para><link linkend="_command_1_command000003">Command</link> 
+<para>Command ID: 2 </para>
+</para></para>
+<para>
+Definition at line <link linkend="_diagnostic__commands_8cpp_source_1l00070">70</link> of file <link linkend="_diagnostic__commands_8cpp_source">diagnostic_commands.cpp</link>.</para>
+</section>
+<anchor xml:id="_group___diagnostic_commands_1ga5ebac5711334cb3584974b2b74556543"/><section>
+    <title>handleGetBuildVersion()</title>
+<indexterm><primary>handleGetBuildVersion</primary><secondary>Diagnostic Commands</secondary></indexterm>
+<indexterm><primary>Diagnostic Commands</primary><secondary>handleGetBuildVersion</secondary></indexterm>
+<para><computeroutput><link linkend="_struct_frame">Frame</link> handleGetBuildVersion (const std::string &amp; param, <link linkend="_protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</link> operationType)</computeroutput></para><para>
+
+<para>Get firmware build version. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>param</entry><entry>
+<para>Empty string expected </para>
+</entry>
+                            </row>
+                            <row>
+<entry>operationType</entry><entry>
+<para>Must be GET </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><link linkend="_struct_frame">Frame</link> containing build number</para>
+</formalpara>
+<para><link linkend="_command_1_command000002">Command</link> 
+<para>Command ID: 1 </para>
+</para></para>
+<para>
+Definition at line <link linkend="_diagnostic__commands_8cpp_source_1l00052">52</link> of file <link linkend="_diagnostic__commands_8cpp_source">diagnostic_commands.cpp</link>.</para>
+</section>
+<anchor xml:id="_group___diagnostic_commands_1gade74b82cf2c20d93c5e0ce624cd7ca77"/><section>
+    <title>handleListCommands()</title>
+<indexterm><primary>handleListCommands</primary><secondary>Diagnostic Commands</secondary></indexterm>
+<indexterm><primary>Diagnostic Commands</primary><secondary>handleListCommands</secondary></indexterm>
+<para><computeroutput><link linkend="_struct_frame">Frame</link> handleListCommands (const std::string &amp; param, <link linkend="_protocol_8h_1a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</link> operationType)</computeroutput></para><para>
+
+<para>Handler for listing all available commands on UART. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>param</entry><entry>
+<para>Empty string expected </para>
+</entry>
+                            </row>
+                            <row>
+<entry>operationType</entry><entry>
+<para>Must be GET </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><link linkend="_struct_frame">Frame</link> containing success/error and command list</para>
+</formalpara>
+<para><link linkend="_command_1_command000001">Command</link> 
+<para>Command ID: 0 </para>
+</para></para>
+<para>
+Definition at line <link linkend="_diagnostic__commands_8cpp_source_1l00019">19</link> of file <link linkend="_diagnostic__commands_8cpp_source">diagnostic_commands.cpp</link>.</para>
+</section>
+</section>
+</section>

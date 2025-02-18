@@ -1,0 +1,213 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="_b_m_e280_8h" kind="file" language="C++">
+    <compoundname>BME280.h</compoundname>
+    <includes local="no">cstdint</includes>
+    <includes local="no">iostream</includes>
+    <includes local="yes">hardware/i2c.h</includes>
+    <includedby refid="_b_m_e280_8cpp" local="yes">lib/BME280/BME280.cpp</includedby>
+    <includedby refid="_b_m_e280___w_r_a_p_p_e_r_8h" local="yes">lib/BME280/BME280_WRAPPER.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>lib/BME280/BME280.h</label>
+        <link refid="_b_m_e280_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>cstdint</label>
+      </node>
+      <node id="4">
+        <label>hardware/i2c.h</label>
+      </node>
+      <node id="3">
+        <label>iostream</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="4">
+        <label>includes.h</label>
+        <link refid="includes_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>lib/BME280/BME280.cpp</label>
+        <link refid="_b_m_e280_8cpp"/>
+      </node>
+      <node id="1">
+        <label>lib/BME280/BME280.h</label>
+        <link refid="_b_m_e280_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>lib/BME280/BME280_WRAPPER.cpp</label>
+        <link refid="_b_m_e280___w_r_a_p_p_e_r_8cpp"/>
+      </node>
+      <node id="3">
+        <label>lib/BME280/BME280_WRAPPER.h</label>
+        <link refid="_b_m_e280___w_r_a_p_p_e_r_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>lib/ISensor.cpp</label>
+        <link refid="_i_sensor_8cpp"/>
+      </node>
+      <node id="5">
+        <label>main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct_b_m_e280_calib_param" prot="public">BME280CalibParam</innerclass>
+    <innerclass refid="class_b_m_e280" prot="public">BME280</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>BME280.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>BME280_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BME280_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;hardware/i2c.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Calibration<sp/>parameters<sp/>structure</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="struct_b_m_e280_calib_param" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_b_m_e280_calib_param" kindref="compound">BME280CalibParam</ref><sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Temperature<sp/>parameters</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="struct_b_m_e280_calib_param_1afbeeeb1ce65458659a5ba34a183920e6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="struct_b_m_e280_calib_param_1afbeeeb1ce65458659a5ba34a183920e6" kindref="member">dig_t1</ref>;</highlight></codeline>
+<codeline lineno="14" refid="struct_b_m_e280_calib_param_1a941c68e822ef43924d09131723141e91" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int16_t<sp/><sp/><ref refid="struct_b_m_e280_calib_param_1a941c68e822ef43924d09131723141e91" kindref="member">dig_t2</ref>;</highlight></codeline>
+<codeline lineno="15" refid="struct_b_m_e280_calib_param_1aca269be642c7d623650b30c8afbaa36d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int16_t<sp/><sp/><ref refid="struct_b_m_e280_calib_param_1aca269be642c7d623650b30c8afbaa36d" kindref="member">dig_t3</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pressure<sp/>parameters</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="struct_b_m_e280_calib_param_1a8917b5f02076019fdfcc3631a74bd5a4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="struct_b_m_e280_calib_param_1a8917b5f02076019fdfcc3631a74bd5a4" kindref="member">dig_p1</ref>;</highlight></codeline>
+<codeline lineno="19" refid="struct_b_m_e280_calib_param_1ada88f13a717a1fae02a350564fd9dcb6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int16_t<sp/><sp/><ref refid="struct_b_m_e280_calib_param_1ada88f13a717a1fae02a350564fd9dcb6" kindref="member">dig_p2</ref>;</highlight></codeline>
+<codeline lineno="20" refid="struct_b_m_e280_calib_param_1a672a132ba7f8bad5baf71f13cb8fc9a6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int16_t<sp/><sp/><ref refid="struct_b_m_e280_calib_param_1a672a132ba7f8bad5baf71f13cb8fc9a6" kindref="member">dig_p3</ref>;</highlight></codeline>
+<codeline lineno="21" refid="struct_b_m_e280_calib_param_1a4c246ab51ee910992d2478c5ef436d46" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int16_t<sp/><sp/><ref refid="struct_b_m_e280_calib_param_1a4c246ab51ee910992d2478c5ef436d46" kindref="member">dig_p4</ref>;</highlight></codeline>
+<codeline lineno="22" refid="struct_b_m_e280_calib_param_1a9a115f01ee13c0a3c41ff2622e6139e1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int16_t<sp/><sp/><ref refid="struct_b_m_e280_calib_param_1a9a115f01ee13c0a3c41ff2622e6139e1" kindref="member">dig_p5</ref>;</highlight></codeline>
+<codeline lineno="23" refid="struct_b_m_e280_calib_param_1a7055059520adb0c5589d01576bc0e94e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int16_t<sp/><sp/><ref refid="struct_b_m_e280_calib_param_1a7055059520adb0c5589d01576bc0e94e" kindref="member">dig_p6</ref>;</highlight></codeline>
+<codeline lineno="24" refid="struct_b_m_e280_calib_param_1a284ebff265af617c7fb5f89c6786247e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int16_t<sp/><sp/><ref refid="struct_b_m_e280_calib_param_1a284ebff265af617c7fb5f89c6786247e" kindref="member">dig_p7</ref>;</highlight></codeline>
+<codeline lineno="25" refid="struct_b_m_e280_calib_param_1a685ef7ec33a5bd9cbcc062ed3b5325d7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int16_t<sp/><sp/><ref refid="struct_b_m_e280_calib_param_1a685ef7ec33a5bd9cbcc062ed3b5325d7" kindref="member">dig_p8</ref>;</highlight></codeline>
+<codeline lineno="26" refid="struct_b_m_e280_calib_param_1af2e49680647943c781a8fe80bd88386b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int16_t<sp/><sp/><ref refid="struct_b_m_e280_calib_param_1af2e49680647943c781a8fe80bd88386b" kindref="member">dig_p9</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Humidity<sp/>parameters</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="struct_b_m_e280_calib_param_1a38419a07942da4717394516a883441d7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><sp/><ref refid="struct_b_m_e280_calib_param_1a38419a07942da4717394516a883441d7" kindref="member">dig_h1</ref>;</highlight></codeline>
+<codeline lineno="30" refid="struct_b_m_e280_calib_param_1a87481b9ca1a2cbb278432f576f3e69c3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int16_t<sp/><sp/><ref refid="struct_b_m_e280_calib_param_1a87481b9ca1a2cbb278432f576f3e69c3" kindref="member">dig_h2</ref>;</highlight></codeline>
+<codeline lineno="31" refid="struct_b_m_e280_calib_param_1afd7a60c148d4caa6cd5a6d0ae82bc6b2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><sp/><ref refid="struct_b_m_e280_calib_param_1afd7a60c148d4caa6cd5a6d0ae82bc6b2" kindref="member">dig_h3</ref>;</highlight></codeline>
+<codeline lineno="32" refid="struct_b_m_e280_calib_param_1a110bc26b75614d7798ed2448b167320c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int16_t<sp/><sp/><ref refid="struct_b_m_e280_calib_param_1a110bc26b75614d7798ed2448b167320c" kindref="member">dig_h4</ref>;</highlight></codeline>
+<codeline lineno="33" refid="struct_b_m_e280_calib_param_1af2eac180fdbfe98caa51d2ed77d6e26e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int16_t<sp/><sp/><ref refid="struct_b_m_e280_calib_param_1af2eac180fdbfe98caa51d2ed77d6e26e" kindref="member">dig_h5</ref>;</highlight></codeline>
+<codeline lineno="34" refid="struct_b_m_e280_calib_param_1a385c601b7cfd409f7174ae298ef77164" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int8_t<sp/><sp/><sp/><ref refid="struct_b_m_e280_calib_param_1a385c601b7cfd409f7174ae298ef77164" kindref="member">dig_h6</ref>;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>BME280<sp/>Class<sp/>Definition</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="class_b_m_e280" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_b_m_e280_1a2f0c3415c853ed9303529b75d5d7236b" kindref="member">BME280</ref><sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>I2C<sp/>Address<sp/>Options</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="class_b_m_e280_1a328e1cfc7421d11670a772f68f7181b9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1a328e1cfc7421d11670a772f68f7181b9" kindref="member">ADDR_SDO_LOW</ref><sp/>=<sp/>0x76;</highlight></codeline>
+<codeline lineno="42" refid="class_b_m_e280_1a9dd91f7d1c5ed613d89aaf38be0bd362" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1a9dd91f7d1c5ed613d89aaf38be0bd362" kindref="member">ADDR_SDO_HIGH</ref><sp/>=<sp/>0x77;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Constructor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_b_m_e280_1a2f0c3415c853ed9303529b75d5d7236b" kindref="member">BME280</ref>(i2c_inst_t*<sp/>i2cPort,<sp/>uint8_t<sp/>address<sp/>=<sp/><ref refid="class_b_m_e280_1a328e1cfc7421d11670a772f68f7181b9" kindref="member">ADDR_SDO_LOW</ref>);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>the<sp/>sensor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_b_m_e280_1a549f7c534b3c0168148188bca5c30e7b" kindref="member">init</ref>();</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>the<sp/>sensor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_b_m_e280_1a9a95fc3d574a66657c1ad050e697545c" kindref="member">reset</ref>();</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>all<sp/>raw<sp/>data:<sp/>temperature,<sp/>pressure,<sp/>and<sp/>humidity</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_b_m_e280_1af22a2c195c0dfb39f457049ffb7e8f09" kindref="member">read_raw_all</ref>(int32_t*<sp/>temperature,<sp/>int32_t*<sp/>pressure,<sp/>int32_t*<sp/>humidity);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>raw<sp/>data<sp/>to<sp/>actual<sp/>values</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="class_b_m_e280_1a77faa64e2670bedae42db2aff8bce837" kindref="member">convert_temperature</ref>(int32_t<sp/>temp_raw)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="class_b_m_e280_1a132f9daccc10c1b3f973c8740f064f4f" kindref="member">convert_pressure</ref>(int32_t<sp/>pressure_raw)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="class_b_m_e280_1a54d06d8e21f2d14cd136fdbc9121cb32" kindref="member">convert_humidity</ref>(int32_t<sp/>humidity_raw)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Configure<sp/>the<sp/>sensor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_b_m_e280_1aba168dd8fb74f3b101922c50e60542cb" kindref="member">configure_sensor</ref>();</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Retrieve<sp/>calibration<sp/>parameters<sp/>from<sp/>the<sp/>sensor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_b_m_e280_1a9bdaf8aa0c2a67ab6fd0b611c69753e6" kindref="member">get_calibration_parameters</ref>();</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>I2C<sp/>port<sp/>and<sp/>device<sp/>address</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="class_b_m_e280_1ac402b86b5376fcfebefad1c8cec948b2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>i2c_inst_t*<sp/><ref refid="class_b_m_e280_1ac402b86b5376fcfebefad1c8cec948b2" kindref="member">i2c_port</ref>;</highlight></codeline>
+<codeline lineno="70" refid="class_b_m_e280_1ae8a52ae32e8cefd398dedf8913737626" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1ae8a52ae32e8cefd398dedf8913737626" kindref="member">device_addr</ref>;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Calibration<sp/>parameters</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="class_b_m_e280_1ab61c36455871833809cff71b5fd3397f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_b_m_e280_calib_param" kindref="compound">BME280CalibParam</ref><sp/><ref refid="class_b_m_e280_1ab61c36455871833809cff71b5fd3397f" kindref="member">calib_params</ref>;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialization<sp/>status</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="class_b_m_e280_1a34b991139b081ff5ebe7943383ac9a97" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_b_m_e280_1a34b991139b081ff5ebe7943383ac9a97" kindref="member">initialized</ref>;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Fine<sp/>temperature<sp/>parameter<sp/>needed<sp/>for<sp/>compensation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="class_b_m_e280_1ad20f44914b78395f4d4bc64f4a68b369" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="class_b_m_e280_1ad20f44914b78395f4d4bc64f4a68b369" kindref="member">t_fine</ref>;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Register<sp/>Definitions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="class_b_m_e280_1a2b3d50ae8af2aea11c8ed21f1bec4ac8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1a2b3d50ae8af2aea11c8ed21f1bec4ac8" kindref="member">REG_CONFIG</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0xF5;</highlight></codeline>
+<codeline lineno="83" refid="class_b_m_e280_1ab635154b47baca711a2b03fa7d469092" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1ab635154b47baca711a2b03fa7d469092" kindref="member">REG_CTRL_MEAS</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0xF4;</highlight></codeline>
+<codeline lineno="84" refid="class_b_m_e280_1a79967643d3432d070edb2af1d0082a1f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1a79967643d3432d070edb2af1d0082a1f" kindref="member">REG_CTRL_HUM</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0xF2;</highlight></codeline>
+<codeline lineno="85" refid="class_b_m_e280_1ae19b16edfdfce1d75578eabb9d42188f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1ae19b16edfdfce1d75578eabb9d42188f" kindref="member">REG_RESET</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0xE0;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="class_b_m_e280_1a2e17033617efa62019561b3152ccfd5e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1a2e17033617efa62019561b3152ccfd5e" kindref="member">REG_PRESSURE_MSB</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0xF7;</highlight></codeline>
+<codeline lineno="88" refid="class_b_m_e280_1a45770a88a9613f8de93d69ae47a9f7c4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1a45770a88a9613f8de93d69ae47a9f7c4" kindref="member">REG_TEMPERATURE_MSB</ref><sp/><sp/><sp/>=<sp/>0xFA;</highlight></codeline>
+<codeline lineno="89" refid="class_b_m_e280_1ae17831aa32ba8a42caf7c87f636ca080" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1ae17831aa32ba8a42caf7c87f636ca080" kindref="member">REG_HUMIDITY_MSB</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0xFD;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Calibration<sp/>Registers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="class_b_m_e280_1aef2d471c9d214ac18674f634708bf74a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1aef2d471c9d214ac18674f634708bf74a" kindref="member">REG_DIG_T1_LSB</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x88;</highlight></codeline>
+<codeline lineno="93" refid="class_b_m_e280_1a3810750131dbc8c729ecda9b60cc757b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1a3810750131dbc8c729ecda9b60cc757b" kindref="member">REG_DIG_T1_MSB</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x89;</highlight></codeline>
+<codeline lineno="94" refid="class_b_m_e280_1ab007919d127d74de26d742e2aa2762b7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1ab007919d127d74de26d742e2aa2762b7" kindref="member">REG_DIG_T2_LSB</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x8A;</highlight></codeline>
+<codeline lineno="95" refid="class_b_m_e280_1ac5c23e02b07b5a129bdde1ba8dc0bc77" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1ac5c23e02b07b5a129bdde1ba8dc0bc77" kindref="member">REG_DIG_T2_MSB</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x8B;</highlight></codeline>
+<codeline lineno="96" refid="class_b_m_e280_1a4e67751a215b35765196d996342cc6bc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1a4e67751a215b35765196d996342cc6bc" kindref="member">REG_DIG_T3_LSB</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x8C;</highlight></codeline>
+<codeline lineno="97" refid="class_b_m_e280_1a766e1bc1b4fe5160dda8561fb2a7885b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1a766e1bc1b4fe5160dda8561fb2a7885b" kindref="member">REG_DIG_T3_MSB</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x8D;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="class_b_m_e280_1acf3ed69a71bdb905992ceae0c4ea6d2c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1acf3ed69a71bdb905992ceae0c4ea6d2c" kindref="member">REG_DIG_P1_LSB</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x8E;</highlight></codeline>
+<codeline lineno="100" refid="class_b_m_e280_1aacfdcc6b95bb0c410ae00d1572f4d38a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1aacfdcc6b95bb0c410ae00d1572f4d38a" kindref="member">REG_DIG_P1_MSB</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x8F;</highlight></codeline>
+<codeline lineno="101" refid="class_b_m_e280_1af05e5454db8eddf7cc5b18bbc615d139" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1af05e5454db8eddf7cc5b18bbc615d139" kindref="member">REG_DIG_P2_LSB</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x90;</highlight></codeline>
+<codeline lineno="102" refid="class_b_m_e280_1afef9fa1d5ad949e43c2eed57e17e8aec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1afef9fa1d5ad949e43c2eed57e17e8aec" kindref="member">REG_DIG_P2_MSB</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x91;</highlight></codeline>
+<codeline lineno="103" refid="class_b_m_e280_1a506faf5ebf59b8e30e58538f8b0ae5a9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1a506faf5ebf59b8e30e58538f8b0ae5a9" kindref="member">REG_DIG_P3_LSB</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x92;</highlight></codeline>
+<codeline lineno="104" refid="class_b_m_e280_1a26797cbc56e7fe24148c18cce9297af0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1a26797cbc56e7fe24148c18cce9297af0" kindref="member">REG_DIG_P3_MSB</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x93;</highlight></codeline>
+<codeline lineno="105" refid="class_b_m_e280_1aeb032dce1cedac64b5cf88a5d3d4d0d4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1aeb032dce1cedac64b5cf88a5d3d4d0d4" kindref="member">REG_DIG_P4_LSB</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x94;</highlight></codeline>
+<codeline lineno="106" refid="class_b_m_e280_1adca3aacad9b831df0a71804c8f772e23" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1adca3aacad9b831df0a71804c8f772e23" kindref="member">REG_DIG_P4_MSB</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x95;</highlight></codeline>
+<codeline lineno="107" refid="class_b_m_e280_1a91566c238134df4777b5672a9f5ed5f1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1a91566c238134df4777b5672a9f5ed5f1" kindref="member">REG_DIG_P5_LSB</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x96;</highlight></codeline>
+<codeline lineno="108" refid="class_b_m_e280_1a06df57d770a3d0f775ef9a05386e4826" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1a06df57d770a3d0f775ef9a05386e4826" kindref="member">REG_DIG_P5_MSB</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x97;</highlight></codeline>
+<codeline lineno="109" refid="class_b_m_e280_1ad8aee64c10c780aad5a0a09d30c92ebc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1ad8aee64c10c780aad5a0a09d30c92ebc" kindref="member">REG_DIG_P6_LSB</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x98;</highlight></codeline>
+<codeline lineno="110" refid="class_b_m_e280_1a3eb00425eaf71795251cf98f72793fb7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1a3eb00425eaf71795251cf98f72793fb7" kindref="member">REG_DIG_P6_MSB</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x99;</highlight></codeline>
+<codeline lineno="111" refid="class_b_m_e280_1a6569eafa6046ea4ad6da5bdb81518369" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1a6569eafa6046ea4ad6da5bdb81518369" kindref="member">REG_DIG_P7_LSB</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x9A;</highlight></codeline>
+<codeline lineno="112" refid="class_b_m_e280_1a4b1ec591a5fedd807949d6363bae3784" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1a4b1ec591a5fedd807949d6363bae3784" kindref="member">REG_DIG_P7_MSB</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x9B;</highlight></codeline>
+<codeline lineno="113" refid="class_b_m_e280_1a7481c9cc5039ee003c6268c6aa761109" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1a7481c9cc5039ee003c6268c6aa761109" kindref="member">REG_DIG_P8_LSB</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x9C;</highlight></codeline>
+<codeline lineno="114" refid="class_b_m_e280_1a8ac1bf6e006e031e46f80feaf1141e64" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1a8ac1bf6e006e031e46f80feaf1141e64" kindref="member">REG_DIG_P8_MSB</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x9D;</highlight></codeline>
+<codeline lineno="115" refid="class_b_m_e280_1a1aeedd3baa6678f0a6f869b877030a89" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1a1aeedd3baa6678f0a6f869b877030a89" kindref="member">REG_DIG_P9_LSB</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x9E;</highlight></codeline>
+<codeline lineno="116" refid="class_b_m_e280_1a2a102c61c7dd155001fe6907f403b3b2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1a2a102c61c7dd155001fe6907f403b3b2" kindref="member">REG_DIG_P9_MSB</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x9F;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Humidity<sp/>Calibration<sp/>Registers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="class_b_m_e280_1a989b372f944bf3f79060e3a1a83683a0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1a989b372f944bf3f79060e3a1a83683a0" kindref="member">REG_DIG_H1</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0xA1;</highlight></codeline>
+<codeline lineno="120" refid="class_b_m_e280_1aa7a9293a90ef27127f306624afc8065b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1aa7a9293a90ef27127f306624afc8065b" kindref="member">REG_DIG_H2</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0xE1;</highlight></codeline>
+<codeline lineno="121" refid="class_b_m_e280_1a47c2024625c6a62f434e75467b5fb9a3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1a47c2024625c6a62f434e75467b5fb9a3" kindref="member">REG_DIG_H3</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0xE3;</highlight></codeline>
+<codeline lineno="122" refid="class_b_m_e280_1a3c372b551cb63ba0a2fad80f7ba73ca6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1a3c372b551cb63ba0a2fad80f7ba73ca6" kindref="member">REG_DIG_H4</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0xE4;</highlight></codeline>
+<codeline lineno="123" refid="class_b_m_e280_1a9c5b1e73997f299d373ad09cc57e4760" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1a9c5b1e73997f299d373ad09cc57e4760" kindref="member">REG_DIG_H5</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0xE5;</highlight></codeline>
+<codeline lineno="124" refid="class_b_m_e280_1aa07e7bc61df07fd417644edd0ed220e4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="class_b_m_e280_1aa07e7bc61df07fd417644edd0ed220e4" kindref="member">REG_DIG_H6</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0xE7;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Number<sp/>of<sp/>calibration<sp/>parameters<sp/>to<sp/>read</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127" refid="class_b_m_e280_1a816c288ebe1028b532c7e97b0582bd09" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="class_b_m_e280_1a816c288ebe1028b532c7e97b0582bd09" kindref="member">NUM_CALIB_PARAMS</ref><sp/>=<sp/>24;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>BME280_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="lib/BME280/BME280.h"/>
+  </compounddef>
+</doxygen>
