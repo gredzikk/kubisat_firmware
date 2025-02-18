@@ -6,7 +6,8 @@ add_library(clock_lib STATIC
 )
 target_include_directories(clock_lib PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_SOURCE_DIR}    # For ISensor.h access
+    ${CMAKE_SOURCE_DIR} 
+    ${CMAKE_SOURCE_DIR}/lib
 )
 target_link_libraries(clock_lib PUBLIC
     pico_stdlib

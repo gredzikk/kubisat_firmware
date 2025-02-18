@@ -112,129 +112,124 @@ $(function(){initNavTree('main_8cpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="foldopen" id="foldopen00011" data-start="{" data-end="}">
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="main_8cpp.html#a9f153132b8b4afad133b952111e18bd9">   11</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="main_8cpp.html#a9f153132b8b4afad133b952111e18bd9">core1_entry</a>() {</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <a class="code hl_function" href="gps__collector_8cpp.html#abe46d88c89b1f730f6c9a230acac2a6a">collectGPSData</a>();</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <a class="code hl_function" href="event__manager_8cpp.html#a467714d66058f52e4ac7aeb6df46b433">checkPowerEvents</a>(<a class="code hl_variable" href="main_8cpp.html#af8335a606a184154d5e0860517b1e2f8">powerManager</a>);</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    }</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>}</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <a class="code hl_function" href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a>(<span class="stringliteral">&quot;Starting core 1&quot;</span>);</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <a class="code hl_function" href="gps__collector_8cpp.html#abe46d88c89b1f730f6c9a230acac2a6a">collectGPSData</a>();</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <a class="code hl_function" href="event__manager_8cpp.html#a467714d66058f52e4ac7aeb6df46b433">checkPowerEvents</a>(<a class="code hl_variable" href="main_8cpp.html#af8335a606a184154d5e0860517b1e2f8">powerManager</a>);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    }</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>}</div>
 </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="foldopen" id="foldopen00018" data-start="{" data-end="}">
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="main_8cpp.html#a21af2d50d7779336997d5f3456352431">   18</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="main_8cpp.html#a21af2d50d7779336997d5f3456352431">initSystems</a>() {</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    stdio_init_all();</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    uart_init(<a class="code hl_define" href="pin__config_8h.html#a1c9052d1656e86f50326fd275c54ca67">DEBUG_UART_PORT</a>, <a class="code hl_define" href="pin__config_8h.html#adf735c02ae01a655dbbfc89683107df1">DEBUG_UART_BAUD_RATE</a>);</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    gpio_set_function(<a class="code hl_define" href="pin__config_8h.html#a94d099ea6efcf6e349a1e392b17ac6ee">DEBUG_UART_TX_PIN</a>, UART_FUNCSEL_NUM(<a class="code hl_define" href="pin__config_8h.html#a1c9052d1656e86f50326fd275c54ca67">DEBUG_UART_PORT</a>, <a class="code hl_define" href="pin__config_8h.html#a94d099ea6efcf6e349a1e392b17ac6ee">DEBUG_UART_TX_PIN</a>));</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    gpio_set_function(<a class="code hl_define" href="pin__config_8h.html#aaae74107573261e50cb72bcec8d2d3fe">DEBUG_UART_RX_PIN</a>, UART_FUNCSEL_NUM(<a class="code hl_define" href="pin__config_8h.html#a1c9052d1656e86f50326fd275c54ca67">DEBUG_UART_PORT</a>, <a class="code hl_define" href="pin__config_8h.html#aaae74107573261e50cb72bcec8d2d3fe">DEBUG_UART_RX_PIN</a>));</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    gpio_init(PICO_DEFAULT_LED_PIN);</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    i2c_init(<a class="code hl_define" href="pin__config_8h.html#ae122c78708c186c48bc347669332c550">MAIN_I2C_PORT</a>, 400 * 1000);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    gpio_set_function(<a class="code hl_define" href="pin__config_8h.html#a9e17f76dd11280c50d7625b62557b29f">MAIN_I2C_SCL_PIN</a>, GPIO_FUNC_I2C);</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    gpio_set_function(<a class="code hl_define" href="pin__config_8h.html#af2e27807e37db3df1c383812da249090">MAIN_I2C_SDA_PIN</a>, GPIO_FUNC_I2C);</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    gpio_pull_up(<a class="code hl_define" href="pin__config_8h.html#a9e17f76dd11280c50d7625b62557b29f">MAIN_I2C_SCL_PIN</a>);</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    gpio_pull_up(<a class="code hl_define" href="pin__config_8h.html#af2e27807e37db3df1c383812da249090">MAIN_I2C_SDA_PIN</a>);</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    uart_init(<a class="code hl_define" href="pin__config_8h.html#a31bae3288bdf1b7a767c494f2b049779">GPS_UART_PORT</a>, <a class="code hl_define" href="pin__config_8h.html#aff9a5d52092479f80c68a37d9f47ea0c">GPS_UART_BAUD_RATE</a>);</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    gpio_set_function(<a class="code hl_define" href="pin__config_8h.html#a8e35acac4c2208fd0d6b889990c1f970">GPS_UART_TX_PIN</a>, UART_FUNCSEL_NUM(<a class="code hl_define" href="pin__config_8h.html#a31bae3288bdf1b7a767c494f2b049779">GPS_UART_PORT</a>, <a class="code hl_define" href="pin__config_8h.html#a8e35acac4c2208fd0d6b889990c1f970">GPS_UART_TX_PIN</a>));</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    gpio_set_function(<a class="code hl_define" href="pin__config_8h.html#a8d2d12725644a55f56e8aee18942b144">GPS_UART_RX_PIN</a>, UART_FUNCSEL_NUM(<a class="code hl_define" href="pin__config_8h.html#a31bae3288bdf1b7a767c494f2b049779">GPS_UART_PORT</a>, <a class="code hl_define" href="pin__config_8h.html#a8d2d12725644a55f56e8aee18942b144">GPS_UART_RX_PIN</a>));</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordflow">if</span> (<span class="keyword">true</span>)</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    {</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        gpio_init(<a class="code hl_define" href="pin__config_8h.html#aac8b46194f932ec0656edff3718d3750">GPS_POWER_ENABLE_PIN</a>);</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        gpio_set_dir(<a class="code hl_define" href="pin__config_8h.html#aac8b46194f932ec0656edff3718d3750">GPS_POWER_ENABLE_PIN</a>, GPIO_OUT);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        gpio_put(<a class="code hl_define" href="pin__config_8h.html#aac8b46194f932ec0656edff3718d3750">GPS_POWER_ENABLE_PIN</a>, 1); </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    }</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="comment">// @todo[critical] Test sd card working</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">bool</span> sdInitDone = <a class="code hl_function" href="storage_8cpp.html#afb19e37469a751aa61de3dcd0c70b4b0">fs_init</a>();</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <a class="code hl_function" href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a>(<span class="stringliteral">&quot;SD card init: &quot;</span> + std::to_string(sdInitDone));</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    std::string bootString = <span class="stringliteral">&quot;System init completed @ &quot;</span> + std::to_string(to_ms_since_boot(get_absolute_time())) + <span class="stringliteral">&quot; ms&quot;</span>;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <a class="code hl_function" href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a>(bootString);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <a class="code hl_struct" href="struct_frame.html">Frame</a> boot = <a class="code hl_function" href="communication_8h.html#a54afeb73435419551a1b51a3fd5c3266">buildFrame</a>(<a class="code hl_enumvalue" href="protocol_8h.html#ad13fb53c92ad2af53a95ee45749796d1a551b723eafd6a31d444fcb2f5920fbd3">ExecutionResult::INFO</a>, 0, 0, <span class="stringliteral">&quot;HELLO&quot;</span>);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <a class="code hl_function" href="communication_8h.html#a752e7cc27f52d4ba064e691b3e240ed8">sendFrame</a>(boot);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>}</div>
-</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="main_8cpp.html#a01a8b38ee1cf3fd44cedf3f5a8f1dbde">   57</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="main_8cpp.html#a01a8b38ee1cf3fd44cedf3f5a8f1dbde">loggingRoutine</a>();</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="foldopen" id="foldopen00019" data-start="{" data-end="}">
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="main_8cpp.html#a21af2d50d7779336997d5f3456352431">   19</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="main_8cpp.html#a21af2d50d7779336997d5f3456352431">initSystems</a>() {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    stdio_init_all();</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    uart_init(<a class="code hl_define" href="pin__config_8h.html#a1c9052d1656e86f50326fd275c54ca67">DEBUG_UART_PORT</a>, <a class="code hl_define" href="pin__config_8h.html#adf735c02ae01a655dbbfc89683107df1">DEBUG_UART_BAUD_RATE</a>);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    gpio_set_function(<a class="code hl_define" href="pin__config_8h.html#a94d099ea6efcf6e349a1e392b17ac6ee">DEBUG_UART_TX_PIN</a>, UART_FUNCSEL_NUM(<a class="code hl_define" href="pin__config_8h.html#a1c9052d1656e86f50326fd275c54ca67">DEBUG_UART_PORT</a>, <a class="code hl_define" href="pin__config_8h.html#a94d099ea6efcf6e349a1e392b17ac6ee">DEBUG_UART_TX_PIN</a>));</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    gpio_set_function(<a class="code hl_define" href="pin__config_8h.html#aaae74107573261e50cb72bcec8d2d3fe">DEBUG_UART_RX_PIN</a>, UART_FUNCSEL_NUM(<a class="code hl_define" href="pin__config_8h.html#a1c9052d1656e86f50326fd275c54ca67">DEBUG_UART_PORT</a>, <a class="code hl_define" href="pin__config_8h.html#aaae74107573261e50cb72bcec8d2d3fe">DEBUG_UART_RX_PIN</a>));</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    gpio_init(PICO_DEFAULT_LED_PIN);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    i2c_init(<a class="code hl_define" href="pin__config_8h.html#ae122c78708c186c48bc347669332c550">MAIN_I2C_PORT</a>, 400 * 1000);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    gpio_set_function(<a class="code hl_define" href="pin__config_8h.html#a9e17f76dd11280c50d7625b62557b29f">MAIN_I2C_SCL_PIN</a>, GPIO_FUNC_I2C);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    gpio_set_function(<a class="code hl_define" href="pin__config_8h.html#af2e27807e37db3df1c383812da249090">MAIN_I2C_SDA_PIN</a>, GPIO_FUNC_I2C);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    gpio_pull_up(<a class="code hl_define" href="pin__config_8h.html#a9e17f76dd11280c50d7625b62557b29f">MAIN_I2C_SCL_PIN</a>);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    gpio_pull_up(<a class="code hl_define" href="pin__config_8h.html#af2e27807e37db3df1c383812da249090">MAIN_I2C_SDA_PIN</a>);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    uart_init(<a class="code hl_define" href="pin__config_8h.html#a31bae3288bdf1b7a767c494f2b049779">GPS_UART_PORT</a>, <a class="code hl_define" href="pin__config_8h.html#aff9a5d52092479f80c68a37d9f47ea0c">GPS_UART_BAUD_RATE</a>);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    gpio_set_function(<a class="code hl_define" href="pin__config_8h.html#a8e35acac4c2208fd0d6b889990c1f970">GPS_UART_TX_PIN</a>, UART_FUNCSEL_NUM(<a class="code hl_define" href="pin__config_8h.html#a31bae3288bdf1b7a767c494f2b049779">GPS_UART_PORT</a>, <a class="code hl_define" href="pin__config_8h.html#a8e35acac4c2208fd0d6b889990c1f970">GPS_UART_TX_PIN</a>));</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    gpio_set_function(<a class="code hl_define" href="pin__config_8h.html#a8d2d12725644a55f56e8aee18942b144">GPS_UART_RX_PIN</a>, UART_FUNCSEL_NUM(<a class="code hl_define" href="pin__config_8h.html#a31bae3288bdf1b7a767c494f2b049779">GPS_UART_PORT</a>, <a class="code hl_define" href="pin__config_8h.html#a8d2d12725644a55f56e8aee18942b144">GPS_UART_RX_PIN</a>));</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordflow">if</span> (<span class="keyword">true</span>)</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    {</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        gpio_init(<a class="code hl_define" href="pin__config_8h.html#aac8b46194f932ec0656edff3718d3750">GPS_POWER_ENABLE_PIN</a>);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        gpio_set_dir(<a class="code hl_define" href="pin__config_8h.html#aac8b46194f932ec0656edff3718d3750">GPS_POWER_ENABLE_PIN</a>, GPIO_OUT);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        gpio_put(<a class="code hl_define" href="pin__config_8h.html#aac8b46194f932ec0656edff3718d3750">GPS_POWER_ENABLE_PIN</a>, 1); </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    }</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">bool</span> radioInitSuccess = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    radioInitSuccess = <a class="code hl_function" href="communication_8cpp.html#a520df448c1dc359f42111ac240081975">initializeRadio</a>();</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="comment">// @todo[critical] Test sd card working</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordtype">bool</span> sdInitDone = <span class="keyword">false</span>;<span class="comment">//fs_init();</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <a class="code hl_function" href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a>(<span class="stringliteral">&quot;SD card init: &quot;</span> + std::to_string(sdInitDone));</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    std::string bootString = <span class="stringliteral">&quot;System init completed @ &quot;</span> + std::to_string(to_ms_since_boot(get_absolute_time())) + <span class="stringliteral">&quot; ms&quot;</span>;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <a class="code hl_function" href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a>(bootString);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <a class="code hl_struct" href="struct_frame.html">Frame</a> boot = <a class="code hl_function" href="communication_8h.html#a54afeb73435419551a1b51a3fd5c3266">buildFrame</a>(<a class="code hl_enumvalue" href="protocol_8h.html#ad13fb53c92ad2af53a95ee45749796d1a551b723eafd6a31d444fcb2f5920fbd3">ExecutionResult::INFO</a>, 0, 0, <span class="stringliteral">&quot;HELLO&quot;</span>);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <a class="code hl_function" href="communication_8h.html#a752e7cc27f52d4ba064e691b3e240ed8">sendFrame</a>(boot);</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="foldopen" id="foldopen00059" data-start="{" data-end="}">
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">   59</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>()</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>{</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <a class="code hl_function" href="main_8cpp.html#a21af2d50d7779336997d5f3456352431">initSystems</a>();</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    multicore_launch_core1(<a class="code hl_function" href="main_8cpp.html#a9f153132b8b4afad133b952111e18bd9">core1_entry</a>);</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <a class="code hl_variable" href="group___clock_commands.html#gabfd573c8a839ac00ea3b96d691ea11c3">systemClock</a>.setTime(0, 41, 20, 4, 14, 11, 2024);</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    gpio_put(PICO_DEFAULT_LED_PIN, 1);</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="main_8cpp.html#af8335a606a184154d5e0860517b1e2f8">powerManager</a>.initialize())</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    {</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        std::map&lt;std::string, std::string&gt; powerConfig = {</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            {<span class="stringliteral">&quot;operating_mode&quot;</span>, <span class="stringliteral">&quot;continuous&quot;</span>},</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            {<span class="stringliteral">&quot;averaging_mode&quot;</span>, <span class="stringliteral">&quot;16&quot;</span>},</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        };</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <a class="code hl_variable" href="main_8cpp.html#af8335a606a184154d5e0860517b1e2f8">powerManager</a>.configure(powerConfig);</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    }</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    gpio_put(PICO_DEFAULT_LED_PIN, 0);</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordtype">bool</span> radioInitSuccess = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    radioInitSuccess = <a class="code hl_function" href="communication_8cpp.html#a520df448c1dc359f42111ac240081975">initializeRadio</a>();</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    gpio_put(PICO_DEFAULT_LED_PIN, 1);</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordflow">if</span> (radioInitSuccess)</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    {</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <a class="code hl_function" href="communication_8h.html#a877f9c1d3485cf1521bc13996d39c1fb">sendMessage</a>(<span class="stringliteral">&quot;System initialized successfully!&quot;</span>);    </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    }</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    gpio_put(PICO_DEFAULT_LED_PIN, 0);</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <a class="code hl_function" href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a>(<span class="stringliteral">&quot;This message will only be printed to UART.&quot;</span>);</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="comment">// uartPrint(&quot;This message will be printed to UART and logged to Core 1.&quot;, true);</span></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 5; i &gt; 0; --i)</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    {</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        std::string intro = <span class="stringliteral">&quot;Main loop starts in &quot;</span> + std::to_string(i) + <span class="stringliteral">&quot; seconds...&quot;</span>;</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <a class="code hl_function" href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a>(intro);</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        gpio_put(PICO_DEFAULT_LED_PIN, (i%2==0));</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        sleep_ms(1000);</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    }</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    gpio_put(PICO_DEFAULT_LED_PIN, 1);</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <a class="code hl_struct" href="struct_frame.html">Frame</a> boot = <a class="code hl_function" href="communication_8h.html#a54afeb73435419551a1b51a3fd5c3266">buildFrame</a>(<a class="code hl_enumvalue" href="protocol_8h.html#ad13fb53c92ad2af53a95ee45749796d1a551b723eafd6a31d444fcb2f5920fbd3">ExecutionResult::INFO</a>, 0, 0, <span class="stringliteral">&quot;START&quot;</span>);</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <a class="code hl_function" href="communication_8h.html#a752e7cc27f52d4ba064e691b3e240ed8">sendFrame</a>(boot);</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordflow">while</span> (<span class="keyword">true</span>)</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    {</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        <span class="keywordtype">int</span> packetSize = <a class="code hl_variable" href="_lo_ra-_r_p2040_8cpp.html#af4db0e30d2909faa29355167719f196c">LoRa</a>.parsePacket();</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <span class="keywordflow">if</span> (packetSize)</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        {</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>            <a class="code hl_function" href="communication_8h.html#a54817002e33761dc61558b1138749dfb">onReceive</a>(packetSize);</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        }</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <span class="comment">//acquireLock();</span></div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <span class="comment">//float voltage = sharedData.voltage5V;</span></div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <span class="comment">//releaseLock();</span></div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        <span class="comment">//std::string voltageReading = &quot;Core 0: voltage from common data structure: &quot; + std::to_string(voltage);</span></div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        <span class="comment">//uartPrint(voltageReading.c_str());</span></div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        <span class="comment">//collectGPSData();</span></div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <a class="code hl_function" href="communication_8h.html#ac5e175a6a1482f700f9aee0b727b924f">handleUartInput</a>();</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    }</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>}</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <a class="code hl_function" href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a>(<span class="stringliteral">&quot;System init done.&quot;</span>);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">return</span> radioInitSuccess;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>}</div>
 </div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="comment">// BH1750    0X23</span></div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="comment">// INA3221   0X40</span></div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="comment">// BME280    0X76</span></div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="comment">// DS3231    0X86</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="main_8cpp.html#a01a8b38ee1cf3fd44cedf3f5a8f1dbde">   63</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="main_8cpp.html#a01a8b38ee1cf3fd44cedf3f5a8f1dbde">loggingRoutine</a>();</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="foldopen" id="foldopen00065" data-start="{" data-end="}">
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">   65</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>()</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>{</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <a class="code hl_function" href="main_8cpp.html#a21af2d50d7779336997d5f3456352431">initSystems</a>();</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    multicore_launch_core1(<a class="code hl_function" href="main_8cpp.html#a9f153132b8b4afad133b952111e18bd9">core1_entry</a>);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <a class="code hl_variable" href="group___clock_commands.html#gabfd573c8a839ac00ea3b96d691ea11c3">systemClock</a>.setTime(0, 41, 20, 4, 14, 11, 2024);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    gpio_put(PICO_DEFAULT_LED_PIN, 1);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="main_8cpp.html#af8335a606a184154d5e0860517b1e2f8">powerManager</a>.initialize())</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        std::map&lt;std::string, std::string&gt; powerConfig = {</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            {<span class="stringliteral">&quot;operating_mode&quot;</span>, <span class="stringliteral">&quot;continuous&quot;</span>},</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            {<span class="stringliteral">&quot;averaging_mode&quot;</span>, <span class="stringliteral">&quot;16&quot;</span>},</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        };</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <a class="code hl_variable" href="main_8cpp.html#af8335a606a184154d5e0860517b1e2f8">powerManager</a>.configure(powerConfig);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    }</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    gpio_put(PICO_DEFAULT_LED_PIN, 0);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <a class="code hl_function" href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a>(<span class="stringliteral">&quot;This message will only be printed to UART.&quot;</span>);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="comment">// uartPrint(&quot;This message will be printed to UART and logged to Core 1.&quot;, true);</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 5; i &gt; 0; --i)</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    {</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        std::string intro = <span class="stringliteral">&quot;Main loop starts in &quot;</span> + std::to_string(i) + <span class="stringliteral">&quot; seconds...&quot;</span>;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <a class="code hl_function" href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a>(intro);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        gpio_put(PICO_DEFAULT_LED_PIN, (i%2==0));</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        sleep_ms(1000);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    }</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    gpio_put(PICO_DEFAULT_LED_PIN, 1);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <a class="code hl_struct" href="struct_frame.html">Frame</a> boot = <a class="code hl_function" href="communication_8h.html#a54afeb73435419551a1b51a3fd5c3266">buildFrame</a>(<a class="code hl_enumvalue" href="protocol_8h.html#ad13fb53c92ad2af53a95ee45749796d1a551b723eafd6a31d444fcb2f5920fbd3">ExecutionResult::INFO</a>, 0, 0, <span class="stringliteral">&quot;START&quot;</span>);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <a class="code hl_function" href="communication_8h.html#a752e7cc27f52d4ba064e691b3e240ed8">sendFrame</a>(boot);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordflow">while</span> (<span class="keyword">true</span>)</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    {</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="keywordtype">int</span> packetSize = <a class="code hl_variable" href="_lo_ra-_r_p2040_8cpp.html#af4db0e30d2909faa29355167719f196c">LoRa</a>.parsePacket();</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <span class="keywordflow">if</span> (packetSize)</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        {</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>            <a class="code hl_function" href="communication_8h.html#a54817002e33761dc61558b1138749dfb">onReceive</a>(packetSize);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        }</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <span class="comment">//acquireLock();</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        <span class="comment">//float voltage = sharedData.voltage5V;</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        <span class="comment">//releaseLock();</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        <span class="comment">//std::string voltageReading = &quot;Core 0: voltage from common data structure: &quot; + std::to_string(voltage);</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <span class="comment">//uartPrint(voltageReading.c_str());</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <span class="comment">//collectGPSData();</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        <a class="code hl_function" href="communication_8h.html#ac5e175a6a1482f700f9aee0b727b924f">handleUartInput</a>();</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    }</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>}</div>
+</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="comment">// BH1750    0X23</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="comment">// INA3221   0X40</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="comment">// BME280    0X76</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="comment">// DS3231    0X86</span></div>
 <div class="ttc" id="a_lo_ra-_r_p2040_8cpp_html_af4db0e30d2909faa29355167719f196c"><div class="ttname"><a href="_lo_ra-_r_p2040_8cpp.html#af4db0e30d2909faa29355167719f196c">LoRa</a></div><div class="ttdeci">LoRaClass LoRa</div><div class="ttdef"><b>Definition</b> <a href="_lo_ra-_r_p2040_8cpp_source.html#l00753">LoRa-RP2040.cpp:753</a></div></div>
 <div class="ttc" id="aclass_d_s3231_html"><div class="ttname"><a href="class_d_s3231.html">DS3231</a></div><div class="ttdef"><b>Definition</b> <a href="_d_s3231_8h_source.html#l00019">DS3231.h:19</a></div></div>
 <div class="ttc" id="aclass_power_manager_html"><div class="ttname"><a href="class_power_manager.html">PowerManager</a></div><div class="ttdef"><b>Definition</b> <a href="_power_manager_8h_source.html#l00011">PowerManager.h:11</a></div></div>
@@ -242,17 +237,16 @@ $(function(){initNavTree('main_8cpp_source.html',''); initResizable(true); });
 <div class="ttc" id="acommunication_8h_html_a54817002e33761dc61558b1138749dfb"><div class="ttname"><a href="communication_8h.html#a54817002e33761dc61558b1138749dfb">onReceive</a></div><div class="ttdeci">void onReceive(int packetSize)</div><div class="ttdoc">Callback function for handling received LoRa packets.</div><div class="ttdef"><b>Definition</b> <a href="receive_8cpp_source.html#l00015">receive.cpp:15</a></div></div>
 <div class="ttc" id="acommunication_8h_html_a54afeb73435419551a1b51a3fd5c3266"><div class="ttname"><a href="communication_8h.html#a54afeb73435419551a1b51a3fd5c3266">buildFrame</a></div><div class="ttdeci">Frame buildFrame(ExecutionResult result, uint8_t group, uint8_t command, const std::string &amp;value, const ValueUnit unitType=ValueUnit::UNDEFINED)</div><div class="ttdoc">Builds a Frame instance.</div><div class="ttdef"><b>Definition</b> <a href="frame_8cpp_source.html#l00146">frame.cpp:146</a></div></div>
 <div class="ttc" id="acommunication_8h_html_a752e7cc27f52d4ba064e691b3e240ed8"><div class="ttname"><a href="communication_8h.html#a752e7cc27f52d4ba064e691b3e240ed8">sendFrame</a></div><div class="ttdeci">void sendFrame(const Frame &amp;frame)</div><div class="ttdoc">Sends a Frame using LoRa.</div><div class="ttdef"><b>Definition</b> <a href="send_8cpp_source.html#l00042">send.cpp:42</a></div></div>
-<div class="ttc" id="acommunication_8h_html_a877f9c1d3485cf1521bc13996d39c1fb"><div class="ttname"><a href="communication_8h.html#a877f9c1d3485cf1521bc13996d39c1fb">sendMessage</a></div><div class="ttdeci">void sendMessage(std::string outgoing)</div></div>
 <div class="ttc" id="acommunication_8h_html_ac5e175a6a1482f700f9aee0b727b924f"><div class="ttname"><a href="communication_8h.html#ac5e175a6a1482f700f9aee0b727b924f">handleUartInput</a></div><div class="ttdeci">void handleUartInput()</div><div class="ttdoc">Handles UART input.</div><div class="ttdef"><b>Definition</b> <a href="receive_8cpp_source.html#l00077">receive.cpp:77</a></div></div>
 <div class="ttc" id="aevent__manager_8cpp_html_a467714d66058f52e4ac7aeb6df46b433"><div class="ttname"><a href="event__manager_8cpp.html#a467714d66058f52e4ac7aeb6df46b433">checkPowerEvents</a></div><div class="ttdeci">void checkPowerEvents(PowerManager &amp;pm)</div><div class="ttdoc">Checks power statuses and triggers events based on voltage trends.</div><div class="ttdef"><b>Definition</b> <a href="event__manager_8cpp_source.html#l00139">event_manager.cpp:139</a></div></div>
 <div class="ttc" id="agps__collector_8cpp_html_abe46d88c89b1f730f6c9a230acac2a6a"><div class="ttname"><a href="gps__collector_8cpp.html#abe46d88c89b1f730f6c9a230acac2a6a">collectGPSData</a></div><div class="ttdeci">void collectGPSData()</div><div class="ttdef"><b>Definition</b> <a href="gps__collector_8cpp_source.html#l00027">gps_collector.cpp:27</a></div></div>
 <div class="ttc" id="agroup___clock_commands_html_gabfd573c8a839ac00ea3b96d691ea11c3"><div class="ttname"><a href="group___clock_commands.html#gabfd573c8a839ac00ea3b96d691ea11c3">systemClock</a></div><div class="ttdeci">DS3231 systemClock</div><div class="ttdef"><b>Definition</b> <a href="clock__commands_8cpp_source.html#l00015">clock_commands.cpp:15</a></div></div>
 <div class="ttc" id="aincludes_8h_html"><div class="ttname"><a href="includes_8h.html">includes.h</a></div></div>
 <div class="ttc" id="amain_8cpp_html_a01a8b38ee1cf3fd44cedf3f5a8f1dbde"><div class="ttname"><a href="main_8cpp.html#a01a8b38ee1cf3fd44cedf3f5a8f1dbde">loggingRoutine</a></div><div class="ttdeci">void loggingRoutine()</div></div>
-<div class="ttc" id="amain_8cpp_html_a21af2d50d7779336997d5f3456352431"><div class="ttname"><a href="main_8cpp.html#a21af2d50d7779336997d5f3456352431">initSystems</a></div><div class="ttdeci">bool initSystems()</div><div class="ttdef"><b>Definition</b> <a href="#l00018">main.cpp:18</a></div></div>
+<div class="ttc" id="amain_8cpp_html_a21af2d50d7779336997d5f3456352431"><div class="ttname"><a href="main_8cpp.html#a21af2d50d7779336997d5f3456352431">initSystems</a></div><div class="ttdeci">bool initSystems()</div><div class="ttdef"><b>Definition</b> <a href="#l00019">main.cpp:19</a></div></div>
 <div class="ttc" id="amain_8cpp_html_a73b963945a418c57630c1b66ce2aa74f"><div class="ttname"><a href="main_8cpp.html#a73b963945a418c57630c1b66ce2aa74f">bufferIndex</a></div><div class="ttdeci">int bufferIndex</div><div class="ttdef"><b>Definition</b> <a href="#l00009">main.cpp:9</a></div></div>
 <div class="ttc" id="amain_8cpp_html_a9f153132b8b4afad133b952111e18bd9"><div class="ttname"><a href="main_8cpp.html#a9f153132b8b4afad133b952111e18bd9">core1_entry</a></div><div class="ttdeci">void core1_entry()</div><div class="ttdef"><b>Definition</b> <a href="#l00011">main.cpp:11</a></div></div>
-<div class="ttc" id="amain_8cpp_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition</b> <a href="#l00059">main.cpp:59</a></div></div>
+<div class="ttc" id="amain_8cpp_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition</b> <a href="#l00065">main.cpp:65</a></div></div>
 <div class="ttc" id="amain_8cpp_html_af00b615ca097c43dbb02ae3a00ea3a62"><div class="ttname"><a href="main_8cpp.html#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a></div><div class="ttdeci">char buffer[BUFFER_SIZE]</div><div class="ttdef"><b>Definition</b> <a href="#l00008">main.cpp:8</a></div></div>
 <div class="ttc" id="amain_8cpp_html_af8335a606a184154d5e0860517b1e2f8"><div class="ttname"><a href="main_8cpp.html#af8335a606a184154d5e0860517b1e2f8">powerManager</a></div><div class="ttdeci">PowerManager powerManager(MAIN_I2C_PORT)</div></div>
 <div class="ttc" id="amain_8cpp_html_af9c066a94b810cae902343138b54f088"><div class="ttname"><a href="main_8cpp.html#af9c066a94b810cae902343138b54f088">systemClock</a></div><div class="ttdeci">DS3231 systemClock(MAIN_I2C_PORT)</div></div>
@@ -270,7 +264,6 @@ $(function(){initNavTree('main_8cpp_source.html',''); initResizable(true); });
 <div class="ttc" id="apin__config_8h_html_af2e27807e37db3df1c383812da249090"><div class="ttname"><a href="pin__config_8h.html#af2e27807e37db3df1c383812da249090">MAIN_I2C_SDA_PIN</a></div><div class="ttdeci">#define MAIN_I2C_SDA_PIN</div><div class="ttdef"><b>Definition</b> <a href="pin__config_8h_source.html#l00015">pin_config.h:15</a></div></div>
 <div class="ttc" id="apin__config_8h_html_aff9a5d52092479f80c68a37d9f47ea0c"><div class="ttname"><a href="pin__config_8h.html#aff9a5d52092479f80c68a37d9f47ea0c">GPS_UART_BAUD_RATE</a></div><div class="ttdeci">#define GPS_UART_BAUD_RATE</div><div class="ttdef"><b>Definition</b> <a href="pin__config_8h_source.html#l00020">pin_config.h:20</a></div></div>
 <div class="ttc" id="aprotocol_8h_html_ad13fb53c92ad2af53a95ee45749796d1a551b723eafd6a31d444fcb2f5920fbd3"><div class="ttname"><a href="protocol_8h.html#ad13fb53c92ad2af53a95ee45749796d1a551b723eafd6a31d444fcb2f5920fbd3">ExecutionResult::INFO</a></div><div class="ttdeci">@ INFO</div><div class="ttdef"><b>Definition</b> <a href="protocol_8h_source.html#l00029">protocol.h:29</a></div></div>
-<div class="ttc" id="astorage_8cpp_html_afb19e37469a751aa61de3dcd0c70b4b0"><div class="ttname"><a href="storage_8cpp.html#afb19e37469a751aa61de3dcd0c70b4b0">fs_init</a></div><div class="ttdeci">bool fs_init(void)</div><div class="ttdoc">Initializes the file system on the SD card.</div><div class="ttdef"><b>Definition</b> <a href="storage_8cpp_source.html#l00023">storage.cpp:23</a></div></div>
 <div class="ttc" id="astruct_frame_html"><div class="ttname"><a href="struct_frame.html">Frame</a></div><div class="ttdef"><b>Definition</b> <a href="protocol_8h_source.html#l00065">protocol.h:65</a></div></div>
 <div class="ttc" id="autils_8cpp_html_aacbcecbe6b5428e3571b06ab2104e706"><div class="ttname"><a href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a></div><div class="ttdeci">void uartPrint(const std::string &amp;msg, bool logToFile, uart_inst_t *uart)</div><div class="ttdoc">Prints a message to the UART with a timestamp and core number.</div><div class="ttdef"><b>Definition</b> <a href="utils_8cpp_source.html#l00026">utils.cpp:26</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

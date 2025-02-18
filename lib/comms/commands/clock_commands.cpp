@@ -19,7 +19,11 @@ extern DS3231 systemClock;
   * @param param For SET: Unix timestamp as string, for GET: empty string
   * @param operationType GET/SET
   * @return Frame containing success/error and current time or confirmation
-  * @details When getting time, returns format "HH:MM:SS Weekday DD.MM.YYYY"
+  * @details 
+  * @note GET: <b>KBST;0;GET;3;0;;KBST</b>
+  * @note When getting time, returns format "HH:MM:SS Weekday DD.MM.YYYY"
+  * @note SET: <b>KBST;0;SET;3;0;TIMESTAMP;KBST</b>
+  * @note When setting time, expects Unix timestamp as parameter
   * @ingroup ClockCommands
   * @xrefitem command "Command" "Clock Commands" Command ID: 3.0
   */
@@ -55,19 +59,10 @@ Frame handleTime(const std::string& param, OperationType operationType) {
         }
     }
 
-    // GET operation
-    uint8_t sec, min, hour, day, month;
-    uint16_t year;
-    std::string weekday;
-    if (systemClock.getTime(sec, min, hour, weekday, day, month, year)) {
+    uint32_t timeUnix = systemClock.getTimeUnix();
+    if (timeUnix != 0) {
         std::stringstream ss;
-        ss << std::setw(2) << std::setfill('0') << static_cast<int>(hour) << ":"
-           << std::setw(2) << std::setfill('0') << static_cast<int>(min) << ":"
-           << std::setw(2) << std::setfill('0') << static_cast<int>(sec) << " "
-           << weekday << " "
-           << std::setw(2) << std::setfill('0') << static_cast<int>(day) << "."
-           << std::setw(2) << std::setfill('0') << static_cast<int>(month) << "."
-           << year;
+        ss << timeUnix;
         return buildFrame(ExecutionResult::SUCCESS, 3, 0, ss.str());
     } else {
         return buildFrame(ExecutionResult::ERROR, 3, 0, "FAILED TO GET TIME");

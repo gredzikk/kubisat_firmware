@@ -1,9 +1,11 @@
 <map id="core1_entry" name="core1_entry">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,183,95,209"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,208,95,235"/>
 <area shape="rect" id="Node000002" href="$event__manager_8cpp.html#a467714d66058f52e4ac7aeb6df46b433" title="Checks power statuses and triggers events based on voltage trends." alt="" coords="143,132,277,159"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,179,150,161,152,166,96,185"/>
-<area shape="rect" id="Node000010" href="$gps__collector_8cpp.html#abe46d88c89b1f730f6c9a230acac2a6a" title=" " alt="" coords="152,208,268,235"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="96,200,138,207,137,212,95,206"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="79,205,165,163,168,168,81,210"/>
+<area shape="rect" id="Node000009" href="$utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706" title="Prints a message to the UART with a timestamp and core number." alt="" coords="398,208,469,235"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="95,219,383,219,383,224,95,224"/>
+<area shape="rect" id="Node000010" href="$gps__collector_8cpp.html#abe46d88c89b1f730f6c9a230acac2a6a" title=" " alt="" coords="152,259,268,285"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="96,233,152,251,150,256,94,238"/>
 <area shape="rect" id="Node000003" href="$class_event_emitter.html#a539d733505f9a793439a9cfc4f2af079" title="Emits an event." alt="" coords="368,5,499,32"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="221,130,263,86,292,62,324,42,353,30,355,35,326,46,295,66,266,90,224,133"/>
 <area shape="rect" id="Node000004" href="$class_power_manager.html#ae0e4303ddaba328047fb40d8d925c7dd" title=" " alt="" coords="337,56,530,83"/>
@@ -12,13 +14,11 @@
 <area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="277,135,321,130,322,135,278,140"/>
 <area shape="rect" id="Node000007" href="$class_power_manager.html#a0548ae14a668bb06e4cc13e0295ad5c8" title=" " alt="" coords="325,157,542,184"/>
 <area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="278,150,310,154,309,159,277,156"/>
-<area shape="rect" id="Node000009" href="$utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706" title="Prints a message to the UART with a timestamp and core number." alt="" coords="398,208,469,235"/>
 <area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="240,157,326,193,384,209,383,214,324,199,238,162"/>
 <area shape="rect" id="Node000006" href="$class_power_manager.html#a097734aac2bcc228d6cf22c00e3acb1a" title=" " alt="" coords="590,91,768,133"/>
 <area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="531,114,575,113,575,118,531,120"/>
 <area shape="rect" id="Node000008" href="$class_power_manager.html#a3f9587ee81469642a2e595ef3805e801" title=" " alt="" coords="590,157,768,200"/>
 <area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="543,172,575,173,574,178,543,177"/>
-<area shape="poly" id="edge11_Node000010_Node000009" title=" " alt="" coords="268,219,383,219,383,224,268,224"/>
 <area shape="rect" id="Node000011" href="$gps__collector_8cpp.html#a0509cbb838eb47985372ff8889e507f5" title=" " alt="" coords="394,259,473,285"/>
-<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="269,232,379,257,378,262,268,237"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="268,269,378,269,378,275,268,275"/>
 </map>

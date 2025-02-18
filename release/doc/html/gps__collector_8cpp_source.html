@@ -149,25 +149,20 @@ $(function(){initNavTree('gps__collector_8cpp_source.html',''); initResizable(tr
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                <span class="comment">// Update the global vectors based on the sentence type</span></div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                <span class="keywordflow">if</span> (message.find(<span class="stringliteral">&quot;$GPRMC&quot;</span>) == 0) {</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                    <a class="code hl_variable" href="gps__collector_8cpp.html#af2b979012abe80d338fef98209f87b78">nmea_data</a>.updateRmcTokens(tokens);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                    <a class="code hl_function" href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a>(<span class="stringliteral">&quot;RMC data received!&quot;</span>);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                    <a class="code hl_function" href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a>(message.c_str());</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (message.find(<span class="stringliteral">&quot;$GPGGA&quot;</span>) == 0) {</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                    <a class="code hl_variable" href="gps__collector_8cpp.html#af2b979012abe80d338fef98209f87b78">nmea_data</a>.updateGgaTokens(tokens);</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                    <a class="code hl_function" href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a>(<span class="stringliteral">&quot;GGA data received!&quot;</span>);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                    <a class="code hl_function" href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a>(message.c_str());</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                }</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            }</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            <span class="comment">// Append to buffer</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            <span class="keywordflow">if</span> (raw_data_index &lt; <a class="code hl_define" href="gps__collector_8cpp.html#a72dde6c82b28027b8cc37e6a827306a7">MAX_RAW_DATA_LENGTH</a> - 1) {</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                raw_data_buffer[raw_data_index++] = c;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                <a class="code hl_function" href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a>(<span class="stringliteral">&quot;GPS data overflow!&quot;</span>);</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                raw_data_index = 0;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            }</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        }</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    }</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>}</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (message.find(<span class="stringliteral">&quot;$GPGGA&quot;</span>) == 0) {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                    <a class="code hl_variable" href="gps__collector_8cpp.html#af2b979012abe80d338fef98209f87b78">nmea_data</a>.updateGgaTokens(tokens);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                }</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            }</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            <span class="comment">// Append to buffer</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            <span class="keywordflow">if</span> (raw_data_index &lt; <a class="code hl_define" href="gps__collector_8cpp.html#a72dde6c82b28027b8cc37e6a827306a7">MAX_RAW_DATA_LENGTH</a> - 1) {</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                raw_data_buffer[raw_data_index++] = c;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                raw_data_index = 0;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            }</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        }</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    }</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>}</div>
 </div>
 <div class="ttc" id="a_d_s3231_8h_html"><div class="ttname"><a href="_d_s3231_8h.html">DS3231.h</a></div></div>
 <div class="ttc" id="a_n_m_e_a__data_8h_html"><div class="ttname"><a href="_n_m_e_a__data_8h.html">NMEA_data.h</a></div></div>
@@ -179,7 +174,6 @@ $(function(){initNavTree('gps__collector_8cpp_source.html',''); initResizable(tr
 <div class="ttc" id="agps__collector_8cpp_html_af2b979012abe80d338fef98209f87b78"><div class="ttname"><a href="gps__collector_8cpp.html#af2b979012abe80d338fef98209f87b78">nmea_data</a></div><div class="ttdeci">NMEAData nmea_data</div><div class="ttdef"><b>Definition</b> <a href="_n_m_e_a__data_8cpp_source.html#l00003">NMEA_data.cpp:3</a></div></div>
 <div class="ttc" id="agps__collector_8h_html"><div class="ttname"><a href="gps__collector_8h.html">gps_collector.h</a></div></div>
 <div class="ttc" id="apin__config_8h_html_a31bae3288bdf1b7a767c494f2b049779"><div class="ttname"><a href="pin__config_8h.html#a31bae3288bdf1b7a767c494f2b049779">GPS_UART_PORT</a></div><div class="ttdeci">#define GPS_UART_PORT</div><div class="ttdef"><b>Definition</b> <a href="pin__config_8h_source.html#l00019">pin_config.h:19</a></div></div>
-<div class="ttc" id="autils_8cpp_html_aacbcecbe6b5428e3571b06ab2104e706"><div class="ttname"><a href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a></div><div class="ttdeci">void uartPrint(const std::string &amp;msg, bool logToFile, uart_inst_t *uart)</div><div class="ttdoc">Prints a message to the UART with a timestamp and core number.</div><div class="ttdef"><b>Definition</b> <a href="utils_8cpp_source.html#l00026">utils.cpp:26</a></div></div>
 <div class="ttc" id="autils_8h_html"><div class="ttname"><a href="utils_8h.html">utils.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

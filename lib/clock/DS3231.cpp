@@ -1,6 +1,7 @@
 #include "DS3231.h"
 #include <iomanip>
 #include <sstream>
+#include "utils.h"
 
 const std::array<std::string, 7> DS3231::WEEKDAYS = {
     "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"
@@ -11,6 +12,9 @@ DS3231::DS3231(i2c_inst_t *i2c_port, uint8_t address) : i2c(i2c_port), address(a
 
 bool DS3231::setTime(uint8_t sec, uint8_t min, uint8_t hour,
                     uint8_t weekday, uint8_t day, uint8_t month, uint16_t year) {
+    
+    std::string timeStr = "Setting time: " + std::to_string(year) + "-" + std::to_string(month) + "-" + std::to_string(day) + " " + std::to_string(hour) + ":" + std::to_string(min) + ":" + std::to_string(sec);
+    uartPrint(timeStr); 
     uint8_t buffer[8];
     buffer[0] = 0;
     buffer[1] = bin2bcd(sec);
@@ -60,14 +64,17 @@ std::string DS3231::getTimeString() {
     }
     
     std::stringstream ss;
-    ss << preZero(hour) << ":" << preZero(min) << ":" << preZero(sec)
-       << "      " << weekday << " " 
-       << static_cast<int>(day) << "." 
-       << static_cast<int>(month) << "." 
+    ss << std::setw(2) << std::setfill('0') << static_cast<int>(hour) << ":"
+       << std::setw(2) << std::setfill('0') << static_cast<int>(min) << ":"
+       << std::setw(2) << std::setfill('0') << static_cast<int>(sec)
+       << "      " << weekday << " "
+       << std::setw(2) << std::setfill('0') << static_cast<int>(day) << "."
+       << std::setw(2) << std::setfill('0') << static_cast<int>(month) << "."
        << year;
     
     return ss.str();
 }
+
 
 uint8_t DS3231::bcd2bin(uint8_t val) {
     return ((val/16) * 10) + (val % 16);

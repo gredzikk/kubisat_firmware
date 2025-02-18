@@ -9,6 +9,7 @@ char buffer[BUFFER_SIZE];
 int bufferIndex = 0;
 
 void core1_entry() {
+    uartPrint("Starting core 1");
     while (true) {
         collectGPSData();
         checkPowerEvents(powerManager);
@@ -41,9 +42,13 @@ bool initSystems() {
         gpio_set_dir(GPS_POWER_ENABLE_PIN, GPIO_OUT);
         gpio_put(GPS_POWER_ENABLE_PIN, 1); 
     }
+
+    bool radioInitSuccess = false;
+
+    radioInitSuccess = initializeRadio();
     
     // @todo[critical] Test sd card working
-    bool sdInitDone = fs_init();
+    bool sdInitDone = false;//fs_init();
     uartPrint("SD card init: " + std::to_string(sdInitDone));
     std::string bootString = "System init completed @ " + std::to_string(to_ms_since_boot(get_absolute_time())) + " ms";
     uartPrint(bootString);
@@ -51,7 +56,8 @@ bool initSystems() {
     Frame boot = buildFrame(ExecutionResult::INFO, 0, 0, "HELLO");
     sendFrame(boot);
 
-    return true;
+    uartPrint("System init done.");
+    return radioInitSuccess;
 }
 
 void loggingRoutine();
@@ -72,18 +78,7 @@ int main()
         };
         powerManager.configure(powerConfig);
     }
-    gpio_put(PICO_DEFAULT_LED_PIN, 0);
 
-    bool radioInitSuccess = false;
-
-    radioInitSuccess = initializeRadio();
-    gpio_put(PICO_DEFAULT_LED_PIN, 1);
-
-    if (radioInitSuccess)
-    {
-        sendMessage("System initialized successfully!");    
-    }
-    
     gpio_put(PICO_DEFAULT_LED_PIN, 0);
 
     uartPrint("This message will only be printed to UART.");

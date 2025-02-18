@@ -1,18 +1,20 @@
 <map id="EventEmitter::emit" name="EventEmitter::emit">
-<area shape="rect" id="Node000001" title="Emits an event." alt="" coords="529,107,660,133"/>
-<area shape="rect" id="Node000002" href="$event__manager_8cpp.html#a467714d66058f52e4ac7aeb6df46b433" title="Checks power statuses and triggers events based on voltage trends." alt="" coords="300,5,434,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="564,99,525,71,480,46,434,32,436,27,482,42,528,67,567,95"/>
-<area shape="rect" id="Node000005" href="$group___g_p_s_commands.html#gad12f2e18bdfecbd5b6e8d8a84bb9cd77" title="Handler for enabling GPS transparent mode (UART pass&#45;through)" alt="" coords="253,56,481,83"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="516,105,481,97,430,86,431,81,482,92,517,100"/>
-<area shape="rect" id="Node000006" href="$group___g_p_s_commands.html#gaa4c13d7d324ffb354badf45e9ceffb1c" title="Handler for controlling GPS module power state." alt="" coords="286,107,448,133"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="514,123,449,123,449,117,514,117"/>
-<area shape="rect" id="Node000007" href="$group___clock_commands.html#ga1eefb8c4d539d50c787b4db3f6ebb093" title="Handler for getting and setting system time." alt="" coords="323,157,411,184"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="517,140,482,148,412,164,411,158,481,143,516,135"/>
-<area shape="rect" id="Node000008" href="$communication_8cpp.html#a520df448c1dc359f42111ac240081975" title="Initializes the LoRa radio module." alt="" coords="103,132,205,159"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="570,146,531,175,482,199,419,215,368,219,316,213,252,199,209,182,174,162,176,157,211,177,254,193,317,208,368,214,418,209,480,193,528,170,567,141"/>
-<area shape="rect" id="Node000003" href="$main_8cpp.html#a9f153132b8b4afad133b952111e18bd9" title=" " alt="" coords="109,44,198,71"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="285,36,200,52,199,47,284,31"/>
+<area shape="rect" id="Node000001" title="Emits an event." alt="" coords="517,107,648,133"/>
+<area shape="rect" id="Node000002" href="$event__manager_8cpp.html#a467714d66058f52e4ac7aeb6df46b433" title="Checks power statuses and triggers events based on voltage trends." alt="" coords="288,5,422,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="552,99,513,71,468,46,422,32,424,27,470,42,516,67,555,95"/>
+<area shape="rect" id="Node000005" href="$group___g_p_s_commands.html#gad12f2e18bdfecbd5b6e8d8a84bb9cd77" title="Handler for enabling GPS transparent mode (UART pass&#45;through)" alt="" coords="241,56,469,83"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="504,105,469,97,418,86,419,81,470,92,505,100"/>
+<area shape="rect" id="Node000006" href="$group___g_p_s_commands.html#gaa4c13d7d324ffb354badf45e9ceffb1c" title="Handler for controlling GPS module power state." alt="" coords="274,107,436,133"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="502,123,437,123,437,117,502,117"/>
+<area shape="rect" id="Node000007" href="$group___clock_commands.html#ga1eefb8c4d539d50c787b4db3f6ebb093" title="Handler for getting and setting system time." alt="" coords="311,157,399,184"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="505,140,470,148,400,164,399,158,469,143,504,135"/>
+<area shape="rect" id="Node000008" href="$communication_8cpp.html#a520df448c1dc359f42111ac240081975" title="Initializes the LoRa radio module." alt="" coords="304,208,406,235"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="555,145,516,173,470,198,439,209,407,217,406,212,437,204,468,194,513,169,552,141"/>
+<area shape="rect" id="Node000003" href="$main_8cpp.html#a9f153132b8b4afad133b952111e18bd9" title=" " alt="" coords="103,44,192,71"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="273,37,193,52,192,46,272,31"/>
 <area shape="rect" id="Node000004" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,107,55,133"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="114,80,57,110,54,105,111,76"/>
-<area shape="poly" id="edge8_Node000008_Node000004" title=" " alt="" coords="87,134,54,128,55,122,88,129"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="109,81,57,109,54,105,106,76"/>
+<area shape="rect" id="Node000009" href="$main_8cpp.html#a21af2d50d7779336997d5f3456352431" title=" " alt="" coords="103,132,193,159"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="288,213,240,198,202,181,169,162,172,157,204,176,242,194,289,207"/>
+<area shape="poly" id="edge9_Node000009_Node000004" title=" " alt="" coords="87,135,55,128,56,123,88,130"/>
 </map>

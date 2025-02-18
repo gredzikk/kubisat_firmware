@@ -40,6 +40,7 @@ void sendMessage(string outgoing)
  * @details Encodes the Frame into a string and sends it using the sendMessage function.
  */
 void sendFrame(const Frame& frame) {
+    
     std::string encodedFrame = encodeFrame(frame);
     // sendLargePacket(data, encodedFrame);
     sendMessage(encodedFrame);

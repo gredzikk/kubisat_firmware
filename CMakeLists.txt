@@ -124,7 +124,6 @@ add_custom_command(
         -P "${CMAKE_SOURCE_DIR}/cmake/build_number.cmake"
 )
 
-# Release artifacts
 add_custom_command(
     TARGET main POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_CURRENT_SOURCE_DIR}/release"
@@ -132,6 +131,29 @@ add_custom_command(
         "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.uf2"
         "${CMAKE_CURRENT_SOURCE_DIR}/release/${PROJECT_NAME}.uf2"
     COMMENT "Copying ${PROJECT_NAME}.uf2 to release directory"
+    VERBATIM
+)
+
+# Include graph generation
+find_package(Python3 REQUIRED)
+find_program(DOT_EXECUTABLE dot)
+
+if(DOT_EXECUTABLE)
+    add_custom_command(
+        TARGET main POST_BUILD
+        COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/generate_include_graph.py
+        COMMAND ${DOT_EXECUTABLE} -Tpng include_graph.dot -o ${CMAKE_CURRENT_SOURCE_DIR}/release/include_graph.png
+        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+        COMMENT "Generating include dependency graph"
+        VERBATIM
+    )
+endif()
+
+add_custom_command(
+    TARGET main POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E echo "Release artifacts created successfully"
+    COMMAND ${CMAKE_COMMAND} -E echo "Include graph generated successfully"
+    COMMAND ${CMAKE_COMMAND} -E echo "Build process completed successfully!"
 )
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/documentation.cmake)

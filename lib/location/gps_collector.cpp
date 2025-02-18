@@ -44,12 +44,8 @@ void collectGPSData() {
                 // Update the global vectors based on the sentence type
                 if (message.find("$GPRMC") == 0) {
                     nmea_data.updateRmcTokens(tokens);
-                    uartPrint("RMC data received!");
-                    uartPrint(message.c_str());
                 } else if (message.find("$GPGGA") == 0) {
                     nmea_data.updateGgaTokens(tokens);
-                    uartPrint("GGA data received!");
-                    uartPrint(message.c_str());
                 }
             }
         } else {
@@ -57,7 +53,6 @@ void collectGPSData() {
             if (raw_data_index < MAX_RAW_DATA_LENGTH - 1) {
                 raw_data_buffer[raw_data_index++] = c;
             } else {
-                uartPrint("GPS data overflow!");
                 raw_data_index = 0;
             }
         }
