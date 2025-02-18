@@ -45,7 +45,6 @@ set(MAIN_SOURCES
     pin_config.cpp    
     event_manager.cpp
     utils.cpp
-    logging.cpp
     storage.cpp
 )
 

@@ -1,5 +1,17 @@
 #include "communication.h"
 
+
+/**
+ * @file send.cpp
+ * @brief Implements functions for sending data, including LoRa messages and Frames.
+ */
+
+/**
+ * @brief Sends a message using LoRa.
+ * @param outgoing The message to send.
+ * @details Converts the outgoing string to a C-style string, adds destination and local addresses,
+ *          and sends the message using LoRa. Prints a log message to the UART.
+ */
 void sendMessage(string outgoing)
 {
     int n = outgoing.length();
@@ -21,13 +33,25 @@ void sendMessage(string outgoing)
     LoRa.flush();
 }
 
-// Sends a Frame using LoRa by encoding it into bytes.
+
+/**
+ * @brief Sends a Frame using LoRa.
+ * @param frame The Frame to send.
+ * @details Encodes the Frame into a string and sends it using the sendMessage function.
+ */
 void sendFrame(const Frame& frame) {
     std::string encodedFrame = encodeFrame(frame);
     // sendLargePacket(data, encodedFrame);
     sendMessage(encodedFrame);
 }
 
+
+/**
+ * @brief Sends a large packet using LoRa.
+ * @param data The data to send.
+ * @param length The length of the data.
+ * @details Splits the data into chunks of MAX_PKT_SIZE and sends each chunk as a separate LoRa packet.
+ */
 void sendLargePacket(const uint8_t* data, size_t length)
 {
     const size_t MAX_PKT_SIZE = 255;

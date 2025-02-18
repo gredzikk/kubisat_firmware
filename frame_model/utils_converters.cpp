@@ -1,5 +1,16 @@
 #include "communication.h"
 
+
+/**
+ * @file utils_converters.cpp
+ * @brief Implements utility functions for converting between different data types.
+ */
+
+/**
+ * @brief Converts an ExceptionType to a string.
+ * @param type The ExceptionType to convert.
+ * @return The string representation of the ExceptionType.
+ */
 std::string exceptionTypeToString(ExceptionType type) {
     switch (type) {
         case ExceptionType::NOT_ALLOWED:       return "NOT ALLOWED";
@@ -11,6 +22,12 @@ std::string exceptionTypeToString(ExceptionType type) {
     }
 }
 
+
+/**
+ * @brief Converts a ValueUnit to a string.
+ * @param unit The ValueUnit to convert.
+ * @return The string representation of the ValueUnit.
+ */
 std::string valueUnitTypeToString(ValueUnit unit) {
     switch (unit) {
         case ValueUnit::UNDEFINED:  return "";
@@ -24,7 +41,12 @@ std::string valueUnitTypeToString(ValueUnit unit) {
     }
 }
 
-// Function to convert OperationType to string
+
+/**
+ * @brief Converts an OperationType to a string.
+ * @param type The OperationType to convert.
+ * @return The string representation of the OperationType.
+ */
 std::string operationTypeToString(OperationType type) {
     switch (type) {
         case OperationType::GET: return "GET";
@@ -36,7 +58,12 @@ std::string operationTypeToString(OperationType type) {
     }
 }
 
-// Function to convert string to OperationType
+
+/**
+ * @brief Converts a string to an OperationType.
+ * @param str The string to convert.
+ * @return The OperationType corresponding to the string. Defaults to GET if the string is not recognized.
+ */
 OperationType stringToOperationType(const std::string& str) {
     if (str == "GET") return OperationType::GET;
     if (str == "SET") return OperationType::SET;
@@ -46,9 +73,11 @@ OperationType stringToOperationType(const std::string& str) {
     return OperationType::GET; // Default to GET
 }
 
-/// @brief Convert a hex string to a vector of bytes
-/// @param hexString Hex string to convert
-/// @return Vector of bytes
+/**
+ * @brief Converts a hex string to a vector of bytes.
+ * @param hexString The hex string to convert.
+ * @return A vector of bytes representing the hex string.
+ */
 std::vector<uint8_t> hexStringToBytes(const std::string& hexString) {
     std::vector<uint8_t> bytes;
     for (size_t i = 0; i < hexString.length(); i += 2) {

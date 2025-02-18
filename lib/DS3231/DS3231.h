@@ -48,11 +48,6 @@ public:
     
     void setLastSyncTime(uint32_t unixTime) { lastSyncTime = unixTime; }
     uint32_t getLastSyncTime() const { return lastSyncTime; }
-    
-    void setClockDrift(float ppmDrift) { clockDrift = ppmDrift; }
-    float getClockDrift() const { return clockDrift; }
-    
-    bool needsSync();
 
 
 private:
@@ -63,7 +58,6 @@ private:
     int16_t timezoneOffset = 0;      // Offset in minutes from UTC
     uint32_t syncInterval = 86400;    // Default sync interval: 24 hours
     uint32_t lastSyncTime = 0;        // Last successful GPS sync time
-    float clockDrift = 0.0f;          // Clock drift in PPM
     
     // Utility functions
     uint8_t bcd2bin(uint8_t val);

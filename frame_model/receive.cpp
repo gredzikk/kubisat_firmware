@@ -1,5 +1,17 @@
 #include "communication.h"
 
+
+/**
+ * @file receive.cpp
+ * @brief Implements functions for receiving and processing data, including LoRa and UART input.
+ */
+
+/**
+ * @brief Callback function for handling received LoRa packets.
+ * @param packetSize The size of the received packet.
+ * @details Reads the received LoRa packet, extracts metadata, validates the destination and local addresses,
+ *          extracts the frame data, and processes it. Prints raw hex values for debugging.
+ */
 void onReceive(int packetSize) {
     if (packetSize == 0) return;
 
@@ -56,6 +68,12 @@ void onReceive(int packetSize) {
     }
 }
 
+
+/**
+ * @brief Handles UART input.
+ * @details Reads characters from the UART port, appends them to a buffer, and processes the buffer when a newline
+ *          character is received.
+ */
 void handleUartInput() {
     static std::string uartBuffer; // Static buffer to store UART input
 

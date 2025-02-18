@@ -66,13 +66,21 @@ enum class ClockEvent : uint8_t {
 };
 
 
+/**
+ * @class EventLog
+ * @brief Represents a single event log entry.
+ */
 class EventLog {
 public:
-    uint16_t id;          // Sequence number
-    uint32_t timestamp;   // Unix timestamp or system time
-    uint8_t group;        // Event group identifier
-    uint8_t event;        // Specific event identifier
+    uint16_t id;          ///< Sequence number
+    uint32_t timestamp;   ///< Unix timestamp or system time
+    uint8_t group;        ///< Event group identifier
+    uint8_t event;        ///< Specific event identifier
 
+    /**
+     * @brief Converts the EventLog to a string representation.
+     * @return A string representation of the EventLog.
+     */
     std::string toString() const {
         char buffer[256];
         snprintf(buffer, sizeof(buffer),
@@ -81,63 +89,136 @@ public:
         return std::string(buffer);
     }
 } __attribute__((packed));
-    
+
+
+/**
+ * @class EventManager
+ * @brief Manages the event logging system.
+ */
 class EventManager {
-public:
-        EventManager() 
-        : eventCount(0)
-        , writeIndex(0)
-        , nextEventId(0)
-        , needsPersistence(false) 
-    {
-        mutex_init(&eventMutex);
-    }
-
-    virtual ~EventManager() = default;
-
-    // Add initialization method
-    virtual void init() {
-        loadFromStorage();
-    }
+    public:
+        /**
+         * @brief Constructor for the EventManager.
+         * @details Initializes the event buffer, mutex, and other internal variables.
+         */
+        EventManager()
+            : eventCount(0)
+            , writeIndex(0)
+            , nextEventId(0)
+            , needsPersistence(false)
+        {
+            mutex_init(&eventMutex);
+        }
     
-    void logEvent(uint8_t group, uint8_t event);
-    const EventLog& getEvent(size_t index) const;
-    size_t getEventCount() const { return eventCount; }
+        /**
+         * @brief Virtual destructor for the EventManager.
+         */
+        virtual ~EventManager() = default;
     
-    virtual bool saveToStorage() = 0;
-    virtual bool loadFromStorage() = 0;
+        /**
+         * @brief Initializes the EventManager.
+         * @details Loads events from storage.
+         */
+        virtual void init() {
+            loadFromStorage();
+        }
+    
+        /**
+         * @brief Logs an event.
+         * @param group The event group.
+         * @param event The event identifier.
+         */
+        void logEvent(uint8_t group, uint8_t event);
+    
+        /**
+         * @brief Retrieves an event from the event buffer.
+         * @param index The index of the event to retrieve.
+         * @return A const reference to the EventLog at the specified index.
+         */
+        const EventLog& getEvent(size_t index) const;
+    
+        /**
+         * @brief Gets the number of events in the buffer.
+         * @return The number of events in the buffer.
+         */
+        size_t getEventCount() const { return eventCount; }
+    
+        /**
+         * @brief Saves the events to storage.
+         * @return True if the events were successfully saved, false otherwise.
+         */
+        virtual bool saveToStorage() = 0;
+    
+        /**
+         * @brief Loads the events from storage.
+         * @return True if the events were successfully loaded, false otherwise.
+         */
+        virtual bool loadFromStorage() = 0;
+    
+    protected:
+        EventLog events[EVENT_BUFFER_SIZE];  ///< Event buffer
+        size_t eventCount;                   ///< Number of events in the buffer
+        size_t writeIndex;                   ///< Index of the next event to be written
+        mutex_t eventMutex;                   ///< Mutex for protecting the event buffer
+        volatile uint16_t nextEventId;        ///< Next event ID
+        bool needsPersistence;              ///< Flag indicating whether the events need to be saved to storage
+    };
+    
 
-protected:
-    EventLog events[EVENT_BUFFER_SIZE];
-    size_t eventCount;
-    size_t writeIndex;
-    mutex_t eventMutex;
-    volatile uint16_t nextEventId;
-    bool needsPersistence;
-};
-    
+/**
+ * @class EventManagerImpl
+ * @brief Implementation of the EventManager class.
+ */
 class EventManagerImpl : public EventManager {
-public:
-    EventManagerImpl() {
-        init(); // Safe to call virtual functions here
-    }
-
-    bool saveToStorage() override {
-        // TODO: Implement based on chosen storage (SD/EEPROM)
-        needsPersistence = false;
-        return true;
-    }
+    public:
+        /**
+         * @brief Constructor for the EventManagerImpl.
+         * @details Initializes the EventManagerImpl and calls the init method.
+         */
+        EventManagerImpl() {
+            init(); // Safe to call virtual functions here
+        }
     
-    bool loadFromStorage() override {
-        // TODO: Implement based on chosen storage (SD/EEPROM)
-        return false;
-    }
-};
+        /**
+         * @brief Saves the events to storage.
+         * @return True if the events were successfully saved, false otherwise.
+         * @details This method is not yet implemented.
+         */
+        bool saveToStorage() override {
+            // TODO: Implement based on chosen storage (SD/EEPROM)
+            needsPersistence = false;
+            return true;
+        }
+    
+        /**
+         * @brief Loads the events from storage.
+         * @return True if the events were successfully loaded, false otherwise.
+         * @details This method is not yet implemented.
+         */
+        bool loadFromStorage() override {
+            // TODO: Implement based on chosen storage (SD/EEPROM)
+            return false;
+        }
+    };
 
+
+/**
+ * @brief Global instance of the EventManagerImpl class.
+ */
 extern EventManagerImpl eventManager;
 
+/**
+ * @class EventEmitter
+ * @brief Provides a static method for emitting events.
+ */
 class EventEmitter {
-public:
+    public:
+        /**
+         * @brief Emits an event.
+         * @param group The event group.
+         * @param event The event identifier.
+         * @tparam T The type of the event identifier.
+         */
     template<typename T>
     static void emit(EventGroup group, T event) {
         eventManager.logEvent(
@@ -147,6 +228,11 @@ public:
     }
 };
 
+
+/**
+ * @brief Checks power statuses and triggers events based on voltage trends.
+ * @param pm Reference to the PowerManager object.
+ */
 void checkPowerEvents(PowerManager& pm);
 
 #endif

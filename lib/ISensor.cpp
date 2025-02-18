@@ -5,6 +5,18 @@
 #include "lib/HMC5883L/HMC5883L_WRAPPER.h"
 
 /**
+ * @file ISensor.cpp
+ * @brief Implements the SensorWrapper class for managing different sensor types.
+ * @details This file provides the implementation for initializing, configuring,
+ *          and reading data from various sensors.
+ */
+
+/**
+ * @class SensorWrapper
+ * @brief Manages different sensor types and provides a unified interface for accessing sensor data.
+ */
+
+/**
  * @brief Provides a global instance of SensorWrapper.
  * @return A reference to the single SensorWrapper instance.
  */

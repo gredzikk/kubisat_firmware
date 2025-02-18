@@ -5,6 +5,24 @@
 // Declare the systemClock as extern
 extern DS3231 systemClock;
 
+
+/**
+ * @defgroup ClockCommands Clock Management Commands
+ * @brief Commands for managing system time and clock settings
+ * @{
+ */
+
+ extern DS3231 systemClock;
+
+ /**
+  * @brief Handler for getting and setting system time
+  * @param param For SET: Unix timestamp as string, for GET: empty string
+  * @param operationType GET/SET
+  * @return Frame containing success/error and current time or confirmation
+  * @details When getting time, returns format "HH:MM:SS Weekday DD.MM.YYYY"
+  * @ingroup ClockCommands
+  * @xrefitem command "Command" "Clock Commands" Command ID: 3.0
+  */
 Frame handleTime(const std::string& param, OperationType operationType) {
     if (operationType == OperationType::SET && param.empty()) {
         return buildFrame(ExecutionResult::ERROR, 3, 0, "PARAM REQUIRED");
@@ -56,76 +74,101 @@ Frame handleTime(const std::string& param, OperationType operationType) {
     }
 }
 
-Frame handleGetTimezoneOffset(const std::string& param, OperationType operationType) {
-    if (operationType != OperationType::GET || !param.empty()) {
-        return buildFrame(ExecutionResult::ERROR, 3, 1, "INVALID REQUEST");
-    }
-    return buildFrame(ExecutionResult::SUCCESS, 3, 1, 
-                     std::to_string(systemClock.getTimezoneOffset()));
-}
 
-Frame handleSetTimezoneOffset(const std::string& param, OperationType operationType) {
-    if (operationType != OperationType::SET || param.empty()) {
-        return buildFrame(ExecutionResult::ERROR, 3, 2, "INVALID REQUEST");
+/**
+ * @brief Handler for getting and setting timezone offset
+ * @param param For SET: Timezone offset in minutes (-720 to +720), for GET: empty string
+ * @param operationType GET/SET
+ * @return Frame containing success/error and timezone offset in minutes
+ * @note GET: <b>KBST;0;GET;3;1;;KBST</b>
+ * @note SET: <b>KBST;0;SET;3;1;OFFSET;KBST</b>
+ * @ingroup ClockCommands
+ * @xrefitem command "Command" "Clock Commands" Command ID: 3.1
+ */
+Frame handleTimezoneOffset(const std::string& param, OperationType operationType) {
+    if (!(operationType == OperationType::GET || operationType == OperationType::SET)) {
+        return buildFrame(ExecutionResult::ERROR, 3, 1, "INVALID OPERATION");
     }
-    try {
-        int16_t offset = std::stoi(param);
-        if (offset < -720 || offset > 720) { // ±12 hours in minutes
-            return buildFrame(ExecutionResult::ERROR, 3, 2, "INVALID OFFSET");
+
+    if (operationType == OperationType::GET) {
+        if (!param.empty()) {
+            return buildFrame(ExecutionResult::ERROR, 3, 1, "PARAM UNNECESSARY");
         }
-        systemClock.setTimezoneOffset(offset);
-        return buildFrame(ExecutionResult::SUCCESS, 3, 2, param);
-    } catch (...) {
-        return buildFrame(ExecutionResult::ERROR, 3, 2, "INVALID PARAMETER");
+        return buildFrame(ExecutionResult::SUCCESS, 3, 1,
+                         std::to_string(systemClock.getTimezoneOffset()));
     }
+
+    if (operationType == OperationType::SET) {
+        if (param.empty()) {
+            return buildFrame(ExecutionResult::ERROR, 3, 1, "PARAM REQUIRED");
+        }
+        try {
+            int16_t offset = std::stoi(param);
+            if (offset < -720 || offset > 720) { // ±12 hours in minutes
+                return buildFrame(ExecutionResult::ERROR, 3, 1, "INVALID OFFSET");
+            }
+            systemClock.setTimezoneOffset(offset);
+            return buildFrame(ExecutionResult::SUCCESS, 3, 1, param);
+        } catch (...) {
+            return buildFrame(ExecutionResult::ERROR, 3, 1, "INVALID PARAMETER");
+        }
+    }
+    return buildFrame(ExecutionResult::ERROR, 3, 1, "UNKNOWN ERROR");
 }
 
-Frame handleGetClockSyncInterval(const std::string& param, OperationType operationType) {
+
+/**
+ * @brief Handler for getting and setting clock synchronization interval
+ * @param param For SET: Sync interval in seconds, for GET: empty string
+ * @param operationType GET/SET
+ * @return Frame containing success/error and sync interval in seconds
+ * @note GET: <b>KBST;0;GET;3;3;;KBST</b>
+ * @note SET: <b>KBST;0;SET;3;3;INTERVAL;KBST</b>
+ * @ingroup ClockCommands
+ * @xrefitem command "Command" "Clock Commands" Command ID: 3.3
+ */
+Frame handleClockSyncInterval(const std::string& param, OperationType operationType) {
+    if (!(operationType == OperationType::GET || operationType == OperationType::SET)) {
+        return buildFrame(ExecutionResult::ERROR, 3, 2, "INVALID OPERATION");
+    }
+
+    if (operationType == OperationType::GET) {
+        if (!param.empty()) {
+            return buildFrame(ExecutionResult::ERROR, 3, 2, "PARAM UNNECESSARY");
+        }
+        return buildFrame(ExecutionResult::SUCCESS, 3, 2,
+                         std::to_string(systemClock.getClockSyncInterval()));
+    }
+
+    if (operationType == OperationType::SET) {
+        if (param.empty()) {
+            return buildFrame(ExecutionResult::ERROR, 3, 2, "PARAM REQUIRED");
+        }
+        try {
+            uint32_t interval = std::stoul(param);
+            systemClock.setClockSyncInterval(interval);
+            return buildFrame(ExecutionResult::SUCCESS, 3, 2, param);
+        } catch (...) {
+            return buildFrame(ExecutionResult::ERROR, 3, 2, "INVALID PARAMETER");
+        }
+    }
+    return buildFrame(ExecutionResult::ERROR, 3, 2, "UNKNOWN ERROR");
+}
+
+/**
+ * @brief Handler for getting last clock sync time
+ * @param param Empty string expected
+ * @param operationType GET
+ * @return Frame containing success/error and last sync time as Unix timestamp
+ * @note <b>KBST;0;GET;3;7;;KBST</b>
+ * @ingroup ClockCommands
+ * @xrefitem command "Command" "Clock Commands" Command ID: 3.7
+ */
+Frame handleGetLastSyncTime(const std::string& param, OperationType operationType) {
     if (operationType != OperationType::GET || !param.empty()) {
         return buildFrame(ExecutionResult::ERROR, 3, 3, "INVALID REQUEST");
     }
     return buildFrame(ExecutionResult::SUCCESS, 3, 3, 
-                     std::to_string(systemClock.getClockSyncInterval()));
-}
-
-Frame handleSetClockSyncInterval(const std::string& param, OperationType operationType) {
-    if (operationType != OperationType::SET || param.empty()) {
-        return buildFrame(ExecutionResult::ERROR, 3, 4, "INVALID REQUEST");
-    }
-    try {
-        uint32_t interval = std::stoul(param);
-        systemClock.setClockSyncInterval(interval);
-        return buildFrame(ExecutionResult::SUCCESS, 3, 4, param);
-    } catch (...) {
-        return buildFrame(ExecutionResult::ERROR, 3, 4, "INVALID PARAMETER");
-    }
-}
-
-Frame handleGetClockDrift(const std::string& param, OperationType operationType) {
-    if (operationType != OperationType::GET || !param.empty()) {
-        return buildFrame(ExecutionResult::ERROR, 3, 5, "INVALID REQUEST");
-    }
-    return buildFrame(ExecutionResult::SUCCESS, 3, 5, 
-                     std::to_string(systemClock.getClockDrift()));
-}
-
-Frame handleSetClockDrift(const std::string& param, OperationType operationType) {
-    if (operationType != OperationType::SET || param.empty()) {
-        return buildFrame(ExecutionResult::ERROR, 3, 6, "INVALID REQUEST");
-    }
-    try {
-        float drift = std::stof(param);
-        systemClock.setClockDrift(drift);
-        return buildFrame(ExecutionResult::SUCCESS, 3, 6, param);
-    } catch (...) {
-        return buildFrame(ExecutionResult::ERROR, 3, 6, "INVALID PARAMETER");
-    }
-}
-
-Frame handleGetLastSyncTime(const std::string& param, OperationType operationType) {
-    if (operationType != OperationType::GET || !param.empty()) {
-        return buildFrame(ExecutionResult::ERROR, 3, 7, "INVALID REQUEST");
-    }
-    return buildFrame(ExecutionResult::SUCCESS, 3, 7, 
                      std::to_string(systemClock.getLastSyncTime()));
 }
+/** @} */ // end of ClockCommands group

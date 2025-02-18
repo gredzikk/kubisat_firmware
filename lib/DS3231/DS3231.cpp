@@ -176,18 +176,3 @@ DateTime DS3231::applyTimezone(const DateTime& utc, int16_t offsetMinutes) {
     time_t t = dateTimeToUnix(utc) + (offsetMinutes * 60);
     return unixToDateTime(t);
 }
-
-bool DS3231::needsSync() {
-    uint32_t now = getTimeUnix();
-    
-    // Check if sync interval has passed
-    if (now - lastSyncTime >= syncInterval) {
-        return true;
-    }
-    
-    // Calculate drift since last sync
-    float driftSeconds = (now - lastSyncTime) * (clockDrift / 1000000.0f);
-    
-    // If drift is more than 1 second, sync is needed
-    return std::abs(driftSeconds) >= 1.0f;
-}

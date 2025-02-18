@@ -1,8 +1,21 @@
 #include "communication.h"
 
-/// @brief Encode Frame instance into a string
-/// @param frame  Frame instance to encode
-/// @return Frame encoded as a string
+using CommandHandler = std::function<std::string(const std::string&, OperationType)>;
+extern std::map<uint32_t, CommandHandler> commandHandlers;
+extern volatile uint16_t eventRegister;
+
+/**
+ * @file frame.cpp
+ * @brief Implements functions for encoding, decoding, building, and processing Frames.
+ */
+
+/**
+ * @brief Encodes a Frame instance into a string.
+ * @param frame The Frame instance to encode.
+ * @return The Frame encoded as a string.
+ * @details The encoded string includes the frame direction, operation type, group, command, value, and unit,
+ *          all delimited by the DELIMITER character. The string is encapsulated by FRAME_BEGIN and FRAME_END.
+ */
 std::string encodeFrame(const Frame& frame) {
     std::stringstream ss;
     ss << static_cast<int>(frame.direction) << DELIMITER
@@ -18,9 +31,16 @@ std::string encodeFrame(const Frame& frame) {
     return FRAME_BEGIN + DELIMITER + ss.str() + DELIMITER + FRAME_END;
 }
 
-/// @brief Convert a string into a Frame instance
-/// @param data Frame data as a string
-/// @return Frame instance
+
+/**
+ * @brief Converts a string into a Frame instance.
+ * @param data The Frame data as a string.
+ * @return The Frame instance.
+ * @throws std::runtime_error if the frame header is invalid.
+ * @details Parses the input string, extracting the frame direction, operation type, group, command, value, and unit.
+ *          If an error occurs during parsing, an error message is printed to the UART, an error frame is built and sent,
+ *          and the exception is re-thrown.
+ */
 Frame decodeFrame(const std::string& data) {
     try {
         Frame frame;
@@ -71,11 +91,12 @@ Frame decodeFrame(const std::string& data) {
 }
 
 
-using CommandHandler = std::function<std::string(const std::string&, OperationType)>;
-extern std::map<uint32_t, CommandHandler> commandHandlers;
-
-/// @brief Execute the command based on the command key and the parameter
-/// @param data Frame data in string format
+/**
+ * @brief Executes a command based on the command key and the parameter.
+ * @param data The Frame data in string format.
+ * @details Decodes the frame data, extracts the command key, and executes the corresponding command.
+ *          Sends the response frame. If an error occurs, an error frame is built and sent.
+ */
 void processFrameData(const std::string& data) {
     try {
         Frame frame = decodeFrame(data);
@@ -91,10 +112,10 @@ void processFrameData(const std::string& data) {
 }
 
 
-extern volatile uint16_t eventRegister;
-
-/// @brief Send event register value to the ground station
-/// @note This function is called in the main loop
+/**
+ * @brief Sends the event register value to the ground station.
+ * @details This function is called in the main loop to send the current value of the event register.
+ */
 void sendEventRegister() {
     std::stringstream ss;
     ss << std::hex << std::setw(4) << std::setfill('0') << static_cast<int>(eventRegister);
@@ -110,6 +131,18 @@ void sendEventRegister() {
     sendFrame(eventFrame);
 }
 
+
+/**
+ * @brief Builds a Frame instance.
+ * @param result The execution result.
+ * @param group The group ID.
+ * @param command The command ID.
+ * @param value The value.
+ * @param unitType The value unit type.
+ * @return The Frame instance.
+ * @details Constructs a Frame instance based on the provided parameters. The frame direction and operation type
+ *          are set based on the execution result.
+ */
 Frame buildFrame(ExecutionResult result, uint8_t group, uint8_t command, 
                 const std::string& value, const ValueUnit unitType) {
     Frame frame;

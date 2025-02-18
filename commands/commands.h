@@ -9,12 +9,8 @@
 
 // CLOCK
 Frame handleTime(const std::string& param, OperationType operationType);
-Frame handleGetTimezoneOffset(const std::string& param, OperationType operationType);
-Frame handleSetTimezoneOffset(const std::string& param, OperationType operationType);
-Frame handleGetClockSyncInterval(const std::string& param, OperationType operationType);
-Frame handleSetClockSyncInterval(const std::string& param, OperationType operationType);
-Frame handleGetClockDrift(const std::string& param, OperationType operationType);
-Frame handleSetClockDrift(const std::string& param, OperationType operationType);
+Frame handleTimezoneOffset(const std::string& param, OperationType operationType);
+Frame handleClockSyncInterval(const std::string& param, OperationType operationType);
 Frame handleGetLastSyncTime(const std::string& param, OperationType operationType);
 
 // DIAG

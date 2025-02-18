@@ -6,6 +6,23 @@
 
 static mutex_t uart_mutex;
 
+
+/**
+ * @file utils.cpp
+ * @brief Implements utility functions for the Kubisat firmware.
+ * @details This file contains various utility functions, including UART printing with timestamps,
+ *          and CRC16 calculation.
+ */
+
+
+/**
+ * @brief Prints a message to the UART with a timestamp and core number.
+ * @param msg The message to print.
+ * @param logToFile A flag indicating whether to log the message to a file (currently not implemented).
+ * @param uart The UART instance to use for printing.
+ * @details Prints the given message to the specified UART, prepending it with a timestamp and the core number.
+ *          Uses a mutex to ensure thread-safe access to the UART.
+ */
 void uartPrint(const std::string& msg, bool logToFile, uart_inst_t* uart) {
     static bool mutex_inited = false;
     if (!mutex_inited) {
@@ -25,6 +42,14 @@ void uartPrint(const std::string& msg, bool logToFile, uart_inst_t* uart) {
     mutex_exit(&uart_mutex);
 }
 
+
+/**
+ * @brief Calculates the CRC16 checksum of the given data.
+ * @param data A pointer to the data buffer.
+ * @param length The length of the data in bytes.
+ * @return The CRC16 checksum.
+ * @details Calculates the CRC16 checksum using the standard algorithm.
+ */
 uint16_t crc16(const uint8_t *data, size_t length) {
     uint16_t crc = 0xFFFF;
     for (size_t i = 0; i < length; i++) {
