@@ -1,0 +1,157 @@
+\doxysection{event\+\_\+manager.\+h}
+\hypertarget{event__manager_8h_source}{}\label{event__manager_8h_source}\mbox{\hyperlink{event__manager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00001}\mbox{\hyperlink{event__manager_8h_a7984471c52fd4915392929f854c6620c}{00001}}\ \textcolor{preprocessor}{\#ifndef\ EVENT\_MANAGER\_H}}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00002}\mbox{\hyperlink{event__manager_8h_ab20b0c7772544cf5d318507f34231fbe}{00002}}\ \textcolor{preprocessor}{\#define\ EVENT\_MANAGER\_H}}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00003}\mbox{\hyperlink{event__manager_8h_ad4291fcb880eb5ecb178b53e32f55741}{00003}}\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00004}\mbox{\hyperlink{event__manager_8h_aeef6900f411bc223febdd92c9435693b}{00004}}\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_power_manager_8h}{PowerManager.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00006}\mbox{\hyperlink{event__manager_8h_a6bbf13289f6c919d96bae17ef018f988}{00006}}\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}pico/mutex.h"{}}}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00009}\mbox{\hyperlink{event__manager_8h_acc4dda1aaabc9862fe79fd94e0b722bf}{00009}}\ \textcolor{preprocessor}{\#define\ EVENT\_BUFFER\_SIZE\ 1000}}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00011}00011\ \textcolor{comment}{//\ Event\ Groups}}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00012}\mbox{\hyperlink{event__manager_8h_a87aefa0e7b725125ea1a741c80858aa7}{00012}}\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{event__manager_8h_a87aefa0e7b725125ea1a741c80858aa7}{EventGroup}}\ :\ uint8\_t\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00013}\mbox{\hyperlink{event__manager_8h_a87aefa0e7b725125ea1a741c80858aa7afa177138f94a7ea01f549b1aa7893d03}{00013}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_a87aefa0e7b725125ea1a741c80858aa7afa177138f94a7ea01f549b1aa7893d03}{SYSTEM}}\ \ =\ 0x00,}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00014}\mbox{\hyperlink{event__manager_8h_a87aefa0e7b725125ea1a741c80858aa7ac9c9c146c630ca5ef9197c73c032f4a6}{00014}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_a87aefa0e7b725125ea1a741c80858aa7ac9c9c146c630ca5ef9197c73c032f4a6}{POWER}}\ \ \ =\ 0x01,}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00015}\mbox{\hyperlink{event__manager_8h_a87aefa0e7b725125ea1a741c80858aa7ac9546343e8e677d92812a4443b3a1bd1}{00015}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_a87aefa0e7b725125ea1a741c80858aa7ac9546343e8e677d92812a4443b3a1bd1}{COMMS}}\ \ \ =\ 0x02,}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00016}\mbox{\hyperlink{event__manager_8h_a87aefa0e7b725125ea1a741c80858aa7a8c578de37278ada488d763ea86c5cf20}{00016}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_a87aefa0e7b725125ea1a741c80858aa7a8c578de37278ada488d763ea86c5cf20}{GPS}}\ \ \ \ \ =\ 0x03,}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00017}\mbox{\hyperlink{event__manager_8h_a87aefa0e7b725125ea1a741c80858aa7aca6c44800b2dc123e0d4389a867e8686}{00017}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_a87aefa0e7b725125ea1a741c80858aa7aca6c44800b2dc123e0d4389a867e8686}{CLOCK}}\ \ \ =\ 0x04}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00018}00018\ \};}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00020}00020\ \textcolor{comment}{//\ System\ Events}}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00021}\mbox{\hyperlink{event__manager_8h_a77219d2f280eaad8c79825f50cf78785}{00021}}\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{event__manager_8h_a77219d2f280eaad8c79825f50cf78785}{SystemEvent}}\ :\ uint8\_t\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00022}\mbox{\hyperlink{event__manager_8h_a77219d2f280eaad8c79825f50cf78785adf9a77cdc2fe29972274b189cf7bac7c}{00022}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_a77219d2f280eaad8c79825f50cf78785adf9a77cdc2fe29972274b189cf7bac7c}{BOOT}}\ \ \ \ \ \ \ \ \ \ =\ 0x01,}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00023}\mbox{\hyperlink{event__manager_8h_a77219d2f280eaad8c79825f50cf78785ab9984206799a7f9fe4bd1b6c18db8112}{00023}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_a77219d2f280eaad8c79825f50cf78785ab9984206799a7f9fe4bd1b6c18db8112}{SHUTDOWN}}\ \ \ \ \ \ =\ 0x02,}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00024}\mbox{\hyperlink{event__manager_8h_a77219d2f280eaad8c79825f50cf78785aeaa5ce6b67cf5155de76d00a3bb3ff71}{00024}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_a77219d2f280eaad8c79825f50cf78785aeaa5ce6b67cf5155de76d00a3bb3ff71}{WATCHDOG\_RESET}}\ =\ 0x03,}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00025}\mbox{\hyperlink{event__manager_8h_a77219d2f280eaad8c79825f50cf78785a8021d59157f0850e2f519e17235a286e}{00025}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_a77219d2f280eaad8c79825f50cf78785a8021d59157f0850e2f519e17235a286e}{CORE1\_START}}\ \ \ =\ 0x04,}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00026}\mbox{\hyperlink{event__manager_8h_a77219d2f280eaad8c79825f50cf78785a187bb9570e10c85b4a616f289f49837c}{00026}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_a77219d2f280eaad8c79825f50cf78785a187bb9570e10c85b4a616f289f49837c}{CORE1\_STOP}}\ \ \ \ =\ 0x05}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00027}00027\ \};}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00029}00029\ \textcolor{comment}{//\ Power\ Events}}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00030}\mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6}{00030}}\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6}{PowerEvent}}\ :\ uint8\_t\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00031}\mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6a36d76a2d86f6dbf2035366b3572f025c}{00031}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6a36d76a2d86f6dbf2035366b3572f025c}{LOW\_BATTERY}}\ \ \ \ \ \ =\ 0x01,}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00032}\mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6a575fea54d116603bb4c778db18fbde98}{00032}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6a575fea54d116603bb4c778db18fbde98}{OVERCHARGE}}\ \ \ \ \ \ \ =\ 0x02,}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00033}\mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6a8700d6b962e860d93b3c89489b9aac21}{00033}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6a8700d6b962e860d93b3c89489b9aac21}{POWER\_FALLING}}\ \ \ \ =\ 0x03,}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00034}\mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6a91d809be807947101ea242de92b64a87}{00034}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6a91d809be807947101ea242de92b64a87}{POWER\_NORMAL}}\ \ \ \ \ =\ 0x04,}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00035}\mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6aa45a91985c176d6b5d3669bdf41b7e3b}{00035}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6aa45a91985c176d6b5d3669bdf41b7e3b}{SOLAR\_ACTIVE}}\ \ \ \ \ =\ 0x05,}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00036}\mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6a35899506cd4cd1e676d022eb14ecb669}{00036}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6a35899506cd4cd1e676d022eb14ecb669}{SOLAR\_INACTIVE}}\ \ \ =\ 0x06,}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00037}\mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6aea2afd0110180e8af5bf95a583f9dd13}{00037}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6aea2afd0110180e8af5bf95a583f9dd13}{USB\_CONNECTED}}\ \ \ \ =\ 0x07,}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00038}\mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6a3a026550c6805c690d88a618aff891c9}{00038}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6a3a026550c6805c690d88a618aff891c9}{USB\_DISCONNECTED}}\ =\ 0x08}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00039}00039\ \};}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00041}00041\ \textcolor{comment}{//\ Communication\ Events}}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00042}\mbox{\hyperlink{event__manager_8h_a0270a0464efae26aefb8cf32a45e20ad}{00042}}\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{event__manager_8h_a0270a0464efae26aefb8cf32a45e20ad}{CommsEvent}}\ :\ uint8\_t\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00043}\mbox{\hyperlink{event__manager_8h_a0270a0464efae26aefb8cf32a45e20ada6651a96516b323db8bad9897081d76ed}{00043}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_a0270a0464efae26aefb8cf32a45e20ada6651a96516b323db8bad9897081d76ed}{RADIO\_INIT}}\ \ \ \ =\ 0x01,}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00044}\mbox{\hyperlink{event__manager_8h_a0270a0464efae26aefb8cf32a45e20ada3b9824cc8a230f50d285d16795daa859}{00044}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_a0270a0464efae26aefb8cf32a45e20ada3b9824cc8a230f50d285d16795daa859}{RADIO\_ERROR}}\ \ \ =\ 0x02,}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00045}\mbox{\hyperlink{event__manager_8h_a0270a0464efae26aefb8cf32a45e20adaca7aa0062ea158ea48dfc6bc919193bd}{00045}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_a0270a0464efae26aefb8cf32a45e20adaca7aa0062ea158ea48dfc6bc919193bd}{MSG\_RECEIVED}}\ \ =\ 0x03,}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00046}\mbox{\hyperlink{event__manager_8h_a0270a0464efae26aefb8cf32a45e20adaae15180da5243a7f3be270d71d5eed28}{00046}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_a0270a0464efae26aefb8cf32a45e20adaae15180da5243a7f3be270d71d5eed28}{MSG\_SENT}}\ \ \ \ \ \ =\ 0x04,}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00047}\mbox{\hyperlink{event__manager_8h_a0270a0464efae26aefb8cf32a45e20adae7987a4741412b725a5a1a24867f9b62}{00047}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_a0270a0464efae26aefb8cf32a45e20adae7987a4741412b725a5a1a24867f9b62}{UART\_ERROR}}\ \ \ \ =\ 0x06}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00048}00048\ \};}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00050}00050\ \textcolor{comment}{//\ GPS\ Events}}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00051}\mbox{\hyperlink{event__manager_8h_ac4e11c8779c20adc9210532538cdc463}{00051}}\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{event__manager_8h_ac4e11c8779c20adc9210532538cdc463}{GPSEvent}}\ :\ uint8\_t\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00052}\mbox{\hyperlink{event__manager_8h_ac4e11c8779c20adc9210532538cdc463af510b97de4ace11844b85f23d0fc012f}{00052}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_ac4e11c8779c20adc9210532538cdc463af510b97de4ace11844b85f23d0fc012f}{LOCK}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x01,}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00053}\mbox{\hyperlink{event__manager_8h_ac4e11c8779c20adc9210532538cdc463ac6daca30aef2af1d72715733825806a3}{00053}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_ac4e11c8779c20adc9210532538cdc463ac6daca30aef2af1d72715733825806a3}{LOST}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x02,}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00054}\mbox{\hyperlink{event__manager_8h_ac4e11c8779c20adc9210532538cdc463abb1ca97ec761fc37101737ba0aa2e7c5}{00054}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_ac4e11c8779c20adc9210532538cdc463abb1ca97ec761fc37101737ba0aa2e7c5}{ERROR}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x03,}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00055}\mbox{\hyperlink{event__manager_8h_ac4e11c8779c20adc9210532538cdc463a3d6fc432ff9e2d9b890c591179a4401e}{00055}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_ac4e11c8779c20adc9210532538cdc463a3d6fc432ff9e2d9b890c591179a4401e}{POWER\_ON}}\ \ \ \ \ \ \ \ \ \ \ \ =\ 0x04,}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00056}\mbox{\hyperlink{event__manager_8h_ac4e11c8779c20adc9210532538cdc463aa15cea80d926d7282b831d451ba8aee8}{00056}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_ac4e11c8779c20adc9210532538cdc463aa15cea80d926d7282b831d451ba8aee8}{POWER\_OFF}}\ \ \ \ \ \ \ \ \ \ \ =\ 0x05,}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00057}\mbox{\hyperlink{event__manager_8h_ac4e11c8779c20adc9210532538cdc463a8ee0c87d41412c8df555d1b18ff43e63}{00057}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_ac4e11c8779c20adc9210532538cdc463a8ee0c87d41412c8df555d1b18ff43e63}{DATA\_READY}}\ \ \ \ \ \ \ \ \ \ =\ 0x06,}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00058}\mbox{\hyperlink{event__manager_8h_ac4e11c8779c20adc9210532538cdc463aad25373b52902ffec9bef3591da75390}{00058}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_ac4e11c8779c20adc9210532538cdc463aad25373b52902ffec9bef3591da75390}{PASS\_THROUGH\_START}}\ \ =\ 0x07,}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00059}\mbox{\hyperlink{event__manager_8h_ac4e11c8779c20adc9210532538cdc463a2806fc6062c22a550a6d2039ab209e4c}{00059}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_ac4e11c8779c20adc9210532538cdc463a2806fc6062c22a550a6d2039ab209e4c}{PASS\_THROUGH\_END}}\ \ \ \ =\ 0x08,}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00060}00060\ \};}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00062}00062\ \textcolor{comment}{//\ Clock\ Events}}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00063}\mbox{\hyperlink{event__manager_8h_a163ce349de3451c81f50080e5fbe62a2}{00063}}\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{event__manager_8h_a163ce349de3451c81f50080e5fbe62a2}{ClockEvent}}\ :\ uint8\_t\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00064}\mbox{\hyperlink{event__manager_8h_a163ce349de3451c81f50080e5fbe62a2ae6b94e58bfd13b21bc786578d9f8ba4a}{00064}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_a163ce349de3451c81f50080e5fbe62a2ae6b94e58bfd13b21bc786578d9f8ba4a}{CHANGED}}\ \ =\ 0x01,}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00065}\mbox{\hyperlink{event__manager_8h_a163ce349de3451c81f50080e5fbe62a2a2d05bfe5f19cdad10f55634937f0b61e}{00065}}\ \ \ \ \ \mbox{\hyperlink{event__manager_8h_a163ce349de3451c81f50080e5fbe62a2a2d05bfe5f19cdad10f55634937f0b61e}{GPS\_SYNC}}\ =\ 0x02}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00066}00066\ \};}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00069}\mbox{\hyperlink{class_event_log}{00069}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_event_log}{EventLog}}\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00070}00070\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00071}\mbox{\hyperlink{class_event_log_a5e0923e12450e6b7c782c7f6630f4563}{00071}}\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{class_event_log_a5e0923e12450e6b7c782c7f6630f4563}{id}};\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Sequence\ number}}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00072}\mbox{\hyperlink{class_event_log_aea248a425dedf15b5cee31ce2884db40}{00072}}\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{class_event_log_aea248a425dedf15b5cee31ce2884db40}{timestamp}};\ \ \ \textcolor{comment}{//\ Unix\ timestamp\ or\ system\ time}}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00073}\mbox{\hyperlink{class_event_log_a5209ffdb8dc4bf7f87f3ec44b2ae63e3}{00073}}\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{class_event_log_a5209ffdb8dc4bf7f87f3ec44b2ae63e3}{group}};\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Event\ group\ identifier}}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00074}\mbox{\hyperlink{class_event_log_a4ba1b6d820bf66740aac49fd299f1ea2}{00074}}\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{class_event_log_a4ba1b6d820bf66740aac49fd299f1ea2}{event}};\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Specific\ event\ identifier}}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00076}\mbox{\hyperlink{class_event_log_adb17c412276c8678289395607c493e7e}{00076}}\ \ \ \ \ std::string\ \mbox{\hyperlink{class_event_log_adb17c412276c8678289395607c493e7e}{toString}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[256];}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00078}00078\ \ \ \ \ \ \ \ \ snprintf(\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}),}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}EventLog:\ id=\%u,\ timestamp=\%lu,\ group=\%u,\ event=\%u"{}},}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_event_log_aea248a425dedf15b5cee31ce2884db40}{timestamp}},\ \mbox{\hyperlink{class_event_log_a5209ffdb8dc4bf7f87f3ec44b2ae63e3}{group}},\ \mbox{\hyperlink{class_event_log_a4ba1b6d820bf66740aac49fd299f1ea2}{event}});}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::string(\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}});}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00082}00082\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00083}00083\ \}\ \mbox{\hyperlink{event__manager_8h_a179817c61d3e66c0f67cd6bfe5e84c1b}{\_\_attribute\_\_}}((packed));}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00084}00084\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00085}\mbox{\hyperlink{class_event_manager}{00085}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_event_manager_a89099b22114f158b5c530edfea52371d}{EventManager}}\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00086}00086\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00087}\mbox{\hyperlink{class_event_manager_a89099b22114f158b5c530edfea52371d}{00087}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_event_manager_a89099b22114f158b5c530edfea52371d}{EventManager}}()\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00088}00088\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{class_event_manager_ab74418c8064525f34692dff74dd28d82}{eventCount}}(0)}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00089}00089\ \ \ \ \ \ \ \ \ ,\ \mbox{\hyperlink{class_event_manager_ad97f788895da6e30b3237982a7bcd810}{writeIndex}}(0)}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00090}00090\ \ \ \ \ \ \ \ \ ,\ \mbox{\hyperlink{class_event_manager_a31b1b079c272a1d7022ed84b01927186}{nextEventId}}(0)}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00091}00091\ \ \ \ \ \ \ \ \ ,\ \mbox{\hyperlink{class_event_manager_aed2eb3a8bc611f5594eb62304c7b4754}{needsPersistence}}(false)\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00092}00092\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00093}00093\ \ \ \ \ \ \ \ \ mutex\_init(\&\mbox{\hyperlink{class_event_manager_a970381a54ae432d262830ad74048c94e}{eventMutex}});}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00094}00094\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00096}\mbox{\hyperlink{class_event_manager_ade6acde43327a4e792bb8256dd6350f0}{00096}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_event_manager_ade6acde43327a4e792bb8256dd6350f0}{\string~EventManager}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00098}00098\ \ \ \ \ \textcolor{comment}{//\ Add\ initialization\ method}}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00099}\mbox{\hyperlink{class_event_manager_ab9c4d0fbfc9cf7743eac02bee6223728}{00099}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_event_manager_ab9c4d0fbfc9cf7743eac02bee6223728}{init}}()\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00100}00100\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_event_manager_a6722258e4e3df939224d07786427afc9}{loadFromStorage}}();}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00101}00101\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00102}00102\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00103}00103\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_event_manager_ae73a56091dc8713bb86a11abb6742a14}{logEvent}}(uint8\_t\ \mbox{\hyperlink{event__manager_8h_ad4291fcb880eb5ecb178b53e32f55741}{group}},\ uint8\_t\ \mbox{\hyperlink{event__manager_8h_aeef6900f411bc223febdd92c9435693b}{event}});}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00104}00104\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_event_log}{EventLog}}\&\ \mbox{\hyperlink{class_event_manager_a00648cfe8c39fbd59cc4c593113e5573}{getEvent}}(\textcolor{keywordtype}{size\_t}\ index)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00105}\mbox{\hyperlink{class_event_manager_abd8630355ef48f46c5286f232adb5993}{00105}}\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_event_manager_abd8630355ef48f46c5286f232adb5993}{getEventCount}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_event_manager_ab74418c8064525f34692dff74dd28d82}{eventCount}};\ \}}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00106}00106\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00107}\mbox{\hyperlink{class_event_manager_ad369ac9b7ab0251070e0075745836a40}{00107}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_event_manager_ad369ac9b7ab0251070e0075745836a40}{saveToStorage}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00108}\mbox{\hyperlink{class_event_manager_a6722258e4e3df939224d07786427afc9}{00108}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_event_manager_a6722258e4e3df939224d07786427afc9}{loadFromStorage}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00110}00110\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00111}\mbox{\hyperlink{class_event_manager_a9d82f66074e141f352bb852654673536}{00111}}\ \ \ \ \ \mbox{\hyperlink{class_event_log}{EventLog}}\ \mbox{\hyperlink{class_event_manager_a9d82f66074e141f352bb852654673536}{events}}[\mbox{\hyperlink{event__manager_8h_acc4dda1aaabc9862fe79fd94e0b722bf}{EVENT\_BUFFER\_SIZE}}];}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00112}\mbox{\hyperlink{class_event_manager_ab74418c8064525f34692dff74dd28d82}{00112}}\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_event_manager_ab74418c8064525f34692dff74dd28d82}{eventCount}};}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00113}\mbox{\hyperlink{class_event_manager_ad97f788895da6e30b3237982a7bcd810}{00113}}\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_event_manager_ad97f788895da6e30b3237982a7bcd810}{writeIndex}};}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00114}\mbox{\hyperlink{class_event_manager_a970381a54ae432d262830ad74048c94e}{00114}}\ \ \ \ \ mutex\_t\ \mbox{\hyperlink{class_event_manager_a970381a54ae432d262830ad74048c94e}{eventMutex}};}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00115}\mbox{\hyperlink{class_event_manager_a31b1b079c272a1d7022ed84b01927186}{00115}}\ \ \ \ \ \textcolor{keyword}{volatile}\ uint16\_t\ \mbox{\hyperlink{class_event_manager_a31b1b079c272a1d7022ed84b01927186}{nextEventId}};}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00116}\mbox{\hyperlink{class_event_manager_aed2eb3a8bc611f5594eb62304c7b4754}{00116}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_event_manager_aed2eb3a8bc611f5594eb62304c7b4754}{needsPersistence}};}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00117}\mbox{\hyperlink{event__manager_8h_a179817c61d3e66c0f67cd6bfe5e84c1b}{00117}}\ \};}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00118}00118\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00119}\mbox{\hyperlink{class_event_manager_impl}{00119}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_event_manager_impl_a07861026e9c06832168372f64e958073}{EventManagerImpl}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_event_manager_a89099b22114f158b5c530edfea52371d}{EventManager}}\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00120}00120\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00121}\mbox{\hyperlink{class_event_manager_impl_a07861026e9c06832168372f64e958073}{00121}}\ \ \ \ \ \mbox{\hyperlink{class_event_manager_impl_a07861026e9c06832168372f64e958073}{EventManagerImpl}}()\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00122}00122\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_event_manager_ab9c4d0fbfc9cf7743eac02bee6223728}{init}}();\ \textcolor{comment}{//\ Safe\ to\ call\ virtual\ functions\ here}}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00123}00123\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00125}\mbox{\hyperlink{class_event_manager_impl_a8bd15b8b1b4d2439740934f087d97f98}{00125}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_event_manager_impl_a8bd15b8b1b4d2439740934f087d97f98}{saveToStorage}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00126}00126\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:\ Implement\ based\ on\ chosen\ storage\ (SD/EEPROM)}}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00127}00127\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_event_manager_aed2eb3a8bc611f5594eb62304c7b4754}{needsPersistence}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00128}00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00129}00129\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00130}00130\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00131}\mbox{\hyperlink{class_event_manager_impl_ada54a3fd8ad03891318e203ad0a82155}{00131}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_event_manager_impl_ada54a3fd8ad03891318e203ad0a82155}{loadFromStorage}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00132}00132\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:\ Implement\ based\ on\ chosen\ storage\ (SD/EEPROM)}}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00134}00134\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00135}00135\ \};}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00137}00137\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_event_manager_impl}{EventManagerImpl}}\ \mbox{\hyperlink{event__manager_8cpp_a2a686792b51ec2b9e1b7bfc9faef92f7}{eventManager}};}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00139}\mbox{\hyperlink{class_event_emitter}{00139}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_event_emitter}{EventEmitter}}\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00140}00140\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00141}00141\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00142}\mbox{\hyperlink{class_event_emitter_a539d733505f9a793439a9cfc4f2af079}{00142}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_event_emitter_a539d733505f9a793439a9cfc4f2af079}{emit}}(\mbox{\hyperlink{event__manager_8h_a87aefa0e7b725125ea1a741c80858aa7}{EventGroup}}\ \mbox{\hyperlink{event__manager_8h_ad4291fcb880eb5ecb178b53e32f55741}{group}},\ T\ \mbox{\hyperlink{event__manager_8h_aeef6900f411bc223febdd92c9435693b}{event}})\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00143}00143\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{event__manager_8h_a2a686792b51ec2b9e1b7bfc9faef92f7}{eventManager}}.logEvent(}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(\mbox{\hyperlink{event__manager_8h_ad4291fcb880eb5ecb178b53e32f55741}{group}}),\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(\mbox{\hyperlink{event__manager_8h_aeef6900f411bc223febdd92c9435693b}{event}})}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00146}00146\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00147}00147\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00148}00148\ \};}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00150}00150\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{event__manager_8h_a467714d66058f52e4ac7aeb6df46b433}{checkPowerEvents}}(\mbox{\hyperlink{class_power_manager}{PowerManager}}\&\ pm);}
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8h_source_l00152}00152\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

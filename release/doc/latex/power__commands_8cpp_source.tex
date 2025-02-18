@@ -1,0 +1,125 @@
+\doxysection{power\+\_\+commands.\+cpp}
+\hypertarget{power__commands_8cpp_source}{}\label{power__commands_8cpp_source}\index{commands/power\_commands.cpp@{commands/power\_commands.cpp}}
+\mbox{\hyperlink{power__commands_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{communication_8h}{communication.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00021}\mbox{\hyperlink{group___power_commands_gafef922e13071e5fb67da78207a9f22a4}{00021}}\ \mbox{\hyperlink{struct_frame}{Frame}}\ \mbox{\hyperlink{group___power_commands_gafef922e13071e5fb67da78207a9f22a4}{handleGetPowerManagerIDs}}(\textcolor{keyword}{const}\ std::string\&\ param,\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{OperationType}}\ operationType)\ \{}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00022}00022\ \ \ \ \ \textcolor{keywordflow}{if}\ (!param.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 2,\ 0,\ \textcolor{stringliteral}{"{}PARAM\ UNECESSARY"{}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00024}00024\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00026}00026\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(operationType\ ==\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8}{OperationType::GET}}))\ \{}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 2,\ 0,\ \textcolor{stringliteral}{"{}INVALID\ OPERATION"{}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00028}00028\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_power_manager}{PowerManager}}\ \mbox{\hyperlink{main_8cpp_af8335a606a184154d5e0860517b1e2f8}{powerManager}};}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00031}00031\ \ \ \ \ std::string\ powerManagerIDS\ =\ \mbox{\hyperlink{main_8cpp_af8335a606a184154d5e0860517b1e2f8}{powerManager}}.readIDs();}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c}{ExecutionResult::SUCCESS}},\ 2,\ 0,\ powerManagerIDS);}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00033}00033\ \}}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00047}\mbox{\hyperlink{group___power_commands_gad301b8c13cafa148a6f3e80e9b0bcf1a}{00047}}\ \mbox{\hyperlink{struct_frame}{Frame}}\ \mbox{\hyperlink{group___power_commands_gad301b8c13cafa148a6f3e80e9b0bcf1a}{handleGetVoltageBattery}}(\textcolor{keyword}{const}\ std::string\&\ param,\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{OperationType}}\ operationType)\ \{}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00048}00048\ \ \ \ \ \textcolor{keywordflow}{if}\ (!param.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 2,\ 2,\ \textcolor{stringliteral}{"{}PARAM\ UNNECESSARY"{}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(operationType\ ==\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8}{OperationType::GET}}))\ \{}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(\textcolor{stringliteral}{"{}SET\ operation\ not\ allowed\ for\ GetVoltageBattery"{}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 2,\ 2,\ \textcolor{stringliteral}{"{}NOT\ ALLOWED"{}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00055}00055\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00057}00057\ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(\textcolor{stringliteral}{"{}Getting\ battery\ voltage"{}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00058}00058\ \ \ \ \ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_power_manager}{PowerManager}}\ \mbox{\hyperlink{main_8cpp_af8335a606a184154d5e0860517b1e2f8}{powerManager}};}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00059}00059\ \ \ \ \ \textcolor{keywordtype}{float}\ voltage\ =\ \mbox{\hyperlink{main_8cpp_af8335a606a184154d5e0860517b1e2f8}{powerManager}}.getVoltageBattery();}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00060}00060\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c}{ExecutionResult::SUCCESS}},\ 2,\ 2,\ std::to\_string(voltage),\ \mbox{\hyperlink{protocol_8h_a2d96449e2b52d45b5726af92084e0d8fad99987f942ecbf2eea5d50ebf50723e6}{ValueUnit::VOLT}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00061}00061\ \}}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00075}\mbox{\hyperlink{group___power_commands_ga9f2b608f46080fcdae38a1a8454938b8}{00075}}\ \mbox{\hyperlink{struct_frame}{Frame}}\ \mbox{\hyperlink{group___power_commands_ga9f2b608f46080fcdae38a1a8454938b8}{handleGetVoltage5V}}(\textcolor{keyword}{const}\ std::string\&\ param,\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{OperationType}}\ operationType)\ \{}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00076}00076\ \ \ \ \ \textcolor{keywordflow}{if}\ (!param.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 2,\ 3,\ \textcolor{stringliteral}{"{}PARAM\ UNNECESSARY"{}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00078}00078\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00080}00080\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(operationType\ ==\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8}{OperationType::GET}}))\ \{}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(\textcolor{stringliteral}{"{}SET\ operation\ not\ allowed\ for\ GetVoltage5V"{}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 2,\ 3,\ \textcolor{stringliteral}{"{}NOT\ ALLOWED"{}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00083}00083\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00085}00085\ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(\textcolor{stringliteral}{"{}Getting\ 5V\ voltage"{}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00086}00086\ \ \ \ \ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_power_manager}{PowerManager}}\ \mbox{\hyperlink{main_8cpp_af8335a606a184154d5e0860517b1e2f8}{powerManager}};}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00087}00087\ \ \ \ \ \textcolor{keywordtype}{float}\ voltage\ =\ \mbox{\hyperlink{main_8cpp_af8335a606a184154d5e0860517b1e2f8}{powerManager}}.getVoltage5V();}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00088}00088\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c}{ExecutionResult::SUCCESS}},\ 2,\ 3,\ std::to\_string(voltage),\ \mbox{\hyperlink{protocol_8h_a2d96449e2b52d45b5726af92084e0d8fad99987f942ecbf2eea5d50ebf50723e6}{ValueUnit::VOLT}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00089}00089\ \}}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00103}\mbox{\hyperlink{group___power_commands_ga3f38c538065bf67dbec1142fdb866d16}{00103}}\ \mbox{\hyperlink{struct_frame}{Frame}}\ \mbox{\hyperlink{group___power_commands_ga3f38c538065bf67dbec1142fdb866d16}{handleGetCurrentChargeUSB}}(\textcolor{keyword}{const}\ std::string\&\ param,\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{OperationType}}\ operationType)\ \{}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00104}00104\ \ \ \ \ \textcolor{keywordflow}{if}\ (!param.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 2,\ 4,\ \textcolor{stringliteral}{"{}PARAM\ UNNECESSARY"{}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00106}00106\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00108}00108\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(operationType\ ==\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8}{OperationType::GET}}))\ \{}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(\textcolor{stringliteral}{"{}SET\ operation\ not\ allowed\ for\ GetCurrentChargeUSB"{}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 2,\ 4,\ \textcolor{stringliteral}{"{}NOT\ ALLOWED"{}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00111}00111\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00113}00113\ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(\textcolor{stringliteral}{"{}Getting\ USB\ charge\ current"{}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00114}00114\ \ \ \ \ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_power_manager}{PowerManager}}\ \mbox{\hyperlink{main_8cpp_af8335a606a184154d5e0860517b1e2f8}{powerManager}};}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00115}00115\ \ \ \ \ \textcolor{keywordtype}{float}\ chargeCurrent\ =\ \mbox{\hyperlink{main_8cpp_af8335a606a184154d5e0860517b1e2f8}{powerManager}}.getCurrentChargeUSB();}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00116}00116\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c}{ExecutionResult::SUCCESS}},\ 2,\ 4,\ std::to\_string(chargeCurrent),\ \mbox{\hyperlink{protocol_8h_a2d96449e2b52d45b5726af92084e0d8fa1ec9056b2106b66cd5b255ad67fcb671}{ValueUnit::MILIAMP}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00117}00117\ \}}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00131}\mbox{\hyperlink{group___power_commands_ga6fbaf484e68c9561ad7fabef21def37b}{00131}}\ \mbox{\hyperlink{struct_frame}{Frame}}\ \mbox{\hyperlink{group___power_commands_ga6fbaf484e68c9561ad7fabef21def37b}{handleGetCurrentChargeSolar}}(\textcolor{keyword}{const}\ std::string\&\ param,\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{OperationType}}\ operationType)\ \{}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00132}00132\ \ \ \ \ \textcolor{keywordflow}{if}\ (!param.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 2,\ 5,\ \textcolor{stringliteral}{"{}PARAM\ UNNECESSARY"{}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00134}00134\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00136}00136\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(operationType\ ==\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8}{OperationType::GET}}))\ \{}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(\textcolor{stringliteral}{"{}SET\ operation\ not\ allowed\ for\ GetCurrentChargeSolar"{}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 2,\ 5,\ \textcolor{stringliteral}{"{}NOT\ ALLOWED"{}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00139}00139\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00141}00141\ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(\textcolor{stringliteral}{"{}Getting\ solar\ charge\ current"{}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00142}00142\ \ \ \ \ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_power_manager}{PowerManager}}\ \mbox{\hyperlink{main_8cpp_af8335a606a184154d5e0860517b1e2f8}{powerManager}};}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00143}00143\ \ \ \ \ \textcolor{keywordtype}{float}\ chargeCurrent\ =\ \mbox{\hyperlink{main_8cpp_af8335a606a184154d5e0860517b1e2f8}{powerManager}}.getCurrentChargeSolar();}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00144}00144\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c}{ExecutionResult::SUCCESS}},\ 2,\ 5,\ std::to\_string(chargeCurrent),\ \mbox{\hyperlink{protocol_8h_a2d96449e2b52d45b5726af92084e0d8fa1ec9056b2106b66cd5b255ad67fcb671}{ValueUnit::MILIAMP}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00145}00145\ \}}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00159}\mbox{\hyperlink{group___power_commands_ga83596ea837df6cf7b15e673b95bf524f}{00159}}\ \mbox{\hyperlink{struct_frame}{Frame}}\ \mbox{\hyperlink{group___power_commands_ga83596ea837df6cf7b15e673b95bf524f}{handleGetCurrentChargeTotal}}(\textcolor{keyword}{const}\ std::string\&\ param,\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{OperationType}}\ operationType)\ \{}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00160}00160\ \ \ \ \ \textcolor{keywordflow}{if}\ (!param.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00161}00161\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 2,\ 6,\ \textcolor{stringliteral}{"{}PARAM\ UNNECESSARY"{}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00162}00162\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00164}00164\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(operationType\ ==\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8}{OperationType::GET}}))\ \{}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(\textcolor{stringliteral}{"{}SET\ operation\ not\ allowed\ for\ GetCurrentChargeTotal"{}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00166}00166\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 2,\ 6,\ \textcolor{stringliteral}{"{}NOT\ ALLOWED"{}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00167}00167\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00169}00169\ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(\textcolor{stringliteral}{"{}Getting\ total\ charge\ current"{}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00170}00170\ \ \ \ \ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_power_manager}{PowerManager}}\ \mbox{\hyperlink{main_8cpp_af8335a606a184154d5e0860517b1e2f8}{powerManager}};}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00171}00171\ \ \ \ \ \textcolor{keywordtype}{float}\ chargeCurrent\ =\ \mbox{\hyperlink{main_8cpp_af8335a606a184154d5e0860517b1e2f8}{powerManager}}.getCurrentChargeTotal();}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00172}00172\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c}{ExecutionResult::SUCCESS}},\ 2,\ 6,\ std::to\_string(chargeCurrent),\ \mbox{\hyperlink{protocol_8h_a2d96449e2b52d45b5726af92084e0d8fa1ec9056b2106b66cd5b255ad67fcb671}{ValueUnit::MILIAMP}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00173}00173\ \}}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00187}\mbox{\hyperlink{group___power_commands_gabd6610f557fe9deaa9f80d9405738226}{00187}}\ \mbox{\hyperlink{struct_frame}{Frame}}\ \mbox{\hyperlink{group___power_commands_gabd6610f557fe9deaa9f80d9405738226}{handleGetCurrentDraw}}(\textcolor{keyword}{const}\ std::string\&\ param,\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{OperationType}}\ operationType)\ \{}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00188}00188\ \ \ \ \ \textcolor{keywordflow}{if}\ (!param.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00189}00189\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 2,\ 7,\ \textcolor{stringliteral}{"{}PARAM\ UNNECESSARY"{}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00190}00190\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00191}00191\ }
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00192}00192\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(operationType\ ==\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8}{OperationType::GET}}))\ \{}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00193}00193\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(\textcolor{stringliteral}{"{}SET\ operation\ not\ allowed\ for\ GetCurrentDraw"{}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00194}00194\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 2,\ 7,\ \textcolor{stringliteral}{"{}NOT\ ALLOWED"{}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00195}00195\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00197}00197\ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(\textcolor{stringliteral}{"{}Getting\ current\ draw"{}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00198}00198\ \ \ \ \ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_power_manager}{PowerManager}}\ \mbox{\hyperlink{main_8cpp_af8335a606a184154d5e0860517b1e2f8}{powerManager}};}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00199}00199\ \ \ \ \ \textcolor{keywordtype}{float}\ currentDraw\ =\ \mbox{\hyperlink{main_8cpp_af8335a606a184154d5e0860517b1e2f8}{powerManager}}.getCurrentDraw();}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00200}00200\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c}{ExecutionResult::SUCCESS}},\ 2,\ 7,\ std::to\_string(currentDraw),\ \mbox{\hyperlink{protocol_8h_a2d96449e2b52d45b5726af92084e0d8fa1ec9056b2106b66cd5b255ad67fcb671}{ValueUnit::MILIAMP}});}
+\DoxyCodeLine{\Hypertarget{power__commands_8cpp_source_l00201}00201\ \}\ \textcolor{comment}{//\ end\ of\ PowerCommands\ group}}
+
+\end{DoxyCode}

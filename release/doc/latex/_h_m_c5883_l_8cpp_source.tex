@@ -1,0 +1,42 @@
+\doxysection{HMC5883\+L.\+cpp}
+\hypertarget{_h_m_c5883_l_8cpp_source}{}\label{_h_m_c5883_l_8cpp_source}\index{lib/HMC5883L/HMC5883L.cpp@{lib/HMC5883L/HMC5883L.cpp}}
+\mbox{\hyperlink{_h_m_c5883_l_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_h_m_c5883_l_8h}{HMC5883L.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00003}\mbox{\hyperlink{class_h_m_c5883_l_ac94bd9588bfaecdf6d1aa56915799212}{00003}}\ \mbox{\hyperlink{class_h_m_c5883_l_ac94bd9588bfaecdf6d1aa56915799212}{HMC5883L::HMC5883L}}(i2c\_inst\_t*\ \mbox{\hyperlink{class_h_m_c5883_l_a5e63fceb40ec1b9427757a4ee206b12f}{i2c}},\ uint8\_t\ \mbox{\hyperlink{class_h_m_c5883_l_ab0f984a6afb4c434cb32d736a9aaa671}{address}})\ :\ \mbox{\hyperlink{class_h_m_c5883_l_a5e63fceb40ec1b9427757a4ee206b12f}{i2c}}(\mbox{\hyperlink{class_h_m_c5883_l_a5e63fceb40ec1b9427757a4ee206b12f}{i2c}}),\ \mbox{\hyperlink{class_h_m_c5883_l_ab0f984a6afb4c434cb32d736a9aaa671}{address}}(\mbox{\hyperlink{class_h_m_c5883_l_ab0f984a6afb4c434cb32d736a9aaa671}{address}})\ \{\}}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00005}\mbox{\hyperlink{class_h_m_c5883_l_aacf8416e7f9802ccf993b3e6c0dfe17b}{00005}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_h_m_c5883_l_aacf8416e7f9802ccf993b3e6c0dfe17b}{HMC5883L::init}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00006}00006\ \ \ \ \ \textcolor{comment}{//\ Continuous\ measurement\ mode,\ 15Hz\ data\ output\ rate}}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00007}00007\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_h_m_c5883_l_a114c069b8221f2780b928063a393a183}{writeRegister}}(0x00,\ 0x70))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00008}00008\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_h_m_c5883_l_a114c069b8221f2780b928063a393a183}{writeRegister}}(0x01,\ 0x20))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00009}00009\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_h_m_c5883_l_a114c069b8221f2780b928063a393a183}{writeRegister}}(0x02,\ 0x00))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00010}00010\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00011}00011\ \}}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00013}\mbox{\hyperlink{class_h_m_c5883_l_a8d34ff9a8ff20e12320df6ce5d64397f}{00013}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_h_m_c5883_l_a8d34ff9a8ff20e12320df6ce5d64397f}{HMC5883L::read}}(int16\_t\&\ x,\ int16\_t\&\ y,\ int16\_t\&\ z)\ \{}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00014}00014\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[6];}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00015}00015\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_h_m_c5883_l_a4a09a4be85064748579e1d44d8f1b305}{readRegisters}}(0x03,\ \mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}},\ 6))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00017}00017\ \ \ \ \ x\ =\ (\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[0]\ <<\ 8)\ |\ \mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[1];}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00018}00018\ \ \ \ \ z\ =\ (\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[2]\ <<\ 8)\ |\ \mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[3];}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00019}00019\ \ \ \ \ y\ =\ (\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[4]\ <<\ 8)\ |\ \mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[5];}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00021}00021\ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ >\ 32767)\ x\ -\/=\ 65536;}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00022}00022\ \ \ \ \ \textcolor{keywordflow}{if}\ (y\ >\ 32767)\ y\ -\/=\ 65536;}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00023}00023\ \ \ \ \ \textcolor{keywordflow}{if}\ (z\ >\ 32767)\ z\ -\/=\ 65536;}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00025}00025\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00026}00026\ \}}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00028}\mbox{\hyperlink{class_h_m_c5883_l_a114c069b8221f2780b928063a393a183}{00028}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_h_m_c5883_l_a114c069b8221f2780b928063a393a183}{HMC5883L::writeRegister}}(uint8\_t\ reg,\ uint8\_t\ value)\ \{}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00029}00029\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[2]\ =\ \{reg,\ value\};}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{return}\ i2c\_write\_blocking(\mbox{\hyperlink{class_h_m_c5883_l_a5e63fceb40ec1b9427757a4ee206b12f}{i2c}},\ \mbox{\hyperlink{class_h_m_c5883_l_ab0f984a6afb4c434cb32d736a9aaa671}{address}},\ \mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}},\ 2,\ \textcolor{keyword}{false})\ ==\ 2;}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00031}00031\ \}}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00033}\mbox{\hyperlink{class_h_m_c5883_l_a4a09a4be85064748579e1d44d8f1b305}{00033}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_h_m_c5883_l_a4a09a4be85064748579e1d44d8f1b305}{HMC5883L::readRegisters}}(uint8\_t\ reg,\ uint8\_t*\ \mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}},\ \textcolor{keywordtype}{size\_t}\ length)\ \{}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00034}00034\ \ \ \ \ \textcolor{keywordflow}{if}\ (i2c\_write\_blocking(\mbox{\hyperlink{class_h_m_c5883_l_a5e63fceb40ec1b9427757a4ee206b12f}{i2c}},\ \mbox{\hyperlink{class_h_m_c5883_l_ab0f984a6afb4c434cb32d736a9aaa671}{address}},\ \&reg,\ 1,\ \textcolor{keyword}{true})\ !=\ 1)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00035}00035\ \ \ \ \ \textcolor{keywordflow}{return}\ i2c\_read\_blocking(\mbox{\hyperlink{class_h_m_c5883_l_a5e63fceb40ec1b9427757a4ee206b12f}{i2c}},\ \mbox{\hyperlink{class_h_m_c5883_l_ab0f984a6afb4c434cb32d736a9aaa671}{address}},\ \mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}},\ length,\ \textcolor{keyword}{false})\ ==\ length;}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l_8cpp_source_l00036}00036\ \}}
+
+\end{DoxyCode}

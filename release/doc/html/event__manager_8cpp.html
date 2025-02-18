@@ -189,19 +189,27 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a2a686792b51ec2b9e1b7bfc9faef92f7" name="a2a686792b51ec2b9e1b7bfc9faef92f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2a686792b51ec2b9e1b7bfc9faef92f7">&#9670;&#160;</a></span>eventManager</h2>
+<a id="a2d4329f1e2606ca8f8535dae8c08afe5" name="a2d4329f1e2606ca8f8535dae8c08afe5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d4329f1e2606ca8f8535dae8c08afe5">&#9670;&#160;</a></span>lastPowerState</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_event_manager_impl.html">EventManagerImpl</a> eventManager</td>
+          <td class="memname"><a class="el" href="event__manager_8h.html#a8b04683add0105a3bf3200eee3d9d3e6">PowerEvent</a> lastPowerState = <a class="el" href="event__manager_8h.html#a8b04683add0105a3bf3200eee3d9d3e6a36d76a2d86f6dbf2035366b3572f025c">PowerEvent::LOW_BATTERY</a></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00026">26</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00011">11</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -253,6 +261,54 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="aa1095ab71c42b3eaed0492aec0941972" name="aa1095ab71c42b3eaed0492aec0941972"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1095ab71c42b3eaed0492aec0941972">&#9670;&#160;</a></span>VOLTAGE_LOW_THRESHOLD</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float VOLTAGE_LOW_THRESHOLD = 4.7f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00015">15</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a98ed7b83dd5e1a54a096ca9bb3456163" name="a98ed7b83dd5e1a54a096ca9bb3456163"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98ed7b83dd5e1a54a096ca9bb3456163">&#9670;&#160;</a></span>VOLTAGE_OVERCHARGE_THRESHOLD</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float VOLTAGE_OVERCHARGE_THRESHOLD = 5.3f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00017">17</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
+
+</div>
+</div>
 <a id="ad4a2e48e0a0e0d5aa49dd6c2aa12d8fb" name="ad4a2e48e0a0e0d5aa49dd6c2aa12d8fb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad4a2e48e0a0e0d5aa49dd6c2aa12d8fb">&#9670;&#160;</a></span>fallingTrendCount</h2>
 
@@ -274,30 +330,6 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00019">19</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a2d4329f1e2606ca8f8535dae8c08afe5" name="a2d4329f1e2606ca8f8535dae8c08afe5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d4329f1e2606ca8f8535dae8c08afe5">&#9670;&#160;</a></span>lastPowerState</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="event__manager_8h.html#a8b04683add0105a3bf3200eee3d9d3e6">PowerEvent</a> lastPowerState = <a class="el" href="event__manager_8h.html#a8b04683add0105a3bf3200eee3d9d3e6a36d76a2d86f6dbf2035366b3572f025c">PowerEvent::LOW_BATTERY</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00011">11</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -355,51 +387,19 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="aa1095ab71c42b3eaed0492aec0941972" name="aa1095ab71c42b3eaed0492aec0941972"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa1095ab71c42b3eaed0492aec0941972">&#9670;&#160;</a></span>VOLTAGE_LOW_THRESHOLD</h2>
+<a id="a2a686792b51ec2b9e1b7bfc9faef92f7" name="a2a686792b51ec2b9e1b7bfc9faef92f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a686792b51ec2b9e1b7bfc9faef92f7">&#9670;&#160;</a></span>eventManager</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">float VOLTAGE_LOW_THRESHOLD = 4.7f</td>
+          <td class="memname"><a class="el" href="class_event_manager_impl.html">EventManagerImpl</a> eventManager</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00015">15</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a98ed7b83dd5e1a54a096ca9bb3456163" name="a98ed7b83dd5e1a54a096ca9bb3456163"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a98ed7b83dd5e1a54a096ca9bb3456163">&#9670;&#160;</a></span>VOLTAGE_OVERCHARGE_THRESHOLD</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float VOLTAGE_OVERCHARGE_THRESHOLD = 5.3f</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00017">17</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00026">26</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
 
 </div>
 </div>

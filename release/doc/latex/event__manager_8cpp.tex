@@ -1,0 +1,170 @@
+\doxysection{event\+\_\+manager.\+cpp File Reference}
+\hypertarget{event__manager_8cpp}{}\label{event__manager_8cpp}\index{event\_manager.cpp@{event\_manager.cpp}}
+{\ttfamily \#include "{}event\+\_\+manager.\+h"{}}\newline
+{\ttfamily \#include $<$cstdio$>$}\newline
+{\ttfamily \#include "{}protocol.\+h"{}}\newline
+{\ttfamily \#include "{}pico/multicore.\+h"{}}\newline
+{\ttfamily \#include "{}communication.\+h"{}}\newline
+{\ttfamily \#include "{}utils.\+h"{}}\newline
+{\ttfamily \#include "{}DS3231.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{event__manager_8cpp_a467714d66058f52e4ac7aeb6df46b433}{check\+Power\+Events}} (\mbox{\hyperlink{class_power_manager}{Power\+Manager}} \&pm)
+\begin{DoxyCompactList}\small\item\em Checks power statuses and triggers events based on voltage trends. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+volatile uint16\+\_\+t \mbox{\hyperlink{event__manager_8cpp_ab144678e47784f421d98c3dfdbb53dc8}{event\+Log\+Id}} = 0
+\item 
+static \mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6}{Power\+Event}} \mbox{\hyperlink{event__manager_8cpp_a2d4329f1e2606ca8f8535dae8c08afe5}{last\+Power\+State}} = \mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6a36d76a2d86f6dbf2035366b3572f025c}{Power\+Event\+::\+LOW\+\_\+\+BATTERY}}
+\item 
+static constexpr float \mbox{\hyperlink{event__manager_8cpp_a234988dfb88db38997bd921cd5c32457}{FALL\+\_\+\+RATE\+\_\+\+THRESHOLD}} = -\/0.\+02f
+\item 
+static constexpr int \mbox{\hyperlink{event__manager_8cpp_ae4e7da8cdf52e447acd5705d930759cf}{FALLING\+\_\+\+TREND\+\_\+\+REQUIRED}} = 3
+\item 
+static constexpr float \mbox{\hyperlink{event__manager_8cpp_aa1095ab71c42b3eaed0492aec0941972}{VOLTAGE\+\_\+\+LOW\+\_\+\+THRESHOLD}} = 4.\+7f
+\item 
+static constexpr float \mbox{\hyperlink{event__manager_8cpp_a98ed7b83dd5e1a54a096ca9bb3456163}{VOLTAGE\+\_\+\+OVERCHARGE\+\_\+\+THRESHOLD}} = 5.\+3f
+\item 
+static int \mbox{\hyperlink{event__manager_8cpp_ad4a2e48e0a0e0d5aa49dd6c2aa12d8fb}{falling\+Trend\+Count}} = 0
+\item 
+bool \mbox{\hyperlink{event__manager_8cpp_a908d9cb4eb9ec61d273f6770660bbb8e}{last\+Solar\+State}} = false
+\item 
+bool \mbox{\hyperlink{event__manager_8cpp_a0592f758055ae8683676ff86ae7ae9e1}{last\+USBState}} = false
+\item 
+\mbox{\hyperlink{class_d_s3231}{DS3231}} \mbox{\hyperlink{event__manager_8cpp_abfd573c8a839ac00ea3b96d691ea11c3}{system\+Clock}}
+\item 
+\mbox{\hyperlink{class_event_manager_impl}{Event\+Manager\+Impl}} \mbox{\hyperlink{event__manager_8cpp_a2a686792b51ec2b9e1b7bfc9faef92f7}{event\+Manager}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{event__manager_8cpp_a467714d66058f52e4ac7aeb6df46b433}\index{event\_manager.cpp@{event\_manager.cpp}!checkPowerEvents@{checkPowerEvents}}
+\index{checkPowerEvents@{checkPowerEvents}!event\_manager.cpp@{event\_manager.cpp}}
+\doxysubsubsection{\texorpdfstring{checkPowerEvents()}{checkPowerEvents()}}
+{\footnotesize\ttfamily \label{event__manager_8cpp_a467714d66058f52e4ac7aeb6df46b433} 
+void check\+Power\+Events (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_power_manager}{Power\+Manager}} \&}]{pm}{}\end{DoxyParamCaption})}
+
+
+
+Checks power statuses and triggers events based on voltage trends. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pm} & Reference to the \doxylink{class_power_manager}{Power\+Manager} object. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{event__manager_8cpp_source_l00077}{77}} of file \mbox{\hyperlink{event__manager_8cpp_source}{event\+\_\+manager.\+cpp}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{event__manager_8cpp_ab144678e47784f421d98c3dfdbb53dc8}\index{event\_manager.cpp@{event\_manager.cpp}!eventLogId@{eventLogId}}
+\index{eventLogId@{eventLogId}!event\_manager.cpp@{event\_manager.cpp}}
+\doxysubsubsection{\texorpdfstring{eventLogId}{eventLogId}}
+{\footnotesize\ttfamily \label{event__manager_8cpp_ab144678e47784f421d98c3dfdbb53dc8} 
+volatile uint16\+\_\+t event\+Log\+Id = 0}
+
+
+
+Definition at line \mbox{\hyperlink{event__manager_8cpp_source_l00009}{9}} of file \mbox{\hyperlink{event__manager_8cpp_source}{event\+\_\+manager.\+cpp}}.
+
+\Hypertarget{event__manager_8cpp_a2d4329f1e2606ca8f8535dae8c08afe5}\index{event\_manager.cpp@{event\_manager.cpp}!lastPowerState@{lastPowerState}}
+\index{lastPowerState@{lastPowerState}!event\_manager.cpp@{event\_manager.cpp}}
+\doxysubsubsection{\texorpdfstring{lastPowerState}{lastPowerState}}
+{\footnotesize\ttfamily \label{event__manager_8cpp_a2d4329f1e2606ca8f8535dae8c08afe5} 
+\mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6}{Power\+Event}} last\+Power\+State = \mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6a36d76a2d86f6dbf2035366b3572f025c}{Power\+Event\+::\+LOW\+\_\+\+BATTERY}}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{event__manager_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{event__manager_8cpp_source}{event\+\_\+manager.\+cpp}}.
+
+\Hypertarget{event__manager_8cpp_a234988dfb88db38997bd921cd5c32457}\index{event\_manager.cpp@{event\_manager.cpp}!FALL\_RATE\_THRESHOLD@{FALL\_RATE\_THRESHOLD}}
+\index{FALL\_RATE\_THRESHOLD@{FALL\_RATE\_THRESHOLD}!event\_manager.cpp@{event\_manager.cpp}}
+\doxysubsubsection{\texorpdfstring{FALL\_RATE\_THRESHOLD}{FALL\_RATE\_THRESHOLD}}
+{\footnotesize\ttfamily \label{event__manager_8cpp_a234988dfb88db38997bd921cd5c32457} 
+float FALL\+\_\+\+RATE\+\_\+\+THRESHOLD = -\/0.\+02f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+Definition at line \mbox{\hyperlink{event__manager_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{event__manager_8cpp_source}{event\+\_\+manager.\+cpp}}.
+
+\Hypertarget{event__manager_8cpp_ae4e7da8cdf52e447acd5705d930759cf}\index{event\_manager.cpp@{event\_manager.cpp}!FALLING\_TREND\_REQUIRED@{FALLING\_TREND\_REQUIRED}}
+\index{FALLING\_TREND\_REQUIRED@{FALLING\_TREND\_REQUIRED}!event\_manager.cpp@{event\_manager.cpp}}
+\doxysubsubsection{\texorpdfstring{FALLING\_TREND\_REQUIRED}{FALLING\_TREND\_REQUIRED}}
+{\footnotesize\ttfamily \label{event__manager_8cpp_ae4e7da8cdf52e447acd5705d930759cf} 
+int FALLING\+\_\+\+TREND\+\_\+\+REQUIRED = 3\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+Definition at line \mbox{\hyperlink{event__manager_8cpp_source_l00014}{14}} of file \mbox{\hyperlink{event__manager_8cpp_source}{event\+\_\+manager.\+cpp}}.
+
+\Hypertarget{event__manager_8cpp_aa1095ab71c42b3eaed0492aec0941972}\index{event\_manager.cpp@{event\_manager.cpp}!VOLTAGE\_LOW\_THRESHOLD@{VOLTAGE\_LOW\_THRESHOLD}}
+\index{VOLTAGE\_LOW\_THRESHOLD@{VOLTAGE\_LOW\_THRESHOLD}!event\_manager.cpp@{event\_manager.cpp}}
+\doxysubsubsection{\texorpdfstring{VOLTAGE\_LOW\_THRESHOLD}{VOLTAGE\_LOW\_THRESHOLD}}
+{\footnotesize\ttfamily \label{event__manager_8cpp_aa1095ab71c42b3eaed0492aec0941972} 
+float VOLTAGE\+\_\+\+LOW\+\_\+\+THRESHOLD = 4.\+7f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+Definition at line \mbox{\hyperlink{event__manager_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{event__manager_8cpp_source}{event\+\_\+manager.\+cpp}}.
+
+\Hypertarget{event__manager_8cpp_a98ed7b83dd5e1a54a096ca9bb3456163}\index{event\_manager.cpp@{event\_manager.cpp}!VOLTAGE\_OVERCHARGE\_THRESHOLD@{VOLTAGE\_OVERCHARGE\_THRESHOLD}}
+\index{VOLTAGE\_OVERCHARGE\_THRESHOLD@{VOLTAGE\_OVERCHARGE\_THRESHOLD}!event\_manager.cpp@{event\_manager.cpp}}
+\doxysubsubsection{\texorpdfstring{VOLTAGE\_OVERCHARGE\_THRESHOLD}{VOLTAGE\_OVERCHARGE\_THRESHOLD}}
+{\footnotesize\ttfamily \label{event__manager_8cpp_a98ed7b83dd5e1a54a096ca9bb3456163} 
+float VOLTAGE\+\_\+\+OVERCHARGE\+\_\+\+THRESHOLD = 5.\+3f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+Definition at line \mbox{\hyperlink{event__manager_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{event__manager_8cpp_source}{event\+\_\+manager.\+cpp}}.
+
+\Hypertarget{event__manager_8cpp_ad4a2e48e0a0e0d5aa49dd6c2aa12d8fb}\index{event\_manager.cpp@{event\_manager.cpp}!fallingTrendCount@{fallingTrendCount}}
+\index{fallingTrendCount@{fallingTrendCount}!event\_manager.cpp@{event\_manager.cpp}}
+\doxysubsubsection{\texorpdfstring{fallingTrendCount}{fallingTrendCount}}
+{\footnotesize\ttfamily \label{event__manager_8cpp_ad4a2e48e0a0e0d5aa49dd6c2aa12d8fb} 
+int falling\+Trend\+Count = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{event__manager_8cpp_source_l00019}{19}} of file \mbox{\hyperlink{event__manager_8cpp_source}{event\+\_\+manager.\+cpp}}.
+
+\Hypertarget{event__manager_8cpp_a908d9cb4eb9ec61d273f6770660bbb8e}\index{event\_manager.cpp@{event\_manager.cpp}!lastSolarState@{lastSolarState}}
+\index{lastSolarState@{lastSolarState}!event\_manager.cpp@{event\_manager.cpp}}
+\doxysubsubsection{\texorpdfstring{lastSolarState}{lastSolarState}}
+{\footnotesize\ttfamily \label{event__manager_8cpp_a908d9cb4eb9ec61d273f6770660bbb8e} 
+bool last\+Solar\+State = false}
+
+
+
+Definition at line \mbox{\hyperlink{event__manager_8cpp_source_l00021}{21}} of file \mbox{\hyperlink{event__manager_8cpp_source}{event\+\_\+manager.\+cpp}}.
+
+\Hypertarget{event__manager_8cpp_a0592f758055ae8683676ff86ae7ae9e1}\index{event\_manager.cpp@{event\_manager.cpp}!lastUSBState@{lastUSBState}}
+\index{lastUSBState@{lastUSBState}!event\_manager.cpp@{event\_manager.cpp}}
+\doxysubsubsection{\texorpdfstring{lastUSBState}{lastUSBState}}
+{\footnotesize\ttfamily \label{event__manager_8cpp_a0592f758055ae8683676ff86ae7ae9e1} 
+bool last\+USBState = false}
+
+
+
+Definition at line \mbox{\hyperlink{event__manager_8cpp_source_l00022}{22}} of file \mbox{\hyperlink{event__manager_8cpp_source}{event\+\_\+manager.\+cpp}}.
+
+\Hypertarget{event__manager_8cpp_abfd573c8a839ac00ea3b96d691ea11c3}\index{event\_manager.cpp@{event\_manager.cpp}!systemClock@{systemClock}}
+\index{systemClock@{systemClock}!event\_manager.cpp@{event\_manager.cpp}}
+\doxysubsubsection{\texorpdfstring{systemClock}{systemClock}}
+{\footnotesize\ttfamily \label{event__manager_8cpp_abfd573c8a839ac00ea3b96d691ea11c3} 
+\mbox{\hyperlink{class_d_s3231}{DS3231}} system\+Clock\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{event__manager_8cpp_a2a686792b51ec2b9e1b7bfc9faef92f7}\index{event\_manager.cpp@{event\_manager.cpp}!eventManager@{eventManager}}
+\index{eventManager@{eventManager}!event\_manager.cpp@{event\_manager.cpp}}
+\doxysubsubsection{\texorpdfstring{eventManager}{eventManager}}
+{\footnotesize\ttfamily \label{event__manager_8cpp_a2a686792b51ec2b9e1b7bfc9faef92f7} 
+\mbox{\hyperlink{class_event_manager_impl}{Event\+Manager\+Impl}} event\+Manager}
+
+
+
+Definition at line \mbox{\hyperlink{event__manager_8cpp_source_l00026}{26}} of file \mbox{\hyperlink{event__manager_8cpp_source}{event\+\_\+manager.\+cpp}}.
+

@@ -1,0 +1,169 @@
+\doxysection{BH1750\+Wrapper Class Reference}
+\hypertarget{class_b_h1750_wrapper}{}\label{class_b_h1750_wrapper}\index{BH1750Wrapper@{BH1750Wrapper}}
+
+
+{\ttfamily \#include $<$BH1750\+\_\+\+WRAPPER.\+h$>$}
+
+Inheritance diagram for BH1750\+Wrapper\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_b_h1750_wrapper}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_b_h1750_wrapper_a269ed77d8ed445c6fb4a9aa6f33b39df}{BH1750\+Wrapper}} ()
+\item 
+int \mbox{\hyperlink{class_b_h1750_wrapper_abf1afbdda5863d3830fb3e54ce6813f1}{get\+\_\+i2c\+\_\+addr}} ()
+\item 
+bool \mbox{\hyperlink{class_b_h1750_wrapper_a2f9561a5cce4fe2241a0e74f69e4dadb}{init}} () override
+\item 
+float \mbox{\hyperlink{class_b_h1750_wrapper_a150e9bb5fb1185d6b1619565c66c5f62}{read\+Data}} (\mbox{\hyperlink{_i_sensor_8h_a21b0301bb3eb76855366980212c8ae5e}{Sensor\+Data\+Type\+Identifier}} type) override
+\item 
+bool \mbox{\hyperlink{class_b_h1750_wrapper_a17eee3fe5b77e07d5aceed51c5277709}{is\+Initialized}} () const override
+\item 
+\mbox{\hyperlink{_i_sensor_8h_a213c434cb928c4ca22513e2302632435}{Sensor\+Type}} \mbox{\hyperlink{class_b_h1750_wrapper_aa107682828326c965d10db863e704bde}{get\+Type}} () const override
+\item 
+bool \mbox{\hyperlink{class_b_h1750_wrapper_a721289913582b5222ca375cbbe6b43d6}{configure}} (const std\+::map$<$ std\+::string, std\+::string $>$ \&config)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_i_sensor}{ISensor}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_i_sensor_adbd5b40ebbf9a78b9845d22dddfac351}{\texorpdfstring{$\sim$}{\string~}\+ISensor}} ()=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_b_h1750}{BH1750}} \mbox{\hyperlink{class_b_h1750_wrapper_a254f46eb45a19e87f32ae62ca4ef0135}{sensor}}
+\item 
+bool \mbox{\hyperlink{class_b_h1750_wrapper_a260b8f66366a5174cc8b0b92dda72e31}{initialized}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_b_h1750___w_r_a_p_p_e_r_8h_source_l00009}{9}} of file \mbox{\hyperlink{_b_h1750___w_r_a_p_p_e_r_8h_source}{BH1750\+\_\+\+WRAPPER.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_b_h1750_wrapper_a269ed77d8ed445c6fb4a9aa6f33b39df}\index{BH1750Wrapper@{BH1750Wrapper}!BH1750Wrapper@{BH1750Wrapper}}
+\index{BH1750Wrapper@{BH1750Wrapper}!BH1750Wrapper@{BH1750Wrapper}}
+\doxysubsubsection{\texorpdfstring{BH1750Wrapper()}{BH1750Wrapper()}}
+{\footnotesize\ttfamily \label{class_b_h1750_wrapper_a269ed77d8ed445c6fb4a9aa6f33b39df} 
+BH1750\+Wrapper\+::\+BH1750\+Wrapper (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_b_h1750___w_r_a_p_p_e_r_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{_b_h1750___w_r_a_p_p_e_r_8cpp_source}{BH1750\+\_\+\+WRAPPER.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_b_h1750_wrapper_abf1afbdda5863d3830fb3e54ce6813f1}\index{BH1750Wrapper@{BH1750Wrapper}!get\_i2c\_addr@{get\_i2c\_addr}}
+\index{get\_i2c\_addr@{get\_i2c\_addr}!BH1750Wrapper@{BH1750Wrapper}}
+\doxysubsubsection{\texorpdfstring{get\_i2c\_addr()}{get\_i2c\_addr()}}
+{\footnotesize\ttfamily \label{class_b_h1750_wrapper_abf1afbdda5863d3830fb3e54ce6813f1} 
+int BH1750\+Wrapper\+::get\+\_\+i2c\+\_\+addr (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_b_h1750_wrapper_a2f9561a5cce4fe2241a0e74f69e4dadb}\index{BH1750Wrapper@{BH1750Wrapper}!init@{init}}
+\index{init@{init}!BH1750Wrapper@{BH1750Wrapper}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily \label{class_b_h1750_wrapper_a2f9561a5cce4fe2241a0e74f69e4dadb} 
+bool BH1750\+Wrapper\+::init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_sensor_a28051b0215d618d82556c8bb2c0abd29}{ISensor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_b_h1750___w_r_a_p_p_e_r_8cpp_source_l00010}{10}} of file \mbox{\hyperlink{_b_h1750___w_r_a_p_p_e_r_8cpp_source}{BH1750\+\_\+\+WRAPPER.\+cpp}}.
+
+\Hypertarget{class_b_h1750_wrapper_a150e9bb5fb1185d6b1619565c66c5f62}\index{BH1750Wrapper@{BH1750Wrapper}!readData@{readData}}
+\index{readData@{readData}!BH1750Wrapper@{BH1750Wrapper}}
+\doxysubsubsection{\texorpdfstring{readData()}{readData()}}
+{\footnotesize\ttfamily \label{class_b_h1750_wrapper_a150e9bb5fb1185d6b1619565c66c5f62} 
+float BH1750\+Wrapper\+::read\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_i_sensor_8h_a21b0301bb3eb76855366980212c8ae5e}{Sensor\+Data\+Type\+Identifier}}}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_sensor_ae8363f6253e47aa23d04c07334f49b5d}{ISensor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_b_h1750___w_r_a_p_p_e_r_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{_b_h1750___w_r_a_p_p_e_r_8cpp_source}{BH1750\+\_\+\+WRAPPER.\+cpp}}.
+
+\Hypertarget{class_b_h1750_wrapper_a17eee3fe5b77e07d5aceed51c5277709}\index{BH1750Wrapper@{BH1750Wrapper}!isInitialized@{isInitialized}}
+\index{isInitialized@{isInitialized}!BH1750Wrapper@{BH1750Wrapper}}
+\doxysubsubsection{\texorpdfstring{isInitialized()}{isInitialized()}}
+{\footnotesize\ttfamily \label{class_b_h1750_wrapper_a17eee3fe5b77e07d5aceed51c5277709} 
+bool BH1750\+Wrapper\+::is\+Initialized (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_sensor_a35a720334040ca754deb0931fc6f1b50}{ISensor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_b_h1750___w_r_a_p_p_e_r_8cpp_source_l00022}{22}} of file \mbox{\hyperlink{_b_h1750___w_r_a_p_p_e_r_8cpp_source}{BH1750\+\_\+\+WRAPPER.\+cpp}}.
+
+\Hypertarget{class_b_h1750_wrapper_aa107682828326c965d10db863e704bde}\index{BH1750Wrapper@{BH1750Wrapper}!getType@{getType}}
+\index{getType@{getType}!BH1750Wrapper@{BH1750Wrapper}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \label{class_b_h1750_wrapper_aa107682828326c965d10db863e704bde} 
+\mbox{\hyperlink{_i_sensor_8h_a213c434cb928c4ca22513e2302632435}{Sensor\+Type}} BH1750\+Wrapper\+::get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_sensor_a649cfa6c1888996f392f401e7d26125c}{ISensor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_b_h1750___w_r_a_p_p_e_r_8cpp_source_l00026}{26}} of file \mbox{\hyperlink{_b_h1750___w_r_a_p_p_e_r_8cpp_source}{BH1750\+\_\+\+WRAPPER.\+cpp}}.
+
+\Hypertarget{class_b_h1750_wrapper_a721289913582b5222ca375cbbe6b43d6}\index{BH1750Wrapper@{BH1750Wrapper}!configure@{configure}}
+\index{configure@{configure}!BH1750Wrapper@{BH1750Wrapper}}
+\doxysubsubsection{\texorpdfstring{configure()}{configure()}}
+{\footnotesize\ttfamily \label{class_b_h1750_wrapper_a721289913582b5222ca375cbbe6b43d6} 
+bool BH1750\+Wrapper\+::configure (\begin{DoxyParamCaption}\item[{const std\+::map$<$ std\+::string, std\+::string $>$ \&}]{config}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_sensor_aa5fd04ca51fa10cb8d0bcc835b14fb33}{ISensor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_b_h1750___w_r_a_p_p_e_r_8cpp_source_l00030}{30}} of file \mbox{\hyperlink{_b_h1750___w_r_a_p_p_e_r_8cpp_source}{BH1750\+\_\+\+WRAPPER.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_b_h1750_wrapper_a254f46eb45a19e87f32ae62ca4ef0135}\index{BH1750Wrapper@{BH1750Wrapper}!sensor@{sensor}}
+\index{sensor@{sensor}!BH1750Wrapper@{BH1750Wrapper}}
+\doxysubsubsection{\texorpdfstring{sensor}{sensor}}
+{\footnotesize\ttfamily \label{class_b_h1750_wrapper_a254f46eb45a19e87f32ae62ca4ef0135} 
+\mbox{\hyperlink{class_b_h1750}{BH1750}} BH1750\+Wrapper\+::sensor\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_b_h1750___w_r_a_p_p_e_r_8h_source_l00011}{11}} of file \mbox{\hyperlink{_b_h1750___w_r_a_p_p_e_r_8h_source}{BH1750\+\_\+\+WRAPPER.\+h}}.
+
+\Hypertarget{class_b_h1750_wrapper_a260b8f66366a5174cc8b0b92dda72e31}\index{BH1750Wrapper@{BH1750Wrapper}!initialized@{initialized}}
+\index{initialized@{initialized}!BH1750Wrapper@{BH1750Wrapper}}
+\doxysubsubsection{\texorpdfstring{initialized}{initialized}}
+{\footnotesize\ttfamily \label{class_b_h1750_wrapper_a260b8f66366a5174cc8b0b92dda72e31} 
+bool BH1750\+Wrapper\+::initialized = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_b_h1750___w_r_a_p_p_e_r_8h_source_l00012}{12}} of file \mbox{\hyperlink{_b_h1750___w_r_a_p_p_e_r_8h_source}{BH1750\+\_\+\+WRAPPER.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+BH1750/\mbox{\hyperlink{_b_h1750___w_r_a_p_p_e_r_8h}{BH1750\+\_\+\+WRAPPER.\+h}}\item 
+lib/\+BH1750/\mbox{\hyperlink{_b_h1750___w_r_a_p_p_e_r_8cpp}{BH1750\+\_\+\+WRAPPER.\+cpp}}\end{DoxyCompactItemize}

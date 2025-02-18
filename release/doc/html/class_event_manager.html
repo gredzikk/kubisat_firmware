@@ -209,6 +209,56 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab9c4d0fbfc9cf7743eac02bee6223728" name="ab9c4d0fbfc9cf7743eac02bee6223728"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9c4d0fbfc9cf7743eac02bee6223728">&#9670;&#160;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void EventManager::init </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="event__manager_8h_source.html#l00099">99</a> of file <a class="el" href="event__manager_8h_source.html">event_manager.h</a>.</p>
+
+</div>
+</div>
+<a id="ae73a56091dc8713bb86a11abb6742a14" name="ae73a56091dc8713bb86a11abb6742a14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae73a56091dc8713bb86a11abb6742a14">&#9670;&#160;</a></span>logEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EventManager::logEvent </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>group</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>event</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00028">28</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
+
+</div>
+</div>
 <a id="a00648cfe8c39fbd59cc4c593113e5573" name="a00648cfe8c39fbd59cc4c593113e5573"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a00648cfe8c39fbd59cc4c593113e5573">&#9670;&#160;</a></span>getEvent()</h2>
 
@@ -255,8 +305,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ab9c4d0fbfc9cf7743eac02bee6223728" name="ab9c4d0fbfc9cf7743eac02bee6223728"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab9c4d0fbfc9cf7743eac02bee6223728">&#9670;&#160;</a></span>init()</h2>
+<a id="ad369ac9b7ab0251070e0075745836a40" name="ad369ac9b7ab0251070e0075745836a40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad369ac9b7ab0251070e0075745836a40">&#9670;&#160;</a></span>saveToStorage()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -265,7 +315,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void EventManager::init </td>
+          <td class="memname">virtual bool EventManager::saveToStorage </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -273,12 +323,12 @@ Protected Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel virtual">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event__manager_8h_source.html#l00099">99</a> of file <a class="el" href="event__manager_8h_source.html">event_manager.h</a>.</p>
+<p>Implemented in <a class="el" href="class_event_manager_impl.html#a8bd15b8b1b4d2439740934f087d97f98">EventManagerImpl</a>.</p>
 
 </div>
 </div>
@@ -309,31 +359,9 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ae73a56091dc8713bb86a11abb6742a14" name="ae73a56091dc8713bb86a11abb6742a14"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae73a56091dc8713bb86a11abb6742a14">&#9670;&#160;</a></span>logEvent()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void EventManager::logEvent </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>group</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>event</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00028">28</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
-
-</div>
-</div>
-<a id="ad369ac9b7ab0251070e0075745836a40" name="ad369ac9b7ab0251070e0075745836a40"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad369ac9b7ab0251070e0075745836a40">&#9670;&#160;</a></span>saveToStorage()</h2>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a9d82f66074e141f352bb852654673536" name="a9d82f66074e141f352bb852654673536"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d82f66074e141f352bb852654673536">&#9670;&#160;</a></span>events</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -342,24 +370,20 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual bool EventManager::saveToStorage </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td class="memname"><a class="el" href="class_event_log.html">EventLog</a> EventManager::events[<a class="el" href="event__manager_8h.html#acc4dda1aaabc9862fe79fd94e0b722bf">EVENT_BUFFER_SIZE</a>]</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_event_manager_impl.html#a8bd15b8b1b4d2439740934f087d97f98">EventManagerImpl</a>.</p>
+<p class="definition">Definition at line <a class="el" href="event__manager_8h_source.html#l00111">111</a> of file <a class="el" href="event__manager_8h_source.html">event_manager.h</a>.</p>
 
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
 <a id="ab74418c8064525f34692dff74dd28d82" name="ab74418c8064525f34692dff74dd28d82"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab74418c8064525f34692dff74dd28d82">&#9670;&#160;</a></span>eventCount</h2>
 
@@ -381,6 +405,30 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="event__manager_8h_source.html#l00112">112</a> of file <a class="el" href="event__manager_8h_source.html">event_manager.h</a>.</p>
+
+</div>
+</div>
+<a id="ad97f788895da6e30b3237982a7bcd810" name="ad97f788895da6e30b3237982a7bcd810"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad97f788895da6e30b3237982a7bcd810">&#9670;&#160;</a></span>writeIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t EventManager::writeIndex</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="event__manager_8h_source.html#l00113">113</a> of file <a class="el" href="event__manager_8h_source.html">event_manager.h</a>.</p>
 
 </div>
 </div>
@@ -408,54 +456,6 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a9d82f66074e141f352bb852654673536" name="a9d82f66074e141f352bb852654673536"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9d82f66074e141f352bb852654673536">&#9670;&#160;</a></span>events</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_event_log.html">EventLog</a> EventManager::events[<a class="el" href="event__manager_8h.html#acc4dda1aaabc9862fe79fd94e0b722bf">EVENT_BUFFER_SIZE</a>]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="event__manager_8h_source.html#l00111">111</a> of file <a class="el" href="event__manager_8h_source.html">event_manager.h</a>.</p>
-
-</div>
-</div>
-<a id="aed2eb3a8bc611f5594eb62304c7b4754" name="aed2eb3a8bc611f5594eb62304c7b4754"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aed2eb3a8bc611f5594eb62304c7b4754">&#9670;&#160;</a></span>needsPersistence</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool EventManager::needsPersistence</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="event__manager_8h_source.html#l00116">116</a> of file <a class="el" href="event__manager_8h_source.html">event_manager.h</a>.</p>
-
-</div>
-</div>
 <a id="a31b1b079c272a1d7022ed84b01927186" name="a31b1b079c272a1d7022ed84b01927186"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a31b1b079c272a1d7022ed84b01927186">&#9670;&#160;</a></span>nextEventId</h2>
 
@@ -480,8 +480,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ad97f788895da6e30b3237982a7bcd810" name="ad97f788895da6e30b3237982a7bcd810"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad97f788895da6e30b3237982a7bcd810">&#9670;&#160;</a></span>writeIndex</h2>
+<a id="aed2eb3a8bc611f5594eb62304c7b4754" name="aed2eb3a8bc611f5594eb62304c7b4754"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed2eb3a8bc611f5594eb62304c7b4754">&#9670;&#160;</a></span>needsPersistence</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -490,7 +490,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">size_t EventManager::writeIndex</td>
+          <td class="memname">bool EventManager::needsPersistence</td>
         </tr>
       </table>
   </td>
@@ -500,7 +500,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event__manager_8h_source.html#l00113">113</a> of file <a class="el" href="event__manager_8h_source.html">event_manager.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="event__manager_8h_source.html#l00116">116</a> of file <a class="el" href="event__manager_8h_source.html">event_manager.h</a>.</p>
 
 </div>
 </div>

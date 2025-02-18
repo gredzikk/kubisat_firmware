@@ -42,6 +42,7 @@ bool initSystems() {
         gpio_put(GPS_POWER_ENABLE_PIN, 1); 
     }
     
+    // @todo[critical] Test sd card working
     bool sdInitDone = fs_init();
     uartPrint("SD card init: " + std::to_string(sdInitDone));
     std::string bootString = "System init completed @ " + std::to_string(to_ms_since_boot(get_absolute_time())) + " ms";

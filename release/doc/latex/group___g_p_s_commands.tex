@@ -1,0 +1,170 @@
+\doxysection{GPS Commands}
+\hypertarget{group___g_p_s_commands}{}\label{group___g_p_s_commands}\index{GPS Commands@{GPS Commands}}
+
+
+Commands for controlling and monitoring the GPS module.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{group___g_p_s_commands_gaa4c13d7d324ffb354badf45e9ceffb1c}{handle\+GPSPower\+Status}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
+\begin{DoxyCompactList}\small\item\em Handler for controlling GPS module power state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{group___g_p_s_commands_gad12f2e18bdfecbd5b6e8d8a84bb9cd77}{handle\+Enable\+GPSTransparent\+Mode}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
+\begin{DoxyCompactList}\small\item\em Handler for enabling GPS transparent mode (UART pass-\/through) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{group___g_p_s_commands_ga71881bd1a0a285e4149db732a3f1b533}{handle\+Get\+RMCData}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
+\begin{DoxyCompactList}\small\item\em Handler for retrieving GPS RMC (Recommended Minimum Navigation) data. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{group___g_p_s_commands_gaf1f6c0fb4266518353e088e8781ed143}{handle\+Get\+GGAData}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
+\begin{DoxyCompactList}\small\item\em Handler for retrieving GPS GGA (Global Positioning System Fix Data) data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Commands for controlling and monitoring the GPS module. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{group___g_p_s_commands_gaa4c13d7d324ffb354badf45e9ceffb1c}\index{GPS Commands@{GPS Commands}!handleGPSPowerStatus@{handleGPSPowerStatus}}
+\index{handleGPSPowerStatus@{handleGPSPowerStatus}!GPS Commands@{GPS Commands}}
+\doxysubsubsection{\texorpdfstring{handleGPSPowerStatus()}{handleGPSPowerStatus()}}
+{\footnotesize\ttfamily \label{group___g_p_s_commands_gaa4c13d7d324ffb354badf45e9ceffb1c} 
+\mbox{\hyperlink{struct_frame}{Frame}} handle\+GPSPower\+Status (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{param}{, }\item[{\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}}]{operation\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Handler for controlling GPS module power state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em param} & For SET\+: "{}0"{} to power off, "{}1"{} to power on. For GET\+: empty \\
+\hline
+{\em operation\+Type} & GET to read current state, SET to change state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_frame}{Frame} containing\+:
+\begin{DoxyItemize}
+\item Success\+: Current power state (0/1) or
+\item Error\+: Error reason 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+{\bfseries{KBST;0;GET;7;1;;TSBK}} 
+
+Return current GPS module power state\+: ON/\+OFF 
+
+{\bfseries{KBST;0;SET;7;1;POWER;TSBK}} 
+
+POWER -\/ 0 -\/ OFF, 1 -\/ ON
+\end{DoxyNote}
+\begin{DoxyRefDesc}{Command}
+\item[\mbox{\hyperlink{command__command000006}{Command}}]Command ID\+: 7.\+1 \end{DoxyRefDesc}
+
+
+Definition at line \mbox{\hyperlink{gps__commands_8cpp_source_l00026}{26}} of file \mbox{\hyperlink{gps__commands_8cpp_source}{gps\+\_\+commands.\+cpp}}.
+
+\Hypertarget{group___g_p_s_commands_gad12f2e18bdfecbd5b6e8d8a84bb9cd77}\index{GPS Commands@{GPS Commands}!handleEnableGPSTransparentMode@{handleEnableGPSTransparentMode}}
+\index{handleEnableGPSTransparentMode@{handleEnableGPSTransparentMode}!GPS Commands@{GPS Commands}}
+\doxysubsubsection{\texorpdfstring{handleEnableGPSTransparentMode()}{handleEnableGPSTransparentMode()}}
+{\footnotesize\ttfamily \label{group___g_p_s_commands_gad12f2e18bdfecbd5b6e8d8a84bb9cd77} 
+\mbox{\hyperlink{struct_frame}{Frame}} handle\+Enable\+GPSTransparent\+Mode (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{param}{, }\item[{\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}}]{operation\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Handler for enabling GPS transparent mode (UART pass-\/through) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em param} & TIMEOUT in seconds (optional, defaults to 60) \\
+\hline
+{\em operation\+Type} & SET \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_frame}{Frame} containing\+:
+\begin{DoxyItemize}
+\item Success\+: Exit message + reason or
+\item Error\+: Error reason 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+{\bfseries{KBST;0;SET;7;2;TIMEOUT;TSBK}} 
+
+TIMEOUT -\/ 1-\/600s, default 60s 
+
+Enters a pass-\/through mode where UART communication is bridged directly to GPS 
+
+Send "{}\#\#\+EXIT\#\#"{} to exit mode before TIMEOUT
+\end{DoxyNote}
+\begin{DoxyRefDesc}{Command}
+\item[\mbox{\hyperlink{command__command000007}{Command}}]Command ID\+: 7.\+2 \end{DoxyRefDesc}
+
+
+Definition at line \mbox{\hyperlink{gps__commands_8cpp_source_l00074}{74}} of file \mbox{\hyperlink{gps__commands_8cpp_source}{gps\+\_\+commands.\+cpp}}.
+
+\Hypertarget{group___g_p_s_commands_ga71881bd1a0a285e4149db732a3f1b533}\index{GPS Commands@{GPS Commands}!handleGetRMCData@{handleGetRMCData}}
+\index{handleGetRMCData@{handleGetRMCData}!GPS Commands@{GPS Commands}}
+\doxysubsubsection{\texorpdfstring{handleGetRMCData()}{handleGetRMCData()}}
+{\footnotesize\ttfamily \label{group___g_p_s_commands_ga71881bd1a0a285e4149db732a3f1b533} 
+\mbox{\hyperlink{struct_frame}{Frame}} handle\+Get\+RMCData (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{param}{, }\item[{\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}}]{operation\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Handler for retrieving GPS RMC (Recommended Minimum Navigation) data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em param} & Empty string expected \\
+\hline
+{\em operation\+Type} & GET \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_frame}{Frame} containing\+:
+\begin{DoxyItemize}
+\item Success\+: Comma-\/separated RMC tokens or
+\item Error\+: Error message 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+{\bfseries{KBST;0;GET;7;3;;TSBK}}
+\end{DoxyNote}
+\begin{DoxyRefDesc}{Command}
+\item[\mbox{\hyperlink{command__command000008}{Command}}]Command ID\+: 7.\+3 \end{DoxyRefDesc}
+
+
+Definition at line \mbox{\hyperlink{gps__commands_8cpp_source_l00171}{171}} of file \mbox{\hyperlink{gps__commands_8cpp_source}{gps\+\_\+commands.\+cpp}}.
+
+\Hypertarget{group___g_p_s_commands_gaf1f6c0fb4266518353e088e8781ed143}\index{GPS Commands@{GPS Commands}!handleGetGGAData@{handleGetGGAData}}
+\index{handleGetGGAData@{handleGetGGAData}!GPS Commands@{GPS Commands}}
+\doxysubsubsection{\texorpdfstring{handleGetGGAData()}{handleGetGGAData()}}
+{\footnotesize\ttfamily \label{group___g_p_s_commands_gaf1f6c0fb4266518353e088e8781ed143} 
+\mbox{\hyperlink{struct_frame}{Frame}} handle\+Get\+GGAData (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{param}{, }\item[{\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}}]{operation\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Handler for retrieving GPS GGA (Global Positioning System Fix Data) data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em param} & Empty string expected \\
+\hline
+{\em operation\+Type} & GET \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_frame}{Frame} containing\+:
+\begin{DoxyItemize}
+\item Success\+: Comma-\/separated GGA tokens or
+\item Error\+: Error message 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+{\bfseries{KBST;0;GET;7;4;;TSBK}}
+\end{DoxyNote}
+\begin{DoxyRefDesc}{Command}
+\item[\mbox{\hyperlink{command__command000009}{Command}}]Command ID\+: 7.\+4 \end{DoxyRefDesc}
+
+
+Definition at line \mbox{\hyperlink{gps__commands_8cpp_source_l00210}{210}} of file \mbox{\hyperlink{gps__commands_8cpp_source}{gps\+\_\+commands.\+cpp}}.
+

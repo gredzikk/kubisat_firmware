@@ -1,0 +1,177 @@
+\doxysection{BH1750 Class Reference}
+\hypertarget{class_b_h1750}{}\label{class_b_h1750}\index{BH1750@{BH1750}}
+
+
+{\ttfamily \#include $<$BH1750.\+h$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{class_b_h1750_a8402147d4b96294da6362b538d4827c0}{Mode}} \+: uint8\+\_\+t \{ \newline
+\mbox{\hyperlink{class_b_h1750_a8402147d4b96294da6362b538d4827c0a9d4b69a5f725a5105a480e2e5d67e851}{UNCONFIGURED\+\_\+\+POWER\+\_\+\+DOWN}} = 0x00
+, \mbox{\hyperlink{class_b_h1750_a8402147d4b96294da6362b538d4827c0a3d6fc432ff9e2d9b890c591179a4401e}{POWER\+\_\+\+ON}} = 0x01
+, \mbox{\hyperlink{class_b_h1750_a8402147d4b96294da6362b538d4827c0ab5859d8721cfdc0312b2838b9c985bc1}{RESET}} = 0x07
+, \mbox{\hyperlink{class_b_h1750_a8402147d4b96294da6362b538d4827c0afd7abdb36f193409d2a88bf176763911}{CONTINUOUS\+\_\+\+HIGH\+\_\+\+RES\+\_\+\+MODE}} = 0x10
+, \newline
+\mbox{\hyperlink{class_b_h1750_a8402147d4b96294da6362b538d4827c0ac12663db8fda5e471cb5b946171a20b1}{CONTINUOUS\+\_\+\+HIGH\+\_\+\+RES\+\_\+\+MODE\+\_\+2}} = 0x11
+, \mbox{\hyperlink{class_b_h1750_a8402147d4b96294da6362b538d4827c0ac32e5d6f3f1a6561e874a4a8fd60723f}{CONTINUOUS\+\_\+\+LOW\+\_\+\+RES\+\_\+\+MODE}} = 0x13
+, \mbox{\hyperlink{class_b_h1750_a8402147d4b96294da6362b538d4827c0ae6af2d70de1e4c57254d72b3b1b57e35}{ONE\+\_\+\+TIME\+\_\+\+HIGH\+\_\+\+RES\+\_\+\+MODE}} = 0x20
+, \mbox{\hyperlink{class_b_h1750_a8402147d4b96294da6362b538d4827c0a459f53ea14165ac4c845757c4c93022a}{ONE\+\_\+\+TIME\+\_\+\+HIGH\+\_\+\+RES\+\_\+\+MODE\+\_\+2}} = 0x21
+, \newline
+\mbox{\hyperlink{class_b_h1750_a8402147d4b96294da6362b538d4827c0a4f81ddfb660e4f3e0bc4228c61ff6dc6}{ONE\+\_\+\+TIME\+\_\+\+LOW\+\_\+\+RES\+\_\+\+MODE}} = 0x23
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_b_h1750_ad3621c02c56c15e4f3d40f0974a376f2}{BH1750}} (uint8\+\_\+t addr=0x23)
+\item 
+bool \mbox{\hyperlink{class_b_h1750_ae0e57ed9ecc08464a6b98b733d420e11}{begin}} (\mbox{\hyperlink{class_b_h1750_a8402147d4b96294da6362b538d4827c0}{Mode}} mode=\mbox{\hyperlink{class_b_h1750_a8402147d4b96294da6362b538d4827c0afd7abdb36f193409d2a88bf176763911}{Mode\+::\+CONTINUOUS\+\_\+\+HIGH\+\_\+\+RES\+\_\+\+MODE}})
+\item 
+void \mbox{\hyperlink{class_b_h1750_ab4f497d6aabaa34ba1ace42206bca286}{configure}} (\mbox{\hyperlink{class_b_h1750_a8402147d4b96294da6362b538d4827c0}{Mode}} mode)
+\item 
+float \mbox{\hyperlink{class_b_h1750_a15a9940a67c05b9f9a781b032fa4701e}{read\+Light\+Level}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_b_h1750_a3208587c6a4e0a6428f53c176c0b2970}{write8}} (uint8\+\_\+t data)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_b_h1750_ab332014adec6fccc44f11da4034e788e}{\+\_\+i2c\+\_\+addr}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_b_h1750_8h_source_l00012}{12}} of file \mbox{\hyperlink{_b_h1750_8h_source}{BH1750.\+h}}.
+
+
+
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{class_b_h1750_a8402147d4b96294da6362b538d4827c0}\index{BH1750@{BH1750}!Mode@{Mode}}
+\index{Mode@{Mode}!BH1750@{BH1750}}
+\doxysubsubsection{\texorpdfstring{Mode}{Mode}}
+{\footnotesize\ttfamily \label{class_b_h1750_a8402147d4b96294da6362b538d4827c0} 
+enum class \mbox{\hyperlink{class_b_h1750_a8402147d4b96294da6362b538d4827c0}{BH1750\+::\+Mode}} \+: uint8\+\_\+t\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UNCONFIGURED\_POWER\_DOWN@{UNCONFIGURED\_POWER\_DOWN}!BH1750@{BH1750}}\index{BH1750@{BH1750}!UNCONFIGURED\_POWER\_DOWN@{UNCONFIGURED\_POWER\_DOWN}}}\Hypertarget{class_b_h1750_a8402147d4b96294da6362b538d4827c0a9d4b69a5f725a5105a480e2e5d67e851}\label{class_b_h1750_a8402147d4b96294da6362b538d4827c0a9d4b69a5f725a5105a480e2e5d67e851} 
+UNCONFIGURED\+\_\+\+POWER\+\_\+\+DOWN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{POWER\_ON@{POWER\_ON}!BH1750@{BH1750}}\index{BH1750@{BH1750}!POWER\_ON@{POWER\_ON}}}\Hypertarget{class_b_h1750_a8402147d4b96294da6362b538d4827c0a3d6fc432ff9e2d9b890c591179a4401e}\label{class_b_h1750_a8402147d4b96294da6362b538d4827c0a3d6fc432ff9e2d9b890c591179a4401e} 
+POWER\+\_\+\+ON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RESET@{RESET}!BH1750@{BH1750}}\index{BH1750@{BH1750}!RESET@{RESET}}}\Hypertarget{class_b_h1750_a8402147d4b96294da6362b538d4827c0ab5859d8721cfdc0312b2838b9c985bc1}\label{class_b_h1750_a8402147d4b96294da6362b538d4827c0ab5859d8721cfdc0312b2838b9c985bc1} 
+RESET&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CONTINUOUS\_HIGH\_RES\_MODE@{CONTINUOUS\_HIGH\_RES\_MODE}!BH1750@{BH1750}}\index{BH1750@{BH1750}!CONTINUOUS\_HIGH\_RES\_MODE@{CONTINUOUS\_HIGH\_RES\_MODE}}}\Hypertarget{class_b_h1750_a8402147d4b96294da6362b538d4827c0afd7abdb36f193409d2a88bf176763911}\label{class_b_h1750_a8402147d4b96294da6362b538d4827c0afd7abdb36f193409d2a88bf176763911} 
+CONTINUOUS\+\_\+\+HIGH\+\_\+\+RES\+\_\+\+MODE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CONTINUOUS\_HIGH\_RES\_MODE\_2@{CONTINUOUS\_HIGH\_RES\_MODE\_2}!BH1750@{BH1750}}\index{BH1750@{BH1750}!CONTINUOUS\_HIGH\_RES\_MODE\_2@{CONTINUOUS\_HIGH\_RES\_MODE\_2}}}\Hypertarget{class_b_h1750_a8402147d4b96294da6362b538d4827c0ac12663db8fda5e471cb5b946171a20b1}\label{class_b_h1750_a8402147d4b96294da6362b538d4827c0ac12663db8fda5e471cb5b946171a20b1} 
+CONTINUOUS\+\_\+\+HIGH\+\_\+\+RES\+\_\+\+MODE\+\_\+2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CONTINUOUS\_LOW\_RES\_MODE@{CONTINUOUS\_LOW\_RES\_MODE}!BH1750@{BH1750}}\index{BH1750@{BH1750}!CONTINUOUS\_LOW\_RES\_MODE@{CONTINUOUS\_LOW\_RES\_MODE}}}\Hypertarget{class_b_h1750_a8402147d4b96294da6362b538d4827c0ac32e5d6f3f1a6561e874a4a8fd60723f}\label{class_b_h1750_a8402147d4b96294da6362b538d4827c0ac32e5d6f3f1a6561e874a4a8fd60723f} 
+CONTINUOUS\+\_\+\+LOW\+\_\+\+RES\+\_\+\+MODE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ONE\_TIME\_HIGH\_RES\_MODE@{ONE\_TIME\_HIGH\_RES\_MODE}!BH1750@{BH1750}}\index{BH1750@{BH1750}!ONE\_TIME\_HIGH\_RES\_MODE@{ONE\_TIME\_HIGH\_RES\_MODE}}}\Hypertarget{class_b_h1750_a8402147d4b96294da6362b538d4827c0ae6af2d70de1e4c57254d72b3b1b57e35}\label{class_b_h1750_a8402147d4b96294da6362b538d4827c0ae6af2d70de1e4c57254d72b3b1b57e35} 
+ONE\+\_\+\+TIME\+\_\+\+HIGH\+\_\+\+RES\+\_\+\+MODE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ONE\_TIME\_HIGH\_RES\_MODE\_2@{ONE\_TIME\_HIGH\_RES\_MODE\_2}!BH1750@{BH1750}}\index{BH1750@{BH1750}!ONE\_TIME\_HIGH\_RES\_MODE\_2@{ONE\_TIME\_HIGH\_RES\_MODE\_2}}}\Hypertarget{class_b_h1750_a8402147d4b96294da6362b538d4827c0a459f53ea14165ac4c845757c4c93022a}\label{class_b_h1750_a8402147d4b96294da6362b538d4827c0a459f53ea14165ac4c845757c4c93022a} 
+ONE\+\_\+\+TIME\+\_\+\+HIGH\+\_\+\+RES\+\_\+\+MODE\+\_\+2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ONE\_TIME\_LOW\_RES\_MODE@{ONE\_TIME\_LOW\_RES\_MODE}!BH1750@{BH1750}}\index{BH1750@{BH1750}!ONE\_TIME\_LOW\_RES\_MODE@{ONE\_TIME\_LOW\_RES\_MODE}}}\Hypertarget{class_b_h1750_a8402147d4b96294da6362b538d4827c0a4f81ddfb660e4f3e0bc4228c61ff6dc6}\label{class_b_h1750_a8402147d4b96294da6362b538d4827c0a4f81ddfb660e4f3e0bc4228c61ff6dc6} 
+ONE\+\_\+\+TIME\+\_\+\+LOW\+\_\+\+RES\+\_\+\+MODE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_b_h1750_8h_source_l00015}{15}} of file \mbox{\hyperlink{_b_h1750_8h_source}{BH1750.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_b_h1750_ad3621c02c56c15e4f3d40f0974a376f2}\index{BH1750@{BH1750}!BH1750@{BH1750}}
+\index{BH1750@{BH1750}!BH1750@{BH1750}}
+\doxysubsubsection{\texorpdfstring{BH1750()}{BH1750()}}
+{\footnotesize\ttfamily \label{class_b_h1750_ad3621c02c56c15e4f3d40f0974a376f2} 
+BH1750\+::\+BH1750 (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{addr}{ = {\ttfamily 0x23}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_b_h1750_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{_b_h1750_8cpp_source}{BH1750.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_b_h1750_ae0e57ed9ecc08464a6b98b733d420e11}\index{BH1750@{BH1750}!begin@{begin}}
+\index{begin@{begin}!BH1750@{BH1750}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily \label{class_b_h1750_ae0e57ed9ecc08464a6b98b733d420e11} 
+bool BH1750\+::begin (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_b_h1750_a8402147d4b96294da6362b538d4827c0}{Mode}}}]{mode}{ = {\ttfamily \mbox{\hyperlink{class_b_h1750_a8402147d4b96294da6362b538d4827c0afd7abdb36f193409d2a88bf176763911}{Mode\+::\+CONTINUOUS\+\_\+\+HIGH\+\_\+\+RES\+\_\+\+MODE}}}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_b_h1750_8cpp_source_l00008}{8}} of file \mbox{\hyperlink{_b_h1750_8cpp_source}{BH1750.\+cpp}}.
+
+\Hypertarget{class_b_h1750_ab4f497d6aabaa34ba1ace42206bca286}\index{BH1750@{BH1750}!configure@{configure}}
+\index{configure@{configure}!BH1750@{BH1750}}
+\doxysubsubsection{\texorpdfstring{configure()}{configure()}}
+{\footnotesize\ttfamily \label{class_b_h1750_ab4f497d6aabaa34ba1ace42206bca286} 
+void BH1750\+::configure (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_b_h1750_a8402147d4b96294da6362b538d4827c0}{Mode}}}]{mode}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_b_h1750_8cpp_source_l00022}{22}} of file \mbox{\hyperlink{_b_h1750_8cpp_source}{BH1750.\+cpp}}.
+
+\Hypertarget{class_b_h1750_a15a9940a67c05b9f9a781b032fa4701e}\index{BH1750@{BH1750}!readLightLevel@{readLightLevel}}
+\index{readLightLevel@{readLightLevel}!BH1750@{BH1750}}
+\doxysubsubsection{\texorpdfstring{readLightLevel()}{readLightLevel()}}
+{\footnotesize\ttfamily \label{class_b_h1750_a15a9940a67c05b9f9a781b032fa4701e} 
+float BH1750\+::read\+Light\+Level (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_b_h1750_8cpp_source_l00040}{40}} of file \mbox{\hyperlink{_b_h1750_8cpp_source}{BH1750.\+cpp}}.
+
+\Hypertarget{class_b_h1750_a3208587c6a4e0a6428f53c176c0b2970}\index{BH1750@{BH1750}!write8@{write8}}
+\index{write8@{write8}!BH1750@{BH1750}}
+\doxysubsubsection{\texorpdfstring{write8()}{write8()}}
+{\footnotesize\ttfamily \label{class_b_h1750_a3208587c6a4e0a6428f53c176c0b2970} 
+void BH1750\+::write8 (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_b_h1750_8cpp_source_l00049}{49}} of file \mbox{\hyperlink{_b_h1750_8cpp_source}{BH1750.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_b_h1750_ab332014adec6fccc44f11da4034e788e}\index{BH1750@{BH1750}!\_i2c\_addr@{\_i2c\_addr}}
+\index{\_i2c\_addr@{\_i2c\_addr}!BH1750@{BH1750}}
+\doxysubsubsection{\texorpdfstring{\_i2c\_addr}{\_i2c\_addr}}
+{\footnotesize\ttfamily \label{class_b_h1750_ab332014adec6fccc44f11da4034e788e} 
+uint8\+\_\+t BH1750\+::\+\_\+i2c\+\_\+addr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_b_h1750_8h_source_l00034}{34}} of file \mbox{\hyperlink{_b_h1750_8h_source}{BH1750.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+BH1750/\mbox{\hyperlink{_b_h1750_8h}{BH1750.\+h}}\item 
+lib/\+BH1750/\mbox{\hyperlink{_b_h1750_8cpp}{BH1750.\+cpp}}\end{DoxyCompactItemize}

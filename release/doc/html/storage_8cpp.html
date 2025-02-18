@@ -123,44 +123,6 @@ Functions</h2></td></tr>
 <tr class="separator:a4d0e5bbd1f57f47164521ca84c8e6fd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a1ed8daa820da91b458072334ecec9618" name="a1ed8daa820da91b458072334ecec9618"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1ed8daa820da91b458072334ecec9618">&#9670;&#160;</a></span>fs_close_file()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool fs_close_file </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_file_handle.html">FileHandle</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>handle</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="storage_8cpp_source.html#l00082">82</a> of file <a class="el" href="storage_8cpp_source.html">storage.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a4d0e5bbd1f57f47164521ca84c8e6fd1" name="a4d0e5bbd1f57f47164521ca84c8e6fd1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4d0e5bbd1f57f47164521ca84c8e6fd1">&#9670;&#160;</a></span>fs_file_exists()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool fs_file_exists </td>
-          <td>(</td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>filename</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="storage_8cpp_source.html#l00099">99</a> of file <a class="el" href="storage_8cpp_source.html">storage.cpp</a>.</p>
-
-</div>
-</div>
 <a id="afb19e37469a751aa61de3dcd0c70b4b0" name="afb19e37469a751aa61de3dcd0c70b4b0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afb19e37469a751aa61de3dcd0c70b4b0">&#9670;&#160;</a></span>fs_init()</h2>
 
@@ -203,6 +165,34 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="aab35cc4af25dd4a32624e51bf0fcda5b" name="aab35cc4af25dd4a32624e51bf0fcda5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab35cc4af25dd4a32624e51bf0fcda5b">&#9670;&#160;</a></span>fs_write_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ssize_t fs_write_file </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_file_handle.html">FileHandle</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>handle</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="storage_8cpp_source.html#l00058">58</a> of file <a class="el" href="storage_8cpp_source.html">storage.cpp</a>.</p>
+
+</div>
+</div>
 <a id="a259e40f946e1178329ed6cdf18c35b0c" name="a259e40f946e1178329ed6cdf18c35b0c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a259e40f946e1178329ed6cdf18c35b0c">&#9670;&#160;</a></span>fs_read_file()</h2>
 
@@ -231,31 +221,41 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aab35cc4af25dd4a32624e51bf0fcda5b" name="aab35cc4af25dd4a32624e51bf0fcda5b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab35cc4af25dd4a32624e51bf0fcda5b">&#9670;&#160;</a></span>fs_write_file()</h2>
+<a id="a1ed8daa820da91b458072334ecec9618" name="a1ed8daa820da91b458072334ecec9618"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ed8daa820da91b458072334ecec9618">&#9670;&#160;</a></span>fs_close_file()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">ssize_t fs_write_file </td>
+          <td class="memname">bool fs_close_file </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_file_handle.html">FileHandle</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>handle</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"><a class="el" href="struct_file_handle.html">FileHandle</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>handle</em></span></td><td>)</td>
           <td></td>
-          <td class="paramtype">const void *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="storage_8cpp_source.html#l00058">58</a> of file <a class="el" href="storage_8cpp_source.html">storage.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="storage_8cpp_source.html#l00082">82</a> of file <a class="el" href="storage_8cpp_source.html">storage.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a4d0e5bbd1f57f47164521ca84c8e6fd1" name="a4d0e5bbd1f57f47164521ca84c8e6fd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d0e5bbd1f57f47164521ca84c8e6fd1">&#9670;&#160;</a></span>fs_file_exists()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fs_file_exists </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>filename</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="storage_8cpp_source.html#l00099">99</a> of file <a class="el" href="storage_8cpp_source.html">storage.cpp</a>.</p>
 
 </div>
 </div>

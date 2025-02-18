@@ -1,0 +1,161 @@
+\doxysection{HMC5883\+LWrapper Class Reference}
+\hypertarget{class_h_m_c5883_l_wrapper}{}\label{class_h_m_c5883_l_wrapper}\index{HMC5883LWrapper@{HMC5883LWrapper}}
+
+
+{\ttfamily \#include $<$HMC5883\+L\+\_\+\+WRAPPER.\+h$>$}
+
+Inheritance diagram for HMC5883\+LWrapper\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_h_m_c5883_l_wrapper}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_h_m_c5883_l_wrapper_af0a0709fd3f48d8343794da5b3ee4f32}{HMC5883\+LWrapper}} (i2c\+\_\+inst\+\_\+t \texorpdfstring{$\ast$}{*}i2c)
+\item 
+bool \mbox{\hyperlink{class_h_m_c5883_l_wrapper_ab7a5997ae98ed9bc37fdd5ab0afe2fb2}{init}} () override
+\item 
+float \mbox{\hyperlink{class_h_m_c5883_l_wrapper_a76c63b1af36c160c9e7ebf7dc10f872b}{read\+Data}} (\mbox{\hyperlink{_i_sensor_8h_a21b0301bb3eb76855366980212c8ae5e}{Sensor\+Data\+Type\+Identifier}} type) override
+\item 
+bool \mbox{\hyperlink{class_h_m_c5883_l_wrapper_abacf4eeaaff893112e1aa3c20b23ce38}{is\+Initialized}} () const override
+\item 
+\mbox{\hyperlink{_i_sensor_8h_a213c434cb928c4ca22513e2302632435}{Sensor\+Type}} \mbox{\hyperlink{class_h_m_c5883_l_wrapper_a655c92b4d2040e76636a96f9ba63c56a}{get\+Type}} () const override
+\item 
+bool \mbox{\hyperlink{class_h_m_c5883_l_wrapper_aae28a5412098db267c5f61a638fa3ef6}{configure}} (const std\+::map$<$ std\+::string, std\+::string $>$ \&config) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_i_sensor}{ISensor}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_i_sensor_adbd5b40ebbf9a78b9845d22dddfac351}{\texorpdfstring{$\sim$}{\string~}\+ISensor}} ()=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_h_m_c5883_l}{HMC5883L}} \mbox{\hyperlink{class_h_m_c5883_l_wrapper_a676ad07965bad428b637c46152b7c6eb}{sensor}}
+\item 
+bool \mbox{\hyperlink{class_h_m_c5883_l_wrapper_af52be1c1aad99526965b952521da56f6}{initialized}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_h_m_c5883_l___w_r_a_p_p_e_r_8h_source_l00007}{7}} of file \mbox{\hyperlink{_h_m_c5883_l___w_r_a_p_p_e_r_8h_source}{HMC5883\+L\+\_\+\+WRAPPER.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_h_m_c5883_l_wrapper_af0a0709fd3f48d8343794da5b3ee4f32}\index{HMC5883LWrapper@{HMC5883LWrapper}!HMC5883LWrapper@{HMC5883LWrapper}}
+\index{HMC5883LWrapper@{HMC5883LWrapper}!HMC5883LWrapper@{HMC5883LWrapper}}
+\doxysubsubsection{\texorpdfstring{HMC5883LWrapper()}{HMC5883LWrapper()}}
+{\footnotesize\ttfamily \label{class_h_m_c5883_l_wrapper_af0a0709fd3f48d8343794da5b3ee4f32} 
+HMC5883\+LWrapper\+::\+HMC5883\+LWrapper (\begin{DoxyParamCaption}\item[{i2c\+\_\+inst\+\_\+t \texorpdfstring{$\ast$}{*}}]{i2c}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{_h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source}{HMC5883\+L\+\_\+\+WRAPPER.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_h_m_c5883_l_wrapper_ab7a5997ae98ed9bc37fdd5ab0afe2fb2}\index{HMC5883LWrapper@{HMC5883LWrapper}!init@{init}}
+\index{init@{init}!HMC5883LWrapper@{HMC5883LWrapper}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily \label{class_h_m_c5883_l_wrapper_ab7a5997ae98ed9bc37fdd5ab0afe2fb2} 
+bool HMC5883\+LWrapper\+::init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_sensor_a28051b0215d618d82556c8bb2c0abd29}{ISensor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_l00007}{7}} of file \mbox{\hyperlink{_h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source}{HMC5883\+L\+\_\+\+WRAPPER.\+cpp}}.
+
+\Hypertarget{class_h_m_c5883_l_wrapper_a76c63b1af36c160c9e7ebf7dc10f872b}\index{HMC5883LWrapper@{HMC5883LWrapper}!readData@{readData}}
+\index{readData@{readData}!HMC5883LWrapper@{HMC5883LWrapper}}
+\doxysubsubsection{\texorpdfstring{readData()}{readData()}}
+{\footnotesize\ttfamily \label{class_h_m_c5883_l_wrapper_a76c63b1af36c160c9e7ebf7dc10f872b} 
+float HMC5883\+LWrapper\+::read\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_i_sensor_8h_a21b0301bb3eb76855366980212c8ae5e}{Sensor\+Data\+Type\+Identifier}}}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_sensor_ae8363f6253e47aa23d04c07334f49b5d}{ISensor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{_h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source}{HMC5883\+L\+\_\+\+WRAPPER.\+cpp}}.
+
+\Hypertarget{class_h_m_c5883_l_wrapper_abacf4eeaaff893112e1aa3c20b23ce38}\index{HMC5883LWrapper@{HMC5883LWrapper}!isInitialized@{isInitialized}}
+\index{isInitialized@{isInitialized}!HMC5883LWrapper@{HMC5883LWrapper}}
+\doxysubsubsection{\texorpdfstring{isInitialized()}{isInitialized()}}
+{\footnotesize\ttfamily \label{class_h_m_c5883_l_wrapper_abacf4eeaaff893112e1aa3c20b23ce38} 
+bool HMC5883\+LWrapper\+::is\+Initialized (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_sensor_a35a720334040ca754deb0931fc6f1b50}{ISensor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_l00035}{35}} of file \mbox{\hyperlink{_h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source}{HMC5883\+L\+\_\+\+WRAPPER.\+cpp}}.
+
+\Hypertarget{class_h_m_c5883_l_wrapper_a655c92b4d2040e76636a96f9ba63c56a}\index{HMC5883LWrapper@{HMC5883LWrapper}!getType@{getType}}
+\index{getType@{getType}!HMC5883LWrapper@{HMC5883LWrapper}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \label{class_h_m_c5883_l_wrapper_a655c92b4d2040e76636a96f9ba63c56a} 
+\mbox{\hyperlink{_i_sensor_8h_a213c434cb928c4ca22513e2302632435}{Sensor\+Type}} HMC5883\+LWrapper\+::get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_sensor_a649cfa6c1888996f392f401e7d26125c}{ISensor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_l00039}{39}} of file \mbox{\hyperlink{_h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source}{HMC5883\+L\+\_\+\+WRAPPER.\+cpp}}.
+
+\Hypertarget{class_h_m_c5883_l_wrapper_aae28a5412098db267c5f61a638fa3ef6}\index{HMC5883LWrapper@{HMC5883LWrapper}!configure@{configure}}
+\index{configure@{configure}!HMC5883LWrapper@{HMC5883LWrapper}}
+\doxysubsubsection{\texorpdfstring{configure()}{configure()}}
+{\footnotesize\ttfamily \label{class_h_m_c5883_l_wrapper_aae28a5412098db267c5f61a638fa3ef6} 
+bool HMC5883\+LWrapper\+::configure (\begin{DoxyParamCaption}\item[{const std\+::map$<$ std\+::string, std\+::string $>$ \&}]{config}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_sensor_aa5fd04ca51fa10cb8d0bcc835b14fb33}{ISensor}}.
+
+
+
+Definition at line \mbox{\hyperlink{_h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source_l00043}{43}} of file \mbox{\hyperlink{_h_m_c5883_l___w_r_a_p_p_e_r_8cpp_source}{HMC5883\+L\+\_\+\+WRAPPER.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_h_m_c5883_l_wrapper_a676ad07965bad428b637c46152b7c6eb}\index{HMC5883LWrapper@{HMC5883LWrapper}!sensor@{sensor}}
+\index{sensor@{sensor}!HMC5883LWrapper@{HMC5883LWrapper}}
+\doxysubsubsection{\texorpdfstring{sensor}{sensor}}
+{\footnotesize\ttfamily \label{class_h_m_c5883_l_wrapper_a676ad07965bad428b637c46152b7c6eb} 
+\mbox{\hyperlink{class_h_m_c5883_l}{HMC5883L}} HMC5883\+LWrapper\+::sensor\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_h_m_c5883_l___w_r_a_p_p_e_r_8h_source_l00017}{17}} of file \mbox{\hyperlink{_h_m_c5883_l___w_r_a_p_p_e_r_8h_source}{HMC5883\+L\+\_\+\+WRAPPER.\+h}}.
+
+\Hypertarget{class_h_m_c5883_l_wrapper_af52be1c1aad99526965b952521da56f6}\index{HMC5883LWrapper@{HMC5883LWrapper}!initialized@{initialized}}
+\index{initialized@{initialized}!HMC5883LWrapper@{HMC5883LWrapper}}
+\doxysubsubsection{\texorpdfstring{initialized}{initialized}}
+{\footnotesize\ttfamily \label{class_h_m_c5883_l_wrapper_af52be1c1aad99526965b952521da56f6} 
+bool HMC5883\+LWrapper\+::initialized\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_h_m_c5883_l___w_r_a_p_p_e_r_8h_source_l00018}{18}} of file \mbox{\hyperlink{_h_m_c5883_l___w_r_a_p_p_e_r_8h_source}{HMC5883\+L\+\_\+\+WRAPPER.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+HMC5883\+L/\mbox{\hyperlink{_h_m_c5883_l___w_r_a_p_p_e_r_8h}{HMC5883\+L\+\_\+\+WRAPPER.\+h}}\item 
+lib/\+HMC5883\+L/\mbox{\hyperlink{_h_m_c5883_l___w_r_a_p_p_e_r_8cpp}{HMC5883\+L\+\_\+\+WRAPPER.\+cpp}}\end{DoxyCompactItemize}

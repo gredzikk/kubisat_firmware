@@ -1,0 +1,37 @@
+\doxysection{utils.\+h File Reference}
+\hypertarget{utils_8h}{}\label{utils_8h}\index{utils.h@{utils.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include "{}pico/stdlib.\+h"{}}\newline
+{\ttfamily \#include "{}hardware/uart.\+h"{}}\newline
+{\ttfamily \#include "{}pin\+\_\+config.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{utils_8h_a581207ee5c53ce94cdf3279a0f66f564}{uart\+Print}} (const std\+::string \&msg, bool log\+To\+File=false, uart\+\_\+inst\+\_\+t \texorpdfstring{$\ast$}{*}uart=\mbox{\hyperlink{pin__config_8h_a1c9052d1656e86f50326fd275c54ca67}{DEBUG\+\_\+\+UART\+\_\+\+PORT}})
+\item 
+uint16\+\_\+t \mbox{\hyperlink{utils_8h_a662798a1967f4a4ea55257255d0fbbf4}{crc16}} (const uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, size\+\_\+t length)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{utils_8h_a581207ee5c53ce94cdf3279a0f66f564}\index{utils.h@{utils.h}!uartPrint@{uartPrint}}
+\index{uartPrint@{uartPrint}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{uartPrint()}{uartPrint()}}
+{\footnotesize\ttfamily \label{utils_8h_a581207ee5c53ce94cdf3279a0f66f564} 
+void uart\+Print (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{msg}{, }\item[{bool}]{log\+To\+File}{ = {\ttfamily false}, }\item[{uart\+\_\+inst\+\_\+t \texorpdfstring{$\ast$}{*}}]{uart}{ = {\ttfamily \mbox{\hyperlink{pin__config_8h_a1c9052d1656e86f50326fd275c54ca67}{DEBUG\+\_\+\+UART\+\_\+\+PORT}}}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00009}{9}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
+\Hypertarget{utils_8h_a662798a1967f4a4ea55257255d0fbbf4}\index{utils.h@{utils.h}!crc16@{crc16}}
+\index{crc16@{crc16}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{crc16()}{crc16()}}
+{\footnotesize\ttfamily \label{utils_8h_a662798a1967f4a4ea55257255d0fbbf4} 
+uint16\+\_\+t crc16 (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{size\+\_\+t}]{length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+

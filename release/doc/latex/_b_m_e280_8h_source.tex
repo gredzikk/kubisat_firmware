@@ -1,0 +1,136 @@
+\doxysection{BME280.\+h}
+\hypertarget{_b_m_e280_8h_source}{}\label{_b_m_e280_8h_source}\index{lib/BME280/BME280.h@{lib/BME280/BME280.h}}
+\mbox{\hyperlink{_b_m_e280_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00001}00001\ \textcolor{comment}{//\ BME280.h}}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00003}00003\ \textcolor{preprocessor}{\#ifndef\ BME280\_H}}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00004}00004\ \textcolor{preprocessor}{\#define\ BME280\_H}}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}hardware/i2c.h"{}}}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00010}00010\ \textcolor{comment}{//\ Calibration\ parameters\ structure}}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00011}\mbox{\hyperlink{struct_b_m_e280_calib_param}{00011}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_b_m_e280_calib_param}{BME280CalibParam}}\ \{}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//\ Temperature\ parameters}}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00013}\mbox{\hyperlink{struct_b_m_e280_calib_param_afbeeeb1ce65458659a5ba34a183920e6}{00013}}\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{struct_b_m_e280_calib_param_afbeeeb1ce65458659a5ba34a183920e6}{dig\_t1}};}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00014}\mbox{\hyperlink{struct_b_m_e280_calib_param_a941c68e822ef43924d09131723141e91}{00014}}\ \ \ \ \ int16\_t\ \ \mbox{\hyperlink{struct_b_m_e280_calib_param_a941c68e822ef43924d09131723141e91}{dig\_t2}};}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00015}\mbox{\hyperlink{struct_b_m_e280_calib_param_aca269be642c7d623650b30c8afbaa36d}{00015}}\ \ \ \ \ int16\_t\ \ \mbox{\hyperlink{struct_b_m_e280_calib_param_aca269be642c7d623650b30c8afbaa36d}{dig\_t3}};}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ Pressure\ parameters}}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00018}\mbox{\hyperlink{struct_b_m_e280_calib_param_a8917b5f02076019fdfcc3631a74bd5a4}{00018}}\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{struct_b_m_e280_calib_param_a8917b5f02076019fdfcc3631a74bd5a4}{dig\_p1}};}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00019}\mbox{\hyperlink{struct_b_m_e280_calib_param_ada88f13a717a1fae02a350564fd9dcb6}{00019}}\ \ \ \ \ int16\_t\ \ \mbox{\hyperlink{struct_b_m_e280_calib_param_ada88f13a717a1fae02a350564fd9dcb6}{dig\_p2}};}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00020}\mbox{\hyperlink{struct_b_m_e280_calib_param_a672a132ba7f8bad5baf71f13cb8fc9a6}{00020}}\ \ \ \ \ int16\_t\ \ \mbox{\hyperlink{struct_b_m_e280_calib_param_a672a132ba7f8bad5baf71f13cb8fc9a6}{dig\_p3}};}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00021}\mbox{\hyperlink{struct_b_m_e280_calib_param_a4c246ab51ee910992d2478c5ef436d46}{00021}}\ \ \ \ \ int16\_t\ \ \mbox{\hyperlink{struct_b_m_e280_calib_param_a4c246ab51ee910992d2478c5ef436d46}{dig\_p4}};}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00022}\mbox{\hyperlink{struct_b_m_e280_calib_param_a9a115f01ee13c0a3c41ff2622e6139e1}{00022}}\ \ \ \ \ int16\_t\ \ \mbox{\hyperlink{struct_b_m_e280_calib_param_a9a115f01ee13c0a3c41ff2622e6139e1}{dig\_p5}};}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00023}\mbox{\hyperlink{struct_b_m_e280_calib_param_a7055059520adb0c5589d01576bc0e94e}{00023}}\ \ \ \ \ int16\_t\ \ \mbox{\hyperlink{struct_b_m_e280_calib_param_a7055059520adb0c5589d01576bc0e94e}{dig\_p6}};}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00024}\mbox{\hyperlink{struct_b_m_e280_calib_param_a284ebff265af617c7fb5f89c6786247e}{00024}}\ \ \ \ \ int16\_t\ \ \mbox{\hyperlink{struct_b_m_e280_calib_param_a284ebff265af617c7fb5f89c6786247e}{dig\_p7}};}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00025}\mbox{\hyperlink{struct_b_m_e280_calib_param_a685ef7ec33a5bd9cbcc062ed3b5325d7}{00025}}\ \ \ \ \ int16\_t\ \ \mbox{\hyperlink{struct_b_m_e280_calib_param_a685ef7ec33a5bd9cbcc062ed3b5325d7}{dig\_p8}};}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00026}\mbox{\hyperlink{struct_b_m_e280_calib_param_af2e49680647943c781a8fe80bd88386b}{00026}}\ \ \ \ \ int16\_t\ \ \mbox{\hyperlink{struct_b_m_e280_calib_param_af2e49680647943c781a8fe80bd88386b}{dig\_p9}};}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00028}00028\ \ \ \ \ \textcolor{comment}{//\ Humidity\ parameters}}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00029}\mbox{\hyperlink{struct_b_m_e280_calib_param_a38419a07942da4717394516a883441d7}{00029}}\ \ \ \ \ uint8\_t\ \ \mbox{\hyperlink{struct_b_m_e280_calib_param_a38419a07942da4717394516a883441d7}{dig\_h1}};}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00030}\mbox{\hyperlink{struct_b_m_e280_calib_param_a87481b9ca1a2cbb278432f576f3e69c3}{00030}}\ \ \ \ \ int16\_t\ \ \mbox{\hyperlink{struct_b_m_e280_calib_param_a87481b9ca1a2cbb278432f576f3e69c3}{dig\_h2}};}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00031}\mbox{\hyperlink{struct_b_m_e280_calib_param_afd7a60c148d4caa6cd5a6d0ae82bc6b2}{00031}}\ \ \ \ \ uint8\_t\ \ \mbox{\hyperlink{struct_b_m_e280_calib_param_afd7a60c148d4caa6cd5a6d0ae82bc6b2}{dig\_h3}};}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00032}\mbox{\hyperlink{struct_b_m_e280_calib_param_a110bc26b75614d7798ed2448b167320c}{00032}}\ \ \ \ \ int16\_t\ \ \mbox{\hyperlink{struct_b_m_e280_calib_param_a110bc26b75614d7798ed2448b167320c}{dig\_h4}};}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00033}\mbox{\hyperlink{struct_b_m_e280_calib_param_af2eac180fdbfe98caa51d2ed77d6e26e}{00033}}\ \ \ \ \ int16\_t\ \ \mbox{\hyperlink{struct_b_m_e280_calib_param_af2eac180fdbfe98caa51d2ed77d6e26e}{dig\_h5}};}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00034}\mbox{\hyperlink{struct_b_m_e280_calib_param_a385c601b7cfd409f7174ae298ef77164}{00034}}\ \ \ \ \ int8\_t\ \ \ \mbox{\hyperlink{struct_b_m_e280_calib_param_a385c601b7cfd409f7174ae298ef77164}{dig\_h6}};}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00035}00035\ \};}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00037}00037\ \textcolor{comment}{//\ BME280\ Class\ Definition}}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00038}\mbox{\hyperlink{class_b_m_e280}{00038}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_b_m_e280_a2f0c3415c853ed9303529b75d5d7236b}{BME280}}\ \{}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00039}00039\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00040}00040\ \ \ \ \ \textcolor{comment}{//\ I2C\ Address\ Options}}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00041}\mbox{\hyperlink{class_b_m_e280_a328e1cfc7421d11670a772f68f7181b9}{00041}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_a328e1cfc7421d11670a772f68f7181b9}{ADDR\_SDO\_LOW}}\ =\ 0x76;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00042}\mbox{\hyperlink{class_b_m_e280_a9dd91f7d1c5ed613d89aaf38be0bd362}{00042}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_a9dd91f7d1c5ed613d89aaf38be0bd362}{ADDR\_SDO\_HIGH}}\ =\ 0x77;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00044}00044\ \ \ \ \ \textcolor{comment}{//\ Constructor}}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00045}00045\ \ \ \ \ \mbox{\hyperlink{class_b_m_e280_a2f0c3415c853ed9303529b75d5d7236b}{BME280}}(i2c\_inst\_t*\ i2cPort,\ uint8\_t\ address\ =\ \mbox{\hyperlink{class_b_m_e280_a328e1cfc7421d11670a772f68f7181b9}{ADDR\_SDO\_LOW}});}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00047}00047\ \ \ \ \ \textcolor{comment}{//\ Initialize\ the\ sensor}}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00048}00048\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_b_m_e280_a549f7c534b3c0168148188bca5c30e7b}{init}}();}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00050}00050\ \ \ \ \ \textcolor{comment}{//\ Reset\ the\ sensor}}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00051}00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_b_m_e280_a9a95fc3d574a66657c1ad050e697545c}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00053}00053\ \ \ \ \ \textcolor{comment}{//\ Read\ all\ raw\ data:\ temperature,\ pressure,\ and\ humidity}}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00054}00054\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_b_m_e280_af22a2c195c0dfb39f457049ffb7e8f09}{read\_raw\_all}}(int32\_t*\ temperature,\ int32\_t*\ pressure,\ int32\_t*\ humidity);}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00056}00056\ \ \ \ \ \textcolor{comment}{//\ Convert\ raw\ data\ to\ actual\ values}}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00057}00057\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_b_m_e280_a77faa64e2670bedae42db2aff8bce837}{convert\_temperature}}(int32\_t\ temp\_raw)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00058}00058\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_b_m_e280_a132f9daccc10c1b3f973c8740f064f4f}{convert\_pressure}}(int32\_t\ pressure\_raw)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00059}00059\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_b_m_e280_a54d06d8e21f2d14cd136fdbc9121cb32}{convert\_humidity}}(int32\_t\ humidity\_raw)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00061}00061\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00062}00062\ \ \ \ \ \textcolor{comment}{//\ Configure\ the\ sensor}}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00063}00063\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_b_m_e280_aba168dd8fb74f3b101922c50e60542cb}{configure\_sensor}}();}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00065}00065\ \ \ \ \ \textcolor{comment}{//\ Retrieve\ calibration\ parameters\ from\ the\ sensor}}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00066}00066\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_b_m_e280_a9bdaf8aa0c2a67ab6fd0b611c69753e6}{get\_calibration\_parameters}}();}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00068}00068\ \ \ \ \ \textcolor{comment}{//\ I2C\ port\ and\ device\ address}}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00069}\mbox{\hyperlink{class_b_m_e280_ac402b86b5376fcfebefad1c8cec948b2}{00069}}\ \ \ \ \ i2c\_inst\_t*\ \mbox{\hyperlink{class_b_m_e280_ac402b86b5376fcfebefad1c8cec948b2}{i2c\_port}};}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00070}\mbox{\hyperlink{class_b_m_e280_ae8a52ae32e8cefd398dedf8913737626}{00070}}\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_ae8a52ae32e8cefd398dedf8913737626}{device\_addr}};}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00072}00072\ \ \ \ \ \textcolor{comment}{//\ Calibration\ parameters}}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00073}\mbox{\hyperlink{class_b_m_e280_ab61c36455871833809cff71b5fd3397f}{00073}}\ \ \ \ \ \mbox{\hyperlink{struct_b_m_e280_calib_param}{BME280CalibParam}}\ \mbox{\hyperlink{class_b_m_e280_ab61c36455871833809cff71b5fd3397f}{calib\_params}};}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00075}00075\ \ \ \ \ \textcolor{comment}{//\ Initialization\ status}}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00076}\mbox{\hyperlink{class_b_m_e280_a34b991139b081ff5ebe7943383ac9a97}{00076}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_b_m_e280_a34b991139b081ff5ebe7943383ac9a97}{initialized}};}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00078}00078\ \ \ \ \ \textcolor{comment}{//\ Fine\ temperature\ parameter\ needed\ for\ compensation}}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00079}\mbox{\hyperlink{class_b_m_e280_ad20f44914b78395f4d4bc64f4a68b369}{00079}}\ \ \ \ \ \textcolor{keyword}{mutable}\ int32\_t\ \mbox{\hyperlink{class_b_m_e280_ad20f44914b78395f4d4bc64f4a68b369}{t\_fine}};}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00081}00081\ \ \ \ \ \textcolor{comment}{//\ Register\ Definitions}}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00082}\mbox{\hyperlink{class_b_m_e280_a2b3d50ae8af2aea11c8ed21f1bec4ac8}{00082}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_a2b3d50ae8af2aea11c8ed21f1bec4ac8}{REG\_CONFIG}}\ \ \ \ \ \ \ \ \ \ \ \ =\ 0xF5;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00083}\mbox{\hyperlink{class_b_m_e280_ab635154b47baca711a2b03fa7d469092}{00083}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_ab635154b47baca711a2b03fa7d469092}{REG\_CTRL\_MEAS}}\ \ \ \ \ \ \ \ \ =\ 0xF4;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00084}\mbox{\hyperlink{class_b_m_e280_a79967643d3432d070edb2af1d0082a1f}{00084}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_a79967643d3432d070edb2af1d0082a1f}{REG\_CTRL\_HUM}}\ \ \ \ \ \ \ \ \ \ =\ 0xF2;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00085}\mbox{\hyperlink{class_b_m_e280_ae19b16edfdfce1d75578eabb9d42188f}{00085}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_ae19b16edfdfce1d75578eabb9d42188f}{REG\_RESET}}\ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0xE0;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00087}\mbox{\hyperlink{class_b_m_e280_a2e17033617efa62019561b3152ccfd5e}{00087}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_a2e17033617efa62019561b3152ccfd5e}{REG\_PRESSURE\_MSB}}\ \ \ \ \ \ =\ 0xF7;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00088}\mbox{\hyperlink{class_b_m_e280_a45770a88a9613f8de93d69ae47a9f7c4}{00088}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_a45770a88a9613f8de93d69ae47a9f7c4}{REG\_TEMPERATURE\_MSB}}\ \ \ =\ 0xFA;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00089}\mbox{\hyperlink{class_b_m_e280_ae17831aa32ba8a42caf7c87f636ca080}{00089}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_ae17831aa32ba8a42caf7c87f636ca080}{REG\_HUMIDITY\_MSB}}\ \ \ \ \ \ =\ 0xFD;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00091}00091\ \ \ \ \ \textcolor{comment}{//\ Calibration\ Registers}}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00092}\mbox{\hyperlink{class_b_m_e280_aef2d471c9d214ac18674f634708bf74a}{00092}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_aef2d471c9d214ac18674f634708bf74a}{REG\_DIG\_T1\_LSB}}\ \ \ \ \ \ \ \ =\ 0x88;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00093}\mbox{\hyperlink{class_b_m_e280_a3810750131dbc8c729ecda9b60cc757b}{00093}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_a3810750131dbc8c729ecda9b60cc757b}{REG\_DIG\_T1\_MSB}}\ \ \ \ \ \ \ \ =\ 0x89;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00094}\mbox{\hyperlink{class_b_m_e280_ab007919d127d74de26d742e2aa2762b7}{00094}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_ab007919d127d74de26d742e2aa2762b7}{REG\_DIG\_T2\_LSB}}\ \ \ \ \ \ \ \ =\ 0x8A;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00095}\mbox{\hyperlink{class_b_m_e280_ac5c23e02b07b5a129bdde1ba8dc0bc77}{00095}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_ac5c23e02b07b5a129bdde1ba8dc0bc77}{REG\_DIG\_T2\_MSB}}\ \ \ \ \ \ \ \ =\ 0x8B;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00096}\mbox{\hyperlink{class_b_m_e280_a4e67751a215b35765196d996342cc6bc}{00096}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_a4e67751a215b35765196d996342cc6bc}{REG\_DIG\_T3\_LSB}}\ \ \ \ \ \ \ \ =\ 0x8C;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00097}\mbox{\hyperlink{class_b_m_e280_a766e1bc1b4fe5160dda8561fb2a7885b}{00097}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_a766e1bc1b4fe5160dda8561fb2a7885b}{REG\_DIG\_T3\_MSB}}\ \ \ \ \ \ \ \ =\ 0x8D;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00099}\mbox{\hyperlink{class_b_m_e280_acf3ed69a71bdb905992ceae0c4ea6d2c}{00099}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_acf3ed69a71bdb905992ceae0c4ea6d2c}{REG\_DIG\_P1\_LSB}}\ \ \ \ \ \ \ \ =\ 0x8E;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00100}\mbox{\hyperlink{class_b_m_e280_aacfdcc6b95bb0c410ae00d1572f4d38a}{00100}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_aacfdcc6b95bb0c410ae00d1572f4d38a}{REG\_DIG\_P1\_MSB}}\ \ \ \ \ \ \ \ =\ 0x8F;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00101}\mbox{\hyperlink{class_b_m_e280_af05e5454db8eddf7cc5b18bbc615d139}{00101}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_af05e5454db8eddf7cc5b18bbc615d139}{REG\_DIG\_P2\_LSB}}\ \ \ \ \ \ \ \ =\ 0x90;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00102}\mbox{\hyperlink{class_b_m_e280_afef9fa1d5ad949e43c2eed57e17e8aec}{00102}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_afef9fa1d5ad949e43c2eed57e17e8aec}{REG\_DIG\_P2\_MSB}}\ \ \ \ \ \ \ \ =\ 0x91;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00103}\mbox{\hyperlink{class_b_m_e280_a506faf5ebf59b8e30e58538f8b0ae5a9}{00103}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_a506faf5ebf59b8e30e58538f8b0ae5a9}{REG\_DIG\_P3\_LSB}}\ \ \ \ \ \ \ \ =\ 0x92;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00104}\mbox{\hyperlink{class_b_m_e280_a26797cbc56e7fe24148c18cce9297af0}{00104}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_a26797cbc56e7fe24148c18cce9297af0}{REG\_DIG\_P3\_MSB}}\ \ \ \ \ \ \ \ =\ 0x93;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00105}\mbox{\hyperlink{class_b_m_e280_aeb032dce1cedac64b5cf88a5d3d4d0d4}{00105}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_aeb032dce1cedac64b5cf88a5d3d4d0d4}{REG\_DIG\_P4\_LSB}}\ \ \ \ \ \ \ \ =\ 0x94;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00106}\mbox{\hyperlink{class_b_m_e280_adca3aacad9b831df0a71804c8f772e23}{00106}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_adca3aacad9b831df0a71804c8f772e23}{REG\_DIG\_P4\_MSB}}\ \ \ \ \ \ \ \ =\ 0x95;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00107}\mbox{\hyperlink{class_b_m_e280_a91566c238134df4777b5672a9f5ed5f1}{00107}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_a91566c238134df4777b5672a9f5ed5f1}{REG\_DIG\_P5\_LSB}}\ \ \ \ \ \ \ \ =\ 0x96;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00108}\mbox{\hyperlink{class_b_m_e280_a06df57d770a3d0f775ef9a05386e4826}{00108}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_a06df57d770a3d0f775ef9a05386e4826}{REG\_DIG\_P5\_MSB}}\ \ \ \ \ \ \ \ =\ 0x97;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00109}\mbox{\hyperlink{class_b_m_e280_ad8aee64c10c780aad5a0a09d30c92ebc}{00109}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_ad8aee64c10c780aad5a0a09d30c92ebc}{REG\_DIG\_P6\_LSB}}\ \ \ \ \ \ \ \ =\ 0x98;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00110}\mbox{\hyperlink{class_b_m_e280_a3eb00425eaf71795251cf98f72793fb7}{00110}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_a3eb00425eaf71795251cf98f72793fb7}{REG\_DIG\_P6\_MSB}}\ \ \ \ \ \ \ \ =\ 0x99;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00111}\mbox{\hyperlink{class_b_m_e280_a6569eafa6046ea4ad6da5bdb81518369}{00111}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_a6569eafa6046ea4ad6da5bdb81518369}{REG\_DIG\_P7\_LSB}}\ \ \ \ \ \ \ \ =\ 0x9A;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00112}\mbox{\hyperlink{class_b_m_e280_a4b1ec591a5fedd807949d6363bae3784}{00112}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_a4b1ec591a5fedd807949d6363bae3784}{REG\_DIG\_P7\_MSB}}\ \ \ \ \ \ \ \ =\ 0x9B;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00113}\mbox{\hyperlink{class_b_m_e280_a7481c9cc5039ee003c6268c6aa761109}{00113}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_a7481c9cc5039ee003c6268c6aa761109}{REG\_DIG\_P8\_LSB}}\ \ \ \ \ \ \ \ =\ 0x9C;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00114}\mbox{\hyperlink{class_b_m_e280_a8ac1bf6e006e031e46f80feaf1141e64}{00114}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_a8ac1bf6e006e031e46f80feaf1141e64}{REG\_DIG\_P8\_MSB}}\ \ \ \ \ \ \ \ =\ 0x9D;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00115}\mbox{\hyperlink{class_b_m_e280_a1aeedd3baa6678f0a6f869b877030a89}{00115}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_a1aeedd3baa6678f0a6f869b877030a89}{REG\_DIG\_P9\_LSB}}\ \ \ \ \ \ \ \ =\ 0x9E;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00116}\mbox{\hyperlink{class_b_m_e280_a2a102c61c7dd155001fe6907f403b3b2}{00116}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_a2a102c61c7dd155001fe6907f403b3b2}{REG\_DIG\_P9\_MSB}}\ \ \ \ \ \ \ \ =\ 0x9F;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00118}00118\ \ \ \ \ \textcolor{comment}{//\ Humidity\ Calibration\ Registers}}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00119}\mbox{\hyperlink{class_b_m_e280_a989b372f944bf3f79060e3a1a83683a0}{00119}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_a989b372f944bf3f79060e3a1a83683a0}{REG\_DIG\_H1}}\ \ \ \ \ \ \ \ \ \ \ \ =\ 0xA1;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00120}\mbox{\hyperlink{class_b_m_e280_aa7a9293a90ef27127f306624afc8065b}{00120}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_aa7a9293a90ef27127f306624afc8065b}{REG\_DIG\_H2}}\ \ \ \ \ \ \ \ \ \ \ \ =\ 0xE1;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00121}\mbox{\hyperlink{class_b_m_e280_a47c2024625c6a62f434e75467b5fb9a3}{00121}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_a47c2024625c6a62f434e75467b5fb9a3}{REG\_DIG\_H3}}\ \ \ \ \ \ \ \ \ \ \ \ =\ 0xE3;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00122}\mbox{\hyperlink{class_b_m_e280_a3c372b551cb63ba0a2fad80f7ba73ca6}{00122}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_a3c372b551cb63ba0a2fad80f7ba73ca6}{REG\_DIG\_H4}}\ \ \ \ \ \ \ \ \ \ \ \ =\ 0xE4;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00123}\mbox{\hyperlink{class_b_m_e280_a9c5b1e73997f299d373ad09cc57e4760}{00123}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_a9c5b1e73997f299d373ad09cc57e4760}{REG\_DIG\_H5}}\ \ \ \ \ \ \ \ \ \ \ \ =\ 0xE5;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00124}\mbox{\hyperlink{class_b_m_e280_aa07e7bc61df07fd417644edd0ed220e4}{00124}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_b_m_e280_aa07e7bc61df07fd417644edd0ed220e4}{REG\_DIG\_H6}}\ \ \ \ \ \ \ \ \ \ \ \ =\ 0xE7;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00126}00126\ \ \ \ \ \textcolor{comment}{//\ Number\ of\ calibration\ parameters\ to\ read}}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00127}\mbox{\hyperlink{class_b_m_e280_a816c288ebe1028b532c7e97b0582bd09}{00127}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_b_m_e280_a816c288ebe1028b532c7e97b0582bd09}{NUM\_CALIB\_PARAMS}}\ =\ 24;}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00128}00128\ \};}
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{_b_m_e280_8h_source_l00130}00130\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ BME280\_H}}
+
+\end{DoxyCode}

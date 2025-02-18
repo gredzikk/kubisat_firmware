@@ -1,0 +1,84 @@
+\doxysection{DS3231.\+h}
+\hypertarget{_d_s3231_8h_source}{}\label{_d_s3231_8h_source}\index{lib/DS3231/DS3231.h@{lib/DS3231/DS3231.h}}
+\mbox{\hyperlink{_d_s3231_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ DS3231\_H}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ DS3231\_H}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00005}\mbox{\hyperlink{class_d_s3231_aaecfb4d1dafaed2f892bf579aadbd7a3}{00005}}\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}pico/stdlib.h"{}}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}hardware/i2c.h"{}}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00009}\mbox{\hyperlink{struct_date_time}{00009}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_date_time}{DateTime}}\ \{}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00010}\mbox{\hyperlink{struct_date_time_a0a61d60280541502e47f9a7fd6e1c8d2}{00010}}\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{struct_date_time_a0a61d60280541502e47f9a7fd6e1c8d2}{year}};}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00011}\mbox{\hyperlink{struct_date_time_ac895afb51c74941c50205f746b709148}{00011}}\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{struct_date_time_ac895afb51c74941c50205f746b709148}{month}};}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00012}\mbox{\hyperlink{struct_date_time_a727866b5ecdfda1edf946efe86aa74af}{00012}}\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{struct_date_time_a727866b5ecdfda1edf946efe86aa74af}{day}};}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00013}\mbox{\hyperlink{struct_date_time_ad7812eb3752d2309263267d4bc3c79a0}{00013}}\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{struct_date_time_ad7812eb3752d2309263267d4bc3c79a0}{hour}};}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00014}\mbox{\hyperlink{struct_date_time_abc5bfa47937548c7aaad1970ba759af3}{00014}}\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{struct_date_time_abc5bfa47937548c7aaad1970ba759af3}{minute}};}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00015}\mbox{\hyperlink{struct_date_time_afb74c1792d0f0f9d3b0d2295554fa39d}{00015}}\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{struct_date_time_afb74c1792d0f0f9d3b0d2295554fa39d}{second}};}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00016}\mbox{\hyperlink{struct_date_time_a5b762acddaaa0138a96b05159f2c2e23}{00016}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_date_time_a5b762acddaaa0138a96b05159f2c2e23}{weekday}};}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00017}00017\ \};}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00019}\mbox{\hyperlink{class_d_s3231}{00019}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_d_s3231_ad78b99a37b67a9912f39602d8802a358}{DS3231}}\ \{}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00020}00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00021}00021\ \ \ \ \ \textcolor{comment}{//\ Weekday\ names}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00022}00022\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::array<std::string,\ 7>\ \mbox{\hyperlink{class_d_s3231_aaecfb4d1dafaed2f892bf579aadbd7a3}{WEEKDAYS}};}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00023}00023\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00024}00024\ \ \ \ \ \textcolor{comment}{//\ Constructor}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00025}00025\ \ \ \ \ \mbox{\hyperlink{class_d_s3231_ad78b99a37b67a9912f39602d8802a358}{DS3231}}(i2c\_inst\_t\ *\mbox{\hyperlink{class_d_s3231_afff19e512928fce8a6f9b50885df3732}{i2c}},\ uint8\_t\ \mbox{\hyperlink{class_d_s3231_a220290093650973f7ba16872e33b8b96}{address}}\ =\ 0x68);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//\ Set\ time\ using\ binary-\/coded\ decimal\ format}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00028}00028\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_d_s3231_a6ead725bcb29001cfbf4279f249d6983}{setTime}}(uint8\_t\ sec,\ uint8\_t\ min,\ uint8\_t\ hour,\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ weekday,\ uint8\_t\ day,\ uint8\_t\ month,\ uint16\_t\ year);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00030}00030\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//\ Get\ time\ in\ two\ formats}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00032}00032\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_d_s3231_aedd5fa550aa8b38fabe4d44d9ba5a0af}{getTime}}(uint8\_t\&\ sec,\ uint8\_t\&\ min,\ uint8\_t\&\ hour,}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\&\ weekday,\ uint8\_t\&\ day,\ uint8\_t\&\ month,\ uint16\_t\&\ year);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00034}00034\ \ \ \ \ std::string\ \mbox{\hyperlink{class_d_s3231_af7eb8bade221416e4035f1e7139b6154}{getTimeString}}();}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00035}00035\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_d_s3231_a569f69050349e21823276ef29ff07a76}{setTimeUnix}}(uint32\_t\ unixTime);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00036}00036\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{class_d_s3231_a93399e0145a53c558e316f6f95a20679}{getTimeUnix}}();}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00037}00037\ \ \ \ \ \mbox{\hyperlink{struct_date_time}{DateTime}}\ \mbox{\hyperlink{class_d_s3231_aa19b08f3978eea489bc8af3a84d67e59}{getDateTime}}();}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00038}00038\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{class_d_s3231_ac5680bedcb5cd48da26a4c0afcddb830}{getTimeInteger}}();\ \textcolor{comment}{//\ Returns\ YYYYMMDDHHMMSS}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00040}\mbox{\hyperlink{class_d_s3231_a36868c55914308805cd333742bb2ee20}{00040}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_d_s3231_a36868c55914308805cd333742bb2ee20}{setTimezoneOffset}}(int16\_t\ offsetMinutes)\ \{\ \mbox{\hyperlink{class_d_s3231_a330fb98438d9762df3d7da7ed2f38d25}{timezoneOffset}}\ =\ offsetMinutes;\ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00041}\mbox{\hyperlink{class_d_s3231_afb09486c2788bfc7773295e6af83cb21}{00041}}\ \ \ \ \ int16\_t\ \mbox{\hyperlink{class_d_s3231_afb09486c2788bfc7773295e6af83cb21}{getTimezoneOffset}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_d_s3231_a330fb98438d9762df3d7da7ed2f38d25}{timezoneOffset}};\ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00042}00042\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00043}00043\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{class_d_s3231_ad95e3e60f1d82c37e7c03fac84249bc6}{getTimeUnixLocal}}();}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00044}00044\ \ \ \ \ \mbox{\hyperlink{struct_date_time}{DateTime}}\ \mbox{\hyperlink{class_d_s3231_a4b893299918613d8fb3521793b848d6d}{getDateTimeLocal}}();}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00045}00045\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00046}\mbox{\hyperlink{class_d_s3231_a2f052be5b03cb0c5fea045f49b770cc8}{00046}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_d_s3231_a2f052be5b03cb0c5fea045f49b770cc8}{setClockSyncInterval}}(uint32\_t\ intervalSeconds)\ \{\ \mbox{\hyperlink{class_d_s3231_a1a30fcf3e2d4b9c4951129ac09c1ce4c}{syncInterval}}\ =\ intervalSeconds;\ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00047}\mbox{\hyperlink{class_d_s3231_a82a03a071b6b21c5271d9856f7c9396e}{00047}}\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{class_d_s3231_a82a03a071b6b21c5271d9856f7c9396e}{getClockSyncInterval}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_d_s3231_a1a30fcf3e2d4b9c4951129ac09c1ce4c}{syncInterval}};\ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00048}00048\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00049}\mbox{\hyperlink{class_d_s3231_a902d42a635136368ad7987d7d6d84f19}{00049}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_d_s3231_a902d42a635136368ad7987d7d6d84f19}{setLastSyncTime}}(uint32\_t\ unixTime)\ \{\ \mbox{\hyperlink{class_d_s3231_ab05e9cb92a0de071fc81a3d8e6488b73}{lastSyncTime}}\ =\ unixTime;\ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00050}\mbox{\hyperlink{class_d_s3231_a564eaf6a11ee0f1a8c8aad30cd49af6f}{00050}}\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{class_d_s3231_a564eaf6a11ee0f1a8c8aad30cd49af6f}{getLastSyncTime}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_d_s3231_ab05e9cb92a0de071fc81a3d8e6488b73}{lastSyncTime}};\ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00051}00051\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00052}\mbox{\hyperlink{class_d_s3231_a5dc268764fd4d0afe785aed25d97669e}{00052}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_d_s3231_a5dc268764fd4d0afe785aed25d97669e}{setClockDrift}}(\textcolor{keywordtype}{float}\ ppmDrift)\ \{\ \mbox{\hyperlink{class_d_s3231_a1d9b76de3a1a01b5b08464f23481c004}{clockDrift}}\ =\ ppmDrift;\ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00053}\mbox{\hyperlink{class_d_s3231_a546ac8331853889ebce90bda8edbb9d9}{00053}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_d_s3231_a546ac8331853889ebce90bda8edbb9d9}{getClockDrift}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_d_s3231_a1d9b76de3a1a01b5b08464f23481c004}{clockDrift}};\ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00054}00054\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00055}00055\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_d_s3231_a8674f4e63775d5d5ea7e597d0f2ab2c9}{needsSync}}();}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00058}00058\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00059}\mbox{\hyperlink{class_d_s3231_afff19e512928fce8a6f9b50885df3732}{00059}}\ \ \ \ \ i2c\_inst\_t*\ \mbox{\hyperlink{class_d_s3231_afff19e512928fce8a6f9b50885df3732}{i2c}};}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00060}\mbox{\hyperlink{class_d_s3231_a220290093650973f7ba16872e33b8b96}{00060}}\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{class_d_s3231_a220290093650973f7ba16872e33b8b96}{address}};}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00061}\mbox{\hyperlink{class_d_s3231_af87c9b9232490e63de80b4e4c8aec81f}{00061}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{class_d_s3231_af87c9b9232490e63de80b4e4c8aec81f}{RTC\_REGISTER}}\ =\ 0x00;}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00063}\mbox{\hyperlink{class_d_s3231_a330fb98438d9762df3d7da7ed2f38d25}{00063}}\ \ \ \ \ int16\_t\ \mbox{\hyperlink{class_d_s3231_a330fb98438d9762df3d7da7ed2f38d25}{timezoneOffset}}\ =\ 0;\ \ \ \ \ \ \textcolor{comment}{//\ Offset\ in\ minutes\ from\ UTC}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00064}\mbox{\hyperlink{class_d_s3231_a1a30fcf3e2d4b9c4951129ac09c1ce4c}{00064}}\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{class_d_s3231_a1a30fcf3e2d4b9c4951129ac09c1ce4c}{syncInterval}}\ =\ 86400;\ \ \ \ \textcolor{comment}{//\ Default\ sync\ interval:\ 24\ hours}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00065}\mbox{\hyperlink{class_d_s3231_ab05e9cb92a0de071fc81a3d8e6488b73}{00065}}\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{class_d_s3231_ab05e9cb92a0de071fc81a3d8e6488b73}{lastSyncTime}}\ =\ 0;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Last\ successful\ GPS\ sync\ time}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00066}\mbox{\hyperlink{class_d_s3231_a1d9b76de3a1a01b5b08464f23481c004}{00066}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_d_s3231_a1d9b76de3a1a01b5b08464f23481c004}{clockDrift}}\ =\ 0.0f;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Clock\ drift\ in\ PPM}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00067}00067\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00068}00068\ \ \ \ \ \textcolor{comment}{//\ Utility\ functions}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00069}00069\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{class_d_s3231_a389e756fdd8f645d6025906bbce5abd8}{bcd2bin}}(uint8\_t\ val);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00070}00070\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{class_d_s3231_a41f5aabf74e5a66093116999648806ab}{bin2bcd}}(uint8\_t\ val);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00071}00071\ \ \ \ \ std::string\ \mbox{\hyperlink{class_d_s3231_ada371a466a46dd550e6eded5217627b5}{preZero}}(uint8\_t\ val);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00072}00072\ \ \ \ \ \textcolor{keyword}{static}\ uint32\_t\ \mbox{\hyperlink{class_d_s3231_ae6c4f2144a772c44f7adbace7f86dfa1}{dateTimeToUnix}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_date_time}{DateTime}}\&\ dt);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00073}00073\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{struct_date_time}{DateTime}}\ \mbox{\hyperlink{class_d_s3231_a40a965b965496e5b0e7758040c5d9ce7}{unixToDateTime}}(uint32\_t\ unixTime);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00074}00074\ \ \ \ \ \mbox{\hyperlink{struct_date_time}{DateTime}}\ \mbox{\hyperlink{class_d_s3231_accd8b405f5d30b7b26bb2ca4d84a8fa8}{applyTimezone}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_date_time}{DateTime}}\&\ utc,\ int16\_t\ offsetMinutes);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00076}00076\ \};}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8h_source_l00078}00078\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

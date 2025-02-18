@@ -1,0 +1,50 @@
+\doxysection{send.\+cpp}
+\hypertarget{send_8cpp_source}{}\label{send_8cpp_source}\index{frame\_model/send.cpp@{frame\_model/send.cpp}}
+\mbox{\hyperlink{send_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{communication_8h}{communication.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00003}\mbox{\hyperlink{send_8cpp_adcc720dc971ce8b237b26df434b65bb2}{00003}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{send_8cpp_adcc720dc971ce8b237b26df434b65bb2}{sendMessage}}(\textcolor{keywordtype}{string}\ \mbox{\hyperlink{communication_8cpp_a13c45747091f32644e83d65348c61232}{outgoing}})}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00004}00004\ \{}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00005}00005\ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ \mbox{\hyperlink{communication_8cpp_a13c45747091f32644e83d65348c61232}{outgoing}}.length();}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00006}00006\ \ \ \ \ \textcolor{keywordtype}{char}\ send[n\ +\ 1];}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00007}00007\ \ \ \ \ strcpy(send,\ \mbox{\hyperlink{communication_8cpp_a13c45747091f32644e83d65348c61232}{outgoing}}.c\_str());}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00009}00009\ \ \ \ \ \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_af4db0e30d2909faa29355167719f196c}{LoRa}}.beginPacket();\ \ \ \ \ \ \ \textcolor{comment}{//\ start\ packet}}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00010}00010\ \ \ \ \ \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_af4db0e30d2909faa29355167719f196c}{LoRa}}.write(\mbox{\hyperlink{pin__config_8cpp_a42676c2cae17bc2fa151feea9e192342}{destination}});\ \ \textcolor{comment}{//\ add\ destination\ address}}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00011}00011\ \ \ \ \ \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_af4db0e30d2909faa29355167719f196c}{LoRa}}.write(\mbox{\hyperlink{pin__config_8cpp_a91a4799f60e5d2bbf7a0ee600912f51f}{localAddress}});\ \textcolor{comment}{//\ add\ sender\ address}}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00012}00012\ \ \ \ \ \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_af4db0e30d2909faa29355167719f196c}{LoRa}}.print(send);\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ payload}}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00013}00013\ \ \ \ \ \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_af4db0e30d2909faa29355167719f196c}{LoRa}}.endPacket(\textcolor{keyword}{false});\ \ \ \ \textcolor{comment}{//\ finish\ packet\ and\ send\ it}}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00015}00015\ \ \ \ \ std::string\ messageToLog\ =\ \textcolor{stringliteral}{"{}Sent\ message\ of\ size\ "{}}\ +\ std::to\_string(n);}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00016}00016\ \ \ \ \ messageToLog\ +=\ \textcolor{stringliteral}{"{}\ to\ 0x"{}}\ +\ std::to\_string(\mbox{\hyperlink{pin__config_8cpp_a42676c2cae17bc2fa151feea9e192342}{destination}});}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00017}00017\ \ \ \ \ messageToLog\ +=\ \textcolor{stringliteral}{"{}\ containing:\ "{}}\ +\ string(send);}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00019}00019\ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(messageToLog);}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00020}00020\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00021}00021\ \ \ \ \ \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_af4db0e30d2909faa29355167719f196c}{LoRa}}.flush();}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00022}00022\ \}}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00024}00024\ \textcolor{comment}{//\ Sends\ a\ Frame\ using\ LoRa\ by\ encoding\ it\ into\ bytes.}}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00025}\mbox{\hyperlink{communication_8h_a752e7cc27f52d4ba064e691b3e240ed8}{00025}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{send_8cpp_a752e7cc27f52d4ba064e691b3e240ed8}{sendFrame}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_frame}{Frame}}\&\ frame)\ \{}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00026}00026\ \ \ \ \ std::string\ encodedFrame\ =\ \mbox{\hyperlink{communication_8h_ab53898fb6f45dfc657837a665a070959}{encodeFrame}}(frame);}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//\ sendLargePacket(data,\ encodedFrame);}}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00028}00028\ \ \ \ \ \mbox{\hyperlink{send_8cpp_adcc720dc971ce8b237b26df434b65bb2}{sendMessage}}(encodedFrame);}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00029}00029\ \}}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00031}\mbox{\hyperlink{communication_8h_a252a4ea5f222c6879d281cc2f9357b46}{00031}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{send_8cpp_a252a4ea5f222c6879d281cc2f9357b46}{sendLargePacket}}(\textcolor{keyword}{const}\ uint8\_t*\ data,\ \textcolor{keywordtype}{size\_t}\ length)}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00032}00032\ \{}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00033}00033\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ MAX\_PKT\_SIZE\ =\ 255;}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00034}00034\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ offset\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00035}00035\ \ \ \ \ \textcolor{keywordflow}{while}\ (offset\ <\ length)}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00036}00036\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ chunkSize\ =\ ((length\ -\/\ offset)\ <\ MAX\_PKT\_SIZE)\ ?\ (length\ -\/\ offset)\ :\ MAX\_PKT\_SIZE;}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_af4db0e30d2909faa29355167719f196c}{LoRa}}.beginPacket();}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_af4db0e30d2909faa29355167719f196c}{LoRa}}.write(\&data[offset],\ chunkSize);}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_af4db0e30d2909faa29355167719f196c}{LoRa}}.endPacket();}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ offset\ +=\ chunkSize;}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ sleep\_ms(100);}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00043}00043\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{send_8cpp_source_l00044}00044\ \}}
+
+\end{DoxyCode}

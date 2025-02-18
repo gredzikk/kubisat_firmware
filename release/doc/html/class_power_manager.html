@@ -185,22 +185,41 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ae61a45a190d5293029e17c751f88bcd0" name="ae61a45a190d5293029e17c751f88bcd0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae61a45a190d5293029e17c751f88bcd0">&#9670;&#160;</a></span>configure()</h2>
+<a id="a217939b880543bfff917203a06d45258" name="a217939b880543bfff917203a06d45258"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a217939b880543bfff917203a06d45258">&#9670;&#160;</a></span>initialize()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void PowerManager::configure </td>
+          <td class="memname">bool PowerManager::initialize </td>
           <td>(</td>
-          <td class="paramtype">const std::map&lt; std::string, std::string &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>config</em></span></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_power_manager_8cpp_source.html#l00049">49</a> of file <a class="el" href="_power_manager_8cpp_source.html">PowerManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_power_manager_8cpp_source.html#l00007">7</a> of file <a class="el" href="_power_manager_8cpp_source.html">PowerManager.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a885c7374cb22e940ef77c0453da5f622" name="a885c7374cb22e940ef77c0453da5f622"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a885c7374cb22e940ef77c0453da5f622">&#9670;&#160;</a></span>readIDs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string PowerManager::readIDs </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_power_manager_8cpp_source.html#l00012">12</a> of file <a class="el" href="_power_manager_8cpp_source.html">PowerManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -223,25 +242,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="acad2f0f2daff3bd609952530d202c78b" name="acad2f0f2daff3bd609952530d202c78b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acad2f0f2daff3bd609952530d202c78b">&#9670;&#160;</a></span>getCurrentChargeTotal()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float PowerManager::getCurrentChargeTotal </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_power_manager_8cpp_source.html#l00044">44</a> of file <a class="el" href="_power_manager_8cpp_source.html">PowerManager.cpp</a>.</p>
-
-</div>
-</div>
 <a id="a3f9587ee81469642a2e595ef3805e801" name="a3f9587ee81469642a2e595ef3805e801"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3f9587ee81469642a2e595ef3805e801">&#9670;&#160;</a></span>getCurrentChargeUSB()</h2>
 
@@ -258,6 +258,25 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_power_manager_8cpp_source.html#l00029">29</a> of file <a class="el" href="_power_manager_8cpp_source.html">PowerManager.cpp</a>.</p>
+
+</div>
+</div>
+<a id="acad2f0f2daff3bd609952530d202c78b" name="acad2f0f2daff3bd609952530d202c78b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acad2f0f2daff3bd609952530d202c78b">&#9670;&#160;</a></span>getCurrentChargeTotal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float PowerManager::getCurrentChargeTotal </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_power_manager_8cpp_source.html#l00044">44</a> of file <a class="el" href="_power_manager_8cpp_source.html">PowerManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -280,25 +299,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ae0e4303ddaba328047fb40d8d925c7dd" name="ae0e4303ddaba328047fb40d8d925c7dd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae0e4303ddaba328047fb40d8d925c7dd">&#9670;&#160;</a></span>getVoltage5V()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float PowerManager::getVoltage5V </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_power_manager_8cpp_source.html#l00024">24</a> of file <a class="el" href="_power_manager_8cpp_source.html">PowerManager.cpp</a>.</p>
-
-</div>
-</div>
 <a id="af0d877a74a39cf29cb94d34088641ff9" name="af0d877a74a39cf29cb94d34088641ff9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af0d877a74a39cf29cb94d34088641ff9">&#9670;&#160;</a></span>getVoltageBattery()</h2>
 
@@ -318,14 +318,14 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a217939b880543bfff917203a06d45258" name="a217939b880543bfff917203a06d45258"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a217939b880543bfff917203a06d45258">&#9670;&#160;</a></span>initialize()</h2>
+<a id="ae0e4303ddaba328047fb40d8d925c7dd" name="ae0e4303ddaba328047fb40d8d925c7dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0e4303ddaba328047fb40d8d925c7dd">&#9670;&#160;</a></span>getVoltage5V()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool PowerManager::initialize </td>
+          <td class="memname">float PowerManager::getVoltage5V </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -333,7 +333,26 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_power_manager_8cpp_source.html#l00007">7</a> of file <a class="el" href="_power_manager_8cpp_source.html">PowerManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_power_manager_8cpp_source.html#l00024">24</a> of file <a class="el" href="_power_manager_8cpp_source.html">PowerManager.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ae61a45a190d5293029e17c751f88bcd0" name="ae61a45a190d5293029e17c751f88bcd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae61a45a190d5293029e17c751f88bcd0">&#9670;&#160;</a></span>configure()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PowerManager::configure </td>
+          <td>(</td>
+          <td class="paramtype">const std::map&lt; std::string, std::string &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>config</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_power_manager_8cpp_source.html#l00049">49</a> of file <a class="el" href="_power_manager_8cpp_source.html">PowerManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -375,26 +394,103 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a885c7374cb22e940ef77c0453da5f622" name="a885c7374cb22e940ef77c0453da5f622"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a885c7374cb22e940ef77c0453da5f622">&#9670;&#160;</a></span>readIDs()</h2>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="aeb488c42ec47e1a8de0446717d339cce" name="aeb488c42ec47e1a8de0446717d339cce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb488c42ec47e1a8de0446717d339cce">&#9670;&#160;</a></span>SOLAR_CURRENT_THRESHOLD</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string PowerManager::readIDs </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td class="memname">float PowerManager::SOLAR_CURRENT_THRESHOLD = 50.0f</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_power_manager_8cpp_source.html#l00012">12</a> of file <a class="el" href="_power_manager_8cpp_source.html">PowerManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_power_manager_8h_source.html#l00026">26</a> of file <a class="el" href="_power_manager_8h_source.html">PowerManager.h</a>.</p>
 
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
+<a id="afc4246cc3b434053c59cf2dcccf4bc64" name="afc4246cc3b434053c59cf2dcccf4bc64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc4246cc3b434053c59cf2dcccf4bc64">&#9670;&#160;</a></span>USB_CURRENT_THRESHOLD</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float PowerManager::USB_CURRENT_THRESHOLD = 50.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_power_manager_8h_source.html#l00027">27</a> of file <a class="el" href="_power_manager_8h_source.html">PowerManager.h</a>.</p>
+
+</div>
+</div>
+<a id="a426dcedc762549ed6c408708bd61b94e" name="a426dcedc762549ed6c408708bd61b94e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a426dcedc762549ed6c408708bd61b94e">&#9670;&#160;</a></span>VOLTAGE_LOW_THRESHOLD</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float PowerManager::VOLTAGE_LOW_THRESHOLD = 4.7f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_power_manager_8h_source.html#l00028">28</a> of file <a class="el" href="_power_manager_8h_source.html">PowerManager.h</a>.</p>
+
+</div>
+</div>
+<a id="a4e28f40bee3fd8e6df12178663159783" name="a4e28f40bee3fd8e6df12178663159783"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e28f40bee3fd8e6df12178663159783">&#9670;&#160;</a></span>VOLTAGE_OVERCHARGE_THRESHOLD</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float PowerManager::VOLTAGE_OVERCHARGE_THRESHOLD = 5.3f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_power_manager_8h_source.html#l00029">29</a> of file <a class="el" href="_power_manager_8h_source.html">PowerManager.h</a>.</p>
+
+</div>
+</div>
 <a id="aae449340ac8e77b181ef2f0abd2d96ed" name="aae449340ac8e77b181ef2f0abd2d96ed"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aae449340ac8e77b181ef2f0abd2d96ed">&#9670;&#160;</a></span>FALL_RATE_THRESHOLD</h2>
 
@@ -491,30 +587,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aeb488c42ec47e1a8de0446717d339cce" name="aeb488c42ec47e1a8de0446717d339cce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb488c42ec47e1a8de0446717d339cce">&#9670;&#160;</a></span>SOLAR_CURRENT_THRESHOLD</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float PowerManager::SOLAR_CURRENT_THRESHOLD = 50.0f</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_power_manager_8h_source.html#l00026">26</a> of file <a class="el" href="_power_manager_8h_source.html">PowerManager.h</a>.</p>
-
-</div>
-</div>
 <a id="a521e99a9e28cca2525988f572379c936" name="a521e99a9e28cca2525988f572379c936"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a521e99a9e28cca2525988f572379c936">&#9670;&#160;</a></span>solarActive</h2>
 
@@ -539,30 +611,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="afc4246cc3b434053c59cf2dcccf4bc64" name="afc4246cc3b434053c59cf2dcccf4bc64"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afc4246cc3b434053c59cf2dcccf4bc64">&#9670;&#160;</a></span>USB_CURRENT_THRESHOLD</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float PowerManager::USB_CURRENT_THRESHOLD = 50.0f</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_power_manager_8h_source.html#l00027">27</a> of file <a class="el" href="_power_manager_8h_source.html">PowerManager.h</a>.</p>
-
-</div>
-</div>
 <a id="a3676187deac57a79034f59f58ac4b746" name="a3676187deac57a79034f59f58ac4b746"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3676187deac57a79034f59f58ac4b746">&#9670;&#160;</a></span>usbConnected</h2>
 
@@ -584,54 +632,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_power_manager_8h_source.html#l00038">38</a> of file <a class="el" href="_power_manager_8h_source.html">PowerManager.h</a>.</p>
-
-</div>
-</div>
-<a id="a426dcedc762549ed6c408708bd61b94e" name="a426dcedc762549ed6c408708bd61b94e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a426dcedc762549ed6c408708bd61b94e">&#9670;&#160;</a></span>VOLTAGE_LOW_THRESHOLD</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float PowerManager::VOLTAGE_LOW_THRESHOLD = 4.7f</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_power_manager_8h_source.html#l00028">28</a> of file <a class="el" href="_power_manager_8h_source.html">PowerManager.h</a>.</p>
-
-</div>
-</div>
-<a id="a4e28f40bee3fd8e6df12178663159783" name="a4e28f40bee3fd8e6df12178663159783"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4e28f40bee3fd8e6df12178663159783">&#9670;&#160;</a></span>VOLTAGE_OVERCHARGE_THRESHOLD</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float PowerManager::VOLTAGE_OVERCHARGE_THRESHOLD = 5.3f</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_power_manager_8h_source.html#l00029">29</a> of file <a class="el" href="_power_manager_8h_source.html">PowerManager.h</a>.</p>
 
 </div>
 </div>

@@ -1,0 +1,108 @@
+\doxysection{Event\+Manager\+Impl Class Reference}
+\hypertarget{class_event_manager_impl}{}\label{class_event_manager_impl}\index{EventManagerImpl@{EventManagerImpl}}
+
+
+{\ttfamily \#include $<$event\+\_\+manager.\+h$>$}
+
+Inheritance diagram for Event\+Manager\+Impl\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_event_manager_impl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_event_manager_impl_a07861026e9c06832168372f64e958073}{Event\+Manager\+Impl}} ()
+\item 
+bool \mbox{\hyperlink{class_event_manager_impl_a8bd15b8b1b4d2439740934f087d97f98}{save\+To\+Storage}} () override
+\item 
+bool \mbox{\hyperlink{class_event_manager_impl_ada54a3fd8ad03891318e203ad0a82155}{load\+From\+Storage}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_event_manager}{Event\+Manager}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_event_manager_a89099b22114f158b5c530edfea52371d}{Event\+Manager}} ()
+\item 
+virtual \mbox{\hyperlink{class_event_manager_ade6acde43327a4e792bb8256dd6350f0}{\texorpdfstring{$\sim$}{\string~}\+Event\+Manager}} ()=default
+\item 
+virtual void \mbox{\hyperlink{class_event_manager_ab9c4d0fbfc9cf7743eac02bee6223728}{init}} ()
+\item 
+void \mbox{\hyperlink{class_event_manager_ae73a56091dc8713bb86a11abb6742a14}{log\+Event}} (uint8\+\_\+t \mbox{\hyperlink{event__manager_8h_ad4291fcb880eb5ecb178b53e32f55741}{group}}, uint8\+\_\+t \mbox{\hyperlink{event__manager_8h_aeef6900f411bc223febdd92c9435693b}{event}})
+\item 
+const \mbox{\hyperlink{class_event_log}{Event\+Log}} \& \mbox{\hyperlink{class_event_manager_a00648cfe8c39fbd59cc4c593113e5573}{get\+Event}} (size\+\_\+t index) const
+\item 
+size\+\_\+t \mbox{\hyperlink{class_event_manager_abd8630355ef48f46c5286f232adb5993}{get\+Event\+Count}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_event_manager}{Event\+Manager}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_event_log}{Event\+Log}} \mbox{\hyperlink{class_event_manager_a9d82f66074e141f352bb852654673536}{events}} \mbox{[}\mbox{\hyperlink{event__manager_8h_acc4dda1aaabc9862fe79fd94e0b722bf}{EVENT\+\_\+\+BUFFER\+\_\+\+SIZE}}\mbox{]}
+\item 
+size\+\_\+t \mbox{\hyperlink{class_event_manager_ab74418c8064525f34692dff74dd28d82}{event\+Count}}
+\item 
+size\+\_\+t \mbox{\hyperlink{class_event_manager_ad97f788895da6e30b3237982a7bcd810}{write\+Index}}
+\item 
+mutex\+\_\+t \mbox{\hyperlink{class_event_manager_a970381a54ae432d262830ad74048c94e}{event\+Mutex}}
+\item 
+volatile uint16\+\_\+t \mbox{\hyperlink{class_event_manager_a31b1b079c272a1d7022ed84b01927186}{next\+Event\+Id}}
+\item 
+bool \mbox{\hyperlink{class_event_manager_aed2eb3a8bc611f5594eb62304c7b4754}{needs\+Persistence}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{event__manager_8h_source_l00119}{119}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_event_manager_impl_a07861026e9c06832168372f64e958073}\index{EventManagerImpl@{EventManagerImpl}!EventManagerImpl@{EventManagerImpl}}
+\index{EventManagerImpl@{EventManagerImpl}!EventManagerImpl@{EventManagerImpl}}
+\doxysubsubsection{\texorpdfstring{EventManagerImpl()}{EventManagerImpl()}}
+{\footnotesize\ttfamily \label{class_event_manager_impl_a07861026e9c06832168372f64e958073} 
+Event\+Manager\+Impl\+::\+Event\+Manager\+Impl (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{event__manager_8h_source_l00121}{121}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_event_manager_impl_a8bd15b8b1b4d2439740934f087d97f98}\index{EventManagerImpl@{EventManagerImpl}!saveToStorage@{saveToStorage}}
+\index{saveToStorage@{saveToStorage}!EventManagerImpl@{EventManagerImpl}}
+\doxysubsubsection{\texorpdfstring{saveToStorage()}{saveToStorage()}}
+{\footnotesize\ttfamily \label{class_event_manager_impl_a8bd15b8b1b4d2439740934f087d97f98} 
+bool Event\+Manager\+Impl\+::save\+To\+Storage (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_event_manager_ad369ac9b7ab0251070e0075745836a40}{Event\+Manager}}.
+
+
+
+Definition at line \mbox{\hyperlink{event__manager_8h_source_l00125}{125}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
+
+\Hypertarget{class_event_manager_impl_ada54a3fd8ad03891318e203ad0a82155}\index{EventManagerImpl@{EventManagerImpl}!loadFromStorage@{loadFromStorage}}
+\index{loadFromStorage@{loadFromStorage}!EventManagerImpl@{EventManagerImpl}}
+\doxysubsubsection{\texorpdfstring{loadFromStorage()}{loadFromStorage()}}
+{\footnotesize\ttfamily \label{class_event_manager_impl_ada54a3fd8ad03891318e203ad0a82155} 
+bool Event\+Manager\+Impl\+::load\+From\+Storage (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_event_manager_a6722258e4e3df939224d07786427afc9}{Event\+Manager}}.
+
+
+
+Definition at line \mbox{\hyperlink{event__manager_8h_source_l00131}{131}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{event__manager_8h}{event\+\_\+manager.\+h}}\end{DoxyCompactItemize}

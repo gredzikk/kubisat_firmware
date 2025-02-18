@@ -1,0 +1,94 @@
+\doxysection{Event Commands}
+\hypertarget{group___event_commands}{}\label{group___event_commands}\index{Event Commands@{Event Commands}}
+
+
+Commands for accessing and managing system event logs.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{group___event_commands_gad921fe7254d7ec43f16a6fb21f5c385a}{handle\+Get\+Last\+Events}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
+\begin{DoxyCompactList}\small\item\em Handler for retrieving last N events from the event log. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{group___event_commands_ga6f817db327c7b16cf49575635e595004}{handle\+Get\+Event\+Count}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
+\begin{DoxyCompactList}\small\item\em Handler for getting total number of events in the log. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Commands for accessing and managing system event logs. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{group___event_commands_gad921fe7254d7ec43f16a6fb21f5c385a}\index{Event Commands@{Event Commands}!handleGetLastEvents@{handleGetLastEvents}}
+\index{handleGetLastEvents@{handleGetLastEvents}!Event Commands@{Event Commands}}
+\doxysubsubsection{\texorpdfstring{handleGetLastEvents()}{handleGetLastEvents()}}
+{\footnotesize\ttfamily \label{group___event_commands_gad921fe7254d7ec43f16a6fb21f5c385a} 
+\mbox{\hyperlink{struct_frame}{Frame}} handle\+Get\+Last\+Events (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{param}{, }\item[{\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}}]{operation\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Handler for retrieving last N events from the event log. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em param} & Number of events to retrieve (optional, default 10) \\
+\hline
+{\em operation\+Type} & GET \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_frame}{Frame} containing\+:
+\begin{DoxyItemize}
+\item Success\+: Hex-\/encoded events in format IIIITTTTTTTTGGEE separated by \textquotesingle{}-\/\textquotesingle{} where\+:
+\begin{DoxyItemize}
+\item IIII\+: Event ID (16-\/bit)
+\item TTTTTTTT\+: Unix Timestamp (32-\/bit)
+\item GG\+: Event Group (8-\/bit)
+\item EE\+: Event Type (8-\/bit)
+\end{DoxyItemize}
+\item Error\+: "{}\+INVALID OPERATION"{}, "{}\+INVALID COUNT"{}, or "{}\+INVALID PARAMETER"{} 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+KBST;0;GET;5;1;20;TSBK Returns up to 20 most recent events
+\end{DoxyNote}
+\begin{DoxyRefDesc}{Command}
+\item[\mbox{\hyperlink{command__command000004}{Command}}]Command ID\+: 5.\+1 \end{DoxyRefDesc}
+
+
+Definition at line \mbox{\hyperlink{event__commands_8cpp_source_l00029}{29}} of file \mbox{\hyperlink{event__commands_8cpp_source}{event\+\_\+commands.\+cpp}}.
+
+\Hypertarget{group___event_commands_ga6f817db327c7b16cf49575635e595004}\index{Event Commands@{Event Commands}!handleGetEventCount@{handleGetEventCount}}
+\index{handleGetEventCount@{handleGetEventCount}!Event Commands@{Event Commands}}
+\doxysubsubsection{\texorpdfstring{handleGetEventCount()}{handleGetEventCount()}}
+{\footnotesize\ttfamily \label{group___event_commands_ga6f817db327c7b16cf49575635e595004} 
+\mbox{\hyperlink{struct_frame}{Frame}} handle\+Get\+Event\+Count (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{param}{, }\item[{\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}}]{operation\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Handler for getting total number of events in the log. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em param} & Empty string expected \\
+\hline
+{\em operation\+Type} & GET \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_frame}{Frame} containing\+:
+\begin{DoxyItemize}
+\item Success\+: Number of events currently in the log
+\item Error\+: "{}\+INVALID REQUEST"{} 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+KBST;0;GET;5;2;;TSBK
+\end{DoxyNote}
+\begin{DoxyRefDesc}{Command}
+\item[\mbox{\hyperlink{command__command000005}{Command}}]Command ID\+: 5.\+2 \end{DoxyRefDesc}
+
+
+Definition at line \mbox{\hyperlink{event__commands_8cpp_source_l00082}{82}} of file \mbox{\hyperlink{event__commands_8cpp_source}{event\+\_\+commands.\+cpp}}.
+

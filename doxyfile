@@ -43,10 +43,9 @@ DOT_IMAGE_FORMAT     = svg
 INTERACTIVE_SVG      = YES
 
 # Additional settings
-GENERATE_LATEX       = NO
+GENERATE_LATEX       = YES
 GENERATE_XML         = NO
-GENERATE_DOCBOOK 	 = YES
-GENERATE_TODOLIST    = YES
+GENERATE_DOCBOOK 	 = NO
 GENERATE_TESTLIST    = YES
 GENERATE_BUGLIST     = YES
 GENERATE_DEPRECATEDLIST = YES
@@ -58,3 +57,12 @@ ALPHABETICAL_INDEX   = NO
 DISTRIBUTE_GROUP_DOC = YES
 LAYOUT_FILE          = 
 USE_MDFILE_AS_MAINPAGE = README.md
+
+# TODO List configuration
+GENERATE_TODOLIST    = YES
+TODO_PRIORITY_NAMES  = "Critical High Medium Low"
+ALIASES += todo{1}="@todo [\1] "
+ALIASES += critical="@todo [Critical] "
+ALIASES += high="@todo [High] "
+ALIASES += medium="@todo [Medium] "
+ALIASES += low="@todo [Low] "

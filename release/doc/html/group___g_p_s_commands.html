@@ -124,6 +124,51 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Commands for controlling and monitoring the GPS module. </p>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="gaa4c13d7d324ffb354badf45e9ceffb1c" name="gaa4c13d7d324ffb354badf45e9ceffb1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa4c13d7d324ffb354badf45e9ceffb1c">&#9670;&#160;</a></span>handleGPSPowerStatus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> handleGPSPowerStatus </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>param</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a></td>          <td class="paramname"><span class="paramname"><em>operationType</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Handler for controlling GPS module power state. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">param</td><td>For SET: "0" to power off, "1" to power on. For GET: empty </td></tr>
+    <tr><td class="paramname">operationType</td><td>GET to read current state, SET to change state </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_frame.html">Frame</a> containing:<ul>
+<li>Success: Current power state (0/1) or</li>
+<li>Error: Error reason </li>
+</ul>
+</dd></dl>
+<dl class="section note"><dt>Note</dt><dd><b>KBST;0;GET;7;1;;TSBK</b> </dd>
+<dd>
+Return current GPS module power state: ON/OFF </dd>
+<dd>
+<b>KBST;0;SET;7;1;POWER;TSBK</b> </dd>
+<dd>
+POWER - 0 - OFF, 1 - ON</dd></dl>
+<dl class="command"><dt><b><a class="el" href="command.html#_command000006">Command</a></b></dt><dd>Command ID: 7.1 </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="gps__commands_8cpp_source.html#l00026">26</a> of file <a class="el" href="gps__commands_8cpp_source.html">gps_commands.cpp</a>.</p>
+
+</div>
+</div>
 <a id="gad12f2e18bdfecbd5b6e8d8a84bb9cd77" name="gad12f2e18bdfecbd5b6e8d8a84bb9cd77"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gad12f2e18bdfecbd5b6e8d8a84bb9cd77">&#9670;&#160;</a></span>handleEnableGPSTransparentMode()</h2>
 
@@ -169,45 +214,6 @@ Send "##EXIT##" to exit mode before TIMEOUT</dd></dl>
 
 </div>
 </div>
-<a id="gaf1f6c0fb4266518353e088e8781ed143" name="gaf1f6c0fb4266518353e088e8781ed143"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaf1f6c0fb4266518353e088e8781ed143">&#9670;&#160;</a></span>handleGetGGAData()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> handleGetGGAData </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>param</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a></td>          <td class="paramname"><span class="paramname"><em>operationType</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Handler for retrieving GPS GGA (Global Positioning System Fix Data) data. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">param</td><td>Empty string expected </td></tr>
-    <tr><td class="paramname">operationType</td><td>GET </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_frame.html">Frame</a> containing:<ul>
-<li>Success: Comma-separated GGA tokens or</li>
-<li>Error: Error message </li>
-</ul>
-</dd></dl>
-<dl class="section note"><dt>Note</dt><dd><b>KBST;0;GET;7;4;;TSBK</b></dd></dl>
-<dl class="command"><dt><b><a class="el" href="command.html#_command000009">Command</a></b></dt><dd>Command ID: 7.4 </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="gps__commands_8cpp_source.html#l00210">210</a> of file <a class="el" href="gps__commands_8cpp_source.html">gps_commands.cpp</a>.</p>
-
-</div>
-</div>
 <a id="ga71881bd1a0a285e4149db732a3f1b533" name="ga71881bd1a0a285e4149db732a3f1b533"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga71881bd1a0a285e4149db732a3f1b533">&#9670;&#160;</a></span>handleGetRMCData()</h2>
 
@@ -247,14 +253,14 @@ Send "##EXIT##" to exit mode before TIMEOUT</dd></dl>
 
 </div>
 </div>
-<a id="gaa4c13d7d324ffb354badf45e9ceffb1c" name="gaa4c13d7d324ffb354badf45e9ceffb1c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa4c13d7d324ffb354badf45e9ceffb1c">&#9670;&#160;</a></span>handleGPSPowerStatus()</h2>
+<a id="gaf1f6c0fb4266518353e088e8781ed143" name="gaf1f6c0fb4266518353e088e8781ed143"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf1f6c0fb4266518353e088e8781ed143">&#9670;&#160;</a></span>handleGetGGAData()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> handleGPSPowerStatus </td>
+          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> handleGetGGAData </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>param</em></span>, </td>
         </tr>
@@ -266,29 +272,23 @@ Send "##EXIT##" to exit mode before TIMEOUT</dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>Handler for controlling GPS module power state. </p>
+<p>Handler for retrieving GPS GGA (Global Positioning System Fix Data) data. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">param</td><td>For SET: "0" to power off, "1" to power on. For GET: empty </td></tr>
-    <tr><td class="paramname">operationType</td><td>GET to read current state, SET to change state </td></tr>
+    <tr><td class="paramname">param</td><td>Empty string expected </td></tr>
+    <tr><td class="paramname">operationType</td><td>GET </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_frame.html">Frame</a> containing:<ul>
-<li>Success: Current power state (0/1) or</li>
-<li>Error: Error reason </li>
+<li>Success: Comma-separated GGA tokens or</li>
+<li>Error: Error message </li>
 </ul>
 </dd></dl>
-<dl class="section note"><dt>Note</dt><dd><b>KBST;0;GET;7;1;;TSBK</b> </dd>
-<dd>
-Return current GPS module power state: ON/OFF </dd>
-<dd>
-<b>KBST;0;SET;7;1;POWER;TSBK</b> </dd>
-<dd>
-POWER - 0 - OFF, 1 - ON</dd></dl>
-<dl class="command"><dt><b><a class="el" href="command.html#_command000006">Command</a></b></dt><dd>Command ID: 7.1 </dd></dl>
+<dl class="section note"><dt>Note</dt><dd><b>KBST;0;GET;7;4;;TSBK</b></dd></dl>
+<dl class="command"><dt><b><a class="el" href="command.html#_command000009">Command</a></b></dt><dd>Command ID: 7.4 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="gps__commands_8cpp_source.html#l00026">26</a> of file <a class="el" href="gps__commands_8cpp_source.html">gps_commands.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gps__commands_8cpp_source.html#l00210">210</a> of file <a class="el" href="gps__commands_8cpp_source.html">gps_commands.cpp</a>.</p>
 
 </div>
 </div>

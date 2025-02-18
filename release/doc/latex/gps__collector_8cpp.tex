@@ -1,0 +1,78 @@
+\doxysection{lib/\+GPS/gps\+\_\+collector.cpp File Reference}
+\hypertarget{gps__collector_8cpp}{}\label{gps__collector_8cpp}\index{lib/GPS/gps\_collector.cpp@{lib/GPS/gps\_collector.cpp}}
+{\ttfamily \#include "{}lib/\+GPS/gps\+\_\+collector.\+h"{}}\newline
+{\ttfamily \#include "{}utils.\+h"{}}\newline
+{\ttfamily \#include "{}pico/time.\+h"{}}\newline
+{\ttfamily \#include "{}lib/\+GPS/\+NMEA/nmea\+\_\+data.\+h"{}}\newline
+{\ttfamily \#include "{}event\+\_\+manager.\+h"{}}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$ctime$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+{\ttfamily \#include "{}DS3231.\+h"{}}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{gps__collector_8cpp_a72dde6c82b28027b8cc37e6a827306a7}{MAX\+\_\+\+RAW\+\_\+\+DATA\+\_\+\+LENGTH}}~1024
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{gps__collector_8cpp_a0509cbb838eb47985372ff8889e507f5}{split\+String}} (const std\+::string \&str, char delimiter)
+\item 
+void \mbox{\hyperlink{gps__collector_8cpp_abe46d88c89b1f730f6c9a230acac2a6a}{collect\+GPSData}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_n_m_e_a_data}{NMEAData}} \mbox{\hyperlink{gps__collector_8cpp_af2b979012abe80d338fef98209f87b78}{nmea\+\_\+data}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{gps__collector_8cpp_a72dde6c82b28027b8cc37e6a827306a7}\index{gps\_collector.cpp@{gps\_collector.cpp}!MAX\_RAW\_DATA\_LENGTH@{MAX\_RAW\_DATA\_LENGTH}}
+\index{MAX\_RAW\_DATA\_LENGTH@{MAX\_RAW\_DATA\_LENGTH}!gps\_collector.cpp@{gps\_collector.cpp}}
+\doxysubsubsection{\texorpdfstring{MAX\_RAW\_DATA\_LENGTH}{MAX\_RAW\_DATA\_LENGTH}}
+{\footnotesize\ttfamily \label{gps__collector_8cpp_a72dde6c82b28027b8cc37e6a827306a7} 
+\#define MAX\+\_\+\+RAW\+\_\+\+DATA\+\_\+\+LENGTH~1024}
+
+
+
+Definition at line \mbox{\hyperlink{gps__collector_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{gps__collector_8cpp_source}{gps\+\_\+collector.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{gps__collector_8cpp_a0509cbb838eb47985372ff8889e507f5}\index{gps\_collector.cpp@{gps\_collector.cpp}!splitString@{splitString}}
+\index{splitString@{splitString}!gps\_collector.cpp@{gps\_collector.cpp}}
+\doxysubsubsection{\texorpdfstring{splitString()}{splitString()}}
+{\footnotesize\ttfamily \label{gps__collector_8cpp_a0509cbb838eb47985372ff8889e507f5} 
+std\+::vector$<$ std\+::string $>$ split\+String (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str}{, }\item[{char}]{delimiter}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{gps__collector_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{gps__collector_8cpp_source}{gps\+\_\+collector.\+cpp}}.
+
+\Hypertarget{gps__collector_8cpp_abe46d88c89b1f730f6c9a230acac2a6a}\index{gps\_collector.cpp@{gps\_collector.cpp}!collectGPSData@{collectGPSData}}
+\index{collectGPSData@{collectGPSData}!gps\_collector.cpp@{gps\_collector.cpp}}
+\doxysubsubsection{\texorpdfstring{collectGPSData()}{collectGPSData()}}
+{\footnotesize\ttfamily \label{gps__collector_8cpp_abe46d88c89b1f730f6c9a230acac2a6a} 
+void collect\+GPSData (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{gps__collector_8cpp_source_l00027}{27}} of file \mbox{\hyperlink{gps__collector_8cpp_source}{gps\+\_\+collector.\+cpp}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{gps__collector_8cpp_af2b979012abe80d338fef98209f87b78}\index{gps\_collector.cpp@{gps\_collector.cpp}!nmea\_data@{nmea\_data}}
+\index{nmea\_data@{nmea\_data}!gps\_collector.cpp@{gps\_collector.cpp}}
+\doxysubsubsection{\texorpdfstring{nmea\_data}{nmea\_data}}
+{\footnotesize\ttfamily \label{gps__collector_8cpp_af2b979012abe80d338fef98209f87b78} 
+\mbox{\hyperlink{class_n_m_e_a_data}{NMEAData}} nmea\+\_\+data\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{_n_m_e_a__data_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{_n_m_e_a__data_8cpp_source}{NMEA\+\_\+data.\+cpp}}.
+

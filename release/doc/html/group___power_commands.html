@@ -133,6 +133,162 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Commands for monitoring power subsystem and battery management. </p>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="gafef922e13071e5fb67da78207a9f22a4" name="gafef922e13071e5fb67da78207a9f22a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafef922e13071e5fb67da78207a9f22a4">&#9670;&#160;</a></span>handleGetPowerManagerIDs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> handleGetPowerManagerIDs </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>param</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a></td>          <td class="paramname"><span class="paramname"><em>operationType</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Handler for retrieving Power Manager IDs. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">param</td><td>Empty string expected </td></tr>
+    <tr><td class="paramname">operationType</td><td>GET </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_frame.html">Frame</a> containing:<ul>
+<li>Success: String of Power Manager IDs</li>
+<li>Error: Error message </li>
+</ul>
+</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>KBST;0;GET;2;0;;TSBK</dd></dl>
+<dl class="command"><dt><b><a class="el" href="command.html#_command000010">Command</a></b></dt><dd>Command ID: 2.0 </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="power__commands_8cpp_source.html#l00021">21</a> of file <a class="el" href="power__commands_8cpp_source.html">power_commands.cpp</a>.</p>
+
+</div>
+</div>
+<a id="gad301b8c13cafa148a6f3e80e9b0bcf1a" name="gad301b8c13cafa148a6f3e80e9b0bcf1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad301b8c13cafa148a6f3e80e9b0bcf1a">&#9670;&#160;</a></span>handleGetVoltageBattery()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> handleGetVoltageBattery </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>param</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a></td>          <td class="paramname"><span class="paramname"><em>operationType</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Handler for getting battery voltage. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">param</td><td>Empty string expected </td></tr>
+    <tr><td class="paramname">operationType</td><td>GET </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_frame.html">Frame</a> containing:<ul>
+<li>Success: Battery voltage in Volts</li>
+<li>Error: Error message </li>
+</ul>
+</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>KBST;0;GET;2;2;;TSBK</dd></dl>
+<dl class="command"><dt><b><a class="el" href="command.html#_command000011">Command</a></b></dt><dd>Command ID: 2.2 </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="power__commands_8cpp_source.html#l00047">47</a> of file <a class="el" href="power__commands_8cpp_source.html">power_commands.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ga9f2b608f46080fcdae38a1a8454938b8" name="ga9f2b608f46080fcdae38a1a8454938b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9f2b608f46080fcdae38a1a8454938b8">&#9670;&#160;</a></span>handleGetVoltage5V()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> handleGetVoltage5V </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>param</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a></td>          <td class="paramname"><span class="paramname"><em>operationType</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Handler for getting 5V rail voltage. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">param</td><td>Empty string expected </td></tr>
+    <tr><td class="paramname">operationType</td><td>GET </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_frame.html">Frame</a> containing:<ul>
+<li>Success: 5V rail voltage in Volts</li>
+<li>Error: Error message </li>
+</ul>
+</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>KBST;0;GET;2;3;;TSBK</dd></dl>
+<dl class="command"><dt><b><a class="el" href="command.html#_command000012">Command</a></b></dt><dd>Command ID: 2.3 </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="power__commands_8cpp_source.html#l00075">75</a> of file <a class="el" href="power__commands_8cpp_source.html">power_commands.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ga3f38c538065bf67dbec1142fdb866d16" name="ga3f38c538065bf67dbec1142fdb866d16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3f38c538065bf67dbec1142fdb866d16">&#9670;&#160;</a></span>handleGetCurrentChargeUSB()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> handleGetCurrentChargeUSB </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>param</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a></td>          <td class="paramname"><span class="paramname"><em>operationType</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Handler for getting USB charge current. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">param</td><td>Empty string expected </td></tr>
+    <tr><td class="paramname">operationType</td><td>GET </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_frame.html">Frame</a> containing:<ul>
+<li>Success: USB charge current in milliamps</li>
+<li>Error: Error message </li>
+</ul>
+</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>KBST;0;GET;2;4;;TSBK</dd></dl>
+<dl class="command"><dt><b><a class="el" href="command.html#_command000013">Command</a></b></dt><dd>Command ID: 2.4 </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="power__commands_8cpp_source.html#l00103">103</a> of file <a class="el" href="power__commands_8cpp_source.html">power_commands.cpp</a>.</p>
+
+</div>
+</div>
 <a id="ga6fbaf484e68c9561ad7fabef21def37b" name="ga6fbaf484e68c9561ad7fabef21def37b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga6fbaf484e68c9561ad7fabef21def37b">&#9670;&#160;</a></span>handleGetCurrentChargeSolar()</h2>
 
@@ -211,45 +367,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga3f38c538065bf67dbec1142fdb866d16" name="ga3f38c538065bf67dbec1142fdb866d16"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga3f38c538065bf67dbec1142fdb866d16">&#9670;&#160;</a></span>handleGetCurrentChargeUSB()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> handleGetCurrentChargeUSB </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>param</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a></td>          <td class="paramname"><span class="paramname"><em>operationType</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Handler for getting USB charge current. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">param</td><td>Empty string expected </td></tr>
-    <tr><td class="paramname">operationType</td><td>GET </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_frame.html">Frame</a> containing:<ul>
-<li>Success: USB charge current in milliamps</li>
-<li>Error: Error message </li>
-</ul>
-</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>KBST;0;GET;2;4;;TSBK</dd></dl>
-<dl class="command"><dt><b><a class="el" href="command.html#_command000013">Command</a></b></dt><dd>Command ID: 2.4 </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="power__commands_8cpp_source.html#l00103">103</a> of file <a class="el" href="power__commands_8cpp_source.html">power_commands.cpp</a>.</p>
-
-</div>
-</div>
 <a id="gabd6610f557fe9deaa9f80d9405738226" name="gabd6610f557fe9deaa9f80d9405738226"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gabd6610f557fe9deaa9f80d9405738226">&#9670;&#160;</a></span>handleGetCurrentDraw()</h2>
 
@@ -286,123 +403,6 @@ Functions</h2></td></tr>
 <dl class="command"><dt><b><a class="el" href="command.html#_command000016">Command</a></b></dt><dd>Command ID: 2.7 </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="power__commands_8cpp_source.html#l00187">187</a> of file <a class="el" href="power__commands_8cpp_source.html">power_commands.cpp</a>.</p>
-
-</div>
-</div>
-<a id="gafef922e13071e5fb67da78207a9f22a4" name="gafef922e13071e5fb67da78207a9f22a4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gafef922e13071e5fb67da78207a9f22a4">&#9670;&#160;</a></span>handleGetPowerManagerIDs()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> handleGetPowerManagerIDs </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>param</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a></td>          <td class="paramname"><span class="paramname"><em>operationType</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Handler for retrieving Power Manager IDs. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">param</td><td>Empty string expected </td></tr>
-    <tr><td class="paramname">operationType</td><td>GET </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_frame.html">Frame</a> containing:<ul>
-<li>Success: String of Power Manager IDs</li>
-<li>Error: Error message </li>
-</ul>
-</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>KBST;0;GET;2;0;;TSBK</dd></dl>
-<dl class="command"><dt><b><a class="el" href="command.html#_command000010">Command</a></b></dt><dd>Command ID: 2.0 </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="power__commands_8cpp_source.html#l00021">21</a> of file <a class="el" href="power__commands_8cpp_source.html">power_commands.cpp</a>.</p>
-
-</div>
-</div>
-<a id="ga9f2b608f46080fcdae38a1a8454938b8" name="ga9f2b608f46080fcdae38a1a8454938b8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga9f2b608f46080fcdae38a1a8454938b8">&#9670;&#160;</a></span>handleGetVoltage5V()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> handleGetVoltage5V </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>param</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a></td>          <td class="paramname"><span class="paramname"><em>operationType</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Handler for getting 5V rail voltage. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">param</td><td>Empty string expected </td></tr>
-    <tr><td class="paramname">operationType</td><td>GET </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_frame.html">Frame</a> containing:<ul>
-<li>Success: 5V rail voltage in Volts</li>
-<li>Error: Error message </li>
-</ul>
-</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>KBST;0;GET;2;3;;TSBK</dd></dl>
-<dl class="command"><dt><b><a class="el" href="command.html#_command000012">Command</a></b></dt><dd>Command ID: 2.3 </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="power__commands_8cpp_source.html#l00075">75</a> of file <a class="el" href="power__commands_8cpp_source.html">power_commands.cpp</a>.</p>
-
-</div>
-</div>
-<a id="gad301b8c13cafa148a6f3e80e9b0bcf1a" name="gad301b8c13cafa148a6f3e80e9b0bcf1a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gad301b8c13cafa148a6f3e80e9b0bcf1a">&#9670;&#160;</a></span>handleGetVoltageBattery()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> handleGetVoltageBattery </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>param</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a></td>          <td class="paramname"><span class="paramname"><em>operationType</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Handler for getting battery voltage. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">param</td><td>Empty string expected </td></tr>
-    <tr><td class="paramname">operationType</td><td>GET </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_frame.html">Frame</a> containing:<ul>
-<li>Success: Battery voltage in Volts</li>
-<li>Error: Error message </li>
-</ul>
-</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>KBST;0;GET;2;2;;TSBK</dd></dl>
-<dl class="command"><dt><b><a class="el" href="command.html#_command000011">Command</a></b></dt><dd>Command ID: 2.2 </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="power__commands_8cpp_source.html#l00047">47</a> of file <a class="el" href="power__commands_8cpp_source.html">power_commands.cpp</a>.</p>
 
 </div>
 </div>

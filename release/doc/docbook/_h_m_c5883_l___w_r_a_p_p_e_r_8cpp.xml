@@ -1,5 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__h_m_c5883_l___w_r_a_p_p_e_r_8cpp" xml:lang="en-US">
-<title>lib/HMC5883L/HMC5883L_WRAPPER.cpp File Reference</title>
-<indexterm><primary>lib/HMC5883L/HMC5883L_WRAPPER.cpp</primary></indexterm>
-<programlisting linenumbering="unnumbered">#include &quot;HMC5883L_WRAPPER.h&quot;<?linebreak?>#include &lt;cmath&gt;<?linebreak?>#include &lt;cstdio&gt;<?linebreak?></programlisting></section>

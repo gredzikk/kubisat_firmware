@@ -1,0 +1,181 @@
+\doxysection{gps\+\_\+commands.\+cpp}
+\hypertarget{gps__commands_8cpp_source}{}\label{gps__commands_8cpp_source}\index{commands/gps\_commands.cpp@{commands/gps\_commands.cpp}}
+\mbox{\hyperlink{gps__commands_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{communication_8h}{communication.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{gps__collector_8h}{lib/GPS/gps\_collector.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <sstream>}\ \textcolor{comment}{//\ Include\ for\ stringstream}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00026}\mbox{\hyperlink{group___g_p_s_commands_gaa4c13d7d324ffb354badf45e9ceffb1c}{00026}}\ \mbox{\hyperlink{struct_frame}{Frame}}\ \mbox{\hyperlink{group___g_p_s_commands_gaa4c13d7d324ffb354badf45e9ceffb1c}{handleGPSPowerStatus}}(\textcolor{keyword}{const}\ std::string\&\ param,\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{OperationType}}\ operationType)\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(operationType\ ==\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8}{OperationType::GET}}\ ||\ operationType\ ==\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a8c52684db8f49511e9b44471716bf164}{OperationType::SET}}))\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 7,\ 1,\ \textcolor{stringliteral}{"{}INVALID\ OPERATION"{}});}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00031}00031\ \ \ \ \ \textcolor{keywordflow}{if}\ (operationType\ ==\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a8c52684db8f49511e9b44471716bf164}{OperationType::SET}})\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (param.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 7,\ 1,\ \textcolor{stringliteral}{"{}PARAM\ REQUIRED"{}});}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ powerStatus\ =\ std::stoi(param);}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (powerStatus\ !=\ 0\ \&\&\ powerStatus\ !=\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 7,\ 1,\ \textcolor{stringliteral}{"{}INVALID\ VALUE.\ USE\ 0\ OR\ 1"{}});}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ gpio\_put(\mbox{\hyperlink{pin__config_8h_aac8b46194f932ec0656edff3718d3750}{GPS\_POWER\_ENABLE\_PIN}},\ powerStatus);}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_event_emitter_a539d733505f9a793439a9cfc4f2af079}{EventEmitter::emit}}(\mbox{\hyperlink{event__manager_8h_a87aefa0e7b725125ea1a741c80858aa7a8c578de37278ada488d763ea86c5cf20}{EventGroup::GPS}},\ powerStatus\ ?\ \mbox{\hyperlink{event__manager_8h_ac4e11c8779c20adc9210532538cdc463a3d6fc432ff9e2d9b890c591179a4401e}{GPSEvent::POWER\_ON}}\ :\ \mbox{\hyperlink{event__manager_8h_ac4e11c8779c20adc9210532538cdc463aa15cea80d926d7282b831d451ba8aee8}{GPSEvent::POWER\_OFF}});}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c}{ExecutionResult::SUCCESS}},\ 7,\ 1,\ std::to\_string(powerStatus));}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 7,\ 1,\ \textcolor{stringliteral}{"{}INVALID\ PARAMETER\ FORMAT"{}});}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00049}00049\ \ \ \ \ \textcolor{comment}{//\ GET\ operation}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00050}00050\ \ \ \ \ \textcolor{keywordflow}{if}\ (!param.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 7,\ 1,\ \textcolor{stringliteral}{"{}PARAM\ UNNECESSARY"{}});}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00052}00052\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00054}00054\ \ \ \ \ \textcolor{keywordtype}{bool}\ powerStatus\ =\ gpio\_get(\mbox{\hyperlink{pin__config_8h_aac8b46194f932ec0656edff3718d3750}{GPS\_POWER\_ENABLE\_PIN}});}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00055}00055\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c}{ExecutionResult::SUCCESS}},\ 7,\ 1,\ std::to\_string(powerStatus));}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00056}00056\ \}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00074}\mbox{\hyperlink{group___g_p_s_commands_gad12f2e18bdfecbd5b6e8d8a84bb9cd77}{00074}}\ \mbox{\hyperlink{struct_frame}{Frame}}\ \mbox{\hyperlink{group___g_p_s_commands_gad12f2e18bdfecbd5b6e8d8a84bb9cd77}{handleEnableGPSTransparentMode}}(\textcolor{keyword}{const}\ std::string\&\ param,\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{OperationType}}\ operationType)\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00075}00075\ \ \ \ \ \textcolor{comment}{//\ Validate\ operation\ type}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00076}00076\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(operationType\ ==\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a8c52684db8f49511e9b44471716bf164}{OperationType::SET}}))\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(\textcolor{stringliteral}{"{}GET\ operation\ not\ allowed\ for\ EnableGPSTransparentMode"{}});}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 7,\ 2,\ \textcolor{stringliteral}{"{}NOT\ ALLOWED"{}});}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00079}00079\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00081}00081\ \ \ \ \ \textcolor{comment}{//\ Parse\ and\ validate\ timeout\ parameter}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00082}00082\ \ \ \ \ uint32\_t\ timeoutMs;}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00083}00083\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ timeoutMs\ =\ param.empty()\ ?\ 60000u\ :\ std::stoul(param)\ *\ 1000;}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00085}00085\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 7,\ 2,\ \textcolor{stringliteral}{"{}INVALID\ TIMEOUT\ FORMAT"{}});}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00087}00087\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00089}00089\ \ \ \ \ \textcolor{comment}{//\ Setup\ UART\ parameters\ and\ exit\ sequence}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00090}00090\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ EXIT\_SEQUENCE\ =\ \textcolor{stringliteral}{"{}\#\#EXIT\#\#"{}};}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00091}00091\ \ \ \ \ std::string\ inputBuffer;}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00092}00092\ \ \ \ \ \textcolor{keywordtype}{bool}\ exitRequested\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00093}00093\ \ \ \ \ uint32\_t\ originalBaudRate\ =\ \mbox{\hyperlink{pin__config_8h_adf735c02ae01a655dbbfc89683107df1}{DEBUG\_UART\_BAUD\_RATE}};}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00094}00094\ \ \ \ \ uint32\_t\ gpsBaudRate\ =\ \mbox{\hyperlink{pin__config_8h_aff9a5d52092479f80c68a37d9f47ea0c}{GPS\_UART\_BAUD\_RATE}};}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00095}00095\ \ \ \ \ uint32\_t\ startTime\ =\ to\_ms\_since\_boot(get\_absolute\_time());}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00097}00097\ \ \ \ \ \textcolor{comment}{//\ Log\ start\ of\ transparent\ mode}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00098}00098\ \ \ \ \ \mbox{\hyperlink{class_event_emitter_a539d733505f9a793439a9cfc4f2af079}{EventEmitter::emit}}(\mbox{\hyperlink{event__manager_8h_a87aefa0e7b725125ea1a741c80858aa7a8c578de37278ada488d763ea86c5cf20}{EventGroup::GPS}},\ \mbox{\hyperlink{event__manager_8h_ac4e11c8779c20adc9210532538cdc463aad25373b52902ffec9bef3591da75390}{GPSEvent::PASS\_THROUGH\_START}});}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00100}00100\ \ \ \ \ \textcolor{comment}{//\ Print\ startup\ message}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00101}00101\ \ \ \ \ std::string\ message\ =\ \textcolor{stringliteral}{"{}Entering\ GPS\ Serial\ Pass-\/Through\ Mode\ @"{}}\ +\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::to\_string(gpsBaudRate)\ +\ \textcolor{stringliteral}{"{}\ for\ "{}}\ +\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::to\_string(timeoutMs/1000)\ +\ \textcolor{stringliteral}{"{}s\(\backslash\)r\(\backslash\)n"{}}\ +}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Send\ "{}}\ +\ EXIT\_SEQUENCE\ +\ \textcolor{stringliteral}{"{}\ to\ exit"{}};}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00105}00105\ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(message);}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00106}00106\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00107}00107\ \ \ \ \ \textcolor{comment}{//\ Allow\ time\ for\ message\ to\ be\ sent\ before\ baudrate\ change}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00108}00108\ \ \ \ \ sleep\_ms(10);}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00109}00109\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00110}00110\ \ \ \ \ \textcolor{comment}{//\ Switch\ to\ GPS\ baudrate}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00111}00111\ \ \ \ \ uart\_set\_baudrate(\mbox{\hyperlink{pin__config_8h_a1c9052d1656e86f50326fd275c54ca67}{DEBUG\_UART\_PORT}},\ gpsBaudRate);}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00113}00113\ \ \ \ \ \textcolor{comment}{//\ Main\ transparent\ mode\ loop}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00114}00114\ \ \ \ \ \textcolor{keywordflow}{while}\ (!exitRequested)\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00115}00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (uart\_is\_readable(\mbox{\hyperlink{pin__config_8h_a1c9052d1656e86f50326fd275c54ca67}{DEBUG\_UART\_PORT}}))\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ ch\ =\ uart\_getc(\mbox{\hyperlink{pin__config_8h_a1c9052d1656e86f50326fd275c54ca67}{DEBUG\_UART\_PORT}});}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ inputBuffer\ +=\ ch;}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputBuffer.length()\ >\ EXIT\_SEQUENCE.length())\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inputBuffer\ =\ inputBuffer.substr(1);}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputBuffer\ ==\ EXIT\_SEQUENCE)\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ exitRequested\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputBuffer\ !=\ EXIT\_SEQUENCE.substr(0,\ inputBuffer.length()))\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uart\_write\_blocking(\mbox{\hyperlink{pin__config_8h_a31bae3288bdf1b7a767c494f2b049779}{GPS\_UART\_PORT}},\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }uint8\_t*\textcolor{keyword}{>}(\&ch),\ 1);}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (uart\_is\_readable(\mbox{\hyperlink{pin__config_8h_a31bae3288bdf1b7a767c494f2b049779}{GPS\_UART\_PORT}}))\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ gpsByte\ =\ uart\_getc(\mbox{\hyperlink{pin__config_8h_a31bae3288bdf1b7a767c494f2b049779}{GPS\_UART\_PORT}});}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ uart\_write\_blocking(\mbox{\hyperlink{pin__config_8h_a1c9052d1656e86f50326fd275c54ca67}{DEBUG\_UART\_PORT}},\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }uint8\_t*\textcolor{keyword}{>}(\&gpsByte),\ 1);}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (to\_ms\_since\_boot(get\_absolute\_time())\ -\/\ startTime\ >=\ timeoutMs)\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00143}00143\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00145}00145\ \ \ \ \ uart\_set\_baudrate(\mbox{\hyperlink{pin__config_8h_a1c9052d1656e86f50326fd275c54ca67}{DEBUG\_UART\_PORT}},\ originalBaudRate);}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00146}00146\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00147}00147\ \ \ \ \ sleep\_ms(10);}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00149}00149\ \ \ \ \ \mbox{\hyperlink{class_event_emitter_a539d733505f9a793439a9cfc4f2af079}{EventEmitter::emit}}(\mbox{\hyperlink{event__manager_8h_a87aefa0e7b725125ea1a741c80858aa7a8c578de37278ada488d763ea86c5cf20}{EventGroup::GPS}},\ \mbox{\hyperlink{event__manager_8h_ac4e11c8779c20adc9210532538cdc463a2806fc6062c22a550a6d2039ab209e4c}{GPSEvent::PASS\_THROUGH\_END}});}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00150}00150\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00151}00151\ \ \ \ \ std::string\ exitReason\ =\ exitRequested\ ?\ \textcolor{stringliteral}{"{}USER\_EXIT"{}}\ :\ \textcolor{stringliteral}{"{}TIMEOUT"{}};}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00152}00152\ \ \ \ \ std::string\ response\ =\ \textcolor{stringliteral}{"{}GPS\ UART\ BRIDGE\ EXIT:\ "{}}\ +\ exitReason;}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00153}00153\ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(response);}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00154}00154\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00155}00155\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c}{ExecutionResult::SUCCESS}},\ 7,\ 2,\ response);}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00156}00156\ \}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00157}00157\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00171}\mbox{\hyperlink{group___g_p_s_commands_ga71881bd1a0a285e4149db732a3f1b533}{00171}}\ \mbox{\hyperlink{struct_frame}{Frame}}\ \mbox{\hyperlink{group___g_p_s_commands_ga71881bd1a0a285e4149db732a3f1b533}{handleGetRMCData}}(\textcolor{keyword}{const}\ std::string\&\ param,\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{OperationType}}\ operationType)\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00172}00172\ \ \ \ \ \textcolor{keywordflow}{if}\ (operationType\ !=\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8}{OperationType::GET}})\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 7,\ 3,\ \textcolor{stringliteral}{"{}INVALID\ OPERATION"{}});}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00174}00174\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00176}00176\ \ \ \ \ \textcolor{keywordflow}{if}\ (!param.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00177}00177\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 7,\ 3,\ \textcolor{stringliteral}{"{}PARAM\ UNNECESSARY"{}});}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00178}00178\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00180}00180\ \ \ \ \ std::vector<std::string>\ tokens\ =\ \mbox{\hyperlink{gps__collector_8cpp_af2b979012abe80d338fef98209f87b78}{nmea\_data}}.getRmcTokens();}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00181}00181\ \ \ \ \ \textcolor{keywordflow}{if}\ (tokens.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 7,\ 3,\ \textcolor{stringliteral}{"{}NO\ RMC\ DATA"{}});}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00183}00183\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00185}00185\ \ \ \ \ \textcolor{comment}{//\ Join\ tokens\ with\ commas\ to\ create\ the\ response}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00186}00186\ \ \ \ \ std::stringstream\ ss;}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00187}00187\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ tokens.size();\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00188}00188\ \ \ \ \ \ \ \ \ ss\ <<\ tokens[i];}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00189}00189\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ <\ tokens.size()\ -\/\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ ss\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00191}00191\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00192}00192\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00194}00194\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c}{ExecutionResult::SUCCESS}},\ 7,\ 3,\ ss.str());}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00195}00195\ \}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00210}\mbox{\hyperlink{group___g_p_s_commands_gaf1f6c0fb4266518353e088e8781ed143}{00210}}\ \mbox{\hyperlink{struct_frame}{Frame}}\ \mbox{\hyperlink{group___g_p_s_commands_gaf1f6c0fb4266518353e088e8781ed143}{handleGetGGAData}}(\textcolor{keyword}{const}\ std::string\&\ param,\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{OperationType}}\ operationType)\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00211}00211\ \ \ \ \ \textcolor{keywordflow}{if}\ (operationType\ !=\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8}{OperationType::GET}})\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00212}00212\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 7,\ 4,\ \textcolor{stringliteral}{"{}INVALID\ OPERATION"{}});}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00213}00213\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00214}00214\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00215}00215\ \ \ \ \ \textcolor{keywordflow}{if}\ (!param.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00216}00216\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 7,\ 4,\ \textcolor{stringliteral}{"{}PARAM\ UNNECESSARY"{}});}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00217}00217\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00218}00218\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00219}00219\ \ \ \ \ std::vector<std::string>\ tokens\ =\ \mbox{\hyperlink{gps__collector_8cpp_af2b979012abe80d338fef98209f87b78}{nmea\_data}}.getGgaTokens();}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00220}00220\ \ \ \ \ \textcolor{keywordflow}{if}\ (tokens.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00221}00221\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 7,\ 4,\ \textcolor{stringliteral}{"{}NO\ GGA\ DATA"{}});}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00222}00222\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00223}00223\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00224}00224\ \ \ \ \ \textcolor{comment}{//\ Join\ tokens\ with\ commas\ to\ create\ the\ response}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00225}00225\ \ \ \ \ std::stringstream\ ss;}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00226}00226\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ tokens.size();\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00227}00227\ \ \ \ \ \ \ \ \ ss\ <<\ tokens[i];}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00228}00228\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ <\ tokens.size()\ -\/\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ ss\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00230}00230\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00231}00231\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00233}00233\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c}{ExecutionResult::SUCCESS}},\ 7,\ 4,\ ss.str());}
+\DoxyCodeLine{\Hypertarget{gps__commands_8cpp_source_l00234}00234\ \}\ \textcolor{comment}{//\ end\ of\ GPSCommands\ group}}
+
+\end{DoxyCode}

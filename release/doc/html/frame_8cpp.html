@@ -155,41 +155,31 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a5f43260949ee244d3ee66068eb1d7fc1" name="a5f43260949ee244d3ee66068eb1d7fc1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5f43260949ee244d3ee66068eb1d7fc1">&#9670;&#160;</a></span>buildFrame()</h2>
+<a id="ab53898fb6f45dfc657837a665a070959" name="ab53898fb6f45dfc657837a665a070959"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab53898fb6f45dfc657837a665a070959">&#9670;&#160;</a></span>encodeFrame()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> buildFrame </td>
+          <td class="memname">std::string encodeFrame </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="protocol_8h.html#ad13fb53c92ad2af53a95ee45749796d1">ExecutionResult</a></td>          <td class="paramname"><span class="paramname"><em>result</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">const <a class="el" href="struct_frame.html">Frame</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
           <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>group</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>command</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="protocol_8h.html#a2d96449e2b52d45b5726af92084e0d8f">ValueUnit</a></td>          <td class="paramname"><span class="paramname"><em>unitType</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="frame_8cpp_source.html#l00113">113</a> of file <a class="el" href="frame_8cpp_source.html">frame.cpp</a>.</p>
+<p>Encode <a class="el" href="struct_frame.html">Frame</a> instance into a string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td><a class="el" href="struct_frame.html">Frame</a> instance to encode </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_frame.html">Frame</a> encoded as a string </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="frame_8cpp_source.html#l00006">6</a> of file <a class="el" href="frame_8cpp_source.html">frame.cpp</a>.</p>
 
 </div>
 </div>
@@ -218,34 +208,6 @@ Variables</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_frame.html">Frame</a> instance </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="frame_8cpp_source.html#l00024">24</a> of file <a class="el" href="frame_8cpp_source.html">frame.cpp</a>.</p>
-
-</div>
-</div>
-<a id="ab53898fb6f45dfc657837a665a070959" name="ab53898fb6f45dfc657837a665a070959"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab53898fb6f45dfc657837a665a070959">&#9670;&#160;</a></span>encodeFrame()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string encodeFrame </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="struct_frame.html">Frame</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Encode <a class="el" href="struct_frame.html">Frame</a> instance into a string. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">frame</td><td><a class="el" href="struct_frame.html">Frame</a> instance to encode </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_frame.html">Frame</a> encoded as a string </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="frame_8cpp_source.html#l00006">6</a> of file <a class="el" href="frame_8cpp_source.html">frame.cpp</a>.</p>
 
 </div>
 </div>
@@ -295,6 +257,44 @@ Variables</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>This function is called in the main loop </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="frame_8cpp_source.html#l00098">98</a> of file <a class="el" href="frame_8cpp_source.html">frame.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a5f43260949ee244d3ee66068eb1d7fc1" name="a5f43260949ee244d3ee66068eb1d7fc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f43260949ee244d3ee66068eb1d7fc1">&#9670;&#160;</a></span>buildFrame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> buildFrame </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="protocol_8h.html#ad13fb53c92ad2af53a95ee45749796d1">ExecutionResult</a></td>          <td class="paramname"><span class="paramname"><em>result</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>group</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>command</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="protocol_8h.html#a2d96449e2b52d45b5726af92084e0d8f">ValueUnit</a></td>          <td class="paramname"><span class="paramname"><em>unitType</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="frame_8cpp_source.html#l00113">113</a> of file <a class="el" href="frame_8cpp_source.html">frame.cpp</a>.</p>
 
 </div>
 </div>

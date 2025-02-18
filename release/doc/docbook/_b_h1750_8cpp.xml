@@ -1,5 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__b_h1750_8cpp" xml:lang="en-US">
-<title>lib/BH1750/BH1750.cpp File Reference</title>
-<indexterm><primary>lib/BH1750/BH1750.cpp</primary></indexterm>
-<programlisting linenumbering="unnumbered">#include &quot;BH1750.h&quot;<?linebreak?>#include &quot;pico/stdlib.h&quot;<?linebreak?>#include &lt;stdio.h&gt;<?linebreak?>#include &lt;iostream&gt;<?linebreak?></programlisting></section>

@@ -1,0 +1,31 @@
+\doxysection{MPU6050\+\_\+\+WRAPPER.\+h}
+\hypertarget{_m_p_u6050___w_r_a_p_p_e_r_8h_source}{}\label{_m_p_u6050___w_r_a_p_p_e_r_8h_source}\index{lib/MPU6050/MPU6050\_WRAPPER.h@{lib/MPU6050/MPU6050\_WRAPPER.h}}
+\mbox{\hyperlink{_m_p_u6050___w_r_a_p_p_e_r_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___w_r_a_p_p_e_r_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ BH1750\_WRAPPER\_H}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___w_r_a_p_p_e_r_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ BH1750\_WRAPPER\_H}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___w_r_a_p_p_e_r_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___w_r_a_p_p_e_r_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_i_sensor_8h}{ISensor.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___w_r_a_p_p_e_r_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_m_p_u6050_8h}{MPU6050.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___w_r_a_p_p_e_r_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___w_r_a_p_p_e_r_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___w_r_a_p_p_e_r_8h_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___w_r_a_p_p_e_r_8h_source_l00009}\mbox{\hyperlink{class_m_p_u6050_wrapper}{00009}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_m_p_u6050_wrapper_a6f277b2721235fd28dca313699f87cd6}{MPU6050Wrapper}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_i_sensor}{ISensor}}\ \{}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___w_r_a_p_p_e_r_8h_source_l00010}00010\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___w_r_a_p_p_e_r_8h_source_l00011}\mbox{\hyperlink{class_m_p_u6050_wrapper_abcd0f6b03f36a595e65c8ac1526a69cd}{00011}}\ \ \ \ \ MPU6050\ \mbox{\hyperlink{class_m_p_u6050_wrapper_abcd0f6b03f36a595e65c8ac1526a69cd}{sensor}};}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___w_r_a_p_p_e_r_8h_source_l00012}\mbox{\hyperlink{class_m_p_u6050_wrapper_a39989e57457ea5c1a230aede7d3f4921}{00012}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_m_p_u6050_wrapper_a39989e57457ea5c1a230aede7d3f4921}{initialized}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___w_r_a_p_p_e_r_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___w_r_a_p_p_e_r_8h_source_l00014}00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___w_r_a_p_p_e_r_8h_source_l00015}\mbox{\hyperlink{class_m_p_u6050_wrapper_a6f277b2721235fd28dca313699f87cd6}{00015}}\ \ \ \ \ \mbox{\hyperlink{class_m_p_u6050_wrapper_a6f277b2721235fd28dca313699f87cd6}{MPU6050Wrapper}}();}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___w_r_a_p_p_e_r_8h_source_l00016}00016\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___w_r_a_p_p_e_r_8h_source_l00017}\mbox{\hyperlink{class_m_p_u6050_wrapper_a9c0278899b5d7899fbb5ceb9b2f9e957}{00017}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_m_p_u6050_wrapper_a9c0278899b5d7899fbb5ceb9b2f9e957}{init}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___w_r_a_p_p_e_r_8h_source_l00018}\mbox{\hyperlink{class_m_p_u6050_wrapper_a80ab2265d434c951fb99f29bdb0e965a}{00018}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_m_p_u6050_wrapper_a80ab2265d434c951fb99f29bdb0e965a}{readData}}(\mbox{\hyperlink{_i_sensor_8h_a21b0301bb3eb76855366980212c8ae5e}{SensorDataTypeIdentifier}}\ type)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___w_r_a_p_p_e_r_8h_source_l00019}\mbox{\hyperlink{class_m_p_u6050_wrapper_a56ac18f3459bcbfcfcc42c8c1b6a6be7}{00019}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_m_p_u6050_wrapper_a56ac18f3459bcbfcfcc42c8c1b6a6be7}{isInitialized}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___w_r_a_p_p_e_r_8h_source_l00020}\mbox{\hyperlink{class_m_p_u6050_wrapper_a922032d7b37976611de3a745e16fafde}{00020}}\ \ \ \ \ \mbox{\hyperlink{_i_sensor_8h_a213c434cb928c4ca22513e2302632435}{SensorType}}\ \mbox{\hyperlink{class_m_p_u6050_wrapper_a922032d7b37976611de3a745e16fafde}{getType}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___w_r_a_p_p_e_r_8h_source_l00021}00021\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___w_r_a_p_p_e_r_8h_source_l00022}\mbox{\hyperlink{class_m_p_u6050_wrapper_ab8fc4351ba80016c273c3e284dd5e3eb}{00022}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_m_p_u6050_wrapper_ab8fc4351ba80016c273c3e284dd5e3eb}{configure}}(\textcolor{keyword}{const}\ std::map<std::string,\ std::string>\&\ config);}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___w_r_a_p_p_e_r_8h_source_l00023}00023\ \};}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___w_r_a_p_p_e_r_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___w_r_a_p_p_e_r_8h_source_l00025}00025\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

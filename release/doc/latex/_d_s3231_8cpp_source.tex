@@ -1,0 +1,199 @@
+\doxysection{DS3231.\+cpp}
+\hypertarget{_d_s3231_8cpp_source}{}\label{_d_s3231_8cpp_source}\index{lib/DS3231/DS3231.cpp@{lib/DS3231/DS3231.cpp}}
+\mbox{\hyperlink{_d_s3231_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_d_s3231_8h}{DS3231.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00005}00005\ \textcolor{keyword}{const}\ std::array<std::string,\ 7>\ \mbox{\hyperlink{class_d_s3231_aaecfb4d1dafaed2f892bf579aadbd7a3}{DS3231::WEEKDAYS}}\ =\ \{}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00006}00006\ \ \ \ \ \textcolor{stringliteral}{"{}SUN"{}},\ \textcolor{stringliteral}{"{}MON"{}},\ \textcolor{stringliteral}{"{}TUE"{}},\ \textcolor{stringliteral}{"{}WED"{}},\ \textcolor{stringliteral}{"{}THU"{}},\ \textcolor{stringliteral}{"{}FRI"{}},\ \textcolor{stringliteral}{"{}SAT"{}}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00007}00007\ \};}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00009}\mbox{\hyperlink{class_d_s3231_ad78b99a37b67a9912f39602d8802a358}{00009}}\ \mbox{\hyperlink{class_d_s3231_ad78b99a37b67a9912f39602d8802a358}{DS3231::DS3231}}(i2c\_inst\_t\ *i2c\_port,\ uint8\_t\ \mbox{\hyperlink{class_d_s3231_a220290093650973f7ba16872e33b8b96}{address}})\ :\ \mbox{\hyperlink{class_d_s3231_afff19e512928fce8a6f9b50885df3732}{i2c}}(i2c\_port),\ \mbox{\hyperlink{class_d_s3231_a220290093650973f7ba16872e33b8b96}{address}}(\mbox{\hyperlink{class_d_s3231_a220290093650973f7ba16872e33b8b96}{address}})\ \{}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00010}00010\ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00012}\mbox{\hyperlink{class_d_s3231_a6ead725bcb29001cfbf4279f249d6983}{00012}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_d_s3231_a6ead725bcb29001cfbf4279f249d6983}{DS3231::setTime}}(uint8\_t\ sec,\ uint8\_t\ min,\ uint8\_t\ hour,}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ weekday,\ uint8\_t\ day,\ uint8\_t\ month,\ uint16\_t\ year)\ \{}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00014}00014\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[8];}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00015}00015\ \ \ \ \ \mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[0]\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00016}00016\ \ \ \ \ \mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[1]\ =\ \mbox{\hyperlink{class_d_s3231_a41f5aabf74e5a66093116999648806ab}{bin2bcd}}(sec);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00017}00017\ \ \ \ \ \mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[2]\ =\ \mbox{\hyperlink{class_d_s3231_a41f5aabf74e5a66093116999648806ab}{bin2bcd}}(min);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00018}00018\ \ \ \ \ \mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[3]\ =\ \mbox{\hyperlink{class_d_s3231_a41f5aabf74e5a66093116999648806ab}{bin2bcd}}(hour);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00019}00019\ \ \ \ \ \mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[4]\ =\ \mbox{\hyperlink{class_d_s3231_a41f5aabf74e5a66093116999648806ab}{bin2bcd}}(weekday);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00020}00020\ \ \ \ \ \mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[5]\ =\ \mbox{\hyperlink{class_d_s3231_a41f5aabf74e5a66093116999648806ab}{bin2bcd}}(day);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00021}00021\ \ \ \ \ \mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[6]\ =\ \mbox{\hyperlink{class_d_s3231_a41f5aabf74e5a66093116999648806ab}{bin2bcd}}(month);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00022}00022\ \ \ \ \ \mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[7]\ =\ \mbox{\hyperlink{class_d_s3231_a41f5aabf74e5a66093116999648806ab}{bin2bcd}}(year\ -\/\ 2000);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00023}00023\ \ \ \ \ \textcolor{comment}{//\ Write\ time\ to\ RTC}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00024}00024\ \ \ \ \ uint8\_t\ reg\ =\ \mbox{\hyperlink{class_d_s3231_af87c9b9232490e63de80b4e4c8aec81f}{RTC\_REGISTER}};}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00025}00025\ \ \ \ \ i2c\_write\_blocking(\mbox{\hyperlink{class_d_s3231_afff19e512928fce8a6f9b50885df3732}{i2c}},\ \mbox{\hyperlink{class_d_s3231_a220290093650973f7ba16872e33b8b96}{address}},\ \&reg,\ 1,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00026}00026\ \ \ \ \ \textcolor{keywordflow}{return}\ i2c\_write\_blocking(\mbox{\hyperlink{class_d_s3231_afff19e512928fce8a6f9b50885df3732}{i2c}},\ \mbox{\hyperlink{class_d_s3231_a220290093650973f7ba16872e33b8b96}{address}},\ \mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}),\ \textcolor{keyword}{false})\ ==\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}});}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00027}00027\ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00029}\mbox{\hyperlink{class_d_s3231_aedd5fa550aa8b38fabe4d44d9ba5a0af}{00029}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_d_s3231_aedd5fa550aa8b38fabe4d44d9ba5a0af}{DS3231::getTime}}(uint8\_t\&\ sec,\ uint8\_t\&\ min,\ uint8\_t\&\ hour,}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\&\ weekday,\ uint8\_t\&\ day,\ uint8\_t\&\ month,\ uint16\_t\&\ year)\ \{}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00031}00031\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[7];}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00032}00032\ \ \ \ \ uint8\_t\ reg\ =\ \mbox{\hyperlink{class_d_s3231_af87c9b9232490e63de80b4e4c8aec81f}{RTC\_REGISTER}};}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00033}00033\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00034}00034\ \ \ \ \ \textcolor{keywordflow}{if}\ (i2c\_write\_blocking(\mbox{\hyperlink{class_d_s3231_afff19e512928fce8a6f9b50885df3732}{i2c}},\ \mbox{\hyperlink{class_d_s3231_a220290093650973f7ba16872e33b8b96}{address}},\ \&reg,\ 1,\ \textcolor{keyword}{true})\ !=\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00036}00036\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00037}00037\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{if}\ (i2c\_read\_blocking(\mbox{\hyperlink{class_d_s3231_afff19e512928fce8a6f9b50885df3732}{i2c}},\ \mbox{\hyperlink{class_d_s3231_a220290093650973f7ba16872e33b8b96}{address}},\ \mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}),\ \textcolor{keyword}{false})\ !=\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}))\ \{}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00040}00040\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00042}00042\ \ \ \ \ sec\ =\ \mbox{\hyperlink{class_d_s3231_a389e756fdd8f645d6025906bbce5abd8}{bcd2bin}}(\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[0]);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00043}00043\ \ \ \ \ min\ =\ \mbox{\hyperlink{class_d_s3231_a389e756fdd8f645d6025906bbce5abd8}{bcd2bin}}(\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[1]);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00044}00044\ \ \ \ \ hour\ =\ \mbox{\hyperlink{class_d_s3231_a389e756fdd8f645d6025906bbce5abd8}{bcd2bin}}(\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[2]);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00045}00045\ \ \ \ \ weekday\ =\ \mbox{\hyperlink{class_d_s3231_aaecfb4d1dafaed2f892bf579aadbd7a3}{WEEKDAYS}}[\mbox{\hyperlink{class_d_s3231_a389e756fdd8f645d6025906bbce5abd8}{bcd2bin}}(\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[3])];}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00046}00046\ \ \ \ \ day\ =\ \mbox{\hyperlink{class_d_s3231_a389e756fdd8f645d6025906bbce5abd8}{bcd2bin}}(\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[4]);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00047}00047\ \ \ \ \ month\ =\ \mbox{\hyperlink{class_d_s3231_a389e756fdd8f645d6025906bbce5abd8}{bcd2bin}}(\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[5]);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00048}00048\ \ \ \ \ year\ =\ \mbox{\hyperlink{class_d_s3231_a389e756fdd8f645d6025906bbce5abd8}{bcd2bin}}(\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[6])\ +\ 2000;}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00049}00049\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00050}00050\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00051}00051\ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00053}\mbox{\hyperlink{class_d_s3231_af7eb8bade221416e4035f1e7139b6154}{00053}}\ std::string\ \mbox{\hyperlink{class_d_s3231_af7eb8bade221416e4035f1e7139b6154}{DS3231::getTimeString}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00054}00054\ \ \ \ \ uint8\_t\ sec,\ min,\ hour,\ day,\ month;}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00055}00055\ \ \ \ \ uint16\_t\ year;}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00056}00056\ \ \ \ \ std::string\ weekday;}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00057}00057\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00058}00058\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_d_s3231_aedd5fa550aa8b38fabe4d44d9ba5a0af}{getTime}}(sec,\ min,\ hour,\ weekday,\ day,\ month,\ year))\ \{}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Error\ reading\ RTC"{}};}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00060}00060\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00061}00061\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00062}00062\ \ \ \ \ std::stringstream\ ss;}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00063}00063\ \ \ \ \ ss\ <<\ \mbox{\hyperlink{class_d_s3231_ada371a466a46dd550e6eded5217627b5}{preZero}}(hour)\ <<\ \textcolor{stringliteral}{"{}:"{}}\ <<\ \mbox{\hyperlink{class_d_s3231_ada371a466a46dd550e6eded5217627b5}{preZero}}(min)\ <<\ \textcolor{stringliteral}{"{}:"{}}\ <<\ \mbox{\hyperlink{class_d_s3231_ada371a466a46dd550e6eded5217627b5}{preZero}}(sec)}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ "{}}\ <<\ weekday\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ <<\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(day)\ <<\ \textcolor{stringliteral}{"{}."{}}\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ <<\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(month)\ <<\ \textcolor{stringliteral}{"{}."{}}\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ <<\ year;}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00068}00068\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00069}00069\ \ \ \ \ \textcolor{keywordflow}{return}\ ss.str();}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00070}00070\ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00072}\mbox{\hyperlink{class_d_s3231_a389e756fdd8f645d6025906bbce5abd8}{00072}}\ uint8\_t\ \mbox{\hyperlink{class_d_s3231_a389e756fdd8f645d6025906bbce5abd8}{DS3231::bcd2bin}}(uint8\_t\ val)\ \{}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00073}00073\ \ \ \ \ \textcolor{keywordflow}{return}\ ((val/16)\ *\ 10)\ +\ (val\ \%\ 16);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00074}00074\ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00076}\mbox{\hyperlink{class_d_s3231_a41f5aabf74e5a66093116999648806ab}{00076}}\ uint8\_t\ \mbox{\hyperlink{class_d_s3231_a41f5aabf74e5a66093116999648806ab}{DS3231::bin2bcd}}(uint8\_t\ val)\ \{}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00077}00077\ \ \ \ \ \textcolor{keywordflow}{return}\ ((val/10)\ *\ 16)\ +\ (val\ \%\ 10);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00078}00078\ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00080}\mbox{\hyperlink{class_d_s3231_ada371a466a46dd550e6eded5217627b5}{00080}}\ std::string\ \mbox{\hyperlink{class_d_s3231_ada371a466a46dd550e6eded5217627b5}{DS3231::preZero}}(uint8\_t\ val)\ \{}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00081}00081\ \ \ \ \ \textcolor{keywordflow}{if}\ (val\ <\ 10)\ \{}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}0"{}}\ +\ std::to\_string(val);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00083}00083\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00084}00084\ \ \ \ \ \textcolor{keywordflow}{return}\ std::to\_string(val);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00085}00085\ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00087}\mbox{\hyperlink{class_d_s3231_a569f69050349e21823276ef29ff07a76}{00087}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_d_s3231_a569f69050349e21823276ef29ff07a76}{DS3231::setTimeUnix}}(uint32\_t\ unixTime)\ \{}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00088}00088\ \ \ \ \ \mbox{\hyperlink{struct_date_time}{DateTime}}\ dt\ =\ \mbox{\hyperlink{class_d_s3231_a40a965b965496e5b0e7758040c5d9ce7}{unixToDateTime}}(unixTime);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00089}00089\ \ \ \ \ uint8\_t\ weekdayIndex\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00090}00090\ \ \ \ \ \textcolor{comment}{//\ Calculate\ weekday\ (0\ =\ Sunday,\ 1\ =\ Monday,\ etc.)}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00091}00091\ \ \ \ \ time\_t\ t\ =\ unixTime;}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00092}00092\ \ \ \ \ \textcolor{keyword}{struct\ }tm*\ tmp\ =\ gmtime(\&t);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00093}00093\ \ \ \ \ weekdayIndex\ =\ tmp-\/>tm\_wday;}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00094}00094\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00095}00095\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_d_s3231_a6ead725bcb29001cfbf4279f249d6983}{setTime}}(dt.\mbox{\hyperlink{struct_date_time_afb74c1792d0f0f9d3b0d2295554fa39d}{second}},\ dt.\mbox{\hyperlink{struct_date_time_abc5bfa47937548c7aaad1970ba759af3}{minute}},\ dt.\mbox{\hyperlink{struct_date_time_ad7812eb3752d2309263267d4bc3c79a0}{hour}},\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ weekdayIndex,\ dt.\mbox{\hyperlink{struct_date_time_a727866b5ecdfda1edf946efe86aa74af}{day}},\ dt.\mbox{\hyperlink{struct_date_time_ac895afb51c74941c50205f746b709148}{month}},\ dt.\mbox{\hyperlink{struct_date_time_a0a61d60280541502e47f9a7fd6e1c8d2}{year}});}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00097}00097\ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00099}\mbox{\hyperlink{class_d_s3231_a93399e0145a53c558e316f6f95a20679}{00099}}\ uint32\_t\ \mbox{\hyperlink{class_d_s3231_a93399e0145a53c558e316f6f95a20679}{DS3231::getTimeUnix}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00100}00100\ \ \ \ \ \mbox{\hyperlink{struct_date_time}{DateTime}}\ dt\ =\ \mbox{\hyperlink{class_d_s3231_aa19b08f3978eea489bc8af3a84d67e59}{getDateTime}}();}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00101}00101\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_d_s3231_ae6c4f2144a772c44f7adbace7f86dfa1}{dateTimeToUnix}}(dt);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00102}00102\ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00104}\mbox{\hyperlink{class_d_s3231_aa19b08f3978eea489bc8af3a84d67e59}{00104}}\ \mbox{\hyperlink{struct_date_time}{DateTime}}\ \mbox{\hyperlink{class_d_s3231_aa19b08f3978eea489bc8af3a84d67e59}{DS3231::getDateTime}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00105}00105\ \ \ \ \ \mbox{\hyperlink{struct_date_time}{DateTime}}\ dt;}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00106}00106\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[7];}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00107}00107\ \ \ \ \ uint8\_t\ reg\ =\ \mbox{\hyperlink{class_d_s3231_af87c9b9232490e63de80b4e4c8aec81f}{RTC\_REGISTER}};}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00108}00108\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00109}00109\ \ \ \ \ \textcolor{keywordflow}{if}\ (i2c\_write\_blocking(\mbox{\hyperlink{class_d_s3231_afff19e512928fce8a6f9b50885df3732}{i2c}},\ \mbox{\hyperlink{class_d_s3231_a220290093650973f7ba16872e33b8b96}{address}},\ \&reg,\ 1,\ \textcolor{keyword}{true})\ !=\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_date_time}{DateTime}}\{0\};}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00111}00111\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00112}00112\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00113}00113\ \ \ \ \ \textcolor{keywordflow}{if}\ (i2c\_read\_blocking(\mbox{\hyperlink{class_d_s3231_afff19e512928fce8a6f9b50885df3732}{i2c}},\ \mbox{\hyperlink{class_d_s3231_a220290093650973f7ba16872e33b8b96}{address}},\ \mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}),\ \textcolor{keyword}{false})\ !=\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}))\ \{}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_date_time}{DateTime}}\{0\};}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00115}00115\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00117}00117\ \ \ \ \ dt.\mbox{\hyperlink{struct_date_time_afb74c1792d0f0f9d3b0d2295554fa39d}{second}}\ =\ \mbox{\hyperlink{class_d_s3231_a389e756fdd8f645d6025906bbce5abd8}{bcd2bin}}(\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[0]);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00118}00118\ \ \ \ \ dt.\mbox{\hyperlink{struct_date_time_abc5bfa47937548c7aaad1970ba759af3}{minute}}\ =\ \mbox{\hyperlink{class_d_s3231_a389e756fdd8f645d6025906bbce5abd8}{bcd2bin}}(\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[1]);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00119}00119\ \ \ \ \ dt.\mbox{\hyperlink{struct_date_time_ad7812eb3752d2309263267d4bc3c79a0}{hour}}\ =\ \mbox{\hyperlink{class_d_s3231_a389e756fdd8f645d6025906bbce5abd8}{bcd2bin}}(\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[2]);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00120}00120\ \ \ \ \ dt.\mbox{\hyperlink{struct_date_time_a5b762acddaaa0138a96b05159f2c2e23}{weekday}}\ =\ \mbox{\hyperlink{class_d_s3231_aaecfb4d1dafaed2f892bf579aadbd7a3}{WEEKDAYS}}[\mbox{\hyperlink{class_d_s3231_a389e756fdd8f645d6025906bbce5abd8}{bcd2bin}}(\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[3])];}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00121}00121\ \ \ \ \ dt.\mbox{\hyperlink{struct_date_time_a727866b5ecdfda1edf946efe86aa74af}{day}}\ =\ \mbox{\hyperlink{class_d_s3231_a389e756fdd8f645d6025906bbce5abd8}{bcd2bin}}(\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[4]);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00122}00122\ \ \ \ \ dt.\mbox{\hyperlink{struct_date_time_ac895afb51c74941c50205f746b709148}{month}}\ =\ \mbox{\hyperlink{class_d_s3231_a389e756fdd8f645d6025906bbce5abd8}{bcd2bin}}(\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[5]);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00123}00123\ \ \ \ \ dt.\mbox{\hyperlink{struct_date_time_a0a61d60280541502e47f9a7fd6e1c8d2}{year}}\ =\ \mbox{\hyperlink{class_d_s3231_a389e756fdd8f645d6025906bbce5abd8}{bcd2bin}}(\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[6])\ +\ 2000;}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00124}00124\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00125}00125\ \ \ \ \ \textcolor{keywordflow}{return}\ dt;}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00126}00126\ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00128}\mbox{\hyperlink{class_d_s3231_ac5680bedcb5cd48da26a4c0afcddb830}{00128}}\ uint64\_t\ \mbox{\hyperlink{class_d_s3231_ac5680bedcb5cd48da26a4c0afcddb830}{DS3231::getTimeInteger}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00129}00129\ \ \ \ \ \mbox{\hyperlink{struct_date_time}{DateTime}}\ dt\ =\ \mbox{\hyperlink{class_d_s3231_aa19b08f3978eea489bc8af3a84d67e59}{getDateTime}}();}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00130}00130\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}uint64\_t\textcolor{keyword}{>}(dt.\mbox{\hyperlink{struct_date_time_a0a61d60280541502e47f9a7fd6e1c8d2}{year}})\ *\ 10000000000ULL\ +}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}uint64\_t\textcolor{keyword}{>}(dt.\mbox{\hyperlink{struct_date_time_ac895afb51c74941c50205f746b709148}{month}})\ *\ 100000000ULL\ +}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}uint64\_t\textcolor{keyword}{>}(dt.\mbox{\hyperlink{struct_date_time_a727866b5ecdfda1edf946efe86aa74af}{day}})\ *\ 1000000ULL\ +}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}uint64\_t\textcolor{keyword}{>}(dt.\mbox{\hyperlink{struct_date_time_ad7812eb3752d2309263267d4bc3c79a0}{hour}})\ *\ 10000ULL\ +}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}uint64\_t\textcolor{keyword}{>}(dt.\mbox{\hyperlink{struct_date_time_abc5bfa47937548c7aaad1970ba759af3}{minute}})\ *\ 100ULL\ +}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}uint64\_t\textcolor{keyword}{>}(dt.\mbox{\hyperlink{struct_date_time_afb74c1792d0f0f9d3b0d2295554fa39d}{second}});}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00136}00136\ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00138}\mbox{\hyperlink{class_d_s3231_ae6c4f2144a772c44f7adbace7f86dfa1}{00138}}\ uint32\_t\ \mbox{\hyperlink{class_d_s3231_ae6c4f2144a772c44f7adbace7f86dfa1}{DS3231::dateTimeToUnix}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_date_time}{DateTime}}\&\ dt)\ \{}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00139}00139\ \ \ \ \ \textcolor{keyword}{struct\ }tm\ timeinfo\ =\ \{\};}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00140}00140\ \ \ \ \ timeinfo.tm\_year\ =\ dt.\mbox{\hyperlink{struct_date_time_a0a61d60280541502e47f9a7fd6e1c8d2}{year}}\ -\/\ 1900;}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00141}00141\ \ \ \ \ timeinfo.tm\_mon\ =\ dt.\mbox{\hyperlink{struct_date_time_ac895afb51c74941c50205f746b709148}{month}}\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00142}00142\ \ \ \ \ timeinfo.tm\_mday\ =\ dt.\mbox{\hyperlink{struct_date_time_a727866b5ecdfda1edf946efe86aa74af}{day}};}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00143}00143\ \ \ \ \ timeinfo.tm\_hour\ =\ dt.\mbox{\hyperlink{struct_date_time_ad7812eb3752d2309263267d4bc3c79a0}{hour}};}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00144}00144\ \ \ \ \ timeinfo.tm\_min\ =\ dt.\mbox{\hyperlink{struct_date_time_abc5bfa47937548c7aaad1970ba759af3}{minute}};}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00145}00145\ \ \ \ \ timeinfo.tm\_sec\ =\ dt.\mbox{\hyperlink{struct_date_time_afb74c1792d0f0f9d3b0d2295554fa39d}{second}};}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00146}00146\ \ \ \ \ \textcolor{keywordflow}{return}\ mktime(\&timeinfo);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00147}00147\ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00149}\mbox{\hyperlink{class_d_s3231_a40a965b965496e5b0e7758040c5d9ce7}{00149}}\ \mbox{\hyperlink{struct_date_time}{DateTime}}\ \mbox{\hyperlink{class_d_s3231_a40a965b965496e5b0e7758040c5d9ce7}{DS3231::unixToDateTime}}(uint32\_t\ unixTime)\ \{}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00150}00150\ \ \ \ \ \mbox{\hyperlink{struct_date_time}{DateTime}}\ dt;}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00151}00151\ \ \ \ \ time\_t\ t\ =\ unixTime;}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00152}00152\ \ \ \ \ \textcolor{keyword}{struct\ }tm*\ tmp\ =\ gmtime(\&t);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00153}00153\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00154}00154\ \ \ \ \ dt.\mbox{\hyperlink{struct_date_time_a0a61d60280541502e47f9a7fd6e1c8d2}{year}}\ =\ tmp-\/>tm\_year\ +\ 1900;}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00155}00155\ \ \ \ \ dt.\mbox{\hyperlink{struct_date_time_ac895afb51c74941c50205f746b709148}{month}}\ =\ tmp-\/>tm\_mon\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00156}00156\ \ \ \ \ dt.\mbox{\hyperlink{struct_date_time_a727866b5ecdfda1edf946efe86aa74af}{day}}\ =\ tmp-\/>tm\_mday;}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00157}00157\ \ \ \ \ dt.\mbox{\hyperlink{struct_date_time_ad7812eb3752d2309263267d4bc3c79a0}{hour}}\ =\ tmp-\/>tm\_hour;}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00158}00158\ \ \ \ \ dt.\mbox{\hyperlink{struct_date_time_abc5bfa47937548c7aaad1970ba759af3}{minute}}\ =\ tmp-\/>tm\_min;}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00159}00159\ \ \ \ \ dt.\mbox{\hyperlink{struct_date_time_afb74c1792d0f0f9d3b0d2295554fa39d}{second}}\ =\ tmp-\/>tm\_sec;}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00160}00160\ \ \ \ \ dt.\mbox{\hyperlink{struct_date_time_a5b762acddaaa0138a96b05159f2c2e23}{weekday}}\ =\ \mbox{\hyperlink{class_d_s3231_aaecfb4d1dafaed2f892bf579aadbd7a3}{WEEKDAYS}}[tmp-\/>tm\_wday];}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00161}00161\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00162}00162\ \ \ \ \ \textcolor{keywordflow}{return}\ dt;}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00163}00163\ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00165}\mbox{\hyperlink{class_d_s3231_ad95e3e60f1d82c37e7c03fac84249bc6}{00165}}\ uint32\_t\ \mbox{\hyperlink{class_d_s3231_ad95e3e60f1d82c37e7c03fac84249bc6}{DS3231::getTimeUnixLocal}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00166}00166\ \ \ \ \ uint32\_t\ utcTime\ =\ \mbox{\hyperlink{class_d_s3231_a93399e0145a53c558e316f6f95a20679}{getTimeUnix}}();}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00167}00167\ \ \ \ \ \textcolor{keywordflow}{return}\ utcTime\ +\ (\mbox{\hyperlink{class_d_s3231_a330fb98438d9762df3d7da7ed2f38d25}{timezoneOffset}}\ *\ 60);\ \textcolor{comment}{//\ Convert\ minutes\ to\ seconds}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00168}00168\ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00170}\mbox{\hyperlink{class_d_s3231_a4b893299918613d8fb3521793b848d6d}{00170}}\ \mbox{\hyperlink{struct_date_time}{DateTime}}\ \mbox{\hyperlink{class_d_s3231_a4b893299918613d8fb3521793b848d6d}{DS3231::getDateTimeLocal}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00171}00171\ \ \ \ \ \mbox{\hyperlink{struct_date_time}{DateTime}}\ utc\ =\ \mbox{\hyperlink{class_d_s3231_aa19b08f3978eea489bc8af3a84d67e59}{getDateTime}}();}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00172}00172\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_d_s3231_accd8b405f5d30b7b26bb2ca4d84a8fa8}{applyTimezone}}(utc,\ \mbox{\hyperlink{class_d_s3231_a330fb98438d9762df3d7da7ed2f38d25}{timezoneOffset}});}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00173}00173\ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00175}\mbox{\hyperlink{class_d_s3231_accd8b405f5d30b7b26bb2ca4d84a8fa8}{00175}}\ \mbox{\hyperlink{struct_date_time}{DateTime}}\ \mbox{\hyperlink{class_d_s3231_accd8b405f5d30b7b26bb2ca4d84a8fa8}{DS3231::applyTimezone}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_date_time}{DateTime}}\&\ utc,\ int16\_t\ offsetMinutes)\ \{}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00176}00176\ \ \ \ \ time\_t\ t\ =\ \mbox{\hyperlink{class_d_s3231_ae6c4f2144a772c44f7adbace7f86dfa1}{dateTimeToUnix}}(utc)\ +\ (offsetMinutes\ *\ 60);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00177}00177\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_d_s3231_a40a965b965496e5b0e7758040c5d9ce7}{unixToDateTime}}(t);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00178}00178\ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00180}\mbox{\hyperlink{class_d_s3231_a8674f4e63775d5d5ea7e597d0f2ab2c9}{00180}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_d_s3231_a8674f4e63775d5d5ea7e597d0f2ab2c9}{DS3231::needsSync}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00181}00181\ \ \ \ \ uint32\_t\ now\ =\ \mbox{\hyperlink{class_d_s3231_a93399e0145a53c558e316f6f95a20679}{getTimeUnix}}();}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00182}00182\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00183}00183\ \ \ \ \ \textcolor{comment}{//\ Check\ if\ sync\ interval\ has\ passed}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00184}00184\ \ \ \ \ \textcolor{keywordflow}{if}\ (now\ -\/\ \mbox{\hyperlink{class_d_s3231_ab05e9cb92a0de071fc81a3d8e6488b73}{lastSyncTime}}\ >=\ \mbox{\hyperlink{class_d_s3231_a1a30fcf3e2d4b9c4951129ac09c1ce4c}{syncInterval}})\ \{}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00186}00186\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00187}00187\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00188}00188\ \ \ \ \ \textcolor{comment}{//\ Calculate\ drift\ since\ last\ sync}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00189}00189\ \ \ \ \ \textcolor{keywordtype}{float}\ driftSeconds\ =\ (now\ -\/\ \mbox{\hyperlink{class_d_s3231_ab05e9cb92a0de071fc81a3d8e6488b73}{lastSyncTime}})\ *\ (\mbox{\hyperlink{class_d_s3231_a1d9b76de3a1a01b5b08464f23481c004}{clockDrift}}\ /\ 1000000.0f);}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00190}00190\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00191}00191\ \ \ \ \ \textcolor{comment}{//\ If\ drift\ is\ more\ than\ 1\ second,\ sync\ is\ needed}}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00192}00192\ \ \ \ \ \textcolor{keywordflow}{return}\ std::abs(driftSeconds)\ >=\ 1.0f;}
+\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00193}00193\ \}}
+
+\end{DoxyCode}

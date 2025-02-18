@@ -1,0 +1,121 @@
+\doxysection{commands/clock\+\_\+commands.cpp File Reference}
+\hypertarget{clock__commands_8cpp}{}\label{clock__commands_8cpp}\index{commands/clock\_commands.cpp@{commands/clock\_commands.cpp}}
+{\ttfamily \#include "{}communication.\+h"{}}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include "{}DS3231.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{clock__commands_8cpp_a1eefb8c4d539d50c787b4db3f6ebb093}{handle\+Time}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
+\item 
+\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{clock__commands_8cpp_acc9239d946ee18d2ff19af2c6a2177f0}{handle\+Get\+Timezone\+Offset}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
+\item 
+\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{clock__commands_8cpp_a9e802e312d0779aab74966074e81eb30}{handle\+Set\+Timezone\+Offset}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
+\item 
+\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{clock__commands_8cpp_add8778da60c0dc5c0add2c7b2ccdc57e}{handle\+Get\+Clock\+Sync\+Interval}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
+\item 
+\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{clock__commands_8cpp_a00137f0d4c6a83ee5c0df49c7370fe65}{handle\+Set\+Clock\+Sync\+Interval}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
+\item 
+\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{clock__commands_8cpp_a6def0bf9e591d66bd98b752f731d44ba}{handle\+Get\+Clock\+Drift}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
+\item 
+\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{clock__commands_8cpp_ae4cd7f745d6f9e2cadef70e21d8a9fcb}{handle\+Set\+Clock\+Drift}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
+\item 
+\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{clock__commands_8cpp_a17274560343c34119630b27d88ef475e}{handle\+Get\+Last\+Sync\+Time}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_d_s3231}{DS3231}} \mbox{\hyperlink{clock__commands_8cpp_abfd573c8a839ac00ea3b96d691ea11c3}{system\+Clock}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{clock__commands_8cpp_a1eefb8c4d539d50c787b4db3f6ebb093}\index{clock\_commands.cpp@{clock\_commands.cpp}!handleTime@{handleTime}}
+\index{handleTime@{handleTime}!clock\_commands.cpp@{clock\_commands.cpp}}
+\doxysubsubsection{\texorpdfstring{handleTime()}{handleTime()}}
+{\footnotesize\ttfamily \label{clock__commands_8cpp_a1eefb8c4d539d50c787b4db3f6ebb093} 
+\mbox{\hyperlink{struct_frame}{Frame}} handle\+Time (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{param}{, }\item[{\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}}]{operation\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{clock__commands_8cpp_source_l00008}{8}} of file \mbox{\hyperlink{clock__commands_8cpp_source}{clock\+\_\+commands.\+cpp}}.
+
+\Hypertarget{clock__commands_8cpp_acc9239d946ee18d2ff19af2c6a2177f0}\index{clock\_commands.cpp@{clock\_commands.cpp}!handleGetTimezoneOffset@{handleGetTimezoneOffset}}
+\index{handleGetTimezoneOffset@{handleGetTimezoneOffset}!clock\_commands.cpp@{clock\_commands.cpp}}
+\doxysubsubsection{\texorpdfstring{handleGetTimezoneOffset()}{handleGetTimezoneOffset()}}
+{\footnotesize\ttfamily \label{clock__commands_8cpp_acc9239d946ee18d2ff19af2c6a2177f0} 
+\mbox{\hyperlink{struct_frame}{Frame}} handle\+Get\+Timezone\+Offset (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{param}{, }\item[{\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}}]{operation\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{clock__commands_8cpp_source_l00059}{59}} of file \mbox{\hyperlink{clock__commands_8cpp_source}{clock\+\_\+commands.\+cpp}}.
+
+\Hypertarget{clock__commands_8cpp_a9e802e312d0779aab74966074e81eb30}\index{clock\_commands.cpp@{clock\_commands.cpp}!handleSetTimezoneOffset@{handleSetTimezoneOffset}}
+\index{handleSetTimezoneOffset@{handleSetTimezoneOffset}!clock\_commands.cpp@{clock\_commands.cpp}}
+\doxysubsubsection{\texorpdfstring{handleSetTimezoneOffset()}{handleSetTimezoneOffset()}}
+{\footnotesize\ttfamily \label{clock__commands_8cpp_a9e802e312d0779aab74966074e81eb30} 
+\mbox{\hyperlink{struct_frame}{Frame}} handle\+Set\+Timezone\+Offset (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{param}{, }\item[{\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}}]{operation\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{clock__commands_8cpp_source_l00067}{67}} of file \mbox{\hyperlink{clock__commands_8cpp_source}{clock\+\_\+commands.\+cpp}}.
+
+\Hypertarget{clock__commands_8cpp_add8778da60c0dc5c0add2c7b2ccdc57e}\index{clock\_commands.cpp@{clock\_commands.cpp}!handleGetClockSyncInterval@{handleGetClockSyncInterval}}
+\index{handleGetClockSyncInterval@{handleGetClockSyncInterval}!clock\_commands.cpp@{clock\_commands.cpp}}
+\doxysubsubsection{\texorpdfstring{handleGetClockSyncInterval()}{handleGetClockSyncInterval()}}
+{\footnotesize\ttfamily \label{clock__commands_8cpp_add8778da60c0dc5c0add2c7b2ccdc57e} 
+\mbox{\hyperlink{struct_frame}{Frame}} handle\+Get\+Clock\+Sync\+Interval (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{param}{, }\item[{\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}}]{operation\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{clock__commands_8cpp_source_l00083}{83}} of file \mbox{\hyperlink{clock__commands_8cpp_source}{clock\+\_\+commands.\+cpp}}.
+
+\Hypertarget{clock__commands_8cpp_a00137f0d4c6a83ee5c0df49c7370fe65}\index{clock\_commands.cpp@{clock\_commands.cpp}!handleSetClockSyncInterval@{handleSetClockSyncInterval}}
+\index{handleSetClockSyncInterval@{handleSetClockSyncInterval}!clock\_commands.cpp@{clock\_commands.cpp}}
+\doxysubsubsection{\texorpdfstring{handleSetClockSyncInterval()}{handleSetClockSyncInterval()}}
+{\footnotesize\ttfamily \label{clock__commands_8cpp_a00137f0d4c6a83ee5c0df49c7370fe65} 
+\mbox{\hyperlink{struct_frame}{Frame}} handle\+Set\+Clock\+Sync\+Interval (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{param}{, }\item[{\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}}]{operation\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{clock__commands_8cpp_source_l00091}{91}} of file \mbox{\hyperlink{clock__commands_8cpp_source}{clock\+\_\+commands.\+cpp}}.
+
+\Hypertarget{clock__commands_8cpp_a6def0bf9e591d66bd98b752f731d44ba}\index{clock\_commands.cpp@{clock\_commands.cpp}!handleGetClockDrift@{handleGetClockDrift}}
+\index{handleGetClockDrift@{handleGetClockDrift}!clock\_commands.cpp@{clock\_commands.cpp}}
+\doxysubsubsection{\texorpdfstring{handleGetClockDrift()}{handleGetClockDrift()}}
+{\footnotesize\ttfamily \label{clock__commands_8cpp_a6def0bf9e591d66bd98b752f731d44ba} 
+\mbox{\hyperlink{struct_frame}{Frame}} handle\+Get\+Clock\+Drift (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{param}{, }\item[{\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}}]{operation\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{clock__commands_8cpp_source_l00104}{104}} of file \mbox{\hyperlink{clock__commands_8cpp_source}{clock\+\_\+commands.\+cpp}}.
+
+\Hypertarget{clock__commands_8cpp_ae4cd7f745d6f9e2cadef70e21d8a9fcb}\index{clock\_commands.cpp@{clock\_commands.cpp}!handleSetClockDrift@{handleSetClockDrift}}
+\index{handleSetClockDrift@{handleSetClockDrift}!clock\_commands.cpp@{clock\_commands.cpp}}
+\doxysubsubsection{\texorpdfstring{handleSetClockDrift()}{handleSetClockDrift()}}
+{\footnotesize\ttfamily \label{clock__commands_8cpp_ae4cd7f745d6f9e2cadef70e21d8a9fcb} 
+\mbox{\hyperlink{struct_frame}{Frame}} handle\+Set\+Clock\+Drift (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{param}{, }\item[{\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}}]{operation\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{clock__commands_8cpp_source_l00112}{112}} of file \mbox{\hyperlink{clock__commands_8cpp_source}{clock\+\_\+commands.\+cpp}}.
+
+\Hypertarget{clock__commands_8cpp_a17274560343c34119630b27d88ef475e}\index{clock\_commands.cpp@{clock\_commands.cpp}!handleGetLastSyncTime@{handleGetLastSyncTime}}
+\index{handleGetLastSyncTime@{handleGetLastSyncTime}!clock\_commands.cpp@{clock\_commands.cpp}}
+\doxysubsubsection{\texorpdfstring{handleGetLastSyncTime()}{handleGetLastSyncTime()}}
+{\footnotesize\ttfamily \label{clock__commands_8cpp_a17274560343c34119630b27d88ef475e} 
+\mbox{\hyperlink{struct_frame}{Frame}} handle\+Get\+Last\+Sync\+Time (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{param}{, }\item[{\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}}]{operation\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{clock__commands_8cpp_source_l00125}{125}} of file \mbox{\hyperlink{clock__commands_8cpp_source}{clock\+\_\+commands.\+cpp}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{clock__commands_8cpp_abfd573c8a839ac00ea3b96d691ea11c3}\index{clock\_commands.cpp@{clock\_commands.cpp}!systemClock@{systemClock}}
+\index{systemClock@{systemClock}!clock\_commands.cpp@{clock\_commands.cpp}}
+\doxysubsubsection{\texorpdfstring{systemClock}{systemClock}}
+{\footnotesize\ttfamily \label{clock__commands_8cpp_abfd573c8a839ac00ea3b96d691ea11c3} 
+\mbox{\hyperlink{class_d_s3231}{DS3231}} system\+Clock\hspace{0.3cm}{\ttfamily [extern]}}
+

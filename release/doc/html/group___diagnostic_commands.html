@@ -117,14 +117,14 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga3a6c6092cd01fd9c13ab429f4a34326d" name="ga3a6c6092cd01fd9c13ab429f4a34326d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga3a6c6092cd01fd9c13ab429f4a34326d">&#9670;&#160;</a></span>handleEnterBootloaderMode()</h2>
+<a id="gade74b82cf2c20d93c5e0ce624cd7ca77" name="gade74b82cf2c20d93c5e0ce624cd7ca77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gade74b82cf2c20d93c5e0ce624cd7ca77">&#9670;&#160;</a></span>handleListCommands()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> handleEnterBootloaderMode </td>
+          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> handleListCommands </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>param</em></span>, </td>
         </tr>
@@ -136,18 +136,18 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Reboot system to USB firmware loader. </p>
+<p>Handler for listing all available commands on UART. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">param</td><td>Empty string expected </td></tr>
-    <tr><td class="paramname">operationType</td><td>Must be SET </td></tr>
+    <tr><td class="paramname">operationType</td><td>Must be GET </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_frame.html">Frame</a> with operation result</dd></dl>
-<dl class="command"><dt><b><a class="el" href="command.html#_command000003">Command</a></b></dt><dd>Command ID: 2 </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_frame.html">Frame</a> containing success/error and command list</dd></dl>
+<dl class="command"><dt><b><a class="el" href="command.html#_command000001">Command</a></b></dt><dd>Command ID: 0 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="diagnostic__commands_8cpp_source.html#l00070">70</a> of file <a class="el" href="diagnostic__commands_8cpp_source.html">diagnostic_commands.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="diagnostic__commands_8cpp_source.html#l00019">19</a> of file <a class="el" href="diagnostic__commands_8cpp_source.html">diagnostic_commands.cpp</a>.</p>
 
 </div>
 </div>
@@ -185,14 +185,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gade74b82cf2c20d93c5e0ce624cd7ca77" name="gade74b82cf2c20d93c5e0ce624cd7ca77"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gade74b82cf2c20d93c5e0ce624cd7ca77">&#9670;&#160;</a></span>handleListCommands()</h2>
+<a id="ga3a6c6092cd01fd9c13ab429f4a34326d" name="ga3a6c6092cd01fd9c13ab429f4a34326d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3a6c6092cd01fd9c13ab429f4a34326d">&#9670;&#160;</a></span>handleEnterBootloaderMode()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> handleListCommands </td>
+          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> handleEnterBootloaderMode </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>param</em></span>, </td>
         </tr>
@@ -204,18 +204,18 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Handler for listing all available commands on UART. </p>
+<p>Reboot system to USB firmware loader. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">param</td><td>Empty string expected </td></tr>
-    <tr><td class="paramname">operationType</td><td>Must be GET </td></tr>
+    <tr><td class="paramname">operationType</td><td>Must be SET </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_frame.html">Frame</a> containing success/error and command list</dd></dl>
-<dl class="command"><dt><b><a class="el" href="command.html#_command000001">Command</a></b></dt><dd>Command ID: 0 </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_frame.html">Frame</a> with operation result</dd></dl>
+<dl class="command"><dt><b><a class="el" href="command.html#_command000003">Command</a></b></dt><dd>Command ID: 2 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="diagnostic__commands_8cpp_source.html#l00019">19</a> of file <a class="el" href="diagnostic__commands_8cpp_source.html">diagnostic_commands.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="diagnostic__commands_8cpp_source.html#l00070">70</a> of file <a class="el" href="diagnostic__commands_8cpp_source.html">diagnostic_commands.cpp</a>.</p>
 
 </div>
 </div>

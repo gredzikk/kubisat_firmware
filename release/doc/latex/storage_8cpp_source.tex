@@ -1,0 +1,107 @@
+\doxysection{storage.\+cpp}
+\hypertarget{storage_8cpp_source}{}\label{storage_8cpp_source}\mbox{\hyperlink{storage_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00002}00002\ \textcolor{comment}{\ *\ Copyright\ 2024,\ Hiroyuki\ OYAMA.\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00004}00004\ \textcolor{comment}{\ *\ SPDX-\/License-\/Identifier:\ BSD-\/3-\/Clause}}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00005}00005\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{storage_8h}{storage.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}errno.h"{}}}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00009}\mbox{\hyperlink{storage_8cpp_afb19e37469a751aa61de3dcd0c70b4b0}{00009}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{storage_8cpp_afb19e37469a751aa61de3dcd0c70b4b0}{fs\_init}}(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00010}00010\ \ \ \ \ printf(\textcolor{stringliteral}{"{}fs\_init\ littlefs\ on\ SD\ card\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00011}00011\ \ \ \ \ blockdevice\_t\ *sd\ =\ blockdevice\_sd\_create(\mbox{\hyperlink{pin__config_8h_ae8e100b2951ae1785ada736a7d960a77}{SD\_SPI\_PORT}},}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00012}00012\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{pin__config_8h_a1150cf94392cb54e7e979e6b69f210fb}{SD\_MOSI\_PIN}},}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{pin__config_8h_ad3aea67d9c7c7dc0be847a1467786abb}{SD\_MISO\_PIN}},}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00014}00014\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{pin__config_8h_a712b6e5405cc83d1a7c1a30f198df12a}{SD\_SCK\_PIN}},}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00015}00015\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{pin__config_8h_a04d57a6c18b2d5e81f31093e58ed0c62}{SD\_CS\_PIN}},}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00016}00016\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 24\ *\ MHZ,}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00018}00018\ \ \ \ \ filesystem\_t\ *littlefs\ =\ filesystem\_littlefs\_create(500,\ 16);}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00019}00019\ \ \ \ \ \textcolor{keywordtype}{int}\ err\ =\ fs\_mount(\textcolor{stringliteral}{"{}/"{}},\ littlefs,\ sd);}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00020}00020\ \ \ \ \ \textcolor{keywordflow}{if}\ (err\ ==\ -\/1)\ \{}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00021}00021\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}format\ /\ with\ littlefs\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00022}00022\ \ \ \ \ \ \ \ \ err\ =\ fs\_format(littlefs,\ sd);}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (err\ ==\ -\/1)\ \{}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}fs\_format\ error:\ \%s"{}},\ strerror(errno));}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ err\ =\ fs\_mount(\textcolor{stringliteral}{"{}/"{}},\ littlefs,\ sd);}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (err\ ==\ -\/1)\ \{}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}fs\_mount\ error:\ \%s"{}},\ strerror(errno));}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00032}00032\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00034}00034\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00035}00035\ \}}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00037}\mbox{\hyperlink{storage_8cpp_a921d0d7089c0c7731762035e7feeb27a}{00037}}\ \mbox{\hyperlink{struct_file_handle}{FileHandle}}\ \mbox{\hyperlink{storage_8cpp_a921d0d7089c0c7731762035e7feeb27a}{fs\_open\_file}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ filename,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ mode)\ \{}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00038}00038\ \ \ \ \ \mbox{\hyperlink{struct_file_handle}{FileHandle}}\ handle\ =\ \{-\/1,\ \textcolor{keyword}{false}\};}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00039}00039\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{comment}{//\ Convert\ mode\ string\ to\ flags}}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{keywordtype}{int}\ flags\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{keywordflow}{if}\ (strchr(mode,\ \textcolor{charliteral}{'r'}))\ flags\ |=\ O\_RDONLY;}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00043}00043\ \ \ \ \ \textcolor{keywordflow}{if}\ (strchr(mode,\ \textcolor{charliteral}{'w'}))\ flags\ |=\ O\_WRONLY\ |\ O\_CREAT\ |\ O\_TRUNC;}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00044}00044\ \ \ \ \ \textcolor{keywordflow}{if}\ (strchr(mode,\ \textcolor{charliteral}{'a'}))\ flags\ |=\ O\_WRONLY\ |\ O\_CREAT\ |\ O\_APPEND;}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00045}00045\ \ \ \ \ \textcolor{keywordflow}{if}\ (strchr(mode,\ \textcolor{charliteral}{'+'}))\ flags\ =\ O\_RDWR\ |\ (flags\ \&\ \string~(O\_RDONLY\ |\ O\_WRONLY));}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00047}00047\ \ \ \ \ \textcolor{comment}{//\ Open\ the\ file}}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00048}00048\ \ \ \ \ handle.\mbox{\hyperlink{struct_file_handle_afc2bbe66c168d4d264f3af1ec037b122}{fd}}\ =\ open(filename,\ flags,\ 0666);}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00049}00049\ \ \ \ \ \textcolor{keywordflow}{if}\ (handle.\mbox{\hyperlink{struct_file_handle_afc2bbe66c168d4d264f3af1ec037b122}{fd}}\ >=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ handle.\mbox{\hyperlink{struct_file_handle_a1c2451d05e2d2937da92fe194e9281cf}{is\_open}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00051}00051\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ open\ file\ \%s:\ \%s\(\backslash\)n"{}},\ filename,\ strerror(errno));}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00053}00053\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00054}00054\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00055}00055\ \ \ \ \ \textcolor{keywordflow}{return}\ handle;}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00056}00056\ \}}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00058}\mbox{\hyperlink{storage_8cpp_aab35cc4af25dd4a32624e51bf0fcda5b}{00058}}\ ssize\_t\ \mbox{\hyperlink{storage_8cpp_aab35cc4af25dd4a32624e51bf0fcda5b}{fs\_write\_file}}(\mbox{\hyperlink{struct_file_handle}{FileHandle}}\&\ handle,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}},\ \textcolor{keywordtype}{size\_t}\ size)\ \{}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00059}00059\ \ \ \ \ \textcolor{keywordflow}{if}\ (!handle.\mbox{\hyperlink{struct_file_handle_a1c2451d05e2d2937da92fe194e9281cf}{is\_open}})\ \{}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00061}00061\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00063}00063\ \ \ \ \ ssize\_t\ written\ =\ write(handle.\mbox{\hyperlink{struct_file_handle_afc2bbe66c168d4d264f3af1ec037b122}{fd}},\ \mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}},\ size);}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00064}00064\ \ \ \ \ \textcolor{keywordflow}{if}\ (written\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Write\ failed:\ \%s\(\backslash\)n"{}},\ strerror(errno));}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00066}00066\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00067}00067\ \ \ \ \ \textcolor{keywordflow}{return}\ written;}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00068}00068\ \}}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00070}\mbox{\hyperlink{storage_8cpp_a259e40f946e1178329ed6cdf18c35b0c}{00070}}\ ssize\_t\ \mbox{\hyperlink{storage_8cpp_a259e40f946e1178329ed6cdf18c35b0c}{fs\_read\_file}}(\mbox{\hyperlink{struct_file_handle}{FileHandle}}\&\ handle,\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}},\ \textcolor{keywordtype}{size\_t}\ size)\ \{}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00071}00071\ \ \ \ \ \textcolor{keywordflow}{if}\ (!handle.\mbox{\hyperlink{struct_file_handle_a1c2451d05e2d2937da92fe194e9281cf}{is\_open}})\ \{}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00073}00073\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00075}00075\ \ \ \ \ ssize\_t\ bytes\_read\ =\ read(handle.\mbox{\hyperlink{struct_file_handle_afc2bbe66c168d4d264f3af1ec037b122}{fd}},\ \mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}},\ size);}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00076}00076\ \ \ \ \ \textcolor{keywordflow}{if}\ (bytes\_read\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Read\ failed:\ \%s\(\backslash\)n"{}},\ strerror(errno));}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00078}00078\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00079}00079\ \ \ \ \ \textcolor{keywordflow}{return}\ bytes\_read;}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00080}00080\ \}}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00082}\mbox{\hyperlink{storage_8cpp_a1ed8daa820da91b458072334ecec9618}{00082}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{storage_8cpp_a1ed8daa820da91b458072334ecec9618}{fs\_close\_file}}(\mbox{\hyperlink{struct_file_handle}{FileHandle}}\&\ handle)\ \{}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00083}00083\ \ \ \ \ \textcolor{keywordflow}{if}\ (!handle.\mbox{\hyperlink{struct_file_handle_a1c2451d05e2d2937da92fe194e9281cf}{is\_open}})\ \{}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00085}00085\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00087}00087\ \ \ \ \ \textcolor{keywordtype}{int}\ result\ =\ close(handle.\mbox{\hyperlink{struct_file_handle_afc2bbe66c168d4d264f3af1ec037b122}{fd}});}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00088}00088\ \ \ \ \ \textcolor{keywordflow}{if}\ (result\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ handle.\mbox{\hyperlink{struct_file_handle_a1c2451d05e2d2937da92fe194e9281cf}{is\_open}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ handle.\mbox{\hyperlink{struct_file_handle_afc2bbe66c168d4d264f3af1ec037b122}{fd}}\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00092}00092\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Close\ failed:\ \%s\(\backslash\)n"{}},\ strerror(errno));}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00095}00095\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00096}00096\ \}}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00098}00098\ \textcolor{comment}{//\ Helper\ function\ to\ check\ if\ file\ exists}}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00099}\mbox{\hyperlink{storage_8cpp_a4d0e5bbd1f57f47164521ca84c8e6fd1}{00099}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{storage_8cpp_a4d0e5bbd1f57f47164521ca84c8e6fd1}{fs\_file\_exists}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ filename)\ \{}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00100}00100\ \ \ \ \ \textcolor{keyword}{struct\ }stat\ st;}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00101}00101\ \ \ \ \ \textcolor{keywordflow}{return}\ (stat(filename,\ \&st)\ ==\ 0);}
+\DoxyCodeLine{\Hypertarget{storage_8cpp_source_l00102}00102\ \}}
+
+\end{DoxyCode}

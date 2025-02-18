@@ -1,0 +1,449 @@
+\doxysection{DS3231 Class Reference}
+\hypertarget{class_d_s3231}{}\label{class_d_s3231}\index{DS3231@{DS3231}}
+
+
+{\ttfamily \#include $<$DS3231.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_d_s3231_ad78b99a37b67a9912f39602d8802a358}{DS3231}} (i2c\+\_\+inst\+\_\+t \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_d_s3231_afff19e512928fce8a6f9b50885df3732}{i2c}}, uint8\+\_\+t \mbox{\hyperlink{class_d_s3231_a220290093650973f7ba16872e33b8b96}{address}}=0x68)
+\item 
+bool \mbox{\hyperlink{class_d_s3231_a6ead725bcb29001cfbf4279f249d6983}{set\+Time}} (uint8\+\_\+t sec, uint8\+\_\+t min, uint8\+\_\+t hour, uint8\+\_\+t weekday, uint8\+\_\+t day, uint8\+\_\+t month, uint16\+\_\+t year)
+\item 
+bool \mbox{\hyperlink{class_d_s3231_aedd5fa550aa8b38fabe4d44d9ba5a0af}{get\+Time}} (uint8\+\_\+t \&sec, uint8\+\_\+t \&min, uint8\+\_\+t \&hour, std\+::string \&weekday, uint8\+\_\+t \&day, uint8\+\_\+t \&month, uint16\+\_\+t \&year)
+\item 
+std\+::string \mbox{\hyperlink{class_d_s3231_af7eb8bade221416e4035f1e7139b6154}{get\+Time\+String}} ()
+\item 
+bool \mbox{\hyperlink{class_d_s3231_a569f69050349e21823276ef29ff07a76}{set\+Time\+Unix}} (uint32\+\_\+t unix\+Time)
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_d_s3231_a93399e0145a53c558e316f6f95a20679}{get\+Time\+Unix}} ()
+\item 
+\mbox{\hyperlink{struct_date_time}{Date\+Time}} \mbox{\hyperlink{class_d_s3231_aa19b08f3978eea489bc8af3a84d67e59}{get\+Date\+Time}} ()
+\item 
+uint64\+\_\+t \mbox{\hyperlink{class_d_s3231_ac5680bedcb5cd48da26a4c0afcddb830}{get\+Time\+Integer}} ()
+\item 
+void \mbox{\hyperlink{class_d_s3231_a36868c55914308805cd333742bb2ee20}{set\+Timezone\+Offset}} (int16\+\_\+t offset\+Minutes)
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_d_s3231_afb09486c2788bfc7773295e6af83cb21}{get\+Timezone\+Offset}} () const
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_d_s3231_ad95e3e60f1d82c37e7c03fac84249bc6}{get\+Time\+Unix\+Local}} ()
+\item 
+\mbox{\hyperlink{struct_date_time}{Date\+Time}} \mbox{\hyperlink{class_d_s3231_a4b893299918613d8fb3521793b848d6d}{get\+Date\+Time\+Local}} ()
+\item 
+void \mbox{\hyperlink{class_d_s3231_a2f052be5b03cb0c5fea045f49b770cc8}{set\+Clock\+Sync\+Interval}} (uint32\+\_\+t interval\+Seconds)
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_d_s3231_a82a03a071b6b21c5271d9856f7c9396e}{get\+Clock\+Sync\+Interval}} () const
+\item 
+void \mbox{\hyperlink{class_d_s3231_a902d42a635136368ad7987d7d6d84f19}{set\+Last\+Sync\+Time}} (uint32\+\_\+t unix\+Time)
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_d_s3231_a564eaf6a11ee0f1a8c8aad30cd49af6f}{get\+Last\+Sync\+Time}} () const
+\item 
+void \mbox{\hyperlink{class_d_s3231_a5dc268764fd4d0afe785aed25d97669e}{set\+Clock\+Drift}} (float ppm\+Drift)
+\item 
+float \mbox{\hyperlink{class_d_s3231_a546ac8331853889ebce90bda8edbb9d9}{get\+Clock\+Drift}} () const
+\item 
+bool \mbox{\hyperlink{class_d_s3231_a8674f4e63775d5d5ea7e597d0f2ab2c9}{needs\+Sync}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const std\+::array$<$ std\+::string, 7 $>$ \mbox{\hyperlink{class_d_s3231_aaecfb4d1dafaed2f892bf579aadbd7a3}{WEEKDAYS}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_d_s3231_a389e756fdd8f645d6025906bbce5abd8}{bcd2bin}} (uint8\+\_\+t val)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_d_s3231_a41f5aabf74e5a66093116999648806ab}{bin2bcd}} (uint8\+\_\+t val)
+\item 
+std\+::string \mbox{\hyperlink{class_d_s3231_ada371a466a46dd550e6eded5217627b5}{pre\+Zero}} (uint8\+\_\+t val)
+\item 
+\mbox{\hyperlink{struct_date_time}{Date\+Time}} \mbox{\hyperlink{class_d_s3231_accd8b405f5d30b7b26bb2ca4d84a8fa8}{apply\+Timezone}} (const \mbox{\hyperlink{struct_date_time}{Date\+Time}} \&utc, int16\+\_\+t offset\+Minutes)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static uint32\+\_\+t \mbox{\hyperlink{class_d_s3231_ae6c4f2144a772c44f7adbace7f86dfa1}{date\+Time\+To\+Unix}} (const \mbox{\hyperlink{struct_date_time}{Date\+Time}} \&dt)
+\item 
+static \mbox{\hyperlink{struct_date_time}{Date\+Time}} \mbox{\hyperlink{class_d_s3231_a40a965b965496e5b0e7758040c5d9ce7}{unix\+To\+Date\+Time}} (uint32\+\_\+t unix\+Time)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+i2c\+\_\+inst\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_d_s3231_afff19e512928fce8a6f9b50885df3732}{i2c}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_d_s3231_a220290093650973f7ba16872e33b8b96}{address}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_d_s3231_a330fb98438d9762df3d7da7ed2f38d25}{timezone\+Offset}} = 0
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_d_s3231_a1a30fcf3e2d4b9c4951129ac09c1ce4c}{sync\+Interval}} = 86400
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_d_s3231_ab05e9cb92a0de071fc81a3d8e6488b73}{last\+Sync\+Time}} = 0
+\item 
+float \mbox{\hyperlink{class_d_s3231_a1d9b76de3a1a01b5b08464f23481c004}{clock\+Drift}} = 0.\+0f
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr uint8\+\_\+t \mbox{\hyperlink{class_d_s3231_af87c9b9232490e63de80b4e4c8aec81f}{RTC\+\_\+\+REGISTER}} = 0x00
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8h_source_l00019}{19}} of file \mbox{\hyperlink{_d_s3231_8h_source}{DS3231.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_d_s3231_ad78b99a37b67a9912f39602d8802a358}\index{DS3231@{DS3231}!DS3231@{DS3231}}
+\index{DS3231@{DS3231}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{DS3231()}{DS3231()}}
+{\footnotesize\ttfamily \label{class_d_s3231_ad78b99a37b67a9912f39602d8802a358} 
+DS3231\+::\+DS3231 (\begin{DoxyParamCaption}\item[{i2c\+\_\+inst\+\_\+t \texorpdfstring{$\ast$}{*}}]{i2c}{, }\item[{uint8\+\_\+t}]{address}{ = {\ttfamily 0x68}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8cpp_source_l00009}{9}} of file \mbox{\hyperlink{_d_s3231_8cpp_source}{DS3231.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_d_s3231_a6ead725bcb29001cfbf4279f249d6983}\index{DS3231@{DS3231}!setTime@{setTime}}
+\index{setTime@{setTime}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{setTime()}{setTime()}}
+{\footnotesize\ttfamily \label{class_d_s3231_a6ead725bcb29001cfbf4279f249d6983} 
+bool DS3231\+::set\+Time (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{sec}{, }\item[{uint8\+\_\+t}]{min}{, }\item[{uint8\+\_\+t}]{hour}{, }\item[{uint8\+\_\+t}]{weekday}{, }\item[{uint8\+\_\+t}]{day}{, }\item[{uint8\+\_\+t}]{month}{, }\item[{uint16\+\_\+t}]{year}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{_d_s3231_8cpp_source}{DS3231.\+cpp}}.
+
+\Hypertarget{class_d_s3231_aedd5fa550aa8b38fabe4d44d9ba5a0af}\index{DS3231@{DS3231}!getTime@{getTime}}
+\index{getTime@{getTime}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{getTime()}{getTime()}}
+{\footnotesize\ttfamily \label{class_d_s3231_aedd5fa550aa8b38fabe4d44d9ba5a0af} 
+bool DS3231\+::get\+Time (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \&}]{sec}{, }\item[{uint8\+\_\+t \&}]{min}{, }\item[{uint8\+\_\+t \&}]{hour}{, }\item[{std\+::string \&}]{weekday}{, }\item[{uint8\+\_\+t \&}]{day}{, }\item[{uint8\+\_\+t \&}]{month}{, }\item[{uint16\+\_\+t \&}]{year}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8cpp_source_l00029}{29}} of file \mbox{\hyperlink{_d_s3231_8cpp_source}{DS3231.\+cpp}}.
+
+\Hypertarget{class_d_s3231_af7eb8bade221416e4035f1e7139b6154}\index{DS3231@{DS3231}!getTimeString@{getTimeString}}
+\index{getTimeString@{getTimeString}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{getTimeString()}{getTimeString()}}
+{\footnotesize\ttfamily \label{class_d_s3231_af7eb8bade221416e4035f1e7139b6154} 
+std\+::string DS3231\+::get\+Time\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8cpp_source_l00053}{53}} of file \mbox{\hyperlink{_d_s3231_8cpp_source}{DS3231.\+cpp}}.
+
+\Hypertarget{class_d_s3231_a569f69050349e21823276ef29ff07a76}\index{DS3231@{DS3231}!setTimeUnix@{setTimeUnix}}
+\index{setTimeUnix@{setTimeUnix}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{setTimeUnix()}{setTimeUnix()}}
+{\footnotesize\ttfamily \label{class_d_s3231_a569f69050349e21823276ef29ff07a76} 
+bool DS3231\+::set\+Time\+Unix (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{unix\+Time}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8cpp_source_l00087}{87}} of file \mbox{\hyperlink{_d_s3231_8cpp_source}{DS3231.\+cpp}}.
+
+\Hypertarget{class_d_s3231_a93399e0145a53c558e316f6f95a20679}\index{DS3231@{DS3231}!getTimeUnix@{getTimeUnix}}
+\index{getTimeUnix@{getTimeUnix}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{getTimeUnix()}{getTimeUnix()}}
+{\footnotesize\ttfamily \label{class_d_s3231_a93399e0145a53c558e316f6f95a20679} 
+uint32\+\_\+t DS3231\+::get\+Time\+Unix (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8cpp_source_l00099}{99}} of file \mbox{\hyperlink{_d_s3231_8cpp_source}{DS3231.\+cpp}}.
+
+\Hypertarget{class_d_s3231_aa19b08f3978eea489bc8af3a84d67e59}\index{DS3231@{DS3231}!getDateTime@{getDateTime}}
+\index{getDateTime@{getDateTime}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{getDateTime()}{getDateTime()}}
+{\footnotesize\ttfamily \label{class_d_s3231_aa19b08f3978eea489bc8af3a84d67e59} 
+\mbox{\hyperlink{struct_date_time}{Date\+Time}} DS3231\+::get\+Date\+Time (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8cpp_source_l00104}{104}} of file \mbox{\hyperlink{_d_s3231_8cpp_source}{DS3231.\+cpp}}.
+
+\Hypertarget{class_d_s3231_ac5680bedcb5cd48da26a4c0afcddb830}\index{DS3231@{DS3231}!getTimeInteger@{getTimeInteger}}
+\index{getTimeInteger@{getTimeInteger}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{getTimeInteger()}{getTimeInteger()}}
+{\footnotesize\ttfamily \label{class_d_s3231_ac5680bedcb5cd48da26a4c0afcddb830} 
+uint64\+\_\+t DS3231\+::get\+Time\+Integer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8cpp_source_l00128}{128}} of file \mbox{\hyperlink{_d_s3231_8cpp_source}{DS3231.\+cpp}}.
+
+\Hypertarget{class_d_s3231_a36868c55914308805cd333742bb2ee20}\index{DS3231@{DS3231}!setTimezoneOffset@{setTimezoneOffset}}
+\index{setTimezoneOffset@{setTimezoneOffset}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{setTimezoneOffset()}{setTimezoneOffset()}}
+{\footnotesize\ttfamily \label{class_d_s3231_a36868c55914308805cd333742bb2ee20} 
+void DS3231\+::set\+Timezone\+Offset (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{offset\+Minutes}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8h_source_l00040}{40}} of file \mbox{\hyperlink{_d_s3231_8h_source}{DS3231.\+h}}.
+
+\Hypertarget{class_d_s3231_afb09486c2788bfc7773295e6af83cb21}\index{DS3231@{DS3231}!getTimezoneOffset@{getTimezoneOffset}}
+\index{getTimezoneOffset@{getTimezoneOffset}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{getTimezoneOffset()}{getTimezoneOffset()}}
+{\footnotesize\ttfamily \label{class_d_s3231_afb09486c2788bfc7773295e6af83cb21} 
+int16\+\_\+t DS3231\+::get\+Timezone\+Offset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8h_source_l00041}{41}} of file \mbox{\hyperlink{_d_s3231_8h_source}{DS3231.\+h}}.
+
+\Hypertarget{class_d_s3231_ad95e3e60f1d82c37e7c03fac84249bc6}\index{DS3231@{DS3231}!getTimeUnixLocal@{getTimeUnixLocal}}
+\index{getTimeUnixLocal@{getTimeUnixLocal}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{getTimeUnixLocal()}{getTimeUnixLocal()}}
+{\footnotesize\ttfamily \label{class_d_s3231_ad95e3e60f1d82c37e7c03fac84249bc6} 
+uint32\+\_\+t DS3231\+::get\+Time\+Unix\+Local (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8cpp_source_l00165}{165}} of file \mbox{\hyperlink{_d_s3231_8cpp_source}{DS3231.\+cpp}}.
+
+\Hypertarget{class_d_s3231_a4b893299918613d8fb3521793b848d6d}\index{DS3231@{DS3231}!getDateTimeLocal@{getDateTimeLocal}}
+\index{getDateTimeLocal@{getDateTimeLocal}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{getDateTimeLocal()}{getDateTimeLocal()}}
+{\footnotesize\ttfamily \label{class_d_s3231_a4b893299918613d8fb3521793b848d6d} 
+\mbox{\hyperlink{struct_date_time}{Date\+Time}} DS3231\+::get\+Date\+Time\+Local (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8cpp_source_l00170}{170}} of file \mbox{\hyperlink{_d_s3231_8cpp_source}{DS3231.\+cpp}}.
+
+\Hypertarget{class_d_s3231_a2f052be5b03cb0c5fea045f49b770cc8}\index{DS3231@{DS3231}!setClockSyncInterval@{setClockSyncInterval}}
+\index{setClockSyncInterval@{setClockSyncInterval}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{setClockSyncInterval()}{setClockSyncInterval()}}
+{\footnotesize\ttfamily \label{class_d_s3231_a2f052be5b03cb0c5fea045f49b770cc8} 
+void DS3231\+::set\+Clock\+Sync\+Interval (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{interval\+Seconds}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8h_source_l00046}{46}} of file \mbox{\hyperlink{_d_s3231_8h_source}{DS3231.\+h}}.
+
+\Hypertarget{class_d_s3231_a82a03a071b6b21c5271d9856f7c9396e}\index{DS3231@{DS3231}!getClockSyncInterval@{getClockSyncInterval}}
+\index{getClockSyncInterval@{getClockSyncInterval}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{getClockSyncInterval()}{getClockSyncInterval()}}
+{\footnotesize\ttfamily \label{class_d_s3231_a82a03a071b6b21c5271d9856f7c9396e} 
+uint32\+\_\+t DS3231\+::get\+Clock\+Sync\+Interval (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8h_source_l00047}{47}} of file \mbox{\hyperlink{_d_s3231_8h_source}{DS3231.\+h}}.
+
+\Hypertarget{class_d_s3231_a902d42a635136368ad7987d7d6d84f19}\index{DS3231@{DS3231}!setLastSyncTime@{setLastSyncTime}}
+\index{setLastSyncTime@{setLastSyncTime}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{setLastSyncTime()}{setLastSyncTime()}}
+{\footnotesize\ttfamily \label{class_d_s3231_a902d42a635136368ad7987d7d6d84f19} 
+void DS3231\+::set\+Last\+Sync\+Time (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{unix\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8h_source_l00049}{49}} of file \mbox{\hyperlink{_d_s3231_8h_source}{DS3231.\+h}}.
+
+\Hypertarget{class_d_s3231_a564eaf6a11ee0f1a8c8aad30cd49af6f}\index{DS3231@{DS3231}!getLastSyncTime@{getLastSyncTime}}
+\index{getLastSyncTime@{getLastSyncTime}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{getLastSyncTime()}{getLastSyncTime()}}
+{\footnotesize\ttfamily \label{class_d_s3231_a564eaf6a11ee0f1a8c8aad30cd49af6f} 
+uint32\+\_\+t DS3231\+::get\+Last\+Sync\+Time (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8h_source_l00050}{50}} of file \mbox{\hyperlink{_d_s3231_8h_source}{DS3231.\+h}}.
+
+\Hypertarget{class_d_s3231_a5dc268764fd4d0afe785aed25d97669e}\index{DS3231@{DS3231}!setClockDrift@{setClockDrift}}
+\index{setClockDrift@{setClockDrift}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{setClockDrift()}{setClockDrift()}}
+{\footnotesize\ttfamily \label{class_d_s3231_a5dc268764fd4d0afe785aed25d97669e} 
+void DS3231\+::set\+Clock\+Drift (\begin{DoxyParamCaption}\item[{float}]{ppm\+Drift}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8h_source_l00052}{52}} of file \mbox{\hyperlink{_d_s3231_8h_source}{DS3231.\+h}}.
+
+\Hypertarget{class_d_s3231_a546ac8331853889ebce90bda8edbb9d9}\index{DS3231@{DS3231}!getClockDrift@{getClockDrift}}
+\index{getClockDrift@{getClockDrift}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{getClockDrift()}{getClockDrift()}}
+{\footnotesize\ttfamily \label{class_d_s3231_a546ac8331853889ebce90bda8edbb9d9} 
+float DS3231\+::get\+Clock\+Drift (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8h_source_l00053}{53}} of file \mbox{\hyperlink{_d_s3231_8h_source}{DS3231.\+h}}.
+
+\Hypertarget{class_d_s3231_a8674f4e63775d5d5ea7e597d0f2ab2c9}\index{DS3231@{DS3231}!needsSync@{needsSync}}
+\index{needsSync@{needsSync}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{needsSync()}{needsSync()}}
+{\footnotesize\ttfamily \label{class_d_s3231_a8674f4e63775d5d5ea7e597d0f2ab2c9} 
+bool DS3231\+::needs\+Sync (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8cpp_source_l00180}{180}} of file \mbox{\hyperlink{_d_s3231_8cpp_source}{DS3231.\+cpp}}.
+
+\Hypertarget{class_d_s3231_a389e756fdd8f645d6025906bbce5abd8}\index{DS3231@{DS3231}!bcd2bin@{bcd2bin}}
+\index{bcd2bin@{bcd2bin}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{bcd2bin()}{bcd2bin()}}
+{\footnotesize\ttfamily \label{class_d_s3231_a389e756fdd8f645d6025906bbce5abd8} 
+uint8\+\_\+t DS3231\+::bcd2bin (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8cpp_source_l00072}{72}} of file \mbox{\hyperlink{_d_s3231_8cpp_source}{DS3231.\+cpp}}.
+
+\Hypertarget{class_d_s3231_a41f5aabf74e5a66093116999648806ab}\index{DS3231@{DS3231}!bin2bcd@{bin2bcd}}
+\index{bin2bcd@{bin2bcd}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{bin2bcd()}{bin2bcd()}}
+{\footnotesize\ttfamily \label{class_d_s3231_a41f5aabf74e5a66093116999648806ab} 
+uint8\+\_\+t DS3231\+::bin2bcd (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8cpp_source_l00076}{76}} of file \mbox{\hyperlink{_d_s3231_8cpp_source}{DS3231.\+cpp}}.
+
+\Hypertarget{class_d_s3231_ada371a466a46dd550e6eded5217627b5}\index{DS3231@{DS3231}!preZero@{preZero}}
+\index{preZero@{preZero}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{preZero()}{preZero()}}
+{\footnotesize\ttfamily \label{class_d_s3231_ada371a466a46dd550e6eded5217627b5} 
+std\+::string DS3231\+::pre\+Zero (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8cpp_source_l00080}{80}} of file \mbox{\hyperlink{_d_s3231_8cpp_source}{DS3231.\+cpp}}.
+
+\Hypertarget{class_d_s3231_ae6c4f2144a772c44f7adbace7f86dfa1}\index{DS3231@{DS3231}!dateTimeToUnix@{dateTimeToUnix}}
+\index{dateTimeToUnix@{dateTimeToUnix}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{dateTimeToUnix()}{dateTimeToUnix()}}
+{\footnotesize\ttfamily \label{class_d_s3231_ae6c4f2144a772c44f7adbace7f86dfa1} 
+uint32\+\_\+t DS3231\+::date\+Time\+To\+Unix (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_date_time}{Date\+Time}} \&}]{dt}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8cpp_source_l00138}{138}} of file \mbox{\hyperlink{_d_s3231_8cpp_source}{DS3231.\+cpp}}.
+
+\Hypertarget{class_d_s3231_a40a965b965496e5b0e7758040c5d9ce7}\index{DS3231@{DS3231}!unixToDateTime@{unixToDateTime}}
+\index{unixToDateTime@{unixToDateTime}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{unixToDateTime()}{unixToDateTime()}}
+{\footnotesize\ttfamily \label{class_d_s3231_a40a965b965496e5b0e7758040c5d9ce7} 
+\mbox{\hyperlink{struct_date_time}{Date\+Time}} DS3231\+::unix\+To\+Date\+Time (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{unix\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8cpp_source_l00149}{149}} of file \mbox{\hyperlink{_d_s3231_8cpp_source}{DS3231.\+cpp}}.
+
+\Hypertarget{class_d_s3231_accd8b405f5d30b7b26bb2ca4d84a8fa8}\index{DS3231@{DS3231}!applyTimezone@{applyTimezone}}
+\index{applyTimezone@{applyTimezone}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{applyTimezone()}{applyTimezone()}}
+{\footnotesize\ttfamily \label{class_d_s3231_accd8b405f5d30b7b26bb2ca4d84a8fa8} 
+\mbox{\hyperlink{struct_date_time}{Date\+Time}} DS3231\+::apply\+Timezone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_date_time}{Date\+Time}} \&}]{utc}{, }\item[{int16\+\_\+t}]{offset\+Minutes}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8cpp_source_l00175}{175}} of file \mbox{\hyperlink{_d_s3231_8cpp_source}{DS3231.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_d_s3231_aaecfb4d1dafaed2f892bf579aadbd7a3}\index{DS3231@{DS3231}!WEEKDAYS@{WEEKDAYS}}
+\index{WEEKDAYS@{WEEKDAYS}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{WEEKDAYS}{WEEKDAYS}}
+{\footnotesize\ttfamily \label{class_d_s3231_aaecfb4d1dafaed2f892bf579aadbd7a3} 
+const std\+::array$<$ std\+::string, 7 $>$ DS3231\+::\+WEEKDAYS\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}SUN"{}},\ \textcolor{stringliteral}{"{}MON"{}},\ \textcolor{stringliteral}{"{}TUE"{}},\ \textcolor{stringliteral}{"{}WED"{}},\ \textcolor{stringliteral}{"{}THU"{}},\ \textcolor{stringliteral}{"{}FRI"{}},\ \textcolor{stringliteral}{"{}SAT"{}}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8h_source_l00005}{5}} of file \mbox{\hyperlink{_d_s3231_8h_source}{DS3231.\+h}}.
+
+\Hypertarget{class_d_s3231_afff19e512928fce8a6f9b50885df3732}\index{DS3231@{DS3231}!i2c@{i2c}}
+\index{i2c@{i2c}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{i2c}{i2c}}
+{\footnotesize\ttfamily \label{class_d_s3231_afff19e512928fce8a6f9b50885df3732} 
+i2c\+\_\+inst\+\_\+t\texorpdfstring{$\ast$}{*} DS3231\+::i2c\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8h_source_l00059}{59}} of file \mbox{\hyperlink{_d_s3231_8h_source}{DS3231.\+h}}.
+
+\Hypertarget{class_d_s3231_a220290093650973f7ba16872e33b8b96}\index{DS3231@{DS3231}!address@{address}}
+\index{address@{address}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{address}{address}}
+{\footnotesize\ttfamily \label{class_d_s3231_a220290093650973f7ba16872e33b8b96} 
+uint8\+\_\+t DS3231\+::address\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8h_source_l00060}{60}} of file \mbox{\hyperlink{_d_s3231_8h_source}{DS3231.\+h}}.
+
+\Hypertarget{class_d_s3231_af87c9b9232490e63de80b4e4c8aec81f}\index{DS3231@{DS3231}!RTC\_REGISTER@{RTC\_REGISTER}}
+\index{RTC\_REGISTER@{RTC\_REGISTER}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{RTC\_REGISTER}{RTC\_REGISTER}}
+{\footnotesize\ttfamily \label{class_d_s3231_af87c9b9232490e63de80b4e4c8aec81f} 
+uint8\+\_\+t DS3231\+::\+RTC\+\_\+\+REGISTER = 0x00\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8h_source_l00061}{61}} of file \mbox{\hyperlink{_d_s3231_8h_source}{DS3231.\+h}}.
+
+\Hypertarget{class_d_s3231_a330fb98438d9762df3d7da7ed2f38d25}\index{DS3231@{DS3231}!timezoneOffset@{timezoneOffset}}
+\index{timezoneOffset@{timezoneOffset}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{timezoneOffset}{timezoneOffset}}
+{\footnotesize\ttfamily \label{class_d_s3231_a330fb98438d9762df3d7da7ed2f38d25} 
+int16\+\_\+t DS3231\+::timezone\+Offset = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8h_source_l00063}{63}} of file \mbox{\hyperlink{_d_s3231_8h_source}{DS3231.\+h}}.
+
+\Hypertarget{class_d_s3231_a1a30fcf3e2d4b9c4951129ac09c1ce4c}\index{DS3231@{DS3231}!syncInterval@{syncInterval}}
+\index{syncInterval@{syncInterval}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{syncInterval}{syncInterval}}
+{\footnotesize\ttfamily \label{class_d_s3231_a1a30fcf3e2d4b9c4951129ac09c1ce4c} 
+uint32\+\_\+t DS3231\+::sync\+Interval = 86400\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8h_source_l00064}{64}} of file \mbox{\hyperlink{_d_s3231_8h_source}{DS3231.\+h}}.
+
+\Hypertarget{class_d_s3231_ab05e9cb92a0de071fc81a3d8e6488b73}\index{DS3231@{DS3231}!lastSyncTime@{lastSyncTime}}
+\index{lastSyncTime@{lastSyncTime}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{lastSyncTime}{lastSyncTime}}
+{\footnotesize\ttfamily \label{class_d_s3231_ab05e9cb92a0de071fc81a3d8e6488b73} 
+uint32\+\_\+t DS3231\+::last\+Sync\+Time = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8h_source_l00065}{65}} of file \mbox{\hyperlink{_d_s3231_8h_source}{DS3231.\+h}}.
+
+\Hypertarget{class_d_s3231_a1d9b76de3a1a01b5b08464f23481c004}\index{DS3231@{DS3231}!clockDrift@{clockDrift}}
+\index{clockDrift@{clockDrift}!DS3231@{DS3231}}
+\doxysubsubsection{\texorpdfstring{clockDrift}{clockDrift}}
+{\footnotesize\ttfamily \label{class_d_s3231_a1d9b76de3a1a01b5b08464f23481c004} 
+float DS3231\+::clock\+Drift = 0.\+0f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_d_s3231_8h_source_l00066}{66}} of file \mbox{\hyperlink{_d_s3231_8h_source}{DS3231.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+DS3231/\mbox{\hyperlink{_d_s3231_8h}{DS3231.\+h}}\item 
+lib/\+DS3231/\mbox{\hyperlink{_d_s3231_8cpp}{DS3231.\+cpp}}\end{DoxyCompactItemize}

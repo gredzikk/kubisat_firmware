@@ -1,0 +1,90 @@
+\doxysection{Power\+Manager.\+cpp}
+\hypertarget{_power_manager_8cpp_source}{}\label{_power_manager_8cpp_source}\index{lib/PowerManager/PowerManager.cpp@{lib/PowerManager/PowerManager.cpp}}
+\mbox{\hyperlink{_power_manager_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_power_manager_8h}{PowerManager.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00004}\mbox{\hyperlink{class_power_manager_aa9ea91634936a20fb03d65ff8878867e}{00004}}\ \mbox{\hyperlink{class_power_manager_aa9ea91634936a20fb03d65ff8878867e}{PowerManager::PowerManager}}(i2c\_inst\_t*\ i2c)\ }
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00005}00005\ \ \ \ \ :\ \mbox{\hyperlink{class_power_manager_a5917758068dfeead4ae68840f5bfb493}{ina3221}}(\mbox{\hyperlink{_i_n_a3221_8h_a5d97d22d72d02c98567c354e0b7292e3a29c59874691b910ca1b4cf0db639d190}{INA3221\_ADDR40\_GND}},\ i2c)\ \{\};}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00007}\mbox{\hyperlink{class_power_manager_a217939b880543bfff917203a06d45258}{00007}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_power_manager_a217939b880543bfff917203a06d45258}{PowerManager::initialize}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00008}00008\ \ \ \ \ \mbox{\hyperlink{class_power_manager_a5cf8825fbe9a81810be2f444dff008f1}{initialized}}\ =\ \mbox{\hyperlink{class_power_manager_a5917758068dfeead4ae68840f5bfb493}{ina3221}}.begin();}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00009}00009\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_power_manager_a5cf8825fbe9a81810be2f444dff008f1}{initialized}};}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00010}00010\ \}}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00012}\mbox{\hyperlink{class_power_manager_a885c7374cb22e940ef77c0453da5f622}{00012}}\ std::string\ \mbox{\hyperlink{class_power_manager_a885c7374cb22e940ef77c0453da5f622}{PowerManager::readIDs}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00013}00013\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_power_manager_a5cf8825fbe9a81810be2f444dff008f1}{initialized}})\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}noinit"{}};}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00014}00014\ \ \ \ \ std::string\ MAN\ =\ \textcolor{stringliteral}{"{}MAN\ "{}}\ +\ std::to\_string(\mbox{\hyperlink{class_power_manager_a5917758068dfeead4ae68840f5bfb493}{ina3221}}.getManufID());}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00015}00015\ \ \ \ \ std::string\ DIE\ =\ \textcolor{stringliteral}{"{}DIE\ "{}}\ +\ std::to\_string(\mbox{\hyperlink{class_power_manager_a5917758068dfeead4ae68840f5bfb493}{ina3221}}.getDieID());}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00016}00016\ \ \ \ \ \textcolor{keywordflow}{return}\ MAN\ +\ \textcolor{stringliteral}{"{}\ -\/\ "{}}\ +\ DIE;}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00017}00017\ \}}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00019}\mbox{\hyperlink{class_power_manager_af0d877a74a39cf29cb94d34088641ff9}{00019}}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_power_manager_af0d877a74a39cf29cb94d34088641ff9}{PowerManager::getVoltageBattery}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00020}00020\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_power_manager_a5cf8825fbe9a81810be2f444dff008f1}{initialized}})\ \textcolor{keywordflow}{return}\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00021}00021\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_power_manager_a5917758068dfeead4ae68840f5bfb493}{ina3221}}.getVoltage(\mbox{\hyperlink{_i_n_a3221_8h_a1e8eddf1a4d7773268dccebc08ea37dfa57c4b6d263813c631c0e16b25fb4a9b8}{INA3221\_CH1}});\ }
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00022}00022\ \}}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00024}\mbox{\hyperlink{class_power_manager_ae0e4303ddaba328047fb40d8d925c7dd}{00024}}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_power_manager_ae0e4303ddaba328047fb40d8d925c7dd}{PowerManager::getVoltage5V}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00025}00025\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_power_manager_a5cf8825fbe9a81810be2f444dff008f1}{initialized}})\ \textcolor{keywordflow}{return}\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00026}00026\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_power_manager_a5917758068dfeead4ae68840f5bfb493}{ina3221}}.getVoltage(\mbox{\hyperlink{_i_n_a3221_8h_a1e8eddf1a4d7773268dccebc08ea37dfa6653233d1fbdb16cd3c13a663390cc43}{INA3221\_CH2}});\ }
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00027}00027\ \}}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00029}\mbox{\hyperlink{class_power_manager_a3f9587ee81469642a2e595ef3805e801}{00029}}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_power_manager_a3f9587ee81469642a2e595ef3805e801}{PowerManager::getCurrentChargeUSB}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_power_manager_a5cf8825fbe9a81810be2f444dff008f1}{initialized}})\ \textcolor{keywordflow}{return}\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00031}00031\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_power_manager_a5917758068dfeead4ae68840f5bfb493}{ina3221}}.getCurrent\_mA(\mbox{\hyperlink{_i_n_a3221_8h_a1e8eddf1a4d7773268dccebc08ea37dfa57c4b6d263813c631c0e16b25fb4a9b8}{INA3221\_CH1}});\ }
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00032}00032\ \}}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00034}\mbox{\hyperlink{class_power_manager_a1ebc18dd508b23614c4c7193fbddd962}{00034}}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_power_manager_a1ebc18dd508b23614c4c7193fbddd962}{PowerManager::getCurrentDraw}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00035}00035\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_power_manager_a5cf8825fbe9a81810be2f444dff008f1}{initialized}})\ \textcolor{keywordflow}{return}\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00036}00036\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_power_manager_a5917758068dfeead4ae68840f5bfb493}{ina3221}}.getCurrent\_mA(\mbox{\hyperlink{_i_n_a3221_8h_a1e8eddf1a4d7773268dccebc08ea37dfa6653233d1fbdb16cd3c13a663390cc43}{INA3221\_CH2}});\ }
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00037}00037\ \}}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00039}\mbox{\hyperlink{class_power_manager_a097734aac2bcc228d6cf22c00e3acb1a}{00039}}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_power_manager_a097734aac2bcc228d6cf22c00e3acb1a}{PowerManager::getCurrentChargeSolar}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_power_manager_a5cf8825fbe9a81810be2f444dff008f1}{initialized}})\ \textcolor{keywordflow}{return}\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_power_manager_a5917758068dfeead4ae68840f5bfb493}{ina3221}}.getCurrent\_mA(\mbox{\hyperlink{_i_n_a3221_8h_a1e8eddf1a4d7773268dccebc08ea37dfa4811f2dc226094ec0e19766fb12b5657}{INA3221\_CH3}});\ }
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00042}00042\ \}}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00044}\mbox{\hyperlink{class_power_manager_acad2f0f2daff3bd609952530d202c78b}{00044}}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_power_manager_acad2f0f2daff3bd609952530d202c78b}{PowerManager::getCurrentChargeTotal}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00045}00045\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_power_manager_a5cf8825fbe9a81810be2f444dff008f1}{initialized}})\ \textcolor{keywordflow}{return}\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00046}00046\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_power_manager_a5917758068dfeead4ae68840f5bfb493}{ina3221}}.getCurrent\_mA(\mbox{\hyperlink{_i_n_a3221_8h_a1e8eddf1a4d7773268dccebc08ea37dfa57c4b6d263813c631c0e16b25fb4a9b8}{INA3221\_CH1}})\ +\ \mbox{\hyperlink{class_power_manager_a5917758068dfeead4ae68840f5bfb493}{ina3221}}.getCurrent\_mA(\mbox{\hyperlink{_i_n_a3221_8h_a1e8eddf1a4d7773268dccebc08ea37dfa4811f2dc226094ec0e19766fb12b5657}{INA3221\_CH3}});}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00047}00047\ \}}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00049}\mbox{\hyperlink{class_power_manager_ae61a45a190d5293029e17c751f88bcd0}{00049}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_power_manager_ae61a45a190d5293029e17c751f88bcd0}{PowerManager::configure}}(\textcolor{keyword}{const}\ std::map<std::string,\ std::string>\&\ config)\ \{}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00050}00050\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_power_manager_a5cf8825fbe9a81810be2f444dff008f1}{initialized}})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{if}\ (config.find(\textcolor{stringliteral}{"{}operating\_mode"{}})\ !=\ config.end())\ \{}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (config.at(\textcolor{stringliteral}{"{}operating\_mode"{}})\ ==\ \textcolor{stringliteral}{"{}continuous"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_power_manager_a5917758068dfeead4ae68840f5bfb493}{ina3221}}.setModeContinious();}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00058}00058\ \ \ \ \ \textcolor{keywordflow}{if}\ (config.find(\textcolor{stringliteral}{"{}averaging\_mode"{}})\ !=\ config.end())\ \{}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ avg\_mode\ =\ std::stoi(config.at(\textcolor{stringliteral}{"{}averaging\_mode"{}}));}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}(avg\_mode)\ \{}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_power_manager_a5917758068dfeead4ae68840f5bfb493}{ina3221}}.setAveragingMode(\mbox{\hyperlink{_i_n_a3221_8h_ac7b201fe7943ec52b4c0ff76fedbeac4adac1d016625c65a7a80917b957d20f66}{INA3221\_REG\_CONF\_AVG\_1}});}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 4:}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_power_manager_a5917758068dfeead4ae68840f5bfb493}{ina3221}}.setAveragingMode(\mbox{\hyperlink{_i_n_a3221_8h_ac7b201fe7943ec52b4c0ff76fedbeac4a254263a9a481b85fdb243fe2bdc3d19c}{INA3221\_REG\_CONF\_AVG\_4}});}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 16:}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_power_manager_a5917758068dfeead4ae68840f5bfb493}{ina3221}}.setAveragingMode(\mbox{\hyperlink{_i_n_a3221_8h_ac7b201fe7943ec52b4c0ff76fedbeac4aedf822a654995d30fc6fe4ae1db374d2}{INA3221\_REG\_CONF\_AVG\_16}});}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_power_manager_a5917758068dfeead4ae68840f5bfb493}{ina3221}}.setAveragingMode(\mbox{\hyperlink{_i_n_a3221_8h_ac7b201fe7943ec52b4c0ff76fedbeac4aedf822a654995d30fc6fe4ae1db374d2}{INA3221\_REG\_CONF\_AVG\_16}});}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00073}00073\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00074}00074\ \}}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00076}\mbox{\hyperlink{class_power_manager_a33ea0aaa75b4654b0ee05250119bf083}{00076}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_power_manager_a33ea0aaa75b4654b0ee05250119bf083}{PowerManager::isSolarActive}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00077}00077\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_power_manager_a5cf8825fbe9a81810be2f444dff008f1}{initialized}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00078}00078\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_power_manager_a097734aac2bcc228d6cf22c00e3acb1a}{getCurrentChargeSolar}}()\ >\ \mbox{\hyperlink{class_power_manager_aeb488c42ec47e1a8de0446717d339cce}{SOLAR\_CURRENT\_THRESHOLD}};}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00079}00079\ \}}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00081}\mbox{\hyperlink{class_power_manager_a0548ae14a668bb06e4cc13e0295ad5c8}{00081}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_power_manager_a0548ae14a668bb06e4cc13e0295ad5c8}{PowerManager::isUSBConnected}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00082}00082\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_power_manager_a5cf8825fbe9a81810be2f444dff008f1}{initialized}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00083}00083\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_power_manager_a3f9587ee81469642a2e595ef3805e801}{getCurrentChargeUSB}}()\ >\ \mbox{\hyperlink{class_power_manager_afc4246cc3b434053c59cf2dcccf4bc64}{USB\_CURRENT\_THRESHOLD}};}
+\DoxyCodeLine{\Hypertarget{_power_manager_8cpp_source_l00084}00084\ \}}
+
+\end{DoxyCode}

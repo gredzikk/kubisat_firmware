@@ -1,0 +1,27 @@
+\doxysection{HMC5883\+L\+\_\+\+WRAPPER.\+h}
+\hypertarget{_h_m_c5883_l___w_r_a_p_p_e_r_8h_source}{}\label{_h_m_c5883_l___w_r_a_p_p_e_r_8h_source}\index{lib/HMC5883L/HMC5883L\_WRAPPER.h@{lib/HMC5883L/HMC5883L\_WRAPPER.h}}
+\mbox{\hyperlink{_h_m_c5883_l___w_r_a_p_p_e_r_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l___w_r_a_p_p_e_r_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ HMC5883L\_WRAPPER\_H}}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l___w_r_a_p_p_e_r_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ HMC5883L\_WRAPPER\_H}}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l___w_r_a_p_p_e_r_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l___w_r_a_p_p_e_r_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_i_sensor_8h}{lib/ISensor.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l___w_r_a_p_p_e_r_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_h_m_c5883_l_8h}{HMC5883L.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l___w_r_a_p_p_e_r_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l___w_r_a_p_p_e_r_8h_source_l00007}\mbox{\hyperlink{class_h_m_c5883_l_wrapper}{00007}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_h_m_c5883_l_wrapper_af0a0709fd3f48d8343794da5b3ee4f32}{HMC5883LWrapper}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_i_sensor}{ISensor}}\ \{}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l___w_r_a_p_p_e_r_8h_source_l00008}00008\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l___w_r_a_p_p_e_r_8h_source_l00009}00009\ \ \ \ \ \mbox{\hyperlink{class_h_m_c5883_l_wrapper_af0a0709fd3f48d8343794da5b3ee4f32}{HMC5883LWrapper}}(i2c\_inst\_t*\ i2c);}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l___w_r_a_p_p_e_r_8h_source_l00010}00010\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_h_m_c5883_l_wrapper_ab7a5997ae98ed9bc37fdd5ab0afe2fb2}{init}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l___w_r_a_p_p_e_r_8h_source_l00011}00011\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_h_m_c5883_l_wrapper_a76c63b1af36c160c9e7ebf7dc10f872b}{readData}}(\mbox{\hyperlink{_i_sensor_8h_a21b0301bb3eb76855366980212c8ae5e}{SensorDataTypeIdentifier}}\ type)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l___w_r_a_p_p_e_r_8h_source_l00012}00012\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_h_m_c5883_l_wrapper_abacf4eeaaff893112e1aa3c20b23ce38}{isInitialized}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l___w_r_a_p_p_e_r_8h_source_l00013}00013\ \ \ \ \ \mbox{\hyperlink{_i_sensor_8h_a213c434cb928c4ca22513e2302632435}{SensorType}}\ \mbox{\hyperlink{class_h_m_c5883_l_wrapper_a655c92b4d2040e76636a96f9ba63c56a}{getType}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l___w_r_a_p_p_e_r_8h_source_l00014}00014\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_h_m_c5883_l_wrapper_aae28a5412098db267c5f61a638fa3ef6}{configure}}(\textcolor{keyword}{const}\ std::map<std::string,\ std::string>\&\ config)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l___w_r_a_p_p_e_r_8h_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l___w_r_a_p_p_e_r_8h_source_l00016}00016\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l___w_r_a_p_p_e_r_8h_source_l00017}\mbox{\hyperlink{class_h_m_c5883_l_wrapper_a676ad07965bad428b637c46152b7c6eb}{00017}}\ \ \ \ \ \mbox{\hyperlink{class_h_m_c5883_l}{HMC5883L}}\ \mbox{\hyperlink{class_h_m_c5883_l_wrapper_a676ad07965bad428b637c46152b7c6eb}{sensor}};}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l___w_r_a_p_p_e_r_8h_source_l00018}\mbox{\hyperlink{class_h_m_c5883_l_wrapper_af52be1c1aad99526965b952521da56f6}{00018}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_h_m_c5883_l_wrapper_af52be1c1aad99526965b952521da56f6}{initialized}};}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l___w_r_a_p_p_e_r_8h_source_l00019}00019\ \};}
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l___w_r_a_p_p_e_r_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_h_m_c5883_l___w_r_a_p_p_e_r_8h_source_l00021}00021\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

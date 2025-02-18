@@ -1,0 +1,208 @@
+\doxysection{frame\+\_\+model/communication.h File Reference}
+\hypertarget{communication_8h}{}\label{communication_8h}\index{frame\_model/communication.h@{frame\_model/communication.h}}
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include "{}protocol.\+h"{}}\newline
+{\ttfamily \#include "{}event\+\_\+manager.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{communication_8h_a520df448c1dc359f42111ac240081975}{initialize\+Radio}} ()
+\item 
+void \mbox{\hyperlink{communication_8h_a877f9c1d3485cf1521bc13996d39c1fb}{send\+Message}} (std\+::string \mbox{\hyperlink{communication_8cpp_a13c45747091f32644e83d65348c61232}{outgoing}})
+\item 
+void \mbox{\hyperlink{communication_8h_a252a4ea5f222c6879d281cc2f9357b46}{send\+Large\+Packet}} (const uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, size\+\_\+t length)
+\item 
+void \mbox{\hyperlink{communication_8h_a54817002e33761dc61558b1138749dfb}{on\+Receive}} (int packet\+Size)
+\item 
+void \mbox{\hyperlink{communication_8h_ac5e175a6a1482f700f9aee0b727b924f}{handle\+Uart\+Input}} ()
+\item 
+void \mbox{\hyperlink{communication_8h_a8b9407b2f579031cf4b705f1ac03ac31}{process\+Frame\+Data}} (const std\+::string \&data)
+\begin{DoxyCompactList}\small\item\em Execute the command based on the command key and the parameter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{communication_8h_a3ea1f464aef22cd9918b6fe75659c535}{handle\+Command\+Frame}} (const \mbox{\hyperlink{struct_frame}{Frame}} \&frame)
+\item 
+\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{communication_8h_a1907d400d2c8d8d054ba95bcf43276ea}{execute\+Command}} (uint32\+\_\+t command\+Key, const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
+\item 
+void \mbox{\hyperlink{communication_8h_a6005ddd6320bebe2a680fa6b8efff6dd}{send\+Event\+Register}} ()
+\begin{DoxyCompactList}\small\item\em Send event register value to the ground station. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{communication_8h_ab53898fb6f45dfc657837a665a070959}{encode\+Frame}} (const \mbox{\hyperlink{struct_frame}{Frame}} \&frame)
+\begin{DoxyCompactList}\small\item\em Encode \doxylink{struct_frame}{Frame} instance into a string. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{communication_8h_a8f34bc31494430539db21206f084d39d}{decode\+Frame}} (const std\+::string \&data)
+\begin{DoxyCompactList}\small\item\em Convert a string into a \doxylink{struct_frame}{Frame} instance. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{build\+Frame}} (\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1}{Execution\+Result}} result, uint8\+\_\+t \mbox{\hyperlink{event__manager_8h_ad4291fcb880eb5ecb178b53e32f55741}{group}}, uint8\+\_\+t command, const std\+::string \&value, const \mbox{\hyperlink{protocol_8h_a2d96449e2b52d45b5726af92084e0d8f}{Value\+Unit}} unit\+Type=\mbox{\hyperlink{protocol_8h_a2d96449e2b52d45b5726af92084e0d8fa0db45d2a4141101bdfe48e3314cfbca3}{Value\+Unit\+::\+UNDEFINED}})
+\item 
+std\+::string \mbox{\hyperlink{communication_8h_a6272bef4a482127bfe7c1b50d723d69d}{determine\+Unit}} (uint8\+\_\+t \mbox{\hyperlink{event__manager_8h_ad4291fcb880eb5ecb178b53e32f55741}{group}}, uint8\+\_\+t command)
+\item 
+void \mbox{\hyperlink{communication_8h_a752e7cc27f52d4ba064e691b3e240ed8}{send\+Frame}} (const \mbox{\hyperlink{struct_frame}{Frame}} \&frame)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{communication_8h_a520df448c1dc359f42111ac240081975}\index{communication.h@{communication.h}!initializeRadio@{initializeRadio}}
+\index{initializeRadio@{initializeRadio}!communication.h@{communication.h}}
+\doxysubsubsection{\texorpdfstring{initializeRadio()}{initializeRadio()}}
+{\footnotesize\ttfamily \label{communication_8h_a520df448c1dc359f42111ac240081975} 
+bool initialize\+Radio (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{communication_8cpp_source_l00010}{10}} of file \mbox{\hyperlink{communication_8cpp_source}{communication.\+cpp}}.
+
+\Hypertarget{communication_8h_a877f9c1d3485cf1521bc13996d39c1fb}\index{communication.h@{communication.h}!sendMessage@{sendMessage}}
+\index{sendMessage@{sendMessage}!communication.h@{communication.h}}
+\doxysubsubsection{\texorpdfstring{sendMessage()}{sendMessage()}}
+{\footnotesize\ttfamily \label{communication_8h_a877f9c1d3485cf1521bc13996d39c1fb} 
+void send\+Message (\begin{DoxyParamCaption}\item[{std\+::string}]{outgoing}{}\end{DoxyParamCaption})}
+
+\Hypertarget{communication_8h_a252a4ea5f222c6879d281cc2f9357b46}\index{communication.h@{communication.h}!sendLargePacket@{sendLargePacket}}
+\index{sendLargePacket@{sendLargePacket}!communication.h@{communication.h}}
+\doxysubsubsection{\texorpdfstring{sendLargePacket()}{sendLargePacket()}}
+{\footnotesize\ttfamily \label{communication_8h_a252a4ea5f222c6879d281cc2f9357b46} 
+void send\+Large\+Packet (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{size\+\_\+t}]{length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{send_8cpp_source_l00031}{31}} of file \mbox{\hyperlink{send_8cpp_source}{send.\+cpp}}.
+
+\Hypertarget{communication_8h_a54817002e33761dc61558b1138749dfb}\index{communication.h@{communication.h}!onReceive@{onReceive}}
+\index{onReceive@{onReceive}!communication.h@{communication.h}}
+\doxysubsubsection{\texorpdfstring{onReceive()}{onReceive()}}
+{\footnotesize\ttfamily \label{communication_8h_a54817002e33761dc61558b1138749dfb} 
+void on\+Receive (\begin{DoxyParamCaption}\item[{int}]{packet\+Size}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{receive_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{receive_8cpp_source}{receive.\+cpp}}.
+
+\Hypertarget{communication_8h_ac5e175a6a1482f700f9aee0b727b924f}\index{communication.h@{communication.h}!handleUartInput@{handleUartInput}}
+\index{handleUartInput@{handleUartInput}!communication.h@{communication.h}}
+\doxysubsubsection{\texorpdfstring{handleUartInput()}{handleUartInput()}}
+{\footnotesize\ttfamily \label{communication_8h_ac5e175a6a1482f700f9aee0b727b924f} 
+void handle\+Uart\+Input (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{receive_8cpp_source_l00059}{59}} of file \mbox{\hyperlink{receive_8cpp_source}{receive.\+cpp}}.
+
+\Hypertarget{communication_8h_a8b9407b2f579031cf4b705f1ac03ac31}\index{communication.h@{communication.h}!processFrameData@{processFrameData}}
+\index{processFrameData@{processFrameData}!communication.h@{communication.h}}
+\doxysubsubsection{\texorpdfstring{processFrameData()}{processFrameData()}}
+{\footnotesize\ttfamily \label{communication_8h_a8b9407b2f579031cf4b705f1ac03ac31} 
+void process\+Frame\+Data (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{data}{}\end{DoxyParamCaption})}
+
+
+
+Execute the command based on the command key and the parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & \doxylink{struct_frame}{Frame} data in string format \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{frame_8cpp_source_l00079}{79}} of file \mbox{\hyperlink{frame_8cpp_source}{frame.\+cpp}}.
+
+\Hypertarget{communication_8h_a3ea1f464aef22cd9918b6fe75659c535}\index{communication.h@{communication.h}!handleCommandFrame@{handleCommandFrame}}
+\index{handleCommandFrame@{handleCommandFrame}!communication.h@{communication.h}}
+\doxysubsubsection{\texorpdfstring{handleCommandFrame()}{handleCommandFrame()}}
+{\footnotesize\ttfamily \label{communication_8h_a3ea1f464aef22cd9918b6fe75659c535} 
+void handle\+Command\+Frame (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_frame}{Frame}} \&}]{frame}{}\end{DoxyParamCaption})}
+
+\Hypertarget{communication_8h_a1907d400d2c8d8d054ba95bcf43276ea}\index{communication.h@{communication.h}!executeCommand@{executeCommand}}
+\index{executeCommand@{executeCommand}!communication.h@{communication.h}}
+\doxysubsubsection{\texorpdfstring{executeCommand()}{executeCommand()}}
+{\footnotesize\ttfamily \label{communication_8h_a1907d400d2c8d8d054ba95bcf43276ea} 
+\mbox{\hyperlink{struct_frame}{Frame}} execute\+Command (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{command\+Key}{, }\item[{const std\+::string \&}]{param}{, }\item[{\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}}]{operation\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{commands_8cpp_source_l00037}{37}} of file \mbox{\hyperlink{commands_8cpp_source}{commands.\+cpp}}.
+
+\Hypertarget{communication_8h_a6005ddd6320bebe2a680fa6b8efff6dd}\index{communication.h@{communication.h}!sendEventRegister@{sendEventRegister}}
+\index{sendEventRegister@{sendEventRegister}!communication.h@{communication.h}}
+\doxysubsubsection{\texorpdfstring{sendEventRegister()}{sendEventRegister()}}
+{\footnotesize\ttfamily \label{communication_8h_a6005ddd6320bebe2a680fa6b8efff6dd} 
+void send\+Event\+Register (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Send event register value to the ground station. 
+
+\begin{DoxyNote}{Note}
+This function is called in the main loop 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{frame_8cpp_source_l00098}{98}} of file \mbox{\hyperlink{frame_8cpp_source}{frame.\+cpp}}.
+
+\Hypertarget{communication_8h_ab53898fb6f45dfc657837a665a070959}\index{communication.h@{communication.h}!encodeFrame@{encodeFrame}}
+\index{encodeFrame@{encodeFrame}!communication.h@{communication.h}}
+\doxysubsubsection{\texorpdfstring{encodeFrame()}{encodeFrame()}}
+{\footnotesize\ttfamily \label{communication_8h_ab53898fb6f45dfc657837a665a070959} 
+std\+::string encode\+Frame (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_frame}{Frame}} \&}]{frame}{}\end{DoxyParamCaption})}
+
+
+
+Encode \doxylink{struct_frame}{Frame} instance into a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frame} & \doxylink{struct_frame}{Frame} instance to encode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_frame}{Frame} encoded as a string 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{frame_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{frame_8cpp_source}{frame.\+cpp}}.
+
+\Hypertarget{communication_8h_a8f34bc31494430539db21206f084d39d}\index{communication.h@{communication.h}!decodeFrame@{decodeFrame}}
+\index{decodeFrame@{decodeFrame}!communication.h@{communication.h}}
+\doxysubsubsection{\texorpdfstring{decodeFrame()}{decodeFrame()}}
+{\footnotesize\ttfamily \label{communication_8h_a8f34bc31494430539db21206f084d39d} 
+\mbox{\hyperlink{struct_frame}{Frame}} decode\+Frame (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{data}{}\end{DoxyParamCaption})}
+
+
+
+Convert a string into a \doxylink{struct_frame}{Frame} instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & \doxylink{struct_frame}{Frame} data as a string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_frame}{Frame} instance 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{frame_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{frame_8cpp_source}{frame.\+cpp}}.
+
+\Hypertarget{communication_8h_a54afeb73435419551a1b51a3fd5c3266}\index{communication.h@{communication.h}!buildFrame@{buildFrame}}
+\index{buildFrame@{buildFrame}!communication.h@{communication.h}}
+\doxysubsubsection{\texorpdfstring{buildFrame()}{buildFrame()}}
+{\footnotesize\ttfamily \label{communication_8h_a54afeb73435419551a1b51a3fd5c3266} 
+\mbox{\hyperlink{struct_frame}{Frame}} build\+Frame (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1}{Execution\+Result}}}]{result}{, }\item[{uint8\+\_\+t}]{group}{, }\item[{uint8\+\_\+t}]{command}{, }\item[{const std\+::string \&}]{value}{, }\item[{const \mbox{\hyperlink{protocol_8h_a2d96449e2b52d45b5726af92084e0d8f}{Value\+Unit}}}]{unit\+Type}{ = {\ttfamily \mbox{\hyperlink{protocol_8h_a2d96449e2b52d45b5726af92084e0d8fa0db45d2a4141101bdfe48e3314cfbca3}{Value\+Unit\+::\+UNDEFINED}}}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{frame_8cpp_source_l00113}{113}} of file \mbox{\hyperlink{frame_8cpp_source}{frame.\+cpp}}.
+
+\Hypertarget{communication_8h_a6272bef4a482127bfe7c1b50d723d69d}\index{communication.h@{communication.h}!determineUnit@{determineUnit}}
+\index{determineUnit@{determineUnit}!communication.h@{communication.h}}
+\doxysubsubsection{\texorpdfstring{determineUnit()}{determineUnit()}}
+{\footnotesize\ttfamily \label{communication_8h_a6272bef4a482127bfe7c1b50d723d69d} 
+std\+::string determine\+Unit (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{group}{, }\item[{uint8\+\_\+t}]{command}{}\end{DoxyParamCaption})}
+
+\Hypertarget{communication_8h_a752e7cc27f52d4ba064e691b3e240ed8}\index{communication.h@{communication.h}!sendFrame@{sendFrame}}
+\index{sendFrame@{sendFrame}!communication.h@{communication.h}}
+\doxysubsubsection{\texorpdfstring{sendFrame()}{sendFrame()}}
+{\footnotesize\ttfamily \label{communication_8h_a752e7cc27f52d4ba064e691b3e240ed8} 
+void send\+Frame (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_frame}{Frame}} \&}]{frame}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{send_8cpp_source_l00025}{25}} of file \mbox{\hyperlink{send_8cpp_source}{send.\+cpp}}.
+

@@ -1,0 +1,134 @@
+\doxysection{main.\+cpp}
+\hypertarget{main_8cpp_source}{}\label{main_8cpp_source}\mbox{\hyperlink{main_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{includes_8h}{includes.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00003}\mbox{\hyperlink{main_8cpp_a905b7c29adff0a55966dc2bdd1578a6c}{00003}}\ \textcolor{preprocessor}{\#define\ LOG\_FILENAME\ "{}log.txt"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00005}\mbox{\hyperlink{main_8cpp_af8335a606a184154d5e0860517b1e2f8}{00005}}\ \mbox{\hyperlink{class_power_manager}{PowerManager}}\ \mbox{\hyperlink{main_8cpp_af8335a606a184154d5e0860517b1e2f8}{powerManager}}(\mbox{\hyperlink{pin__config_8h_ae122c78708c186c48bc347669332c550}{MAIN\_I2C\_PORT}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00006}\mbox{\hyperlink{main_8cpp_af9c066a94b810cae902343138b54f088}{00006}}\ \mbox{\hyperlink{class_d_s3231}{DS3231}}\ \mbox{\hyperlink{main_8cpp_af9c066a94b810cae902343138b54f088}{systemClock}}(\mbox{\hyperlink{pin__config_8h_ae122c78708c186c48bc347669332c550}{MAIN\_I2C\_PORT}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00008}\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{00008}}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}[\mbox{\hyperlink{pin__config_8h_a6b20d41d6252e9871430c242cb1a56e7}{BUFFER\_SIZE}}];}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00009}\mbox{\hyperlink{main_8cpp_a73b963945a418c57630c1b66ce2aa74f}{00009}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_a73b963945a418c57630c1b66ce2aa74f}{bufferIndex}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00011}\mbox{\hyperlink{main_8cpp_a9f153132b8b4afad133b952111e18bd9}{00011}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8cpp_a9f153132b8b4afad133b952111e18bd9}{core1\_entry}}()\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00012}00012\ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{gps__collector_8cpp_abe46d88c89b1f730f6c9a230acac2a6a}{collectGPSData}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00014}00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{event__manager_8cpp_a467714d66058f52e4ac7aeb6df46b433}{checkPowerEvents}}(\mbox{\hyperlink{main_8cpp_af8335a606a184154d5e0860517b1e2f8}{powerManager}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00015}00015\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00016}00016\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00018}\mbox{\hyperlink{main_8cpp_a21af2d50d7779336997d5f3456352431}{00018}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{main_8cpp_a21af2d50d7779336997d5f3456352431}{initSystems}}()\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00019}00019\ \ \ \ \ stdio\_init\_all();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00021}00021\ \ \ \ \ uart\_init(\mbox{\hyperlink{pin__config_8h_a1c9052d1656e86f50326fd275c54ca67}{DEBUG\_UART\_PORT}},\ \mbox{\hyperlink{pin__config_8h_adf735c02ae01a655dbbfc89683107df1}{DEBUG\_UART\_BAUD\_RATE}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00022}00022\ \ \ \ \ gpio\_set\_function(\mbox{\hyperlink{pin__config_8h_a94d099ea6efcf6e349a1e392b17ac6ee}{DEBUG\_UART\_TX\_PIN}},\ UART\_FUNCSEL\_NUM(\mbox{\hyperlink{pin__config_8h_a1c9052d1656e86f50326fd275c54ca67}{DEBUG\_UART\_PORT}},\ \mbox{\hyperlink{pin__config_8h_a94d099ea6efcf6e349a1e392b17ac6ee}{DEBUG\_UART\_TX\_PIN}}));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00023}00023\ \ \ \ \ gpio\_set\_function(\mbox{\hyperlink{pin__config_8h_aaae74107573261e50cb72bcec8d2d3fe}{DEBUG\_UART\_RX\_PIN}},\ UART\_FUNCSEL\_NUM(\mbox{\hyperlink{pin__config_8h_a1c9052d1656e86f50326fd275c54ca67}{DEBUG\_UART\_PORT}},\ \mbox{\hyperlink{pin__config_8h_aaae74107573261e50cb72bcec8d2d3fe}{DEBUG\_UART\_RX\_PIN}}));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00025}00025\ \ \ \ \ gpio\_init(PICO\_DEFAULT\_LED\_PIN);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00026}00026\ \ \ \ \ gpio\_set\_dir(PICO\_DEFAULT\_LED\_PIN,\ GPIO\_OUT);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00027}00027\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00028}00028\ \ \ \ \ i2c\_init(\mbox{\hyperlink{pin__config_8h_ae122c78708c186c48bc347669332c550}{MAIN\_I2C\_PORT}},\ 400\ *\ 1000);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00029}00029\ \ \ \ \ gpio\_set\_function(\mbox{\hyperlink{pin__config_8h_a9e17f76dd11280c50d7625b62557b29f}{MAIN\_I2C\_SCL\_PIN}},\ GPIO\_FUNC\_I2C);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00030}00030\ \ \ \ \ gpio\_set\_function(\mbox{\hyperlink{pin__config_8h_af2e27807e37db3df1c383812da249090}{MAIN\_I2C\_SDA\_PIN}},\ GPIO\_FUNC\_I2C);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00031}00031\ \ \ \ \ gpio\_pull\_up(\mbox{\hyperlink{pin__config_8h_a9e17f76dd11280c50d7625b62557b29f}{MAIN\_I2C\_SCL\_PIN}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00032}00032\ \ \ \ \ gpio\_pull\_up(\mbox{\hyperlink{pin__config_8h_af2e27807e37db3df1c383812da249090}{MAIN\_I2C\_SDA\_PIN}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00034}00034\ \ \ \ \ uart\_init(\mbox{\hyperlink{pin__config_8h_a31bae3288bdf1b7a767c494f2b049779}{GPS\_UART\_PORT}},\ \mbox{\hyperlink{pin__config_8h_aff9a5d52092479f80c68a37d9f47ea0c}{GPS\_UART\_BAUD\_RATE}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00035}00035\ \ \ \ \ gpio\_set\_function(\mbox{\hyperlink{pin__config_8h_a8e35acac4c2208fd0d6b889990c1f970}{GPS\_UART\_TX\_PIN}},\ UART\_FUNCSEL\_NUM(\mbox{\hyperlink{pin__config_8h_a31bae3288bdf1b7a767c494f2b049779}{GPS\_UART\_PORT}},\ \mbox{\hyperlink{pin__config_8h_a8e35acac4c2208fd0d6b889990c1f970}{GPS\_UART\_TX\_PIN}}));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00036}00036\ \ \ \ \ gpio\_set\_function(\mbox{\hyperlink{pin__config_8h_a8d2d12725644a55f56e8aee18942b144}{GPS\_UART\_RX\_PIN}},\ UART\_FUNCSEL\_NUM(\mbox{\hyperlink{pin__config_8h_a31bae3288bdf1b7a767c494f2b049779}{GPS\_UART\_PORT}},\ \mbox{\hyperlink{pin__config_8h_a8d2d12725644a55f56e8aee18942b144}{GPS\_UART\_RX\_PIN}}));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00039}00039\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ gpio\_init(\mbox{\hyperlink{pin__config_8h_aac8b46194f932ec0656edff3718d3750}{GPS\_POWER\_ENABLE\_PIN}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ gpio\_set\_dir(\mbox{\hyperlink{pin__config_8h_aac8b46194f932ec0656edff3718d3750}{GPS\_POWER\_ENABLE\_PIN}},\ GPIO\_OUT);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ gpio\_put(\mbox{\hyperlink{pin__config_8h_aac8b46194f932ec0656edff3718d3750}{GPS\_POWER\_ENABLE\_PIN}},\ 1);\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00043}00043\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00044}00044\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00045}00045\ \ \ \ \ \textcolor{comment}{//\ @todo[critical]\ Test\ sd\ card\ working}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00046}00046\ \ \ \ \ \textcolor{keywordtype}{bool}\ sdInitDone\ =\ \mbox{\hyperlink{storage_8cpp_afb19e37469a751aa61de3dcd0c70b4b0}{fs\_init}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00047}00047\ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(\textcolor{stringliteral}{"{}SD\ card\ init:\ "{}}\ +\ std::to\_string(sdInitDone));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00048}00048\ \ \ \ \ std::string\ bootString\ =\ \textcolor{stringliteral}{"{}System\ init\ completed\ @\ "{}}\ +\ std::to\_string(to\_ms\_since\_boot(get\_absolute\_time()))\ +\ \textcolor{stringliteral}{"{}\ ms"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00049}00049\ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(bootString);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00051}00051\ \ \ \ \ \mbox{\hyperlink{struct_frame}{Frame}}\ boot\ =\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1a551b723eafd6a31d444fcb2f5920fbd3}{ExecutionResult::INFO}},\ 0,\ 0,\ \textcolor{stringliteral}{"{}HELLO"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00052}00052\ \ \ \ \ \mbox{\hyperlink{communication_8h_a752e7cc27f52d4ba064e691b3e240ed8}{sendFrame}}(boot);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00054}00054\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00055}00055\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00057}00057\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8cpp_a01a8b38ee1cf3fd44cedf3f5a8f1dbde}{loggingRoutine}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00059}\mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{00059}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00060}00060\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00061}00061\ \ \ \ \ \mbox{\hyperlink{main_8cpp_a21af2d50d7779336997d5f3456352431}{initSystems}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00062}00062\ \ \ \ \ multicore\_launch\_core1(\mbox{\hyperlink{main_8cpp_a9f153132b8b4afad133b952111e18bd9}{core1\_entry}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00064}00064\ \ \ \ \ \mbox{\hyperlink{clock__commands_8cpp_abfd573c8a839ac00ea3b96d691ea11c3}{systemClock}}.setTime(0,\ 41,\ 20,\ 4,\ 14,\ 11,\ 2024);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00065}00065\ \ \ \ \ gpio\_put(PICO\_DEFAULT\_LED\_PIN,\ 1);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00067}00067\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{main_8cpp_af8335a606a184154d5e0860517b1e2f8}{powerManager}}.initialize())}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00068}00068\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ std::map<std::string,\ std::string>\ powerConfig\ =\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}operating\_mode"{}},\ \textcolor{stringliteral}{"{}continuous"{}}\},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}averaging\_mode"{}},\ \textcolor{stringliteral}{"{}16"{}}\},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8cpp_af8335a606a184154d5e0860517b1e2f8}{powerManager}}.configure(powerConfig);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00074}00074\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00075}00075\ \ \ \ \ gpio\_put(PICO\_DEFAULT\_LED\_PIN,\ 0);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00077}00077\ \ \ \ \ \textcolor{keywordtype}{bool}\ radioInitSuccess\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00079}00079\ \ \ \ \ radioInitSuccess\ =\ \mbox{\hyperlink{communication_8cpp_a520df448c1dc359f42111ac240081975}{initializeRadio}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00080}00080\ \ \ \ \ gpio\_put(PICO\_DEFAULT\_LED\_PIN,\ 1);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00082}00082\ \ \ \ \ \textcolor{keywordflow}{if}\ (radioInitSuccess)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00083}00083\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{communication_8h_a877f9c1d3485cf1521bc13996d39c1fb}{sendMessage}}(\textcolor{stringliteral}{"{}System\ initialized\ successfully!"{}});\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00085}00085\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00086}00086\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00087}00087\ \ \ \ \ gpio\_put(PICO\_DEFAULT\_LED\_PIN,\ 0);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00089}00089\ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(\textcolor{stringliteral}{"{}This\ message\ will\ only\ be\ printed\ to\ UART."{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00090}00090\ \ \ \ \ \textcolor{comment}{//\ uartPrint("{}This\ message\ will\ be\ printed\ to\ UART\ and\ logged\ to\ Core\ 1."{},\ true);}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00092}00092\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 5;\ i\ >\ 0;\ -\/-\/i)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00093}00093\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ std::string\ intro\ =\ \textcolor{stringliteral}{"{}Main\ loop\ starts\ in\ "{}}\ +\ std::to\_string(i)\ +\ \textcolor{stringliteral}{"{}\ seconds..."{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(intro);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ gpio\_put(PICO\_DEFAULT\_LED\_PIN,\ (i\%2==0));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ sleep\_ms(1000);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00098}00098\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00099}00099\ \ \ \ \ gpio\_put(PICO\_DEFAULT\_LED\_PIN,\ 1);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00101}00101\ \ \ \ \ \mbox{\hyperlink{struct_frame}{Frame}}\ boot\ =\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1a551b723eafd6a31d444fcb2f5920fbd3}{ExecutionResult::INFO}},\ 0,\ 0,\ \textcolor{stringliteral}{"{}START"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00102}00102\ \ \ \ \ \mbox{\hyperlink{communication_8h_a752e7cc27f52d4ba064e691b3e240ed8}{sendFrame}}(boot);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00104}00104\ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00105}00105\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ packetSize\ =\ \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_af4db0e30d2909faa29355167719f196c}{LoRa}}.parsePacket();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (packetSize)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{communication_8h_a54817002e33761dc61558b1138749dfb}{onReceive}}(packetSize);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \textcolor{comment}{//acquireLock();}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \textcolor{comment}{//float\ voltage\ =\ sharedData.voltage5V;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ \textcolor{comment}{//releaseLock();}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ \textcolor{comment}{//std::string\ voltageReading\ =\ "{}Core\ 0:\ voltage\ from\ common\ data\ structure:\ "{}\ +\ std::to\_string(voltage);}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \textcolor{comment}{//uartPrint(voltageReading.c\_str());}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \textcolor{comment}{//collectGPSData();}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{communication_8h_ac5e175a6a1482f700f9aee0b727b924f}{handleUartInput}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00121}00121\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00123}00123\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00124}00124\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00126}00126\ \textcolor{comment}{//\ BH1750\ \ \ \ 0X23}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00127}00127\ \textcolor{comment}{//\ INA3221\ \ \ 0X40}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00128}00128\ \textcolor{comment}{//\ BME280\ \ \ \ 0X76}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00129}00129\ \textcolor{comment}{//\ DS3231\ \ \ \ 0X86}}
+
+\end{DoxyCode}

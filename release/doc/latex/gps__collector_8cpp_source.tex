@@ -1,0 +1,71 @@
+\doxysection{gps\+\_\+collector.\+cpp}
+\hypertarget{gps__collector_8cpp_source}{}\label{gps__collector_8cpp_source}\index{lib/GPS/gps\_collector.cpp@{lib/GPS/gps\_collector.cpp}}
+\mbox{\hyperlink{gps__collector_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00001}00001\ \textcolor{comment}{//\ filepath:\ /c:/Users/Kuba/Desktop/inz/kubisat/software/kubisat\_firmware/lib/GPS/gps\_collector.cpp}}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{gps__collector_8h}{lib/GPS/gps\_collector.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{utils_8h}{utils.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}pico/time.h"{}}}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_n_m_e_a__data_8h}{lib/GPS/NMEA/nmea\_data.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{event__manager_8h}{event\_manager.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <ctime>}}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <cstring>}}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_d_s3231_8h}{DS3231.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00013}\mbox{\hyperlink{gps__collector_8cpp_a72dde6c82b28027b8cc37e6a827306a7}{00013}}\ \textcolor{preprocessor}{\#define\ MAX\_RAW\_DATA\_LENGTH\ 1024}}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00015}00015\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_n_m_e_a_data}{NMEAData}}\ \mbox{\hyperlink{gps__collector_8cpp_af2b979012abe80d338fef98209f87b78}{nmea\_data}};}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00017}\mbox{\hyperlink{gps__collector_8cpp_a0509cbb838eb47985372ff8889e507f5}{00017}}\ std::vector<std::string>\ \mbox{\hyperlink{gps__collector_8cpp_a0509cbb838eb47985372ff8889e507f5}{splitString}}(\textcolor{keyword}{const}\ std::string\&\ str,\ \textcolor{keywordtype}{char}\ delimiter)\ \{}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00018}00018\ \ \ \ \ std::vector<std::string>\ tokens;}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00019}00019\ \ \ \ \ std::stringstream\ ss(str);}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00020}00020\ \ \ \ \ std::string\ token;}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00021}00021\ \ \ \ \ \textcolor{keywordflow}{while}\ (std::getline(ss,\ token,\ delimiter))\ \{}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00022}00022\ \ \ \ \ \ \ \ \ tokens.push\_back(token);}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00023}00023\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00024}00024\ \ \ \ \ \textcolor{keywordflow}{return}\ tokens;}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00025}00025\ \}}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00027}\mbox{\hyperlink{gps__collector_8cpp_abe46d88c89b1f730f6c9a230acac2a6a}{00027}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gps__collector_8cpp_abe46d88c89b1f730f6c9a230acac2a6a}{collectGPSData}}()\ \{}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00028}00028\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{char}\ raw\_data\_buffer[\mbox{\hyperlink{gps__collector_8cpp_a72dde6c82b28027b8cc37e6a827306a7}{MAX\_RAW\_DATA\_LENGTH}}];}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00029}00029\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ raw\_data\_index\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00031}00031\ \ \ \ \ \textcolor{keywordflow}{while}\ (uart\_is\_readable(\mbox{\hyperlink{pin__config_8h_a31bae3288bdf1b7a767c494f2b049779}{GPS\_UART\_PORT}}))\ \{}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ c\ =\ uart\_getc(\mbox{\hyperlink{pin__config_8h_a31bae3288bdf1b7a767c494f2b049779}{GPS\_UART\_PORT}});}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (c\ ==\ \textcolor{charliteral}{'\(\backslash\)r'}\ ||\ c\ ==\ \textcolor{charliteral}{'\(\backslash\)n'})\ \{}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ End\ of\ message}}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (raw\_data\_index\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ raw\_data\_buffer[raw\_data\_index]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ message(raw\_data\_buffer);}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ raw\_data\_index\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Split\ the\ message\ into\ tokens}}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::string>\ tokens\ =\ \mbox{\hyperlink{gps__collector_8cpp_a0509cbb838eb47985372ff8889e507f5}{splitString}}(message,\ \textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Update\ the\ global\ vectors\ based\ on\ the\ sentence\ type}}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (message.find(\textcolor{stringliteral}{"{}\$GPRMC"{}})\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{gps__collector_8cpp_af2b979012abe80d338fef98209f87b78}{nmea\_data}}.updateRmcTokens(tokens);}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(\textcolor{stringliteral}{"{}RMC\ data\ received!"{}});}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(message.c\_str());}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (message.find(\textcolor{stringliteral}{"{}\$GPGGA"{}})\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{gps__collector_8cpp_af2b979012abe80d338fef98209f87b78}{nmea\_data}}.updateGgaTokens(tokens);}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(\textcolor{stringliteral}{"{}GGA\ data\ received!"{}});}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(message.c\_str());}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Append\ to\ buffer}}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (raw\_data\_index\ <\ \mbox{\hyperlink{gps__collector_8cpp_a72dde6c82b28027b8cc37e6a827306a7}{MAX\_RAW\_DATA\_LENGTH}}\ -\/\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ raw\_data\_buffer[raw\_data\_index++]\ =\ c;}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(\textcolor{stringliteral}{"{}GPS\ data\ overflow!"{}});}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ raw\_data\_index\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00064}00064\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gps__collector_8cpp_source_l00065}00065\ \}}
+
+\end{DoxyCode}

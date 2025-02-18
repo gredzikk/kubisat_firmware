@@ -1,0 +1,141 @@
+\doxysection{event\+\_\+manager.\+cpp}
+\hypertarget{event__manager_8cpp_source}{}\label{event__manager_8cpp_source}\mbox{\hyperlink{event__manager_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{event__manager_8h}{event\_manager.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <cstdio>}}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{protocol_8h}{protocol.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}pico/multicore.h"{}}}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{communication_8h}{communication.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{utils_8h}{utils.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_d_s3231_8h}{DS3231.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00009}\mbox{\hyperlink{event__manager_8cpp_ab144678e47784f421d98c3dfdbb53dc8}{00009}}\ \textcolor{keyword}{volatile}\ uint16\_t\ \mbox{\hyperlink{event__manager_8cpp_ab144678e47784f421d98c3dfdbb53dc8}{eventLogId}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00011}\mbox{\hyperlink{event__manager_8cpp_a2d4329f1e2606ca8f8535dae8c08afe5}{00011}}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6}{PowerEvent}}\ \mbox{\hyperlink{event__manager_8cpp_a2d4329f1e2606ca8f8535dae8c08afe5}{lastPowerState}}\ =\ \mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6a36d76a2d86f6dbf2035366b3572f025c}{PowerEvent::LOW\_BATTERY}};}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00013}\mbox{\hyperlink{event__manager_8cpp_a234988dfb88db38997bd921cd5c32457}{00013}}\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{event__manager_8cpp_a234988dfb88db38997bd921cd5c32457}{FALL\_RATE\_THRESHOLD}}\ =\ -\/0.02f;}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00014}\mbox{\hyperlink{event__manager_8cpp_ae4e7da8cdf52e447acd5705d930759cf}{00014}}\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{event__manager_8cpp_ae4e7da8cdf52e447acd5705d930759cf}{FALLING\_TREND\_REQUIRED}}\ =\ 3;}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00015}\mbox{\hyperlink{event__manager_8cpp_aa1095ab71c42b3eaed0492aec0941972}{00015}}\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{event__manager_8cpp_aa1095ab71c42b3eaed0492aec0941972}{VOLTAGE\_LOW\_THRESHOLD}}\ =\ 4.7f;}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00017}\mbox{\hyperlink{event__manager_8cpp_a98ed7b83dd5e1a54a096ca9bb3456163}{00017}}\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{event__manager_8cpp_a98ed7b83dd5e1a54a096ca9bb3456163}{VOLTAGE\_OVERCHARGE\_THRESHOLD}}\ =\ 5.3f;}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00019}\mbox{\hyperlink{event__manager_8cpp_ad4a2e48e0a0e0d5aa49dd6c2aa12d8fb}{00019}}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{event__manager_8cpp_ad4a2e48e0a0e0d5aa49dd6c2aa12d8fb}{fallingTrendCount}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00021}\mbox{\hyperlink{event__manager_8cpp_a908d9cb4eb9ec61d273f6770660bbb8e}{00021}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{event__manager_8cpp_a908d9cb4eb9ec61d273f6770660bbb8e}{lastSolarState}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00022}\mbox{\hyperlink{event__manager_8cpp_a0592f758055ae8683676ff86ae7ae9e1}{00022}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{event__manager_8cpp_a0592f758055ae8683676ff86ae7ae9e1}{lastUSBState}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00024}00024\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_d_s3231}{DS3231}}\ \mbox{\hyperlink{clock__commands_8cpp_abfd573c8a839ac00ea3b96d691ea11c3}{systemClock}};}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00026}\mbox{\hyperlink{event__manager_8cpp_a2a686792b51ec2b9e1b7bfc9faef92f7}{00026}}\ \mbox{\hyperlink{class_event_manager_impl}{EventManagerImpl}}\ \mbox{\hyperlink{event__manager_8cpp_a2a686792b51ec2b9e1b7bfc9faef92f7}{eventManager}};}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00028}\mbox{\hyperlink{class_event_manager_ae73a56091dc8713bb86a11abb6742a14}{00028}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_event_manager_ae73a56091dc8713bb86a11abb6742a14}{EventManager::logEvent}}(uint8\_t\ \mbox{\hyperlink{event__manager_8h_ad4291fcb880eb5ecb178b53e32f55741}{group}},\ uint8\_t\ \mbox{\hyperlink{event__manager_8h_aeef6900f411bc223febdd92c9435693b}{event}})\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00029}00029\ \ \ \ \ mutex\_enter\_blocking(\&\mbox{\hyperlink{class_event_manager_a970381a54ae432d262830ad74048c94e}{eventMutex}});}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00031}00031\ \ \ \ \ \mbox{\hyperlink{class_event_log}{EventLog}}\&\ log\ =\ \mbox{\hyperlink{class_event_manager_a9d82f66074e141f352bb852654673536}{events}}[\mbox{\hyperlink{class_event_manager_ad97f788895da6e30b3237982a7bcd810}{writeIndex}}];}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00032}00032\ \ \ \ \ log.\mbox{\hyperlink{class_event_log_a5e0923e12450e6b7c782c7f6630f4563}{id}}\ =\ \mbox{\hyperlink{class_event_manager_a31b1b079c272a1d7022ed84b01927186}{nextEventId}}++;}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00033}00033\ \ \ \ \ log.\mbox{\hyperlink{class_event_log_aea248a425dedf15b5cee31ce2884db40}{timestamp}}\ =\ \mbox{\hyperlink{clock__commands_8cpp_abfd573c8a839ac00ea3b96d691ea11c3}{systemClock}}.getTimeUnix();}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00034}00034\ \ \ \ \ log.\mbox{\hyperlink{class_event_log_a5209ffdb8dc4bf7f87f3ec44b2ae63e3}{group}}\ =\ \mbox{\hyperlink{event__manager_8h_ad4291fcb880eb5ecb178b53e32f55741}{group}};}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00035}00035\ \ \ \ \ log.\mbox{\hyperlink{class_event_log_a4ba1b6d820bf66740aac49fd299f1ea2}{event}}\ =\ \mbox{\hyperlink{event__manager_8h_aeef6900f411bc223febdd92c9435693b}{event}};}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00037}00037\ \ \ \ \ \textcolor{comment}{//\ Print\ event\ immediately}}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00038}00038\ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(log.\mbox{\hyperlink{class_event_log_adb17c412276c8678289395607c493e7e}{toString}}());}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00040}00040\ \ \ \ \ \mbox{\hyperlink{class_event_manager_ad97f788895da6e30b3237982a7bcd810}{writeIndex}}\ =\ (\mbox{\hyperlink{class_event_manager_ad97f788895da6e30b3237982a7bcd810}{writeIndex}}\ +\ 1)\ \%\ \mbox{\hyperlink{event__manager_8h_acc4dda1aaabc9862fe79fd94e0b722bf}{EVENT\_BUFFER\_SIZE}};}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_event_manager_ab74418c8064525f34692dff74dd28d82}{eventCount}}\ <\ \mbox{\hyperlink{event__manager_8h_acc4dda1aaabc9862fe79fd94e0b722bf}{EVENT\_BUFFER\_SIZE}})\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_event_manager_ab74418c8064525f34692dff74dd28d82}{eventCount}}++;}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00043}00043\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00045}00045\ \ \ \ \ \textcolor{comment}{//\ Set\ persistence\ flag\ on\ buffer\ full\ or\ power\ events}}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00046}00046\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_event_manager_ab74418c8064525f34692dff74dd28d82}{eventCount}}\ ==\ \mbox{\hyperlink{event__manager_8h_acc4dda1aaabc9862fe79fd94e0b722bf}{EVENT\_BUFFER\_SIZE}}\ ||\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ (\mbox{\hyperlink{event__manager_8h_ad4291fcb880eb5ecb178b53e32f55741}{group}}\ ==\ \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(\mbox{\hyperlink{event__manager_8h_a87aefa0e7b725125ea1a741c80858aa7ac9c9c146c630ca5ef9197c73c032f4a6}{EventGroup::POWER}})\ \&\&\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{event__manager_8h_aeef6900f411bc223febdd92c9435693b}{event}}\ ==\ \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(\mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6a8700d6b962e860d93b3c89489b9aac21}{PowerEvent::POWER\_FALLING}})))\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_event_manager_aed2eb3a8bc611f5594eb62304c7b4754}{needsPersistence}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_event_manager_ad369ac9b7ab0251070e0075745836a40}{saveToStorage}}();}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00051}00051\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00053}00053\ \ \ \ \ mutex\_exit(\&\mbox{\hyperlink{class_event_manager_a970381a54ae432d262830ad74048c94e}{eventMutex}});}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00054}00054\ \}}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00056}\mbox{\hyperlink{class_event_manager_a00648cfe8c39fbd59cc4c593113e5573}{00056}}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_event_log}{EventLog}}\&\ \mbox{\hyperlink{class_event_manager_a00648cfe8c39fbd59cc4c593113e5573}{EventManager::getEvent}}(\textcolor{keywordtype}{size\_t}\ index)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00057}00057\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_event_log}{EventLog}}\ emptyEvent\ =\ \{0,\ 0,\ 0,\ 0\};\ \ \textcolor{comment}{//\ Initialize\ \{id,\ timestamp,\ group,\ event\}}}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00058}00058\ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ >=\ \mbox{\hyperlink{class_event_manager_ab74418c8064525f34692dff74dd28d82}{eventCount}})\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ emptyEvent;}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00060}00060\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00061}00061\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00062}00062\ \ \ \ \ \textcolor{comment}{//\ Calculate\ actual\ index\ in\ circular\ buffer}}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00063}00063\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ actualIndex;}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00064}00064\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_event_manager_ab74418c8064525f34692dff74dd28d82}{eventCount}}\ ==\ \mbox{\hyperlink{event__manager_8h_acc4dda1aaabc9862fe79fd94e0b722bf}{EVENT\_BUFFER\_SIZE}})\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ actualIndex\ =\ (\mbox{\hyperlink{class_event_manager_ad97f788895da6e30b3237982a7bcd810}{writeIndex}}\ +\ index)\ \%\ \mbox{\hyperlink{event__manager_8h_acc4dda1aaabc9862fe79fd94e0b722bf}{EVENT\_BUFFER\_SIZE}};}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00066}00066\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ actualIndex\ =\ index;}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00068}00068\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00069}00069\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00070}00070\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_event_manager_a9d82f66074e141f352bb852654673536}{events}}[actualIndex];}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00071}00071\ \}}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00077}\mbox{\hyperlink{event__manager_8cpp_a467714d66058f52e4ac7aeb6df46b433}{00077}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{event__manager_8cpp_a467714d66058f52e4ac7aeb6df46b433}{checkPowerEvents}}(\mbox{\hyperlink{class_power_manager}{PowerManager}}\&\ pm)\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00078}00078\ \ \ \ \ \textcolor{keywordtype}{float}\ currentVoltage\ =\ pm.\mbox{\hyperlink{class_power_manager_ae0e4303ddaba328047fb40d8d925c7dd}{getVoltage5V}}();}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00079}00079\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ previousVoltage\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00080}00080\ \ \ \ \ \textcolor{keywordtype}{float}\ delta\ =\ currentVoltage\ -\/\ previousVoltage;}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00081}00081\ \ \ \ \ previousVoltage\ =\ currentVoltage;}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00083}00083\ \ \ \ \ \textcolor{keywordflow}{if}\ (delta\ <\ \mbox{\hyperlink{event__manager_8cpp_a234988dfb88db38997bd921cd5c32457}{FALL\_RATE\_THRESHOLD}})\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{event__manager_8cpp_ad4a2e48e0a0e0d5aa49dd6c2aa12d8fb}{fallingTrendCount}}++;}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00085}00085\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{event__manager_8cpp_ad4a2e48e0a0e0d5aa49dd6c2aa12d8fb}{fallingTrendCount}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00087}00087\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00089}00089\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{event__manager_8cpp_ad4a2e48e0a0e0d5aa49dd6c2aa12d8fb}{fallingTrendCount}}\ >=\ \mbox{\hyperlink{event__manager_8cpp_ae4e7da8cdf52e447acd5705d930759cf}{FALLING\_TREND\_REQUIRED}})\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(\textcolor{stringliteral}{"{}Power\ falling\ detected!"{}});}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{event__manager_8cpp_a2d4329f1e2606ca8f8535dae8c08afe5}{lastPowerState}}\ =\ \mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6a8700d6b962e860d93b3c89489b9aac21}{PowerEvent::POWER\_FALLING}};}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_event_emitter_a539d733505f9a793439a9cfc4f2af079}{EventEmitter::emit}}(\mbox{\hyperlink{event__manager_8h_a87aefa0e7b725125ea1a741c80858aa7ac9c9c146c630ca5ef9197c73c032f4a6}{EventGroup::POWER}},\ \mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6a8700d6b962e860d93b3c89489b9aac21}{PowerEvent::POWER\_FALLING}});}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00093}00093\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00095}00095\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentVoltage\ <\ \mbox{\hyperlink{class_power_manager_a426dcedc762549ed6c408708bd61b94e}{PowerManager::VOLTAGE\_LOW\_THRESHOLD}}\ \&\&\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{event__manager_8cpp_a2d4329f1e2606ca8f8535dae8c08afe5}{lastPowerState}}\ !=\ \mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6a36d76a2d86f6dbf2035366b3572f025c}{PowerEvent::LOW\_BATTERY}})\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(\textcolor{stringliteral}{"{}Low\ battery\ detected!"{}});}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{event__manager_8cpp_a2d4329f1e2606ca8f8535dae8c08afe5}{lastPowerState}}\ =\ \mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6a36d76a2d86f6dbf2035366b3572f025c}{PowerEvent::LOW\_BATTERY}};}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_event_emitter_a539d733505f9a793439a9cfc4f2af079}{EventEmitter::emit}}(\mbox{\hyperlink{event__manager_8h_a87aefa0e7b725125ea1a741c80858aa7ac9c9c146c630ca5ef9197c73c032f4a6}{EventGroup::POWER}},\ \mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6a36d76a2d86f6dbf2035366b3572f025c}{PowerEvent::LOW\_BATTERY}});}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00100}00100\ \ \ \ \ \}\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00101}00101\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentVoltage\ >\ \mbox{\hyperlink{class_power_manager_a4e28f40bee3fd8e6df12178663159783}{PowerManager::VOLTAGE\_OVERCHARGE\_THRESHOLD}}\ \&\&\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{event__manager_8cpp_a2d4329f1e2606ca8f8535dae8c08afe5}{lastPowerState}}\ !=\ \mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6a575fea54d116603bb4c778db18fbde98}{PowerEvent::OVERCHARGE}})\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(\textcolor{stringliteral}{"{}Overcharge\ detected!"{}});}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{event__manager_8cpp_a2d4329f1e2606ca8f8535dae8c08afe5}{lastPowerState}}\ =\ \mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6a575fea54d116603bb4c778db18fbde98}{PowerEvent::OVERCHARGE}};}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_event_emitter_a539d733505f9a793439a9cfc4f2af079}{EventEmitter::emit}}(\mbox{\hyperlink{event__manager_8h_a87aefa0e7b725125ea1a741c80858aa7ac9c9c146c630ca5ef9197c73c032f4a6}{EventGroup::POWER}},\ \mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6a575fea54d116603bb4c778db18fbde98}{PowerEvent::OVERCHARGE}});}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00106}00106\ \ \ \ \ \}\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00107}00107\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentVoltage\ >=\ \mbox{\hyperlink{class_power_manager_a426dcedc762549ed6c408708bd61b94e}{PowerManager::VOLTAGE\_LOW\_THRESHOLD}}\ \&\&\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ currentVoltage\ <=\ \mbox{\hyperlink{class_power_manager_a4e28f40bee3fd8e6df12178663159783}{PowerManager::VOLTAGE\_OVERCHARGE\_THRESHOLD}}\ \&\&\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{event__manager_8cpp_a2d4329f1e2606ca8f8535dae8c08afe5}{lastPowerState}}\ !=\ \mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6a91d809be807947101ea242de92b64a87}{PowerEvent::POWER\_NORMAL}})\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(\textcolor{stringliteral}{"{}Power\ back\ to\ normal!"{}});}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{event__manager_8cpp_a2d4329f1e2606ca8f8535dae8c08afe5}{lastPowerState}}\ =\ \mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6a91d809be807947101ea242de92b64a87}{PowerEvent::POWER\_NORMAL}};}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_event_emitter_a539d733505f9a793439a9cfc4f2af079}{EventEmitter::emit}}(\mbox{\hyperlink{event__manager_8h_a87aefa0e7b725125ea1a741c80858aa7ac9c9c146c630ca5ef9197c73c032f4a6}{EventGroup::POWER}},\ \mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6a91d809be807947101ea242de92b64a87}{PowerEvent::POWER\_NORMAL}});}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00113}00113\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00115}00115\ \ \ \ \ \textcolor{comment}{//\ Check\ solar\ charging\ state}}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00116}00116\ \ \ \ \ \textcolor{keywordtype}{bool}\ currentSolarState\ =\ pm.\mbox{\hyperlink{class_power_manager_a33ea0aaa75b4654b0ee05250119bf083}{isSolarActive}}();}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00117}00117\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentSolarState\ !=\ \mbox{\hyperlink{event__manager_8cpp_a908d9cb4eb9ec61d273f6770660bbb8e}{lastSolarState}})\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentSolarState)\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(\textcolor{stringliteral}{"{}Solar\ charging\ active!"{}});}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_event_emitter_a539d733505f9a793439a9cfc4f2af079}{EventEmitter::emit}}(\mbox{\hyperlink{event__manager_8h_a87aefa0e7b725125ea1a741c80858aa7ac9c9c146c630ca5ef9197c73c032f4a6}{EventGroup::POWER}},\ \mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6aa45a91985c176d6b5d3669bdf41b7e3b}{PowerEvent::SOLAR\_ACTIVE}});}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(\textcolor{stringliteral}{"{}Solar\ charging\ inactive!"{}});}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_event_emitter_a539d733505f9a793439a9cfc4f2af079}{EventEmitter::emit}}(\mbox{\hyperlink{event__manager_8h_a87aefa0e7b725125ea1a741c80858aa7ac9c9c146c630ca5ef9197c73c032f4a6}{EventGroup::POWER}},\ \mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6a35899506cd4cd1e676d022eb14ecb669}{PowerEvent::SOLAR\_INACTIVE}});}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{event__manager_8cpp_a908d9cb4eb9ec61d273f6770660bbb8e}{lastSolarState}}\ =\ currentSolarState;}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00126}00126\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00128}00128\ \ \ \ \ \textcolor{comment}{//\ Check\ USB\ connection\ state}}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00129}00129\ \ \ \ \ \textcolor{keywordtype}{bool}\ currentUSBState\ =\ pm.\mbox{\hyperlink{class_power_manager_a0548ae14a668bb06e4cc13e0295ad5c8}{isUSBConnected}}();}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00130}00130\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentUSBState\ !=\ \mbox{\hyperlink{event__manager_8cpp_a0592f758055ae8683676ff86ae7ae9e1}{lastUSBState}})\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentUSBState)\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(\textcolor{stringliteral}{"{}USB\ connected!"{}});}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_event_emitter_a539d733505f9a793439a9cfc4f2af079}{EventEmitter::emit}}(\mbox{\hyperlink{event__manager_8h_a87aefa0e7b725125ea1a741c80858aa7ac9c9c146c630ca5ef9197c73c032f4a6}{EventGroup::POWER}},\ \mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6aea2afd0110180e8af5bf95a583f9dd13}{PowerEvent::USB\_CONNECTED}});}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(\textcolor{stringliteral}{"{}USB\ disconnected!"{}});}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_event_emitter_a539d733505f9a793439a9cfc4f2af079}{EventEmitter::emit}}(\mbox{\hyperlink{event__manager_8h_a87aefa0e7b725125ea1a741c80858aa7ac9c9c146c630ca5ef9197c73c032f4a6}{EventGroup::POWER}},\ \mbox{\hyperlink{event__manager_8h_a8b04683add0105a3bf3200eee3d9d3e6a3a026550c6805c690d88a618aff891c9}{PowerEvent::USB\_DISCONNECTED}});}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{event__manager_8cpp_a0592f758055ae8683676ff86ae7ae9e1}{lastUSBState}}\ =\ currentUSBState;}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00139}00139\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{event__manager_8cpp_source_l00140}00140\ \}}
+
+\end{DoxyCode}

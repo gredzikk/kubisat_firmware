@@ -1,0 +1,121 @@
+\doxysection{HMC5883L Class Reference}
+\hypertarget{class_h_m_c5883_l}{}\label{class_h_m_c5883_l}\index{HMC5883L@{HMC5883L}}
+
+
+{\ttfamily \#include $<$HMC5883\+L.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_h_m_c5883_l_ac94bd9588bfaecdf6d1aa56915799212}{HMC5883L}} (i2c\+\_\+inst\+\_\+t \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_h_m_c5883_l_a5e63fceb40ec1b9427757a4ee206b12f}{i2c}}, uint8\+\_\+t \mbox{\hyperlink{class_h_m_c5883_l_ab0f984a6afb4c434cb32d736a9aaa671}{address}}=0x0D)
+\item 
+bool \mbox{\hyperlink{class_h_m_c5883_l_aacf8416e7f9802ccf993b3e6c0dfe17b}{init}} ()
+\item 
+bool \mbox{\hyperlink{class_h_m_c5883_l_a8d34ff9a8ff20e12320df6ce5d64397f}{read}} (int16\+\_\+t \&x, int16\+\_\+t \&y, int16\+\_\+t \&z)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_h_m_c5883_l_a114c069b8221f2780b928063a393a183}{write\+Register}} (uint8\+\_\+t reg, uint8\+\_\+t value)
+\item 
+bool \mbox{\hyperlink{class_h_m_c5883_l_a4a09a4be85064748579e1d44d8f1b305}{read\+Registers}} (uint8\+\_\+t reg, uint8\+\_\+t \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}, size\+\_\+t length)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+i2c\+\_\+inst\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_h_m_c5883_l_a5e63fceb40ec1b9427757a4ee206b12f}{i2c}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_h_m_c5883_l_ab0f984a6afb4c434cb32d736a9aaa671}{address}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_h_m_c5883_l_8h_source_l00006}{6}} of file \mbox{\hyperlink{_h_m_c5883_l_8h_source}{HMC5883\+L.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_h_m_c5883_l_ac94bd9588bfaecdf6d1aa56915799212}\index{HMC5883L@{HMC5883L}!HMC5883L@{HMC5883L}}
+\index{HMC5883L@{HMC5883L}!HMC5883L@{HMC5883L}}
+\doxysubsubsection{\texorpdfstring{HMC5883L()}{HMC5883L()}}
+{\footnotesize\ttfamily \label{class_h_m_c5883_l_ac94bd9588bfaecdf6d1aa56915799212} 
+HMC5883\+L\+::\+HMC5883L (\begin{DoxyParamCaption}\item[{i2c\+\_\+inst\+\_\+t \texorpdfstring{$\ast$}{*}}]{i2c}{, }\item[{uint8\+\_\+t}]{address}{ = {\ttfamily 0x0D}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_h_m_c5883_l_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{_h_m_c5883_l_8cpp_source}{HMC5883\+L.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_h_m_c5883_l_aacf8416e7f9802ccf993b3e6c0dfe17b}\index{HMC5883L@{HMC5883L}!init@{init}}
+\index{init@{init}!HMC5883L@{HMC5883L}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily \label{class_h_m_c5883_l_aacf8416e7f9802ccf993b3e6c0dfe17b} 
+bool HMC5883\+L\+::init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_h_m_c5883_l_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{_h_m_c5883_l_8cpp_source}{HMC5883\+L.\+cpp}}.
+
+\Hypertarget{class_h_m_c5883_l_a8d34ff9a8ff20e12320df6ce5d64397f}\index{HMC5883L@{HMC5883L}!read@{read}}
+\index{read@{read}!HMC5883L@{HMC5883L}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily \label{class_h_m_c5883_l_a8d34ff9a8ff20e12320df6ce5d64397f} 
+bool HMC5883\+L\+::read (\begin{DoxyParamCaption}\item[{int16\+\_\+t \&}]{x}{, }\item[{int16\+\_\+t \&}]{y}{, }\item[{int16\+\_\+t \&}]{z}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_h_m_c5883_l_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{_h_m_c5883_l_8cpp_source}{HMC5883\+L.\+cpp}}.
+
+\Hypertarget{class_h_m_c5883_l_a114c069b8221f2780b928063a393a183}\index{HMC5883L@{HMC5883L}!writeRegister@{writeRegister}}
+\index{writeRegister@{writeRegister}!HMC5883L@{HMC5883L}}
+\doxysubsubsection{\texorpdfstring{writeRegister()}{writeRegister()}}
+{\footnotesize\ttfamily \label{class_h_m_c5883_l_a114c069b8221f2780b928063a393a183} 
+bool HMC5883\+L\+::write\+Register (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{reg}{, }\item[{uint8\+\_\+t}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_h_m_c5883_l_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{_h_m_c5883_l_8cpp_source}{HMC5883\+L.\+cpp}}.
+
+\Hypertarget{class_h_m_c5883_l_a4a09a4be85064748579e1d44d8f1b305}\index{HMC5883L@{HMC5883L}!readRegisters@{readRegisters}}
+\index{readRegisters@{readRegisters}!HMC5883L@{HMC5883L}}
+\doxysubsubsection{\texorpdfstring{readRegisters()}{readRegisters()}}
+{\footnotesize\ttfamily \label{class_h_m_c5883_l_a4a09a4be85064748579e1d44d8f1b305} 
+bool HMC5883\+L\+::read\+Registers (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{reg}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{buffer}{, }\item[{size\+\_\+t}]{length}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_h_m_c5883_l_8cpp_source_l00033}{33}} of file \mbox{\hyperlink{_h_m_c5883_l_8cpp_source}{HMC5883\+L.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_h_m_c5883_l_a5e63fceb40ec1b9427757a4ee206b12f}\index{HMC5883L@{HMC5883L}!i2c@{i2c}}
+\index{i2c@{i2c}!HMC5883L@{HMC5883L}}
+\doxysubsubsection{\texorpdfstring{i2c}{i2c}}
+{\footnotesize\ttfamily \label{class_h_m_c5883_l_a5e63fceb40ec1b9427757a4ee206b12f} 
+i2c\+\_\+inst\+\_\+t\texorpdfstring{$\ast$}{*} HMC5883\+L\+::i2c\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_h_m_c5883_l_8h_source_l00013}{13}} of file \mbox{\hyperlink{_h_m_c5883_l_8h_source}{HMC5883\+L.\+h}}.
+
+\Hypertarget{class_h_m_c5883_l_ab0f984a6afb4c434cb32d736a9aaa671}\index{HMC5883L@{HMC5883L}!address@{address}}
+\index{address@{address}!HMC5883L@{HMC5883L}}
+\doxysubsubsection{\texorpdfstring{address}{address}}
+{\footnotesize\ttfamily \label{class_h_m_c5883_l_ab0f984a6afb4c434cb32d736a9aaa671} 
+uint8\+\_\+t HMC5883\+L\+::address\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_h_m_c5883_l_8h_source_l00014}{14}} of file \mbox{\hyperlink{_h_m_c5883_l_8h_source}{HMC5883\+L.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+HMC5883\+L/\mbox{\hyperlink{_h_m_c5883_l_8h}{HMC5883\+L.\+h}}\item 
+lib/\+HMC5883\+L/\mbox{\hyperlink{_h_m_c5883_l_8cpp}{HMC5883\+L.\+cpp}}\end{DoxyCompactItemize}

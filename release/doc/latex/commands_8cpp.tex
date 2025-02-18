@@ -1,0 +1,100 @@
+\doxysection{commands/commands.cpp File Reference}
+\hypertarget{commands_8cpp}{}\label{commands_8cpp}\index{commands/commands.cpp@{commands/commands.cpp}}
+{\ttfamily \#include "{}commands.\+h"{}}\newline
+{\ttfamily \#include "{}communication.\+h"{}}\newline
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{commands_8cpp_afd50beeb0940251ffa11aba67ae299bd}{Command\+Handler}} = std\+::function$<$\mbox{\hyperlink{struct_frame}{Frame}}(const std\+::string\&, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}})$>$
+\item 
+using \mbox{\hyperlink{commands_8cpp_ab43172cf2203676150a5d2bfc4c1e88a}{Command\+Map}} = std\+::map$<$uint32\+\_\+t, \mbox{\hyperlink{commands_8cpp_afd50beeb0940251ffa11aba67ae299bd}{Command\+Handler}}$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{commands_8cpp_a1907d400d2c8d8d054ba95bcf43276ea}{execute\+Command}} (uint32\+\_\+t command\+Key, const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{commands_8cpp_ab43172cf2203676150a5d2bfc4c1e88a}{Command\+Map}} \mbox{\hyperlink{commands_8cpp_a04a0515603ba347ef314678876f3fa26}{command\+Handlers}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{commands_8cpp_afd50beeb0940251ffa11aba67ae299bd}\index{commands.cpp@{commands.cpp}!CommandHandler@{CommandHandler}}
+\index{CommandHandler@{CommandHandler}!commands.cpp@{commands.cpp}}
+\doxysubsubsection{\texorpdfstring{CommandHandler}{CommandHandler}}
+{\footnotesize\ttfamily \label{commands_8cpp_afd50beeb0940251ffa11aba67ae299bd} 
+using \mbox{\hyperlink{commands_8cpp_afd50beeb0940251ffa11aba67ae299bd}{Command\+Handler}} = std\+::function$<$\mbox{\hyperlink{struct_frame}{Frame}}(const std\+::string\&, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}})$>$}
+
+
+
+Definition at line \mbox{\hyperlink{commands_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{commands_8cpp_source}{commands.\+cpp}}.
+
+\Hypertarget{commands_8cpp_ab43172cf2203676150a5d2bfc4c1e88a}\index{commands.cpp@{commands.cpp}!CommandMap@{CommandMap}}
+\index{CommandMap@{CommandMap}!commands.cpp@{commands.cpp}}
+\doxysubsubsection{\texorpdfstring{CommandMap}{CommandMap}}
+{\footnotesize\ttfamily \label{commands_8cpp_ab43172cf2203676150a5d2bfc4c1e88a} 
+using \mbox{\hyperlink{commands_8cpp_ab43172cf2203676150a5d2bfc4c1e88a}{Command\+Map}} = std\+::map$<$uint32\+\_\+t, \mbox{\hyperlink{commands_8cpp_afd50beeb0940251ffa11aba67ae299bd}{Command\+Handler}}$>$}
+
+
+
+Definition at line \mbox{\hyperlink{commands_8cpp_source_l00007}{7}} of file \mbox{\hyperlink{commands_8cpp_source}{commands.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{commands_8cpp_a1907d400d2c8d8d054ba95bcf43276ea}\index{commands.cpp@{commands.cpp}!executeCommand@{executeCommand}}
+\index{executeCommand@{executeCommand}!commands.cpp@{commands.cpp}}
+\doxysubsubsection{\texorpdfstring{executeCommand()}{executeCommand()}}
+{\footnotesize\ttfamily \label{commands_8cpp_a1907d400d2c8d8d054ba95bcf43276ea} 
+\mbox{\hyperlink{struct_frame}{Frame}} execute\+Command (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{command\+Key}{, }\item[{const std\+::string \&}]{param}{, }\item[{\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}}]{operation\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{commands_8cpp_source_l00037}{37}} of file \mbox{\hyperlink{commands_8cpp_source}{commands.\+cpp}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{commands_8cpp_a04a0515603ba347ef314678876f3fa26}\index{commands.cpp@{commands.cpp}!commandHandlers@{commandHandlers}}
+\index{commandHandlers@{commandHandlers}!commands.cpp@{commands.cpp}}
+\doxysubsubsection{\texorpdfstring{commandHandlers}{commandHandlers}}
+{\footnotesize\ttfamily \label{commands_8cpp_a04a0515603ba347ef314678876f3fa26} 
+\mbox{\hyperlink{commands_8cpp_ab43172cf2203676150a5d2bfc4c1e88a}{Command\+Map}} command\+Handlers}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \{((\textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(1)\ <<\ 8)\ |\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(0)),\ \mbox{\hyperlink{group___diagnostic_commands_gade74b82cf2c20d93c5e0ce624cd7ca77}{handleListCommands}}\},\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \{((\textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(1)\ <<\ 8)\ |\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(1)),\ \mbox{\hyperlink{group___diagnostic_commands_ga5ebac5711334cb3584974b2b74556543}{handleGetBuildVersion}}\},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \{((\textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(1)\ <<\ 8)\ |\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(9)),\ \mbox{\hyperlink{group___diagnostic_commands_ga3a6c6092cd01fd9c13ab429f4a34326d}{handleEnterBootloaderMode}}\},\ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \{((\textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(2)\ <<\ 8)\ |\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(0)),\ \mbox{\hyperlink{group___power_commands_gafef922e13071e5fb67da78207a9f22a4}{handleGetPowerManagerIDs}}\},\ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \{((\textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(2)\ <<\ 8)\ |\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(2)),\ \mbox{\hyperlink{group___power_commands_gad301b8c13cafa148a6f3e80e9b0bcf1a}{handleGetVoltageBattery}}\},\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \{((\textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(2)\ <<\ 8)\ |\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(3)),\ \mbox{\hyperlink{group___power_commands_ga9f2b608f46080fcdae38a1a8454938b8}{handleGetVoltage5V}}\},\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \{((\textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(2)\ <<\ 8)\ |\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(4)),\ \mbox{\hyperlink{group___power_commands_ga3f38c538065bf67dbec1142fdb866d16}{handleGetCurrentChargeUSB}}\},\ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \{((\textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(2)\ <<\ 8)\ |\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(5)),\ \mbox{\hyperlink{group___power_commands_ga6fbaf484e68c9561ad7fabef21def37b}{handleGetCurrentChargeSolar}}\},\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \{((\textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(2)\ <<\ 8)\ |\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(6)),\ \mbox{\hyperlink{group___power_commands_ga83596ea837df6cf7b15e673b95bf524f}{handleGetCurrentChargeTotal}}\},\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \{((\textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(2)\ <<\ 8)\ |\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(7)),\ \mbox{\hyperlink{group___power_commands_gabd6610f557fe9deaa9f80d9405738226}{handleGetCurrentDraw}}\},\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \{((\textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(3)\ <<\ 8)\ |\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(0)),\ \mbox{\hyperlink{clock__commands_8cpp_a1eefb8c4d539d50c787b4db3f6ebb093}{handleTime}}\},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \{((\textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(3)\ <<\ 8)\ |\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(1)),\ \mbox{\hyperlink{clock__commands_8cpp_acc9239d946ee18d2ff19af2c6a2177f0}{handleGetTimezoneOffset}}\},\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \{((\textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(3)\ <<\ 8)\ |\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(2)),\ \mbox{\hyperlink{clock__commands_8cpp_a9e802e312d0779aab74966074e81eb30}{handleSetTimezoneOffset}}\},\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \{((\textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(3)\ <<\ 8)\ |\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(3)),\ \mbox{\hyperlink{clock__commands_8cpp_add8778da60c0dc5c0add2c7b2ccdc57e}{handleGetClockSyncInterval}}\},\ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \{((\textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(3)\ <<\ 8)\ |\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(4)),\ \mbox{\hyperlink{clock__commands_8cpp_a00137f0d4c6a83ee5c0df49c7370fe65}{handleSetClockSyncInterval}}\},\ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \{((\textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(3)\ <<\ 8)\ |\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(5)),\ \mbox{\hyperlink{clock__commands_8cpp_a6def0bf9e591d66bd98b752f731d44ba}{handleGetClockDrift}}\},\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \{((\textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(3)\ <<\ 8)\ |\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(6)),\ \mbox{\hyperlink{clock__commands_8cpp_ae4cd7f745d6f9e2cadef70e21d8a9fcb}{handleSetClockDrift}}\},\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \{((\textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(3)\ <<\ 8)\ |\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(7)),\ \mbox{\hyperlink{clock__commands_8cpp_a17274560343c34119630b27d88ef475e}{handleGetLastSyncTime}}\},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \{((\textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(5)\ <<\ 8)\ |\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(1)),\ \mbox{\hyperlink{group___event_commands_gad921fe7254d7ec43f16a6fb21f5c385a}{handleGetLastEvents}}\},\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \{((\textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(5)\ <<\ 8)\ |\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(2)),\ \mbox{\hyperlink{group___event_commands_ga6f817db327c7b16cf49575635e595004}{handleGetEventCount}}\},\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \{((\textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(7)\ <<\ 8)\ |\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(1)),\ \mbox{\hyperlink{group___g_p_s_commands_gaa4c13d7d324ffb354badf45e9ceffb1c}{handleGPSPowerStatus}}\},\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \{((\textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(7)\ <<\ 8)\ |\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(2)),\ \mbox{\hyperlink{group___g_p_s_commands_gad12f2e18bdfecbd5b6e8d8a84bb9cd77}{handleEnableGPSTransparentMode}}\},\ }
+\DoxyCodeLine{\ \ \ \ \{((\textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(7)\ <<\ 8)\ |\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(3)),\ \mbox{\hyperlink{group___g_p_s_commands_ga71881bd1a0a285e4149db732a3f1b533}{handleGetRMCData}}\},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \{((\textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(7)\ <<\ 8)\ |\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(4)),\ \mbox{\hyperlink{group___g_p_s_commands_gaf1f6c0fb4266518353e088e8781ed143}{handleGetGGAData}}\},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{commands_8cpp_source_l00009}{9}} of file \mbox{\hyperlink{commands_8cpp_source}{commands.\+cpp}}.
+

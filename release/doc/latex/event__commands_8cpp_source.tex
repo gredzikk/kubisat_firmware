@@ -1,0 +1,62 @@
+\doxysection{event\+\_\+commands.\+cpp}
+\hypertarget{event__commands_8cpp_source}{}\label{event__commands_8cpp_source}\index{commands/event\_commands.cpp@{commands/event\_commands.cpp}}
+\mbox{\hyperlink{event__commands_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{communication_8h}{communication.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{event__manager_8h}{event\_manager.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00029}\mbox{\hyperlink{group___event_commands_gad921fe7254d7ec43f16a6fb21f5c385a}{00029}}\ \mbox{\hyperlink{struct_frame}{Frame}}\ \mbox{\hyperlink{group___event_commands_gad921fe7254d7ec43f16a6fb21f5c385a}{handleGetLastEvents}}(\textcolor{keyword}{const}\ std::string\&\ param,\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{OperationType}}\ operationType)\ \{}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{if}\ (operationType\ !=\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8}{OperationType::GET}})\ \{}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 5,\ 1,\ \textcolor{stringliteral}{"{}INVALID\ OPERATION"{}});}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00032}00032\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00034}00034\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ count\ =\ 10;\ \textcolor{comment}{//\ Default\ number\ of\ events\ to\ return}}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00035}00035\ \ \ \ \ \textcolor{keywordflow}{if}\ (!param.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ count\ =\ std::stoul(param);}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (count\ ==\ 0\ ||\ count\ >\ \mbox{\hyperlink{event__manager_8h_acc4dda1aaabc9862fe79fd94e0b722bf}{EVENT\_BUFFER\_SIZE}})\ \{}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 5,\ 1,\ \textcolor{stringliteral}{"{}INVALID\ COUNT"{}});}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 5,\ 1,\ \textcolor{stringliteral}{"{}INVALID\ PARAMETER"{}});}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00044}00044\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00046}00046\ \ \ \ \ std::stringstream\ ss;}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00047}00047\ \ \ \ \ ss\ <<\ std::hex\ <<\ std::uppercase\ <<\ std::setfill(\textcolor{charliteral}{'0'});}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00048}00048\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00049}00049\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ available\ =\ \mbox{\hyperlink{event__manager_8cpp_a2a686792b51ec2b9e1b7bfc9faef92f7}{eventManager}}.getEventCount();}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00050}00050\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ toReturn\ =\ std::min(count,\ available);}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00051}00051\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00052}00052\ \ \ \ \ \textcolor{comment}{//\ Start\ from\ the\ most\ recent\ event}}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00053}00053\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ toReturn;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_event_log}{EventLog}}\&\ \textcolor{keyword}{event}\ =\ \mbox{\hyperlink{event__manager_8cpp_a2a686792b51ec2b9e1b7bfc9faef92f7}{eventManager}}.getEvent(available\ -\/\ 1\ -\/\ i);}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Format:\ IIIITTTTTTTTGGEE}}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ IIII:\ 16-\/bit\ ID\ (4\ hex\ chars)}}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TTTTTTTT:\ 32-\/bit\ timestamp\ (8\ hex\ chars)}}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ GG:\ 8-\/bit\ group\ (2\ hex\ chars)}}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ EE:\ 8-\/bit\ event\ (2\ hex\ chars)}}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ ss\ <<\ std::setw(4)\ <<\ \textcolor{keyword}{event}.id}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ <<\ std::setw(8)\ <<\ \textcolor{keyword}{event}.timestamp}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ <<\ std::setw(2)\ <<\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\textcolor{keyword}{event}.group)}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ <<\ std::setw(2)\ <<\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\textcolor{keyword}{event}.event);}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ <\ toReturn\ -\/\ 1)\ ss\ <<\ \textcolor{stringliteral}{"{}-\/"{}};}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00065}00065\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00067}00067\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c}{ExecutionResult::SUCCESS}},\ 5,\ 1,\ ss.str());}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00068}00068\ \}}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00082}\mbox{\hyperlink{group___event_commands_ga6f817db327c7b16cf49575635e595004}{00082}}\ \mbox{\hyperlink{struct_frame}{Frame}}\ \mbox{\hyperlink{group___event_commands_ga6f817db327c7b16cf49575635e595004}{handleGetEventCount}}(\textcolor{keyword}{const}\ std::string\&\ param,\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{OperationType}}\ operationType)\ \{}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00083}00083\ \ \ \ \ \textcolor{keywordflow}{if}\ (operationType\ !=\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8}{OperationType::GET}}\ ||\ !param.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 5,\ 2,\ \textcolor{stringliteral}{"{}INVALID\ REQUEST"{}});}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00085}00085\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00087}00087\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c}{ExecutionResult::SUCCESS}},\ 5,\ 2,\ }
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::to\_string(\mbox{\hyperlink{event__manager_8cpp_a2a686792b51ec2b9e1b7bfc9faef92f7}{eventManager}}.getEventCount()));}
+\DoxyCodeLine{\Hypertarget{event__commands_8cpp_source_l00089}00089\ \}\ \textcolor{comment}{//\ end\ of\ EventCommands\ group}}
+
+\end{DoxyCode}

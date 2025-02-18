@@ -1,5 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__i_sensor_8cpp" xml:lang="en-US">
-<title>lib/ISensor.cpp File Reference</title>
-<indexterm><primary>lib/ISensor.cpp</primary></indexterm>
-<programlisting linenumbering="unnumbered">#include &quot;ISensor.h&quot;<?linebreak?>#include &quot;lib/BH1750/BH1750_WRAPPER.h&quot;<?linebreak?>#include &quot;lib/BME280/BME280_WRAPPER.h&quot;<?linebreak?>#include &quot;lib/HMC5883L/HMC5883L_WRAPPER.h&quot;<?linebreak?></programlisting></section>

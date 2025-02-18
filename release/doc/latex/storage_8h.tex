@@ -1,0 +1,95 @@
+\doxysection{storage.\+h File Reference}
+\hypertarget{storage_8h}{}\label{storage_8h}\index{storage.h@{storage.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$hardware/clocks.\+h$>$}\newline
+{\ttfamily \#include $<$hardware/flash.\+h$>$}\newline
+{\ttfamily \#include "{}blockdevice/flash.\+h"{}}\newline
+{\ttfamily \#include "{}blockdevice/sd.\+h"{}}\newline
+{\ttfamily \#include "{}filesystem/littlefs.\+h"{}}\newline
+{\ttfamily \#include "{}filesystem/vfs.\+h"{}}\newline
+{\ttfamily \#include "{}pin\+\_\+config.\+h"{}}\newline
+{\ttfamily \#include "{}lfs.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_file_handle}{File\+Handle}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{storage_8h_afb19e37469a751aa61de3dcd0c70b4b0}{fs\+\_\+init}} (void)
+\item 
+\mbox{\hyperlink{struct_file_handle}{File\+Handle}} \mbox{\hyperlink{storage_8h_a921d0d7089c0c7731762035e7feeb27a}{fs\+\_\+open\+\_\+file}} (const char \texorpdfstring{$\ast$}{*}filename, const char \texorpdfstring{$\ast$}{*}mode)
+\item 
+ssize\+\_\+t \mbox{\hyperlink{storage_8h_aab35cc4af25dd4a32624e51bf0fcda5b}{fs\+\_\+write\+\_\+file}} (\mbox{\hyperlink{struct_file_handle}{File\+Handle}} \&handle, const void \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}, size\+\_\+t size)
+\item 
+ssize\+\_\+t \mbox{\hyperlink{storage_8h_a259e40f946e1178329ed6cdf18c35b0c}{fs\+\_\+read\+\_\+file}} (\mbox{\hyperlink{struct_file_handle}{File\+Handle}} \&handle, void \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}, size\+\_\+t size)
+\item 
+bool \mbox{\hyperlink{storage_8h_a1ed8daa820da91b458072334ecec9618}{fs\+\_\+close\+\_\+file}} (\mbox{\hyperlink{struct_file_handle}{File\+Handle}} \&handle)
+\item 
+bool \mbox{\hyperlink{storage_8h_a4d0e5bbd1f57f47164521ca84c8e6fd1}{fs\+\_\+file\+\_\+exists}} (const char \texorpdfstring{$\ast$}{*}filename)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{storage_8h_afb19e37469a751aa61de3dcd0c70b4b0}\index{storage.h@{storage.h}!fs\_init@{fs\_init}}
+\index{fs\_init@{fs\_init}!storage.h@{storage.h}}
+\doxysubsubsection{\texorpdfstring{fs\_init()}{fs\_init()}}
+{\footnotesize\ttfamily \label{storage_8h_afb19e37469a751aa61de3dcd0c70b4b0} 
+bool fs\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{storage_8cpp_source_l00009}{9}} of file \mbox{\hyperlink{storage_8cpp_source}{storage.\+cpp}}.
+
+\Hypertarget{storage_8h_a921d0d7089c0c7731762035e7feeb27a}\index{storage.h@{storage.h}!fs\_open\_file@{fs\_open\_file}}
+\index{fs\_open\_file@{fs\_open\_file}!storage.h@{storage.h}}
+\doxysubsubsection{\texorpdfstring{fs\_open\_file()}{fs\_open\_file()}}
+{\footnotesize\ttfamily \label{storage_8h_a921d0d7089c0c7731762035e7feeb27a} 
+\mbox{\hyperlink{struct_file_handle}{File\+Handle}} fs\+\_\+open\+\_\+file (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{mode}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{storage_8cpp_source_l00037}{37}} of file \mbox{\hyperlink{storage_8cpp_source}{storage.\+cpp}}.
+
+\Hypertarget{storage_8h_aab35cc4af25dd4a32624e51bf0fcda5b}\index{storage.h@{storage.h}!fs\_write\_file@{fs\_write\_file}}
+\index{fs\_write\_file@{fs\_write\_file}!storage.h@{storage.h}}
+\doxysubsubsection{\texorpdfstring{fs\_write\_file()}{fs\_write\_file()}}
+{\footnotesize\ttfamily \label{storage_8h_aab35cc4af25dd4a32624e51bf0fcda5b} 
+ssize\+\_\+t fs\+\_\+write\+\_\+file (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_file_handle}{File\+Handle}} \&}]{handle}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{buffer}{, }\item[{size\+\_\+t}]{size}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{storage_8cpp_source_l00058}{58}} of file \mbox{\hyperlink{storage_8cpp_source}{storage.\+cpp}}.
+
+\Hypertarget{storage_8h_a259e40f946e1178329ed6cdf18c35b0c}\index{storage.h@{storage.h}!fs\_read\_file@{fs\_read\_file}}
+\index{fs\_read\_file@{fs\_read\_file}!storage.h@{storage.h}}
+\doxysubsubsection{\texorpdfstring{fs\_read\_file()}{fs\_read\_file()}}
+{\footnotesize\ttfamily \label{storage_8h_a259e40f946e1178329ed6cdf18c35b0c} 
+ssize\+\_\+t fs\+\_\+read\+\_\+file (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_file_handle}{File\+Handle}} \&}]{handle}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{buffer}{, }\item[{size\+\_\+t}]{size}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{storage_8cpp_source_l00070}{70}} of file \mbox{\hyperlink{storage_8cpp_source}{storage.\+cpp}}.
+
+\Hypertarget{storage_8h_a1ed8daa820da91b458072334ecec9618}\index{storage.h@{storage.h}!fs\_close\_file@{fs\_close\_file}}
+\index{fs\_close\_file@{fs\_close\_file}!storage.h@{storage.h}}
+\doxysubsubsection{\texorpdfstring{fs\_close\_file()}{fs\_close\_file()}}
+{\footnotesize\ttfamily \label{storage_8h_a1ed8daa820da91b458072334ecec9618} 
+bool fs\+\_\+close\+\_\+file (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_file_handle}{File\+Handle}} \&}]{handle}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{storage_8cpp_source_l00082}{82}} of file \mbox{\hyperlink{storage_8cpp_source}{storage.\+cpp}}.
+
+\Hypertarget{storage_8h_a4d0e5bbd1f57f47164521ca84c8e6fd1}\index{storage.h@{storage.h}!fs\_file\_exists@{fs\_file\_exists}}
+\index{fs\_file\_exists@{fs\_file\_exists}!storage.h@{storage.h}}
+\doxysubsubsection{\texorpdfstring{fs\_file\_exists()}{fs\_file\_exists()}}
+{\footnotesize\ttfamily \label{storage_8h_a4d0e5bbd1f57f47164521ca84c8e6fd1} 
+bool fs\+\_\+file\+\_\+exists (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{storage_8cpp_source_l00099}{99}} of file \mbox{\hyperlink{storage_8cpp_source}{storage.\+cpp}}.
+

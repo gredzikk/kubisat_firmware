@@ -1,0 +1,73 @@
+\doxysection{diagnostic\+\_\+commands.\+cpp}
+\hypertarget{diagnostic__commands_8cpp_source}{}\label{diagnostic__commands_8cpp_source}\index{commands/diagnostic\_commands.cpp@{commands/diagnostic\_commands.cpp}}
+\mbox{\hyperlink{diagnostic__commands_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{communication_8h}{communication.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{commands_8h}{commands.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}pico/stdlib.h"{}}}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}pico/bootrom.h"{}}\ }
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00019}\mbox{\hyperlink{group___diagnostic_commands_gade74b82cf2c20d93c5e0ce624cd7ca77}{00019}}\ \mbox{\hyperlink{struct_frame}{Frame}}\ \mbox{\hyperlink{group___diagnostic_commands_gade74b82cf2c20d93c5e0ce624cd7ca77}{handleListCommands}}(\textcolor{keyword}{const}\ std::string\&\ param,\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{OperationType}}\ operationType)\ \{}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00020}00020\ \ \ \ \ \textcolor{keywordflow}{if}\ (!param.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 1,\ 0,\ \textcolor{stringliteral}{"{}PARAM\ UNNECESSARY"{}});}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00022}00022\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00024}00024\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(operationType\ ==\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8}{OperationType::GET}}))\ \{}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 1,\ 0,\ \textcolor{stringliteral}{"{}INVALID\ OPERATION"{}});}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00026}00026\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00028}00028\ \ \ \ \ std::stringstream\ ss;}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00029}00029\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ entry\ :\ \mbox{\hyperlink{commands_8cpp_a04a0515603ba347ef314678876f3fa26}{commandHandlers}})\ \{}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ uint32\_t\ commandKey\ =\ entry.first;}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ uint8\_t\ \mbox{\hyperlink{event__manager_8h_ad4291fcb880eb5ecb178b53e32f55741}{group}}\ =\ (commandKey\ >>\ 8)\ \&\ 0xFF;}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ uint8\_t\ command\ =\ commandKey\ \&\ 0xFF;}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ ss\ <<\ \textcolor{stringliteral}{"{}Group:\ "{}}\ <<\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{event__manager_8h_ad4291fcb880eb5ecb178b53e32f55741}{group}})}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{},\ Command:\ "{}}\ <<\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(command)\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00036}00036\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00038}00038\ \ \ \ \ std::string\ commandList\ =\ ss.str();}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00039}00039\ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(commandList,\ \textcolor{keyword}{true});\ \textcolor{comment}{//\ Print\ to\ UART}}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c}{ExecutionResult::SUCCESS}},\ 1,\ 0,\ \textcolor{stringliteral}{"{}Commands\ listed\ on\ UART"{}});}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00042}00042\ \}}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00052}\mbox{\hyperlink{group___diagnostic_commands_ga5ebac5711334cb3584974b2b74556543}{00052}}\ \mbox{\hyperlink{struct_frame}{Frame}}\ \mbox{\hyperlink{group___diagnostic_commands_ga5ebac5711334cb3584974b2b74556543}{handleGetBuildVersion}}(\textcolor{keyword}{const}\ std::string\&\ param,\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{OperationType}}\ operationType)\ \{}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00053}00053\ \ \ \ \ \textcolor{keywordflow}{if}\ (!param.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 1,\ 1,\ \textcolor{stringliteral}{"{}PARAM\ UNECESSARY"{}});}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00055}00055\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00056}00056\ \ \ \ \ \textcolor{keywordflow}{if}\ (operationType\ ==\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a7528035a93ee69cedb1dbddb2f0bfcc8}{OperationType::GET}})\ \{}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c}{ExecutionResult::SUCCESS}},\ 1,\ 1,\ std::to\_string(\mbox{\hyperlink{build__number_8h_ae7f90861d8c4d5b1cbdcf71d325feea2}{BUILD\_NUMBER}}));}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00058}00058\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00059}00059\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 1,\ 1,\ \textcolor{stringliteral}{"{}INVALID\ OPERATION"{}});}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00060}00060\ \}}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00070}\mbox{\hyperlink{group___diagnostic_commands_ga3a6c6092cd01fd9c13ab429f4a34326d}{00070}}\ \mbox{\hyperlink{struct_frame}{Frame}}\ \mbox{\hyperlink{group___diagnostic_commands_ga3a6c6092cd01fd9c13ab429f4a34326d}{handleEnterBootloaderMode}}(\textcolor{keyword}{const}\ std::string\&\ param,\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{OperationType}}\ operationType)\ \{}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00071}00071\ \ \ \ \ \textcolor{keywordflow}{if}\ (!param.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 1,\ 9,\ \textcolor{stringliteral}{"{}PARAM\ UNNECESSARY"{}});}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00073}00073\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00075}00075\ \ \ \ \ \textcolor{keywordflow}{if}\ (operationType\ !=\ \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a8c52684db8f49511e9b44471716bf164}{OperationType::SET}})\ \{}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5}{ExecutionResult::ERROR}},\ 1,\ 9,\ \textcolor{stringliteral}{"{}INVALID\ OPERATION"{}});}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00077}00077\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00079}00079\ \ \ \ \ \textcolor{comment}{//\ Build\ the\ success\ frame\ *before*\ resetting}}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00080}00080\ \ \ \ \ \mbox{\hyperlink{struct_frame}{Frame}}\ successFrame\ =\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c}{ExecutionResult::SUCCESS}},\ 1,\ 9,\ \textcolor{stringliteral}{"{}REBOOT\ BOOTSEL"{}});}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00082}00082\ \ \ \ \ \textcolor{comment}{//\ Send\ the\ success\ frame}}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00083}00083\ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(\textcolor{stringliteral}{"{}Sending\ BOOTSEL\ confirmation..."{}});}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00084}00084\ \ \ \ \ \mbox{\hyperlink{communication_8h_a752e7cc27f52d4ba064e691b3e240ed8}{sendFrame}}(successFrame);\ \textcolor{comment}{//\ Assuming\ you\ have\ a\ sendFrame\ function}}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00086}00086\ \ \ \ \ \textcolor{comment}{//\ Delay\ to\ ensure\ the\ frame\ is\ sent}}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00087}00087\ \ \ \ \ sleep\_ms(100);}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00089}00089\ \ \ \ \ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(\textcolor{stringliteral}{"{}Entering\ BOOTSEL\ mode..."{}});}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00090}00090\ \ \ \ \ reset\_usb\_boot(0,\ 0);\ \textcolor{comment}{//\ Trigger\ BOOTSEL\ mode}}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00092}00092\ \ \ \ \ \textcolor{comment}{//\ The\ code\ will\ never\ reach\ here\ because\ the\ Pico\ will\ reset}}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00093}00093\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{communication_8h_a54afeb73435419551a1b51a3fd5c3266}{buildFrame}}(\mbox{\hyperlink{protocol_8h_ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c}{ExecutionResult::SUCCESS}},\ 1,\ 9,\ \textcolor{stringliteral}{"{}Entering\ BOOTSEL\ mode"{}});}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00094}00094\ \}}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00095}00095\ \ }
+
+\end{DoxyCode}

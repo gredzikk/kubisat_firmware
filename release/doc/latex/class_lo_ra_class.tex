@@ -1,0 +1,891 @@
+\doxysection{Lo\+Ra\+Class Class Reference}
+\hypertarget{class_lo_ra_class}{}\label{class_lo_ra_class}\index{LoRaClass@{LoRaClass}}
+
+
+{\ttfamily \#include $<$Lo\+Ra-\/\+RP2040.\+h$>$}
+
+Inheritance diagram for Lo\+Ra\+Class\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_lo_ra_class}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_lo_ra_class_a750092f22f3838b419eafb8b411588e0}{Lo\+Ra\+Class}} ()
+\item 
+int \mbox{\hyperlink{class_lo_ra_class_a3c5b6ee156c14f20238f46292c116d96}{begin}} (long frequency)
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_a7a444720541f652a1352b643b6d35369}{end}} ()
+\item 
+int \mbox{\hyperlink{class_lo_ra_class_a22d4ee8aaded004bb91b70ee15c57e2d}{begin\+Packet}} (int implicit\+Header=false)
+\item 
+int \mbox{\hyperlink{class_lo_ra_class_a6ad8fad2fa5b9c04ca8a0e0184673685}{end\+Packet}} (bool async=false)
+\item 
+int \mbox{\hyperlink{class_lo_ra_class_a03104c1301f072b6a259bf6d18161069}{parse\+Packet}} (int size=0)
+\item 
+int \mbox{\hyperlink{class_lo_ra_class_acecb609453b16a9d296f1a8ada54dead}{packet\+Rssi}} ()
+\item 
+float \mbox{\hyperlink{class_lo_ra_class_ada0d2844934062d1b09eca415f0ea28c}{packet\+Snr}} ()
+\item 
+long \mbox{\hyperlink{class_lo_ra_class_af16e40f9c82f512287b7010d490e7b4c}{packet\+Frequency\+Error}} ()
+\item 
+int \mbox{\hyperlink{class_lo_ra_class_a67adcbfff786a1915d9ac46e1163d411}{rssi}} ()
+\item 
+virtual size\+\_\+t \mbox{\hyperlink{class_lo_ra_class_a90b450cefff42e5522be08d159a93b44}{write}} (uint8\+\_\+t byte)
+\item 
+virtual size\+\_\+t \mbox{\hyperlink{class_lo_ra_class_a4b251b35d67bd9363dc44b6324cfc69c}{write}} (const uint8\+\_\+t \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}, size\+\_\+t size)
+\item 
+virtual int \mbox{\hyperlink{class_lo_ra_class_a99f2ee51a5ab27319cc965ebd575e58c}{available}} ()
+\item 
+virtual int \mbox{\hyperlink{class_lo_ra_class_a79c869845ca0bab8bca42cc2a6ea96bb}{read}} ()
+\item 
+virtual int \mbox{\hyperlink{class_lo_ra_class_aef2cd89f65d2833bcfa6e6d1134982cd}{peek}} ()
+\item 
+virtual void \mbox{\hyperlink{class_lo_ra_class_a91c86c4a6e15c86d9343731b81dd0d25}{flush}} ()
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_af2298ce6d5c4c2895ca681b360a9fef4}{on\+Cad\+Done}} (void(\texorpdfstring{$\ast$}{*}callback)(bool))
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_ac61f05896ad09462aa690fa5eb0f58b9}{on\+Receive}} (void(\texorpdfstring{$\ast$}{*}callback)(int))
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_a5f77504f5bca6479c019b2924dec9cc5}{on\+Tx\+Done}} (void(\texorpdfstring{$\ast$}{*}callback)())
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_a3a19d8829af07604d570f4085a4eec45}{receive}} (int size=0)
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_aa5cd2912f8561be3072b5306390a73e6}{channel\+Activity\+Detection}} (void)
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_ab0397413dc995dedb08f2c560e79b01c}{idle}} ()
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_a24390e2c96490b16ca8733e274164ae0}{sleep}} ()
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_ae113ad79caf2255287433de45b0e5b5e}{set\+Tx\+Power}} (int level, int output\+Pin=\mbox{\hyperlink{pin__config_8h_ab6ed143304b1d46d46eca2713b74c54d}{PA\+\_\+\+OUTPUT\+\_\+\+PA\+\_\+\+BOOST\+\_\+\+PIN}})
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_ab754b002b04a9761ff4bee201b9ff560}{set\+Frequency}} (long frequency)
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_aff3deaecc03da514af3a05e5e0c38e69}{set\+Spreading\+Factor}} (int sf)
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_ad4d841d74015f7fc1139ed0ad33dc4c2}{set\+Signal\+Bandwidth}} (long sbw)
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_a178a3fdb566dfcc4377e783af868d255}{set\+Coding\+Rate4}} (int denominator)
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_a2e9ead473d6afc40aafa280806052ffc}{set\+Preamble\+Length}} (long length)
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_a4e0190dbf43200a959ef38ff910aee2d}{set\+Sync\+Word}} (int sw)
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_aee4f452ce8b4ff6d8e7c30aff7e77978}{enable\+Crc}} ()
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_a6dc289bf94ecbbaddb406e863533ab45}{disable\+Crc}} ()
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_a97b3af3bb24f1be3300b74e3e3dc05bb}{enable\+Invert\+IQ}} ()
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_ad1c288b5a9c4163682d5ebaf8b1d31e5}{disable\+Invert\+IQ}} ()
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_ac103b2909b8eb353b28b7982251881a3}{set\+OCP}} (uint8\+\_\+t mA)
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_aae3ff6ac6b8e2150f3fa5975f391738b}{set\+Gain}} (uint8\+\_\+t gain)
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_aee33030679f27bb763fb6819f38baa05}{crc}} ()
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_a233f3f02961eb108ba509a8147237028}{no\+Crc}} ()
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_lo_ra_class_abc9bb5ba3fd5c9602cad549a93855d76}{random}} ()
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_ab725750b06ea934b082d83c757d1abef}{set\+Pins}} (int ss=\mbox{\hyperlink{pin__config_8h_a0def6062932193192186b305f79b69ba}{LORA\+\_\+\+DEFAULT\+\_\+\+SS\+\_\+\+PIN}}, int reset=\mbox{\hyperlink{pin__config_8h_aa55d8819212116c94195ae04d39c7722}{LORA\+\_\+\+DEFAULT\+\_\+\+RESET\+\_\+\+PIN}}, int dio0=\mbox{\hyperlink{pin__config_8h_a03b70d2799e743f3b9504f1af09f6056}{LORA\+\_\+\+DEFAULT\+\_\+\+DIO0\+\_\+\+PIN}})
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_a5e7d11bd4b3a73de00eadd2d77c26894}{set\+SPI}} (spi\+\_\+inst\+\_\+t \&spi)
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_adf94520d09569eb210e2e96751242d14}{set\+SPIFrequency}} (uint32\+\_\+t frequency)
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_a83cb2074d43650360c8199c5a393e3ba}{dump\+Registers}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_print}{Print}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_print_a1b9fe938883bb7b4bce8fba012dab112}{Print}} ()
+\item 
+int \mbox{\hyperlink{class_print_a88a4a829fb5d589efb43955ad0cbddcc}{get\+Write\+Error}} ()
+\item 
+void \mbox{\hyperlink{class_print_aec9ecf84cc6d9087a650def3cefc459e}{clear\+Write\+Error}} ()
+\item 
+size\+\_\+t \mbox{\hyperlink{class_print_a5b40e0e9cab1f2fe5bb0cb22ffe5adda}{write}} (const char \texorpdfstring{$\ast$}{*}str)
+\item 
+size\+\_\+t \mbox{\hyperlink{class_print_abfdd93a61c4b95a3ba41680188505e73}{write}} (const char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}, size\+\_\+t size)
+\item 
+virtual int \mbox{\hyperlink{class_print_ae278602698f895c25820f18da4e765be}{available\+For\+Write}} ()
+\item 
+size\+\_\+t \mbox{\hyperlink{class_print_a1e411d07a8ffec5faf7ce485bac0f029}{print}} (char)
+\item 
+size\+\_\+t \mbox{\hyperlink{class_print_aba208d0aaf8ad070829bdd0e4a7cd092}{print}} (const char \texorpdfstring{$\ast$}{*})
+\item 
+size\+\_\+t \mbox{\hyperlink{class_print_ae50ed3394583e660f6fed94c12758426}{print}} (string c)
+\item 
+size\+\_\+t \mbox{\hyperlink{class_print_a97bd44df9222fa4a51a1266fab8d3bc1}{print}} (unsigned char, int=\mbox{\hyperlink{_print_8h_afe38ec6126e35e40049e27fdf4586ba5}{DEC}})
+\item 
+size\+\_\+t \mbox{\hyperlink{class_print_a32cb3cf32d701c797b2b2d1080052dfe}{print}} (int, int=\mbox{\hyperlink{_print_8h_afe38ec6126e35e40049e27fdf4586ba5}{DEC}})
+\item 
+size\+\_\+t \mbox{\hyperlink{class_print_a87275de35583868a370f43ce1c887750}{print}} (unsigned int, int=\mbox{\hyperlink{_print_8h_afe38ec6126e35e40049e27fdf4586ba5}{DEC}})
+\item 
+size\+\_\+t \mbox{\hyperlink{class_print_ab1fb2a2384c7b9f628943f5046e7d1c1}{print}} (long, int=\mbox{\hyperlink{_print_8h_afe38ec6126e35e40049e27fdf4586ba5}{DEC}})
+\item 
+size\+\_\+t \mbox{\hyperlink{class_print_a26a40be7a557c0bc391a15dce9f06954}{print}} (unsigned long, int=\mbox{\hyperlink{_print_8h_afe38ec6126e35e40049e27fdf4586ba5}{DEC}})
+\item 
+size\+\_\+t \mbox{\hyperlink{class_print_a669dd47fc762118a5a2052bf77d54dc8}{print}} (long long, int=\mbox{\hyperlink{_print_8h_afe38ec6126e35e40049e27fdf4586ba5}{DEC}})
+\item 
+size\+\_\+t \mbox{\hyperlink{class_print_a74a51acdc4faa11f63bc5302fb974844}{print}} (unsigned long long, int=\mbox{\hyperlink{_print_8h_afe38ec6126e35e40049e27fdf4586ba5}{DEC}})
+\item 
+size\+\_\+t \mbox{\hyperlink{class_print_ae8b4c025786c820afe0a90aeea01c9c5}{print}} (double, int=2)
+\item 
+size\+\_\+t \mbox{\hyperlink{class_print_ad337ce3f7977411b7d34d47a51e5737e}{println}} (const char\mbox{[}$\,$\mbox{]})
+\item 
+size\+\_\+t \mbox{\hyperlink{class_print_a554896a71162f967b5794401239d7a01}{println}} (char)
+\item 
+size\+\_\+t \mbox{\hyperlink{class_print_ac9afe80f50f0118d735295aec7727e50}{println}} (unsigned char, int=\mbox{\hyperlink{_print_8h_afe38ec6126e35e40049e27fdf4586ba5}{DEC}})
+\item 
+size\+\_\+t \mbox{\hyperlink{class_print_a738c88471cfb8eac7c8a804699971413}{println}} (int, int=\mbox{\hyperlink{_print_8h_afe38ec6126e35e40049e27fdf4586ba5}{DEC}})
+\item 
+size\+\_\+t \mbox{\hyperlink{class_print_ac87eed1fcb78641169ba2244278c899e}{println}} (unsigned int, int=\mbox{\hyperlink{_print_8h_afe38ec6126e35e40049e27fdf4586ba5}{DEC}})
+\item 
+size\+\_\+t \mbox{\hyperlink{class_print_a833fbec3ceba92e3ec95f51e026e4569}{println}} (long, int=\mbox{\hyperlink{_print_8h_afe38ec6126e35e40049e27fdf4586ba5}{DEC}})
+\item 
+size\+\_\+t \mbox{\hyperlink{class_print_aebee3c33ee5d8f10b6f378d5273742d0}{println}} (unsigned long, int=\mbox{\hyperlink{_print_8h_afe38ec6126e35e40049e27fdf4586ba5}{DEC}})
+\item 
+size\+\_\+t \mbox{\hyperlink{class_print_a3d0a0f3da98e9401d25b959b726e94ac}{println}} (long long, int=\mbox{\hyperlink{_print_8h_afe38ec6126e35e40049e27fdf4586ba5}{DEC}})
+\item 
+size\+\_\+t \mbox{\hyperlink{class_print_ab3b823d47192f2c87b54f485ee1a3617}{println}} (unsigned long long, int=\mbox{\hyperlink{_print_8h_afe38ec6126e35e40049e27fdf4586ba5}{DEC}})
+\item 
+size\+\_\+t \mbox{\hyperlink{class_print_a56e976b079361b6021ef7c2bedb397a2}{println}} (double, int=2)
+\item 
+size\+\_\+t \mbox{\hyperlink{class_print_a169b128f9e22f0c15883768f580541a2}{println}} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_a691417e927af503dacaa797a1bb9527f}{explicit\+Header\+Mode}} ()
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_ad06e31c18f7029e231d837a7eca7558e}{implicit\+Header\+Mode}} ()
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_a7e5a2b9f116b3e1d2bc38b3a796ee147}{handle\+Dio0\+Rise}} ()
+\item 
+bool \mbox{\hyperlink{class_lo_ra_class_a3b9ea4a954095979f6e3ae037d8c3d5e}{is\+Transmitting}} ()
+\item 
+int \mbox{\hyperlink{class_lo_ra_class_aa1b8dc4023526ec67c852555e6ed2593}{get\+Spreading\+Factor}} ()
+\item 
+long \mbox{\hyperlink{class_lo_ra_class_a810b0f66f8589f7bcbbe08ce80f41959}{get\+Signal\+Bandwidth}} ()
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_aa299808b2da9819eded073c84e1b219e}{set\+Ldo\+Flag}} ()
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_lo_ra_class_add581bfe66dd75108e22b18a4d6f89bf}{read\+Register}} (uint8\+\_\+t address)
+\item 
+void \mbox{\hyperlink{class_lo_ra_class_a77e7c77aa54174b352a26e1510f66f98}{write\+Register}} (uint8\+\_\+t address, uint8\+\_\+t value)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_lo_ra_class_a3a0c0649c595b1176b5fb1ae41210ee3}{single\+Transfer}} (uint8\+\_\+t address, uint8\+\_\+t value)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_lo_ra_class_adfc0af7af404b6de2d56129c5740bbfb}{on\+Dio0\+Rise}} (uint, uint32\+\_\+t)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+spi\+\_\+inst\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_lo_ra_class_afde12da42c7d4fd446d7dc12977bb598}{\+\_\+spi}}
+\item 
+int \mbox{\hyperlink{class_lo_ra_class_a3c3500b12c72e9474b9fa557b14d4098}{\+\_\+ss}}
+\item 
+int \mbox{\hyperlink{class_lo_ra_class_af9c2d6ee80f8a2e989964255f5eac9c9}{\+\_\+reset}}
+\item 
+int \mbox{\hyperlink{class_lo_ra_class_a4990cc8aaf2d588ec3bf73d6010026d5}{\+\_\+dio0}}
+\item 
+long \mbox{\hyperlink{class_lo_ra_class_af6692e2833e9ae88808ee093c2b2c356}{\+\_\+frequency}}
+\item 
+int \mbox{\hyperlink{class_lo_ra_class_a826b1370bbf70763b2cdb425b5692565}{\+\_\+packet\+Index}}
+\item 
+int \mbox{\hyperlink{class_lo_ra_class_ad8446dc91c11cb077e691f8574571c13}{\+\_\+implicit\+Header\+Mode}}
+\item 
+void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_lo_ra_class_adf277d5d849f23e5a987ccf072f1701f}{\+\_\+on\+Receive}} )(int)
+\item 
+void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_lo_ra_class_a072c4aa49f5668a8b781d6c666f1ceb2}{\+\_\+on\+Cad\+Done}} )(bool)
+\item 
+void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_lo_ra_class_a344a889ed61dd226b1bdd10dedf35a80}{\+\_\+on\+Tx\+Done}} )()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_print}{Print}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_print_a46656410e23c0ec14d7a01b38b3b6f00}{set\+Write\+Error}} (int err=1)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8h_source_l00017}{17}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8h_source}{Lo\+Ra-\/\+RP2040.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_lo_ra_class_a750092f22f3838b419eafb8b411588e0}\index{LoRaClass@{LoRaClass}!LoRaClass@{LoRaClass}}
+\index{LoRaClass@{LoRaClass}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{LoRaClass()}{LoRaClass()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a750092f22f3838b419eafb8b411588e0} 
+Lo\+Ra\+Class\+::\+Lo\+Ra\+Class (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00069}{69}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_lo_ra_class_a3c5b6ee156c14f20238f46292c116d96}\index{LoRaClass@{LoRaClass}!begin@{begin}}
+\index{begin@{begin}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a3c5b6ee156c14f20238f46292c116d96} 
+int Lo\+Ra\+Class\+::begin (\begin{DoxyParamCaption}\item[{long}]{frequency}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00080}{80}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_a7a444720541f652a1352b643b6d35369}\index{LoRaClass@{LoRaClass}!end@{end}}
+\index{end@{end}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a7a444720541f652a1352b643b6d35369} 
+void Lo\+Ra\+Class\+::end (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00149}{149}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_a22d4ee8aaded004bb91b70ee15c57e2d}\index{LoRaClass@{LoRaClass}!beginPacket@{beginPacket}}
+\index{beginPacket@{beginPacket}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{beginPacket()}{beginPacket()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a22d4ee8aaded004bb91b70ee15c57e2d} 
+int Lo\+Ra\+Class\+::begin\+Packet (\begin{DoxyParamCaption}\item[{int}]{implicit\+Header}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00158}{158}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_a6ad8fad2fa5b9c04ca8a0e0184673685}\index{LoRaClass@{LoRaClass}!endPacket@{endPacket}}
+\index{endPacket@{endPacket}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{endPacket()}{endPacket()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a6ad8fad2fa5b9c04ca8a0e0184673685} 
+int Lo\+Ra\+Class\+::end\+Packet (\begin{DoxyParamCaption}\item[{bool}]{async}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00180}{180}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_a03104c1301f072b6a259bf6d18161069}\index{LoRaClass@{LoRaClass}!parsePacket@{parsePacket}}
+\index{parsePacket@{parsePacket}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{parsePacket()}{parsePacket()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a03104c1301f072b6a259bf6d18161069} 
+int Lo\+Ra\+Class\+::parse\+Packet (\begin{DoxyParamCaption}\item[{int}]{size}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00215}{215}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_acecb609453b16a9d296f1a8ada54dead}\index{LoRaClass@{LoRaClass}!packetRssi@{packetRssi}}
+\index{packetRssi@{packetRssi}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{packetRssi()}{packetRssi()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_acecb609453b16a9d296f1a8ada54dead} 
+int Lo\+Ra\+Class\+::packet\+Rssi (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00261}{261}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_ada0d2844934062d1b09eca415f0ea28c}\index{LoRaClass@{LoRaClass}!packetSnr@{packetSnr}}
+\index{packetSnr@{packetSnr}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{packetSnr()}{packetSnr()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_ada0d2844934062d1b09eca415f0ea28c} 
+float Lo\+Ra\+Class\+::packet\+Snr (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00266}{266}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_af16e40f9c82f512287b7010d490e7b4c}\index{LoRaClass@{LoRaClass}!packetFrequencyError@{packetFrequencyError}}
+\index{packetFrequencyError@{packetFrequencyError}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{packetFrequencyError()}{packetFrequencyError()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_af16e40f9c82f512287b7010d490e7b4c} 
+long Lo\+Ra\+Class\+::packet\+Frequency\+Error (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00271}{271}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_a67adcbfff786a1915d9ac46e1163d411}\index{LoRaClass@{LoRaClass}!rssi@{rssi}}
+\index{rssi@{rssi}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{rssi()}{rssi()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a67adcbfff786a1915d9ac46e1163d411} 
+int Lo\+Ra\+Class\+::rssi (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00290}{290}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_a90b450cefff42e5522be08d159a93b44}\index{LoRaClass@{LoRaClass}!write@{write}}
+\index{write@{write}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a90b450cefff42e5522be08d159a93b44} 
+size\+\_\+t Lo\+Ra\+Class\+::write (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{byte}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_print_a5be30d49adae2406a270c29ba9a3e0a3}{Print}}.
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00295}{295}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_a4b251b35d67bd9363dc44b6324cfc69c}\index{LoRaClass@{LoRaClass}!write@{write}}
+\index{write@{write}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a4b251b35d67bd9363dc44b6324cfc69c} 
+size\+\_\+t Lo\+Ra\+Class\+::write (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{buffer}{, }\item[{size\+\_\+t}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_print_ad98d820df11e2697be1e4b1ea30b4a23}{Print}}.
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00300}{300}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_a99f2ee51a5ab27319cc965ebd575e58c}\index{LoRaClass@{LoRaClass}!available@{available}}
+\index{available@{available}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{available()}{available()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a99f2ee51a5ab27319cc965ebd575e58c} 
+int Lo\+Ra\+Class\+::available (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00320}{320}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_a79c869845ca0bab8bca42cc2a6ea96bb}\index{LoRaClass@{LoRaClass}!read@{read}}
+\index{read@{read}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a79c869845ca0bab8bca42cc2a6ea96bb} 
+int Lo\+Ra\+Class\+::read (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00325}{325}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_aef2cd89f65d2833bcfa6e6d1134982cd}\index{LoRaClass@{LoRaClass}!peek@{peek}}
+\index{peek@{peek}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{peek()}{peek()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_aef2cd89f65d2833bcfa6e6d1134982cd} 
+int Lo\+Ra\+Class\+::peek (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00336}{336}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_a91c86c4a6e15c86d9343731b81dd0d25}\index{LoRaClass@{LoRaClass}!flush@{flush}}
+\index{flush@{flush}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{flush()}{flush()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a91c86c4a6e15c86d9343731b81dd0d25} 
+void Lo\+Ra\+Class\+::flush (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_print_add7f8450dfdc7f94eeec685f220573f7}{Print}}.
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00354}{354}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_af2298ce6d5c4c2895ca681b360a9fef4}\index{LoRaClass@{LoRaClass}!onCadDone@{onCadDone}}
+\index{onCadDone@{onCadDone}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{onCadDone()}{onCadDone()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_af2298ce6d5c4c2895ca681b360a9fef4} 
+void Lo\+Ra\+Class\+::on\+Cad\+Done (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(bool)}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00369}{369}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_ac61f05896ad09462aa690fa5eb0f58b9}\index{LoRaClass@{LoRaClass}!onReceive@{onReceive}}
+\index{onReceive@{onReceive}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{onReceive()}{onReceive()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_ac61f05896ad09462aa690fa5eb0f58b9} 
+void Lo\+Ra\+Class\+::on\+Receive (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)(int)}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00358}{358}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_a5f77504f5bca6479c019b2924dec9cc5}\index{LoRaClass@{LoRaClass}!onTxDone@{onTxDone}}
+\index{onTxDone@{onTxDone}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{onTxDone()}{onTxDone()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a5f77504f5bca6479c019b2924dec9cc5} 
+void Lo\+Ra\+Class\+::on\+Tx\+Done (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{callback~}{)()}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00381}{381}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_a3a19d8829af07604d570f4085a4eec45}\index{LoRaClass@{LoRaClass}!receive@{receive}}
+\index{receive@{receive}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{receive()}{receive()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a3a19d8829af07604d570f4085a4eec45} 
+void Lo\+Ra\+Class\+::receive (\begin{DoxyParamCaption}\item[{int}]{size}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00392}{392}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_aa5cd2912f8561be3072b5306390a73e6}\index{LoRaClass@{LoRaClass}!channelActivityDetection@{channelActivityDetection}}
+\index{channelActivityDetection@{channelActivityDetection}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{channelActivityDetection()}{channelActivityDetection()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_aa5cd2912f8561be3072b5306390a73e6} 
+void Lo\+Ra\+Class\+::channel\+Activity\+Detection (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00408}{408}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_ab0397413dc995dedb08f2c560e79b01c}\index{LoRaClass@{LoRaClass}!idle@{idle}}
+\index{idle@{idle}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{idle()}{idle()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_ab0397413dc995dedb08f2c560e79b01c} 
+void Lo\+Ra\+Class\+::idle (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00414}{414}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_a24390e2c96490b16ca8733e274164ae0}\index{LoRaClass@{LoRaClass}!sleep@{sleep}}
+\index{sleep@{sleep}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{sleep()}{sleep()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a24390e2c96490b16ca8733e274164ae0} 
+void Lo\+Ra\+Class\+::sleep (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00419}{419}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_ae113ad79caf2255287433de45b0e5b5e}\index{LoRaClass@{LoRaClass}!setTxPower@{setTxPower}}
+\index{setTxPower@{setTxPower}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{setTxPower()}{setTxPower()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_ae113ad79caf2255287433de45b0e5b5e} 
+void Lo\+Ra\+Class\+::set\+Tx\+Power (\begin{DoxyParamCaption}\item[{int}]{level}{, }\item[{int}]{output\+Pin}{ = {\ttfamily \mbox{\hyperlink{pin__config_8h_ab6ed143304b1d46d46eca2713b74c54d}{PA\+\_\+\+OUTPUT\+\_\+\+PA\+\_\+\+BOOST\+\_\+\+PIN}}}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00424}{424}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_ab754b002b04a9761ff4bee201b9ff560}\index{LoRaClass@{LoRaClass}!setFrequency@{setFrequency}}
+\index{setFrequency@{setFrequency}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{setFrequency()}{setFrequency()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_ab754b002b04a9761ff4bee201b9ff560} 
+void Lo\+Ra\+Class\+::set\+Frequency (\begin{DoxyParamCaption}\item[{long}]{frequency}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00461}{461}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_aff3deaecc03da514af3a05e5e0c38e69}\index{LoRaClass@{LoRaClass}!setSpreadingFactor@{setSpreadingFactor}}
+\index{setSpreadingFactor@{setSpreadingFactor}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{setSpreadingFactor()}{setSpreadingFactor()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_aff3deaecc03da514af3a05e5e0c38e69} 
+void Lo\+Ra\+Class\+::set\+Spreading\+Factor (\begin{DoxyParamCaption}\item[{int}]{sf}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00477}{477}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_ad4d841d74015f7fc1139ed0ad33dc4c2}\index{LoRaClass@{LoRaClass}!setSignalBandwidth@{setSignalBandwidth}}
+\index{setSignalBandwidth@{setSignalBandwidth}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{setSignalBandwidth()}{setSignalBandwidth()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_ad4d841d74015f7fc1139ed0ad33dc4c2} 
+void Lo\+Ra\+Class\+::set\+Signal\+Bandwidth (\begin{DoxyParamCaption}\item[{long}]{sbw}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00517}{517}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_a178a3fdb566dfcc4377e783af868d255}\index{LoRaClass@{LoRaClass}!setCodingRate4@{setCodingRate4}}
+\index{setCodingRate4@{setCodingRate4}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{setCodingRate4()}{setCodingRate4()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a178a3fdb566dfcc4377e783af868d255} 
+void Lo\+Ra\+Class\+::set\+Coding\+Rate4 (\begin{DoxyParamCaption}\item[{int}]{denominator}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00560}{560}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_a2e9ead473d6afc40aafa280806052ffc}\index{LoRaClass@{LoRaClass}!setPreambleLength@{setPreambleLength}}
+\index{setPreambleLength@{setPreambleLength}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{setPreambleLength()}{setPreambleLength()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a2e9ead473d6afc40aafa280806052ffc} 
+void Lo\+Ra\+Class\+::set\+Preamble\+Length (\begin{DoxyParamCaption}\item[{long}]{length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00573}{573}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_a4e0190dbf43200a959ef38ff910aee2d}\index{LoRaClass@{LoRaClass}!setSyncWord@{setSyncWord}}
+\index{setSyncWord@{setSyncWord}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{setSyncWord()}{setSyncWord()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a4e0190dbf43200a959ef38ff910aee2d} 
+void Lo\+Ra\+Class\+::set\+Sync\+Word (\begin{DoxyParamCaption}\item[{int}]{sw}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00579}{579}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_aee4f452ce8b4ff6d8e7c30aff7e77978}\index{LoRaClass@{LoRaClass}!enableCrc@{enableCrc}}
+\index{enableCrc@{enableCrc}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{enableCrc()}{enableCrc()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_aee4f452ce8b4ff6d8e7c30aff7e77978} 
+void Lo\+Ra\+Class\+::enable\+Crc (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00584}{584}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_a6dc289bf94ecbbaddb406e863533ab45}\index{LoRaClass@{LoRaClass}!disableCrc@{disableCrc}}
+\index{disableCrc@{disableCrc}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{disableCrc()}{disableCrc()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a6dc289bf94ecbbaddb406e863533ab45} 
+void Lo\+Ra\+Class\+::disable\+Crc (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00589}{589}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_a97b3af3bb24f1be3300b74e3e3dc05bb}\index{LoRaClass@{LoRaClass}!enableInvertIQ@{enableInvertIQ}}
+\index{enableInvertIQ@{enableInvertIQ}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{enableInvertIQ()}{enableInvertIQ()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a97b3af3bb24f1be3300b74e3e3dc05bb} 
+void Lo\+Ra\+Class\+::enable\+Invert\+IQ (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00594}{594}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_ad1c288b5a9c4163682d5ebaf8b1d31e5}\index{LoRaClass@{LoRaClass}!disableInvertIQ@{disableInvertIQ}}
+\index{disableInvertIQ@{disableInvertIQ}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{disableInvertIQ()}{disableInvertIQ()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_ad1c288b5a9c4163682d5ebaf8b1d31e5} 
+void Lo\+Ra\+Class\+::disable\+Invert\+IQ (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00600}{600}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_ac103b2909b8eb353b28b7982251881a3}\index{LoRaClass@{LoRaClass}!setOCP@{setOCP}}
+\index{setOCP@{setOCP}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{setOCP()}{setOCP()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_ac103b2909b8eb353b28b7982251881a3} 
+void Lo\+Ra\+Class\+::set\+OCP (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{mA}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00606}{606}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_aae3ff6ac6b8e2150f3fa5975f391738b}\index{LoRaClass@{LoRaClass}!setGain@{setGain}}
+\index{setGain@{setGain}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{setGain()}{setGain()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_aae3ff6ac6b8e2150f3fa5975f391738b} 
+void Lo\+Ra\+Class\+::set\+Gain (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{gain}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00619}{619}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_aee33030679f27bb763fb6819f38baa05}\index{LoRaClass@{LoRaClass}!crc@{crc}}
+\index{crc@{crc}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{crc()}{crc()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_aee33030679f27bb763fb6819f38baa05} 
+void Lo\+Ra\+Class\+::crc (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8h_source_l00073}{73}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8h_source}{Lo\+Ra-\/\+RP2040.\+h}}.
+
+\Hypertarget{class_lo_ra_class_a233f3f02961eb108ba509a8147237028}\index{LoRaClass@{LoRaClass}!noCrc@{noCrc}}
+\index{noCrc@{noCrc}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{noCrc()}{noCrc()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a233f3f02961eb108ba509a8147237028} 
+void Lo\+Ra\+Class\+::no\+Crc (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8h_source_l00074}{74}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8h_source}{Lo\+Ra-\/\+RP2040.\+h}}.
+
+\Hypertarget{class_lo_ra_class_abc9bb5ba3fd5c9602cad549a93855d76}\index{LoRaClass@{LoRaClass}!random@{random}}
+\index{random@{random}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{random()}{random()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_abc9bb5ba3fd5c9602cad549a93855d76} 
+uint8\+\_\+t Lo\+Ra\+Class\+::random (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00645}{645}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_ab725750b06ea934b082d83c757d1abef}\index{LoRaClass@{LoRaClass}!setPins@{setPins}}
+\index{setPins@{setPins}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{setPins()}{setPins()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_ab725750b06ea934b082d83c757d1abef} 
+void Lo\+Ra\+Class\+::set\+Pins (\begin{DoxyParamCaption}\item[{int}]{ss}{ = {\ttfamily \mbox{\hyperlink{pin__config_8h_a0def6062932193192186b305f79b69ba}{LORA\+\_\+\+DEFAULT\+\_\+\+SS\+\_\+\+PIN}}}, }\item[{int}]{reset}{ = {\ttfamily \mbox{\hyperlink{pin__config_8h_aa55d8819212116c94195ae04d39c7722}{LORA\+\_\+\+DEFAULT\+\_\+\+RESET\+\_\+\+PIN}}}, }\item[{int}]{dio0}{ = {\ttfamily \mbox{\hyperlink{pin__config_8h_a03b70d2799e743f3b9504f1af09f6056}{LORA\+\_\+\+DEFAULT\+\_\+\+DIO0\+\_\+\+PIN}}}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00650}{650}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_a5e7d11bd4b3a73de00eadd2d77c26894}\index{LoRaClass@{LoRaClass}!setSPI@{setSPI}}
+\index{setSPI@{setSPI}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{setSPI()}{setSPI()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a5e7d11bd4b3a73de00eadd2d77c26894} 
+void Lo\+Ra\+Class\+::set\+SPI (\begin{DoxyParamCaption}\item[{spi\+\_\+inst\+\_\+t \&}]{spi}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00657}{657}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_adf94520d09569eb210e2e96751242d14}\index{LoRaClass@{LoRaClass}!setSPIFrequency@{setSPIFrequency}}
+\index{setSPIFrequency@{setSPIFrequency}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{setSPIFrequency()}{setSPIFrequency()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_adf94520d09569eb210e2e96751242d14} 
+void Lo\+Ra\+Class\+::set\+SPIFrequency (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{frequency}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00662}{662}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_a83cb2074d43650360c8199c5a393e3ba}\index{LoRaClass@{LoRaClass}!dumpRegisters@{dumpRegisters}}
+\index{dumpRegisters@{dumpRegisters}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{dumpRegisters()}{dumpRegisters()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a83cb2074d43650360c8199c5a393e3ba} 
+void Lo\+Ra\+Class\+::dump\+Registers (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00667}{667}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_a691417e927af503dacaa797a1bb9527f}\index{LoRaClass@{LoRaClass}!explicitHeaderMode@{explicitHeaderMode}}
+\index{explicitHeaderMode@{explicitHeaderMode}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{explicitHeaderMode()}{explicitHeaderMode()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a691417e927af503dacaa797a1bb9527f} 
+void Lo\+Ra\+Class\+::explicit\+Header\+Mode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00674}{674}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_ad06e31c18f7029e231d837a7eca7558e}\index{LoRaClass@{LoRaClass}!implicitHeaderMode@{implicitHeaderMode}}
+\index{implicitHeaderMode@{implicitHeaderMode}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{implicitHeaderMode()}{implicitHeaderMode()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_ad06e31c18f7029e231d837a7eca7558e} 
+void Lo\+Ra\+Class\+::implicit\+Header\+Mode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00681}{681}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_a7e5a2b9f116b3e1d2bc38b3a796ee147}\index{LoRaClass@{LoRaClass}!handleDio0Rise@{handleDio0Rise}}
+\index{handleDio0Rise@{handleDio0Rise}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{handleDio0Rise()}{handleDio0Rise()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a7e5a2b9f116b3e1d2bc38b3a796ee147} 
+void Lo\+Ra\+Class\+::handle\+Dio0\+Rise (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00688}{688}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_a3b9ea4a954095979f6e3ae037d8c3d5e}\index{LoRaClass@{LoRaClass}!isTransmitting@{isTransmitting}}
+\index{isTransmitting@{isTransmitting}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{isTransmitting()}{isTransmitting()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a3b9ea4a954095979f6e3ae037d8c3d5e} 
+bool Lo\+Ra\+Class\+::is\+Transmitting (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00201}{201}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_aa1b8dc4023526ec67c852555e6ed2593}\index{LoRaClass@{LoRaClass}!getSpreadingFactor@{getSpreadingFactor}}
+\index{getSpreadingFactor@{getSpreadingFactor}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{getSpreadingFactor()}{getSpreadingFactor()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_aa1b8dc4023526ec67c852555e6ed2593} 
+int Lo\+Ra\+Class\+::get\+Spreading\+Factor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00472}{472}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_a810b0f66f8589f7bcbbe08ce80f41959}\index{LoRaClass@{LoRaClass}!getSignalBandwidth@{getSignalBandwidth}}
+\index{getSignalBandwidth@{getSignalBandwidth}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{getSignalBandwidth()}{getSignalBandwidth()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a810b0f66f8589f7bcbbe08ce80f41959} 
+long Lo\+Ra\+Class\+::get\+Signal\+Bandwidth (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00497}{497}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_aa299808b2da9819eded073c84e1b219e}\index{LoRaClass@{LoRaClass}!setLdoFlag@{setLdoFlag}}
+\index{setLdoFlag@{setLdoFlag}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{setLdoFlag()}{setLdoFlag()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_aa299808b2da9819eded073c84e1b219e} 
+void Lo\+Ra\+Class\+::set\+Ldo\+Flag (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00547}{547}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_add581bfe66dd75108e22b18a4d6f89bf}\index{LoRaClass@{LoRaClass}!readRegister@{readRegister}}
+\index{readRegister@{readRegister}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{readRegister()}{readRegister()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_add581bfe66dd75108e22b18a4d6f89bf} 
+uint8\+\_\+t Lo\+Ra\+Class\+::read\+Register (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{address}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00723}{723}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_a77e7c77aa54174b352a26e1510f66f98}\index{LoRaClass@{LoRaClass}!writeRegister@{writeRegister}}
+\index{writeRegister@{writeRegister}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{writeRegister()}{writeRegister()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a77e7c77aa54174b352a26e1510f66f98} 
+void Lo\+Ra\+Class\+::write\+Register (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{address}{, }\item[{uint8\+\_\+t}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00728}{728}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_a3a0c0649c595b1176b5fb1ae41210ee3}\index{LoRaClass@{LoRaClass}!singleTransfer@{singleTransfer}}
+\index{singleTransfer@{singleTransfer}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{singleTransfer()}{singleTransfer()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a3a0c0649c595b1176b5fb1ae41210ee3} 
+uint8\+\_\+t Lo\+Ra\+Class\+::single\+Transfer (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{address}{, }\item[{uint8\+\_\+t}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00733}{733}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+\Hypertarget{class_lo_ra_class_adfc0af7af404b6de2d56129c5740bbfb}\index{LoRaClass@{LoRaClass}!onDio0Rise@{onDio0Rise}}
+\index{onDio0Rise@{onDio0Rise}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{onDio0Rise()}{onDio0Rise()}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_adfc0af7af404b6de2d56129c5740bbfb} 
+void Lo\+Ra\+Class\+::on\+Dio0\+Rise (\begin{DoxyParamCaption}\item[{uint}]{gpio}{, }\item[{uint32\+\_\+t}]{events}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source_l00747}{747}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8cpp_source}{Lo\+Ra-\/\+RP2040.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_lo_ra_class_afde12da42c7d4fd446d7dc12977bb598}\index{LoRaClass@{LoRaClass}!\_spi@{\_spi}}
+\index{\_spi@{\_spi}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{\_spi}{\_spi}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_afde12da42c7d4fd446d7dc12977bb598} 
+spi\+\_\+inst\+\_\+t\texorpdfstring{$\ast$}{*} Lo\+Ra\+Class\+::\+\_\+spi\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8h_source_l00104}{104}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8h_source}{Lo\+Ra-\/\+RP2040.\+h}}.
+
+\Hypertarget{class_lo_ra_class_a3c3500b12c72e9474b9fa557b14d4098}\index{LoRaClass@{LoRaClass}!\_ss@{\_ss}}
+\index{\_ss@{\_ss}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{\_ss}{\_ss}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a3c3500b12c72e9474b9fa557b14d4098} 
+int Lo\+Ra\+Class\+::\+\_\+ss\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8h_source_l00105}{105}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8h_source}{Lo\+Ra-\/\+RP2040.\+h}}.
+
+\Hypertarget{class_lo_ra_class_af9c2d6ee80f8a2e989964255f5eac9c9}\index{LoRaClass@{LoRaClass}!\_reset@{\_reset}}
+\index{\_reset@{\_reset}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{\_reset}{\_reset}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_af9c2d6ee80f8a2e989964255f5eac9c9} 
+int Lo\+Ra\+Class\+::\+\_\+reset\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8h_source_l00106}{106}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8h_source}{Lo\+Ra-\/\+RP2040.\+h}}.
+
+\Hypertarget{class_lo_ra_class_a4990cc8aaf2d588ec3bf73d6010026d5}\index{LoRaClass@{LoRaClass}!\_dio0@{\_dio0}}
+\index{\_dio0@{\_dio0}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{\_dio0}{\_dio0}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a4990cc8aaf2d588ec3bf73d6010026d5} 
+int Lo\+Ra\+Class\+::\+\_\+dio0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8h_source_l00107}{107}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8h_source}{Lo\+Ra-\/\+RP2040.\+h}}.
+
+\Hypertarget{class_lo_ra_class_af6692e2833e9ae88808ee093c2b2c356}\index{LoRaClass@{LoRaClass}!\_frequency@{\_frequency}}
+\index{\_frequency@{\_frequency}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{\_frequency}{\_frequency}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_af6692e2833e9ae88808ee093c2b2c356} 
+long Lo\+Ra\+Class\+::\+\_\+frequency\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8h_source_l00108}{108}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8h_source}{Lo\+Ra-\/\+RP2040.\+h}}.
+
+\Hypertarget{class_lo_ra_class_a826b1370bbf70763b2cdb425b5692565}\index{LoRaClass@{LoRaClass}!\_packetIndex@{\_packetIndex}}
+\index{\_packetIndex@{\_packetIndex}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{\_packetIndex}{\_packetIndex}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a826b1370bbf70763b2cdb425b5692565} 
+int Lo\+Ra\+Class\+::\+\_\+packet\+Index\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8h_source_l00109}{109}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8h_source}{Lo\+Ra-\/\+RP2040.\+h}}.
+
+\Hypertarget{class_lo_ra_class_ad8446dc91c11cb077e691f8574571c13}\index{LoRaClass@{LoRaClass}!\_implicitHeaderMode@{\_implicitHeaderMode}}
+\index{\_implicitHeaderMode@{\_implicitHeaderMode}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{\_implicitHeaderMode}{\_implicitHeaderMode}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_ad8446dc91c11cb077e691f8574571c13} 
+int Lo\+Ra\+Class\+::\+\_\+implicit\+Header\+Mode\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8h_source_l00110}{110}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8h_source}{Lo\+Ra-\/\+RP2040.\+h}}.
+
+\Hypertarget{class_lo_ra_class_adf277d5d849f23e5a987ccf072f1701f}\index{LoRaClass@{LoRaClass}!\_onReceive@{\_onReceive}}
+\index{\_onReceive@{\_onReceive}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{\_onReceive}{\_onReceive}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_adf277d5d849f23e5a987ccf072f1701f} 
+void(\texorpdfstring{$\ast$}{*} Lo\+Ra\+Class\+::\+\_\+on\+Receive) (int)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8h_source_l00111}{111}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8h_source}{Lo\+Ra-\/\+RP2040.\+h}}.
+
+\Hypertarget{class_lo_ra_class_a072c4aa49f5668a8b781d6c666f1ceb2}\index{LoRaClass@{LoRaClass}!\_onCadDone@{\_onCadDone}}
+\index{\_onCadDone@{\_onCadDone}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{\_onCadDone}{\_onCadDone}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a072c4aa49f5668a8b781d6c666f1ceb2} 
+void(\texorpdfstring{$\ast$}{*} Lo\+Ra\+Class\+::\+\_\+on\+Cad\+Done) (bool)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8h_source_l00112}{112}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8h_source}{Lo\+Ra-\/\+RP2040.\+h}}.
+
+\Hypertarget{class_lo_ra_class_a344a889ed61dd226b1bdd10dedf35a80}\index{LoRaClass@{LoRaClass}!\_onTxDone@{\_onTxDone}}
+\index{\_onTxDone@{\_onTxDone}!LoRaClass@{LoRaClass}}
+\doxysubsubsection{\texorpdfstring{\_onTxDone}{\_onTxDone}}
+{\footnotesize\ttfamily \label{class_lo_ra_class_a344a889ed61dd226b1bdd10dedf35a80} 
+void(\texorpdfstring{$\ast$}{*} Lo\+Ra\+Class\+::\+\_\+on\+Tx\+Done) ()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_lo_ra-_r_p2040_8h_source_l00113}{113}} of file \mbox{\hyperlink{_lo_ra-_r_p2040_8h_source}{Lo\+Ra-\/\+RP2040.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Lo\+Ra/\mbox{\hyperlink{_lo_ra-_r_p2040_8h}{Lo\+Ra-\/\+RP2040.\+h}}\item 
+lib/\+Lo\+Ra/\mbox{\hyperlink{_lo_ra-_r_p2040_8cpp}{Lo\+Ra-\/\+RP2040.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,71 @@
+\doxysection{utils.\+cpp File Reference}
+\hypertarget{utils_8cpp}{}\label{utils_8cpp}\index{utils.cpp@{utils.cpp}}
+{\ttfamily \#include "{}utils.\+h"{}}\newline
+{\ttfamily \#include "{}pico/multicore.\+h"{}}\newline
+{\ttfamily \#include "{}pico/sync.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{utils_8cpp_a905b7c29adff0a55966dc2bdd1578a6c}{LOG\+\_\+\+FILENAME}}~"{}log.\+txt"{}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uart\+Print}} (const std\+::string \&msg, bool log\+To\+File, uart\+\_\+inst\+\_\+t \texorpdfstring{$\ast$}{*}uart)
+\item 
+uint16\+\_\+t \mbox{\hyperlink{utils_8cpp_a662798a1967f4a4ea55257255d0fbbf4}{crc16}} (const uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, size\+\_\+t length)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static mutex\+\_\+t \mbox{\hyperlink{utils_8cpp_a1a79e1136e3879e08124c966946cf7b4}{uart\+\_\+mutex}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{utils_8cpp_a905b7c29adff0a55966dc2bdd1578a6c}\index{utils.cpp@{utils.cpp}!LOG\_FILENAME@{LOG\_FILENAME}}
+\index{LOG\_FILENAME@{LOG\_FILENAME}!utils.cpp@{utils.cpp}}
+\doxysubsubsection{\texorpdfstring{LOG\_FILENAME}{LOG\_FILENAME}}
+{\footnotesize\ttfamily \label{utils_8cpp_a905b7c29adff0a55966dc2bdd1578a6c} 
+\#define LOG\+\_\+\+FILENAME~"{}log.\+txt"{}}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}\index{utils.cpp@{utils.cpp}!uartPrint@{uartPrint}}
+\index{uartPrint@{uartPrint}!utils.cpp@{utils.cpp}}
+\doxysubsubsection{\texorpdfstring{uartPrint()}{uartPrint()}}
+{\footnotesize\ttfamily \label{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706} 
+void uart\+Print (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{msg}{, }\item[{bool}]{log\+To\+File}{, }\item[{uart\+\_\+inst\+\_\+t \texorpdfstring{$\ast$}{*}}]{uart}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00009}{9}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
+\Hypertarget{utils_8cpp_a662798a1967f4a4ea55257255d0fbbf4}\index{utils.cpp@{utils.cpp}!crc16@{crc16}}
+\index{crc16@{crc16}!utils.cpp@{utils.cpp}}
+\doxysubsubsection{\texorpdfstring{crc16()}{crc16()}}
+{\footnotesize\ttfamily \label{utils_8cpp_a662798a1967f4a4ea55257255d0fbbf4} 
+uint16\+\_\+t crc16 (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{size\+\_\+t}]{length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{utils_8cpp_a1a79e1136e3879e08124c966946cf7b4}\index{utils.cpp@{utils.cpp}!uart\_mutex@{uart\_mutex}}
+\index{uart\_mutex@{uart\_mutex}!utils.cpp@{utils.cpp}}
+\doxysubsubsection{\texorpdfstring{uart\_mutex}{uart\_mutex}}
+{\footnotesize\ttfamily \label{utils_8cpp_a1a79e1136e3879e08124c966946cf7b4} 
+mutex\+\_\+t uart\+\_\+mutex\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00007}{7}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
