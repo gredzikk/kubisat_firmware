@@ -5,7 +5,7 @@
  */
 #include "storage.h"
 #include "errno.h"
-
+#include "utils.h"
 
 /**
  * @file storage.cpp
@@ -21,7 +21,7 @@
  *          with littlefs and then attempts to mount again.
  */
 bool fs_init(void) {
-    printf("fs_init littlefs on SD card\n");
+    uartPrint("fs_init littlefs on SD card\n");
     blockdevice_t *sd = blockdevice_sd_create(SD_SPI_PORT,
                                               SD_MOSI_PIN,
                                               SD_MISO_PIN,
@@ -29,18 +29,23 @@ bool fs_init(void) {
                                               SD_CS_PIN,
                                               24 * MHZ,
                                               false);
-    filesystem_t *littlefs = filesystem_littlefs_create(500, 16);
-    int err = fs_mount("/", littlefs, sd);
+    filesystem_t *fat = filesystem_fat_create();
+
+    std::string statusString;
+    int err = fs_mount("/", fat, sd);
     if (err == -1) {
-        printf("format / with littlefs\n");
-        err = fs_format(littlefs, sd);
+        statusString = "Formatting / with FAT";
+        uartPrint(statusString);
+        err = fs_format(fat, sd);
         if (err == -1) {
-            printf("fs_format error: %s", strerror(errno));
+            statusString = "fs_format error: " + std::string(strerror(errno));
+            uartPrint(statusString);
             return false;
         }
-        err = fs_mount("/", littlefs, sd);
+        err = fs_mount("/", fat, sd);
         if (err == -1) {
-            printf("fs_mount error: %s", strerror(errno));
+            statusString = "fs_mount error: " + std::string(strerror(errno));
+            uartPrint(statusString);
             return false;
         }
     }
@@ -59,7 +64,8 @@ bool fs_init(void) {
  */
 FileHandle fs_open_file(const char* filename, const char* mode) {
     FileHandle handle = {-1, false};
-    
+    std::string errorStr;
+
     // Convert mode string to flags
     int flags = 0;
     if (strchr(mode, 'r')) flags |= O_RDONLY;
@@ -72,7 +78,8 @@ FileHandle fs_open_file(const char* filename, const char* mode) {
     if (handle.fd >= 0) {
         handle.is_open = true;
     } else {
-        printf("Failed to open file %s: %s\n", filename, strerror(errno));
+        errorStr = "Failed to open file " + std::string(filename) + ": " + strerror(errno);
+        uartPrint(errorStr);
     }
     
     return handle;
@@ -92,9 +99,12 @@ ssize_t fs_write_file(FileHandle& handle, const void* buffer, size_t size) {
         return -1;
     }
 
+    std::string errorStr;
+
     ssize_t written = write(handle.fd, buffer, size);
     if (written < 0) {
-        printf("Write failed: %s\n", strerror(errno));
+        errorStr = "Write failed: " + std::string(strerror(errno));
+        uartPrint(errorStr);
     }
     return written;
 }
@@ -113,9 +123,12 @@ ssize_t fs_read_file(FileHandle& handle, void* buffer, size_t size) {
         return -1;
     }
 
+    std::string errorStr;
+
     ssize_t bytes_read = read(handle.fd, buffer, size);
     if (bytes_read < 0) {
-        printf("Read failed: %s\n", strerror(errno));
+        errorStr = "Read failed " + std::string(strerror(errno));
+        uartPrint(errorStr);
     }
     return bytes_read;
 }
@@ -132,13 +145,16 @@ bool fs_close_file(FileHandle& handle) {
         return false;
     }
 
+    std::string errorStr;
+
     int result = close(handle.fd);
     if (result == 0) {
         handle.is_open = false;
         handle.fd = -1;
         return true;
     } else {
-        printf("Close failed: %s\n", strerror(errno));
+        errorStr = "Close failed " + std::string(strerror(errno));
+        uartPrint(errorStr);
         return false;
     }
 }

@@ -7,6 +7,7 @@
 #include <string>
 #include <hardware/i2c.h>
 #include "pico/stdlib.h"
+#include "pico/mutex.h"
 
 class PowerManager {
 public:
@@ -33,7 +34,7 @@ public:
 private:
     INA3221 ina3221;
     bool initialized;
-
+    recursive_mutex_t mutex;
     bool solarActive = false;
     bool usbConnected = false;
 };

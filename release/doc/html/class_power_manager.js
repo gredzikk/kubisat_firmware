@@ -20,6 +20,7 @@ var class_power_manager =
     [ "FALLING_TREND_REQUIRED", "class_power_manager.html#a17e01551bc0f14820b2430d697c4c6d2", null ],
     [ "ina3221", "class_power_manager.html#a5917758068dfeead4ae68840f5bfb493", null ],
     [ "initialized", "class_power_manager.html#a5cf8825fbe9a81810be2f444dff008f1", null ],
+    [ "mutex", "class_power_manager.html#a4ad6368f2ca15f6f68da17814e77870e", null ],
     [ "solarActive", "class_power_manager.html#a521e99a9e28cca2525988f572379c936", null ],
     [ "usbConnected", "class_power_manager.html#a3676187deac57a79034f59f58ac4b746", null ]
 ];

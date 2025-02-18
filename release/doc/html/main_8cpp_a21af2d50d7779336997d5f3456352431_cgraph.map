@@ -1,23 +1,26 @@
 <map id="initSystems" name="initSystems">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,132,96,159"/>
-<area shape="rect" id="Node000002" href="$frame_8cpp.html#a5f43260949ee244d3ee66068eb1d7fc1" title="Builds a Frame instance." alt="" coords="152,31,238,57"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="69,129,160,64,164,69,72,134"/>
-<area shape="rect" id="Node000004" href="$communication_8cpp.html#a520df448c1dc359f42111ac240081975" title="Initializes the LoRa radio module." alt="" coords="144,107,246,133"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="96,135,128,129,129,134,97,140"/>
-<area shape="rect" id="Node000006" href="$utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706" title="Prints a message to the UART with a timestamp and core number." alt="" coords="534,157,605,184"/>
-<area shape="poly" id="edge11_Node000001_Node000006" title=" " alt="" coords="96,145,519,166,519,171,96,150"/>
-<area shape="rect" id="Node000007" href="$send_8cpp.html#a752e7cc27f52d4ba064e691b3e240ed8" title="Sends a Frame using LoRa." alt="" coords="152,208,238,235"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="79,157,155,198,153,203,77,162"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,107,96,133"/>
+<area shape="rect" id="Node000002" href="$frame_8cpp.html#a5f43260949ee244d3ee66068eb1d7fc1" title="Builds a Frame instance." alt="" coords="152,5,238,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="64,105,99,74,142,42,149,38,152,42,145,46,102,79,68,109"/>
+<area shape="rect" id="Node000004" href="$storage_8cpp.html#afb19e37469a751aa61de3dcd0c70b4b0" title="Initializes the file system on the SD card." alt="" coords="167,56,223,83"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="90,104,151,82,153,87,92,109"/>
+<area shape="rect" id="Node000005" href="$utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706" title="Prints a message to the UART with a timestamp and core number." alt="" coords="534,132,605,159"/>
+<area shape="poly" id="edge13_Node000001_Node000005" title=" " alt="" coords="96,120,519,140,519,146,96,125"/>
+<area shape="rect" id="Node000006" href="$communication_8cpp.html#a520df448c1dc359f42111ac240081975" title="Initializes the LoRa radio module." alt="" coords="144,157,246,184"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="92,131,141,149,140,154,90,136"/>
+<area shape="rect" id="Node000008" href="$send_8cpp.html#a752e7cc27f52d4ba064e691b3e240ed8" title="Sends a Frame using LoRa." alt="" coords="152,259,238,285"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="66,132,172,245,168,249,62,135"/>
 <area shape="rect" id="Node000003" href="$utils__converters_8cpp.html#ab4cb9e6b491bd7711c69c9167a2b9286" title="Converts a ValueUnit to a string." alt="" coords="294,5,446,32"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="238,35,278,29,279,35,238,41"/>
-<area shape="rect" id="Node000005" href="$class_event_emitter.html#a539d733505f9a793439a9cfc4f2af079" title="Emits an event." alt="" coords="305,56,435,83"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="243,103,306,85,307,90,245,109"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="247,123,447,149,520,160,519,166,446,155,246,129"/>
-<area shape="rect" id="Node000008" href="$frame_8cpp.html#ab53898fb6f45dfc657837a665a070959" title="Encodes a Frame instance into a string." alt="" coords="320,259,420,285"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="239,231,308,251,306,256,238,236"/>
-<area shape="rect" id="Node000010" href="$send_8cpp.html#adcc720dc971ce8b237b26df434b65bb2" title="Sends a message using LoRa." alt="" coords="319,208,421,235"/>
-<area shape="poly" id="edge9_Node000007_Node000010" title=" " alt="" coords="238,219,304,219,304,224,238,224"/>
-<area shape="rect" id="Node000009" href="$utils__converters_8cpp.html#a82a11ce999902359454fa904a13ae297" title="Converts an OperationType to a string." alt="" coords="494,259,645,285"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="421,269,479,269,479,275,421,275"/>
-<area shape="poly" id="edge10_Node000010_Node000006" title=" " alt="" coords="421,206,519,181,520,186,422,211"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="238,16,278,16,278,21,238,21"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="224,68,323,77,385,86,447,99,523,123,521,128,446,104,384,92,322,83,223,74"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="246,165,518,146,519,151,247,170"/>
+<area shape="rect" id="Node000007" href="$class_event_emitter.html#a539d733505f9a793439a9cfc4f2af079" title="Emits an event." alt="" coords="305,208,435,235"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="245,182,307,201,306,206,243,187"/>
+<area shape="rect" id="Node000009" href="$frame_8cpp.html#ab53898fb6f45dfc657837a665a070959" title="Encodes a Frame instance into a string." alt="" coords="320,309,420,336"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="239,282,308,302,306,307,238,287"/>
+<area shape="rect" id="Node000011" href="$send_8cpp.html#adcc720dc971ce8b237b26df434b65bb2" title="Sends a message using LoRa." alt="" coords="319,259,421,285"/>
+<area shape="poly" id="edge11_Node000008_Node000011" title=" " alt="" coords="238,269,304,269,304,275,238,275"/>
+<area shape="rect" id="Node000010" href="$utils__converters_8cpp.html#a82a11ce999902359454fa904a13ae297" title="Converts an OperationType to a string." alt="" coords="494,309,645,336"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="421,320,479,320,479,325,421,325"/>
+<area shape="poly" id="edge12_Node000011_Node000005" title=" " alt="" coords="420,256,445,244,499,207,543,168,546,172,502,211,448,249,422,260"/>
 </map>

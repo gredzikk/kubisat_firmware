@@ -5,5 +5,6 @@ var searchData=
   ['mode_5fcontinious_5fen_2',['mode_continious_en',['../struct_i_n_a3221_1_1conf__reg__t.html#af152fe0cc058165ef37c6986e9d8177f',1,'INA3221::conf_reg_t']]],
   ['mode_5fshunt_5fen_3',['mode_shunt_en',['../struct_i_n_a3221_1_1conf__reg__t.html#a663e6b256bd24e6b9161e35a36aac0fc',1,'INA3221::conf_reg_t']]],
   ['month_4',['month',['../struct_date_time.html#ac895afb51c74941c50205f746b709148',1,'DateTime']]],
-  ['msgcount_5',['msgCount',['../communication_8cpp.html#a40654cfb6a32f90cfabc24c6a73398c3',1,'communication.cpp']]]
+  ['msgcount_5',['msgCount',['../communication_8cpp.html#a40654cfb6a32f90cfabc24c6a73398c3',1,'communication.cpp']]],
+  ['mutex_6',['mutex',['../class_power_manager.html#a4ad6368f2ca15f6f68da17814e77870e',1,'PowerManager']]]
 ];

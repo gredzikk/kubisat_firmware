@@ -2,10 +2,6 @@
 #include <time.h>
 #include "DS3231.h" // Include the DS3231 header
 
-// Declare the systemClock as extern
-extern DS3231 systemClock;
-
-
 /**
  * @defgroup ClockCommands Clock Management Commands
  * @brief Commands for managing system time and clock settings

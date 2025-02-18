@@ -34,5 +34,6 @@ var searchData=
   ['mpu6050wrapper_31',['MPU6050Wrapper',['../class_m_p_u6050_wrapper.html',1,'MPU6050Wrapper'],['../class_m_p_u6050_wrapper.html#a6f277b2721235fd28dca313699f87cd6',1,'MPU6050Wrapper::MPU6050Wrapper()']]],
   ['msg_5freceived_32',['MSG_RECEIVED',['../event__manager_8h.html#a0270a0464efae26aefb8cf32a45e20adaca7aa0062ea158ea48dfc6bc919193bd',1,'event_manager.h']]],
   ['msg_5fsent_33',['MSG_SENT',['../event__manager_8h.html#a0270a0464efae26aefb8cf32a45e20adaae15180da5243a7f3be270d71d5eed28',1,'event_manager.h']]],
-  ['msgcount_34',['msgCount',['../communication_8cpp.html#a40654cfb6a32f90cfabc24c6a73398c3',1,'communication.cpp']]]
+  ['msgcount_34',['msgCount',['../communication_8cpp.html#a40654cfb6a32f90cfabc24c6a73398c3',1,'communication.cpp']]],
+  ['mutex_35',['mutex',['../class_power_manager.html#a4ad6368f2ca15f6f68da17814e77870e',1,'PowerManager']]]
 ];

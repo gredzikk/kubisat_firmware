@@ -201,9 +201,10 @@ Frame handleGetCurrentDraw(const std::string& param, OperationType operationType
         return buildFrame(ExecutionResult::ERROR, 2, 7, "NOT ALLOWED");
     }
 
-    uartPrint("Getting current draw");
+    
     extern PowerManager powerManager;
     float currentDraw = powerManager.getCurrentDraw();
+    uartPrint("Getting current draw");
     return buildFrame(ExecutionResult::SUCCESS, 2, 7, std::to_string(currentDraw), ValueUnit::MILIAMP);
 }
 /** @} */ // end of PowerCommands group

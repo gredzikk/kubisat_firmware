@@ -48,7 +48,17 @@ bool initSystems() {
     radioInitSuccess = initializeRadio();
     
     // @todo[critical] Test sd card working
-    bool sdInitDone = false;//fs_init();
+    bool sdInitDone = fs_init();
+    if (sdInitDone){
+        FILE *fp = fopen(LOG_FILENAME, "a");
+        uartPrint("Log file opened.");
+        int bytesWritten = fprintf(fp, "System init started.\n");
+        uartPrint("Written " + std::to_string(bytesWritten) + " bytes.");
+        int closeStatus = fclose(fp);
+        uartPrint("Close file status: " + std::to_string(closeStatus));
+        fs_unmount("/");
+    }
+
     uartPrint("SD card init: " + std::to_string(sdInitDone));
     std::string bootString = "System init completed @ " + std::to_string(to_ms_since_boot(get_absolute_time())) + " ms";
     uartPrint(bootString);
