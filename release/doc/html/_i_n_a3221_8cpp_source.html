@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>KubiSat Firmware: lib/INA3221/INA3221.cpp Source File</title>
+<title>KubiSat Firmware: lib/powerman/INA3221/INA3221.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -105,7 +105,7 @@ $(function(){initNavTree('_i_n_a3221_8cpp_source.html',''); initResizable(true);
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;pico/stdlib.h&quot;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;hardware/i2c.h&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;<a class="code" href="pin__config_8h.html">pin_config.h</a>&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="pin__config_8h.html">pin_config.h</a>&quot;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="utils_8h.html">utils.h</a>&quot;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;sstream&gt;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
@@ -494,7 +494,7 @@ $(function(){initNavTree('_i_n_a3221_8cpp_source.html',''); initResizable(true);
 <div class="ttc" id="aclass_i_n_a3221_html_ae9398b8af7ddf999150f8e97c44e6b7d"><div class="ttname"><a href="class_i_n_a3221.html#ae9398b8af7ddf999150f8e97c44e6b7d">INA3221::getCurrent</a></div><div class="ttdeci">float getCurrent(ina3221_ch_t channel)</div><div class="ttdef"><b>Definition</b> <a href="#l00228">INA3221.cpp:228</a></div></div>
 <div class="ttc" id="aclass_i_n_a3221_html_aea00c9c6baf85bd94794ee7b3b47d2c7"><div class="ttname"><a href="class_i_n_a3221.html#aea00c9c6baf85bd94794ee7b3b47d2c7">INA3221::_write</a></div><div class="ttdeci">void _write(ina3221_reg_t reg, uint16_t *val)</div><div class="ttdef"><b>Definition</b> <a href="#l00061">INA3221.cpp:61</a></div></div>
 <div class="ttc" id="aclass_i_n_a3221_html_aec3368e9e3fb26d61f4859aef4d1622a"><div class="ttname"><a href="class_i_n_a3221.html#aec3368e9e3fb26d61f4859aef4d1622a">INA3221::setBusMeasDisable</a></div><div class="ttdeci">void setBusMeasDisable()</div><div class="ttdef"><b>Definition</b> <a href="#l00136">INA3221.cpp:136</a></div></div>
-<div class="ttc" id="aevent__manager_8h_html_a4fc3a0c58dfbd1e68224521185cb9384"><div class="ttname"><a href="event__manager_8h.html#a4fc3a0c58dfbd1e68224521185cb9384">id</a></div><div class="ttdeci">uint16_t id</div><div class="ttdef"><b>Definition</b> <a href="event__manager_8h_source.html#l00001">event_manager.h:1</a></div></div>
+<div class="ttc" id="aevent__manager_8h_html_a4fc3a0c58dfbd1e68224521185cb9384"><div class="ttname"><a href="event__manager_8h.html#a4fc3a0c58dfbd1e68224521185cb9384">id</a></div><div class="ttdeci">uint16_t id</div><div class="ttdoc">Sequence number.</div><div class="ttdef"><b>Definition</b> <a href="event__manager_8h_source.html#l00001">event_manager.h:1</a></div></div>
 <div class="ttc" id="apin__config_8h_html"><div class="ttname"><a href="pin__config_8h.html">pin_config.h</a></div></div>
 <div class="ttc" id="apin__config_8h_html_ae122c78708c186c48bc347669332c550"><div class="ttname"><a href="pin__config_8h.html#ae122c78708c186c48bc347669332c550">MAIN_I2C_PORT</a></div><div class="ttdeci">#define MAIN_I2C_PORT</div><div class="ttdef"><b>Definition</b> <a href="pin__config_8h_source.html#l00014">pin_config.h:14</a></div></div>
 <div class="ttc" id="astruct_i_n_a3221_1_1conf__reg__t_html"><div class="ttname"><a href="struct_i_n_a3221_1_1conf__reg__t.html">INA3221::conf_reg_t</a></div><div class="ttdef"><b>Definition</b> <a href="_i_n_a3221_8h_source.html#l00076">INA3221.h:76</a></div></div>
@@ -505,14 +505,14 @@ $(function(){initNavTree('_i_n_a3221_8cpp_source.html',''); initResizable(true);
 <div class="ttc" id="astruct_i_n_a3221_1_1conf__reg__t_html_ae5d8ffdeff64ebc70c018901b6e45319"><div class="ttname"><a href="struct_i_n_a3221_1_1conf__reg__t.html#ae5d8ffdeff64ebc70c018901b6e45319">INA3221::conf_reg_t::bus_conv_time</a></div><div class="ttdeci">uint16_t bus_conv_time</div><div class="ttdef"><b>Definition</b> <a href="_i_n_a3221_8h_source.html#l00081">INA3221.h:81</a></div></div>
 <div class="ttc" id="astruct_i_n_a3221_1_1conf__reg__t_html_aec23450c7605d5c0013b8fa27a72056c"><div class="ttname"><a href="struct_i_n_a3221_1_1conf__reg__t.html#aec23450c7605d5c0013b8fa27a72056c">INA3221::conf_reg_t::mode_bus_en</a></div><div class="ttdeci">uint16_t mode_bus_en</div><div class="ttdef"><b>Definition</b> <a href="_i_n_a3221_8h_source.html#l00078">INA3221.h:78</a></div></div>
 <div class="ttc" id="astruct_i_n_a3221_1_1conf__reg__t_html_af152fe0cc058165ef37c6986e9d8177f"><div class="ttname"><a href="struct_i_n_a3221_1_1conf__reg__t.html#af152fe0cc058165ef37c6986e9d8177f">INA3221::conf_reg_t::mode_continious_en</a></div><div class="ttdeci">uint16_t mode_continious_en</div><div class="ttdef"><b>Definition</b> <a href="_i_n_a3221_8h_source.html#l00079">INA3221.h:79</a></div></div>
-<div class="ttc" id="autils_8cpp_html_aacbcecbe6b5428e3571b06ab2104e706"><div class="ttname"><a href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a></div><div class="ttdeci">void uartPrint(const std::string &amp;msg, bool logToFile, uart_inst_t *uart)</div><div class="ttdef"><b>Definition</b> <a href="utils_8cpp_source.html#l00009">utils.cpp:9</a></div></div>
+<div class="ttc" id="autils_8cpp_html_aacbcecbe6b5428e3571b06ab2104e706"><div class="ttname"><a href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a></div><div class="ttdeci">void uartPrint(const std::string &amp;msg, bool logToFile, uart_inst_t *uart)</div><div class="ttdoc">Prints a message to the UART with a timestamp and core number.</div><div class="ttdef"><b>Definition</b> <a href="utils_8cpp_source.html#l00026">utils.cpp:26</a></div></div>
 <div class="ttc" id="autils_8h_html"><div class="ttname"><a href="utils_8h.html">utils.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_f5960531a42da83bf3626658025b2711.html">INA3221</a></li><li class="navelem"><a class="el" href="_i_n_a3221_8cpp.html">INA3221.cpp</a></li>
+    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_2a555c3ab4d03c92730db360c69e26f3.html">powerman</a></li><li class="navelem"><a class="el" href="dir_5d0a4b0911b9c8b26297ef3cfa2d24e2.html">INA3221</a></li><li class="navelem"><a class="el" href="_i_n_a3221_8cpp.html">INA3221.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

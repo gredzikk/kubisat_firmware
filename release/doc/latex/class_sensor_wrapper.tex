@@ -2,6 +2,11 @@
 \hypertarget{class_sensor_wrapper}{}\label{class_sensor_wrapper}\index{SensorWrapper@{SensorWrapper}}
 
 
+Manages different sensor types and provides a unified interface for accessing sensor data.  
+
+
+
+
 {\ttfamily \#include $<$ISensor.\+h$>$}
 
 \doxysubsubsection*{Public Member Functions}
@@ -31,7 +36,7 @@ std\+::map$<$ \mbox{\hyperlink{_i_sensor_8h_a213c434cb928c4ca22513e2302632435}{S
 
 
 \doxysubsection{Detailed Description}
-
+Manages different sensor types and provides a unified interface for accessing sensor data. 
 
 Definition at line \mbox{\hyperlink{_i_sensor_8h_source_l00043}{43}} of file \mbox{\hyperlink{_i_sensor_8h_source}{ISensor.\+h}}.
 
@@ -48,6 +53,13 @@ Sensor\+Wrapper\+::\+Sensor\+Wrapper (\begin{DoxyParamCaption}{}{}\end{DoxyParam
 
 Default constructor for \doxylink{class_sensor_wrapper}{Sensor\+Wrapper}. 
 
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_sensor_wrapper_a1702516a09884caf599fad7761dd04c1_icgraph}
+\end{center}
+\end{figure}
 
 
 \doxysubsection{Member Function Documentation}
@@ -66,8 +78,15 @@ A reference to the single \doxylink{class_sensor_wrapper}{Sensor\+Wrapper} insta
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{_i_sensor_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{_i_sensor_8cpp_source}{ISensor.\+cpp}}.
+Definition at line \mbox{\hyperlink{_i_sensor_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{_i_sensor_8cpp_source}{ISensor.\+cpp}}.
 
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_sensor_wrapper_adac086bdfb57168899df56fc431c5f41_cgraph}
+\end{center}
+\end{figure}
 \Hypertarget{class_sensor_wrapper_acbec9bb41e3edd34146eacbf23a807a1}\index{SensorWrapper@{SensorWrapper}!initSensor@{initSensor}}
 \index{initSensor@{initSensor}!SensorWrapper@{SensorWrapper}}
 \doxysubsubsection{\texorpdfstring{initSensor()}{initSensor()}}
@@ -90,7 +109,7 @@ True if initialization succeeded, otherwise false.
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{_i_sensor_8cpp_source_l00027}{27}} of file \mbox{\hyperlink{_i_sensor_8cpp_source}{ISensor.\+cpp}}.
+Definition at line \mbox{\hyperlink{_i_sensor_8cpp_source_l00039}{39}} of file \mbox{\hyperlink{_i_sensor_8cpp_source}{ISensor.\+cpp}}.
 
 \Hypertarget{class_sensor_wrapper_aeaa7bbc1f7d31212348fd617392cc8d4}\index{SensorWrapper@{SensorWrapper}!configureSensor@{configureSensor}}
 \index{configureSensor@{configureSensor}!SensorWrapper@{SensorWrapper}}
@@ -114,7 +133,7 @@ True if the sensor was successfully configured, otherwise false.
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{_i_sensor_8cpp_source_l00051}{51}} of file \mbox{\hyperlink{_i_sensor_8cpp_source}{ISensor.\+cpp}}.
+Definition at line \mbox{\hyperlink{_i_sensor_8cpp_source_l00063}{63}} of file \mbox{\hyperlink{_i_sensor_8cpp_source}{ISensor.\+cpp}}.
 
 \Hypertarget{class_sensor_wrapper_a1b30eac9a56098470f130754134057b9}\index{SensorWrapper@{SensorWrapper}!readSensorData@{readSensorData}}
 \index{readSensorData@{readSensorData}!SensorWrapper@{SensorWrapper}}
@@ -138,7 +157,7 @@ The requested measurement. Returns 0.\+0f if sensor not found or uninitialized.
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{_i_sensor_8cpp_source_l00066}{66}} of file \mbox{\hyperlink{_i_sensor_8cpp_source}{ISensor.\+cpp}}.
+Definition at line \mbox{\hyperlink{_i_sensor_8cpp_source_l00078}{78}} of file \mbox{\hyperlink{_i_sensor_8cpp_source}{ISensor.\+cpp}}.
 
 
 
@@ -157,5 +176,5 @@ Definition at line \mbox{\hyperlink{_i_sensor_8h_source_l00051}{51}} of file \mb
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-lib/\mbox{\hyperlink{_i_sensor_8h}{ISensor.\+h}}\item 
-lib/\mbox{\hyperlink{_i_sensor_8cpp}{ISensor.\+cpp}}\end{DoxyCompactItemize}
+lib/sensors/\mbox{\hyperlink{_i_sensor_8h}{ISensor.\+h}}\item 
+lib/sensors/\mbox{\hyperlink{_i_sensor_8cpp}{ISensor.\+cpp}}\end{DoxyCompactItemize}

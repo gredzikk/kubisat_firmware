@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>KubiSat Firmware: frame_model/send.cpp File Reference</title>
+<title>KubiSat Firmware: lib/comms/send.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -102,20 +102,37 @@ $(function(){initNavTree('send_8cpp.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">send.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implements functions for sending data, including LoRa messages and Frames.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="communication_8h_source.html">communication.h</a>&quot;</code><br />
+</div><div class="textblock"><div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for send.cpp:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="send_8cpp__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 </div>
 <p><a href="send_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:adcc720dc971ce8b237b26df434b65bb2" id="r_adcc720dc971ce8b237b26df434b65bb2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adcc720dc971ce8b237b26df434b65bb2">sendMessage</a> (string <a class="el" href="communication_8cpp.html#a13c45747091f32644e83d65348c61232">outgoing</a>)</td></tr>
+<tr class="memdesc:adcc720dc971ce8b237b26df434b65bb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message using LoRa.  <br /></td></tr>
 <tr class="separator:adcc720dc971ce8b237b26df434b65bb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a752e7cc27f52d4ba064e691b3e240ed8" id="r_a752e7cc27f52d4ba064e691b3e240ed8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a752e7cc27f52d4ba064e691b3e240ed8">sendFrame</a> (const <a class="el" href="struct_frame.html">Frame</a> &amp;frame)</td></tr>
+<tr class="memdesc:a752e7cc27f52d4ba064e691b3e240ed8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a <a class="el" href="struct_frame.html">Frame</a> using LoRa.  <br /></td></tr>
 <tr class="separator:a752e7cc27f52d4ba064e691b3e240ed8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a252a4ea5f222c6879d281cc2f9357b46" id="r_a252a4ea5f222c6879d281cc2f9357b46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a252a4ea5f222c6879d281cc2f9357b46">sendLargePacket</a> (const uint8_t *data, size_t length)</td></tr>
+<tr class="memdesc:a252a4ea5f222c6879d281cc2f9357b46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a large packet using LoRa.  <br /></td></tr>
 <tr class="separator:a252a4ea5f222c6879d281cc2f9357b46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implements functions for sending data, including LoRa messages and Frames. </p>
+
+<p class="definition">Definition in file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="adcc720dc971ce8b237b26df434b65bb2" name="adcc720dc971ce8b237b26df434b65bb2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adcc720dc971ce8b237b26df434b65bb2">&#9670;&#160;</a></span>sendMessage()</h2>
 
@@ -131,7 +148,30 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00003">3</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
+<p>Sends a message using LoRa. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">outgoing</td><td>The message to send.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Converts the outgoing string to a C-style string, adds destination and local addresses, and sends the message using LoRa. Prints a log message to the UART. </p>
+
+<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00015">15</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
+<div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="send_8cpp_adcc720dc971ce8b237b26df434b65bb2_cgraph.svg" width="232" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="send_8cpp_adcc720dc971ce8b237b26df434b65bb2_icgraph.svg" width="100%" height="518"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -150,7 +190,30 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00025">25</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
+<p>Sends a <a class="el" href="struct_frame.html">Frame</a> using LoRa. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td>The <a class="el" href="struct_frame.html">Frame</a> to send.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Encodes the <a class="el" href="struct_frame.html">Frame</a> into a string and sends it using the sendMessage function. </p>
+
+<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00042">42</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
+<div id="dynsection-3" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="send_8cpp_a752e7cc27f52d4ba064e691b3e240ed8_cgraph.svg" width="446" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-4" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="send_8cpp_a752e7cc27f52d4ba064e691b3e240ed8_icgraph.svg" width="100%" height="518"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -173,7 +236,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00031">31</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
+<p>Sends a large packet using LoRa. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>The data to send. </td></tr>
+    <tr><td class="paramname">length</td><td>The length of the data.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Splits the data into chunks of MAX_PKT_SIZE and sends each chunk as a separate LoRa packet. </p>
+
+<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00055">55</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
 
 </div>
 </div>
@@ -182,7 +255,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_cc290362f203a1feeafe2c07392c392d.html">frame_model</a></li><li class="navelem"><a class="el" href="send_8cpp.html">send.cpp</a></li>
+    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_e552ec73e77e71738095e0b8c7e6e495.html">comms</a></li><li class="navelem"><a class="el" href="send_8cpp.html">send.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

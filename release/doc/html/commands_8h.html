@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>KubiSat Firmware: commands/commands.h File Reference</title>
+<title>KubiSat Firmware: lib/comms/commands/commands.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -107,27 +107,37 @@ $(function(){initNavTree('commands_8h.html',''); initResizable(true); });
 <code>#include &lt;functional&gt;</code><br />
 <code>#include &lt;map&gt;</code><br />
 <code>#include &quot;<a class="el" href="protocol_8h_source.html">protocol.h</a>&quot;</code><br />
+</div><div class="textblock"><div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for commands.h:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="commands_8h__incl.svg" width="100%" height="564"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+</div><div class="textblock"><div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> This graph shows which files directly or indirectly include this file:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="commands_8h__dep__incl.svg" width="366" height="144"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <p><a href="commands_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a1eefb8c4d539d50c787b4db3f6ebb093" id="r_a1eefb8c4d539d50c787b4db3f6ebb093"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1eefb8c4d539d50c787b4db3f6ebb093">handleTime</a> (const std::string &amp;param, <a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a> operationType)</td></tr>
-<tr class="separator:a1eefb8c4d539d50c787b4db3f6ebb093"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc9239d946ee18d2ff19af2c6a2177f0" id="r_acc9239d946ee18d2ff19af2c6a2177f0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acc9239d946ee18d2ff19af2c6a2177f0">handleGetTimezoneOffset</a> (const std::string &amp;param, <a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a> operationType)</td></tr>
-<tr class="separator:acc9239d946ee18d2ff19af2c6a2177f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e802e312d0779aab74966074e81eb30" id="r_a9e802e312d0779aab74966074e81eb30"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e802e312d0779aab74966074e81eb30">handleSetTimezoneOffset</a> (const std::string &amp;param, <a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a> operationType)</td></tr>
-<tr class="separator:a9e802e312d0779aab74966074e81eb30"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add8778da60c0dc5c0add2c7b2ccdc57e" id="r_add8778da60c0dc5c0add2c7b2ccdc57e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add8778da60c0dc5c0add2c7b2ccdc57e">handleGetClockSyncInterval</a> (const std::string &amp;param, <a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a> operationType)</td></tr>
-<tr class="separator:add8778da60c0dc5c0add2c7b2ccdc57e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00137f0d4c6a83ee5c0df49c7370fe65" id="r_a00137f0d4c6a83ee5c0df49c7370fe65"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a00137f0d4c6a83ee5c0df49c7370fe65">handleSetClockSyncInterval</a> (const std::string &amp;param, <a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a> operationType)</td></tr>
-<tr class="separator:a00137f0d4c6a83ee5c0df49c7370fe65"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6def0bf9e591d66bd98b752f731d44ba" id="r_a6def0bf9e591d66bd98b752f731d44ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6def0bf9e591d66bd98b752f731d44ba">handleGetClockDrift</a> (const std::string &amp;param, <a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a> operationType)</td></tr>
-<tr class="separator:a6def0bf9e591d66bd98b752f731d44ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4cd7f745d6f9e2cadef70e21d8a9fcb" id="r_ae4cd7f745d6f9e2cadef70e21d8a9fcb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4cd7f745d6f9e2cadef70e21d8a9fcb">handleSetClockDrift</a> (const std::string &amp;param, <a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a> operationType)</td></tr>
-<tr class="separator:ae4cd7f745d6f9e2cadef70e21d8a9fcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17274560343c34119630b27d88ef475e" id="r_a17274560343c34119630b27d88ef475e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a17274560343c34119630b27d88ef475e">handleGetLastSyncTime</a> (const std::string &amp;param, <a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a> operationType)</td></tr>
-<tr class="separator:a17274560343c34119630b27d88ef475e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1eefb8c4d539d50c787b4db3f6ebb093" id="r_ga1eefb8c4d539d50c787b4db3f6ebb093"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___clock_commands.html#ga1eefb8c4d539d50c787b4db3f6ebb093">handleTime</a> (const std::string &amp;param, <a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a> operationType)</td></tr>
+<tr class="memdesc:ga1eefb8c4d539d50c787b4db3f6ebb093"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler for getting and setting system time.  <br /></td></tr>
+<tr class="separator:ga1eefb8c4d539d50c787b4db3f6ebb093"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9378f580aefefb566c6f7d49975afeba" id="r_ga9378f580aefefb566c6f7d49975afeba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___clock_commands.html#ga9378f580aefefb566c6f7d49975afeba">handleTimezoneOffset</a> (const std::string &amp;param, <a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a> operationType)</td></tr>
+<tr class="memdesc:ga9378f580aefefb566c6f7d49975afeba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler for getting and setting timezone offset.  <br /></td></tr>
+<tr class="separator:ga9378f580aefefb566c6f7d49975afeba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad92a65bf7ca7a1c1ed7b29e5e9e75fa0" id="r_gad92a65bf7ca7a1c1ed7b29e5e9e75fa0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___clock_commands.html#gad92a65bf7ca7a1c1ed7b29e5e9e75fa0">handleClockSyncInterval</a> (const std::string &amp;param, <a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a> operationType)</td></tr>
+<tr class="memdesc:gad92a65bf7ca7a1c1ed7b29e5e9e75fa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler for getting and setting clock synchronization interval.  <br /></td></tr>
+<tr class="separator:gad92a65bf7ca7a1c1ed7b29e5e9e75fa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga17274560343c34119630b27d88ef475e" id="r_ga17274560343c34119630b27d88ef475e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___clock_commands.html#ga17274560343c34119630b27d88ef475e">handleGetLastSyncTime</a> (const std::string &amp;param, <a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a> operationType)</td></tr>
+<tr class="memdesc:ga17274560343c34119630b27d88ef475e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler for getting last clock sync time.  <br /></td></tr>
+<tr class="separator:ga17274560343c34119630b27d88ef475e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gade74b82cf2c20d93c5e0ce624cd7ca77" id="r_gade74b82cf2c20d93c5e0ce624cd7ca77"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___diagnostic_commands.html#gade74b82cf2c20d93c5e0ce624cd7ca77">handleListCommands</a> (const std::string &amp;param, <a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a> operationType)</td></tr>
 <tr class="memdesc:gade74b82cf2c20d93c5e0ce624cd7ca77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler for listing all available commands on UART.  <br /></td></tr>
 <tr class="separator:gade74b82cf2c20d93c5e0ce624cd7ca77"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -178,199 +188,17 @@ Functions</h2></td></tr>
 <tr class="memitem:ga6f817db327c7b16cf49575635e595004" id="r_ga6f817db327c7b16cf49575635e595004"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___event_commands.html#ga6f817db327c7b16cf49575635e595004">handleGetEventCount</a> (const std::string &amp;param, <a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a> operationType)</td></tr>
 <tr class="memdesc:ga6f817db327c7b16cf49575635e595004"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler for getting total number of events in the log.  <br /></td></tr>
 <tr class="separator:ga6f817db327c7b16cf49575635e595004"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1907d400d2c8d8d054ba95bcf43276ea" id="r_a1907d400d2c8d8d054ba95bcf43276ea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1907d400d2c8d8d054ba95bcf43276ea">executeCommand</a> (uint32_t commandKey, const std::string &amp;param, <a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a> operationType)</td></tr>
-<tr class="separator:a1907d400d2c8d8d054ba95bcf43276ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1907d400d2c8d8d054ba95bcf43276ea" id="r_ga1907d400d2c8d8d054ba95bcf43276ea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___command_system.html#ga1907d400d2c8d8d054ba95bcf43276ea">executeCommand</a> (uint32_t commandKey, const std::string &amp;param, <a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a> operationType)</td></tr>
+<tr class="memdesc:ga1907d400d2c8d8d054ba95bcf43276ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a command based on its key.  <br /></td></tr>
+<tr class="separator:ga1907d400d2c8d8d054ba95bcf43276ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:acbfd6523ceea62dad855ea65b52eb5b1" id="r_acbfd6523ceea62dad855ea65b52eb5b1"><td class="memItemLeft" align="right" valign="top">std::map&lt; uint32_t, std::function&lt; <a class="el" href="struct_frame.html">Frame</a>(const std::string &amp;, <a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a>)&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acbfd6523ceea62dad855ea65b52eb5b1">commandHandlers</a></td></tr>
-<tr class="separator:acbfd6523ceea62dad855ea65b52eb5b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga04a0515603ba347ef314678876f3fa26" id="r_ga04a0515603ba347ef314678876f3fa26"><td class="memItemLeft" align="right" valign="top">std::map&lt; uint32_t, std::function&lt; <a class="el" href="struct_frame.html">Frame</a>(const std::string &amp;, <a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a>)&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___command_system.html#ga04a0515603ba347ef314678876f3fa26">commandHandlers</a></td></tr>
+<tr class="memdesc:ga04a0515603ba347ef314678876f3fa26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global map of all command handlers.  <br /></td></tr>
+<tr class="separator:ga04a0515603ba347ef314678876f3fa26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a1eefb8c4d539d50c787b4db3f6ebb093" name="a1eefb8c4d539d50c787b4db3f6ebb093"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1eefb8c4d539d50c787b4db3f6ebb093">&#9670;&#160;</a></span>handleTime()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> handleTime </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>param</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a></td>          <td class="paramname"><span class="paramname"><em>operationType</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="clock__commands_8cpp_source.html#l00008">8</a> of file <a class="el" href="clock__commands_8cpp_source.html">clock_commands.cpp</a>.</p>
-
-</div>
-</div>
-<a id="acc9239d946ee18d2ff19af2c6a2177f0" name="acc9239d946ee18d2ff19af2c6a2177f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acc9239d946ee18d2ff19af2c6a2177f0">&#9670;&#160;</a></span>handleGetTimezoneOffset()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> handleGetTimezoneOffset </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>param</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a></td>          <td class="paramname"><span class="paramname"><em>operationType</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="clock__commands_8cpp_source.html#l00059">59</a> of file <a class="el" href="clock__commands_8cpp_source.html">clock_commands.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a9e802e312d0779aab74966074e81eb30" name="a9e802e312d0779aab74966074e81eb30"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e802e312d0779aab74966074e81eb30">&#9670;&#160;</a></span>handleSetTimezoneOffset()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> handleSetTimezoneOffset </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>param</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a></td>          <td class="paramname"><span class="paramname"><em>operationType</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="clock__commands_8cpp_source.html#l00067">67</a> of file <a class="el" href="clock__commands_8cpp_source.html">clock_commands.cpp</a>.</p>
-
-</div>
-</div>
-<a id="add8778da60c0dc5c0add2c7b2ccdc57e" name="add8778da60c0dc5c0add2c7b2ccdc57e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#add8778da60c0dc5c0add2c7b2ccdc57e">&#9670;&#160;</a></span>handleGetClockSyncInterval()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> handleGetClockSyncInterval </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>param</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a></td>          <td class="paramname"><span class="paramname"><em>operationType</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="clock__commands_8cpp_source.html#l00083">83</a> of file <a class="el" href="clock__commands_8cpp_source.html">clock_commands.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a00137f0d4c6a83ee5c0df49c7370fe65" name="a00137f0d4c6a83ee5c0df49c7370fe65"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a00137f0d4c6a83ee5c0df49c7370fe65">&#9670;&#160;</a></span>handleSetClockSyncInterval()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> handleSetClockSyncInterval </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>param</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a></td>          <td class="paramname"><span class="paramname"><em>operationType</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="clock__commands_8cpp_source.html#l00091">91</a> of file <a class="el" href="clock__commands_8cpp_source.html">clock_commands.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a6def0bf9e591d66bd98b752f731d44ba" name="a6def0bf9e591d66bd98b752f731d44ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6def0bf9e591d66bd98b752f731d44ba">&#9670;&#160;</a></span>handleGetClockDrift()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> handleGetClockDrift </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>param</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a></td>          <td class="paramname"><span class="paramname"><em>operationType</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="clock__commands_8cpp_source.html#l00104">104</a> of file <a class="el" href="clock__commands_8cpp_source.html">clock_commands.cpp</a>.</p>
-
-</div>
-</div>
-<a id="ae4cd7f745d6f9e2cadef70e21d8a9fcb" name="ae4cd7f745d6f9e2cadef70e21d8a9fcb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae4cd7f745d6f9e2cadef70e21d8a9fcb">&#9670;&#160;</a></span>handleSetClockDrift()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> handleSetClockDrift </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>param</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a></td>          <td class="paramname"><span class="paramname"><em>operationType</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="clock__commands_8cpp_source.html#l00112">112</a> of file <a class="el" href="clock__commands_8cpp_source.html">clock_commands.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a17274560343c34119630b27d88ef475e" name="a17274560343c34119630b27d88ef475e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a17274560343c34119630b27d88ef475e">&#9670;&#160;</a></span>handleGetLastSyncTime()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> handleGetLastSyncTime </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>param</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a></td>          <td class="paramname"><span class="paramname"><em>operationType</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="clock__commands_8cpp_source.html#l00125">125</a> of file <a class="el" href="clock__commands_8cpp_source.html">clock_commands.cpp</a>.</p>
-
-</div>
-</div>
 <a id="a7a7ebcb893bb8e5bb8b66c1d8db539b1" name="a7a7ebcb893bb8e5bb8b66c1d8db539b1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7a7ebcb893bb8e5bb8b66c1d8db539b1">&#9670;&#160;</a></span>handleGetCommandsTimestamp()</h2>
 
@@ -392,65 +220,12 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a1907d400d2c8d8d054ba95bcf43276ea" name="a1907d400d2c8d8d054ba95bcf43276ea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1907d400d2c8d8d054ba95bcf43276ea">&#9670;&#160;</a></span>executeCommand()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> executeCommand </td>
-          <td>(</td>
-          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>commandKey</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>param</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a></td>          <td class="paramname"><span class="paramname"><em>operationType</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="commands_8cpp_source.html#l00037">37</a> of file <a class="el" href="commands_8cpp_source.html">commands.cpp</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="acbfd6523ceea62dad855ea65b52eb5b1" name="acbfd6523ceea62dad855ea65b52eb5b1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acbfd6523ceea62dad855ea65b52eb5b1">&#9670;&#160;</a></span>commandHandlers</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::map&lt;uint32_t, std::function&lt;<a class="el" href="struct_frame.html">Frame</a>(const std::string&amp;, <a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a>)&gt; &gt; commandHandlers</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="commands_8cpp_source.html#l00009">9</a> of file <a class="el" href="commands_8cpp_source.html">commands.cpp</a>.</p>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_afac61274991793aa7e9133a8f4f291e.html">commands</a></li><li class="navelem"><a class="el" href="commands_8h.html">commands.h</a></li>
+    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_e552ec73e77e71738095e0b8c7e6e495.html">comms</a></li><li class="navelem"><a class="el" href="dir_f151794e7edc73683d1c1f01d868a48c.html">commands</a></li><li class="navelem"><a class="el" href="commands_8h.html">commands.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

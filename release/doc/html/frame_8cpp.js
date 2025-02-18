@@ -6,6 +6,6 @@ var frame_8cpp =
     [ "processFrameData", "frame_8cpp.html#a8b9407b2f579031cf4b705f1ac03ac31", null ],
     [ "sendEventRegister", "frame_8cpp.html#a6005ddd6320bebe2a680fa6b8efff6dd", null ],
     [ "buildFrame", "frame_8cpp.html#a5f43260949ee244d3ee66068eb1d7fc1", null ],
-    [ "commandHandlers", "frame_8cpp.html#a683301014d75a3228003716105486a3e", null ],
+    [ "commandHandlers", "group___command_system.html#ga04a0515603ba347ef314678876f3fa26", null ],
     [ "eventRegister", "frame_8cpp.html#ac9c6a252b4ac4dad7cf47681200d3dbe", null ]
 ];

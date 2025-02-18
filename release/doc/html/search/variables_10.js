@@ -12,5 +12,5 @@ var searchData=
   ['solar_5fcurrent_5fthreshold_9',['SOLAR_CURRENT_THRESHOLD',['../class_power_manager.html#aeb488c42ec47e1a8de0446717d339cce',1,'PowerManager']]],
   ['solaractive_10',['solarActive',['../class_power_manager.html#a521e99a9e28cca2525988f572379c936',1,'PowerManager']]],
   ['syncinterval_11',['syncInterval',['../class_d_s3231.html#a1a30fcf3e2d4b9c4951129ac09c1ce4c',1,'DS3231']]],
-  ['systemclock_12',['systemClock',['../clock__commands_8cpp.html#abfd573c8a839ac00ea3b96d691ea11c3',1,'systemClock:&#160;clock_commands.cpp'],['../event__manager_8cpp.html#abfd573c8a839ac00ea3b96d691ea11c3',1,'systemClock:&#160;event_manager.cpp'],['../main_8cpp.html#af9c066a94b810cae902343138b54f088',1,'systemClock:&#160;main.cpp']]]
+  ['systemclock_12',['systemClock',['../group___clock_commands.html#gabfd573c8a839ac00ea3b96d691ea11c3',1,'systemClock:&#160;clock_commands.cpp'],['../event__manager_8cpp.html#abfd573c8a839ac00ea3b96d691ea11c3',1,'systemClock:&#160;event_manager.cpp'],['../main_8cpp.html#af9c066a94b810cae902343138b54f088',1,'systemClock:&#160;main.cpp']]]
 ];

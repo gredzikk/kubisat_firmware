@@ -7,12 +7,13 @@
 {\ttfamily \#include "{}hardware/uart.\+h"{}}\newline
 {\ttfamily \#include "{}pico/multicore.\+h"{}}\newline
 {\ttfamily \#include "{}event\+\_\+manager.\+h"{}}\newline
-{\ttfamily \#include "{}Power\+Manager.\+h"{}}\newline
+{\ttfamily \#include "{}lib/powerman/\+Power\+Manager.\+h"{}}\newline
 {\ttfamily \#include "{}ISensor.\+h"{}}\newline
-{\ttfamily \#include "{}lib/\+BH1750/\+BH1750\+\_\+\+WRAPPER.\+h"{}}\newline
-{\ttfamily \#include "{}lib/\+BME280/\+BME280\+\_\+\+WRAPPER.\+h"{}}\newline
-{\ttfamily \#include "{}lib/\+DS3231/\+DS3231.\+h"{}}\newline
-{\ttfamily \#include "{}lib/\+HMC5883\+L/\+HMC5883\+L\+\_\+\+WRAPPER.\+h"{}}\newline
+{\ttfamily \#include "{}lib/sensors/\+BH1750/\+BH1750\+\_\+\+WRAPPER.\+h"{}}\newline
+{\ttfamily \#include "{}lib/sensors/\+BME280/\+BME280\+\_\+\+WRAPPER.\+h"{}}\newline
+{\ttfamily \#include "{}lib/sensors/\+HMC5883\+L/\+HMC5883\+L\+\_\+\+WRAPPER.\+h"{}}\newline
+{\ttfamily \#include "{}lib/sensors/\+MPU6050/\+MPU6050\+\_\+\+WRAPPER.\+h"{}}\newline
+{\ttfamily \#include "{}lib/clock/\+DS3231.\+h"{}}\newline
 {\ttfamily \#include $<$iostream$>$}\newline
 {\ttfamily \#include $<$iomanip$>$}\newline
 {\ttfamily \#include $<$queue$>$}\newline
@@ -24,6 +25,20 @@
 {\ttfamily \#include "{}utils.\+h"{}}\newline
 {\ttfamily \#include "{}communication.\+h"{}}\newline
 {\ttfamily \#include "{}build\+\_\+number.\+h"{}}\newline
-{\ttfamily \#include "{}lib/\+GPS/gps\+\_\+collector.\+h"{}}\newline
-{\ttfamily \#include "{}storage.\+h"{}}\newline
-{\ttfamily \#include "{}filesystem/vfs.\+h"{}}\newline
+{\ttfamily \#include "{}lib/location/gps\+\_\+collector.\+h"{}}\newline
+{\ttfamily \#include "{}lib/storage/storage.\+h"{}}\newline
+{\ttfamily \#include "{}lib/storage/pico-\/vfs/include/filesystem/vfs.\+h"{}}\newline
+Include dependency graph for includes.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{includes_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=140pt]{includes_8h__dep__incl}
+\end{center}
+\end{figure}

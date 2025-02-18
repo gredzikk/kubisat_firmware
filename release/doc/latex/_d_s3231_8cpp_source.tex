@@ -1,5 +1,5 @@
 \doxysection{DS3231.\+cpp}
-\hypertarget{_d_s3231_8cpp_source}{}\label{_d_s3231_8cpp_source}\index{lib/DS3231/DS3231.cpp@{lib/DS3231/DS3231.cpp}}
+\hypertarget{_d_s3231_8cpp_source}{}\label{_d_s3231_8cpp_source}\index{lib/clock/DS3231.cpp@{lib/clock/DS3231.cpp}}
 \mbox{\hyperlink{_d_s3231_8cpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_d_s3231_8h}{DS3231.h}}"{}}}
@@ -180,20 +180,5 @@
 \DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00176}00176\ \ \ \ \ time\_t\ t\ =\ \mbox{\hyperlink{class_d_s3231_ae6c4f2144a772c44f7adbace7f86dfa1}{dateTimeToUnix}}(utc)\ +\ (offsetMinutes\ *\ 60);}
 \DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00177}00177\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_d_s3231_a40a965b965496e5b0e7758040c5d9ce7}{unixToDateTime}}(t);}
 \DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00178}00178\ \}}
-\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00179}00179\ }
-\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00180}\mbox{\hyperlink{class_d_s3231_a8674f4e63775d5d5ea7e597d0f2ab2c9}{00180}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_d_s3231_a8674f4e63775d5d5ea7e597d0f2ab2c9}{DS3231::needsSync}}()\ \{}
-\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00181}00181\ \ \ \ \ uint32\_t\ now\ =\ \mbox{\hyperlink{class_d_s3231_a93399e0145a53c558e316f6f95a20679}{getTimeUnix}}();}
-\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00182}00182\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00183}00183\ \ \ \ \ \textcolor{comment}{//\ Check\ if\ sync\ interval\ has\ passed}}
-\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00184}00184\ \ \ \ \ \textcolor{keywordflow}{if}\ (now\ -\/\ \mbox{\hyperlink{class_d_s3231_ab05e9cb92a0de071fc81a3d8e6488b73}{lastSyncTime}}\ >=\ \mbox{\hyperlink{class_d_s3231_a1a30fcf3e2d4b9c4951129ac09c1ce4c}{syncInterval}})\ \{}
-\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00186}00186\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00187}00187\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00188}00188\ \ \ \ \ \textcolor{comment}{//\ Calculate\ drift\ since\ last\ sync}}
-\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00189}00189\ \ \ \ \ \textcolor{keywordtype}{float}\ driftSeconds\ =\ (now\ -\/\ \mbox{\hyperlink{class_d_s3231_ab05e9cb92a0de071fc81a3d8e6488b73}{lastSyncTime}})\ *\ (\mbox{\hyperlink{class_d_s3231_a1d9b76de3a1a01b5b08464f23481c004}{clockDrift}}\ /\ 1000000.0f);}
-\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00190}00190\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00191}00191\ \ \ \ \ \textcolor{comment}{//\ If\ drift\ is\ more\ than\ 1\ second,\ sync\ is\ needed}}
-\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00192}00192\ \ \ \ \ \textcolor{keywordflow}{return}\ std::abs(driftSeconds)\ >=\ 1.0f;}
-\DoxyCodeLine{\Hypertarget{_d_s3231_8cpp_source_l00193}00193\ \}}
 
 \end{DoxyCode}

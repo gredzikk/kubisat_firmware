@@ -16,9 +16,6 @@ var class_d_s3231 =
     [ "getClockSyncInterval", "class_d_s3231.html#a82a03a071b6b21c5271d9856f7c9396e", null ],
     [ "setLastSyncTime", "class_d_s3231.html#a902d42a635136368ad7987d7d6d84f19", null ],
     [ "getLastSyncTime", "class_d_s3231.html#a564eaf6a11ee0f1a8c8aad30cd49af6f", null ],
-    [ "setClockDrift", "class_d_s3231.html#a5dc268764fd4d0afe785aed25d97669e", null ],
-    [ "getClockDrift", "class_d_s3231.html#a546ac8331853889ebce90bda8edbb9d9", null ],
-    [ "needsSync", "class_d_s3231.html#a8674f4e63775d5d5ea7e597d0f2ab2c9", null ],
     [ "bcd2bin", "class_d_s3231.html#a389e756fdd8f645d6025906bbce5abd8", null ],
     [ "bin2bcd", "class_d_s3231.html#a41f5aabf74e5a66093116999648806ab", null ],
     [ "preZero", "class_d_s3231.html#ada371a466a46dd550e6eded5217627b5", null ],
@@ -31,6 +28,5 @@ var class_d_s3231 =
     [ "RTC_REGISTER", "class_d_s3231.html#af87c9b9232490e63de80b4e4c8aec81f", null ],
     [ "timezoneOffset", "class_d_s3231.html#a330fb98438d9762df3d7da7ed2f38d25", null ],
     [ "syncInterval", "class_d_s3231.html#a1a30fcf3e2d4b9c4951129ac09c1ce4c", null ],
-    [ "lastSyncTime", "class_d_s3231.html#ab05e9cb92a0de071fc81a3d8e6488b73", null ],
-    [ "clockDrift", "class_d_s3231.html#a1d9b76de3a1a01b5b08464f23481c004", null ]
+    [ "lastSyncTime", "class_d_s3231.html#ab05e9cb92a0de071fc81a3d8e6488b73", null ]
 ];

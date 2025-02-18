@@ -1,0 +1,27 @@
+<map id="processFrameData" name="processFrameData">
+<area shape="rect" id="Node000001" title="Executes a command based on the command key and the parameter." alt="" coords="5,81,138,108"/>
+<area shape="rect" id="Node000002" href="$frame_8cpp.html#a5f43260949ee244d3ee66068eb1d7fc1" title="Builds a Frame instance." alt="" coords="394,5,479,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="96,78,137,59,185,41,235,30,287,23,378,17,379,22,287,28,236,36,186,47,139,64,99,83"/>
+<area shape="rect" id="Node000004" href="$frame_8cpp.html#a8f34bc31494430539db21206f084d39d" title="Converts a string into a Frame instance." alt="" coords="199,107,300,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="138,101,184,108,183,113,138,107"/>
+<area shape="rect" id="Node000005" href="$send_8cpp.html#a752e7cc27f52d4ba064e691b3e240ed8" title="Sends a Frame using LoRa." alt="" coords="394,157,480,184"/>
+<area shape="poly" id="edge14_Node000001_Node000005" title=" " alt="" coords="99,106,139,126,186,143,236,154,287,161,378,167,378,173,287,166,235,159,185,148,137,131,96,111"/>
+<area shape="rect" id="Node000011" href="$group___command_system.html#ga1907d400d2c8d8d054ba95bcf43276ea" title="Executes a command based on its key." alt="" coords="186,56,313,83"/>
+<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="138,83,170,78,170,83,138,88"/>
+<area shape="rect" id="Node000003" href="$utils__converters_8cpp.html#ab4cb9e6b491bd7711c69c9167a2b9286" title="Converts a ValueUnit to a string." alt="" coords="560,5,713,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="480,16,545,16,545,21,480,21"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="289,104,311,92,335,71,359,49,382,36,384,41,363,53,339,75,315,97,292,109"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="301,131,379,153,378,158,299,136"/>
+<area shape="rect" id="Node000009" href="$utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706" title="Prints a message to the UART with a timestamp and core number." alt="" coords="801,81,871,108"/>
+<area shape="poly" id="edge11_Node000004_Node000009" title=" " alt="" coords="299,104,361,92,480,83,599,82,786,88,785,94,599,87,480,89,361,97,300,109"/>
+<area shape="rect" id="Node000010" href="$utils__converters_8cpp.html#a245c34d9f7072236b66e9352a9d3466e" title="Converts a string to an OperationType." alt="" coords="361,107,512,133"/>
+<area shape="poly" id="edge10_Node000004_Node000010" title=" " alt="" coords="300,117,346,117,346,123,300,123"/>
+<area shape="rect" id="Node000006" href="$frame_8cpp.html#ab53898fb6f45dfc657837a665a070959" title="Encodes a Frame instance into a string." alt="" coords="586,157,687,184"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="480,168,571,168,571,173,480,173"/>
+<area shape="rect" id="Node000008" href="$send_8cpp.html#adcc720dc971ce8b237b26df434b65bb2" title="Sends a message using LoRa." alt="" coords="585,107,688,133"/>
+<area shape="poly" id="edge8_Node000005_Node000008" title=" " alt="" coords="480,157,570,134,571,139,481,162"/>
+<area shape="rect" id="Node000007" href="$utils__converters_8cpp.html#a82a11ce999902359454fa904a13ae297" title="Converts an OperationType to a string." alt="" coords="761,157,911,184"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="687,168,745,168,745,173,687,173"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="688,111,785,98,786,104,688,116"/>
+<area shape="poly" id="edge13_Node000011_Node000002" title=" " alt="" coords="301,53,378,32,380,37,302,58"/>
+</map>

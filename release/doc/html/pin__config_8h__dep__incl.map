@@ -1,0 +1,71 @@
+<map id="lib/pin_config.h" name="lib/pin_config.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="2212,5,2320,32"/>
+<area shape="rect" id="Node000002" href="$includes_8h.html" title=" " alt="" coords="2201,360,2281,387"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2197,26,2166,32,2134,42,2105,59,2082,82,2069,102,2061,122,2060,143,2064,166,2075,192,2093,223,2150,302,2183,334,2218,357,2215,362,2179,338,2145,306,2088,226,2071,195,2059,168,2055,144,2056,121,2064,100,2077,78,2102,54,2132,37,2164,26,2196,20"/>
+<area shape="rect" id="Node000004" href="$_lo_ra-_r_p2040_8h.html" title=" " alt="" coords="1814,80,1966,123"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="2197,37,1967,86,1966,81,2196,32"/>
+<area shape="rect" id="Node000006" href="$protocol_8h.html" title=" " alt="" coords="1824,179,1967,205"/>
+<area shape="poly" id="edge25_Node000001_Node000006" title=" " alt="" coords="2198,33,2118,51,2077,65,2037,82,1982,123,1912,180,1909,176,1979,119,2034,78,2075,60,2117,46,2196,28"/>
+<area shape="rect" id="Node000021" href="$gps__collector_8h.html" title=" " alt="" coords="2092,88,2267,115"/>
+<area shape="poly" id="edge26_Node000001_Node000021" title=" " alt="" coords="2243,45,2194,90,2191,86,2240,41"/>
+<area shape="rect" id="Node000023" href="$pin__config_8cpp.html" title=" " alt="" coords="2292,88,2414,115"/>
+<area shape="poly" id="edge30_Node000001_Node000023" title=" " alt="" coords="2293,41,2341,86,2338,90,2289,45"/>
+<area shape="rect" id="Node000024" href="$_i_n_a3221_8cpp.html" title=" " alt="" coords="2568,171,2722,213"/>
+<area shape="poly" id="edge31_Node000001_Node000024" title=" " alt="" coords="2336,24,2428,42,2478,57,2525,78,2557,98,2586,122,2630,168,2626,172,2582,126,2554,102,2522,82,2476,62,2427,47,2335,29"/>
+<area shape="rect" id="Node000025" href="$storage_8h.html" title=" " alt="" coords="2752,88,2892,115"/>
+<area shape="poly" id="edge32_Node000001_Node000025" title=" " alt="" coords="2336,27,2753,87,2752,93,2336,33"/>
+<area shape="rect" id="Node000027" href="$utils_8h.html" title=" " alt="" coords="2438,88,2511,115"/>
+<area shape="poly" id="edge35_Node000001_Node000027" title=" " alt="" coords="2316,35,2427,78,2445,85,2443,90,2425,82,2314,40"/>
+<area shape="rect" id="Node000003" href="$main_8cpp.html" title=" " alt="" coords="2204,443,2278,469"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="2244,402,2244,443,2238,443,2238,402"/>
+<area shape="rect" id="Node000005" href="$_lo_ra-_r_p2040_8cpp.html" title=" " alt="" coords="1649,171,1800,213"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1839,133,1765,173,1762,168,1837,128"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="1895,138,1897,178,1892,178,1890,138"/>
+<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="1930,211,2001,254,2087,302,2211,357,2208,362,2085,306,1999,259,1927,216"/>
+<area shape="rect" id="Node000007" href="$commands_8h.html" title=" " alt="" coords="210,261,360,304"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="1836,212,1813,216,1680,230,1503,243,1080,262,660,276,360,283,360,277,659,270,1079,257,1503,237,1679,225,1812,211,1835,207"/>
+<area shape="rect" id="Node000010" href="$communication_8h.html" title=" " alt="" coords="1189,269,1373,296"/>
+<area shape="poly" id="edge10_Node000006_Node000010" title=" " alt="" coords="1833,212,1813,216,1576,252,1374,275,1373,270,1575,247,1812,211,1832,207"/>
+<area shape="rect" id="Node000020" href="$event__manager_8cpp.html" title="Implements the event management system for the Kubisat firmware." alt="" coords="2046,352,2177,395"/>
+<area shape="poly" id="edge24_Node000006_Node000020" title=" " alt="" coords="1901,220,1911,262,1921,284,1935,302,1952,315,1980,327,2046,351,2045,356,1978,332,1950,319,1931,306,1916,286,1906,264,1896,221"/>
+<area shape="rect" id="Node000008" href="$commands_8cpp.html" title=" " alt="" coords="210,352,360,395"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="288,320,288,352,282,352,282,320"/>
+<area shape="rect" id="Node000009" href="$diagnostic__commands_8cpp.html" title=" " alt="" coords="5,352,186,395"/>
+<area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="228,313,141,354,138,349,226,309"/>
+<area shape="poly" id="edge11_Node000010_Node000002" title=" " alt="" coords="1389,285,1810,308,2030,326,2120,337,2189,349,2213,357,2212,362,2188,355,2120,343,2029,332,1810,313,1388,291"/>
+<area shape="poly" id="edge13_Node000010_Node000008" title=" " alt="" coords="1173,289,1016,296,816,308,594,327,372,355,360,357,359,351,371,349,594,322,816,302,1016,290,1173,284"/>
+<area shape="poly" id="edge14_Node000010_Node000009" title=" " alt="" coords="1173,289,989,295,746,306,473,326,198,355,186,356,186,351,198,349,473,321,746,301,989,289,1173,283"/>
+<area shape="rect" id="Node000011" href="$clock__commands_8cpp.html" title=" " alt="" coords="1117,352,1269,395"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="1260,309,1215,353,1211,350,1256,305"/>
+<area shape="rect" id="Node000012" href="$event__commands_8cpp.html" title=" " alt="" coords="1294,352,1447,395"/>
+<area shape="poly" id="edge15_Node000010_Node000012" title=" " alt="" coords="1306,305,1351,350,1348,353,1303,309"/>
+<area shape="rect" id="Node000013" href="$gps__commands_8cpp.html" title=" " alt="" coords="1873,352,2022,395"/>
+<area shape="poly" id="edge16_Node000010_Node000013" title=" " alt="" coords="1389,290,1607,313,1861,349,1873,352,1872,357,1860,355,1607,319,1388,296"/>
+<area shape="rect" id="Node000014" href="$power__commands_8cpp.html" title=" " alt="" coords="1471,352,1627,395"/>
+<area shape="poly" id="edge17_Node000010_Node000014" title=" " alt="" coords="1334,299,1487,349,1485,354,1332,304"/>
+<area shape="rect" id="Node000015" href="$communication_8cpp.html" title=" " alt="" coords="1651,360,1849,387"/>
+<area shape="poly" id="edge18_Node000010_Node000015" title=" " alt="" coords="1363,297,1683,357,1682,362,1362,302"/>
+<area shape="rect" id="Node000016" href="$frame_8cpp.html" title="Implements functions for encoding, decoding, building, and processing Frames." alt="" coords="384,360,527,387"/>
+<area shape="poly" id="edge19_Node000010_Node000016" title=" " alt="" coords="1174,292,886,312,713,330,540,355,504,362,503,357,539,349,712,325,886,307,1173,286"/>
+<area shape="rect" id="Node000017" href="$receive_8cpp.html" title="Implements functions for receiving and processing data, including LoRa and UART input." alt="" coords="551,360,704,387"/>
+<area shape="poly" id="edge20_Node000010_Node000017" title=" " alt="" coords="1173,296,961,319,716,355,679,362,678,357,715,349,961,314,1173,291"/>
+<area shape="rect" id="Node000018" href="$send_8cpp.html" title="Implements functions for sending data, including LoRa messages and Frames." alt="" coords="728,360,866,387"/>
+<area shape="poly" id="edge21_Node000010_Node000018" title=" " alt="" coords="1180,302,1037,325,879,355,846,362,845,357,878,349,1036,320,1180,296"/>
+<area shape="rect" id="Node000019" href="$utils__converters_8cpp.html" title="Implements utility functions for converting between different data types." alt="" coords="890,360,1093,387"/>
+<area shape="poly" id="edge22_Node000010_Node000019" title=" " alt="" coords="1226,304,1034,362,1032,357,1224,298"/>
+<area shape="poly" id="edge23_Node000010_Node000020" title=" " alt="" coords="1389,286,1681,305,1858,324,2035,349,2046,352,2045,357,2034,355,1858,329,1681,311,1389,291"/>
+<area shape="poly" id="edge27_Node000021_Node000002" title=" " alt="" coords="2159,128,2144,148,2133,172,2129,192,2133,213,2153,258,2179,299,2230,358,2226,361,2175,302,2148,260,2128,214,2123,192,2128,170,2139,146,2154,125"/>
+<area shape="poly" id="edge28_Node000021_Node000013" title=" " alt="" coords="2159,128,2038,263,1965,353,1961,350,2033,260,2156,124"/>
+<area shape="rect" id="Node000022" href="$gps__collector_8cpp.html" title=" " alt="" coords="2142,179,2332,205"/>
+<area shape="poly" id="edge29_Node000021_Node000022" title=" " alt="" coords="2198,126,2231,177,2226,180,2194,129"/>
+<area shape="poly" id="edge33_Node000025_Node000002" title=" " alt="" coords="2860,121,2886,140,2909,163,2921,188,2920,202,2914,215,2894,234,2868,251,2799,281,2713,306,2617,327,2425,357,2282,371,2281,366,2424,351,2616,322,2711,301,2797,276,2866,246,2891,229,2909,212,2915,201,2916,189,2905,166,2883,144,2857,125"/>
+<area shape="rect" id="Node000026" href="$storage_8cpp.html" title="Implements file system operations for the Kubisat firmware." alt="" coords="2746,179,2899,205"/>
+<area shape="poly" id="edge34_Node000025_Node000026" title=" " alt="" coords="2825,130,2825,178,2820,178,2820,130"/>
+<area shape="poly" id="edge36_Node000027_Node000002" title=" " alt="" coords="2458,129,2390,215,2314,299,2255,361,2251,358,2310,296,2385,212,2454,125"/>
+<area shape="poly" id="edge37_Node000027_Node000006" title=" " alt="" coords="2434,123,2427,125,2336,143,2212,160,1967,187,1967,181,2211,155,2336,137,2426,120,2433,118"/>
+<area shape="poly" id="edge38_Node000027_Node000020" title=" " alt="" coords="2447,126,2389,173,2345,215,2238,294,2147,354,2144,349,2235,290,2342,211,2386,169,2443,122"/>
+<area shape="poly" id="edge39_Node000027_Node000022" title=" " alt="" coords="2432,123,2427,125,2275,181,2273,176,2425,120,2430,118"/>
+<area shape="poly" id="edge40_Node000027_Node000024" title=" " alt="" coords="2513,120,2606,168,2604,173,2511,125"/>
+<area shape="rect" id="Node000028" href="$utils_8cpp.html" title="Implements utility functions for the Kubisat firmware." alt="" coords="2457,179,2544,205"/>
+<area shape="poly" id="edge41_Node000027_Node000028" title=" " alt="" coords="2485,129,2500,177,2494,179,2480,131"/>
+</map>

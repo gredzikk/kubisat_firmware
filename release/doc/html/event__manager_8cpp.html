@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>KubiSat Firmware: event_manager.cpp File Reference</title>
+<title>KubiSat Firmware: lib/eventman/event_manager.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -103,6 +103,9 @@ $(function(){initNavTree('event__manager_8cpp.html',''); initResizable(true); })
   <div class="headertitle"><div class="title">event_manager.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implements the event management system for the Kubisat firmware.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="event__manager_8h_source.html">event_manager.h</a>&quot;</code><br />
 <code>#include &lt;cstdio&gt;</code><br />
 <code>#include &quot;<a class="el" href="protocol_8h_source.html">protocol.h</a>&quot;</code><br />
@@ -110,6 +113,13 @@ $(function(){initNavTree('event__manager_8cpp.html',''); initResizable(true); })
 <code>#include &quot;<a class="el" href="communication_8h_source.html">communication.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="utils_8h_source.html">utils.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>&quot;</code><br />
+</div><div class="textblock"><div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for event_manager.cpp:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="event__manager_8cpp__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 </div>
 <p><a href="event__manager_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -122,29 +132,45 @@ Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:ab144678e47784f421d98c3dfdbb53dc8" id="r_ab144678e47784f421d98c3dfdbb53dc8"><td class="memItemLeft" align="right" valign="top">volatile uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab144678e47784f421d98c3dfdbb53dc8">eventLogId</a> = 0</td></tr>
+<tr class="memdesc:ab144678e47784f421d98c3dfdbb53dc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global event log ID counter.  <br /></td></tr>
 <tr class="separator:ab144678e47784f421d98c3dfdbb53dc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d4329f1e2606ca8f8535dae8c08afe5" id="r_a2d4329f1e2606ca8f8535dae8c08afe5"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="event__manager_8h.html#a8b04683add0105a3bf3200eee3d9d3e6">PowerEvent</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d4329f1e2606ca8f8535dae8c08afe5">lastPowerState</a> = <a class="el" href="event__manager_8h.html#a8b04683add0105a3bf3200eee3d9d3e6a36d76a2d86f6dbf2035366b3572f025c">PowerEvent::LOW_BATTERY</a></td></tr>
+<tr class="memdesc:a2d4329f1e2606ca8f8535dae8c08afe5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores the last known power state.  <br /></td></tr>
 <tr class="separator:a2d4329f1e2606ca8f8535dae8c08afe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a234988dfb88db38997bd921cd5c32457" id="r_a234988dfb88db38997bd921cd5c32457"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a234988dfb88db38997bd921cd5c32457">FALL_RATE_THRESHOLD</a> = -0.02f</td></tr>
+<tr class="memdesc:a234988dfb88db38997bd921cd5c32457"><td class="mdescLeft">&#160;</td><td class="mdescRight">Threshold for detecting a falling voltage rate.  <br /></td></tr>
 <tr class="separator:a234988dfb88db38997bd921cd5c32457"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4e7da8cdf52e447acd5705d930759cf" id="r_ae4e7da8cdf52e447acd5705d930759cf"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4e7da8cdf52e447acd5705d930759cf">FALLING_TREND_REQUIRED</a> = 3</td></tr>
+<tr class="memdesc:ae4e7da8cdf52e447acd5705d930759cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of consecutive falling voltage readings required to trigger a power falling event.  <br /></td></tr>
 <tr class="separator:ae4e7da8cdf52e447acd5705d930759cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1095ab71c42b3eaed0492aec0941972" id="r_aa1095ab71c42b3eaed0492aec0941972"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1095ab71c42b3eaed0492aec0941972">VOLTAGE_LOW_THRESHOLD</a> = 4.7f</td></tr>
+<tr class="memdesc:aa1095ab71c42b3eaed0492aec0941972"><td class="mdescLeft">&#160;</td><td class="mdescRight">Voltage threshold for detecting a low battery condition.  <br /></td></tr>
 <tr class="separator:aa1095ab71c42b3eaed0492aec0941972"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98ed7b83dd5e1a54a096ca9bb3456163" id="r_a98ed7b83dd5e1a54a096ca9bb3456163"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a98ed7b83dd5e1a54a096ca9bb3456163">VOLTAGE_OVERCHARGE_THRESHOLD</a> = 5.3f</td></tr>
+<tr class="memdesc:a98ed7b83dd5e1a54a096ca9bb3456163"><td class="mdescLeft">&#160;</td><td class="mdescRight">Voltage threshold for detecting an overcharge condition.  <br /></td></tr>
 <tr class="separator:a98ed7b83dd5e1a54a096ca9bb3456163"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4a2e48e0a0e0d5aa49dd6c2aa12d8fb" id="r_ad4a2e48e0a0e0d5aa49dd6c2aa12d8fb"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4a2e48e0a0e0d5aa49dd6c2aa12d8fb">fallingTrendCount</a> = 0</td></tr>
+<tr class="memdesc:ad4a2e48e0a0e0d5aa49dd6c2aa12d8fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Counter for consecutive falling voltage readings.  <br /></td></tr>
 <tr class="separator:ad4a2e48e0a0e0d5aa49dd6c2aa12d8fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a908d9cb4eb9ec61d273f6770660bbb8e" id="r_a908d9cb4eb9ec61d273f6770660bbb8e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a908d9cb4eb9ec61d273f6770660bbb8e">lastSolarState</a> = false</td></tr>
+<tr class="memdesc:a908d9cb4eb9ec61d273f6770660bbb8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores the last known solar charging state.  <br /></td></tr>
 <tr class="separator:a908d9cb4eb9ec61d273f6770660bbb8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0592f758055ae8683676ff86ae7ae9e1" id="r_a0592f758055ae8683676ff86ae7ae9e1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0592f758055ae8683676ff86ae7ae9e1">lastUSBState</a> = false</td></tr>
+<tr class="memdesc:a0592f758055ae8683676ff86ae7ae9e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores the last known USB connection state.  <br /></td></tr>
 <tr class="separator:a0592f758055ae8683676ff86ae7ae9e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfd573c8a839ac00ea3b96d691ea11c3" id="r_abfd573c8a839ac00ea3b96d691ea11c3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_d_s3231.html">DS3231</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abfd573c8a839ac00ea3b96d691ea11c3">systemClock</a></td></tr>
+<tr class="memdesc:abfd573c8a839ac00ea3b96d691ea11c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">External declaration of the system clock.  <br /></td></tr>
 <tr class="separator:abfd573c8a839ac00ea3b96d691ea11c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a686792b51ec2b9e1b7bfc9faef92f7" id="r_a2a686792b51ec2b9e1b7bfc9faef92f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_event_manager_impl.html">EventManagerImpl</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a686792b51ec2b9e1b7bfc9faef92f7">eventManager</a></td></tr>
+<tr class="memdesc:a2a686792b51ec2b9e1b7bfc9faef92f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global instance of the <a class="el" href="class_event_manager.html" title="Manages the event logging system.">EventManager</a> implementation.  <br /></td></tr>
 <tr class="separator:a2a686792b51ec2b9e1b7bfc9faef92f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implements the event management system for the Kubisat firmware. </p>
+<p>This file contains the implementation for logging events, managing event storage, and checking for specific events such as power status changes. </p>
+
+<p class="definition">Definition in file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a467714d66058f52e4ac7aeb6df46b433" name="a467714d66058f52e4ac7aeb6df46b433"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a467714d66058f52e4ac7aeb6df46b433">&#9670;&#160;</a></span>checkPowerEvents()</h2>
 
@@ -163,12 +189,27 @@ Variables</h2></td></tr>
 <p>Checks power statuses and triggers events based on voltage trends. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pm</td><td>Reference to the <a class="el" href="class_power_manager.html">PowerManager</a> object. </td></tr>
+    <tr><td class="paramname">pm</td><td>Reference to the <a class="el" href="class_power_manager.html">PowerManager</a> object.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Monitors the 5V voltage level, detects falling voltage trends, and triggers events for low battery, overcharge, and normal power conditions. Also checks solar charging and USB connection states. </p>
 
-<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00077">77</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00139">139</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
+<div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="event__manager_8cpp_a467714d66058f52e4ac7aeb6df46b433_cgraph.svg" width="636" height="240"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="event__manager_8cpp_a467714d66058f52e4ac7aeb6df46b433_icgraph.svg" width="380" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -185,7 +226,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00009">9</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
+<p>Global event log ID counter. </p>
+
+<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00020">20</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -209,7 +252,9 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00011">11</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
+<p>Stores the last known power state. </p>
+
+<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00025">25</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -233,7 +278,9 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00013">13</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
+<p>Threshold for detecting a falling voltage rate. </p>
+
+<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00030">30</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -257,7 +304,9 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00014">14</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
+<p>Number of consecutive falling voltage readings required to trigger a power falling event. </p>
+
+<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00035">35</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -281,7 +330,9 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00015">15</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
+<p>Voltage threshold for detecting a low battery condition. </p>
+
+<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00040">40</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -305,7 +356,9 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00017">17</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
+<p>Voltage threshold for detecting an overcharge condition. </p>
+
+<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00045">45</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -329,7 +382,9 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00019">19</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
+<p>Counter for consecutive falling voltage readings. </p>
+
+<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00050">50</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -345,7 +400,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00021">21</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
+<p>Stores the last known solar charging state. </p>
+
+<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00055">55</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -361,7 +418,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00022">22</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
+<p>Stores the last known USB connection state. </p>
+
+<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00060">60</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -385,6 +444,8 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>External declaration of the system clock. </p>
+
 </div>
 </div>
 <a id="a2a686792b51ec2b9e1b7bfc9faef92f7" name="a2a686792b51ec2b9e1b7bfc9faef92f7"></a>
@@ -399,7 +460,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00026">26</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
+<p>Global instance of the <a class="el" href="class_event_manager.html" title="Manages the event logging system.">EventManager</a> implementation. </p>
+<p>Global instance of the <a class="el" href="class_event_manager_impl.html" title="Implementation of the EventManager class.">EventManagerImpl</a> class. </p>
+
+<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00070">70</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -408,7 +472,7 @@ Variables</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="event__manager_8cpp.html">event_manager.cpp</a></li>
+    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_3777c4d6009675e764f4fb47c10be9f8.html">eventman</a></li><li class="navelem"><a class="el" href="event__manager_8cpp.html">event_manager.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

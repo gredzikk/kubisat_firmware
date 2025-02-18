@@ -1,14 +1,14 @@
 var dir_97aefd0d527b934f1d99a682da8fe6a9 =
 [
-    [ "BH1750", "dir_a3743206268858ebaf1ddda973f914d5.html", "dir_a3743206268858ebaf1ddda973f914d5" ],
-    [ "BME280", "dir_11ac7d464a41fa97a513b03438ff6e6b.html", "dir_11ac7d464a41fa97a513b03438ff6e6b" ],
-    [ "DS3231", "dir_5adaf3ebcdff6f0f53d7edb9797c1a53.html", "dir_5adaf3ebcdff6f0f53d7edb9797c1a53" ],
-    [ "GPS", "dir_e9d5c4390a5fafe6614a6d2c5a68b64e.html", "dir_e9d5c4390a5fafe6614a6d2c5a68b64e" ],
-    [ "HMC5883L", "dir_1eb17e6be4086ae071715021871ae373.html", "dir_1eb17e6be4086ae071715021871ae373" ],
-    [ "INA3221", "dir_f5960531a42da83bf3626658025b2711.html", "dir_f5960531a42da83bf3626658025b2711" ],
-    [ "LoRa", "dir_d18eadf3fed7f4c99e2274d90a2533f7.html", "dir_d18eadf3fed7f4c99e2274d90a2533f7" ],
-    [ "MPU6050", "dir_e6ae08e7796cab9634fb3340ed5645cf.html", "dir_e6ae08e7796cab9634fb3340ed5645cf" ],
-    [ "PowerManager", "dir_8e72d4e3b06f08a3c4f6f1c3aa4b27cd.html", "dir_8e72d4e3b06f08a3c4f6f1c3aa4b27cd" ],
-    [ "ISensor.cpp", "_i_sensor_8cpp.html", null ],
-    [ "ISensor.h", "_i_sensor_8h.html", "_i_sensor_8h" ]
+    [ "clock", "dir_a2e9fde2cb3a710d934bef3a22578e2f.html", "dir_a2e9fde2cb3a710d934bef3a22578e2f" ],
+    [ "comms", "dir_e552ec73e77e71738095e0b8c7e6e495.html", "dir_e552ec73e77e71738095e0b8c7e6e495" ],
+    [ "eventman", "dir_3777c4d6009675e764f4fb47c10be9f8.html", "dir_3777c4d6009675e764f4fb47c10be9f8" ],
+    [ "location", "dir_95bc18144412456f5cbabe059a4294ca.html", "dir_95bc18144412456f5cbabe059a4294ca" ],
+    [ "powerman", "dir_2a555c3ab4d03c92730db360c69e26f3.html", "dir_2a555c3ab4d03c92730db360c69e26f3" ],
+    [ "sensors", "dir_8e8d3f8a7229d305c4a382105247b2c4.html", "dir_8e8d3f8a7229d305c4a382105247b2c4" ],
+    [ "storage", "dir_e3444725e96b02ac10c64ea3bdf19bda.html", "dir_e3444725e96b02ac10c64ea3bdf19bda" ],
+    [ "pin_config.cpp", "pin__config_8cpp.html", "pin__config_8cpp" ],
+    [ "pin_config.h", "pin__config_8h.html", "pin__config_8h" ],
+    [ "utils.cpp", "utils_8cpp.html", "utils_8cpp" ],
+    [ "utils.h", "utils_8h.html", "utils_8h" ]
 ];

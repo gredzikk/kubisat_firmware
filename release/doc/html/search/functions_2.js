@@ -1,7 +1,7 @@
 var searchData=
 [
   ['bcd2bin_0',['bcd2bin',['../class_d_s3231.html#a389e756fdd8f645d6025906bbce5abd8',1,'DS3231']]],
-  ['begin_1',['begin',['../class_b_h1750.html#ae0e57ed9ecc08464a6b98b733d420e11',1,'BH1750::begin()'],['../class_i_n_a3221.html#a868af24425b042f330a0e7fae8210936',1,'INA3221::begin()'],['../class_lo_ra_class.html#a3c5b6ee156c14f20238f46292c116d96',1,'LoRaClass::begin(long frequency)']]],
+  ['begin_1',['begin',['../class_lo_ra_class.html#a3c5b6ee156c14f20238f46292c116d96',1,'LoRaClass::begin()'],['../class_i_n_a3221.html#a868af24425b042f330a0e7fae8210936',1,'INA3221::begin()'],['../class_b_h1750.html#ae0e57ed9ecc08464a6b98b733d420e11',1,'BH1750::begin()']]],
   ['beginpacket_2',['beginPacket',['../class_lo_ra_class.html#a22d4ee8aaded004bb91b70ee15c57e2d',1,'LoRaClass']]],
   ['bh1750_3',['BH1750',['../class_b_h1750.html#ad3621c02c56c15e4f3d40f0974a376f2',1,'BH1750']]],
   ['bh1750wrapper_4',['BH1750Wrapper',['../class_b_h1750_wrapper.html#a269ed77d8ed445c6fb4a9aa6f33b39df',1,'BH1750Wrapper']]],

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>KubiSat Firmware: lib/GPS/gps_collector.cpp Source File</title>
+<title>KubiSat Firmware: lib/location/gps_collector.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -101,10 +101,10 @@ $(function(){initNavTree('gps__collector_8cpp_source.html',''); initResizable(tr
 </div><!--header-->
 <div class="contents">
 <a href="gps__collector_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// filepath: /c:/Users/Kuba/Desktop/inz/kubisat/software/kubisat_firmware/lib/GPS/gps_collector.cpp</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="gps__collector_8h.html">lib/GPS/gps_collector.h</a>&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="gps__collector_8h.html">lib/location/gps_collector.h</a>&quot;</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="utils_8h.html">utils.h</a>&quot;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;pico/time.h&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="_n_m_e_a__data_8h.html">lib/GPS/NMEA/nmea_data.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="_n_m_e_a__data_8h.html">lib/location/NMEA/nmea_data.h</a>&quot;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="event__manager_8h.html">event_manager.h</a>&quot;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;ctime&gt;</span></div>
@@ -179,14 +179,14 @@ $(function(){initNavTree('gps__collector_8cpp_source.html',''); initResizable(tr
 <div class="ttc" id="agps__collector_8cpp_html_af2b979012abe80d338fef98209f87b78"><div class="ttname"><a href="gps__collector_8cpp.html#af2b979012abe80d338fef98209f87b78">nmea_data</a></div><div class="ttdeci">NMEAData nmea_data</div><div class="ttdef"><b>Definition</b> <a href="_n_m_e_a__data_8cpp_source.html#l00003">NMEA_data.cpp:3</a></div></div>
 <div class="ttc" id="agps__collector_8h_html"><div class="ttname"><a href="gps__collector_8h.html">gps_collector.h</a></div></div>
 <div class="ttc" id="apin__config_8h_html_a31bae3288bdf1b7a767c494f2b049779"><div class="ttname"><a href="pin__config_8h.html#a31bae3288bdf1b7a767c494f2b049779">GPS_UART_PORT</a></div><div class="ttdeci">#define GPS_UART_PORT</div><div class="ttdef"><b>Definition</b> <a href="pin__config_8h_source.html#l00019">pin_config.h:19</a></div></div>
-<div class="ttc" id="autils_8cpp_html_aacbcecbe6b5428e3571b06ab2104e706"><div class="ttname"><a href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a></div><div class="ttdeci">void uartPrint(const std::string &amp;msg, bool logToFile, uart_inst_t *uart)</div><div class="ttdef"><b>Definition</b> <a href="utils_8cpp_source.html#l00009">utils.cpp:9</a></div></div>
+<div class="ttc" id="autils_8cpp_html_aacbcecbe6b5428e3571b06ab2104e706"><div class="ttname"><a href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a></div><div class="ttdeci">void uartPrint(const std::string &amp;msg, bool logToFile, uart_inst_t *uart)</div><div class="ttdoc">Prints a message to the UART with a timestamp and core number.</div><div class="ttdef"><b>Definition</b> <a href="utils_8cpp_source.html#l00026">utils.cpp:26</a></div></div>
 <div class="ttc" id="autils_8h_html"><div class="ttname"><a href="utils_8h.html">utils.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_e9d5c4390a5fafe6614a6d2c5a68b64e.html">GPS</a></li><li class="navelem"><a class="el" href="gps__collector_8cpp.html">gps_collector.cpp</a></li>
+    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_95bc18144412456f5cbabe059a4294ca.html">location</a></li><li class="navelem"><a class="el" href="gps__collector_8cpp.html">gps_collector.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

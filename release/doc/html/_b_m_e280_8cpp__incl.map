@@ -1,0 +1,22 @@
+<map id="lib/sensors/BME280/BME280.cpp" name="lib/sensors/BME280/BME280.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="316,5,454,48"/>
+<area shape="rect" id="Node000002" href="$_b_m_e280_8h.html" title=" " alt="" coords="101,96,183,123"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="323,51,196,93,194,88,322,46"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="185,171,291,197"/>
+<area shape="poly" id="edge8_Node000001_Node000005" title=" " alt="" coords="320,51,285,70,256,98,244,126,240,156,235,155,239,124,252,94,282,66,317,46"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="266,96,333,123"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="365,51,326,87,322,83,361,47"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="356,96,414,123"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="388,49,388,80,382,80,382,49"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="437,96,511,123"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="410,47,451,83,447,87,406,51"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="535,96,658,123"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="440,46,550,88,549,93,438,51"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="683,96,774,123"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="455,42,669,91,667,96,454,47"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,171,66,197"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="125,125,68,164,65,159,122,121"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="89,171,160,197"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="142,124,134,156,129,155,137,123"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="160,121,211,159,208,163,157,125"/>
+</map>

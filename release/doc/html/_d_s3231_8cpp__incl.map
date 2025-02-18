@@ -1,0 +1,17 @@
+<map id="lib/clock/DS3231.cpp" name="lib/clock/DS3231.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="179,5,325,32"/>
+<area shape="rect" id="Node000002" href="$_d_s3231_8h.html" title=" " alt="" coords="115,80,194,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="237,35,185,73,182,69,233,30"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="219,80,285,107"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="255,33,255,64,249,64,249,33"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="310,80,378,107"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="270,30,318,68,315,73,266,35"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,155,59,181"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="135,110,68,149,65,144,132,105"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="83,155,133,181"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="149,109,126,143,122,140,144,106"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="157,155,248,181"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="165,106,188,140,184,143,161,109"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="272,155,378,181"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="185,105,282,146,280,151,183,110"/>
+</map>

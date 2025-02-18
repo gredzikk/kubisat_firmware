@@ -1,13 +1,9 @@
 var commands_8h =
 [
-    [ "handleTime", "commands_8h.html#a1eefb8c4d539d50c787b4db3f6ebb093", null ],
-    [ "handleGetTimezoneOffset", "commands_8h.html#acc9239d946ee18d2ff19af2c6a2177f0", null ],
-    [ "handleSetTimezoneOffset", "commands_8h.html#a9e802e312d0779aab74966074e81eb30", null ],
-    [ "handleGetClockSyncInterval", "commands_8h.html#add8778da60c0dc5c0add2c7b2ccdc57e", null ],
-    [ "handleSetClockSyncInterval", "commands_8h.html#a00137f0d4c6a83ee5c0df49c7370fe65", null ],
-    [ "handleGetClockDrift", "commands_8h.html#a6def0bf9e591d66bd98b752f731d44ba", null ],
-    [ "handleSetClockDrift", "commands_8h.html#ae4cd7f745d6f9e2cadef70e21d8a9fcb", null ],
-    [ "handleGetLastSyncTime", "commands_8h.html#a17274560343c34119630b27d88ef475e", null ],
+    [ "handleTime", "group___clock_commands.html#ga1eefb8c4d539d50c787b4db3f6ebb093", null ],
+    [ "handleTimezoneOffset", "group___clock_commands.html#ga9378f580aefefb566c6f7d49975afeba", null ],
+    [ "handleClockSyncInterval", "group___clock_commands.html#gad92a65bf7ca7a1c1ed7b29e5e9e75fa0", null ],
+    [ "handleGetLastSyncTime", "group___clock_commands.html#ga17274560343c34119630b27d88ef475e", null ],
     [ "handleListCommands", "group___diagnostic_commands.html#gade74b82cf2c20d93c5e0ce624cd7ca77", null ],
     [ "handleGetBuildVersion", "group___diagnostic_commands.html#ga5ebac5711334cb3584974b2b74556543", null ],
     [ "handleGetCommandsTimestamp", "commands_8h.html#a7a7ebcb893bb8e5bb8b66c1d8db539b1", null ],
@@ -25,6 +21,6 @@ var commands_8h =
     [ "handleGetCurrentDraw", "group___power_commands.html#gabd6610f557fe9deaa9f80d9405738226", null ],
     [ "handleGetLastEvents", "group___event_commands.html#gad921fe7254d7ec43f16a6fb21f5c385a", null ],
     [ "handleGetEventCount", "group___event_commands.html#ga6f817db327c7b16cf49575635e595004", null ],
-    [ "executeCommand", "commands_8h.html#a1907d400d2c8d8d054ba95bcf43276ea", null ],
-    [ "commandHandlers", "commands_8h.html#acbfd6523ceea62dad855ea65b52eb5b1", null ]
+    [ "executeCommand", "group___command_system.html#ga1907d400d2c8d8d054ba95bcf43276ea", null ],
+    [ "commandHandlers", "group___command_system.html#ga04a0515603ba347ef314678876f3fa26", null ]
 ];

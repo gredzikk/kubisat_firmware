@@ -1,0 +1,7 @@
+<map id="LoRaClass::channelActivityDetection" name="LoRaClass::channelActivityDetection">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,189,48"/>
+<area shape="rect" id="Node000002" href="$class_lo_ra_class.html#a77e7c77aa54174b352a26e1510f66f98" title=" " alt="" coords="237,13,408,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="189,24,221,24,221,29,189,29"/>
+<area shape="rect" id="Node000003" href="$class_lo_ra_class.html#a3a0c0649c595b1176b5fb1ae41210ee3" title=" " alt="" coords="456,13,632,40"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="408,24,440,24,440,29,408,29"/>
+</map>

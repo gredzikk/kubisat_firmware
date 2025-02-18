@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>KubiSat Firmware: frame_model/frame.cpp File Reference</title>
+<title>KubiSat Firmware: lib/comms/frame.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -104,7 +104,17 @@ $(function(){initNavTree('frame_8cpp.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">frame.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implements functions for encoding, decoding, building, and processing Frames.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="communication_8h_source.html">communication.h</a>&quot;</code><br />
+</div><div class="textblock"><div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for frame.cpp:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="frame_8cpp__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 </div>
 <p><a href="frame_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -116,28 +126,34 @@ Typedefs</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ab53898fb6f45dfc657837a665a070959" id="r_ab53898fb6f45dfc657837a665a070959"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab53898fb6f45dfc657837a665a070959">encodeFrame</a> (const <a class="el" href="struct_frame.html">Frame</a> &amp;frame)</td></tr>
-<tr class="memdesc:ab53898fb6f45dfc657837a665a070959"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encode <a class="el" href="struct_frame.html">Frame</a> instance into a string.  <br /></td></tr>
+<tr class="memdesc:ab53898fb6f45dfc657837a665a070959"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encodes a <a class="el" href="struct_frame.html">Frame</a> instance into a string.  <br /></td></tr>
 <tr class="separator:ab53898fb6f45dfc657837a665a070959"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f34bc31494430539db21206f084d39d" id="r_a8f34bc31494430539db21206f084d39d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f34bc31494430539db21206f084d39d">decodeFrame</a> (const std::string &amp;data)</td></tr>
-<tr class="memdesc:a8f34bc31494430539db21206f084d39d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a string into a <a class="el" href="struct_frame.html">Frame</a> instance.  <br /></td></tr>
+<tr class="memdesc:a8f34bc31494430539db21206f084d39d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a string into a <a class="el" href="struct_frame.html">Frame</a> instance.  <br /></td></tr>
 <tr class="separator:a8f34bc31494430539db21206f084d39d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b9407b2f579031cf4b705f1ac03ac31" id="r_a8b9407b2f579031cf4b705f1ac03ac31"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b9407b2f579031cf4b705f1ac03ac31">processFrameData</a> (const std::string &amp;data)</td></tr>
-<tr class="memdesc:a8b9407b2f579031cf4b705f1ac03ac31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute the command based on the command key and the parameter.  <br /></td></tr>
+<tr class="memdesc:a8b9407b2f579031cf4b705f1ac03ac31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a command based on the command key and the parameter.  <br /></td></tr>
 <tr class="separator:a8b9407b2f579031cf4b705f1ac03ac31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6005ddd6320bebe2a680fa6b8efff6dd" id="r_a6005ddd6320bebe2a680fa6b8efff6dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6005ddd6320bebe2a680fa6b8efff6dd">sendEventRegister</a> ()</td></tr>
-<tr class="memdesc:a6005ddd6320bebe2a680fa6b8efff6dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send event register value to the ground station.  <br /></td></tr>
+<tr class="memdesc:a6005ddd6320bebe2a680fa6b8efff6dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends the event register value to the ground station.  <br /></td></tr>
 <tr class="separator:a6005ddd6320bebe2a680fa6b8efff6dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f43260949ee244d3ee66068eb1d7fc1" id="r_a5f43260949ee244d3ee66068eb1d7fc1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f43260949ee244d3ee66068eb1d7fc1">buildFrame</a> (<a class="el" href="protocol_8h.html#ad13fb53c92ad2af53a95ee45749796d1">ExecutionResult</a> result, uint8_t <a class="el" href="event__manager_8h.html#ad4291fcb880eb5ecb178b53e32f55741">group</a>, uint8_t command, const std::string &amp;value, const <a class="el" href="protocol_8h.html#a2d96449e2b52d45b5726af92084e0d8f">ValueUnit</a> unitType)</td></tr>
+<tr class="memdesc:a5f43260949ee244d3ee66068eb1d7fc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds a <a class="el" href="struct_frame.html">Frame</a> instance.  <br /></td></tr>
 <tr class="separator:a5f43260949ee244d3ee66068eb1d7fc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a683301014d75a3228003716105486a3e" id="r_a683301014d75a3228003716105486a3e"><td class="memItemLeft" align="right" valign="top">std::map&lt; uint32_t, <a class="el" href="commands_8cpp.html#afd50beeb0940251ffa11aba67ae299bd">CommandHandler</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a683301014d75a3228003716105486a3e">commandHandlers</a></td></tr>
-<tr class="separator:a683301014d75a3228003716105486a3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga04a0515603ba347ef314678876f3fa26" id="r_ga04a0515603ba347ef314678876f3fa26"><td class="memItemLeft" align="right" valign="top">std::map&lt; uint32_t, <a class="el" href="group___command_system.html#gafd50beeb0940251ffa11aba67ae299bd">CommandHandler</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___command_system.html#ga04a0515603ba347ef314678876f3fa26">commandHandlers</a></td></tr>
+<tr class="memdesc:ga04a0515603ba347ef314678876f3fa26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global map of all command handlers.  <br /></td></tr>
+<tr class="separator:ga04a0515603ba347ef314678876f3fa26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac9c6a252b4ac4dad7cf47681200d3dbe" id="r_ac9c6a252b4ac4dad7cf47681200d3dbe"><td class="memItemLeft" align="right" valign="top">volatile uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac9c6a252b4ac4dad7cf47681200d3dbe">eventRegister</a></td></tr>
 <tr class="separator:ac9c6a252b4ac4dad7cf47681200d3dbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Typedef Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implements functions for encoding, decoding, building, and processing Frames. </p>
+
+<p class="definition">Definition in file <a class="el" href="frame_8cpp_source.html">frame.cpp</a>.</p>
+</div><h2 class="groupheader">Typedef Documentation</h2>
 <a id="a2847cb88200a957abe5098b0cc87556d" name="a2847cb88200a957abe5098b0cc87556d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2847cb88200a957abe5098b0cc87556d">&#9670;&#160;</a></span>CommandHandler</h2>
 
@@ -145,12 +161,12 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="commands_8cpp.html#afd50beeb0940251ffa11aba67ae299bd">CommandHandler</a> = std::function&lt;std::string(const std::string&amp;, <a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a>)&gt;</td>
+          <td class="memname">using <a class="el" href="group___command_system.html#gafd50beeb0940251ffa11aba67ae299bd">CommandHandler</a> = std::function&lt;std::string(const std::string&amp;, <a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a>)&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="frame_8cpp_source.html#l00074">74</a> of file <a class="el" href="frame_8cpp_source.html">frame.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="frame_8cpp_source.html#l00003">3</a> of file <a class="el" href="frame_8cpp_source.html">frame.cpp</a>.</p>
 
 </div>
 </div>
@@ -170,16 +186,31 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Encode <a class="el" href="struct_frame.html">Frame</a> instance into a string. </p>
+<p>Encodes a <a class="el" href="struct_frame.html">Frame</a> instance into a string. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">frame</td><td><a class="el" href="struct_frame.html">Frame</a> instance to encode </td></tr>
+    <tr><td class="paramname">frame</td><td>The <a class="el" href="struct_frame.html">Frame</a> instance to encode. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_frame.html">Frame</a> encoded as a string </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="struct_frame.html">Frame</a> encoded as a string.</dd></dl>
+<p>The encoded string includes the frame direction, operation type, group, command, value, and unit, all delimited by the DELIMITER character. The string is encapsulated by FRAME_BEGIN and FRAME_END. </p>
 
-<p class="definition">Definition at line <a class="el" href="frame_8cpp_source.html#l00006">6</a> of file <a class="el" href="frame_8cpp_source.html">frame.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="frame_8cpp_source.html#l00019">19</a> of file <a class="el" href="frame_8cpp_source.html">frame.cpp</a>.</p>
+<div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="frame_8cpp_ab53898fb6f45dfc657837a665a070959_cgraph.svg" width="310" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="frame_8cpp_ab53898fb6f45dfc657837a665a070959_icgraph.svg" width="100%" height="518"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -198,16 +229,37 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Convert a string into a <a class="el" href="struct_frame.html">Frame</a> instance. </p>
+<p>Converts a string into a <a class="el" href="struct_frame.html">Frame</a> instance. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">data</td><td><a class="el" href="struct_frame.html">Frame</a> data as a string </td></tr>
+    <tr><td class="paramname">data</td><td>The <a class="el" href="struct_frame.html">Frame</a> data as a string. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_frame.html">Frame</a> instance </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="struct_frame.html">Frame</a> instance. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>if the frame header is invalid.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Parses the input string, extracting the frame direction, operation type, group, command, value, and unit. If an error occurs during parsing, an error message is printed to the UART, an error frame is built and sent, and the exception is re-thrown. </p>
 
-<p class="definition">Definition at line <a class="el" href="frame_8cpp_source.html#l00024">24</a> of file <a class="el" href="frame_8cpp_source.html">frame.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="frame_8cpp_source.html#l00044">44</a> of file <a class="el" href="frame_8cpp_source.html">frame.cpp</a>.</p>
+<div id="dynsection-3" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="frame_8cpp_a8f34bc31494430539db21206f084d39d_cgraph.svg" width="100%" height="480"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div id="dynsection-4" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="frame_8cpp_a8f34bc31494430539db21206f084d39d_icgraph.svg" width="551" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -226,15 +278,30 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Execute the command based on the command key and the parameter. </p>
+<p>Executes a command based on the command key and the parameter. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">data</td><td><a class="el" href="struct_frame.html">Frame</a> data in string format </td></tr>
+    <tr><td class="paramname">data</td><td>The <a class="el" href="struct_frame.html">Frame</a> data in string format.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Decodes the frame data, extracts the command key, and executes the corresponding command. Sends the response frame. If an error occurs, an error frame is built and sent. </p>
 
-<p class="definition">Definition at line <a class="el" href="frame_8cpp_source.html#l00079">79</a> of file <a class="el" href="frame_8cpp_source.html">frame.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="frame_8cpp_source.html#l00100">100</a> of file <a class="el" href="frame_8cpp_source.html">frame.cpp</a>.</p>
+<div id="dynsection-5" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="frame_8cpp_a8b9407b2f579031cf4b705f1ac03ac31_cgraph.svg" width="100%" height="442"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div id="dynsection-6" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="frame_8cpp_a8b9407b2f579031cf4b705f1ac03ac31_icgraph.svg" width="402" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -253,10 +320,17 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Send event register value to the ground station. </p>
-<dl class="section note"><dt>Note</dt><dd>This function is called in the main loop </dd></dl>
+<p>Sends the event register value to the ground station. </p>
+<p>This function is called in the main loop to send the current value of the event register. </p>
 
-<p class="definition">Definition at line <a class="el" href="frame_8cpp_source.html#l00098">98</a> of file <a class="el" href="frame_8cpp_source.html">frame.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="frame_8cpp_source.html#l00119">119</a> of file <a class="el" href="frame_8cpp_source.html">frame.cpp</a>.</p>
+<div id="dynsection-7" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="frame_8cpp_a6005ddd6320bebe2a680fa6b8efff6dd_cgraph.svg" width="100%" height="404"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -294,35 +368,39 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="frame_8cpp_source.html#l00113">113</a> of file <a class="el" href="frame_8cpp_source.html">frame.cpp</a>.</p>
+<p>Builds a <a class="el" href="struct_frame.html">Frame</a> instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td>The execution result. </td></tr>
+    <tr><td class="paramname">group</td><td>The group ID. </td></tr>
+    <tr><td class="paramname">command</td><td>The command ID. </td></tr>
+    <tr><td class="paramname">value</td><td>The value. </td></tr>
+    <tr><td class="paramname">unitType</td><td>The value unit type. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="struct_frame.html">Frame</a> instance.</dd></dl>
+<p>Constructs a <a class="el" href="struct_frame.html">Frame</a> instance based on the provided parameters. The frame direction and operation type are set based on the execution result. </p>
+
+<p class="definition">Definition at line <a class="el" href="frame_8cpp_source.html#l00146">146</a> of file <a class="el" href="frame_8cpp_source.html">frame.cpp</a>.</p>
+<div id="dynsection-8" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="frame_8cpp_a5f43260949ee244d3ee66068eb1d7fc1_cgraph.svg" width="296" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-9" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="frame_8cpp_a5f43260949ee244d3ee66068eb1d7fc1_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="a683301014d75a3228003716105486a3e" name="a683301014d75a3228003716105486a3e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a683301014d75a3228003716105486a3e">&#9670;&#160;</a></span>commandHandlers</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::map&lt;uint32_t, <a class="el" href="commands_8cpp.html#afd50beeb0940251ffa11aba67ae299bd">CommandHandler</a>&gt; commandHandlers</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="commands_8cpp_source.html#l00009">9</a> of file <a class="el" href="commands_8cpp_source.html">commands.cpp</a>.</p>
-
-</div>
-</div>
 <a id="ac9c6a252b4ac4dad7cf47681200d3dbe" name="ac9c6a252b4ac4dad7cf47681200d3dbe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac9c6a252b4ac4dad7cf47681200d3dbe">&#9670;&#160;</a></span>eventRegister</h2>
 
@@ -350,7 +428,7 @@ Variables</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_cc290362f203a1feeafe2c07392c392d.html">frame_model</a></li><li class="navelem"><a class="el" href="frame_8cpp.html">frame.cpp</a></li>
+    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_e552ec73e77e71738095e0b8c7e6e495.html">comms</a></li><li class="navelem"><a class="el" href="frame_8cpp.html">frame.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

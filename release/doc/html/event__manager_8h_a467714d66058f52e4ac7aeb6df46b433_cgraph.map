@@ -1,0 +1,17 @@
+<map id="checkPowerEvents" name="checkPowerEvents">
+<area shape="rect" id="Node000001" title="Checks power statuses and triggers events based on voltage trends." alt="" coords="5,107,140,133"/>
+<area shape="rect" id="Node000002" href="$class_event_emitter.html#a539d733505f9a793439a9cfc4f2af079" title="Emits an event." alt="" coords="231,5,362,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,104,132,73,187,42,215,31,217,36,189,46,134,77,92,108"/>
+<area shape="rect" id="Node000003" href="$class_power_manager.html#ae0e4303ddaba328047fb40d8d925c7dd" title=" " alt="" coords="200,56,393,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="134,103,219,84,220,89,135,109"/>
+<area shape="rect" id="Node000004" href="$class_power_manager.html#a33ea0aaa75b4654b0ee05250119bf083" title=" " alt="" coords="200,107,393,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="140,117,184,117,184,123,140,123"/>
+<area shape="rect" id="Node000006" href="$class_power_manager.html#a0548ae14a668bb06e4cc13e0295ad5c8" title=" " alt="" coords="188,157,405,184"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="135,131,220,151,219,156,134,137"/>
+<area shape="rect" id="Node000008" href="$utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706" title="Prints a message to the UART with a timestamp and core number." alt="" coords="261,208,332,235"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="92,132,134,163,189,194,246,211,245,216,187,198,132,167,89,136"/>
+<area shape="rect" id="Node000005" href="$class_power_manager.html#a097734aac2bcc228d6cf22c00e3acb1a" title=" " alt="" coords="453,91,630,133"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="393,114,437,113,438,118,394,120"/>
+<area shape="rect" id="Node000007" href="$class_power_manager.html#a3f9587ee81469642a2e595ef3805e801" title=" " alt="" coords="453,157,630,200"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="406,172,437,173,437,178,405,177"/>
+</map>

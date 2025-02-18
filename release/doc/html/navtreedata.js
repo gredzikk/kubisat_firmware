@@ -25,7 +25,7 @@
 var NAVTREE =
 [
   [ "KubiSat Firmware", "index.html", [
-    [ "List of Commands", "command.html", null ],
+    [ "Clock Commands", "command.html", null ],
     [ "Topics", "topics.html", "topics" ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
@@ -56,9 +56,9 @@ var NAVTREEINDEX =
 [
 "_b_h1750_8cpp.html",
 "class_b_m_e280.html#a77faa64e2670bedae42db2aff8bce837",
-"class_m_p_u6050_wrapper.html#a39989e57457ea5c1a230aede7d3f4921",
-"functions_func_f.html",
-"struct_date_time.html#ad7812eb3752d2309263267d4bc3c79a0"
+"class_m_p_u6050_wrapper.html#a922032d7b37976611de3a745e16fafde",
+"functions_u.html",
+"struct_i_n_a3221_1_1conf__reg__t.html#aec23450c7605d5c0013b8fa27a72056c"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

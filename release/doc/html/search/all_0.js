@@ -10,7 +10,7 @@ var searchData=
   ['_5ffilterres_7',['_filterRes',['../class_i_n_a3221.html#a0903ad1f4dfbed3dff2e6ba3e1c86d49',1,'INA3221']]],
   ['_5ffrequency_8',['_frequency',['../class_lo_ra_class.html#af6692e2833e9ae88808ee093c2b2c356',1,'LoRaClass']]],
   ['_5fi2c_9',['_i2c',['../class_i_n_a3221.html#a6db0cc64c99ad0887a74c6929a033036',1,'INA3221']]],
-  ['_5fi2c_5faddr_10',['_i2c_addr',['../class_b_h1750.html#ab332014adec6fccc44f11da4034e788e',1,'BH1750::_i2c_addr'],['../class_i_n_a3221.html#a516a7b1c85f7015623e041bcd27a84da',1,'INA3221::_i2c_addr']]],
+  ['_5fi2c_5faddr_10',['_i2c_addr',['../class_i_n_a3221.html#a516a7b1c85f7015623e041bcd27a84da',1,'INA3221::_i2c_addr'],['../class_b_h1750.html#ab332014adec6fccc44f11da4034e788e',1,'BH1750::_i2c_addr']]],
   ['_5fimplicitheadermode_11',['_implicitHeaderMode',['../class_lo_ra_class.html#ad8446dc91c11cb077e691f8574571c13',1,'LoRaClass']]],
   ['_5fmasken_5freg_12',['_masken_reg',['../class_i_n_a3221.html#a1993533c947d9a944695359e70fa9618',1,'INA3221']]],
   ['_5foncaddone_13',['_onCadDone',['../class_lo_ra_class.html#a072c4aa49f5668a8b781d6c666f1ceb2',1,'LoRaClass']]],

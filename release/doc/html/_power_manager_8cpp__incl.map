@@ -1,0 +1,21 @@
+<map id="lib/powerman/PowerManager.cpp" name="lib/powerman/PowerManager.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="182,5,397,32"/>
+<area shape="rect" id="Node000002" href="$_power_manager_8h.html" title=" " alt="" coords="107,80,227,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="270,35,203,74,200,69,267,30"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="417,229,488,256"/>
+<area shape="poly" id="edge10_Node000001_Node000005" title=" " alt="" coords="311,30,374,79,409,113,437,153,449,184,454,213,448,214,444,185,433,156,405,117,371,83,308,35"/>
+<area shape="rect" id="Node000003" href="$_i_n_a3221_8h.html" title=" " alt="" coords="284,155,423,181"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="200,105,308,146,306,151,198,110"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="62,229,168,256"/>
+<area shape="poly" id="edge8_Node000002_Node000006" title=" " alt="" coords="107,104,81,111,55,121,32,136,13,156,9,166,9,175,19,192,39,208,65,221,63,225,36,212,15,195,3,176,4,165,9,153,28,132,53,117,79,106,106,99"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="22,155,69,181"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="147,110,81,149,79,144,144,105"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="92,155,146,181"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="161,109,138,143,133,140,156,106"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="169,155,261,181"/>
+<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="178,106,201,140,196,143,173,109"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="321,229,386,256"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="356,182,356,214,351,214,351,182"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="372,180,425,218,422,222,369,184"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="313,184,172,227,171,222,311,179"/>
+</map>

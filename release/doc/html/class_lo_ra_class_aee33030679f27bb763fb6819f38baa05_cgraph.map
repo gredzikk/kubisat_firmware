@@ -1,0 +1,12 @@
+<map id="LoRaClass::crc" name="LoRaClass::crc">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,118,57"/>
+<area shape="rect" id="Node000002" href="$class_lo_ra_class.html#aee4f452ce8b4ff6d8e7c30aff7e77978" title=" " alt="" coords="166,31,319,57"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="118,41,150,41,150,47,118,47"/>
+<area shape="rect" id="Node000003" href="$class_lo_ra_class.html#add581bfe66dd75108e22b18a4d6f89bf" title=" " alt="" coords="368,5,537,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="319,32,353,28,354,33,320,37"/>
+<area shape="rect" id="Node000005" href="$class_lo_ra_class.html#a77e7c77aa54174b352a26e1510f66f98" title=" " alt="" coords="367,56,538,83"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="320,51,352,54,351,60,319,56"/>
+<area shape="rect" id="Node000004" href="$class_lo_ra_class.html#a3a0c0649c595b1176b5fb1ae41210ee3" title=" " alt="" coords="586,31,763,57"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="538,26,571,30,570,35,537,31"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="538,57,570,53,571,58,539,62"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="EventManager::loadFromStorage" name="EventManager::loadFromStorage">
+<area shape="rect" id="Node000001" title="Loads the events from storage." alt="" coords="479,5,691,32"/>
+<area shape="rect" id="Node000002" href="$class_event_manager.html#ab9c4d0fbfc9cf7743eac02bee6223728" title="Initializes the EventManager." alt="" coords="301,5,431,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="464,21,431,21,431,16,464,16"/>
+<area shape="rect" id="Node000003" href="$class_event_manager_impl.html#a07861026e9c06832168372f64e958073" title="Constructor for the EventManagerImpl." alt="" coords="5,5,253,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="285,21,253,21,253,16,285,16"/>
+</map>

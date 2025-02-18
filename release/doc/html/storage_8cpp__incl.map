@@ -1,0 +1,29 @@
+<map id="lib/storage/storage.cpp" name="lib/storage/storage.cpp">
+<area shape="rect" id="Node000001" title="Implements file system operations for the Kubisat firmware." alt="" coords="582,5,735,32"/>
+<area shape="rect" id="Node000002" href="$storage_8h.html" title=" " alt="" coords="575,80,650,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="653,34,631,68,627,65,648,31"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="674,80,736,107"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="669,31,691,66,686,68,664,34"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,155,66,181"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="575,99,368,117,228,133,82,157,81,152,227,128,368,111,575,94"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="90,155,154,181"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="575,101,403,120,289,136,170,157,169,152,288,131,403,114,575,95"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="178,155,306,181"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="575,105,322,154,321,149,574,99"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="330,155,448,181"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="576,109,443,152,442,147,574,104"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="472,155,605,181"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="602,109,564,146,560,142,598,105"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="629,155,748,181"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="628,105,667,142,663,146,624,109"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="772,155,904,181"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="652,104,785,147,783,152,650,109"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="928,155,1042,181"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="652,102,663,104,913,151,912,156,662,109,650,107"/>
+<area shape="rect" id="Node000011" href="$pin__config_8h.html" title=" " alt="" coords="1066,155,1157,181"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="652,102,663,104,770,120,855,129,941,137,1051,152,1050,157,941,142,855,134,769,126,662,109,650,107"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="1182,155,1228,181"/>
+<area shape="poly" id="edge12_Node000002_Node000013" title=" " alt="" coords="651,102,663,104,802,121,913,125,1025,131,1090,139,1167,152,1166,157,1090,144,1024,136,913,130,802,126,662,109,650,107"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="1079,229,1144,256"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="1114,182,1114,214,1109,214,1109,182"/>
+</map>

@@ -1,3 +1,5 @@
+# Main CMakeLists.txt
+
 cmake_minimum_required(VERSION 3.13)
 
 # Basic project setup
@@ -28,77 +30,59 @@ project(main C CXX ASM)
 pico_sdk_init()
 
 # Library dependencies
-add_subdirectory(lib/BH1750)
-add_subdirectory(lib/BME280)
-add_subdirectory(lib/DS3231)
-add_subdirectory(lib/INA3221)
-add_subdirectory(lib/MPU6050)
-add_subdirectory(lib/HMC5883L)
-add_subdirectory(lib/LoRa)
-add_subdirectory(lib/PowerManager)
-add_subdirectory(lib/pico-vfs)
+add_subdirectory(lib/sensors)
+add_subdirectory(lib/clock)
+add_subdirectory(lib/powerman)
+add_subdirectory(lib/comms)
+add_subdirectory(lib/storage) 
+add_subdirectory(lib/storage/pico-vfs) 
 
 # Main executable sources
 set(MAIN_SOURCES
-    main.cpp 
-    lib/ISensor.cpp 
-    pin_config.cpp    
-    event_manager.cpp
-    utils.cpp
-    storage.cpp
-)
-
-set(COMMAND_SOURCES
-    commands/commands.cpp
-    commands/clock_commands.cpp
-    commands/diagnostic_commands.cpp
-    commands/gps_commands.cpp
-    commands/power_commands.cpp
-    commands/event_commands.cpp
-)
-
-set(FRAME_MODEL_SOURCES
-    frame_model/frame.cpp
-    frame_model/send.cpp
-    frame_model/receive.cpp
-    frame_model/communication.cpp
-    frame_model/utils_converters.cpp
+    main.cpp
+    lib/sensors/ISensor.cpp
+    lib/pin_config.cpp
+    lib/eventman/event_manager.cpp
+    lib/utils.cpp
+    lib/storage/storage.cpp
 )
 
 set(GPS_SOURCES
-    lib/GPS/gps_collector.cpp
-    lib/GPS/NMEA/NMEA_data.cpp
+    lib/location/gps_collector.cpp
+    lib/location/NMEA/NMEA_data.cpp
 )
 
 # Main target
-add_executable(main 
+add_executable(main
     ${MAIN_SOURCES}
-    ${COMMAND_SOURCES}
-    ${FRAME_MODEL_SOURCES}
     ${GPS_SOURCES}
 )
 
 # Compiler flags
-target_compile_options(main PRIVATE 
-    -Wall 
-    -Wextra 
+target_compile_options(main PRIVATE
+    -Wall
+    -Wextra
     -Wno-error
 )
 
 # Include directories
 target_include_directories(main PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/lib
-    ${CMAKE_CURRENT_SOURCE_DIR}/commands
-    ${CMAKE_CURRENT_SOURCE_DIR}/frame_model
-    ${CMAKE_CURRENT_SOURCE_DIR}/lib/GPS
-    ${CMAKE_CURRENT_SOURCE_DIR}/lib/GPS/NMEA
-    ${CMAKE_CURRENT_SOURCE_DIR}/lib/pico-vfs/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/lib/pico-vfs/vendor/littlefs
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/sensors
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/powerman
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/comms
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/comms/commands
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/location
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/location/NMEA
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/storage
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/storage/pico-vfs/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/storage/pico-vfs/vendor/littlefs
 )
 
 # Dependencies and configuration
-pico_enable_filesystem(${CMAKE_PROJECT_NAME} FS_INIT storage.cpp)
+pico_enable_filesystem(${CMAKE_PROJECT_NAME} FS_INIT lib/storage/storage.cpp)
 pico_enable_stdio_uart(main 1)
 pico_enable_stdio_usb(main 0)
 
@@ -107,14 +91,7 @@ target_link_libraries(main PRIVATE
     pico_stdlib
     hardware_spi
     hardware_i2c
-    BH1750_lib
-    BME280_lib
-    DS3231_lib
-    INA3221_lib
-    LoRa_pico_lib
-    HMC5883L_lib
-    MPU6050_lib   
-    PowerManager_lib
+    hardware_uart
     pico_multicore
     blockdevice_flash
     blockdevice_heap
@@ -123,6 +100,12 @@ target_link_libraries(main PRIVATE
     filesystem_fat
     filesystem_littlefs
     filesystem_vfs
+    Sensors_lib
+    Comms_lib
+    PowerManager_lib
+    storage_lib
+    clock_lib
+    LoRa_pico_lib
 )
 
 # Build information

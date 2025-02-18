@@ -1,0 +1,10 @@
+<map id="LoRaClass::setTxPower" name="LoRaClass::setTxPower">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,170,57"/>
+<area shape="rect" id="Node000002" href="$class_lo_ra_class.html#ac103b2909b8eb353b28b7982251881a3" title=" " alt="" coords="218,5,359,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="170,31,202,27,203,32,170,36"/>
+<area shape="rect" id="Node000003" href="$class_lo_ra_class.html#a77e7c77aa54174b352a26e1510f66f98" title=" " alt="" coords="407,31,578,57"/>
+<area shape="poly" id="edge4_Node000001_Node000003" title=" " alt="" coords="170,41,391,41,391,47,170,47"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="360,25,392,29,391,34,359,30"/>
+<area shape="rect" id="Node000004" href="$class_lo_ra_class.html#a3a0c0649c595b1176b5fb1ae41210ee3" title=" " alt="" coords="626,31,803,57"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="579,41,611,41,611,47,579,47"/>
+</map>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>KubiSat Firmware: commands/power_commands.cpp Source File</title>
+<title>KubiSat Firmware: lib/comms/commands/power_commands.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -236,7 +236,7 @@ $(function(){initNavTree('power__commands_8cpp_source.html',''); initResizable(t
 <div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> <span class="comment">// end of PowerCommands group</span></div>
 <div class="ttc" id="aclass_power_manager_html"><div class="ttname"><a href="class_power_manager.html">PowerManager</a></div><div class="ttdef"><b>Definition</b> <a href="_power_manager_8h_source.html#l00011">PowerManager.h:11</a></div></div>
 <div class="ttc" id="acommunication_8h_html"><div class="ttname"><a href="communication_8h.html">communication.h</a></div></div>
-<div class="ttc" id="acommunication_8h_html_a54afeb73435419551a1b51a3fd5c3266"><div class="ttname"><a href="communication_8h.html#a54afeb73435419551a1b51a3fd5c3266">buildFrame</a></div><div class="ttdeci">Frame buildFrame(ExecutionResult result, uint8_t group, uint8_t command, const std::string &amp;value, const ValueUnit unitType=ValueUnit::UNDEFINED)</div><div class="ttdef"><b>Definition</b> <a href="frame_8cpp_source.html#l00113">frame.cpp:113</a></div></div>
+<div class="ttc" id="acommunication_8h_html_a54afeb73435419551a1b51a3fd5c3266"><div class="ttname"><a href="communication_8h.html#a54afeb73435419551a1b51a3fd5c3266">buildFrame</a></div><div class="ttdeci">Frame buildFrame(ExecutionResult result, uint8_t group, uint8_t command, const std::string &amp;value, const ValueUnit unitType=ValueUnit::UNDEFINED)</div><div class="ttdoc">Builds a Frame instance.</div><div class="ttdef"><b>Definition</b> <a href="frame_8cpp_source.html#l00146">frame.cpp:146</a></div></div>
 <div class="ttc" id="agroup___power_commands_html_ga3f38c538065bf67dbec1142fdb866d16"><div class="ttname"><a href="group___power_commands.html#ga3f38c538065bf67dbec1142fdb866d16">handleGetCurrentChargeUSB</a></div><div class="ttdeci">Frame handleGetCurrentChargeUSB(const std::string &amp;param, OperationType operationType)</div><div class="ttdoc">Handler for getting USB charge current.</div><div class="ttdef"><b>Definition</b> <a href="#l00103">power_commands.cpp:103</a></div></div>
 <div class="ttc" id="agroup___power_commands_html_ga6fbaf484e68c9561ad7fabef21def37b"><div class="ttname"><a href="group___power_commands.html#ga6fbaf484e68c9561ad7fabef21def37b">handleGetCurrentChargeSolar</a></div><div class="ttdeci">Frame handleGetCurrentChargeSolar(const std::string &amp;param, OperationType operationType)</div><div class="ttdoc">Handler for getting solar panel charge current.</div><div class="ttdef"><b>Definition</b> <a href="#l00131">power_commands.cpp:131</a></div></div>
 <div class="ttc" id="agroup___power_commands_html_ga83596ea837df6cf7b15e673b95bf524f"><div class="ttname"><a href="group___power_commands.html#ga83596ea837df6cf7b15e673b95bf524f">handleGetCurrentChargeTotal</a></div><div class="ttdeci">Frame handleGetCurrentChargeTotal(const std::string &amp;param, OperationType operationType)</div><div class="ttdoc">Handler for getting total charge current.</div><div class="ttdef"><b>Definition</b> <a href="#l00159">power_commands.cpp:159</a></div></div>
@@ -252,13 +252,13 @@ $(function(){initNavTree('power__commands_8cpp_source.html',''); initResizable(t
 <div class="ttc" id="aprotocol_8h_html_ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5"><div class="ttname"><a href="protocol_8h.html#ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5">ExecutionResult::ERROR</a></div><div class="ttdeci">@ ERROR</div><div class="ttdef"><b>Definition</b> <a href="protocol_8h_source.html#l00028">protocol.h:28</a></div></div>
 <div class="ttc" id="aprotocol_8h_html_ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c"><div class="ttname"><a href="protocol_8h.html#ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c">ExecutionResult::SUCCESS</a></div><div class="ttdeci">@ SUCCESS</div><div class="ttdef"><b>Definition</b> <a href="protocol_8h_source.html#l00027">protocol.h:27</a></div></div>
 <div class="ttc" id="astruct_frame_html"><div class="ttname"><a href="struct_frame.html">Frame</a></div><div class="ttdef"><b>Definition</b> <a href="protocol_8h_source.html#l00065">protocol.h:65</a></div></div>
-<div class="ttc" id="autils_8cpp_html_aacbcecbe6b5428e3571b06ab2104e706"><div class="ttname"><a href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a></div><div class="ttdeci">void uartPrint(const std::string &amp;msg, bool logToFile, uart_inst_t *uart)</div><div class="ttdef"><b>Definition</b> <a href="utils_8cpp_source.html#l00009">utils.cpp:9</a></div></div>
+<div class="ttc" id="autils_8cpp_html_aacbcecbe6b5428e3571b06ab2104e706"><div class="ttname"><a href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a></div><div class="ttdeci">void uartPrint(const std::string &amp;msg, bool logToFile, uart_inst_t *uart)</div><div class="ttdoc">Prints a message to the UART with a timestamp and core number.</div><div class="ttdef"><b>Definition</b> <a href="utils_8cpp_source.html#l00026">utils.cpp:26</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_afac61274991793aa7e9133a8f4f291e.html">commands</a></li><li class="navelem"><a class="el" href="power__commands_8cpp.html">power_commands.cpp</a></li>
+    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_e552ec73e77e71738095e0b8c7e6e495.html">comms</a></li><li class="navelem"><a class="el" href="dir_f151794e7edc73683d1c1f01d868a48c.html">commands</a></li><li class="navelem"><a class="el" href="power__commands_8cpp.html">power_commands.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

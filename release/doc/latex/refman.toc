@@ -1,0 +1,981 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}Clock Commands}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Topic Index}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Topics}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}Hierarchical Index}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Class Hierarchy}{5}{section.3.1}%
+\contentsline {chapter}{\numberline {4}Class Index}{7}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Class List}{7}{section.4.1}%
+\contentsline {chapter}{\numberline {5}File Index}{9}{chapter.5}%
+\contentsline {section}{\numberline {5.1}File List}{9}{section.5.1}%
+\contentsline {chapter}{\numberline {6}Topic Documentation}{11}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Clock Management Commands}{11}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Detailed Description}{11}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Function Documentation}{11}{subsection.6.1.2}%
+\contentsline {subsubsection}{\numberline {6.1.2.1}handleTime()}{11}{subsubsection.6.1.2.1}%
+\contentsline {subsubsection}{\numberline {6.1.2.2}handleTimezoneOffset()}{12}{subsubsection.6.1.2.2}%
+\contentsline {subsubsection}{\numberline {6.1.2.3}handleClockSyncInterval()}{13}{subsubsection.6.1.2.3}%
+\contentsline {subsubsection}{\numberline {6.1.2.4}handleGetLastSyncTime()}{14}{subsubsection.6.1.2.4}%
+\contentsline {subsection}{\numberline {6.1.3}Variable Documentation}{14}{subsection.6.1.3}%
+\contentsline {subsubsection}{\numberline {6.1.3.1}systemClock}{14}{subsubsection.6.1.3.1}%
+\contentsline {section}{\numberline {6.2}Command System}{14}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Detailed Description}{15}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Typedef Documentation}{15}{subsection.6.2.2}%
+\contentsline {subsubsection}{\numberline {6.2.2.1}CommandHandler}{15}{subsubsection.6.2.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.2.2}CommandMap}{15}{subsubsection.6.2.2.2}%
+\contentsline {subsection}{\numberline {6.2.3}Function Documentation}{15}{subsection.6.2.3}%
+\contentsline {subsubsection}{\numberline {6.2.3.1}executeCommand()}{15}{subsubsection.6.2.3.1}%
+\contentsline {subsection}{\numberline {6.2.4}Variable Documentation}{16}{subsection.6.2.4}%
+\contentsline {subsubsection}{\numberline {6.2.4.1}commandHandlers}{16}{subsubsection.6.2.4.1}%
+\contentsline {section}{\numberline {6.3}Diagnostic Commands}{17}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Detailed Description}{17}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Function Documentation}{17}{subsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.2.1}handleListCommands()}{17}{subsubsection.6.3.2.1}%
+\contentsline {subsubsection}{\numberline {6.3.2.2}handleGetBuildVersion()}{18}{subsubsection.6.3.2.2}%
+\contentsline {subsubsection}{\numberline {6.3.2.3}handleEnterBootloaderMode()}{18}{subsubsection.6.3.2.3}%
+\contentsline {section}{\numberline {6.4}Event Commands}{19}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Detailed Description}{19}{subsection.6.4.1}%
+\contentsline {subsection}{\numberline {6.4.2}Function Documentation}{19}{subsection.6.4.2}%
+\contentsline {subsubsection}{\numberline {6.4.2.1}handleGetLastEvents()}{19}{subsubsection.6.4.2.1}%
+\contentsline {subsubsection}{\numberline {6.4.2.2}handleGetEventCount()}{20}{subsubsection.6.4.2.2}%
+\contentsline {section}{\numberline {6.5}GPS Commands}{21}{section.6.5}%
+\contentsline {subsection}{\numberline {6.5.1}Detailed Description}{21}{subsection.6.5.1}%
+\contentsline {subsection}{\numberline {6.5.2}Function Documentation}{21}{subsection.6.5.2}%
+\contentsline {subsubsection}{\numberline {6.5.2.1}handleGPSPowerStatus()}{21}{subsubsection.6.5.2.1}%
+\contentsline {subsubsection}{\numberline {6.5.2.2}handleEnableGPSTransparentMode()}{22}{subsubsection.6.5.2.2}%
+\contentsline {subsubsection}{\numberline {6.5.2.3}handleGetRMCData()}{23}{subsubsection.6.5.2.3}%
+\contentsline {subsubsection}{\numberline {6.5.2.4}handleGetGGAData()}{24}{subsubsection.6.5.2.4}%
+\contentsline {section}{\numberline {6.6}Power Commands}{25}{section.6.6}%
+\contentsline {subsection}{\numberline {6.6.1}Detailed Description}{25}{subsection.6.6.1}%
+\contentsline {subsection}{\numberline {6.6.2}Function Documentation}{25}{subsection.6.6.2}%
+\contentsline {subsubsection}{\numberline {6.6.2.1}handleGetPowerManagerIDs()}{25}{subsubsection.6.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.6.2.2}handleGetVoltageBattery()}{26}{subsubsection.6.6.2.2}%
+\contentsline {subsubsection}{\numberline {6.6.2.3}handleGetVoltage5V()}{27}{subsubsection.6.6.2.3}%
+\contentsline {subsubsection}{\numberline {6.6.2.4}handleGetCurrentChargeUSB()}{27}{subsubsection.6.6.2.4}%
+\contentsline {subsubsection}{\numberline {6.6.2.5}handleGetCurrentChargeSolar()}{28}{subsubsection.6.6.2.5}%
+\contentsline {subsubsection}{\numberline {6.6.2.6}handleGetCurrentChargeTotal()}{29}{subsubsection.6.6.2.6}%
+\contentsline {subsubsection}{\numberline {6.6.2.7}handleGetCurrentDraw()}{30}{subsubsection.6.6.2.7}%
+\contentsline {chapter}{\numberline {7}Class Documentation}{31}{chapter.7}%
+\contentsline {section}{\numberline {7.1}BH1750 Class Reference}{31}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Detailed Description}{31}{subsection.7.1.1}%
+\contentsline {subsection}{\numberline {7.1.2}Member Enumeration Documentation}{31}{subsection.7.1.2}%
+\contentsline {subsubsection}{\numberline {7.1.2.1}Mode}{31}{subsubsection.7.1.2.1}%
+\contentsline {subsection}{\numberline {7.1.3}Constructor \& Destructor Documentation}{32}{subsection.7.1.3}%
+\contentsline {subsubsection}{\numberline {7.1.3.1}BH1750()}{32}{subsubsection.7.1.3.1}%
+\contentsline {subsection}{\numberline {7.1.4}Member Function Documentation}{32}{subsection.7.1.4}%
+\contentsline {subsubsection}{\numberline {7.1.4.1}begin()}{32}{subsubsection.7.1.4.1}%
+\contentsline {subsubsection}{\numberline {7.1.4.2}configure()}{33}{subsubsection.7.1.4.2}%
+\contentsline {subsubsection}{\numberline {7.1.4.3}readLightLevel()}{33}{subsubsection.7.1.4.3}%
+\contentsline {subsubsection}{\numberline {7.1.4.4}write8()}{33}{subsubsection.7.1.4.4}%
+\contentsline {subsection}{\numberline {7.1.5}Member Data Documentation}{34}{subsection.7.1.5}%
+\contentsline {subsubsection}{\numberline {7.1.5.1}\_i2c\_addr}{34}{subsubsection.7.1.5.1}%
+\contentsline {section}{\numberline {7.2}BH1750\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Wrapper Class Reference}{34}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Detailed Description}{35}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Constructor \& Destructor Documentation}{35}{subsection.7.2.2}%
+\contentsline {subsubsection}{\numberline {7.2.2.1}BH1750Wrapper()}{35}{subsubsection.7.2.2.1}%
+\contentsline {subsection}{\numberline {7.2.3}Member Function Documentation}{35}{subsection.7.2.3}%
+\contentsline {subsubsection}{\numberline {7.2.3.1}get\_i2c\_addr()}{35}{subsubsection.7.2.3.1}%
+\contentsline {subsubsection}{\numberline {7.2.3.2}init()}{35}{subsubsection.7.2.3.2}%
+\contentsline {subsubsection}{\numberline {7.2.3.3}readData()}{36}{subsubsection.7.2.3.3}%
+\contentsline {subsubsection}{\numberline {7.2.3.4}isInitialized()}{36}{subsubsection.7.2.3.4}%
+\contentsline {subsubsection}{\numberline {7.2.3.5}getType()}{36}{subsubsection.7.2.3.5}%
+\contentsline {subsubsection}{\numberline {7.2.3.6}configure()}{36}{subsubsection.7.2.3.6}%
+\contentsline {subsection}{\numberline {7.2.4}Member Data Documentation}{36}{subsection.7.2.4}%
+\contentsline {subsubsection}{\numberline {7.2.4.1}sensor}{36}{subsubsection.7.2.4.1}%
+\contentsline {subsubsection}{\numberline {7.2.4.2}initialized}{36}{subsubsection.7.2.4.2}%
+\contentsline {section}{\numberline {7.3}BME280 Class Reference}{37}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Detailed Description}{38}{subsection.7.3.1}%
+\contentsline {subsection}{\numberline {7.3.2}Constructor \& Destructor Documentation}{38}{subsection.7.3.2}%
+\contentsline {subsubsection}{\numberline {7.3.2.1}BME280()}{38}{subsubsection.7.3.2.1}%
+\contentsline {subsection}{\numberline {7.3.3}Member Function Documentation}{39}{subsection.7.3.3}%
+\contentsline {subsubsection}{\numberline {7.3.3.1}init()}{39}{subsubsection.7.3.3.1}%
+\contentsline {subsubsection}{\numberline {7.3.3.2}reset()}{39}{subsubsection.7.3.3.2}%
+\contentsline {subsubsection}{\numberline {7.3.3.3}read\_raw\_all()}{39}{subsubsection.7.3.3.3}%
+\contentsline {subsubsection}{\numberline {7.3.3.4}convert\_temperature()}{39}{subsubsection.7.3.3.4}%
+\contentsline {subsubsection}{\numberline {7.3.3.5}convert\_pressure()}{39}{subsubsection.7.3.3.5}%
+\contentsline {subsubsection}{\numberline {7.3.3.6}convert\_humidity()}{40}{subsubsection.7.3.3.6}%
+\contentsline {subsubsection}{\numberline {7.3.3.7}configure\_sensor()}{40}{subsubsection.7.3.3.7}%
+\contentsline {subsubsection}{\numberline {7.3.3.8}get\_calibration\_parameters()}{40}{subsubsection.7.3.3.8}%
+\contentsline {subsection}{\numberline {7.3.4}Member Data Documentation}{40}{subsection.7.3.4}%
+\contentsline {subsubsection}{\numberline {7.3.4.1}ADDR\_SDO\_LOW}{40}{subsubsection.7.3.4.1}%
+\contentsline {subsubsection}{\numberline {7.3.4.2}ADDR\_SDO\_HIGH}{41}{subsubsection.7.3.4.2}%
+\contentsline {subsubsection}{\numberline {7.3.4.3}i2c\_port}{41}{subsubsection.7.3.4.3}%
+\contentsline {subsubsection}{\numberline {7.3.4.4}device\_addr}{41}{subsubsection.7.3.4.4}%
+\contentsline {subsubsection}{\numberline {7.3.4.5}calib\_params}{41}{subsubsection.7.3.4.5}%
+\contentsline {subsubsection}{\numberline {7.3.4.6}initialized}{41}{subsubsection.7.3.4.6}%
+\contentsline {subsubsection}{\numberline {7.3.4.7}t\_fine}{41}{subsubsection.7.3.4.7}%
+\contentsline {subsubsection}{\numberline {7.3.4.8}REG\_CONFIG}{41}{subsubsection.7.3.4.8}%
+\contentsline {subsubsection}{\numberline {7.3.4.9}REG\_CTRL\_MEAS}{41}{subsubsection.7.3.4.9}%
+\contentsline {subsubsection}{\numberline {7.3.4.10}REG\_CTRL\_HUM}{42}{subsubsection.7.3.4.10}%
+\contentsline {subsubsection}{\numberline {7.3.4.11}REG\_RESET}{42}{subsubsection.7.3.4.11}%
+\contentsline {subsubsection}{\numberline {7.3.4.12}REG\_PRESSURE\_MSB}{42}{subsubsection.7.3.4.12}%
+\contentsline {subsubsection}{\numberline {7.3.4.13}REG\_TEMPERATURE\_MSB}{42}{subsubsection.7.3.4.13}%
+\contentsline {subsubsection}{\numberline {7.3.4.14}REG\_HUMIDITY\_MSB}{42}{subsubsection.7.3.4.14}%
+\contentsline {subsubsection}{\numberline {7.3.4.15}REG\_DIG\_T1\_LSB}{42}{subsubsection.7.3.4.15}%
+\contentsline {subsubsection}{\numberline {7.3.4.16}REG\_DIG\_T1\_MSB}{42}{subsubsection.7.3.4.16}%
+\contentsline {subsubsection}{\numberline {7.3.4.17}REG\_DIG\_T2\_LSB}{42}{subsubsection.7.3.4.17}%
+\contentsline {subsubsection}{\numberline {7.3.4.18}REG\_DIG\_T2\_MSB}{43}{subsubsection.7.3.4.18}%
+\contentsline {subsubsection}{\numberline {7.3.4.19}REG\_DIG\_T3\_LSB}{43}{subsubsection.7.3.4.19}%
+\contentsline {subsubsection}{\numberline {7.3.4.20}REG\_DIG\_T3\_MSB}{43}{subsubsection.7.3.4.20}%
+\contentsline {subsubsection}{\numberline {7.3.4.21}REG\_DIG\_P1\_LSB}{43}{subsubsection.7.3.4.21}%
+\contentsline {subsubsection}{\numberline {7.3.4.22}REG\_DIG\_P1\_MSB}{43}{subsubsection.7.3.4.22}%
+\contentsline {subsubsection}{\numberline {7.3.4.23}REG\_DIG\_P2\_LSB}{43}{subsubsection.7.3.4.23}%
+\contentsline {subsubsection}{\numberline {7.3.4.24}REG\_DIG\_P2\_MSB}{43}{subsubsection.7.3.4.24}%
+\contentsline {subsubsection}{\numberline {7.3.4.25}REG\_DIG\_P3\_LSB}{43}{subsubsection.7.3.4.25}%
+\contentsline {subsubsection}{\numberline {7.3.4.26}REG\_DIG\_P3\_MSB}{44}{subsubsection.7.3.4.26}%
+\contentsline {subsubsection}{\numberline {7.3.4.27}REG\_DIG\_P4\_LSB}{44}{subsubsection.7.3.4.27}%
+\contentsline {subsubsection}{\numberline {7.3.4.28}REG\_DIG\_P4\_MSB}{44}{subsubsection.7.3.4.28}%
+\contentsline {subsubsection}{\numberline {7.3.4.29}REG\_DIG\_P5\_LSB}{44}{subsubsection.7.3.4.29}%
+\contentsline {subsubsection}{\numberline {7.3.4.30}REG\_DIG\_P5\_MSB}{44}{subsubsection.7.3.4.30}%
+\contentsline {subsubsection}{\numberline {7.3.4.31}REG\_DIG\_P6\_LSB}{44}{subsubsection.7.3.4.31}%
+\contentsline {subsubsection}{\numberline {7.3.4.32}REG\_DIG\_P6\_MSB}{44}{subsubsection.7.3.4.32}%
+\contentsline {subsubsection}{\numberline {7.3.4.33}REG\_DIG\_P7\_LSB}{44}{subsubsection.7.3.4.33}%
+\contentsline {subsubsection}{\numberline {7.3.4.34}REG\_DIG\_P7\_MSB}{45}{subsubsection.7.3.4.34}%
+\contentsline {subsubsection}{\numberline {7.3.4.35}REG\_DIG\_P8\_LSB}{45}{subsubsection.7.3.4.35}%
+\contentsline {subsubsection}{\numberline {7.3.4.36}REG\_DIG\_P8\_MSB}{45}{subsubsection.7.3.4.36}%
+\contentsline {subsubsection}{\numberline {7.3.4.37}REG\_DIG\_P9\_LSB}{45}{subsubsection.7.3.4.37}%
+\contentsline {subsubsection}{\numberline {7.3.4.38}REG\_DIG\_P9\_MSB}{45}{subsubsection.7.3.4.38}%
+\contentsline {subsubsection}{\numberline {7.3.4.39}REG\_DIG\_H1}{45}{subsubsection.7.3.4.39}%
+\contentsline {subsubsection}{\numberline {7.3.4.40}REG\_DIG\_H2}{45}{subsubsection.7.3.4.40}%
+\contentsline {subsubsection}{\numberline {7.3.4.41}REG\_DIG\_H3}{45}{subsubsection.7.3.4.41}%
+\contentsline {subsubsection}{\numberline {7.3.4.42}REG\_DIG\_H4}{46}{subsubsection.7.3.4.42}%
+\contentsline {subsubsection}{\numberline {7.3.4.43}REG\_DIG\_H5}{46}{subsubsection.7.3.4.43}%
+\contentsline {subsubsection}{\numberline {7.3.4.44}REG\_DIG\_H6}{46}{subsubsection.7.3.4.44}%
+\contentsline {subsubsection}{\numberline {7.3.4.45}NUM\_CALIB\_PARAMS}{46}{subsubsection.7.3.4.45}%
+\contentsline {section}{\numberline {7.4}BME280\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Calib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Param Struct Reference}{46}{section.7.4}%
+\contentsline {subsection}{\numberline {7.4.1}Detailed Description}{47}{subsection.7.4.1}%
+\contentsline {subsection}{\numberline {7.4.2}Member Data Documentation}{47}{subsection.7.4.2}%
+\contentsline {subsubsection}{\numberline {7.4.2.1}dig\_t1}{47}{subsubsection.7.4.2.1}%
+\contentsline {subsubsection}{\numberline {7.4.2.2}dig\_t2}{47}{subsubsection.7.4.2.2}%
+\contentsline {subsubsection}{\numberline {7.4.2.3}dig\_t3}{47}{subsubsection.7.4.2.3}%
+\contentsline {subsubsection}{\numberline {7.4.2.4}dig\_p1}{47}{subsubsection.7.4.2.4}%
+\contentsline {subsubsection}{\numberline {7.4.2.5}dig\_p2}{47}{subsubsection.7.4.2.5}%
+\contentsline {subsubsection}{\numberline {7.4.2.6}dig\_p3}{47}{subsubsection.7.4.2.6}%
+\contentsline {subsubsection}{\numberline {7.4.2.7}dig\_p4}{48}{subsubsection.7.4.2.7}%
+\contentsline {subsubsection}{\numberline {7.4.2.8}dig\_p5}{48}{subsubsection.7.4.2.8}%
+\contentsline {subsubsection}{\numberline {7.4.2.9}dig\_p6}{48}{subsubsection.7.4.2.9}%
+\contentsline {subsubsection}{\numberline {7.4.2.10}dig\_p7}{48}{subsubsection.7.4.2.10}%
+\contentsline {subsubsection}{\numberline {7.4.2.11}dig\_p8}{48}{subsubsection.7.4.2.11}%
+\contentsline {subsubsection}{\numberline {7.4.2.12}dig\_p9}{48}{subsubsection.7.4.2.12}%
+\contentsline {subsubsection}{\numberline {7.4.2.13}dig\_h1}{48}{subsubsection.7.4.2.13}%
+\contentsline {subsubsection}{\numberline {7.4.2.14}dig\_h2}{48}{subsubsection.7.4.2.14}%
+\contentsline {subsubsection}{\numberline {7.4.2.15}dig\_h3}{49}{subsubsection.7.4.2.15}%
+\contentsline {subsubsection}{\numberline {7.4.2.16}dig\_h4}{49}{subsubsection.7.4.2.16}%
+\contentsline {subsubsection}{\numberline {7.4.2.17}dig\_h5}{49}{subsubsection.7.4.2.17}%
+\contentsline {subsubsection}{\numberline {7.4.2.18}dig\_h6}{49}{subsubsection.7.4.2.18}%
+\contentsline {section}{\numberline {7.5}BME280\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Wrapper Class Reference}{49}{section.7.5}%
+\contentsline {subsection}{\numberline {7.5.1}Detailed Description}{50}{subsection.7.5.1}%
+\contentsline {subsection}{\numberline {7.5.2}Constructor \& Destructor Documentation}{50}{subsection.7.5.2}%
+\contentsline {subsubsection}{\numberline {7.5.2.1}BME280Wrapper()}{50}{subsubsection.7.5.2.1}%
+\contentsline {subsection}{\numberline {7.5.3}Member Function Documentation}{51}{subsection.7.5.3}%
+\contentsline {subsubsection}{\numberline {7.5.3.1}init()}{51}{subsubsection.7.5.3.1}%
+\contentsline {subsubsection}{\numberline {7.5.3.2}readData()}{51}{subsubsection.7.5.3.2}%
+\contentsline {subsubsection}{\numberline {7.5.3.3}isInitialized()}{51}{subsubsection.7.5.3.3}%
+\contentsline {subsubsection}{\numberline {7.5.3.4}getType()}{51}{subsubsection.7.5.3.4}%
+\contentsline {subsubsection}{\numberline {7.5.3.5}configure()}{51}{subsubsection.7.5.3.5}%
+\contentsline {subsection}{\numberline {7.5.4}Member Data Documentation}{51}{subsection.7.5.4}%
+\contentsline {subsubsection}{\numberline {7.5.4.1}sensor}{51}{subsubsection.7.5.4.1}%
+\contentsline {subsubsection}{\numberline {7.5.4.2}initialized}{52}{subsubsection.7.5.4.2}%
+\contentsline {section}{\numberline {7.6}INA3221\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::conf\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}reg\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}t Struct Reference}{52}{section.7.6}%
+\contentsline {subsection}{\numberline {7.6.1}Detailed Description}{52}{subsection.7.6.1}%
+\contentsline {subsection}{\numberline {7.6.2}Member Data Documentation}{52}{subsection.7.6.2}%
+\contentsline {subsubsection}{\numberline {7.6.2.1}mode\_shunt\_en}{52}{subsubsection.7.6.2.1}%
+\contentsline {subsubsection}{\numberline {7.6.2.2}mode\_bus\_en}{52}{subsubsection.7.6.2.2}%
+\contentsline {subsubsection}{\numberline {7.6.2.3}mode\_continious\_en}{53}{subsubsection.7.6.2.3}%
+\contentsline {subsubsection}{\numberline {7.6.2.4}shunt\_conv\_time}{53}{subsubsection.7.6.2.4}%
+\contentsline {subsubsection}{\numberline {7.6.2.5}bus\_conv\_time}{53}{subsubsection.7.6.2.5}%
+\contentsline {subsubsection}{\numberline {7.6.2.6}avg\_mode}{53}{subsubsection.7.6.2.6}%
+\contentsline {subsubsection}{\numberline {7.6.2.7}ch3\_en}{53}{subsubsection.7.6.2.7}%
+\contentsline {subsubsection}{\numberline {7.6.2.8}ch2\_en}{53}{subsubsection.7.6.2.8}%
+\contentsline {subsubsection}{\numberline {7.6.2.9}ch1\_en}{53}{subsubsection.7.6.2.9}%
+\contentsline {subsubsection}{\numberline {7.6.2.10}reset}{54}{subsubsection.7.6.2.10}%
+\contentsline {section}{\numberline {7.7}Date\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Time Struct Reference}{54}{section.7.7}%
+\contentsline {subsection}{\numberline {7.7.1}Detailed Description}{54}{subsection.7.7.1}%
+\contentsline {subsection}{\numberline {7.7.2}Member Data Documentation}{54}{subsection.7.7.2}%
+\contentsline {subsubsection}{\numberline {7.7.2.1}year}{54}{subsubsection.7.7.2.1}%
+\contentsline {subsubsection}{\numberline {7.7.2.2}month}{54}{subsubsection.7.7.2.2}%
+\contentsline {subsubsection}{\numberline {7.7.2.3}day}{54}{subsubsection.7.7.2.3}%
+\contentsline {subsubsection}{\numberline {7.7.2.4}hour}{55}{subsubsection.7.7.2.4}%
+\contentsline {subsubsection}{\numberline {7.7.2.5}minute}{55}{subsubsection.7.7.2.5}%
+\contentsline {subsubsection}{\numberline {7.7.2.6}second}{55}{subsubsection.7.7.2.6}%
+\contentsline {subsubsection}{\numberline {7.7.2.7}weekday}{55}{subsubsection.7.7.2.7}%
+\contentsline {section}{\numberline {7.8}DS3231 Class Reference}{55}{section.7.8}%
+\contentsline {subsection}{\numberline {7.8.1}Detailed Description}{56}{subsection.7.8.1}%
+\contentsline {subsection}{\numberline {7.8.2}Constructor \& Destructor Documentation}{56}{subsection.7.8.2}%
+\contentsline {subsubsection}{\numberline {7.8.2.1}DS3231()}{56}{subsubsection.7.8.2.1}%
+\contentsline {subsection}{\numberline {7.8.3}Member Function Documentation}{57}{subsection.7.8.3}%
+\contentsline {subsubsection}{\numberline {7.8.3.1}setTime()}{57}{subsubsection.7.8.3.1}%
+\contentsline {subsubsection}{\numberline {7.8.3.2}getTime()}{57}{subsubsection.7.8.3.2}%
+\contentsline {subsubsection}{\numberline {7.8.3.3}getTimeString()}{58}{subsubsection.7.8.3.3}%
+\contentsline {subsubsection}{\numberline {7.8.3.4}setTimeUnix()}{58}{subsubsection.7.8.3.4}%
+\contentsline {subsubsection}{\numberline {7.8.3.5}getTimeUnix()}{59}{subsubsection.7.8.3.5}%
+\contentsline {subsubsection}{\numberline {7.8.3.6}getDateTime()}{59}{subsubsection.7.8.3.6}%
+\contentsline {subsubsection}{\numberline {7.8.3.7}getTimeInteger()}{60}{subsubsection.7.8.3.7}%
+\contentsline {subsubsection}{\numberline {7.8.3.8}setTimezoneOffset()}{60}{subsubsection.7.8.3.8}%
+\contentsline {subsubsection}{\numberline {7.8.3.9}getTimezoneOffset()}{61}{subsubsection.7.8.3.9}%
+\contentsline {subsubsection}{\numberline {7.8.3.10}getTimeUnixLocal()}{61}{subsubsection.7.8.3.10}%
+\contentsline {subsubsection}{\numberline {7.8.3.11}getDateTimeLocal()}{61}{subsubsection.7.8.3.11}%
+\contentsline {subsubsection}{\numberline {7.8.3.12}setClockSyncInterval()}{61}{subsubsection.7.8.3.12}%
+\contentsline {subsubsection}{\numberline {7.8.3.13}getClockSyncInterval()}{62}{subsubsection.7.8.3.13}%
+\contentsline {subsubsection}{\numberline {7.8.3.14}setLastSyncTime()}{62}{subsubsection.7.8.3.14}%
+\contentsline {subsubsection}{\numberline {7.8.3.15}getLastSyncTime()}{62}{subsubsection.7.8.3.15}%
+\contentsline {subsubsection}{\numberline {7.8.3.16}bcd2bin()}{62}{subsubsection.7.8.3.16}%
+\contentsline {subsubsection}{\numberline {7.8.3.17}bin2bcd()}{62}{subsubsection.7.8.3.17}%
+\contentsline {subsubsection}{\numberline {7.8.3.18}preZero()}{63}{subsubsection.7.8.3.18}%
+\contentsline {subsubsection}{\numberline {7.8.3.19}dateTimeToUnix()}{63}{subsubsection.7.8.3.19}%
+\contentsline {subsubsection}{\numberline {7.8.3.20}unixToDateTime()}{63}{subsubsection.7.8.3.20}%
+\contentsline {subsubsection}{\numberline {7.8.3.21}applyTimezone()}{64}{subsubsection.7.8.3.21}%
+\contentsline {subsection}{\numberline {7.8.4}Member Data Documentation}{64}{subsection.7.8.4}%
+\contentsline {subsubsection}{\numberline {7.8.4.1}WEEKDAYS}{64}{subsubsection.7.8.4.1}%
+\contentsline {subsubsection}{\numberline {7.8.4.2}i2c}{64}{subsubsection.7.8.4.2}%
+\contentsline {subsubsection}{\numberline {7.8.4.3}address}{65}{subsubsection.7.8.4.3}%
+\contentsline {subsubsection}{\numberline {7.8.4.4}RTC\_REGISTER}{65}{subsubsection.7.8.4.4}%
+\contentsline {subsubsection}{\numberline {7.8.4.5}timezoneOffset}{65}{subsubsection.7.8.4.5}%
+\contentsline {subsubsection}{\numberline {7.8.4.6}syncInterval}{65}{subsubsection.7.8.4.6}%
+\contentsline {subsubsection}{\numberline {7.8.4.7}lastSyncTime}{65}{subsubsection.7.8.4.7}%
+\contentsline {section}{\numberline {7.9}Event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Emitter Class Reference}{65}{section.7.9}%
+\contentsline {subsection}{\numberline {7.9.1}Detailed Description}{66}{subsection.7.9.1}%
+\contentsline {subsection}{\numberline {7.9.2}Member Function Documentation}{66}{subsection.7.9.2}%
+\contentsline {subsubsection}{\numberline {7.9.2.1}emit()}{66}{subsubsection.7.9.2.1}%
+\contentsline {section}{\numberline {7.10}Event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Log Class Reference}{67}{section.7.10}%
+\contentsline {subsection}{\numberline {7.10.1}Detailed Description}{67}{subsection.7.10.1}%
+\contentsline {subsection}{\numberline {7.10.2}Member Function Documentation}{67}{subsection.7.10.2}%
+\contentsline {subsubsection}{\numberline {7.10.2.1}toString()}{67}{subsubsection.7.10.2.1}%
+\contentsline {subsection}{\numberline {7.10.3}Member Data Documentation}{68}{subsection.7.10.3}%
+\contentsline {subsubsection}{\numberline {7.10.3.1}id}{68}{subsubsection.7.10.3.1}%
+\contentsline {subsubsection}{\numberline {7.10.3.2}timestamp}{68}{subsubsection.7.10.3.2}%
+\contentsline {subsubsection}{\numberline {7.10.3.3}group}{68}{subsubsection.7.10.3.3}%
+\contentsline {subsubsection}{\numberline {7.10.3.4}event}{68}{subsubsection.7.10.3.4}%
+\contentsline {section}{\numberline {7.11}Event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Manager Class Reference}{69}{section.7.11}%
+\contentsline {subsection}{\numberline {7.11.1}Detailed Description}{70}{subsection.7.11.1}%
+\contentsline {subsection}{\numberline {7.11.2}Constructor \& Destructor Documentation}{70}{subsection.7.11.2}%
+\contentsline {subsubsection}{\numberline {7.11.2.1}EventManager()}{70}{subsubsection.7.11.2.1}%
+\contentsline {subsubsection}{\numberline {7.11.2.2}$\sim $EventManager()}{70}{subsubsection.7.11.2.2}%
+\contentsline {subsection}{\numberline {7.11.3}Member Function Documentation}{71}{subsection.7.11.3}%
+\contentsline {subsubsection}{\numberline {7.11.3.1}init()}{71}{subsubsection.7.11.3.1}%
+\contentsline {subsubsection}{\numberline {7.11.3.2}logEvent()}{71}{subsubsection.7.11.3.2}%
+\contentsline {subsubsection}{\numberline {7.11.3.3}getEvent()}{72}{subsubsection.7.11.3.3}%
+\contentsline {subsubsection}{\numberline {7.11.3.4}getEventCount()}{73}{subsubsection.7.11.3.4}%
+\contentsline {subsubsection}{\numberline {7.11.3.5}saveToStorage()}{73}{subsubsection.7.11.3.5}%
+\contentsline {subsubsection}{\numberline {7.11.3.6}loadFromStorage()}{73}{subsubsection.7.11.3.6}%
+\contentsline {subsection}{\numberline {7.11.4}Member Data Documentation}{74}{subsection.7.11.4}%
+\contentsline {subsubsection}{\numberline {7.11.4.1}events}{74}{subsubsection.7.11.4.1}%
+\contentsline {subsubsection}{\numberline {7.11.4.2}eventCount}{74}{subsubsection.7.11.4.2}%
+\contentsline {subsubsection}{\numberline {7.11.4.3}writeIndex}{74}{subsubsection.7.11.4.3}%
+\contentsline {subsubsection}{\numberline {7.11.4.4}eventMutex}{74}{subsubsection.7.11.4.4}%
+\contentsline {subsubsection}{\numberline {7.11.4.5}nextEventId}{74}{subsubsection.7.11.4.5}%
+\contentsline {subsubsection}{\numberline {7.11.4.6}needsPersistence}{74}{subsubsection.7.11.4.6}%
+\contentsline {section}{\numberline {7.12}Event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Manager\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Impl Class Reference}{75}{section.7.12}%
+\contentsline {subsection}{\numberline {7.12.1}Detailed Description}{76}{subsection.7.12.1}%
+\contentsline {subsection}{\numberline {7.12.2}Constructor \& Destructor Documentation}{76}{subsection.7.12.2}%
+\contentsline {subsubsection}{\numberline {7.12.2.1}EventManagerImpl()}{76}{subsubsection.7.12.2.1}%
+\contentsline {subsection}{\numberline {7.12.3}Member Function Documentation}{77}{subsection.7.12.3}%
+\contentsline {subsubsection}{\numberline {7.12.3.1}saveToStorage()}{77}{subsubsection.7.12.3.1}%
+\contentsline {subsubsection}{\numberline {7.12.3.2}loadFromStorage()}{77}{subsubsection.7.12.3.2}%
+\contentsline {section}{\numberline {7.13}File\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Handle Struct Reference}{77}{section.7.13}%
+\contentsline {subsection}{\numberline {7.13.1}Detailed Description}{78}{subsection.7.13.1}%
+\contentsline {subsection}{\numberline {7.13.2}Member Data Documentation}{78}{subsection.7.13.2}%
+\contentsline {subsubsection}{\numberline {7.13.2.1}fd}{78}{subsubsection.7.13.2.1}%
+\contentsline {subsubsection}{\numberline {7.13.2.2}is\_open}{78}{subsubsection.7.13.2.2}%
+\contentsline {section}{\numberline {7.14}Frame Struct Reference}{78}{section.7.14}%
+\contentsline {subsection}{\numberline {7.14.1}Detailed Description}{78}{subsection.7.14.1}%
+\contentsline {subsection}{\numberline {7.14.2}Member Data Documentation}{79}{subsection.7.14.2}%
+\contentsline {subsubsection}{\numberline {7.14.2.1}header}{79}{subsubsection.7.14.2.1}%
+\contentsline {subsubsection}{\numberline {7.14.2.2}direction}{79}{subsubsection.7.14.2.2}%
+\contentsline {subsubsection}{\numberline {7.14.2.3}operationType}{79}{subsubsection.7.14.2.3}%
+\contentsline {subsubsection}{\numberline {7.14.2.4}group}{79}{subsubsection.7.14.2.4}%
+\contentsline {subsubsection}{\numberline {7.14.2.5}command}{79}{subsubsection.7.14.2.5}%
+\contentsline {subsubsection}{\numberline {7.14.2.6}value}{79}{subsubsection.7.14.2.6}%
+\contentsline {subsubsection}{\numberline {7.14.2.7}unit}{79}{subsubsection.7.14.2.7}%
+\contentsline {subsubsection}{\numberline {7.14.2.8}footer}{80}{subsubsection.7.14.2.8}%
+\contentsline {section}{\numberline {7.15}HMC5883L Class Reference}{80}{section.7.15}%
+\contentsline {subsection}{\numberline {7.15.1}Detailed Description}{80}{subsection.7.15.1}%
+\contentsline {subsection}{\numberline {7.15.2}Constructor \& Destructor Documentation}{80}{subsection.7.15.2}%
+\contentsline {subsubsection}{\numberline {7.15.2.1}HMC5883L()}{80}{subsubsection.7.15.2.1}%
+\contentsline {subsection}{\numberline {7.15.3}Member Function Documentation}{81}{subsection.7.15.3}%
+\contentsline {subsubsection}{\numberline {7.15.3.1}init()}{81}{subsubsection.7.15.3.1}%
+\contentsline {subsubsection}{\numberline {7.15.3.2}read()}{81}{subsubsection.7.15.3.2}%
+\contentsline {subsubsection}{\numberline {7.15.3.3}writeRegister()}{81}{subsubsection.7.15.3.3}%
+\contentsline {subsubsection}{\numberline {7.15.3.4}readRegisters()}{82}{subsubsection.7.15.3.4}%
+\contentsline {subsection}{\numberline {7.15.4}Member Data Documentation}{82}{subsection.7.15.4}%
+\contentsline {subsubsection}{\numberline {7.15.4.1}i2c}{82}{subsubsection.7.15.4.1}%
+\contentsline {subsubsection}{\numberline {7.15.4.2}address}{82}{subsubsection.7.15.4.2}%
+\contentsline {section}{\numberline {7.16}HMC5883\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}LWrapper Class Reference}{83}{section.7.16}%
+\contentsline {subsection}{\numberline {7.16.1}Detailed Description}{84}{subsection.7.16.1}%
+\contentsline {subsection}{\numberline {7.16.2}Constructor \& Destructor Documentation}{84}{subsection.7.16.2}%
+\contentsline {subsubsection}{\numberline {7.16.2.1}HMC5883LWrapper()}{84}{subsubsection.7.16.2.1}%
+\contentsline {subsection}{\numberline {7.16.3}Member Function Documentation}{84}{subsection.7.16.3}%
+\contentsline {subsubsection}{\numberline {7.16.3.1}init()}{84}{subsubsection.7.16.3.1}%
+\contentsline {subsubsection}{\numberline {7.16.3.2}readData()}{84}{subsubsection.7.16.3.2}%
+\contentsline {subsubsection}{\numberline {7.16.3.3}isInitialized()}{84}{subsubsection.7.16.3.3}%
+\contentsline {subsubsection}{\numberline {7.16.3.4}getType()}{85}{subsubsection.7.16.3.4}%
+\contentsline {subsubsection}{\numberline {7.16.3.5}configure()}{85}{subsubsection.7.16.3.5}%
+\contentsline {subsection}{\numberline {7.16.4}Member Data Documentation}{85}{subsection.7.16.4}%
+\contentsline {subsubsection}{\numberline {7.16.4.1}sensor}{85}{subsubsection.7.16.4.1}%
+\contentsline {subsubsection}{\numberline {7.16.4.2}initialized}{85}{subsubsection.7.16.4.2}%
+\contentsline {section}{\numberline {7.17}INA3221 Class Reference}{85}{section.7.17}%
+\contentsline {subsection}{\numberline {7.17.1}Detailed Description}{87}{subsection.7.17.1}%
+\contentsline {subsection}{\numberline {7.17.2}Constructor \& Destructor Documentation}{87}{subsection.7.17.2}%
+\contentsline {subsubsection}{\numberline {7.17.2.1}INA3221()}{87}{subsubsection.7.17.2.1}%
+\contentsline {subsection}{\numberline {7.17.3}Member Function Documentation}{87}{subsection.7.17.3}%
+\contentsline {subsubsection}{\numberline {7.17.3.1}\_read()}{87}{subsubsection.7.17.3.1}%
+\contentsline {subsubsection}{\numberline {7.17.3.2}\_write()}{88}{subsubsection.7.17.3.2}%
+\contentsline {subsubsection}{\numberline {7.17.3.3}begin()}{89}{subsubsection.7.17.3.3}%
+\contentsline {subsubsection}{\numberline {7.17.3.4}setShuntRes()}{90}{subsubsection.7.17.3.4}%
+\contentsline {subsubsection}{\numberline {7.17.3.5}setFilterRes()}{90}{subsubsection.7.17.3.5}%
+\contentsline {subsubsection}{\numberline {7.17.3.6}setAddr()}{90}{subsubsection.7.17.3.6}%
+\contentsline {subsubsection}{\numberline {7.17.3.7}getReg()}{90}{subsubsection.7.17.3.7}%
+\contentsline {subsubsection}{\numberline {7.17.3.8}reset()}{91}{subsubsection.7.17.3.8}%
+\contentsline {subsubsection}{\numberline {7.17.3.9}setModePowerDown()}{91}{subsubsection.7.17.3.9}%
+\contentsline {subsubsection}{\numberline {7.17.3.10}setModeContinious()}{91}{subsubsection.7.17.3.10}%
+\contentsline {subsubsection}{\numberline {7.17.3.11}setModeTriggered()}{92}{subsubsection.7.17.3.11}%
+\contentsline {subsubsection}{\numberline {7.17.3.12}setShuntMeasEnable()}{92}{subsubsection.7.17.3.12}%
+\contentsline {subsubsection}{\numberline {7.17.3.13}setShuntMeasDisable()}{93}{subsubsection.7.17.3.13}%
+\contentsline {subsubsection}{\numberline {7.17.3.14}setBusMeasEnable()}{93}{subsubsection.7.17.3.14}%
+\contentsline {subsubsection}{\numberline {7.17.3.15}setBusMeasDisable()}{93}{subsubsection.7.17.3.15}%
+\contentsline {subsubsection}{\numberline {7.17.3.16}setAveragingMode()}{94}{subsubsection.7.17.3.16}%
+\contentsline {subsubsection}{\numberline {7.17.3.17}setBusConversionTime()}{94}{subsubsection.7.17.3.17}%
+\contentsline {subsubsection}{\numberline {7.17.3.18}setShuntConversionTime()}{95}{subsubsection.7.17.3.18}%
+\contentsline {subsubsection}{\numberline {7.17.3.19}setCritAlertLimit()}{95}{subsubsection.7.17.3.19}%
+\contentsline {subsubsection}{\numberline {7.17.3.20}setWarnAlertLimit()}{95}{subsubsection.7.17.3.20}%
+\contentsline {subsubsection}{\numberline {7.17.3.21}setPwrValidUpLimit()}{96}{subsubsection.7.17.3.21}%
+\contentsline {subsubsection}{\numberline {7.17.3.22}setPwrValidLowLimit()}{96}{subsubsection.7.17.3.22}%
+\contentsline {subsubsection}{\numberline {7.17.3.23}setShuntSumAlertLimit()}{96}{subsubsection.7.17.3.23}%
+\contentsline {subsubsection}{\numberline {7.17.3.24}setCurrentSumAlertLimit()}{96}{subsubsection.7.17.3.24}%
+\contentsline {subsubsection}{\numberline {7.17.3.25}setWarnAlertLatchEnable()}{96}{subsubsection.7.17.3.25}%
+\contentsline {subsubsection}{\numberline {7.17.3.26}setWarnAlertLatchDisable()}{96}{subsubsection.7.17.3.26}%
+\contentsline {subsubsection}{\numberline {7.17.3.27}setCritAlertLatchEnable()}{96}{subsubsection.7.17.3.27}%
+\contentsline {subsubsection}{\numberline {7.17.3.28}setCritAlertLatchDisable()}{96}{subsubsection.7.17.3.28}%
+\contentsline {subsubsection}{\numberline {7.17.3.29}readFlags()}{96}{subsubsection.7.17.3.29}%
+\contentsline {subsubsection}{\numberline {7.17.3.30}getTimingCtrlAlertFlag()}{96}{subsubsection.7.17.3.30}%
+\contentsline {subsubsection}{\numberline {7.17.3.31}getPwrValidAlertFlag()}{97}{subsubsection.7.17.3.31}%
+\contentsline {subsubsection}{\numberline {7.17.3.32}getCurrentSumAlertFlag()}{97}{subsubsection.7.17.3.32}%
+\contentsline {subsubsection}{\numberline {7.17.3.33}getConversionReadyFlag()}{97}{subsubsection.7.17.3.33}%
+\contentsline {subsubsection}{\numberline {7.17.3.34}getManufID()}{97}{subsubsection.7.17.3.34}%
+\contentsline {subsubsection}{\numberline {7.17.3.35}getDieID()}{98}{subsubsection.7.17.3.35}%
+\contentsline {subsubsection}{\numberline {7.17.3.36}setChannelEnable()}{98}{subsubsection.7.17.3.36}%
+\contentsline {subsubsection}{\numberline {7.17.3.37}setChannelDisable()}{98}{subsubsection.7.17.3.37}%
+\contentsline {subsubsection}{\numberline {7.17.3.38}setWarnAlertShuntLimit()}{98}{subsubsection.7.17.3.38}%
+\contentsline {subsubsection}{\numberline {7.17.3.39}setCritAlertShuntLimit()}{98}{subsubsection.7.17.3.39}%
+\contentsline {subsubsection}{\numberline {7.17.3.40}setWarnAlertCurrentLimit()}{99}{subsubsection.7.17.3.40}%
+\contentsline {subsubsection}{\numberline {7.17.3.41}setCritAlertCurrentLimit()}{99}{subsubsection.7.17.3.41}%
+\contentsline {subsubsection}{\numberline {7.17.3.42}setCurrentSumEnable()}{99}{subsubsection.7.17.3.42}%
+\contentsline {subsubsection}{\numberline {7.17.3.43}setCurrentSumDisable()}{99}{subsubsection.7.17.3.43}%
+\contentsline {subsubsection}{\numberline {7.17.3.44}getShuntVoltage()}{99}{subsubsection.7.17.3.44}%
+\contentsline {subsubsection}{\numberline {7.17.3.45}getWarnAlertFlag()}{100}{subsubsection.7.17.3.45}%
+\contentsline {subsubsection}{\numberline {7.17.3.46}getCritAlertFlag()}{100}{subsubsection.7.17.3.46}%
+\contentsline {subsubsection}{\numberline {7.17.3.47}estimateOffsetVoltage()}{100}{subsubsection.7.17.3.47}%
+\contentsline {subsubsection}{\numberline {7.17.3.48}getCurrent()}{101}{subsubsection.7.17.3.48}%
+\contentsline {subsubsection}{\numberline {7.17.3.49}getCurrent\_mA()}{101}{subsubsection.7.17.3.49}%
+\contentsline {subsubsection}{\numberline {7.17.3.50}getCurrentCompensated()}{101}{subsubsection.7.17.3.50}%
+\contentsline {subsubsection}{\numberline {7.17.3.51}getCurrentCompensated\_mA()}{102}{subsubsection.7.17.3.51}%
+\contentsline {subsubsection}{\numberline {7.17.3.52}getVoltage()}{102}{subsubsection.7.17.3.52}%
+\contentsline {subsection}{\numberline {7.17.4}Member Data Documentation}{103}{subsection.7.17.4}%
+\contentsline {subsubsection}{\numberline {7.17.4.1}\_i2c}{103}{subsubsection.7.17.4.1}%
+\contentsline {subsubsection}{\numberline {7.17.4.2}\_i2c\_addr}{103}{subsubsection.7.17.4.2}%
+\contentsline {subsubsection}{\numberline {7.17.4.3}\_shuntRes}{103}{subsubsection.7.17.4.3}%
+\contentsline {subsubsection}{\numberline {7.17.4.4}\_filterRes}{103}{subsubsection.7.17.4.4}%
+\contentsline {subsubsection}{\numberline {7.17.4.5}\_masken\_reg}{103}{subsubsection.7.17.4.5}%
+\contentsline {section}{\numberline {7.18}ISensor Class Reference}{103}{section.7.18}%
+\contentsline {subsection}{\numberline {7.18.1}Detailed Description}{104}{subsection.7.18.1}%
+\contentsline {subsection}{\numberline {7.18.2}Constructor \& Destructor Documentation}{104}{subsection.7.18.2}%
+\contentsline {subsubsection}{\numberline {7.18.2.1}$\sim $ISensor()}{104}{subsubsection.7.18.2.1}%
+\contentsline {subsection}{\numberline {7.18.3}Member Function Documentation}{104}{subsection.7.18.3}%
+\contentsline {subsubsection}{\numberline {7.18.3.1}init()}{104}{subsubsection.7.18.3.1}%
+\contentsline {subsubsection}{\numberline {7.18.3.2}readData()}{104}{subsubsection.7.18.3.2}%
+\contentsline {subsubsection}{\numberline {7.18.3.3}isInitialized()}{104}{subsubsection.7.18.3.3}%
+\contentsline {subsubsection}{\numberline {7.18.3.4}getType()}{104}{subsubsection.7.18.3.4}%
+\contentsline {subsubsection}{\numberline {7.18.3.5}configure()}{105}{subsubsection.7.18.3.5}%
+\contentsline {section}{\numberline {7.19}Lo\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ra\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Class Class Reference}{105}{section.7.19}%
+\contentsline {subsection}{\numberline {7.19.1}Detailed Description}{108}{subsection.7.19.1}%
+\contentsline {subsection}{\numberline {7.19.2}Constructor \& Destructor Documentation}{108}{subsection.7.19.2}%
+\contentsline {subsubsection}{\numberline {7.19.2.1}LoRaClass()}{108}{subsubsection.7.19.2.1}%
+\contentsline {subsection}{\numberline {7.19.3}Member Function Documentation}{108}{subsection.7.19.3}%
+\contentsline {subsubsection}{\numberline {7.19.3.1}begin()}{108}{subsubsection.7.19.3.1}%
+\contentsline {subsubsection}{\numberline {7.19.3.2}end()}{109}{subsubsection.7.19.3.2}%
+\contentsline {subsubsection}{\numberline {7.19.3.3}beginPacket()}{109}{subsubsection.7.19.3.3}%
+\contentsline {subsubsection}{\numberline {7.19.3.4}endPacket()}{109}{subsubsection.7.19.3.4}%
+\contentsline {subsubsection}{\numberline {7.19.3.5}parsePacket()}{110}{subsubsection.7.19.3.5}%
+\contentsline {subsubsection}{\numberline {7.19.3.6}packetRssi()}{110}{subsubsection.7.19.3.6}%
+\contentsline {subsubsection}{\numberline {7.19.3.7}packetSnr()}{110}{subsubsection.7.19.3.7}%
+\contentsline {subsubsection}{\numberline {7.19.3.8}packetFrequencyError()}{111}{subsubsection.7.19.3.8}%
+\contentsline {subsubsection}{\numberline {7.19.3.9}rssi()}{111}{subsubsection.7.19.3.9}%
+\contentsline {subsubsection}{\numberline {7.19.3.10}write()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{111}{subsubsection.7.19.3.10}%
+\contentsline {subsubsection}{\numberline {7.19.3.11}write()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{112}{subsubsection.7.19.3.11}%
+\contentsline {subsubsection}{\numberline {7.19.3.12}available()}{112}{subsubsection.7.19.3.12}%
+\contentsline {subsubsection}{\numberline {7.19.3.13}read()}{113}{subsubsection.7.19.3.13}%
+\contentsline {subsubsection}{\numberline {7.19.3.14}peek()}{113}{subsubsection.7.19.3.14}%
+\contentsline {subsubsection}{\numberline {7.19.3.15}flush()}{114}{subsubsection.7.19.3.15}%
+\contentsline {subsubsection}{\numberline {7.19.3.16}onCadDone()}{114}{subsubsection.7.19.3.16}%
+\contentsline {subsubsection}{\numberline {7.19.3.17}onReceive()}{114}{subsubsection.7.19.3.17}%
+\contentsline {subsubsection}{\numberline {7.19.3.18}onTxDone()}{115}{subsubsection.7.19.3.18}%
+\contentsline {subsubsection}{\numberline {7.19.3.19}receive()}{115}{subsubsection.7.19.3.19}%
+\contentsline {subsubsection}{\numberline {7.19.3.20}channelActivityDetection()}{115}{subsubsection.7.19.3.20}%
+\contentsline {subsubsection}{\numberline {7.19.3.21}idle()}{116}{subsubsection.7.19.3.21}%
+\contentsline {subsubsection}{\numberline {7.19.3.22}sleep()}{116}{subsubsection.7.19.3.22}%
+\contentsline {subsubsection}{\numberline {7.19.3.23}setTxPower()}{117}{subsubsection.7.19.3.23}%
+\contentsline {subsubsection}{\numberline {7.19.3.24}setFrequency()}{117}{subsubsection.7.19.3.24}%
+\contentsline {subsubsection}{\numberline {7.19.3.25}setSpreadingFactor()}{118}{subsubsection.7.19.3.25}%
+\contentsline {subsubsection}{\numberline {7.19.3.26}setSignalBandwidth()}{118}{subsubsection.7.19.3.26}%
+\contentsline {subsubsection}{\numberline {7.19.3.27}setCodingRate4()}{119}{subsubsection.7.19.3.27}%
+\contentsline {subsubsection}{\numberline {7.19.3.28}setPreambleLength()}{119}{subsubsection.7.19.3.28}%
+\contentsline {subsubsection}{\numberline {7.19.3.29}setSyncWord()}{119}{subsubsection.7.19.3.29}%
+\contentsline {subsubsection}{\numberline {7.19.3.30}enableCrc()}{120}{subsubsection.7.19.3.30}%
+\contentsline {subsubsection}{\numberline {7.19.3.31}disableCrc()}{120}{subsubsection.7.19.3.31}%
+\contentsline {subsubsection}{\numberline {7.19.3.32}enableInvertIQ()}{121}{subsubsection.7.19.3.32}%
+\contentsline {subsubsection}{\numberline {7.19.3.33}disableInvertIQ()}{121}{subsubsection.7.19.3.33}%
+\contentsline {subsubsection}{\numberline {7.19.3.34}setOCP()}{121}{subsubsection.7.19.3.34}%
+\contentsline {subsubsection}{\numberline {7.19.3.35}setGain()}{122}{subsubsection.7.19.3.35}%
+\contentsline {subsubsection}{\numberline {7.19.3.36}crc()}{122}{subsubsection.7.19.3.36}%
+\contentsline {subsubsection}{\numberline {7.19.3.37}noCrc()}{122}{subsubsection.7.19.3.37}%
+\contentsline {subsubsection}{\numberline {7.19.3.38}random()}{123}{subsubsection.7.19.3.38}%
+\contentsline {subsubsection}{\numberline {7.19.3.39}setPins()}{123}{subsubsection.7.19.3.39}%
+\contentsline {subsubsection}{\numberline {7.19.3.40}setSPI()}{123}{subsubsection.7.19.3.40}%
+\contentsline {subsubsection}{\numberline {7.19.3.41}setSPIFrequency()}{123}{subsubsection.7.19.3.41}%
+\contentsline {subsubsection}{\numberline {7.19.3.42}dumpRegisters()}{123}{subsubsection.7.19.3.42}%
+\contentsline {subsubsection}{\numberline {7.19.3.43}explicitHeaderMode()}{124}{subsubsection.7.19.3.43}%
+\contentsline {subsubsection}{\numberline {7.19.3.44}implicitHeaderMode()}{124}{subsubsection.7.19.3.44}%
+\contentsline {subsubsection}{\numberline {7.19.3.45}handleDio0Rise()}{125}{subsubsection.7.19.3.45}%
+\contentsline {subsubsection}{\numberline {7.19.3.46}isTransmitting()}{125}{subsubsection.7.19.3.46}%
+\contentsline {subsubsection}{\numberline {7.19.3.47}getSpreadingFactor()}{126}{subsubsection.7.19.3.47}%
+\contentsline {subsubsection}{\numberline {7.19.3.48}getSignalBandwidth()}{126}{subsubsection.7.19.3.48}%
+\contentsline {subsubsection}{\numberline {7.19.3.49}setLdoFlag()}{127}{subsubsection.7.19.3.49}%
+\contentsline {subsubsection}{\numberline {7.19.3.50}readRegister()}{127}{subsubsection.7.19.3.50}%
+\contentsline {subsubsection}{\numberline {7.19.3.51}writeRegister()}{129}{subsubsection.7.19.3.51}%
+\contentsline {subsubsection}{\numberline {7.19.3.52}singleTransfer()}{130}{subsubsection.7.19.3.52}%
+\contentsline {subsubsection}{\numberline {7.19.3.53}onDio0Rise()}{131}{subsubsection.7.19.3.53}%
+\contentsline {subsection}{\numberline {7.19.4}Member Data Documentation}{132}{subsection.7.19.4}%
+\contentsline {subsubsection}{\numberline {7.19.4.1}\_spi}{132}{subsubsection.7.19.4.1}%
+\contentsline {subsubsection}{\numberline {7.19.4.2}\_ss}{132}{subsubsection.7.19.4.2}%
+\contentsline {subsubsection}{\numberline {7.19.4.3}\_reset}{132}{subsubsection.7.19.4.3}%
+\contentsline {subsubsection}{\numberline {7.19.4.4}\_dio0}{132}{subsubsection.7.19.4.4}%
+\contentsline {subsubsection}{\numberline {7.19.4.5}\_frequency}{132}{subsubsection.7.19.4.5}%
+\contentsline {subsubsection}{\numberline {7.19.4.6}\_packetIndex}{133}{subsubsection.7.19.4.6}%
+\contentsline {subsubsection}{\numberline {7.19.4.7}\_implicitHeaderMode}{133}{subsubsection.7.19.4.7}%
+\contentsline {subsubsection}{\numberline {7.19.4.8}\_onReceive}{133}{subsubsection.7.19.4.8}%
+\contentsline {subsubsection}{\numberline {7.19.4.9}\_onCadDone}{133}{subsubsection.7.19.4.9}%
+\contentsline {subsubsection}{\numberline {7.19.4.10}\_onTxDone}{133}{subsubsection.7.19.4.10}%
+\contentsline {section}{\numberline {7.20}INA3221\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::masken\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}reg\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}t Struct Reference}{133}{section.7.20}%
+\contentsline {subsection}{\numberline {7.20.1}Detailed Description}{134}{subsection.7.20.1}%
+\contentsline {subsection}{\numberline {7.20.2}Member Data Documentation}{134}{subsection.7.20.2}%
+\contentsline {subsubsection}{\numberline {7.20.2.1}conv\_ready}{134}{subsubsection.7.20.2.1}%
+\contentsline {subsubsection}{\numberline {7.20.2.2}timing\_ctrl\_alert}{134}{subsubsection.7.20.2.2}%
+\contentsline {subsubsection}{\numberline {7.20.2.3}pwr\_valid\_alert}{134}{subsubsection.7.20.2.3}%
+\contentsline {subsubsection}{\numberline {7.20.2.4}warn\_alert\_ch3}{134}{subsubsection.7.20.2.4}%
+\contentsline {subsubsection}{\numberline {7.20.2.5}warn\_alert\_ch2}{134}{subsubsection.7.20.2.5}%
+\contentsline {subsubsection}{\numberline {7.20.2.6}warn\_alert\_ch1}{134}{subsubsection.7.20.2.6}%
+\contentsline {subsubsection}{\numberline {7.20.2.7}shunt\_sum\_alert}{135}{subsubsection.7.20.2.7}%
+\contentsline {subsubsection}{\numberline {7.20.2.8}crit\_alert\_ch3}{135}{subsubsection.7.20.2.8}%
+\contentsline {subsubsection}{\numberline {7.20.2.9}crit\_alert\_ch2}{135}{subsubsection.7.20.2.9}%
+\contentsline {subsubsection}{\numberline {7.20.2.10}crit\_alert\_ch1}{135}{subsubsection.7.20.2.10}%
+\contentsline {subsubsection}{\numberline {7.20.2.11}crit\_alert\_latch\_en}{135}{subsubsection.7.20.2.11}%
+\contentsline {subsubsection}{\numberline {7.20.2.12}warn\_alert\_latch\_en}{135}{subsubsection.7.20.2.12}%
+\contentsline {subsubsection}{\numberline {7.20.2.13}shunt\_sum\_en\_ch3}{135}{subsubsection.7.20.2.13}%
+\contentsline {subsubsection}{\numberline {7.20.2.14}shunt\_sum\_en\_ch2}{135}{subsubsection.7.20.2.14}%
+\contentsline {subsubsection}{\numberline {7.20.2.15}shunt\_sum\_en\_ch1}{136}{subsubsection.7.20.2.15}%
+\contentsline {subsubsection}{\numberline {7.20.2.16}reserved}{136}{subsubsection.7.20.2.16}%
+\contentsline {section}{\numberline {7.21}MPU6050\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Wrapper Class Reference}{136}{section.7.21}%
+\contentsline {subsection}{\numberline {7.21.1}Detailed Description}{137}{subsection.7.21.1}%
+\contentsline {subsection}{\numberline {7.21.2}Constructor \& Destructor Documentation}{137}{subsection.7.21.2}%
+\contentsline {subsubsection}{\numberline {7.21.2.1}MPU6050Wrapper()}{137}{subsubsection.7.21.2.1}%
+\contentsline {subsection}{\numberline {7.21.3}Member Function Documentation}{137}{subsection.7.21.3}%
+\contentsline {subsubsection}{\numberline {7.21.3.1}init()}{137}{subsubsection.7.21.3.1}%
+\contentsline {subsubsection}{\numberline {7.21.3.2}readData()}{137}{subsubsection.7.21.3.2}%
+\contentsline {subsubsection}{\numberline {7.21.3.3}isInitialized()}{138}{subsubsection.7.21.3.3}%
+\contentsline {subsubsection}{\numberline {7.21.3.4}getType()}{138}{subsubsection.7.21.3.4}%
+\contentsline {subsubsection}{\numberline {7.21.3.5}configure()}{138}{subsubsection.7.21.3.5}%
+\contentsline {subsection}{\numberline {7.21.4}Member Data Documentation}{138}{subsection.7.21.4}%
+\contentsline {subsubsection}{\numberline {7.21.4.1}sensor}{138}{subsubsection.7.21.4.1}%
+\contentsline {subsubsection}{\numberline {7.21.4.2}initialized}{138}{subsubsection.7.21.4.2}%
+\contentsline {section}{\numberline {7.22}NMEAData Class Reference}{138}{section.7.22}%
+\contentsline {subsection}{\numberline {7.22.1}Detailed Description}{139}{subsection.7.22.1}%
+\contentsline {subsection}{\numberline {7.22.2}Constructor \& Destructor Documentation}{139}{subsection.7.22.2}%
+\contentsline {subsubsection}{\numberline {7.22.2.1}NMEAData()}{139}{subsubsection.7.22.2.1}%
+\contentsline {subsection}{\numberline {7.22.3}Member Function Documentation}{139}{subsection.7.22.3}%
+\contentsline {subsubsection}{\numberline {7.22.3.1}updateRmcTokens()}{139}{subsubsection.7.22.3.1}%
+\contentsline {subsubsection}{\numberline {7.22.3.2}updateGgaTokens()}{139}{subsubsection.7.22.3.2}%
+\contentsline {subsubsection}{\numberline {7.22.3.3}getRmcTokens()}{139}{subsubsection.7.22.3.3}%
+\contentsline {subsubsection}{\numberline {7.22.3.4}getGgaTokens()}{139}{subsubsection.7.22.3.4}%
+\contentsline {subsection}{\numberline {7.22.4}Member Data Documentation}{140}{subsection.7.22.4}%
+\contentsline {subsubsection}{\numberline {7.22.4.1}rmcTokens}{140}{subsubsection.7.22.4.1}%
+\contentsline {subsubsection}{\numberline {7.22.4.2}ggaTokens}{140}{subsubsection.7.22.4.2}%
+\contentsline {subsubsection}{\numberline {7.22.4.3}rmc\_mutex}{140}{subsubsection.7.22.4.3}%
+\contentsline {subsubsection}{\numberline {7.22.4.4}gga\_mutex}{140}{subsubsection.7.22.4.4}%
+\contentsline {section}{\numberline {7.23}Power\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Manager Class Reference}{140}{section.7.23}%
+\contentsline {subsection}{\numberline {7.23.1}Detailed Description}{141}{subsection.7.23.1}%
+\contentsline {subsection}{\numberline {7.23.2}Constructor \& Destructor Documentation}{141}{subsection.7.23.2}%
+\contentsline {subsubsection}{\numberline {7.23.2.1}PowerManager()}{141}{subsubsection.7.23.2.1}%
+\contentsline {subsection}{\numberline {7.23.3}Member Function Documentation}{141}{subsection.7.23.3}%
+\contentsline {subsubsection}{\numberline {7.23.3.1}initialize()}{141}{subsubsection.7.23.3.1}%
+\contentsline {subsubsection}{\numberline {7.23.3.2}readIDs()}{142}{subsubsection.7.23.3.2}%
+\contentsline {subsubsection}{\numberline {7.23.3.3}getCurrentChargeSolar()}{142}{subsubsection.7.23.3.3}%
+\contentsline {subsubsection}{\numberline {7.23.3.4}getCurrentChargeUSB()}{142}{subsubsection.7.23.3.4}%
+\contentsline {subsubsection}{\numberline {7.23.3.5}getCurrentChargeTotal()}{142}{subsubsection.7.23.3.5}%
+\contentsline {subsubsection}{\numberline {7.23.3.6}getCurrentDraw()}{142}{subsubsection.7.23.3.6}%
+\contentsline {subsubsection}{\numberline {7.23.3.7}getVoltageBattery()}{143}{subsubsection.7.23.3.7}%
+\contentsline {subsubsection}{\numberline {7.23.3.8}getVoltage5V()}{143}{subsubsection.7.23.3.8}%
+\contentsline {subsubsection}{\numberline {7.23.3.9}configure()}{143}{subsubsection.7.23.3.9}%
+\contentsline {subsubsection}{\numberline {7.23.3.10}isSolarActive()}{143}{subsubsection.7.23.3.10}%
+\contentsline {subsubsection}{\numberline {7.23.3.11}isUSBConnected()}{144}{subsubsection.7.23.3.11}%
+\contentsline {subsection}{\numberline {7.23.4}Member Data Documentation}{144}{subsection.7.23.4}%
+\contentsline {subsubsection}{\numberline {7.23.4.1}SOLAR\_CURRENT\_THRESHOLD}{144}{subsubsection.7.23.4.1}%
+\contentsline {subsubsection}{\numberline {7.23.4.2}USB\_CURRENT\_THRESHOLD}{144}{subsubsection.7.23.4.2}%
+\contentsline {subsubsection}{\numberline {7.23.4.3}VOLTAGE\_LOW\_THRESHOLD}{144}{subsubsection.7.23.4.3}%
+\contentsline {subsubsection}{\numberline {7.23.4.4}VOLTAGE\_OVERCHARGE\_THRESHOLD}{145}{subsubsection.7.23.4.4}%
+\contentsline {subsubsection}{\numberline {7.23.4.5}FALL\_RATE\_THRESHOLD}{145}{subsubsection.7.23.4.5}%
+\contentsline {subsubsection}{\numberline {7.23.4.6}FALLING\_TREND\_REQUIRED}{145}{subsubsection.7.23.4.6}%
+\contentsline {subsubsection}{\numberline {7.23.4.7}ina3221}{145}{subsubsection.7.23.4.7}%
+\contentsline {subsubsection}{\numberline {7.23.4.8}initialized}{145}{subsubsection.7.23.4.8}%
+\contentsline {subsubsection}{\numberline {7.23.4.9}solarActive}{145}{subsubsection.7.23.4.9}%
+\contentsline {subsubsection}{\numberline {7.23.4.10}usbConnected}{145}{subsubsection.7.23.4.10}%
+\contentsline {section}{\numberline {7.24}Print Class Reference}{146}{section.7.24}%
+\contentsline {subsection}{\numberline {7.24.1}Detailed Description}{147}{subsection.7.24.1}%
+\contentsline {subsection}{\numberline {7.24.2}Constructor \& Destructor Documentation}{147}{subsection.7.24.2}%
+\contentsline {subsubsection}{\numberline {7.24.2.1}Print()}{147}{subsubsection.7.24.2.1}%
+\contentsline {subsection}{\numberline {7.24.3}Member Function Documentation}{147}{subsection.7.24.3}%
+\contentsline {subsubsection}{\numberline {7.24.3.1}printNumber()}{147}{subsubsection.7.24.3.1}%
+\contentsline {subsubsection}{\numberline {7.24.3.2}printULLNumber()}{148}{subsubsection.7.24.3.2}%
+\contentsline {subsubsection}{\numberline {7.24.3.3}printFloat()}{149}{subsubsection.7.24.3.3}%
+\contentsline {subsubsection}{\numberline {7.24.3.4}setWriteError()}{149}{subsubsection.7.24.3.4}%
+\contentsline {subsubsection}{\numberline {7.24.3.5}getWriteError()}{150}{subsubsection.7.24.3.5}%
+\contentsline {subsubsection}{\numberline {7.24.3.6}clearWriteError()}{150}{subsubsection.7.24.3.6}%
+\contentsline {subsubsection}{\numberline {7.24.3.7}write()\hspace {0.1cm}{\footnotesize \ttfamily [1/4]}}{150}{subsubsection.7.24.3.7}%
+\contentsline {subsubsection}{\numberline {7.24.3.8}write()\hspace {0.1cm}{\footnotesize \ttfamily [2/4]}}{151}{subsubsection.7.24.3.8}%
+\contentsline {subsubsection}{\numberline {7.24.3.9}write()\hspace {0.1cm}{\footnotesize \ttfamily [3/4]}}{152}{subsubsection.7.24.3.9}%
+\contentsline {subsubsection}{\numberline {7.24.3.10}write()\hspace {0.1cm}{\footnotesize \ttfamily [4/4]}}{152}{subsubsection.7.24.3.10}%
+\contentsline {subsubsection}{\numberline {7.24.3.11}availableForWrite()}{153}{subsubsection.7.24.3.11}%
+\contentsline {subsubsection}{\numberline {7.24.3.12}print()\hspace {0.1cm}{\footnotesize \ttfamily [1/11]}}{153}{subsubsection.7.24.3.12}%
+\contentsline {subsubsection}{\numberline {7.24.3.13}print()\hspace {0.1cm}{\footnotesize \ttfamily [2/11]}}{154}{subsubsection.7.24.3.13}%
+\contentsline {subsubsection}{\numberline {7.24.3.14}print()\hspace {0.1cm}{\footnotesize \ttfamily [3/11]}}{155}{subsubsection.7.24.3.14}%
+\contentsline {subsubsection}{\numberline {7.24.3.15}print()\hspace {0.1cm}{\footnotesize \ttfamily [4/11]}}{155}{subsubsection.7.24.3.15}%
+\contentsline {subsubsection}{\numberline {7.24.3.16}print()\hspace {0.1cm}{\footnotesize \ttfamily [5/11]}}{156}{subsubsection.7.24.3.16}%
+\contentsline {subsubsection}{\numberline {7.24.3.17}print()\hspace {0.1cm}{\footnotesize \ttfamily [6/11]}}{156}{subsubsection.7.24.3.17}%
+\contentsline {subsubsection}{\numberline {7.24.3.18}print()\hspace {0.1cm}{\footnotesize \ttfamily [7/11]}}{157}{subsubsection.7.24.3.18}%
+\contentsline {subsubsection}{\numberline {7.24.3.19}print()\hspace {0.1cm}{\footnotesize \ttfamily [8/11]}}{157}{subsubsection.7.24.3.19}%
+\contentsline {subsubsection}{\numberline {7.24.3.20}print()\hspace {0.1cm}{\footnotesize \ttfamily [9/11]}}{158}{subsubsection.7.24.3.20}%
+\contentsline {subsubsection}{\numberline {7.24.3.21}print()\hspace {0.1cm}{\footnotesize \ttfamily [10/11]}}{158}{subsubsection.7.24.3.21}%
+\contentsline {subsubsection}{\numberline {7.24.3.22}print()\hspace {0.1cm}{\footnotesize \ttfamily [11/11]}}{159}{subsubsection.7.24.3.22}%
+\contentsline {subsubsection}{\numberline {7.24.3.23}println()\hspace {0.1cm}{\footnotesize \ttfamily [1/11]}}{159}{subsubsection.7.24.3.23}%
+\contentsline {subsubsection}{\numberline {7.24.3.24}println()\hspace {0.1cm}{\footnotesize \ttfamily [2/11]}}{159}{subsubsection.7.24.3.24}%
+\contentsline {subsubsection}{\numberline {7.24.3.25}println()\hspace {0.1cm}{\footnotesize \ttfamily [3/11]}}{160}{subsubsection.7.24.3.25}%
+\contentsline {subsubsection}{\numberline {7.24.3.26}println()\hspace {0.1cm}{\footnotesize \ttfamily [4/11]}}{160}{subsubsection.7.24.3.26}%
+\contentsline {subsubsection}{\numberline {7.24.3.27}println()\hspace {0.1cm}{\footnotesize \ttfamily [5/11]}}{161}{subsubsection.7.24.3.27}%
+\contentsline {subsubsection}{\numberline {7.24.3.28}println()\hspace {0.1cm}{\footnotesize \ttfamily [6/11]}}{161}{subsubsection.7.24.3.28}%
+\contentsline {subsubsection}{\numberline {7.24.3.29}println()\hspace {0.1cm}{\footnotesize \ttfamily [7/11]}}{162}{subsubsection.7.24.3.29}%
+\contentsline {subsubsection}{\numberline {7.24.3.30}println()\hspace {0.1cm}{\footnotesize \ttfamily [8/11]}}{162}{subsubsection.7.24.3.30}%
+\contentsline {subsubsection}{\numberline {7.24.3.31}println()\hspace {0.1cm}{\footnotesize \ttfamily [9/11]}}{163}{subsubsection.7.24.3.31}%
+\contentsline {subsubsection}{\numberline {7.24.3.32}println()\hspace {0.1cm}{\footnotesize \ttfamily [10/11]}}{163}{subsubsection.7.24.3.32}%
+\contentsline {subsubsection}{\numberline {7.24.3.33}println()\hspace {0.1cm}{\footnotesize \ttfamily [11/11]}}{164}{subsubsection.7.24.3.33}%
+\contentsline {subsubsection}{\numberline {7.24.3.34}flush()}{165}{subsubsection.7.24.3.34}%
+\contentsline {subsection}{\numberline {7.24.4}Member Data Documentation}{165}{subsection.7.24.4}%
+\contentsline {subsubsection}{\numberline {7.24.4.1}write\_error}{165}{subsubsection.7.24.4.1}%
+\contentsline {section}{\numberline {7.25}Sensor\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Wrapper Class Reference}{166}{section.7.25}%
+\contentsline {subsection}{\numberline {7.25.1}Detailed Description}{166}{subsection.7.25.1}%
+\contentsline {subsection}{\numberline {7.25.2}Constructor \& Destructor Documentation}{167}{subsection.7.25.2}%
+\contentsline {subsubsection}{\numberline {7.25.2.1}SensorWrapper()}{167}{subsubsection.7.25.2.1}%
+\contentsline {subsection}{\numberline {7.25.3}Member Function Documentation}{167}{subsection.7.25.3}%
+\contentsline {subsubsection}{\numberline {7.25.3.1}getInstance()}{167}{subsubsection.7.25.3.1}%
+\contentsline {subsubsection}{\numberline {7.25.3.2}initSensor()}{167}{subsubsection.7.25.3.2}%
+\contentsline {subsubsection}{\numberline {7.25.3.3}configureSensor()}{168}{subsubsection.7.25.3.3}%
+\contentsline {subsubsection}{\numberline {7.25.3.4}readSensorData()}{168}{subsubsection.7.25.3.4}%
+\contentsline {subsection}{\numberline {7.25.4}Member Data Documentation}{169}{subsection.7.25.4}%
+\contentsline {subsubsection}{\numberline {7.25.4.1}sensors}{169}{subsubsection.7.25.4.1}%
+\contentsline {chapter}{\numberline {8}File Documentation}{171}{chapter.8}%
+\contentsline {section}{\numberline {8.1}build\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}number.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h File Reference}{171}{section.8.1}%
+\contentsline {subsection}{\numberline {8.1.1}Macro Definition Documentation}{171}{subsection.8.1.1}%
+\contentsline {subsubsection}{\numberline {8.1.1.1}BUILD\_NUMBER}{171}{subsubsection.8.1.1.1}%
+\contentsline {section}{\numberline {8.2}build\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}number.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{171}{section.8.2}%
+\contentsline {section}{\numberline {8.3}includes.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h File Reference}{172}{section.8.3}%
+\contentsline {section}{\numberline {8.4}includes.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{173}{section.8.4}%
+\contentsline {section}{\numberline {8.5}lib/clock/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DS3231.cpp File Reference}{173}{section.8.5}%
+\contentsline {section}{\numberline {8.6}DS3231.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{174}{section.8.6}%
+\contentsline {section}{\numberline {8.7}lib/clock/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DS3231.h File Reference}{176}{section.8.7}%
+\contentsline {section}{\numberline {8.8}DS3231.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{177}{section.8.8}%
+\contentsline {section}{\numberline {8.9}lib/comms/commands/clock\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}commands.cpp File Reference}{177}{section.8.9}%
+\contentsline {section}{\numberline {8.10}clock\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}commands.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{178}{section.8.10}%
+\contentsline {section}{\numberline {8.11}lib/comms/commands/commands.cpp File Reference}{180}{section.8.11}%
+\contentsline {section}{\numberline {8.12}commands.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{181}{section.8.12}%
+\contentsline {section}{\numberline {8.13}lib/comms/commands/commands.h File Reference}{181}{section.8.13}%
+\contentsline {subsection}{\numberline {8.13.1}Function Documentation}{183}{subsection.8.13.1}%
+\contentsline {subsubsection}{\numberline {8.13.1.1}handleGetCommandsTimestamp()}{183}{subsubsection.8.13.1.1}%
+\contentsline {section}{\numberline {8.14}commands.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{183}{section.8.14}%
+\contentsline {section}{\numberline {8.15}lib/comms/commands/diagnostic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}commands.cpp File Reference}{184}{section.8.15}%
+\contentsline {section}{\numberline {8.16}diagnostic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}commands.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{184}{section.8.16}%
+\contentsline {section}{\numberline {8.17}lib/comms/commands/event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}commands.cpp File Reference}{185}{section.8.17}%
+\contentsline {section}{\numberline {8.18}event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}commands.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{186}{section.8.18}%
+\contentsline {section}{\numberline {8.19}lib/comms/commands/gps\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}commands.cpp File Reference}{187}{section.8.19}%
+\contentsline {section}{\numberline {8.20}gps\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}commands.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{187}{section.8.20}%
+\contentsline {section}{\numberline {8.21}lib/comms/commands/power\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}commands.cpp File Reference}{190}{section.8.21}%
+\contentsline {section}{\numberline {8.22}power\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}commands.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{190}{section.8.22}%
+\contentsline {section}{\numberline {8.23}lib/comms/communication.cpp File Reference}{192}{section.8.23}%
+\contentsline {subsection}{\numberline {8.23.1}Function Documentation}{192}{subsection.8.23.1}%
+\contentsline {subsubsection}{\numberline {8.23.1.1}initializeRadio()}{192}{subsubsection.8.23.1.1}%
+\contentsline {subsection}{\numberline {8.23.2}Variable Documentation}{193}{subsection.8.23.2}%
+\contentsline {subsubsection}{\numberline {8.23.2.1}outgoing}{193}{subsubsection.8.23.2.1}%
+\contentsline {subsubsection}{\numberline {8.23.2.2}msgCount}{193}{subsubsection.8.23.2.2}%
+\contentsline {subsubsection}{\numberline {8.23.2.3}lastSendTime}{194}{subsubsection.8.23.2.3}%
+\contentsline {subsubsection}{\numberline {8.23.2.4}lastReceiveTime}{194}{subsubsection.8.23.2.4}%
+\contentsline {subsubsection}{\numberline {8.23.2.5}lastPrintTime}{194}{subsubsection.8.23.2.5}%
+\contentsline {subsubsection}{\numberline {8.23.2.6}interval}{194}{subsubsection.8.23.2.6}%
+\contentsline {section}{\numberline {8.24}communication.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{194}{section.8.24}%
+\contentsline {section}{\numberline {8.25}lib/comms/communication.h File Reference}{195}{section.8.25}%
+\contentsline {subsection}{\numberline {8.25.1}Function Documentation}{196}{subsection.8.25.1}%
+\contentsline {subsubsection}{\numberline {8.25.1.1}initializeRadio()}{196}{subsubsection.8.25.1.1}%
+\contentsline {subsubsection}{\numberline {8.25.1.2}sendMessage()}{197}{subsubsection.8.25.1.2}%
+\contentsline {subsubsection}{\numberline {8.25.1.3}sendLargePacket()}{197}{subsubsection.8.25.1.3}%
+\contentsline {subsubsection}{\numberline {8.25.1.4}onReceive()}{197}{subsubsection.8.25.1.4}%
+\contentsline {subsubsection}{\numberline {8.25.1.5}handleUartInput()}{198}{subsubsection.8.25.1.5}%
+\contentsline {subsubsection}{\numberline {8.25.1.6}processFrameData()}{199}{subsubsection.8.25.1.6}%
+\contentsline {subsubsection}{\numberline {8.25.1.7}handleCommandFrame()}{200}{subsubsection.8.25.1.7}%
+\contentsline {subsubsection}{\numberline {8.25.1.8}sendEventRegister()}{200}{subsubsection.8.25.1.8}%
+\contentsline {subsubsection}{\numberline {8.25.1.9}encodeFrame()}{200}{subsubsection.8.25.1.9}%
+\contentsline {subsubsection}{\numberline {8.25.1.10}decodeFrame()}{201}{subsubsection.8.25.1.10}%
+\contentsline {subsubsection}{\numberline {8.25.1.11}buildFrame()}{202}{subsubsection.8.25.1.11}%
+\contentsline {subsubsection}{\numberline {8.25.1.12}determineUnit()}{204}{subsubsection.8.25.1.12}%
+\contentsline {subsubsection}{\numberline {8.25.1.13}sendFrame()}{205}{subsubsection.8.25.1.13}%
+\contentsline {section}{\numberline {8.26}communication.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{205}{section.8.26}%
+\contentsline {section}{\numberline {8.27}lib/comms/frame.cpp File Reference}{206}{section.8.27}%
+\contentsline {subsection}{\numberline {8.27.1}Detailed Description}{207}{subsection.8.27.1}%
+\contentsline {subsection}{\numberline {8.27.2}Typedef Documentation}{207}{subsection.8.27.2}%
+\contentsline {subsubsection}{\numberline {8.27.2.1}CommandHandler}{207}{subsubsection.8.27.2.1}%
+\contentsline {subsection}{\numberline {8.27.3}Function Documentation}{207}{subsection.8.27.3}%
+\contentsline {subsubsection}{\numberline {8.27.3.1}encodeFrame()}{207}{subsubsection.8.27.3.1}%
+\contentsline {subsubsection}{\numberline {8.27.3.2}decodeFrame()}{208}{subsubsection.8.27.3.2}%
+\contentsline {subsubsection}{\numberline {8.27.3.3}processFrameData()}{209}{subsubsection.8.27.3.3}%
+\contentsline {subsubsection}{\numberline {8.27.3.4}sendEventRegister()}{210}{subsubsection.8.27.3.4}%
+\contentsline {subsubsection}{\numberline {8.27.3.5}buildFrame()}{210}{subsubsection.8.27.3.5}%
+\contentsline {subsection}{\numberline {8.27.4}Variable Documentation}{212}{subsection.8.27.4}%
+\contentsline {subsubsection}{\numberline {8.27.4.1}eventRegister}{212}{subsubsection.8.27.4.1}%
+\contentsline {section}{\numberline {8.28}frame.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{213}{section.8.28}%
+\contentsline {section}{\numberline {8.29}lib/comms/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lo\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ra/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lo\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ra-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}RP2040.cpp File Reference}{214}{section.8.29}%
+\contentsline {subsection}{\numberline {8.29.1}Macro Definition Documentation}{216}{subsection.8.29.1}%
+\contentsline {subsubsection}{\numberline {8.29.1.1}REG\_FIFO}{216}{subsubsection.8.29.1.1}%
+\contentsline {subsubsection}{\numberline {8.29.1.2}REG\_OP\_MODE}{216}{subsubsection.8.29.1.2}%
+\contentsline {subsubsection}{\numberline {8.29.1.3}REG\_FRF\_MSB}{216}{subsubsection.8.29.1.3}%
+\contentsline {subsubsection}{\numberline {8.29.1.4}REG\_FRF\_MID}{216}{subsubsection.8.29.1.4}%
+\contentsline {subsubsection}{\numberline {8.29.1.5}REG\_FRF\_LSB}{216}{subsubsection.8.29.1.5}%
+\contentsline {subsubsection}{\numberline {8.29.1.6}REG\_PA\_CONFIG}{216}{subsubsection.8.29.1.6}%
+\contentsline {subsubsection}{\numberline {8.29.1.7}IRQ\_CAD\_DETECTED\_MASK}{216}{subsubsection.8.29.1.7}%
+\contentsline {subsubsection}{\numberline {8.29.1.8}REG\_OCP}{217}{subsubsection.8.29.1.8}%
+\contentsline {subsubsection}{\numberline {8.29.1.9}REG\_LNA}{217}{subsubsection.8.29.1.9}%
+\contentsline {subsubsection}{\numberline {8.29.1.10}IRQ\_CAD\_DONE\_MASK}{217}{subsubsection.8.29.1.10}%
+\contentsline {subsubsection}{\numberline {8.29.1.11}REG\_FIFO\_ADDR\_PTR}{217}{subsubsection.8.29.1.11}%
+\contentsline {subsubsection}{\numberline {8.29.1.12}REG\_FIFO\_TX\_BASE\_ADDR}{217}{subsubsection.8.29.1.12}%
+\contentsline {subsubsection}{\numberline {8.29.1.13}REG\_FIFO\_RX\_BASE\_ADDR}{217}{subsubsection.8.29.1.13}%
+\contentsline {subsubsection}{\numberline {8.29.1.14}REG\_FIFO\_RX\_CURRENT\_ADDR}{217}{subsubsection.8.29.1.14}%
+\contentsline {subsubsection}{\numberline {8.29.1.15}REG\_IRQ\_FLAGS}{217}{subsubsection.8.29.1.15}%
+\contentsline {subsubsection}{\numberline {8.29.1.16}REG\_RX\_NB\_BYTES}{218}{subsubsection.8.29.1.16}%
+\contentsline {subsubsection}{\numberline {8.29.1.17}REG\_PKT\_SNR\_VALUE}{218}{subsubsection.8.29.1.17}%
+\contentsline {subsubsection}{\numberline {8.29.1.18}REG\_PKT\_RSSI\_VALUE}{218}{subsubsection.8.29.1.18}%
+\contentsline {subsubsection}{\numberline {8.29.1.19}REG\_RSSI\_VALUE}{218}{subsubsection.8.29.1.19}%
+\contentsline {subsubsection}{\numberline {8.29.1.20}REG\_MODEM\_CONFIG\_1}{218}{subsubsection.8.29.1.20}%
+\contentsline {subsubsection}{\numberline {8.29.1.21}REG\_MODEM\_CONFIG\_2}{218}{subsubsection.8.29.1.21}%
+\contentsline {subsubsection}{\numberline {8.29.1.22}REG\_PREAMBLE\_MSB}{218}{subsubsection.8.29.1.22}%
+\contentsline {subsubsection}{\numberline {8.29.1.23}REG\_PREAMBLE\_LSB}{218}{subsubsection.8.29.1.23}%
+\contentsline {subsubsection}{\numberline {8.29.1.24}REG\_PAYLOAD\_LENGTH}{219}{subsubsection.8.29.1.24}%
+\contentsline {subsubsection}{\numberline {8.29.1.25}REG\_MODEM\_CONFIG\_3}{219}{subsubsection.8.29.1.25}%
+\contentsline {subsubsection}{\numberline {8.29.1.26}REG\_FREQ\_ERROR\_MSB}{219}{subsubsection.8.29.1.26}%
+\contentsline {subsubsection}{\numberline {8.29.1.27}REG\_FREQ\_ERROR\_MID}{219}{subsubsection.8.29.1.27}%
+\contentsline {subsubsection}{\numberline {8.29.1.28}REG\_FREQ\_ERROR\_LSB}{219}{subsubsection.8.29.1.28}%
+\contentsline {subsubsection}{\numberline {8.29.1.29}REG\_RSSI\_WIDEBAND}{219}{subsubsection.8.29.1.29}%
+\contentsline {subsubsection}{\numberline {8.29.1.30}REG\_DETECTION\_OPTIMIZE}{219}{subsubsection.8.29.1.30}%
+\contentsline {subsubsection}{\numberline {8.29.1.31}REG\_INVERTIQ}{219}{subsubsection.8.29.1.31}%
+\contentsline {subsubsection}{\numberline {8.29.1.32}REG\_DETECTION\_THRESHOLD}{220}{subsubsection.8.29.1.32}%
+\contentsline {subsubsection}{\numberline {8.29.1.33}REG\_SYNC\_WORD}{220}{subsubsection.8.29.1.33}%
+\contentsline {subsubsection}{\numberline {8.29.1.34}REG\_INVERTIQ2}{220}{subsubsection.8.29.1.34}%
+\contentsline {subsubsection}{\numberline {8.29.1.35}REG\_DIO\_MAPPING\_1}{220}{subsubsection.8.29.1.35}%
+\contentsline {subsubsection}{\numberline {8.29.1.36}REG\_VERSION}{220}{subsubsection.8.29.1.36}%
+\contentsline {subsubsection}{\numberline {8.29.1.37}REG\_PA\_DAC}{220}{subsubsection.8.29.1.37}%
+\contentsline {subsubsection}{\numberline {8.29.1.38}MODE\_CAD}{220}{subsubsection.8.29.1.38}%
+\contentsline {subsubsection}{\numberline {8.29.1.39}MODE\_LONG\_RANGE\_MODE}{220}{subsubsection.8.29.1.39}%
+\contentsline {subsubsection}{\numberline {8.29.1.40}MODE\_SLEEP}{221}{subsubsection.8.29.1.40}%
+\contentsline {subsubsection}{\numberline {8.29.1.41}MODE\_STDBY}{221}{subsubsection.8.29.1.41}%
+\contentsline {subsubsection}{\numberline {8.29.1.42}MODE\_TX}{221}{subsubsection.8.29.1.42}%
+\contentsline {subsubsection}{\numberline {8.29.1.43}MODE\_RX\_CONTINUOUS}{221}{subsubsection.8.29.1.43}%
+\contentsline {subsubsection}{\numberline {8.29.1.44}MODE\_RX\_SINGLE}{221}{subsubsection.8.29.1.44}%
+\contentsline {subsubsection}{\numberline {8.29.1.45}PA\_BOOST}{221}{subsubsection.8.29.1.45}%
+\contentsline {subsubsection}{\numberline {8.29.1.46}IRQ\_TX\_DONE\_MASK}{221}{subsubsection.8.29.1.46}%
+\contentsline {subsubsection}{\numberline {8.29.1.47}IRQ\_PAYLOAD\_CRC\_ERROR\_MASK}{221}{subsubsection.8.29.1.47}%
+\contentsline {subsubsection}{\numberline {8.29.1.48}IRQ\_RX\_DONE\_MASK}{222}{subsubsection.8.29.1.48}%
+\contentsline {subsubsection}{\numberline {8.29.1.49}RF\_MID\_BAND\_THRESHOLD}{222}{subsubsection.8.29.1.49}%
+\contentsline {subsubsection}{\numberline {8.29.1.50}RSSI\_OFFSET\_HF\_PORT}{222}{subsubsection.8.29.1.50}%
+\contentsline {subsubsection}{\numberline {8.29.1.51}RSSI\_OFFSET\_LF\_PORT}{222}{subsubsection.8.29.1.51}%
+\contentsline {subsubsection}{\numberline {8.29.1.52}MAX\_PKT\_LENGTH}{222}{subsubsection.8.29.1.52}%
+\contentsline {subsubsection}{\numberline {8.29.1.53}ISR\_PREFIX}{222}{subsubsection.8.29.1.53}%
+\contentsline {subsection}{\numberline {8.29.2}Variable Documentation}{222}{subsection.8.29.2}%
+\contentsline {subsubsection}{\numberline {8.29.2.1}LoRa}{222}{subsubsection.8.29.2.1}%
+\contentsline {section}{\numberline {8.30}Lo\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ra-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}RP2040.cpp}{223}{section.8.30}%
+\contentsline {section}{\numberline {8.31}lib/comms/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lo\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ra/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lo\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ra-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}RP2040.h File Reference}{231}{section.8.31}%
+\contentsline {subsection}{\numberline {8.31.1}Function Documentation}{232}{subsection.8.31.1}%
+\contentsline {subsubsection}{\numberline {8.31.1.1}\_\_empty()}{232}{subsubsection.8.31.1.1}%
+\contentsline {subsection}{\numberline {8.31.2}Variable Documentation}{232}{subsection.8.31.2}%
+\contentsline {subsubsection}{\numberline {8.31.2.1}LoRa}{232}{subsubsection.8.31.2.1}%
+\contentsline {section}{\numberline {8.32}Lo\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ra-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}RP2040.h}{233}{section.8.32}%
+\contentsline {section}{\numberline {8.33}lib/comms/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lo\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ra/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Print.cpp File Reference}{234}{section.8.33}%
+\contentsline {section}{\numberline {8.34}Print.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{234}{section.8.34}%
+\contentsline {section}{\numberline {8.35}lib/comms/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lo\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ra/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Print.h File Reference}{239}{section.8.35}%
+\contentsline {subsection}{\numberline {8.35.1}Macro Definition Documentation}{239}{subsection.8.35.1}%
+\contentsline {subsubsection}{\numberline {8.35.1.1}DEC}{239}{subsubsection.8.35.1.1}%
+\contentsline {subsubsection}{\numberline {8.35.1.2}HEX}{240}{subsubsection.8.35.1.2}%
+\contentsline {subsubsection}{\numberline {8.35.1.3}OCT}{240}{subsubsection.8.35.1.3}%
+\contentsline {subsubsection}{\numberline {8.35.1.4}BIN}{240}{subsubsection.8.35.1.4}%
+\contentsline {section}{\numberline {8.36}Print.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{240}{section.8.36}%
+\contentsline {section}{\numberline {8.37}lib/comms/protocol.h File Reference}{241}{section.8.37}%
+\contentsline {subsection}{\numberline {8.37.1}Enumeration Type Documentation}{242}{subsection.8.37.1}%
+\contentsline {subsubsection}{\numberline {8.37.1.1}ExecutionResult}{242}{subsubsection.8.37.1.1}%
+\contentsline {subsubsection}{\numberline {8.37.1.2}OperationType}{243}{subsubsection.8.37.1.2}%
+\contentsline {subsubsection}{\numberline {8.37.1.3}CommandAccessLevel}{243}{subsubsection.8.37.1.3}%
+\contentsline {subsubsection}{\numberline {8.37.1.4}ValueUnit}{243}{subsubsection.8.37.1.4}%
+\contentsline {subsubsection}{\numberline {8.37.1.5}ExceptionType}{243}{subsubsection.8.37.1.5}%
+\contentsline {subsection}{\numberline {8.37.2}Function Documentation}{244}{subsection.8.37.2}%
+\contentsline {subsubsection}{\numberline {8.37.2.1}exceptionTypeToString()}{244}{subsubsection.8.37.2.1}%
+\contentsline {subsubsection}{\numberline {8.37.2.2}operationTypeToString()}{244}{subsubsection.8.37.2.2}%
+\contentsline {subsubsection}{\numberline {8.37.2.3}stringToOperationType()}{245}{subsubsection.8.37.2.3}%
+\contentsline {subsubsection}{\numberline {8.37.2.4}hexStringToBytes()}{245}{subsubsection.8.37.2.4}%
+\contentsline {subsubsection}{\numberline {8.37.2.5}valueUnitTypeToString()}{245}{subsubsection.8.37.2.5}%
+\contentsline {subsection}{\numberline {8.37.3}Variable Documentation}{246}{subsection.8.37.3}%
+\contentsline {subsubsection}{\numberline {8.37.3.1}FRAME\_BEGIN}{246}{subsubsection.8.37.3.1}%
+\contentsline {subsubsection}{\numberline {8.37.3.2}FRAME\_END}{247}{subsubsection.8.37.3.2}%
+\contentsline {subsubsection}{\numberline {8.37.3.3}DELIMITER}{247}{subsubsection.8.37.3.3}%
+\contentsline {section}{\numberline {8.38}protocol.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{247}{section.8.38}%
+\contentsline {section}{\numberline {8.39}lib/comms/receive.cpp File Reference}{248}{section.8.39}%
+\contentsline {subsection}{\numberline {8.39.1}Detailed Description}{248}{subsection.8.39.1}%
+\contentsline {subsection}{\numberline {8.39.2}Function Documentation}{248}{subsection.8.39.2}%
+\contentsline {subsubsection}{\numberline {8.39.2.1}onReceive()}{248}{subsubsection.8.39.2.1}%
+\contentsline {subsubsection}{\numberline {8.39.2.2}handleUartInput()}{249}{subsubsection.8.39.2.2}%
+\contentsline {section}{\numberline {8.40}receive.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{250}{section.8.40}%
+\contentsline {section}{\numberline {8.41}lib/comms/send.cpp File Reference}{251}{section.8.41}%
+\contentsline {subsection}{\numberline {8.41.1}Detailed Description}{251}{subsection.8.41.1}%
+\contentsline {subsection}{\numberline {8.41.2}Function Documentation}{251}{subsection.8.41.2}%
+\contentsline {subsubsection}{\numberline {8.41.2.1}sendMessage()}{251}{subsubsection.8.41.2.1}%
+\contentsline {subsubsection}{\numberline {8.41.2.2}sendFrame()}{252}{subsubsection.8.41.2.2}%
+\contentsline {subsubsection}{\numberline {8.41.2.3}sendLargePacket()}{253}{subsubsection.8.41.2.3}%
+\contentsline {section}{\numberline {8.42}send.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{254}{section.8.42}%
+\contentsline {section}{\numberline {8.43}lib/comms/utils\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}converters.cpp File Reference}{254}{section.8.43}%
+\contentsline {subsection}{\numberline {8.43.1}Detailed Description}{255}{subsection.8.43.1}%
+\contentsline {subsection}{\numberline {8.43.2}Function Documentation}{255}{subsection.8.43.2}%
+\contentsline {subsubsection}{\numberline {8.43.2.1}exceptionTypeToString()}{255}{subsubsection.8.43.2.1}%
+\contentsline {subsubsection}{\numberline {8.43.2.2}valueUnitTypeToString()}{256}{subsubsection.8.43.2.2}%
+\contentsline {subsubsection}{\numberline {8.43.2.3}operationTypeToString()}{257}{subsubsection.8.43.2.3}%
+\contentsline {subsubsection}{\numberline {8.43.2.4}stringToOperationType()}{257}{subsubsection.8.43.2.4}%
+\contentsline {subsubsection}{\numberline {8.43.2.5}hexStringToBytes()}{258}{subsubsection.8.43.2.5}%
+\contentsline {section}{\numberline {8.44}utils\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}converters.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{258}{section.8.44}%
+\contentsline {section}{\numberline {8.45}lib/eventman/event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}manager.cpp File Reference}{259}{section.8.45}%
+\contentsline {subsection}{\numberline {8.45.1}Detailed Description}{260}{subsection.8.45.1}%
+\contentsline {subsection}{\numberline {8.45.2}Function Documentation}{260}{subsection.8.45.2}%
+\contentsline {subsubsection}{\numberline {8.45.2.1}checkPowerEvents()}{260}{subsubsection.8.45.2.1}%
+\contentsline {subsection}{\numberline {8.45.3}Variable Documentation}{261}{subsection.8.45.3}%
+\contentsline {subsubsection}{\numberline {8.45.3.1}eventLogId}{261}{subsubsection.8.45.3.1}%
+\contentsline {subsubsection}{\numberline {8.45.3.2}lastPowerState}{261}{subsubsection.8.45.3.2}%
+\contentsline {subsubsection}{\numberline {8.45.3.3}FALL\_RATE\_THRESHOLD}{261}{subsubsection.8.45.3.3}%
+\contentsline {subsubsection}{\numberline {8.45.3.4}FALLING\_TREND\_REQUIRED}{261}{subsubsection.8.45.3.4}%
+\contentsline {subsubsection}{\numberline {8.45.3.5}VOLTAGE\_LOW\_THRESHOLD}{262}{subsubsection.8.45.3.5}%
+\contentsline {subsubsection}{\numberline {8.45.3.6}VOLTAGE\_OVERCHARGE\_THRESHOLD}{262}{subsubsection.8.45.3.6}%
+\contentsline {subsubsection}{\numberline {8.45.3.7}fallingTrendCount}{262}{subsubsection.8.45.3.7}%
+\contentsline {subsubsection}{\numberline {8.45.3.8}lastSolarState}{262}{subsubsection.8.45.3.8}%
+\contentsline {subsubsection}{\numberline {8.45.3.9}lastUSBState}{262}{subsubsection.8.45.3.9}%
+\contentsline {subsubsection}{\numberline {8.45.3.10}systemClock}{262}{subsubsection.8.45.3.10}%
+\contentsline {subsubsection}{\numberline {8.45.3.11}eventManager}{263}{subsubsection.8.45.3.11}%
+\contentsline {section}{\numberline {8.46}event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}manager.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{263}{section.8.46}%
+\contentsline {section}{\numberline {8.47}lib/eventman/event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}manager.h File Reference}{265}{section.8.47}%
+\contentsline {subsection}{\numberline {8.47.1}Macro Definition Documentation}{266}{subsection.8.47.1}%
+\contentsline {subsubsection}{\numberline {8.47.1.1}EVENT\_BUFFER\_SIZE}{266}{subsubsection.8.47.1.1}%
+\contentsline {subsection}{\numberline {8.47.2}Enumeration Type Documentation}{266}{subsection.8.47.2}%
+\contentsline {subsubsection}{\numberline {8.47.2.1}EventGroup}{266}{subsubsection.8.47.2.1}%
+\contentsline {subsubsection}{\numberline {8.47.2.2}SystemEvent}{267}{subsubsection.8.47.2.2}%
+\contentsline {subsubsection}{\numberline {8.47.2.3}PowerEvent}{267}{subsubsection.8.47.2.3}%
+\contentsline {subsubsection}{\numberline {8.47.2.4}CommsEvent}{267}{subsubsection.8.47.2.4}%
+\contentsline {subsubsection}{\numberline {8.47.2.5}GPSEvent}{268}{subsubsection.8.47.2.5}%
+\contentsline {subsubsection}{\numberline {8.47.2.6}ClockEvent}{268}{subsubsection.8.47.2.6}%
+\contentsline {subsection}{\numberline {8.47.3}Function Documentation}{268}{subsection.8.47.3}%
+\contentsline {subsubsection}{\numberline {8.47.3.1}\_\_attribute\_\_()}{268}{subsubsection.8.47.3.1}%
+\contentsline {subsubsection}{\numberline {8.47.3.2}toString()}{269}{subsubsection.8.47.3.2}%
+\contentsline {subsubsection}{\numberline {8.47.3.3}checkPowerEvents()}{269}{subsubsection.8.47.3.3}%
+\contentsline {subsection}{\numberline {8.47.4}Variable Documentation}{270}{subsection.8.47.4}%
+\contentsline {subsubsection}{\numberline {8.47.4.1}id}{270}{subsubsection.8.47.4.1}%
+\contentsline {subsubsection}{\numberline {8.47.4.2}timestamp}{270}{subsubsection.8.47.4.2}%
+\contentsline {subsubsection}{\numberline {8.47.4.3}group}{270}{subsubsection.8.47.4.3}%
+\contentsline {subsubsection}{\numberline {8.47.4.4}event}{270}{subsubsection.8.47.4.4}%
+\contentsline {subsubsection}{\numberline {8.47.4.5}\_\_attribute\_\_}{270}{subsubsection.8.47.4.5}%
+\contentsline {subsubsection}{\numberline {8.47.4.6}eventManager}{270}{subsubsection.8.47.4.6}%
+\contentsline {section}{\numberline {8.48}event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}manager.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{271}{section.8.48}%
+\contentsline {section}{\numberline {8.49}lib/location/gps\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}collector.cpp File Reference}{272}{section.8.49}%
+\contentsline {subsection}{\numberline {8.49.1}Macro Definition Documentation}{273}{subsection.8.49.1}%
+\contentsline {subsubsection}{\numberline {8.49.1.1}MAX\_RAW\_DATA\_LENGTH}{273}{subsubsection.8.49.1.1}%
+\contentsline {subsection}{\numberline {8.49.2}Function Documentation}{274}{subsection.8.49.2}%
+\contentsline {subsubsection}{\numberline {8.49.2.1}splitString()}{274}{subsubsection.8.49.2.1}%
+\contentsline {subsubsection}{\numberline {8.49.2.2}collectGPSData()}{274}{subsubsection.8.49.2.2}%
+\contentsline {subsection}{\numberline {8.49.3}Variable Documentation}{275}{subsection.8.49.3}%
+\contentsline {subsubsection}{\numberline {8.49.3.1}nmea\_data}{275}{subsubsection.8.49.3.1}%
+\contentsline {section}{\numberline {8.50}gps\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}collector.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{275}{section.8.50}%
+\contentsline {section}{\numberline {8.51}lib/location/gps\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}collector.h File Reference}{276}{section.8.51}%
+\contentsline {subsection}{\numberline {8.51.1}Function Documentation}{276}{subsection.8.51.1}%
+\contentsline {subsubsection}{\numberline {8.51.1.1}collectGPSData()}{276}{subsubsection.8.51.1.1}%
+\contentsline {section}{\numberline {8.52}gps\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}collector.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{277}{section.8.52}%
+\contentsline {section}{\numberline {8.53}lib/location/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}NMEA/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}NMEA\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}data.cpp File Reference}{278}{section.8.53}%
+\contentsline {subsection}{\numberline {8.53.1}Variable Documentation}{278}{subsection.8.53.1}%
+\contentsline {subsubsection}{\numberline {8.53.1.1}nmea\_data}{278}{subsubsection.8.53.1.1}%
+\contentsline {section}{\numberline {8.54}NMEA\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}data.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{278}{section.8.54}%
+\contentsline {section}{\numberline {8.55}lib/location/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}NMEA/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}NMEA\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}data.h File Reference}{279}{section.8.55}%
+\contentsline {subsection}{\numberline {8.55.1}Variable Documentation}{280}{subsection.8.55.1}%
+\contentsline {subsubsection}{\numberline {8.55.1.1}nmea\_data}{280}{subsubsection.8.55.1.1}%
+\contentsline {section}{\numberline {8.56}NMEA\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}data.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{280}{section.8.56}%
+\contentsline {section}{\numberline {8.57}lib/pin\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}config.cpp File Reference}{281}{section.8.57}%
+\contentsline {subsection}{\numberline {8.57.1}Variable Documentation}{281}{subsection.8.57.1}%
+\contentsline {subsubsection}{\numberline {8.57.1.1}csPin}{281}{subsubsection.8.57.1.1}%
+\contentsline {subsubsection}{\numberline {8.57.1.2}resetPin}{282}{subsubsection.8.57.1.2}%
+\contentsline {subsubsection}{\numberline {8.57.1.3}irqPin}{282}{subsubsection.8.57.1.3}%
+\contentsline {subsubsection}{\numberline {8.57.1.4}localAddress}{282}{subsubsection.8.57.1.4}%
+\contentsline {subsubsection}{\numberline {8.57.1.5}destination}{282}{subsubsection.8.57.1.5}%
+\contentsline {section}{\numberline {8.58}pin\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}config.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{282}{section.8.58}%
+\contentsline {section}{\numberline {8.59}lib/pin\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}config.h File Reference}{283}{section.8.59}%
+\contentsline {subsection}{\numberline {8.59.1}Macro Definition Documentation}{284}{subsection.8.59.1}%
+\contentsline {subsubsection}{\numberline {8.59.1.1}DEBUG\_UART\_PORT}{284}{subsubsection.8.59.1.1}%
+\contentsline {subsubsection}{\numberline {8.59.1.2}DEBUG\_UART\_BAUD\_RATE}{284}{subsubsection.8.59.1.2}%
+\contentsline {subsubsection}{\numberline {8.59.1.3}DEBUG\_UART\_TX\_PIN}{284}{subsubsection.8.59.1.3}%
+\contentsline {subsubsection}{\numberline {8.59.1.4}DEBUG\_UART\_RX\_PIN}{284}{subsubsection.8.59.1.4}%
+\contentsline {subsubsection}{\numberline {8.59.1.5}MAIN\_I2C\_PORT}{285}{subsubsection.8.59.1.5}%
+\contentsline {subsubsection}{\numberline {8.59.1.6}MAIN\_I2C\_SDA\_PIN}{285}{subsubsection.8.59.1.6}%
+\contentsline {subsubsection}{\numberline {8.59.1.7}MAIN\_I2C\_SCL\_PIN}{285}{subsubsection.8.59.1.7}%
+\contentsline {subsubsection}{\numberline {8.59.1.8}GPS\_UART\_PORT}{285}{subsubsection.8.59.1.8}%
+\contentsline {subsubsection}{\numberline {8.59.1.9}GPS\_UART\_BAUD\_RATE}{285}{subsubsection.8.59.1.9}%
+\contentsline {subsubsection}{\numberline {8.59.1.10}GPS\_UART\_TX\_PIN}{285}{subsubsection.8.59.1.10}%
+\contentsline {subsubsection}{\numberline {8.59.1.11}GPS\_UART\_RX\_PIN}{285}{subsubsection.8.59.1.11}%
+\contentsline {subsubsection}{\numberline {8.59.1.12}GPS\_POWER\_ENABLE\_PIN}{285}{subsubsection.8.59.1.12}%
+\contentsline {subsubsection}{\numberline {8.59.1.13}BUFFER\_SIZE}{286}{subsubsection.8.59.1.13}%
+\contentsline {subsubsection}{\numberline {8.59.1.14}SD\_SPI\_PORT}{286}{subsubsection.8.59.1.14}%
+\contentsline {subsubsection}{\numberline {8.59.1.15}SD\_MISO\_PIN}{286}{subsubsection.8.59.1.15}%
+\contentsline {subsubsection}{\numberline {8.59.1.16}SD\_MOSI\_PIN}{286}{subsubsection.8.59.1.16}%
+\contentsline {subsubsection}{\numberline {8.59.1.17}SD\_SCK\_PIN}{286}{subsubsection.8.59.1.17}%
+\contentsline {subsubsection}{\numberline {8.59.1.18}SD\_CS\_PIN}{286}{subsubsection.8.59.1.18}%
+\contentsline {subsubsection}{\numberline {8.59.1.19}SD\_CARD\_DETECT\_PIN}{286}{subsubsection.8.59.1.19}%
+\contentsline {subsubsection}{\numberline {8.59.1.20}SX1278\_MISO}{286}{subsubsection.8.59.1.20}%
+\contentsline {subsubsection}{\numberline {8.59.1.21}SX1278\_CS}{287}{subsubsection.8.59.1.21}%
+\contentsline {subsubsection}{\numberline {8.59.1.22}SX1278\_SCK}{287}{subsubsection.8.59.1.22}%
+\contentsline {subsubsection}{\numberline {8.59.1.23}SX1278\_MOSI}{287}{subsubsection.8.59.1.23}%
+\contentsline {subsubsection}{\numberline {8.59.1.24}SPI\_PORT}{287}{subsubsection.8.59.1.24}%
+\contentsline {subsubsection}{\numberline {8.59.1.25}READ\_BIT}{287}{subsubsection.8.59.1.25}%
+\contentsline {subsubsection}{\numberline {8.59.1.26}LORA\_DEFAULT\_SPI}{287}{subsubsection.8.59.1.26}%
+\contentsline {subsubsection}{\numberline {8.59.1.27}LORA\_DEFAULT\_SPI\_FREQUENCY}{287}{subsubsection.8.59.1.27}%
+\contentsline {subsubsection}{\numberline {8.59.1.28}LORA\_DEFAULT\_SS\_PIN}{287}{subsubsection.8.59.1.28}%
+\contentsline {subsubsection}{\numberline {8.59.1.29}LORA\_DEFAULT\_RESET\_PIN}{288}{subsubsection.8.59.1.29}%
+\contentsline {subsubsection}{\numberline {8.59.1.30}LORA\_DEFAULT\_DIO0\_PIN}{288}{subsubsection.8.59.1.30}%
+\contentsline {subsubsection}{\numberline {8.59.1.31}PA\_OUTPUT\_RFO\_PIN}{288}{subsubsection.8.59.1.31}%
+\contentsline {subsubsection}{\numberline {8.59.1.32}PA\_OUTPUT\_PA\_BOOST\_PIN}{288}{subsubsection.8.59.1.32}%
+\contentsline {subsection}{\numberline {8.59.2}Variable Documentation}{288}{subsection.8.59.2}%
+\contentsline {subsubsection}{\numberline {8.59.2.1}csPin}{288}{subsubsection.8.59.2.1}%
+\contentsline {subsubsection}{\numberline {8.59.2.2}resetPin}{288}{subsubsection.8.59.2.2}%
+\contentsline {subsubsection}{\numberline {8.59.2.3}irqPin}{288}{subsubsection.8.59.2.3}%
+\contentsline {subsubsection}{\numberline {8.59.2.4}localAddress}{289}{subsubsection.8.59.2.4}%
+\contentsline {subsubsection}{\numberline {8.59.2.5}destination}{289}{subsubsection.8.59.2.5}%
+\contentsline {section}{\numberline {8.60}pin\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}config.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{289}{section.8.60}%
+\contentsline {section}{\numberline {8.61}lib/powerman/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}INA3221/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}INA3221.cpp File Reference}{290}{section.8.61}%
+\contentsline {section}{\numberline {8.62}INA3221.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{290}{section.8.62}%
+\contentsline {section}{\numberline {8.63}lib/powerman/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}INA3221/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}INA3221.h File Reference}{294}{section.8.63}%
+\contentsline {subsection}{\numberline {8.63.1}Enumeration Type Documentation}{295}{subsection.8.63.1}%
+\contentsline {subsubsection}{\numberline {8.63.1.1}ina3221\_addr\_t}{295}{subsubsection.8.63.1.1}%
+\contentsline {subsubsection}{\numberline {8.63.1.2}ina3221\_ch\_t}{295}{subsubsection.8.63.1.2}%
+\contentsline {subsubsection}{\numberline {8.63.1.3}ina3221\_reg\_t}{295}{subsubsection.8.63.1.3}%
+\contentsline {subsubsection}{\numberline {8.63.1.4}ina3221\_conv\_time\_t}{296}{subsubsection.8.63.1.4}%
+\contentsline {subsubsection}{\numberline {8.63.1.5}ina3221\_avg\_mode\_t}{296}{subsubsection.8.63.1.5}%
+\contentsline {subsection}{\numberline {8.63.2}Variable Documentation}{297}{subsection.8.63.2}%
+\contentsline {subsubsection}{\numberline {8.63.2.1}INA3221\_CH\_NUM}{297}{subsubsection.8.63.2.1}%
+\contentsline {subsubsection}{\numberline {8.63.2.2}SHUNT\_VOLTAGE\_LSB\_UV}{297}{subsubsection.8.63.2.2}%
+\contentsline {section}{\numberline {8.64}INA3221.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{297}{section.8.64}%
+\contentsline {section}{\numberline {8.65}lib/powerman/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Power\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Manager.cpp File Reference}{301}{section.8.65}%
+\contentsline {section}{\numberline {8.66}Power\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Manager.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{301}{section.8.66}%
+\contentsline {section}{\numberline {8.67}lib/powerman/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Power\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Manager.h File Reference}{302}{section.8.67}%
+\contentsline {section}{\numberline {8.68}Power\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Manager.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{303}{section.8.68}%
+\contentsline {section}{\numberline {8.69}lib/sensors/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}BH1750/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}BH1750.cpp File Reference}{304}{section.8.69}%
+\contentsline {section}{\numberline {8.70}BH1750.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{304}{section.8.70}%
+\contentsline {section}{\numberline {8.71}lib/sensors/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}BH1750/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}BH1750.h File Reference}{305}{section.8.71}%
+\contentsline {subsection}{\numberline {8.71.1}Macro Definition Documentation}{306}{subsection.8.71.1}%
+\contentsline {subsubsection}{\numberline {8.71.1.1}\_BH1750\_DEVICE\_ID}{306}{subsubsection.8.71.1.1}%
+\contentsline {subsubsection}{\numberline {8.71.1.2}\_BH1750\_MTREG\_MIN}{306}{subsubsection.8.71.1.2}%
+\contentsline {subsubsection}{\numberline {8.71.1.3}\_BH1750\_MTREG\_MAX}{307}{subsubsection.8.71.1.3}%
+\contentsline {subsubsection}{\numberline {8.71.1.4}\_BH1750\_DEFAULT\_MTREG}{307}{subsubsection.8.71.1.4}%
+\contentsline {section}{\numberline {8.72}BH1750.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{307}{section.8.72}%
+\contentsline {section}{\numberline {8.73}lib/sensors/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}BH1750/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}BH1750\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}WRAPPER.cpp File Reference}{307}{section.8.73}%
+\contentsline {section}{\numberline {8.74}BH1750\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}WRAPPER.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{308}{section.8.74}%
+\contentsline {section}{\numberline {8.75}lib/sensors/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}BH1750/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}BH1750\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}WRAPPER.h File Reference}{309}{section.8.75}%
+\contentsline {section}{\numberline {8.76}BH1750\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}WRAPPER.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{310}{section.8.76}%
+\contentsline {section}{\numberline {8.77}lib/sensors/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}BME280/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}BME280.cpp File Reference}{310}{section.8.77}%
+\contentsline {section}{\numberline {8.78}BME280.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{311}{section.8.78}%
+\contentsline {section}{\numberline {8.79}lib/sensors/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}BME280/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}BME280.h File Reference}{314}{section.8.79}%
+\contentsline {section}{\numberline {8.80}BME280.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{315}{section.8.80}%
+\contentsline {section}{\numberline {8.81}lib/sensors/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}BME280/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}BME280\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}WRAPPER.cpp File Reference}{317}{section.8.81}%
+\contentsline {section}{\numberline {8.82}BME280\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}WRAPPER.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{317}{section.8.82}%
+\contentsline {section}{\numberline {8.83}lib/sensors/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}BME280/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}BME280\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}WRAPPER.h File Reference}{318}{section.8.83}%
+\contentsline {section}{\numberline {8.84}BME280\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}WRAPPER.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{318}{section.8.84}%
+\contentsline {section}{\numberline {8.85}lib/sensors/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}HMC5883\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}L/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}HMC5883L.cpp File Reference}{319}{section.8.85}%
+\contentsline {section}{\numberline {8.86}HMC5883\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}L.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{319}{section.8.86}%
+\contentsline {section}{\numberline {8.87}lib/sensors/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}HMC5883\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}L/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}HMC5883L.h File Reference}{320}{section.8.87}%
+\contentsline {section}{\numberline {8.88}HMC5883\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}L.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{321}{section.8.88}%
+\contentsline {section}{\numberline {8.89}lib/sensors/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}HMC5883\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}L/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}HMC5883\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}L\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}WRAPPER.cpp File Reference}{321}{section.8.89}%
+\contentsline {section}{\numberline {8.90}HMC5883\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}L\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}WRAPPER.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{322}{section.8.90}%
+\contentsline {section}{\numberline {8.91}lib/sensors/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}HMC5883\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}L/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}HMC5883\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}L\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}WRAPPER.h File Reference}{323}{section.8.91}%
+\contentsline {section}{\numberline {8.92}HMC5883\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}L\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}WRAPPER.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{324}{section.8.92}%
+\contentsline {section}{\numberline {8.93}lib/sensors/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}ISensor.cpp File Reference}{324}{section.8.93}%
+\contentsline {subsection}{\numberline {8.93.1}Detailed Description}{325}{subsection.8.93.1}%
+\contentsline {section}{\numberline {8.94}ISensor.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{325}{section.8.94}%
+\contentsline {section}{\numberline {8.95}lib/sensors/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}ISensor.h File Reference}{325}{section.8.95}%
+\contentsline {subsection}{\numberline {8.95.1}Enumeration Type Documentation}{326}{subsection.8.95.1}%
+\contentsline {subsubsection}{\numberline {8.95.1.1}SensorType}{326}{subsubsection.8.95.1.1}%
+\contentsline {subsubsection}{\numberline {8.95.1.2}SensorDataTypeIdentifier}{327}{subsubsection.8.95.1.2}%
+\contentsline {section}{\numberline {8.96}ISensor.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{327}{section.8.96}%
+\contentsline {section}{\numberline {8.97}lib/sensors/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}MPU6050/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}MPU6050.cpp File Reference}{328}{section.8.97}%
+\contentsline {section}{\numberline {8.98}MPU6050.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{328}{section.8.98}%
+\contentsline {section}{\numberline {8.99}lib/sensors/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}MPU6050/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}MPU6050.h File Reference}{329}{section.8.99}%
+\contentsline {section}{\numberline {8.100}MPU6050.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{329}{section.8.100}%
+\contentsline {section}{\numberline {8.101}lib/sensors/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}MPU6050/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}MPU6050\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}WRAPPER.cpp File Reference}{329}{section.8.101}%
+\contentsline {section}{\numberline {8.102}MPU6050\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}WRAPPER.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{329}{section.8.102}%
+\contentsline {section}{\numberline {8.103}lib/sensors/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}MPU6050/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}MPU6050\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}WRAPPER.h File Reference}{329}{section.8.103}%
+\contentsline {section}{\numberline {8.104}MPU6050\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}WRAPPER.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{330}{section.8.104}%
+\contentsline {section}{\numberline {8.105}lib/storage/storage.cpp File Reference}{331}{section.8.105}%
+\contentsline {subsection}{\numberline {8.105.1}Detailed Description}{332}{subsection.8.105.1}%
+\contentsline {subsection}{\numberline {8.105.2}Function Documentation}{332}{subsection.8.105.2}%
+\contentsline {subsubsection}{\numberline {8.105.2.1}fs\_init()}{332}{subsubsection.8.105.2.1}%
+\contentsline {subsubsection}{\numberline {8.105.2.2}fs\_open\_file()}{332}{subsubsection.8.105.2.2}%
+\contentsline {subsubsection}{\numberline {8.105.2.3}fs\_write\_file()}{333}{subsubsection.8.105.2.3}%
+\contentsline {subsubsection}{\numberline {8.105.2.4}fs\_read\_file()}{333}{subsubsection.8.105.2.4}%
+\contentsline {subsubsection}{\numberline {8.105.2.5}fs\_close\_file()}{333}{subsubsection.8.105.2.5}%
+\contentsline {subsubsection}{\numberline {8.105.2.6}fs\_file\_exists()}{334}{subsubsection.8.105.2.6}%
+\contentsline {section}{\numberline {8.106}storage.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{334}{section.8.106}%
+\contentsline {section}{\numberline {8.107}lib/storage/storage.h File Reference}{336}{section.8.107}%
+\contentsline {subsection}{\numberline {8.107.1}Function Documentation}{337}{subsection.8.107.1}%
+\contentsline {subsubsection}{\numberline {8.107.1.1}fs\_init()}{337}{subsubsection.8.107.1.1}%
+\contentsline {subsubsection}{\numberline {8.107.1.2}fs\_open\_file()}{337}{subsubsection.8.107.1.2}%
+\contentsline {subsubsection}{\numberline {8.107.1.3}fs\_write\_file()}{338}{subsubsection.8.107.1.3}%
+\contentsline {subsubsection}{\numberline {8.107.1.4}fs\_read\_file()}{338}{subsubsection.8.107.1.4}%
+\contentsline {subsubsection}{\numberline {8.107.1.5}fs\_close\_file()}{338}{subsubsection.8.107.1.5}%
+\contentsline {subsubsection}{\numberline {8.107.1.6}fs\_file\_exists()}{339}{subsubsection.8.107.1.6}%
+\contentsline {section}{\numberline {8.108}storage.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{339}{section.8.108}%
+\contentsline {section}{\numberline {8.109}lib/utils.cpp File Reference}{340}{section.8.109}%
+\contentsline {subsection}{\numberline {8.109.1}Detailed Description}{341}{subsection.8.109.1}%
+\contentsline {subsection}{\numberline {8.109.2}Macro Definition Documentation}{341}{subsection.8.109.2}%
+\contentsline {subsubsection}{\numberline {8.109.2.1}LOG\_FILENAME}{341}{subsubsection.8.109.2.1}%
+\contentsline {subsection}{\numberline {8.109.3}Function Documentation}{341}{subsection.8.109.3}%
+\contentsline {subsubsection}{\numberline {8.109.3.1}uartPrint()}{341}{subsubsection.8.109.3.1}%
+\contentsline {subsubsection}{\numberline {8.109.3.2}crc16()}{342}{subsubsection.8.109.3.2}%
+\contentsline {subsection}{\numberline {8.109.4}Variable Documentation}{343}{subsection.8.109.4}%
+\contentsline {subsubsection}{\numberline {8.109.4.1}uart\_mutex}{343}{subsubsection.8.109.4.1}%
+\contentsline {section}{\numberline {8.110}utils.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{343}{section.8.110}%
+\contentsline {section}{\numberline {8.111}lib/utils.h File Reference}{343}{section.8.111}%
+\contentsline {subsection}{\numberline {8.111.1}Function Documentation}{344}{subsection.8.111.1}%
+\contentsline {subsubsection}{\numberline {8.111.1.1}uartPrint()}{344}{subsubsection.8.111.1.1}%
+\contentsline {subsubsection}{\numberline {8.111.1.2}crc16()}{345}{subsubsection.8.111.1.2}%
+\contentsline {section}{\numberline {8.112}utils.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{346}{section.8.112}%
+\contentsline {section}{\numberline {8.113}main.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp File Reference}{346}{section.8.113}%
+\contentsline {subsection}{\numberline {8.113.1}Macro Definition Documentation}{346}{subsection.8.113.1}%
+\contentsline {subsubsection}{\numberline {8.113.1.1}LOG\_FILENAME}{346}{subsubsection.8.113.1.1}%
+\contentsline {subsection}{\numberline {8.113.2}Function Documentation}{347}{subsection.8.113.2}%
+\contentsline {subsubsection}{\numberline {8.113.2.1}core1\_entry()}{347}{subsubsection.8.113.2.1}%
+\contentsline {subsubsection}{\numberline {8.113.2.2}initSystems()}{347}{subsubsection.8.113.2.2}%
+\contentsline {subsubsection}{\numberline {8.113.2.3}loggingRoutine()}{348}{subsubsection.8.113.2.3}%
+\contentsline {subsubsection}{\numberline {8.113.2.4}main()}{348}{subsubsection.8.113.2.4}%
+\contentsline {subsection}{\numberline {8.113.3}Variable Documentation}{348}{subsection.8.113.3}%
+\contentsline {subsubsection}{\numberline {8.113.3.1}powerManager}{348}{subsubsection.8.113.3.1}%
+\contentsline {subsubsection}{\numberline {8.113.3.2}systemClock}{349}{subsubsection.8.113.3.2}%
+\contentsline {subsubsection}{\numberline {8.113.3.3}buffer}{349}{subsubsection.8.113.3.3}%
+\contentsline {subsubsection}{\numberline {8.113.3.4}bufferIndex}{349}{subsubsection.8.113.3.4}%
+\contentsline {section}{\numberline {8.114}main.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{349}{section.8.114}%

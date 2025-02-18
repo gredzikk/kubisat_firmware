@@ -12,5 +12,5 @@ var searchData=
   ['write_5ferror_9',['write_error',['../class_print.html#ae922182b62afa3b8434397b7a54e70c4',1,'Print']]],
   ['write_5fonly_10',['WRITE_ONLY',['../protocol_8h.html#a1a30b781d6fac5ca0b850dd8b3726d8dad8fddf06187e680ab5a6355f76a17357',1,'protocol.h']]],
   ['writeindex_11',['writeIndex',['../class_event_manager.html#ad97f788895da6e30b3237982a7bcd810',1,'EventManager']]],
-  ['writeregister_12',['writeRegister',['../class_h_m_c5883_l.html#a114c069b8221f2780b928063a393a183',1,'HMC5883L::writeRegister()'],['../class_lo_ra_class.html#a77e7c77aa54174b352a26e1510f66f98',1,'LoRaClass::writeRegister()']]]
+  ['writeregister_12',['writeRegister',['../class_lo_ra_class.html#a77e7c77aa54174b352a26e1510f66f98',1,'LoRaClass::writeRegister()'],['../class_h_m_c5883_l.html#a114c069b8221f2780b928063a393a183',1,'HMC5883L::writeRegister()']]]
 ];

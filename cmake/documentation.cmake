@@ -18,7 +18,7 @@ if(DOXYGEN_FOUND)
 
     # Convert exclude patterns to Doxygen format
     string(REPLACE ";" " " DOXYGEN_EXCLUDE_PATTERNS 
-        "${CMAKE_CURRENT_SOURCE_DIR}/lib/pico-vfs/* \
+        "${CMAKE_CURRENT_SOURCE_DIR}/lib/storage/pico-vfs/* \
          */unity/* \
          */build/* \
          */release/*")

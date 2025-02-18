@@ -1,5 +1,5 @@
 \doxysection{diagnostic\+\_\+commands.\+cpp}
-\hypertarget{diagnostic__commands_8cpp_source}{}\label{diagnostic__commands_8cpp_source}\index{commands/diagnostic\_commands.cpp@{commands/diagnostic\_commands.cpp}}
+\hypertarget{diagnostic__commands_8cpp_source}{}\label{diagnostic__commands_8cpp_source}\index{lib/comms/commands/diagnostic\_commands.cpp@{lib/comms/commands/diagnostic\_commands.cpp}}
 \mbox{\hyperlink{diagnostic__commands_8cpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{communication_8h}{communication.h}}"{}}}
@@ -18,7 +18,7 @@
 \DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00026}00026\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00027}00027\ }
 \DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00028}00028\ \ \ \ \ std::stringstream\ ss;}
-\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00029}00029\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ entry\ :\ \mbox{\hyperlink{commands_8cpp_a04a0515603ba347ef314678876f3fa26}{commandHandlers}})\ \{}
+\DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00029}00029\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ entry\ :\ \mbox{\hyperlink{group___command_system_ga04a0515603ba347ef314678876f3fa26}{commandHandlers}})\ \{}
 \DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ uint32\_t\ commandKey\ =\ entry.first;}
 \DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ uint8\_t\ \mbox{\hyperlink{event__manager_8h_ad4291fcb880eb5ecb178b53e32f55741}{group}}\ =\ (commandKey\ >>\ 8)\ \&\ 0xFF;}
 \DoxyCodeLine{\Hypertarget{diagnostic__commands_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ uint8\_t\ command\ =\ commandKey\ \&\ 0xFF;}

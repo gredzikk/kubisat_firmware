@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['power_20commands_0',['Power Commands',['../group___power_commands.html',1,'']]]
+  ['management_20commands_0',['Clock Management Commands',['../group___clock_commands.html',1,'']]]
 ];

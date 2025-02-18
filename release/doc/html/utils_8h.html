@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>KubiSat Firmware: utils.h File Reference</title>
+<title>KubiSat Firmware: lib/utils.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -107,14 +107,30 @@ $(function(){initNavTree('utils_8h.html',''); initResizable(true); });
 <code>#include &quot;pico/stdlib.h&quot;</code><br />
 <code>#include &quot;hardware/uart.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="pin__config_8h_source.html">pin_config.h</a>&quot;</code><br />
+</div><div class="textblock"><div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for utils.h:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="utils_8h__incl.svg" width="515" height="187"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div><div class="textblock"><div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> This graph shows which files directly or indirectly include this file:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="utils_8h__dep__incl.svg" width="100%" height="588"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 </div>
 <p><a href="utils_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a581207ee5c53ce94cdf3279a0f66f564" id="r_a581207ee5c53ce94cdf3279a0f66f564"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a581207ee5c53ce94cdf3279a0f66f564">uartPrint</a> (const std::string &amp;msg, bool logToFile=false, uart_inst_t *uart=<a class="el" href="pin__config_8h.html#a1c9052d1656e86f50326fd275c54ca67">DEBUG_UART_PORT</a>)</td></tr>
+<tr class="memdesc:a581207ee5c53ce94cdf3279a0f66f564"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints a message to the UART with a timestamp and core number.  <br /></td></tr>
 <tr class="separator:a581207ee5c53ce94cdf3279a0f66f564"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a662798a1967f4a4ea55257255d0fbbf4" id="r_a662798a1967f4a4ea55257255d0fbbf4"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a662798a1967f4a4ea55257255d0fbbf4">crc16</a> (const uint8_t *data, size_t length)</td></tr>
+<tr class="memdesc:a662798a1967f4a4ea55257255d0fbbf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the CRC16 checksum of the given data.  <br /></td></tr>
 <tr class="separator:a662798a1967f4a4ea55257255d0fbbf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -132,17 +148,35 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>logToFile</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>, </td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>logToFile</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uart_inst_t *</td>          <td class="paramname"><span class="paramname"><em>uart</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="pin__config_8h.html#a1c9052d1656e86f50326fd275c54ca67">DEBUG_UART_PORT</a></span>&#160;)</td>
+          <td class="paramtype">uart_inst_t *</td>          <td class="paramname"><span class="paramname"><em>uart</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00009">9</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+<p>Prints a message to the UART with a timestamp and core number. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td>The message to print. </td></tr>
+    <tr><td class="paramname">logToFile</td><td>A flag indicating whether to log the message to a file (currently not implemented). </td></tr>
+    <tr><td class="paramname">uart</td><td>The UART instance to use for printing.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Prints the given message to the specified UART, prepending it with a timestamp and the core number. Uses a mutex to ensure thread-safe access to the UART. </p>
+
+<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00026">26</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+<div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="utils_8h_a581207ee5c53ce94cdf3279a0f66f564_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -165,7 +199,18 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00028">28</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+<p>Calculates the CRC16 checksum of the given data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>A pointer to the data buffer. </td></tr>
+    <tr><td class="paramname">length</td><td>The length of the data in bytes. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The CRC16 checksum.</dd></dl>
+<p>Calculates the CRC16 checksum using the standard algorithm. </p>
+
+<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00053">53</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
 
 </div>
 </div>
@@ -174,7 +219,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="utils_8h.html">utils.h</a></li>
+    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="utils_8h.html">utils.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

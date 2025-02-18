@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>KubiSat Firmware: frame_model/receive.cpp File Reference</title>
+<title>KubiSat Firmware: lib/comms/receive.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -102,18 +102,34 @@ $(function(){initNavTree('receive_8cpp.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">receive.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implements functions for receiving and processing data, including LoRa and UART input.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="communication_8h_source.html">communication.h</a>&quot;</code><br />
+</div><div class="textblock"><div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for receive.cpp:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="receive_8cpp__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 </div>
 <p><a href="receive_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a54817002e33761dc61558b1138749dfb" id="r_a54817002e33761dc61558b1138749dfb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54817002e33761dc61558b1138749dfb">onReceive</a> (int packetSize)</td></tr>
+<tr class="memdesc:a54817002e33761dc61558b1138749dfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function for handling received LoRa packets.  <br /></td></tr>
 <tr class="separator:a54817002e33761dc61558b1138749dfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5e175a6a1482f700f9aee0b727b924f" id="r_ac5e175a6a1482f700f9aee0b727b924f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5e175a6a1482f700f9aee0b727b924f">handleUartInput</a> ()</td></tr>
+<tr class="memdesc:ac5e175a6a1482f700f9aee0b727b924f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles UART input.  <br /></td></tr>
 <tr class="separator:ac5e175a6a1482f700f9aee0b727b924f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implements functions for receiving and processing data, including LoRa and UART input. </p>
+
+<p class="definition">Definition in file <a class="el" href="receive_8cpp_source.html">receive.cpp</a>.</p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a54817002e33761dc61558b1138749dfb" name="a54817002e33761dc61558b1138749dfb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a54817002e33761dc61558b1138749dfb">&#9670;&#160;</a></span>onReceive()</h2>
 
@@ -129,7 +145,30 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="receive_8cpp_source.html#l00003">3</a> of file <a class="el" href="receive_8cpp_source.html">receive.cpp</a>.</p>
+<p>Callback function for handling received LoRa packets. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">packetSize</td><td>The size of the received packet.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Reads the received LoRa packet, extracts metadata, validates the destination and local addresses, extracts the frame data, and processes it. Prints raw hex values for debugging. </p>
+
+<p class="definition">Definition at line <a class="el" href="receive_8cpp_source.html#l00015">15</a> of file <a class="el" href="receive_8cpp_source.html">receive.cpp</a>.</p>
+<div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="receive_8cpp_a54817002e33761dc61558b1138749dfb_cgraph.svg" width="100%" height="473"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="receive_8cpp_a54817002e33761dc61558b1138749dfb_icgraph.svg" width="192" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -148,7 +187,24 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="receive_8cpp_source.html#l00059">59</a> of file <a class="el" href="receive_8cpp_source.html">receive.cpp</a>.</p>
+<p>Handles UART input. </p>
+<p>Reads characters from the UART port, appends them to a buffer, and processes the buffer when a newline character is received. </p>
+
+<p class="definition">Definition at line <a class="el" href="receive_8cpp_source.html#l00077">77</a> of file <a class="el" href="receive_8cpp_source.html">receive.cpp</a>.</p>
+<div id="dynsection-3" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="receive_8cpp_ac5e175a6a1482f700f9aee0b727b924f_cgraph.svg" width="100%" height="473"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div id="dynsection-4" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="receive_8cpp_ac5e175a6a1482f700f9aee0b727b924f_icgraph.svg" width="222" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -157,7 +213,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_cc290362f203a1feeafe2c07392c392d.html">frame_model</a></li><li class="navelem"><a class="el" href="receive_8cpp.html">receive.cpp</a></li>
+    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_e552ec73e77e71738095e0b8c7e6e495.html">comms</a></li><li class="navelem"><a class="el" href="receive_8cpp.html">receive.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

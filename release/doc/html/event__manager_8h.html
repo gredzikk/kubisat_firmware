@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>KubiSat Firmware: event_manager.h File Reference</title>
+<title>KubiSat Firmware: lib/eventman/event_manager.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -110,18 +110,36 @@ $(function(){initNavTree('event__manager_8h.html',''); initResizable(true); });
 <code>#include &lt;cstdint&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &quot;pico/mutex.h&quot;</code><br />
+</div><div class="textblock"><div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for event_manager.h:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="event__manager_8h__incl.svg" width="100%" height="508"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+</div><div class="textblock"><div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> This graph shows which files directly or indirectly include this file:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="event__manager_8h__dep__incl.svg" width="100%" height="520"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 </div>
 <p><a href="event__manager_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_log.html">EventLog</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a single event log entry.  <a href="class_event_log.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_manager.html">EventManager</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manages the event logging system.  <a href="class_event_manager.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_manager_impl.html">EventManagerImpl</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of the <a class="el" href="class_event_manager.html" title="Manages the event logging system.">EventManager</a> class.  <a href="class_event_manager_impl.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_emitter.html">EventEmitter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides a static method for emitting events.  <a href="class_event_emitter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
@@ -197,6 +215,7 @@ Functions</h2></td></tr>
 <tr class="memitem:a7984471c52fd4915392929f854c6620c" id="r_a7984471c52fd4915392929f854c6620c"><td class="memItemLeft" align="right" valign="top">class <a class="el" href="class_event_log.html">EventLog</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7984471c52fd4915392929f854c6620c">__attribute__</a> ((packed))</td></tr>
 <tr class="separator:a7984471c52fd4915392929f854c6620c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6bbf13289f6c919d96bae17ef018f988" id="r_a6bbf13289f6c919d96bae17ef018f988"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6bbf13289f6c919d96bae17ef018f988">toString</a> () const</td></tr>
+<tr class="memdesc:a6bbf13289f6c919d96bae17ef018f988"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the <a class="el" href="class_event_log.html" title="Represents a single event log entry.">EventLog</a> to a string representation.  <br /></td></tr>
 <tr class="separator:a6bbf13289f6c919d96bae17ef018f988"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a467714d66058f52e4ac7aeb6df46b433" id="r_a467714d66058f52e4ac7aeb6df46b433"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a467714d66058f52e4ac7aeb6df46b433">checkPowerEvents</a> (<a class="el" href="class_power_manager.html">PowerManager</a> &amp;pm)</td></tr>
 <tr class="memdesc:a467714d66058f52e4ac7aeb6df46b433"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks power statuses and triggers events based on voltage trends.  <br /></td></tr>
@@ -205,16 +224,21 @@ Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a4fc3a0c58dfbd1e68224521185cb9384" id="r_a4fc3a0c58dfbd1e68224521185cb9384"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fc3a0c58dfbd1e68224521185cb9384">id</a></td></tr>
+<tr class="memdesc:a4fc3a0c58dfbd1e68224521185cb9384"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sequence number.  <br /></td></tr>
 <tr class="separator:a4fc3a0c58dfbd1e68224521185cb9384"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab20b0c7772544cf5d318507f34231fbe" id="r_ab20b0c7772544cf5d318507f34231fbe"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab20b0c7772544cf5d318507f34231fbe">timestamp</a></td></tr>
+<tr class="memdesc:ab20b0c7772544cf5d318507f34231fbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unix timestamp or system time.  <br /></td></tr>
 <tr class="separator:ab20b0c7772544cf5d318507f34231fbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4291fcb880eb5ecb178b53e32f55741" id="r_ad4291fcb880eb5ecb178b53e32f55741"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4291fcb880eb5ecb178b53e32f55741">group</a></td></tr>
+<tr class="memdesc:ad4291fcb880eb5ecb178b53e32f55741"><td class="mdescLeft">&#160;</td><td class="mdescRight">Event group identifier.  <br /></td></tr>
 <tr class="separator:ad4291fcb880eb5ecb178b53e32f55741"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeef6900f411bc223febdd92c9435693b" id="r_aeef6900f411bc223febdd92c9435693b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeef6900f411bc223febdd92c9435693b">event</a></td></tr>
+<tr class="memdesc:aeef6900f411bc223febdd92c9435693b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specific event identifier.  <br /></td></tr>
 <tr class="separator:aeef6900f411bc223febdd92c9435693b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a179817c61d3e66c0f67cd6bfe5e84c1b" id="r_a179817c61d3e66c0f67cd6bfe5e84c1b"><td class="memItemLeft" align="right" valign="top">class <a class="el" href="class_event_manager.html">EventManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a179817c61d3e66c0f67cd6bfe5e84c1b">__attribute__</a></td></tr>
 <tr class="separator:a179817c61d3e66c0f67cd6bfe5e84c1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a686792b51ec2b9e1b7bfc9faef92f7" id="r_a2a686792b51ec2b9e1b7bfc9faef92f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_event_manager_impl.html">EventManagerImpl</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a686792b51ec2b9e1b7bfc9faef92f7">eventManager</a></td></tr>
+<tr class="memdesc:a2a686792b51ec2b9e1b7bfc9faef92f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global instance of the <a class="el" href="class_event_manager_impl.html" title="Implementation of the EventManager class.">EventManagerImpl</a> class.  <br /></td></tr>
 <tr class="separator:a2a686792b51ec2b9e1b7bfc9faef92f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -457,7 +481,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event__manager_8h_source.html#l00006">6</a> of file <a class="el" href="event__manager_8h_source.html">event_manager.h</a>.</p>
+<p>Converts the <a class="el" href="class_event_log.html" title="Represents a single event log entry.">EventLog</a> to a string representation. </p>
+<dl class="section return"><dt>Returns</dt><dd>A string representation of the <a class="el" href="class_event_log.html" title="Represents a single event log entry.">EventLog</a>. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="event__manager_8h_source.html#l00010">10</a> of file <a class="el" href="event__manager_8h_source.html">event_manager.h</a>.</p>
 
 </div>
 </div>
@@ -479,12 +506,28 @@ Variables</h2></td></tr>
 <p>Checks power statuses and triggers events based on voltage trends. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pm</td><td>Reference to the <a class="el" href="class_power_manager.html">PowerManager</a> object. </td></tr>
+    <tr><td class="paramname">pm</td><td>Reference to the <a class="el" href="class_power_manager.html">PowerManager</a> object.</td></tr>
+    <tr><td class="paramname">pm</td><td>Reference to the <a class="el" href="class_power_manager.html">PowerManager</a> object.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Monitors the 5V voltage level, detects falling voltage trends, and triggers events for low battery, overcharge, and normal power conditions. Also checks solar charging and USB connection states. </p>
 
-<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00077">77</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00139">139</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
+<div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="event__manager_8h_a467714d66058f52e4ac7aeb6df46b433_cgraph.svg" width="636" height="240"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-3" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="event__manager_8h_a467714d66058f52e4ac7aeb6df46b433_icgraph.svg" width="380" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -500,6 +543,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Sequence number. </p>
 
 <p class="definition">Definition at line <a class="el" href="event__manager_8h_source.html#l00001">1</a> of file <a class="el" href="event__manager_8h_source.html">event_manager.h</a>.</p>
 
@@ -517,6 +562,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Unix timestamp or system time. </p>
+
 <p class="definition">Definition at line <a class="el" href="event__manager_8h_source.html#l00002">2</a> of file <a class="el" href="event__manager_8h_source.html">event_manager.h</a>.</p>
 
 </div>
@@ -533,6 +580,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Event group identifier. </p>
+
 <p class="definition">Definition at line <a class="el" href="event__manager_8h_source.html#l00003">3</a> of file <a class="el" href="event__manager_8h_source.html">event_manager.h</a>.</p>
 
 </div>
@@ -548,6 +597,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Specific event identifier. </p>
 
 <p class="definition">Definition at line <a class="el" href="event__manager_8h_source.html#l00004">4</a> of file <a class="el" href="event__manager_8h_source.html">event_manager.h</a>.</p>
 
@@ -587,7 +638,10 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00026">26</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
+<p>Global instance of the <a class="el" href="class_event_manager_impl.html" title="Implementation of the EventManager class.">EventManagerImpl</a> class. </p>
+<p>Global instance of the <a class="el" href="class_event_manager_impl.html" title="Implementation of the EventManager class.">EventManagerImpl</a> class. </p>
+
+<p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00070">70</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -596,7 +650,7 @@ Variables</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="event__manager_8h.html">event_manager.h</a></li>
+    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_3777c4d6009675e764f4fb47c10be9f8.html">eventman</a></li><li class="navelem"><a class="el" href="event__manager_8h.html">event_manager.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

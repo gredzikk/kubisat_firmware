@@ -1,8 +1,20 @@
-\doxysection{utils.\+cpp File Reference}
-\hypertarget{utils_8cpp}{}\label{utils_8cpp}\index{utils.cpp@{utils.cpp}}
+\doxysection{lib/utils.cpp File Reference}
+\hypertarget{utils_8cpp}{}\label{utils_8cpp}\index{lib/utils.cpp@{lib/utils.cpp}}
+
+
+Implements utility functions for the Kubisat firmware.  
+
+
 {\ttfamily \#include "{}utils.\+h"{}}\newline
 {\ttfamily \#include "{}pico/multicore.\+h"{}}\newline
 {\ttfamily \#include "{}pico/sync.\+h"{}}\newline
+Include dependency graph for utils.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{utils_8cpp__incl}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -12,14 +24,23 @@
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uart\+Print}} (const std\+::string \&msg, bool log\+To\+File, uart\+\_\+inst\+\_\+t \texorpdfstring{$\ast$}{*}uart)
-\item 
+\begin{DoxyCompactList}\small\item\em Prints a message to the UART with a timestamp and core number. \end{DoxyCompactList}\item 
 uint16\+\_\+t \mbox{\hyperlink{utils_8cpp_a662798a1967f4a4ea55257255d0fbbf4}{crc16}} (const uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, size\+\_\+t length)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Calculates the CRC16 checksum of the given data. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
 static mutex\+\_\+t \mbox{\hyperlink{utils_8cpp_a1a79e1136e3879e08124c966946cf7b4}{uart\+\_\+mutex}}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implements utility functions for the Kubisat firmware. 
+
+This file contains various utility functions, including UART printing with timestamps, and CRC16 calculation. 
+
+Definition in file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
 
 
 \doxysubsection{Macro Definition Documentation}
@@ -44,8 +65,28 @@ void uart\+Print (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{msg}{,
 
 
 
-Definition at line \mbox{\hyperlink{utils_8cpp_source_l00009}{9}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+Prints a message to the UART with a timestamp and core number. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & The message to print. \\
+\hline
+{\em log\+To\+File} & A flag indicating whether to log the message to a file (currently not implemented). \\
+\hline
+{\em uart} & The UART instance to use for printing.\\
+\hline
+\end{DoxyParams}
+Prints the given message to the specified UART, prepending it with a timestamp and the core number. Uses a mutex to ensure thread-\/safe access to the UART. 
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00026}{26}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{utils_8cpp_a662798a1967f4a4ea55257255d0fbbf4}\index{utils.cpp@{utils.cpp}!crc16@{crc16}}
 \index{crc16@{crc16}!utils.cpp@{utils.cpp}}
 \doxysubsubsection{\texorpdfstring{crc16()}{crc16()}}
@@ -54,7 +95,21 @@ uint16\+\_\+t crc16 (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t \texorpdf
 
 
 
-Definition at line \mbox{\hyperlink{utils_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+Calculates the CRC16 checksum of the given data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & A pointer to the data buffer. \\
+\hline
+{\em length} & The length of the data in bytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The CRC16 checksum.
+\end{DoxyReturn}
+Calculates the CRC16 checksum using the standard algorithm. 
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00053}{53}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
 
 
 

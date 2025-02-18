@@ -9,8 +9,8 @@ var indexSectionsWithContent =
   6: "cegimopsv",
   7: "abcdeghilmnoprstuvw",
   8: "_bdeghilmoprs",
-  9: "cdegp",
-  10: "clo"
+  9: "cdegmps",
+  10: "c"
 };
 
 var indexSectionNames =

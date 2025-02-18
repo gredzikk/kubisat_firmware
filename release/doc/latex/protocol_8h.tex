@@ -1,5 +1,5 @@
-\doxysection{frame\+\_\+model/protocol.h File Reference}
-\hypertarget{protocol_8h}{}\label{protocol_8h}\index{frame\_model/protocol.h@{frame\_model/protocol.h}}
+\doxysection{lib/comms/protocol.h File Reference}
+\hypertarget{protocol_8h}{}\label{protocol_8h}\index{lib/comms/protocol.h@{lib/comms/protocol.h}}
 {\ttfamily \#include $<$string$>$}\newline
 {\ttfamily \#include $<$map$>$}\newline
 {\ttfamily \#include $<$functional$>$}\newline
@@ -14,7 +14,21 @@
 {\ttfamily \#include "{}utils.\+h"{}}\newline
 {\ttfamily \#include "{}time.\+h"{}}\newline
 {\ttfamily \#include "{}build\+\_\+number.\+h"{}}\newline
-{\ttfamily \#include "{}Lo\+Ra-\/\+RP2040.\+h"{}}\newline
+{\ttfamily \#include "{}Lo\+Ra/\+Lo\+Ra-\/\+RP2040.\+h"{}}\newline
+Include dependency graph for protocol.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{protocol_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{protocol_8h__dep__incl}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
@@ -67,15 +81,15 @@ enum class \mbox{\hyperlink{protocol_8h_a0e0f0f1661d7aeb71ed9698bff6c6383}{Excep
 \begin{DoxyCompactItemize}
 \item 
 std\+::string \mbox{\hyperlink{protocol_8h_a46ff7e9bd427919630557811f44f5473}{exception\+Type\+To\+String}} (\mbox{\hyperlink{protocol_8h_a0e0f0f1661d7aeb71ed9698bff6c6383}{Exception\+Type}} type)
-\item 
+\begin{DoxyCompactList}\small\item\em Converts an \doxylink{protocol_8h_a0e0f0f1661d7aeb71ed9698bff6c6383}{Exception\+Type} to a string. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{protocol_8h_a82a11ce999902359454fa904a13ae297}{operation\+Type\+To\+String}} (\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} type)
-\item 
+\begin{DoxyCompactList}\small\item\em Converts an \doxylink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type} to a string. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} \mbox{\hyperlink{protocol_8h_a245c34d9f7072236b66e9352a9d3466e}{string\+To\+Operation\+Type}} (const std\+::string \&str)
-\item 
+\begin{DoxyCompactList}\small\item\em Converts a string to an \doxylink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}. \end{DoxyCompactList}\item 
 std\+::vector$<$ uint8\+\_\+t $>$ \mbox{\hyperlink{protocol_8h_a4d6495102457200a5632a3286331d238}{hex\+String\+To\+Bytes}} (const std\+::string \&hex\+String)
-\begin{DoxyCompactList}\small\item\em Convert a hex string to a vector of bytes. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Converts a hex string to a vector of bytes. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{protocol_8h_ab4cb9e6b491bd7711c69c9167a2b9286}{value\+Unit\+Type\+To\+String}} (\mbox{\hyperlink{protocol_8h_a2d96449e2b52d45b5726af92084e0d8f}{Value\+Unit}} unit)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Converts a \doxylink{protocol_8h_a2d96449e2b52d45b5726af92084e0d8f}{Value\+Unit} to a string. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -255,7 +269,19 @@ std\+::string exception\+Type\+To\+String (\begin{DoxyParamCaption}\item[{\mbox{
 
 
 
-Definition at line \mbox{\hyperlink{utils__converters_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{utils__converters_8cpp_source}{utils\+\_\+converters.\+cpp}}.
+Converts an \doxylink{protocol_8h_a0e0f0f1661d7aeb71ed9698bff6c6383}{Exception\+Type} to a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The \doxylink{protocol_8h_a0e0f0f1661d7aeb71ed9698bff6c6383}{Exception\+Type} to convert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The string representation of the \doxylink{protocol_8h_a0e0f0f1661d7aeb71ed9698bff6c6383}{Exception\+Type}. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{utils__converters_8cpp_source_l00014}{14}} of file \mbox{\hyperlink{utils__converters_8cpp_source}{utils\+\_\+converters.\+cpp}}.
 
 \Hypertarget{protocol_8h_a82a11ce999902359454fa904a13ae297}\index{protocol.h@{protocol.h}!operationTypeToString@{operationTypeToString}}
 \index{operationTypeToString@{operationTypeToString}!protocol.h@{protocol.h}}
@@ -265,8 +291,27 @@ std\+::string operation\+Type\+To\+String (\begin{DoxyParamCaption}\item[{\mbox{
 
 
 
-Definition at line \mbox{\hyperlink{utils__converters_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{utils__converters_8cpp_source}{utils\+\_\+converters.\+cpp}}.
+Converts an \doxylink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type} to a string. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The \doxylink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type} to convert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The string representation of the \doxylink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{utils__converters_8cpp_source_l00050}{50}} of file \mbox{\hyperlink{utils__converters_8cpp_source}{utils\+\_\+converters.\+cpp}}.
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{protocol_8h_a82a11ce999902359454fa904a13ae297_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{protocol_8h_a245c34d9f7072236b66e9352a9d3466e}\index{protocol.h@{protocol.h}!stringToOperationType@{stringToOperationType}}
 \index{stringToOperationType@{stringToOperationType}!protocol.h@{protocol.h}}
 \doxysubsubsection{\texorpdfstring{stringToOperationType()}{stringToOperationType()}}
@@ -275,8 +320,27 @@ Definition at line \mbox{\hyperlink{utils__converters_8cpp_source_l00028}{28}} o
 
 
 
-Definition at line \mbox{\hyperlink{utils__converters_8cpp_source_l00040}{40}} of file \mbox{\hyperlink{utils__converters_8cpp_source}{utils\+\_\+converters.\+cpp}}.
+Converts a string to an \doxylink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em str} & The string to convert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \doxylink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type} corresponding to the string. Defaults to GET if the string is not recognized. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{utils__converters_8cpp_source_l00067}{67}} of file \mbox{\hyperlink{utils__converters_8cpp_source}{utils\+\_\+converters.\+cpp}}.
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{protocol_8h_a245c34d9f7072236b66e9352a9d3466e_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{protocol_8h_a4d6495102457200a5632a3286331d238}\index{protocol.h@{protocol.h}!hexStringToBytes@{hexStringToBytes}}
 \index{hexStringToBytes@{hexStringToBytes}!protocol.h@{protocol.h}}
 \doxysubsubsection{\texorpdfstring{hexStringToBytes()}{hexStringToBytes()}}
@@ -285,19 +349,19 @@ std\+::vector$<$ uint8\+\_\+t $>$ hex\+String\+To\+Bytes (\begin{DoxyParamCaptio
 
 
 
-Convert a hex string to a vector of bytes. 
+Converts a hex string to a vector of bytes. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em hex\+String} & Hex string to convert \\
+{\em hex\+String} & The hex string to convert. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Vector of bytes 
+A vector of bytes representing the hex string. 
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{utils__converters_8cpp_source_l00052}{52}} of file \mbox{\hyperlink{utils__converters_8cpp_source}{utils\+\_\+converters.\+cpp}}.
+Definition at line \mbox{\hyperlink{utils__converters_8cpp_source_l00081}{81}} of file \mbox{\hyperlink{utils__converters_8cpp_source}{utils\+\_\+converters.\+cpp}}.
 
 \Hypertarget{protocol_8h_ab4cb9e6b491bd7711c69c9167a2b9286}\index{protocol.h@{protocol.h}!valueUnitTypeToString@{valueUnitTypeToString}}
 \index{valueUnitTypeToString@{valueUnitTypeToString}!protocol.h@{protocol.h}}
@@ -307,8 +371,27 @@ std\+::string value\+Unit\+Type\+To\+String (\begin{DoxyParamCaption}\item[{\mbo
 
 
 
-Definition at line \mbox{\hyperlink{utils__converters_8cpp_source_l00014}{14}} of file \mbox{\hyperlink{utils__converters_8cpp_source}{utils\+\_\+converters.\+cpp}}.
+Converts a \doxylink{protocol_8h_a2d96449e2b52d45b5726af92084e0d8f}{Value\+Unit} to a string. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em unit} & The \doxylink{protocol_8h_a2d96449e2b52d45b5726af92084e0d8f}{Value\+Unit} to convert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The string representation of the \doxylink{protocol_8h_a2d96449e2b52d45b5726af92084e0d8f}{Value\+Unit}. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{utils__converters_8cpp_source_l00031}{31}} of file \mbox{\hyperlink{utils__converters_8cpp_source}{utils\+\_\+converters.\+cpp}}.
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{protocol_8h_ab4cb9e6b491bd7711c69c9167a2b9286_icgraph}
+\end{center}
+\end{figure}
 
 
 \doxysubsection{Variable Documentation}

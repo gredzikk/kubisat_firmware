@@ -1,5 +1,6 @@
 \doxysection{utils.\+cpp}
-\hypertarget{utils_8cpp_source}{}\label{utils_8cpp_source}\mbox{\hyperlink{utils_8cpp}{Go to the documentation of this file.}}
+\hypertarget{utils_8cpp_source}{}\label{utils_8cpp_source}\index{lib/utils.cpp@{lib/utils.cpp}}
+\mbox{\hyperlink{utils_8cpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{utils_8h}{utils.h}}"{}}}
 \DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}pico/multicore.h"{}}}
@@ -9,38 +10,42 @@
 \DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00006}00006\ }
 \DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00007}\mbox{\hyperlink{utils_8cpp_a1a79e1136e3879e08124c966946cf7b4}{00007}}\ \textcolor{keyword}{static}\ mutex\_t\ \mbox{\hyperlink{utils_8cpp_a1a79e1136e3879e08124c966946cf7b4}{uart\_mutex}};}
 \DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00008}00008\ }
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00009}\mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{00009}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(\textcolor{keyword}{const}\ std::string\&\ msg,\ \textcolor{keywordtype}{bool}\ logToFile,\ uart\_inst\_t*\ uart)\ \{}
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00010}00010\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ mutex\_inited\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00011}00011\ \ \ \ \ \textcolor{keywordflow}{if}\ (!mutex\_inited)\ \{}
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00012}00012\ \ \ \ \ \ \ \ \ mutex\_init(\&\mbox{\hyperlink{utils_8cpp_a1a79e1136e3879e08124c966946cf7b4}{uart\_mutex}});}
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ mutex\_inited\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00014}00014\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00015}00015\ }
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00016}00016\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{event__manager_8h_ab20b0c7772544cf5d318507f34231fbe}{timestamp}}\ =\ to\_ms\_since\_boot(get\_absolute\_time());}
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00017}00017\ \ \ \ \ uint\ core\_num\ =\ get\_core\_num();}
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00018}00018\ \ \ \ \ std::string\ msgToSend\ =\ \textcolor{stringliteral}{"{}["{}}\ +\ std::to\_string(\mbox{\hyperlink{event__manager_8h_ab20b0c7772544cf5d318507f34231fbe}{timestamp}})\ +\ \textcolor{stringliteral}{"{}ms]\ -\/\ Core\ "{}}\ +\ std::to\_string(core\_num)\ +\ \textcolor{stringliteral}{"{}:\ "{}}\ +\ msg\ +\ \textcolor{stringliteral}{"{}\(\backslash\)r\(\backslash\)n"{}};}
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00019}00019\ }
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00020}00020\ \ \ \ \ \textcolor{keywordflow}{if}\ (logToFile)\ \{}
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00021}00021\ \ \ \ \ \ \ \ \ logToFile\ =\ !logToFile;}
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00022}00022\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00023}00023\ \ \ \ \ mutex\_enter\_blocking(\&\mbox{\hyperlink{utils_8cpp_a1a79e1136e3879e08124c966946cf7b4}{uart\_mutex}});}
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00024}00024\ \ \ \ \ uart\_puts(uart,\ msgToSend.c\_str());}
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00025}00025\ \ \ \ \ mutex\_exit(\&\mbox{\hyperlink{utils_8cpp_a1a79e1136e3879e08124c966946cf7b4}{uart\_mutex}});}
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00026}00026\ \}}
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00027}00027\ }
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00028}\mbox{\hyperlink{utils_8cpp_a662798a1967f4a4ea55257255d0fbbf4}{00028}}\ uint16\_t\ \mbox{\hyperlink{utils_8cpp_a662798a1967f4a4ea55257255d0fbbf4}{crc16}}(\textcolor{keyword}{const}\ uint8\_t\ *data,\ \textcolor{keywordtype}{size\_t}\ length)\ \{}
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00029}00029\ \ \ \ \ uint16\_t\ crc\ =\ 0xFFFF;}
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ length;\ i++)\ \{}
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ crc\ \string^=\ data[i];}
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ 8;\ j++)\ \{}
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (crc\ \&\ 0x0001)\ \{}
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ crc\ =\ (crc\ >>\ 1)\ \string^\ 0xA001;}
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ crc\ >>=\ 1;}
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00026}\mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{00026}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{utils_8cpp_aacbcecbe6b5428e3571b06ab2104e706}{uartPrint}}(\textcolor{keyword}{const}\ std::string\&\ msg,\ \textcolor{keywordtype}{bool}\ logToFile,\ uart\_inst\_t*\ uart)\ \{}
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ mutex\_inited\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00028}00028\ \ \ \ \ \textcolor{keywordflow}{if}\ (!mutex\_inited)\ \{}
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ mutex\_init(\&\mbox{\hyperlink{utils_8cpp_a1a79e1136e3879e08124c966946cf7b4}{uart\_mutex}});}
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ mutex\_inited\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00033}00033\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{event__manager_8h_ab20b0c7772544cf5d318507f34231fbe}{timestamp}}\ =\ to\_ms\_since\_boot(get\_absolute\_time());}
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00034}00034\ \ \ \ \ uint\ core\_num\ =\ get\_core\_num();}
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00035}00035\ \ \ \ \ std::string\ msgToSend\ =\ \textcolor{stringliteral}{"{}["{}}\ +\ std::to\_string(\mbox{\hyperlink{event__manager_8h_ab20b0c7772544cf5d318507f34231fbe}{timestamp}})\ +\ \textcolor{stringliteral}{"{}ms]\ -\/\ Core\ "{}}\ +\ std::to\_string(core\_num)\ +\ \textcolor{stringliteral}{"{}:\ "{}}\ +\ msg\ +\ \textcolor{stringliteral}{"{}\(\backslash\)r\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00037}00037\ \ \ \ \ \textcolor{keywordflow}{if}\ (logToFile)\ \{}
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ logToFile\ =\ !logToFile;}
 \DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00039}00039\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{keywordflow}{return}\ crc;}
-\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00041}00041\ \}}
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00040}00040\ \ \ \ \ mutex\_enter\_blocking(\&\mbox{\hyperlink{utils_8cpp_a1a79e1136e3879e08124c966946cf7b4}{uart\_mutex}});}
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00041}00041\ \ \ \ \ uart\_puts(uart,\ msgToSend.c\_str());}
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00042}00042\ \ \ \ \ mutex\_exit(\&\mbox{\hyperlink{utils_8cpp_a1a79e1136e3879e08124c966946cf7b4}{uart\_mutex}});}
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00043}00043\ \}}
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00053}\mbox{\hyperlink{utils_8cpp_a662798a1967f4a4ea55257255d0fbbf4}{00053}}\ uint16\_t\ \mbox{\hyperlink{utils_8cpp_a662798a1967f4a4ea55257255d0fbbf4}{crc16}}(\textcolor{keyword}{const}\ uint8\_t\ *data,\ \textcolor{keywordtype}{size\_t}\ length)\ \{}
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00054}00054\ \ \ \ \ uint16\_t\ crc\ =\ 0xFFFF;}
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00055}00055\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ length;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ crc\ \string^=\ data[i];}
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ 8;\ j++)\ \{}
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (crc\ \&\ 0x0001)\ \{}
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ crc\ =\ (crc\ >>\ 1)\ \string^\ 0xA001;}
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ crc\ >>=\ 1;}
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00064}00064\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00065}00065\ \ \ \ \ \textcolor{keywordflow}{return}\ crc;}
+\DoxyCodeLine{\Hypertarget{utils_8cpp_source_l00066}00066\ \}}
 
 \end{DoxyCode}

@@ -105,27 +105,36 @@ $(function(){initNavTree('class_event_log.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 
+<p>Represents a single event log entry.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="event__manager_8h_source.html">event_manager.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:adb17c412276c8678289395607c493e7e" id="r_adb17c412276c8678289395607c493e7e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb17c412276c8678289395607c493e7e">toString</a> () const</td></tr>
+<tr class="memdesc:adb17c412276c8678289395607c493e7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the <a class="el" href="class_event_log.html" title="Represents a single event log entry.">EventLog</a> to a string representation.  <br /></td></tr>
 <tr class="separator:adb17c412276c8678289395607c493e7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a5e0923e12450e6b7c782c7f6630f4563" id="r_a5e0923e12450e6b7c782c7f6630f4563"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e0923e12450e6b7c782c7f6630f4563">id</a></td></tr>
+<tr class="memdesc:a5e0923e12450e6b7c782c7f6630f4563"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sequence number.  <br /></td></tr>
 <tr class="separator:a5e0923e12450e6b7c782c7f6630f4563"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea248a425dedf15b5cee31ce2884db40" id="r_aea248a425dedf15b5cee31ce2884db40"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea248a425dedf15b5cee31ce2884db40">timestamp</a></td></tr>
+<tr class="memdesc:aea248a425dedf15b5cee31ce2884db40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unix timestamp or system time.  <br /></td></tr>
 <tr class="separator:aea248a425dedf15b5cee31ce2884db40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5209ffdb8dc4bf7f87f3ec44b2ae63e3" id="r_a5209ffdb8dc4bf7f87f3ec44b2ae63e3"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5209ffdb8dc4bf7f87f3ec44b2ae63e3">group</a></td></tr>
+<tr class="memdesc:a5209ffdb8dc4bf7f87f3ec44b2ae63e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Event group identifier.  <br /></td></tr>
 <tr class="separator:a5209ffdb8dc4bf7f87f3ec44b2ae63e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ba1b6d820bf66740aac49fd299f1ea2" id="r_a4ba1b6d820bf66740aac49fd299f1ea2"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ba1b6d820bf66740aac49fd299f1ea2">event</a></td></tr>
+<tr class="memdesc:a4ba1b6d820bf66740aac49fd299f1ea2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specific event identifier.  <br /></td></tr>
 <tr class="separator:a4ba1b6d820bf66740aac49fd299f1ea2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="event__manager_8h_source.html#l00069">69</a> of file <a class="el" href="event__manager_8h_source.html">event_manager.h</a>.</p>
+<div class="textblock"><p>Represents a single event log entry. </p>
+
+<p class="definition">Definition at line <a class="el" href="event__manager_8h_source.html#l00073">73</a> of file <a class="el" href="event__manager_8h_source.html">event_manager.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="adb17c412276c8678289395607c493e7e" name="adb17c412276c8678289395607c493e7e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adb17c412276c8678289395607c493e7e">&#9670;&#160;</a></span>toString()</h2>
@@ -150,7 +159,17 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event__manager_8h_source.html#l00076">76</a> of file <a class="el" href="event__manager_8h_source.html">event_manager.h</a>.</p>
+<p>Converts the <a class="el" href="class_event_log.html" title="Represents a single event log entry.">EventLog</a> to a string representation. </p>
+<dl class="section return"><dt>Returns</dt><dd>A string representation of the <a class="el" href="class_event_log.html" title="Represents a single event log entry.">EventLog</a>. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="event__manager_8h_source.html#l00084">84</a> of file <a class="el" href="event__manager_8h_source.html">event_manager.h</a>.</p>
+<div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_event_log_adb17c412276c8678289395607c493e7e_icgraph.svg" width="352" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -167,7 +186,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event__manager_8h_source.html#l00071">71</a> of file <a class="el" href="event__manager_8h_source.html">event_manager.h</a>.</p>
+<p>Sequence number. </p>
+
+<p class="definition">Definition at line <a class="el" href="event__manager_8h_source.html#l00075">75</a> of file <a class="el" href="event__manager_8h_source.html">event_manager.h</a>.</p>
 
 </div>
 </div>
@@ -183,7 +204,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event__manager_8h_source.html#l00072">72</a> of file <a class="el" href="event__manager_8h_source.html">event_manager.h</a>.</p>
+<p>Unix timestamp or system time. </p>
+
+<p class="definition">Definition at line <a class="el" href="event__manager_8h_source.html#l00076">76</a> of file <a class="el" href="event__manager_8h_source.html">event_manager.h</a>.</p>
 
 </div>
 </div>
@@ -199,7 +222,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event__manager_8h_source.html#l00073">73</a> of file <a class="el" href="event__manager_8h_source.html">event_manager.h</a>.</p>
+<p>Event group identifier. </p>
+
+<p class="definition">Definition at line <a class="el" href="event__manager_8h_source.html#l00077">77</a> of file <a class="el" href="event__manager_8h_source.html">event_manager.h</a>.</p>
 
 </div>
 </div>
@@ -215,12 +240,14 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event__manager_8h_source.html#l00074">74</a> of file <a class="el" href="event__manager_8h_source.html">event_manager.h</a>.</p>
+<p>Specific event identifier. </p>
+
+<p class="definition">Definition at line <a class="el" href="event__manager_8h_source.html#l00078">78</a> of file <a class="el" href="event__manager_8h_source.html">event_manager.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="event__manager_8h_source.html">event_manager.h</a></li>
+<li>lib/eventman/<a class="el" href="event__manager_8h_source.html">event_manager.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -1,22 +1,43 @@
-\doxysection{storage.\+cpp File Reference}
-\hypertarget{storage_8cpp}{}\label{storage_8cpp}\index{storage.cpp@{storage.cpp}}
+\doxysection{lib/storage/storage.cpp File Reference}
+\hypertarget{storage_8cpp}{}\label{storage_8cpp}\index{lib/storage/storage.cpp@{lib/storage/storage.cpp}}
+
+
+Implements file system operations for the Kubisat firmware.  
+
+
 {\ttfamily \#include "{}storage.\+h"{}}\newline
 {\ttfamily \#include "{}errno.\+h"{}}\newline
+Include dependency graph for storage.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{storage_8cpp__incl}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 bool \mbox{\hyperlink{storage_8cpp_afb19e37469a751aa61de3dcd0c70b4b0}{fs\+\_\+init}} (void)
-\item 
+\begin{DoxyCompactList}\small\item\em Initializes the file system on the SD card. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{struct_file_handle}{File\+Handle}} \mbox{\hyperlink{storage_8cpp_a921d0d7089c0c7731762035e7feeb27a}{fs\+\_\+open\+\_\+file}} (const char \texorpdfstring{$\ast$}{*}filename, const char \texorpdfstring{$\ast$}{*}mode)
-\item 
+\begin{DoxyCompactList}\small\item\em Opens a file. \end{DoxyCompactList}\item 
 ssize\+\_\+t \mbox{\hyperlink{storage_8cpp_aab35cc4af25dd4a32624e51bf0fcda5b}{fs\+\_\+write\+\_\+file}} (\mbox{\hyperlink{struct_file_handle}{File\+Handle}} \&handle, const void \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}, size\+\_\+t size)
-\item 
+\begin{DoxyCompactList}\small\item\em Writes data to a file. \end{DoxyCompactList}\item 
 ssize\+\_\+t \mbox{\hyperlink{storage_8cpp_a259e40f946e1178329ed6cdf18c35b0c}{fs\+\_\+read\+\_\+file}} (\mbox{\hyperlink{struct_file_handle}{File\+Handle}} \&handle, void \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cpp_af00b615ca097c43dbb02ae3a00ea3a62}{buffer}}, size\+\_\+t size)
-\item 
+\begin{DoxyCompactList}\small\item\em Reads data from a file. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{storage_8cpp_a1ed8daa820da91b458072334ecec9618}{fs\+\_\+close\+\_\+file}} (\mbox{\hyperlink{struct_file_handle}{File\+Handle}} \&handle)
-\item 
+\begin{DoxyCompactList}\small\item\em Closes a file. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{storage_8cpp_a4d0e5bbd1f57f47164521ca84c8e6fd1}{fs\+\_\+file\+\_\+exists}} (const char \texorpdfstring{$\ast$}{*}filename)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Checks if a file exists. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implements file system operations for the Kubisat firmware. 
+
+This file contains functions for initializing the file system, opening, writing, reading, and closing files. 
+
+Definition in file \mbox{\hyperlink{storage_8cpp_source}{storage.\+cpp}}.
+
 
 
 \doxysubsection{Function Documentation}
@@ -28,8 +49,22 @@ bool fs\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaptio
 
 
 
-Definition at line \mbox{\hyperlink{storage_8cpp_source_l00009}{9}} of file \mbox{\hyperlink{storage_8cpp_source}{storage.\+cpp}}.
+Initializes the file system on the SD card. 
 
+\begin{DoxyReturn}{Returns}
+True if initialization was successful, false otherwise.
+\end{DoxyReturn}
+Mounts the littlefs file system on the SD card. If mounting fails, it formats the SD card with littlefs and then attempts to mount again. 
+
+Definition at line \mbox{\hyperlink{storage_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{storage_8cpp_source}{storage.\+cpp}}.
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=299pt]{storage_8cpp_afb19e37469a751aa61de3dcd0c70b4b0_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{storage_8cpp_a921d0d7089c0c7731762035e7feeb27a}\index{storage.cpp@{storage.cpp}!fs\_open\_file@{fs\_open\_file}}
 \index{fs\_open\_file@{fs\_open\_file}!storage.cpp@{storage.cpp}}
 \doxysubsubsection{\texorpdfstring{fs\_open\_file()}{fs\_open\_file()}}
@@ -38,7 +73,21 @@ Definition at line \mbox{\hyperlink{storage_8cpp_source_l00009}{9}} of file \mbo
 
 
 
-Definition at line \mbox{\hyperlink{storage_8cpp_source_l00037}{37}} of file \mbox{\hyperlink{storage_8cpp_source}{storage.\+cpp}}.
+Opens a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The name of the file to open. \\
+\hline
+{\em mode} & The mode in which to open the file (e.\+g., "{}r"{}, "{}w"{}, "{}a"{}). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{struct_file_handle}{File\+Handle} structure containing the file descriptor and a flag indicating if the file is open.
+\end{DoxyReturn}
+Opens the specified file with the given mode. Converts the mode string to appropriate flags for the {\ttfamily open} system call. 
+
+Definition at line \mbox{\hyperlink{storage_8cpp_source_l00060}{60}} of file \mbox{\hyperlink{storage_8cpp_source}{storage.\+cpp}}.
 
 \Hypertarget{storage_8cpp_aab35cc4af25dd4a32624e51bf0fcda5b}\index{storage.cpp@{storage.cpp}!fs\_write\_file@{fs\_write\_file}}
 \index{fs\_write\_file@{fs\_write\_file}!storage.cpp@{storage.cpp}}
@@ -48,7 +97,23 @@ ssize\+\_\+t fs\+\_\+write\+\_\+file (\begin{DoxyParamCaption}\item[{\mbox{\hype
 
 
 
-Definition at line \mbox{\hyperlink{storage_8cpp_source_l00058}{58}} of file \mbox{\hyperlink{storage_8cpp_source}{storage.\+cpp}}.
+Writes data to a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em handle} & A reference to the \doxylink{struct_file_handle}{File\+Handle} structure for the file. \\
+\hline
+{\em buffer} & A pointer to the buffer containing the data to write. \\
+\hline
+{\em size} & The number of bytes to write. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes written, or -\/1 on error.
+\end{DoxyReturn}
+Writes data from the provided buffer to the file associated with the given \doxylink{struct_file_handle}{File\+Handle}. 
+
+Definition at line \mbox{\hyperlink{storage_8cpp_source_l00090}{90}} of file \mbox{\hyperlink{storage_8cpp_source}{storage.\+cpp}}.
 
 \Hypertarget{storage_8cpp_a259e40f946e1178329ed6cdf18c35b0c}\index{storage.cpp@{storage.cpp}!fs\_read\_file@{fs\_read\_file}}
 \index{fs\_read\_file@{fs\_read\_file}!storage.cpp@{storage.cpp}}
@@ -58,7 +123,23 @@ ssize\+\_\+t fs\+\_\+read\+\_\+file (\begin{DoxyParamCaption}\item[{\mbox{\hyper
 
 
 
-Definition at line \mbox{\hyperlink{storage_8cpp_source_l00070}{70}} of file \mbox{\hyperlink{storage_8cpp_source}{storage.\+cpp}}.
+Reads data from a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em handle} & A reference to the \doxylink{struct_file_handle}{File\+Handle} structure for the file. \\
+\hline
+{\em buffer} & A pointer to the buffer to store the read data. \\
+\hline
+{\em size} & The number of bytes to read. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes read, or -\/1 on error.
+\end{DoxyReturn}
+Reads data from the file associated with the given \doxylink{struct_file_handle}{File\+Handle} into the provided buffer. 
+
+Definition at line \mbox{\hyperlink{storage_8cpp_source_l00111}{111}} of file \mbox{\hyperlink{storage_8cpp_source}{storage.\+cpp}}.
 
 \Hypertarget{storage_8cpp_a1ed8daa820da91b458072334ecec9618}\index{storage.cpp@{storage.cpp}!fs\_close\_file@{fs\_close\_file}}
 \index{fs\_close\_file@{fs\_close\_file}!storage.cpp@{storage.cpp}}
@@ -68,7 +149,19 @@ bool fs\+\_\+close\+\_\+file (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{st
 
 
 
-Definition at line \mbox{\hyperlink{storage_8cpp_source_l00082}{82}} of file \mbox{\hyperlink{storage_8cpp_source}{storage.\+cpp}}.
+Closes a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em handle} & A reference to the \doxylink{struct_file_handle}{File\+Handle} structure for the file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the file was closed successfully, false otherwise.
+\end{DoxyReturn}
+Closes the file associated with the given \doxylink{struct_file_handle}{File\+Handle}. 
+
+Definition at line \mbox{\hyperlink{storage_8cpp_source_l00130}{130}} of file \mbox{\hyperlink{storage_8cpp_source}{storage.\+cpp}}.
 
 \Hypertarget{storage_8cpp_a4d0e5bbd1f57f47164521ca84c8e6fd1}\index{storage.cpp@{storage.cpp}!fs\_file\_exists@{fs\_file\_exists}}
 \index{fs\_file\_exists@{fs\_file\_exists}!storage.cpp@{storage.cpp}}
@@ -78,5 +171,17 @@ bool fs\+\_\+file\+\_\+exists (\begin{DoxyParamCaption}\item[{const char \texorp
 
 
 
-Definition at line \mbox{\hyperlink{storage_8cpp_source_l00099}{99}} of file \mbox{\hyperlink{storage_8cpp_source}{storage.\+cpp}}.
+Checks if a file exists. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The name of the file to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the file exists, false otherwise.
+\end{DoxyReturn}
+Checks if a file with the given name exists in the file system. 
+
+Definition at line \mbox{\hyperlink{storage_8cpp_source_l00153}{153}} of file \mbox{\hyperlink{storage_8cpp_source}{storage.\+cpp}}.
 

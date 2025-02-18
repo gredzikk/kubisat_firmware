@@ -1,28 +1,34 @@
-\doxysection{commands/commands.h File Reference}
-\hypertarget{commands_8h}{}\label{commands_8h}\index{commands/commands.h@{commands/commands.h}}
+\doxysection{lib/comms/commands/commands.h File Reference}
+\hypertarget{commands_8h}{}\label{commands_8h}\index{lib/comms/commands/commands.h@{lib/comms/commands/commands.h}}
 {\ttfamily \#include $<$string$>$}\newline
 {\ttfamily \#include $<$functional$>$}\newline
 {\ttfamily \#include $<$map$>$}\newline
 {\ttfamily \#include "{}protocol.\+h"{}}\newline
+Include dependency graph for commands.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{commands_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=346pt]{commands_8h__dep__incl}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{commands_8h_a1eefb8c4d539d50c787b4db3f6ebb093}{handle\+Time}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
-\item 
-\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{commands_8h_acc9239d946ee18d2ff19af2c6a2177f0}{handle\+Get\+Timezone\+Offset}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
-\item 
-\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{commands_8h_a9e802e312d0779aab74966074e81eb30}{handle\+Set\+Timezone\+Offset}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
-\item 
-\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{commands_8h_add8778da60c0dc5c0add2c7b2ccdc57e}{handle\+Get\+Clock\+Sync\+Interval}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
-\item 
-\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{commands_8h_a00137f0d4c6a83ee5c0df49c7370fe65}{handle\+Set\+Clock\+Sync\+Interval}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
-\item 
-\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{commands_8h_a6def0bf9e591d66bd98b752f731d44ba}{handle\+Get\+Clock\+Drift}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
-\item 
-\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{commands_8h_ae4cd7f745d6f9e2cadef70e21d8a9fcb}{handle\+Set\+Clock\+Drift}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
-\item 
-\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{commands_8h_a17274560343c34119630b27d88ef475e}{handle\+Get\+Last\+Sync\+Time}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
-\item 
+\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{group___clock_commands_ga1eefb8c4d539d50c787b4db3f6ebb093}{handle\+Time}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
+\begin{DoxyCompactList}\small\item\em Handler for getting and setting system time. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{group___clock_commands_ga9378f580aefefb566c6f7d49975afeba}{handle\+Timezone\+Offset}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
+\begin{DoxyCompactList}\small\item\em Handler for getting and setting timezone offset. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{group___clock_commands_gad92a65bf7ca7a1c1ed7b29e5e9e75fa0}{handle\+Clock\+Sync\+Interval}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
+\begin{DoxyCompactList}\small\item\em Handler for getting and setting clock synchronization interval. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{group___clock_commands_ga17274560343c34119630b27d88ef475e}{handle\+Get\+Last\+Sync\+Time}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
+\begin{DoxyCompactList}\small\item\em Handler for getting last clock sync time. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{group___diagnostic_commands_gade74b82cf2c20d93c5e0ce624cd7ca77}{handle\+List\+Commands}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
 \begin{DoxyCompactList}\small\item\em Handler for listing all available commands on UART. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{group___diagnostic_commands_ga5ebac5711334cb3584974b2b74556543}{handle\+Get\+Build\+Version}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
@@ -57,122 +63,19 @@
 \begin{DoxyCompactList}\small\item\em Handler for retrieving last N events from the event log. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{group___event_commands_ga6f817db327c7b16cf49575635e595004}{handle\+Get\+Event\+Count}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
 \begin{DoxyCompactList}\small\item\em Handler for getting total number of events in the log. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{commands_8h_a1907d400d2c8d8d054ba95bcf43276ea}{execute\+Command}} (uint32\+\_\+t command\+Key, const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{group___command_system_ga1907d400d2c8d8d054ba95bcf43276ea}{execute\+Command}} (uint32\+\_\+t command\+Key, const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
+\begin{DoxyCompactList}\small\item\em Executes a command based on its key. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-std\+::map$<$ uint32\+\_\+t, std\+::function$<$ \mbox{\hyperlink{struct_frame}{Frame}}(const std\+::string \&, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}})$>$ $>$ \mbox{\hyperlink{commands_8h_acbfd6523ceea62dad855ea65b52eb5b1}{command\+Handlers}}
-\end{DoxyCompactItemize}
+std\+::map$<$ uint32\+\_\+t, std\+::function$<$ \mbox{\hyperlink{struct_frame}{Frame}}(const std\+::string \&, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}})$>$ $>$ \mbox{\hyperlink{group___command_system_ga04a0515603ba347ef314678876f3fa26}{command\+Handlers}}
+\begin{DoxyCompactList}\small\item\em Global map of all command handlers. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{commands_8h_a1eefb8c4d539d50c787b4db3f6ebb093}\index{commands.h@{commands.h}!handleTime@{handleTime}}
-\index{handleTime@{handleTime}!commands.h@{commands.h}}
-\doxysubsubsection{\texorpdfstring{handleTime()}{handleTime()}}
-{\footnotesize\ttfamily \label{commands_8h_a1eefb8c4d539d50c787b4db3f6ebb093} 
-\mbox{\hyperlink{struct_frame}{Frame}} handle\+Time (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{param}{, }\item[{\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}}]{operation\+Type}{}\end{DoxyParamCaption})}
-
-
-
-Definition at line \mbox{\hyperlink{clock__commands_8cpp_source_l00008}{8}} of file \mbox{\hyperlink{clock__commands_8cpp_source}{clock\+\_\+commands.\+cpp}}.
-
-\Hypertarget{commands_8h_acc9239d946ee18d2ff19af2c6a2177f0}\index{commands.h@{commands.h}!handleGetTimezoneOffset@{handleGetTimezoneOffset}}
-\index{handleGetTimezoneOffset@{handleGetTimezoneOffset}!commands.h@{commands.h}}
-\doxysubsubsection{\texorpdfstring{handleGetTimezoneOffset()}{handleGetTimezoneOffset()}}
-{\footnotesize\ttfamily \label{commands_8h_acc9239d946ee18d2ff19af2c6a2177f0} 
-\mbox{\hyperlink{struct_frame}{Frame}} handle\+Get\+Timezone\+Offset (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{param}{, }\item[{\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}}]{operation\+Type}{}\end{DoxyParamCaption})}
-
-
-
-Definition at line \mbox{\hyperlink{clock__commands_8cpp_source_l00059}{59}} of file \mbox{\hyperlink{clock__commands_8cpp_source}{clock\+\_\+commands.\+cpp}}.
-
-\Hypertarget{commands_8h_a9e802e312d0779aab74966074e81eb30}\index{commands.h@{commands.h}!handleSetTimezoneOffset@{handleSetTimezoneOffset}}
-\index{handleSetTimezoneOffset@{handleSetTimezoneOffset}!commands.h@{commands.h}}
-\doxysubsubsection{\texorpdfstring{handleSetTimezoneOffset()}{handleSetTimezoneOffset()}}
-{\footnotesize\ttfamily \label{commands_8h_a9e802e312d0779aab74966074e81eb30} 
-\mbox{\hyperlink{struct_frame}{Frame}} handle\+Set\+Timezone\+Offset (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{param}{, }\item[{\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}}]{operation\+Type}{}\end{DoxyParamCaption})}
-
-
-
-Definition at line \mbox{\hyperlink{clock__commands_8cpp_source_l00067}{67}} of file \mbox{\hyperlink{clock__commands_8cpp_source}{clock\+\_\+commands.\+cpp}}.
-
-\Hypertarget{commands_8h_add8778da60c0dc5c0add2c7b2ccdc57e}\index{commands.h@{commands.h}!handleGetClockSyncInterval@{handleGetClockSyncInterval}}
-\index{handleGetClockSyncInterval@{handleGetClockSyncInterval}!commands.h@{commands.h}}
-\doxysubsubsection{\texorpdfstring{handleGetClockSyncInterval()}{handleGetClockSyncInterval()}}
-{\footnotesize\ttfamily \label{commands_8h_add8778da60c0dc5c0add2c7b2ccdc57e} 
-\mbox{\hyperlink{struct_frame}{Frame}} handle\+Get\+Clock\+Sync\+Interval (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{param}{, }\item[{\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}}]{operation\+Type}{}\end{DoxyParamCaption})}
-
-
-
-Definition at line \mbox{\hyperlink{clock__commands_8cpp_source_l00083}{83}} of file \mbox{\hyperlink{clock__commands_8cpp_source}{clock\+\_\+commands.\+cpp}}.
-
-\Hypertarget{commands_8h_a00137f0d4c6a83ee5c0df49c7370fe65}\index{commands.h@{commands.h}!handleSetClockSyncInterval@{handleSetClockSyncInterval}}
-\index{handleSetClockSyncInterval@{handleSetClockSyncInterval}!commands.h@{commands.h}}
-\doxysubsubsection{\texorpdfstring{handleSetClockSyncInterval()}{handleSetClockSyncInterval()}}
-{\footnotesize\ttfamily \label{commands_8h_a00137f0d4c6a83ee5c0df49c7370fe65} 
-\mbox{\hyperlink{struct_frame}{Frame}} handle\+Set\+Clock\+Sync\+Interval (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{param}{, }\item[{\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}}]{operation\+Type}{}\end{DoxyParamCaption})}
-
-
-
-Definition at line \mbox{\hyperlink{clock__commands_8cpp_source_l00091}{91}} of file \mbox{\hyperlink{clock__commands_8cpp_source}{clock\+\_\+commands.\+cpp}}.
-
-\Hypertarget{commands_8h_a6def0bf9e591d66bd98b752f731d44ba}\index{commands.h@{commands.h}!handleGetClockDrift@{handleGetClockDrift}}
-\index{handleGetClockDrift@{handleGetClockDrift}!commands.h@{commands.h}}
-\doxysubsubsection{\texorpdfstring{handleGetClockDrift()}{handleGetClockDrift()}}
-{\footnotesize\ttfamily \label{commands_8h_a6def0bf9e591d66bd98b752f731d44ba} 
-\mbox{\hyperlink{struct_frame}{Frame}} handle\+Get\+Clock\+Drift (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{param}{, }\item[{\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}}]{operation\+Type}{}\end{DoxyParamCaption})}
-
-
-
-Definition at line \mbox{\hyperlink{clock__commands_8cpp_source_l00104}{104}} of file \mbox{\hyperlink{clock__commands_8cpp_source}{clock\+\_\+commands.\+cpp}}.
-
-\Hypertarget{commands_8h_ae4cd7f745d6f9e2cadef70e21d8a9fcb}\index{commands.h@{commands.h}!handleSetClockDrift@{handleSetClockDrift}}
-\index{handleSetClockDrift@{handleSetClockDrift}!commands.h@{commands.h}}
-\doxysubsubsection{\texorpdfstring{handleSetClockDrift()}{handleSetClockDrift()}}
-{\footnotesize\ttfamily \label{commands_8h_ae4cd7f745d6f9e2cadef70e21d8a9fcb} 
-\mbox{\hyperlink{struct_frame}{Frame}} handle\+Set\+Clock\+Drift (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{param}{, }\item[{\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}}]{operation\+Type}{}\end{DoxyParamCaption})}
-
-
-
-Definition at line \mbox{\hyperlink{clock__commands_8cpp_source_l00112}{112}} of file \mbox{\hyperlink{clock__commands_8cpp_source}{clock\+\_\+commands.\+cpp}}.
-
-\Hypertarget{commands_8h_a17274560343c34119630b27d88ef475e}\index{commands.h@{commands.h}!handleGetLastSyncTime@{handleGetLastSyncTime}}
-\index{handleGetLastSyncTime@{handleGetLastSyncTime}!commands.h@{commands.h}}
-\doxysubsubsection{\texorpdfstring{handleGetLastSyncTime()}{handleGetLastSyncTime()}}
-{\footnotesize\ttfamily \label{commands_8h_a17274560343c34119630b27d88ef475e} 
-\mbox{\hyperlink{struct_frame}{Frame}} handle\+Get\+Last\+Sync\+Time (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{param}{, }\item[{\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}}]{operation\+Type}{}\end{DoxyParamCaption})}
-
-
-
-Definition at line \mbox{\hyperlink{clock__commands_8cpp_source_l00125}{125}} of file \mbox{\hyperlink{clock__commands_8cpp_source}{clock\+\_\+commands.\+cpp}}.
-
 \Hypertarget{commands_8h_a7a7ebcb893bb8e5bb8b66c1d8db539b1}\index{commands.h@{commands.h}!handleGetCommandsTimestamp@{handleGetCommandsTimestamp}}
 \index{handleGetCommandsTimestamp@{handleGetCommandsTimestamp}!commands.h@{commands.h}}
 \doxysubsubsection{\texorpdfstring{handleGetCommandsTimestamp()}{handleGetCommandsTimestamp()}}
 {\footnotesize\ttfamily \label{commands_8h_a7a7ebcb893bb8e5bb8b66c1d8db539b1} 
 \mbox{\hyperlink{struct_frame}{Frame}} handle\+Get\+Commands\+Timestamp (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{param}{, }\item[{\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}}]{operation\+Type}{}\end{DoxyParamCaption})}
-
-\Hypertarget{commands_8h_a1907d400d2c8d8d054ba95bcf43276ea}\index{commands.h@{commands.h}!executeCommand@{executeCommand}}
-\index{executeCommand@{executeCommand}!commands.h@{commands.h}}
-\doxysubsubsection{\texorpdfstring{executeCommand()}{executeCommand()}}
-{\footnotesize\ttfamily \label{commands_8h_a1907d400d2c8d8d054ba95bcf43276ea} 
-\mbox{\hyperlink{struct_frame}{Frame}} execute\+Command (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{command\+Key}{, }\item[{const std\+::string \&}]{param}{, }\item[{\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}}]{operation\+Type}{}\end{DoxyParamCaption})}
-
-
-
-Definition at line \mbox{\hyperlink{commands_8cpp_source_l00037}{37}} of file \mbox{\hyperlink{commands_8cpp_source}{commands.\+cpp}}.
-
-
-
-\doxysubsection{Variable Documentation}
-\Hypertarget{commands_8h_acbfd6523ceea62dad855ea65b52eb5b1}\index{commands.h@{commands.h}!commandHandlers@{commandHandlers}}
-\index{commandHandlers@{commandHandlers}!commands.h@{commands.h}}
-\doxysubsubsection{\texorpdfstring{commandHandlers}{commandHandlers}}
-{\footnotesize\ttfamily \label{commands_8h_acbfd6523ceea62dad855ea65b52eb5b1} 
-std\+::map$<$uint32\+\_\+t, std\+::function$<$\mbox{\hyperlink{struct_frame}{Frame}}(const std\+::string\&, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}})$>$ $>$ command\+Handlers\hspace{0.3cm}{\ttfamily [extern]}}
-
-
-
-Definition at line \mbox{\hyperlink{commands_8cpp_source_l00009}{9}} of file \mbox{\hyperlink{commands_8cpp_source}{commands.\+cpp}}.
 

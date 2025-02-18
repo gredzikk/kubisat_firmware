@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>KubiSat Firmware: frame_model/communication.cpp File Reference</title>
+<title>KubiSat Firmware: lib/comms/communication.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -104,12 +104,20 @@ $(function(){initNavTree('communication_8cpp.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="communication_8h_source.html">communication.h</a>&quot;</code><br />
+</div><div class="textblock"><div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for communication.cpp:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="communication_8cpp__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 </div>
 <p><a href="communication_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a520df448c1dc359f42111ac240081975" id="r_a520df448c1dc359f42111ac240081975"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a520df448c1dc359f42111ac240081975">initializeRadio</a> ()</td></tr>
+<tr class="memdesc:a520df448c1dc359f42111ac240081975"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the LoRa radio module.  <br /></td></tr>
 <tr class="separator:a520df448c1dc359f42111ac240081975"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
@@ -143,7 +151,25 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="communication_8cpp_source.html#l00010">10</a> of file <a class="el" href="communication_8cpp_source.html">communication.cpp</a>.</p>
+<p>Initializes the LoRa radio module. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if initialization was successful, false otherwise.</dd></dl>
+<p>Sets the LoRa pins and attempts to begin LoRa communication at a specified frequency. Emits a <a class="el" href="event__manager_8h.html#a0270a0464efae26aefb8cf32a45e20ada6651a96516b323db8bad9897081d76ed">CommsEvent::RADIO_INIT</a> event on success or a <a class="el" href="event__manager_8h.html#a0270a0464efae26aefb8cf32a45e20ada3b9824cc8a230f50d285d16795daa859">CommsEvent::RADIO_ERROR</a> event on failure. </p>
+
+<p class="definition">Definition at line <a class="el" href="communication_8cpp_source.html#l00017">17</a> of file <a class="el" href="communication_8cpp_source.html">communication.cpp</a>.</p>
+<div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="communication_8cpp_a520df448c1dc359f42111ac240081975_cgraph.svg" width="292" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="communication_8cpp_a520df448c1dc359f42111ac240081975_icgraph.svg" width="211" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -249,7 +275,7 @@ Variables</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_cc290362f203a1feeafe2c07392c392d.html">frame_model</a></li><li class="navelem"><a class="el" href="communication_8cpp.html">communication.cpp</a></li>
+    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_e552ec73e77e71738095e0b8c7e6e495.html">comms</a></li><li class="navelem"><a class="el" href="communication_8cpp.html">communication.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

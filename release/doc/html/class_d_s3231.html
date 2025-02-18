@@ -145,12 +145,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a902d42a635136368ad7987d7d6d84f19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a564eaf6a11ee0f1a8c8aad30cd49af6f" id="r_a564eaf6a11ee0f1a8c8aad30cd49af6f"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a564eaf6a11ee0f1a8c8aad30cd49af6f">getLastSyncTime</a> () const</td></tr>
 <tr class="separator:a564eaf6a11ee0f1a8c8aad30cd49af6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5dc268764fd4d0afe785aed25d97669e" id="r_a5dc268764fd4d0afe785aed25d97669e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5dc268764fd4d0afe785aed25d97669e">setClockDrift</a> (float ppmDrift)</td></tr>
-<tr class="separator:a5dc268764fd4d0afe785aed25d97669e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a546ac8331853889ebce90bda8edbb9d9" id="r_a546ac8331853889ebce90bda8edbb9d9"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a546ac8331853889ebce90bda8edbb9d9">getClockDrift</a> () const</td></tr>
-<tr class="separator:a546ac8331853889ebce90bda8edbb9d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8674f4e63775d5d5ea7e597d0f2ab2c9" id="r_a8674f4e63775d5d5ea7e597d0f2ab2c9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8674f4e63775d5d5ea7e597d0f2ab2c9">needsSync</a> ()</td></tr>
-<tr class="separator:a8674f4e63775d5d5ea7e597d0f2ab2c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -187,8 +181,6 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a1a30fcf3e2d4b9c4951129ac09c1ce4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab05e9cb92a0de071fc81a3d8e6488b73" id="r_ab05e9cb92a0de071fc81a3d8e6488b73"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab05e9cb92a0de071fc81a3d8e6488b73">lastSyncTime</a> = 0</td></tr>
 <tr class="separator:ab05e9cb92a0de071fc81a3d8e6488b73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d9b76de3a1a01b5b08464f23481c004" id="r_a1d9b76de3a1a01b5b08464f23481c004"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1d9b76de3a1a01b5b08464f23481c004">clockDrift</a> = 0.0f</td></tr>
-<tr class="separator:a1d9b76de3a1a01b5b08464f23481c004"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
@@ -268,6 +260,20 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00012">12</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
+<div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_a6ead725bcb29001cfbf4279f249d6983_cgraph.svg" width="304" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_a6ead725bcb29001cfbf4279f249d6983_icgraph.svg" width="332" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -316,6 +322,20 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00029">29</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
+<div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_aedd5fa550aa8b38fabe4d44d9ba5a0af_cgraph.svg" width="304" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-3" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_aedd5fa550aa8b38fabe4d44d9ba5a0af_icgraph.svg" width="340" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -335,6 +355,13 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00053">53</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
+<div id="dynsection-4" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_af7eb8bade221416e4035f1e7139b6154_cgraph.svg" width="510" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -354,6 +381,13 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00087">87</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
+<div id="dynsection-5" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_a569f69050349e21823276ef29ff07a76_cgraph.svg" width="550" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -373,6 +407,20 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00099">99</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
+<div id="dynsection-6" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_a93399e0145a53c558e316f6f95a20679_cgraph.svg" width="550" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-7" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_a93399e0145a53c558e316f6f95a20679_icgraph.svg" width="391" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -392,6 +440,20 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00104">104</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
+<div id="dynsection-8" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_aa19b08f3978eea489bc8af3a84d67e59_cgraph.svg" width="332" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-9" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_aa19b08f3978eea489bc8af3a84d67e59_icgraph.svg" width="622" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -411,6 +473,13 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00128">128</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
+<div id="dynsection-10" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_ac5680bedcb5cd48da26a4c0afcddb830_cgraph.svg" width="543" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -484,6 +553,13 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00165">165</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
+<div id="dynsection-11" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="class_d_s3231_ad95e3e60f1d82c37e7c03fac84249bc6_cgraph.svg" width="100%" height="366"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -503,6 +579,13 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00170">170</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
+<div id="dynsection-12" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_a4b893299918613d8fb3521793b848d6d_cgraph.svg" width="626" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -614,79 +697,6 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a5dc268764fd4d0afe785aed25d97669e" name="a5dc268764fd4d0afe785aed25d97669e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5dc268764fd4d0afe785aed25d97669e">&#9670;&#160;</a></span>setClockDrift()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void DS3231::setClockDrift </td>
-          <td>(</td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>ppmDrift</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00052">52</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
-
-</div>
-</div>
-<a id="a546ac8331853889ebce90bda8edbb9d9" name="a546ac8331853889ebce90bda8edbb9d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a546ac8331853889ebce90bda8edbb9d9">&#9670;&#160;</a></span>getClockDrift()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float DS3231::getClockDrift </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00053">53</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
-
-</div>
-</div>
-<a id="a8674f4e63775d5d5ea7e597d0f2ab2c9" name="a8674f4e63775d5d5ea7e597d0f2ab2c9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8674f4e63775d5d5ea7e597d0f2ab2c9">&#9670;&#160;</a></span>needsSync()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool DS3231::needsSync </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00180">180</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
-
-</div>
-</div>
 <a id="a389e756fdd8f645d6025906bbce5abd8" name="a389e756fdd8f645d6025906bbce5abd8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a389e756fdd8f645d6025906bbce5abd8">&#9670;&#160;</a></span>bcd2bin()</h2>
 
@@ -711,6 +721,13 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00072">72</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
+<div id="dynsection-13" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="class_d_s3231_a389e756fdd8f645d6025906bbce5abd8_icgraph.svg" width="100%" height="442"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -738,6 +755,13 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00076">76</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
+<div id="dynsection-14" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-14-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_a41f5aabf74e5a66093116999648806ab_icgraph.svg" width="502" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -765,6 +789,13 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00080">80</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
+<div id="dynsection-15" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-15-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-15-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_ada371a466a46dd550e6eded5217627b5_icgraph.svg" width="336" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -792,6 +823,13 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00138">138</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
+<div id="dynsection-16" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-16-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-16-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_ae6c4f2144a772c44f7adbace7f86dfa1_icgraph.svg" width="626" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -819,6 +857,13 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00149">149</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
+<div id="dynsection-17" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-17-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-17-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-17-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_a40a965b965496e5b0e7758040c5d9ce7_icgraph.svg" width="626" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -850,6 +895,20 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00175">175</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
+<div id="dynsection-18" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-18-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-18-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-18-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_accd8b405f5d30b7b26bb2ca4d84a8fa8_cgraph.svg" width="395" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-19" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-19-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-19-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-19-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_accd8b405f5d30b7b26bb2ca4d84a8fa8_icgraph.svg" width="406" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -901,7 +960,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00059">59</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00054">54</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
 
 </div>
 </div>
@@ -925,7 +984,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00060">60</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00055">55</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
 
 </div>
 </div>
@@ -949,7 +1008,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00061">61</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00056">56</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
 
 </div>
 </div>
@@ -973,7 +1032,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00063">63</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00058">58</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
 
 </div>
 </div>
@@ -997,7 +1056,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00064">64</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00059">59</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
 
 </div>
 </div>
@@ -1021,37 +1080,13 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00065">65</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
-
-</div>
-</div>
-<a id="a1d9b76de3a1a01b5b08464f23481c004" name="a1d9b76de3a1a01b5b08464f23481c004"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1d9b76de3a1a01b5b08464f23481c004">&#9670;&#160;</a></span>clockDrift</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float DS3231::clockDrift = 0.0f</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00066">66</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00060">60</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>lib/DS3231/<a class="el" href="_d_s3231_8h_source.html">DS3231.h</a></li>
-<li>lib/DS3231/<a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a></li>
+<li>lib/clock/<a class="el" href="_d_s3231_8h_source.html">DS3231.h</a></li>
+<li>lib/clock/<a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

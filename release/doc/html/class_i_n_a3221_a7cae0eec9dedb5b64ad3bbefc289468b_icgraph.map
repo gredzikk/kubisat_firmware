@@ -1,0 +1,11 @@
+<map id="INA3221::getShuntVoltage" name="INA3221::getShuntVoltage">
+<area shape="rect" id="Node000001" title=" " alt="" coords="303,81,478,108"/>
+<area shape="rect" id="Node000002" href="$class_i_n_a3221.html#ae9398b8af7ddf999150f8e97c44e6b7d" title=" " alt="" coords="59,5,201,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="341,77,254,47,200,34,202,28,255,41,343,72"/>
+<area shape="rect" id="Node000003" href="$class_i_n_a3221.html#a5bc9138cf05584012e3834275231cdb5" title=" " alt="" coords="46,56,214,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="287,87,215,80,215,75,287,82"/>
+<area shape="rect" id="Node000004" href="$class_i_n_a3221.html#a4d6fc129ecefc2b28187ffa0652a1127" title=" " alt="" coords="19,107,241,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="288,107,242,112,241,107,287,102"/>
+<area shape="rect" id="Node000005" href="$class_i_n_a3221.html#a8156d9fca27f9aadab3d99bec9925c44" title=" " alt="" coords="5,157,255,184"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="343,117,255,148,209,159,208,154,254,143,341,112"/>
+</map>

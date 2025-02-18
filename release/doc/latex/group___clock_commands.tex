@@ -1,0 +1,191 @@
+\doxysection{Clock Management Commands}
+\hypertarget{group___clock_commands}{}\label{group___clock_commands}\index{Clock Management Commands@{Clock Management Commands}}
+
+
+Commands for managing system time and clock settings.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{group___clock_commands_ga1eefb8c4d539d50c787b4db3f6ebb093}{handle\+Time}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
+\begin{DoxyCompactList}\small\item\em Handler for getting and setting system time. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{group___clock_commands_ga9378f580aefefb566c6f7d49975afeba}{handle\+Timezone\+Offset}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
+\begin{DoxyCompactList}\small\item\em Handler for getting and setting timezone offset. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{group___clock_commands_gad92a65bf7ca7a1c1ed7b29e5e9e75fa0}{handle\+Clock\+Sync\+Interval}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
+\begin{DoxyCompactList}\small\item\em Handler for getting and setting clock synchronization interval. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_frame}{Frame}} \mbox{\hyperlink{group___clock_commands_ga17274560343c34119630b27d88ef475e}{handle\+Get\+Last\+Sync\+Time}} (const std\+::string \&param, \mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} operation\+Type)
+\begin{DoxyCompactList}\small\item\em Handler for getting last clock sync time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_d_s3231}{DS3231}} \mbox{\hyperlink{group___clock_commands_gabfd573c8a839ac00ea3b96d691ea11c3}{system\+Clock}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Commands for managing system time and clock settings. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{group___clock_commands_ga1eefb8c4d539d50c787b4db3f6ebb093}\index{Clock Management Commands@{Clock Management Commands}!handleTime@{handleTime}}
+\index{handleTime@{handleTime}!Clock Management Commands@{Clock Management Commands}}
+\doxysubsubsection{\texorpdfstring{handleTime()}{handleTime()}}
+{\footnotesize\ttfamily \label{group___clock_commands_ga1eefb8c4d539d50c787b4db3f6ebb093} 
+\mbox{\hyperlink{struct_frame}{Frame}} handle\+Time (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{param}{, }\item[{\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}}]{operation\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Handler for getting and setting system time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em param} & For SET\+: Unix timestamp as string, for GET\+: empty string \\
+\hline
+{\em operation\+Type} & GET/\+SET \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_frame}{Frame} containing success/error and current time or confirmation
+\end{DoxyReturn}
+When getting time, returns format "{}\+HH\+:\+MM\+:\+SS Weekday DD.\+MM.\+YYYY"{}
+
+\begin{DoxyRefDesc}{Command}
+\item[\mbox{\hyperlink{command__command000001}{Command}}]Command ID\+: 3.\+0 \end{DoxyRefDesc}
+
+
+Definition at line \mbox{\hyperlink{clock__commands_8cpp_source_l00026}{26}} of file \mbox{\hyperlink{clock__commands_8cpp_source}{clock\+\_\+commands.\+cpp}}.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group___clock_commands_ga1eefb8c4d539d50c787b4db3f6ebb093_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{group___clock_commands_ga9378f580aefefb566c6f7d49975afeba}\index{Clock Management Commands@{Clock Management Commands}!handleTimezoneOffset@{handleTimezoneOffset}}
+\index{handleTimezoneOffset@{handleTimezoneOffset}!Clock Management Commands@{Clock Management Commands}}
+\doxysubsubsection{\texorpdfstring{handleTimezoneOffset()}{handleTimezoneOffset()}}
+{\footnotesize\ttfamily \label{group___clock_commands_ga9378f580aefefb566c6f7d49975afeba} 
+\mbox{\hyperlink{struct_frame}{Frame}} handle\+Timezone\+Offset (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{param}{, }\item[{\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}}]{operation\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Handler for getting and setting timezone offset. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em param} & For SET\+: Timezone offset in minutes (-\/720 to +720), for GET\+: empty string \\
+\hline
+{\em operation\+Type} & GET/\+SET \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_frame}{Frame} containing success/error and timezone offset in minutes 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+GET\+: {\bfseries{KBST;0;GET;3;1;;KBST}} 
+
+SET\+: {\bfseries{KBST;0;SET;3;1;OFFSET;KBST}}
+\end{DoxyNote}
+\begin{DoxyRefDesc}{Command}
+\item[\mbox{\hyperlink{command__command000002}{Command}}]Command ID\+: 3.\+1 \end{DoxyRefDesc}
+
+
+Definition at line \mbox{\hyperlink{clock__commands_8cpp_source_l00088}{88}} of file \mbox{\hyperlink{clock__commands_8cpp_source}{clock\+\_\+commands.\+cpp}}.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group___clock_commands_ga9378f580aefefb566c6f7d49975afeba_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{group___clock_commands_gad92a65bf7ca7a1c1ed7b29e5e9e75fa0}\index{Clock Management Commands@{Clock Management Commands}!handleClockSyncInterval@{handleClockSyncInterval}}
+\index{handleClockSyncInterval@{handleClockSyncInterval}!Clock Management Commands@{Clock Management Commands}}
+\doxysubsubsection{\texorpdfstring{handleClockSyncInterval()}{handleClockSyncInterval()}}
+{\footnotesize\ttfamily \label{group___clock_commands_gad92a65bf7ca7a1c1ed7b29e5e9e75fa0} 
+\mbox{\hyperlink{struct_frame}{Frame}} handle\+Clock\+Sync\+Interval (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{param}{, }\item[{\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}}]{operation\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Handler for getting and setting clock synchronization interval. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em param} & For SET\+: Sync interval in seconds, for GET\+: empty string \\
+\hline
+{\em operation\+Type} & GET/\+SET \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_frame}{Frame} containing success/error and sync interval in seconds 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+GET\+: {\bfseries{KBST;0;GET;3;3;;KBST}} 
+
+SET\+: {\bfseries{KBST;0;SET;3;3;INTERVAL;KBST}}
+\end{DoxyNote}
+\begin{DoxyRefDesc}{Command}
+\item[\mbox{\hyperlink{command__command000003}{Command}}]Command ID\+: 3.\+3 \end{DoxyRefDesc}
+
+
+Definition at line \mbox{\hyperlink{clock__commands_8cpp_source_l00130}{130}} of file \mbox{\hyperlink{clock__commands_8cpp_source}{clock\+\_\+commands.\+cpp}}.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group___clock_commands_gad92a65bf7ca7a1c1ed7b29e5e9e75fa0_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{group___clock_commands_ga17274560343c34119630b27d88ef475e}\index{Clock Management Commands@{Clock Management Commands}!handleGetLastSyncTime@{handleGetLastSyncTime}}
+\index{handleGetLastSyncTime@{handleGetLastSyncTime}!Clock Management Commands@{Clock Management Commands}}
+\doxysubsubsection{\texorpdfstring{handleGetLastSyncTime()}{handleGetLastSyncTime()}}
+{\footnotesize\ttfamily \label{group___clock_commands_ga17274560343c34119630b27d88ef475e} 
+\mbox{\hyperlink{struct_frame}{Frame}} handle\+Get\+Last\+Sync\+Time (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{param}{, }\item[{\mbox{\hyperlink{protocol_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}}]{operation\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Handler for getting last clock sync time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em param} & Empty string expected \\
+\hline
+{\em operation\+Type} & GET \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_frame}{Frame} containing success/error and last sync time as Unix timestamp 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+{\bfseries{KBST;0;GET;3;7;;KBST}}
+\end{DoxyNote}
+\begin{DoxyRefDesc}{Command}
+\item[\mbox{\hyperlink{command__command000004}{Command}}]Command ID\+: 3.\+7 \end{DoxyRefDesc}
+
+
+Definition at line \mbox{\hyperlink{clock__commands_8cpp_source_l00167}{167}} of file \mbox{\hyperlink{clock__commands_8cpp_source}{clock\+\_\+commands.\+cpp}}.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group___clock_commands_ga17274560343c34119630b27d88ef475e_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{group___clock_commands_gabfd573c8a839ac00ea3b96d691ea11c3}\index{Clock Management Commands@{Clock Management Commands}!systemClock@{systemClock}}
+\index{systemClock@{systemClock}!Clock Management Commands@{Clock Management Commands}}
+\doxysubsubsection{\texorpdfstring{systemClock}{systemClock}}
+{\footnotesize\ttfamily \label{group___clock_commands_gabfd573c8a839ac00ea3b96d691ea11c3} 
+\mbox{\hyperlink{class_d_s3231}{DS3231}} system\+Clock\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{clock__commands_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{clock__commands_8cpp_source}{clock\+\_\+commands.\+cpp}}.
+

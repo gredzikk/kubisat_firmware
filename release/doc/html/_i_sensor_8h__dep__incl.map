@@ -1,0 +1,30 @@
+<map id="lib/sensors/ISensor.h" name="lib/sensors/ISensor.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="378,5,523,32"/>
+<area shape="rect" id="Node000002" href="$includes_8h.html" title=" " alt="" coords="326,179,407,205"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="363,24,281,28,194,38,120,56,92,68,74,82,36,121,14,141,9,142,20,137,56,132,116,132,202,141,315,168,337,176,336,181,314,173,201,147,116,137,57,138,21,143,4,145,10,137,33,118,70,78,89,63,118,51,193,33,280,23,363,19"/>
+<area shape="rect" id="Node000004" href="$_b_h1750___w_r_a_p_p_e_r_8h.html" title=" " alt="" coords="279,80,438,123"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="427,44,384,82,380,77,423,40"/>
+<area shape="rect" id="Node000006" href="$_i_sensor_8cpp.html" title="Implements the SensorWrapper class for managing different sensor types." alt="" coords="647,179,806,205"/>
+<area shape="poly" id="edge15_Node000001_Node000006" title=" " alt="" coords="539,18,624,22,714,32,792,50,822,63,842,78,849,89,851,101,842,124,827,143,809,159,768,181,765,176,806,155,824,140,838,121,845,100,844,91,838,82,819,67,790,55,713,38,623,28,539,23"/>
+<area shape="rect" id="Node000007" href="$_b_m_e280___w_r_a_p_p_e_r_8h.html" title=" " alt="" coords="463,80,625,123"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="478,40,522,77,518,82,475,44"/>
+<area shape="rect" id="Node000009" href="$_h_m_c5883_l___w_r_a_p_p_e_r_8h.html" title=" " alt="" coords="649,80,828,123"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="511,34,665,77,663,82,509,39"/>
+<area shape="rect" id="Node000011" href="$_m_p_u6050___w_r_a_p_p_e_r_8h.html" title=" " alt="" coords="84,80,254,123"/>
+<area shape="poly" id="edge16_Node000001_Node000011" title=" " alt="" coords="393,39,243,82,241,77,391,34"/>
+<area shape="rect" id="Node000003" href="$main_8cpp.html" title=" " alt="" coords="329,261,404,288"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="369,221,369,261,364,261,364,221"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="364,138,368,178,363,178,359,138"/>
+<area shape="rect" id="Node000005" href="$_b_h1750___w_r_a_p_p_e_r_8cpp.html" title=" " alt="" coords="129,171,303,213"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="314,134,250,172,248,168,311,129"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="454,123,674,175,673,181,453,128"/>
+<area shape="poly" id="edge8_Node000007_Node000002" title=" " alt="" coords="490,132,393,180,391,176,488,128"/>
+<area shape="poly" id="edge10_Node000007_Node000006" title=" " alt="" coords="602,128,702,176,699,180,599,132"/>
+<area shape="rect" id="Node000008" href="$_b_m_e280___w_r_a_p_p_e_r_8cpp.html" title=" " alt="" coords="446,171,623,213"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="543,139,539,171,534,170,537,138"/>
+<area shape="poly" id="edge12_Node000009_Node000002" title=" " alt="" coords="635,127,435,173,408,181,406,176,434,168,633,122"/>
+<area shape="poly" id="edge14_Node000009_Node000006" title=" " alt="" coords="736,139,731,179,726,178,731,138"/>
+<area shape="rect" id="Node000010" href="$_h_m_c5883_l___w_r_a_p_p_e_r_8cpp.html" title=" " alt="" coords="830,171,1023,213"/>
+<area shape="poly" id="edge13_Node000009_Node000010" title=" " alt="" coords="797,127,884,168,882,173,795,132"/>
+<area shape="poly" id="edge17_Node000011_Node000002" title=" " alt="" coords="230,127,339,176,337,180,228,132"/>
+</map>

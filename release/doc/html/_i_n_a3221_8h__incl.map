@@ -1,0 +1,9 @@
+<map id="lib/powerman/INA3221/INA3221.h" name="lib/powerman/INA3221/INA3221.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="53,5,206,48"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,96,70,123"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,51,65,88,61,84,104,47"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="94,96,165,123"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="132,49,132,80,127,80,127,49"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="190,96,296,123"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="160,46,214,85,211,89,157,51"/>
+</map>

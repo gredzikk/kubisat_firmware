@@ -1,0 +1,7 @@
+<map id="LoRaClass::getSpreadingFactor" name="LoRaClass::getSpreadingFactor">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,213,32"/>
+<area shape="rect" id="Node000002" href="$class_lo_ra_class.html#add581bfe66dd75108e22b18a4d6f89bf" title=" " alt="" coords="261,5,429,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="213,16,245,16,245,21,213,21"/>
+<area shape="rect" id="Node000003" href="$class_lo_ra_class.html#a3a0c0649c595b1176b5fb1ae41210ee3" title=" " alt="" coords="477,5,653,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="429,16,461,16,461,21,429,21"/>
+</map>

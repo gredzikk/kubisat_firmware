@@ -2,30 +2,35 @@
 \hypertarget{class_event_log}{}\label{class_event_log}\index{EventLog@{EventLog}}
 
 
+Represents a single event log entry.  
+
+
+
+
 {\ttfamily \#include $<$event\+\_\+manager.\+h$>$}
 
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 std\+::string \mbox{\hyperlink{class_event_log_adb17c412276c8678289395607c493e7e}{to\+String}} () const
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Converts the \doxylink{class_event_log}{Event\+Log} to a string representation. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 uint16\+\_\+t \mbox{\hyperlink{class_event_log_a5e0923e12450e6b7c782c7f6630f4563}{id}}
-\item 
+\begin{DoxyCompactList}\small\item\em Sequence number. \end{DoxyCompactList}\item 
 uint32\+\_\+t \mbox{\hyperlink{class_event_log_aea248a425dedf15b5cee31ce2884db40}{timestamp}}
-\item 
+\begin{DoxyCompactList}\small\item\em Unix timestamp or system time. \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{class_event_log_a5209ffdb8dc4bf7f87f3ec44b2ae63e3}{group}}
-\item 
+\begin{DoxyCompactList}\small\item\em Event group identifier. \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{class_event_log_a4ba1b6d820bf66740aac49fd299f1ea2}{event}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Specific event identifier. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
+Represents a single event log entry. 
 
-
-Definition at line \mbox{\hyperlink{event__manager_8h_source_l00069}{69}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
+Definition at line \mbox{\hyperlink{event__manager_8h_source_l00073}{73}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
 
 
 
@@ -38,8 +43,22 @@ std\+::string Event\+Log\+::to\+String (\begin{DoxyParamCaption}{}{}\end{DoxyPar
 
 
 
-Definition at line \mbox{\hyperlink{event__manager_8h_source_l00076}{76}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
+Converts the \doxylink{class_event_log}{Event\+Log} to a string representation. 
 
+\begin{DoxyReturn}{Returns}
+A string representation of the \doxylink{class_event_log}{Event\+Log}. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{event__manager_8h_source_l00084}{84}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{class_event_log_adb17c412276c8678289395607c493e7e_icgraph}
+\end{center}
+\end{figure}
 
 
 \doxysubsection{Member Data Documentation}
@@ -51,7 +70,11 @@ uint16\+\_\+t Event\+Log\+::id}
 
 
 
-Definition at line \mbox{\hyperlink{event__manager_8h_source_l00071}{71}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
+Sequence number. 
+
+
+
+Definition at line \mbox{\hyperlink{event__manager_8h_source_l00075}{75}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
 
 \Hypertarget{class_event_log_aea248a425dedf15b5cee31ce2884db40}\index{EventLog@{EventLog}!timestamp@{timestamp}}
 \index{timestamp@{timestamp}!EventLog@{EventLog}}
@@ -61,7 +84,11 @@ uint32\+\_\+t Event\+Log\+::timestamp}
 
 
 
-Definition at line \mbox{\hyperlink{event__manager_8h_source_l00072}{72}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
+Unix timestamp or system time. 
+
+
+
+Definition at line \mbox{\hyperlink{event__manager_8h_source_l00076}{76}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
 
 \Hypertarget{class_event_log_a5209ffdb8dc4bf7f87f3ec44b2ae63e3}\index{EventLog@{EventLog}!group@{group}}
 \index{group@{group}!EventLog@{EventLog}}
@@ -71,7 +98,11 @@ uint8\+\_\+t Event\+Log\+::group}
 
 
 
-Definition at line \mbox{\hyperlink{event__manager_8h_source_l00073}{73}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
+Event group identifier. 
+
+
+
+Definition at line \mbox{\hyperlink{event__manager_8h_source_l00077}{77}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
 
 \Hypertarget{class_event_log_a4ba1b6d820bf66740aac49fd299f1ea2}\index{EventLog@{EventLog}!event@{event}}
 \index{event@{event}!EventLog@{EventLog}}
@@ -81,10 +112,14 @@ uint8\+\_\+t Event\+Log\+::event}
 
 
 
-Definition at line \mbox{\hyperlink{event__manager_8h_source_l00074}{74}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
+Specific event identifier. 
+
+
+
+Definition at line \mbox{\hyperlink{event__manager_8h_source_l00078}{78}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
 
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{event__manager_8h}{event\+\_\+manager.\+h}}\end{DoxyCompactItemize}
+lib/eventman/\mbox{\hyperlink{event__manager_8h}{event\+\_\+manager.\+h}}\end{DoxyCompactItemize}

@@ -1,11 +1,18 @@
-\doxysection{frame\+\_\+model/communication.cpp File Reference}
-\hypertarget{communication_8cpp}{}\label{communication_8cpp}\index{frame\_model/communication.cpp@{frame\_model/communication.cpp}}
+\doxysection{lib/comms/communication.cpp File Reference}
+\hypertarget{communication_8cpp}{}\label{communication_8cpp}\index{lib/comms/communication.cpp@{lib/comms/communication.cpp}}
 {\ttfamily \#include "{}communication.\+h"{}}\newline
+Include dependency graph for communication.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{communication_8cpp__incl}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 bool \mbox{\hyperlink{communication_8cpp_a520df448c1dc359f42111ac240081975}{initialize\+Radio}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Initializes the Lo\+Ra radio module. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -32,8 +39,29 @@ bool initialize\+Radio (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
 
-Definition at line \mbox{\hyperlink{communication_8cpp_source_l00010}{10}} of file \mbox{\hyperlink{communication_8cpp_source}{communication.\+cpp}}.
+Initializes the Lo\+Ra radio module. 
 
+\begin{DoxyReturn}{Returns}
+True if initialization was successful, false otherwise.
+\end{DoxyReturn}
+Sets the Lo\+Ra pins and attempts to begin Lo\+Ra communication at a specified frequency. Emits a \doxylink{event__manager_8h_a0270a0464efae26aefb8cf32a45e20ada6651a96516b323db8bad9897081d76ed}{Comms\+Event\+::\+RADIO\+\_\+\+INIT} event on success or a \doxylink{event__manager_8h_a0270a0464efae26aefb8cf32a45e20ada3b9824cc8a230f50d285d16795daa859}{Comms\+Event\+::\+RADIO\+\_\+\+ERROR} event on failure. 
+
+Definition at line \mbox{\hyperlink{communication_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{communication_8cpp_source}{communication.\+cpp}}.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=291pt]{communication_8cpp_a520df448c1dc359f42111ac240081975_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{communication_8cpp_a520df448c1dc359f42111ac240081975_icgraph}
+\end{center}
+\end{figure}
 
 
 \doxysubsection{Variable Documentation}

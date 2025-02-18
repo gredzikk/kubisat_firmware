@@ -1,0 +1,22 @@
+<map id="lib/sensors/HMC5883L/HMC5883L_WRAPPER.cpp" name="lib/sensors/HMC5883L/HMC5883L_WRAPPER.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="158,5,351,48"/>
+<area shape="rect" id="Node000002" href="$_h_m_c5883_l___w_r_a_p_p_e_r_8h.html" title=" " alt="" coords="27,96,202,123"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="220,51,151,90,148,86,217,46"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="226,96,283,123"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="257,49,257,80,252,80,252,49"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="308,96,364,123"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="277,47,314,83,311,87,274,51"/>
+<area shape="rect" id="Node000003" href="$_i_sensor_8h.html" title=" " alt="" coords="132,171,209,197"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="126,122,154,157,150,160,122,125"/>
+<area shape="rect" id="Node000008" href="$_h_m_c5883_l_8h.html" title=" " alt="" coords="9,171,108,197"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="107,125,79,160,75,157,103,122"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="136,245,197,272"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="172,198,171,230,165,230,167,198"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="5,245,112,272"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="152,200,92,239,89,234,150,196"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="221,245,267,272"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="185,196,222,232,218,236,181,200"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="290,245,344,272"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="197,195,279,236,277,240,195,200"/>
+<area shape="poly" id="edge8_Node000008_Node000005" title=" " alt="" coords="61,198,61,230,56,230,56,198"/>
+</map>

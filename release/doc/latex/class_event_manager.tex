@@ -2,54 +2,71 @@
 \hypertarget{class_event_manager}{}\label{class_event_manager}\index{EventManager@{EventManager}}
 
 
+Manages the event logging system.  
+
+
+
+
 {\ttfamily \#include $<$event\+\_\+manager.\+h$>$}
 
-Inheritance diagram for Event\+Manager\+:\begin{figure}[H]
+
+
+Inheritance diagram for Event\+Manager\+:\nopagebreak
+\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{class_event_manager}
+\includegraphics[width=178pt]{class_event_manager__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Event\+Manager\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=159pt]{class_event_manager__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_event_manager_a89099b22114f158b5c530edfea52371d}{Event\+Manager}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{class_event_manager}{Event\+Manager}. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{class_event_manager_ade6acde43327a4e792bb8256dd6350f0}{\texorpdfstring{$\sim$}{\string~}\+Event\+Manager}} ()=default
-\item 
+\begin{DoxyCompactList}\small\item\em Virtual destructor for the \doxylink{class_event_manager}{Event\+Manager}. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_event_manager_ab9c4d0fbfc9cf7743eac02bee6223728}{init}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Initializes the \doxylink{class_event_manager}{Event\+Manager}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_event_manager_ae73a56091dc8713bb86a11abb6742a14}{log\+Event}} (uint8\+\_\+t \mbox{\hyperlink{event__manager_8h_ad4291fcb880eb5ecb178b53e32f55741}{group}}, uint8\+\_\+t \mbox{\hyperlink{event__manager_8h_aeef6900f411bc223febdd92c9435693b}{event}})
-\item 
+\begin{DoxyCompactList}\small\item\em Logs an event. \end{DoxyCompactList}\item 
 const \mbox{\hyperlink{class_event_log}{Event\+Log}} \& \mbox{\hyperlink{class_event_manager_a00648cfe8c39fbd59cc4c593113e5573}{get\+Event}} (size\+\_\+t index) const
-\item 
+\begin{DoxyCompactList}\small\item\em Retrieves an event from the event buffer. \end{DoxyCompactList}\item 
 size\+\_\+t \mbox{\hyperlink{class_event_manager_abd8630355ef48f46c5286f232adb5993}{get\+Event\+Count}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Gets the number of events in the buffer. \end{DoxyCompactList}\item 
 virtual bool \mbox{\hyperlink{class_event_manager_ad369ac9b7ab0251070e0075745836a40}{save\+To\+Storage}} ()=0
-\item 
+\begin{DoxyCompactList}\small\item\em Saves the events to storage. \end{DoxyCompactList}\item 
 virtual bool \mbox{\hyperlink{class_event_manager_a6722258e4e3df939224d07786427afc9}{load\+From\+Storage}} ()=0
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Loads the events from storage. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_event_log}{Event\+Log}} \mbox{\hyperlink{class_event_manager_a9d82f66074e141f352bb852654673536}{events}} \mbox{[}\mbox{\hyperlink{event__manager_8h_acc4dda1aaabc9862fe79fd94e0b722bf}{EVENT\+\_\+\+BUFFER\+\_\+\+SIZE}}\mbox{]}
-\item 
+\begin{DoxyCompactList}\small\item\em Event buffer. \end{DoxyCompactList}\item 
 size\+\_\+t \mbox{\hyperlink{class_event_manager_ab74418c8064525f34692dff74dd28d82}{event\+Count}}
-\item 
+\begin{DoxyCompactList}\small\item\em Number of events in the buffer. \end{DoxyCompactList}\item 
 size\+\_\+t \mbox{\hyperlink{class_event_manager_ad97f788895da6e30b3237982a7bcd810}{write\+Index}}
-\item 
+\begin{DoxyCompactList}\small\item\em Index of the next event to be written. \end{DoxyCompactList}\item 
 mutex\+\_\+t \mbox{\hyperlink{class_event_manager_a970381a54ae432d262830ad74048c94e}{event\+Mutex}}
-\item 
+\begin{DoxyCompactList}\small\item\em Mutex for protecting the event buffer. \end{DoxyCompactList}\item 
 volatile uint16\+\_\+t \mbox{\hyperlink{class_event_manager_a31b1b079c272a1d7022ed84b01927186}{next\+Event\+Id}}
-\item 
+\begin{DoxyCompactList}\small\item\em Next event ID. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_event_manager_aed2eb3a8bc611f5594eb62304c7b4754}{needs\+Persistence}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Flag indicating whether the events need to be saved to storage. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
+Manages the event logging system. 
 
-
-Definition at line \mbox{\hyperlink{event__manager_8h_source_l00085}{85}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
+Definition at line \mbox{\hyperlink{event__manager_8h_source_l00098}{98}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
 
 
 
@@ -62,13 +79,21 @@ Event\+Manager\+::\+Event\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCa
 
 
 
-Definition at line \mbox{\hyperlink{event__manager_8h_source_l00087}{87}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
+Constructor for the \doxylink{class_event_manager}{Event\+Manager}. 
+
+Initializes the event buffer, mutex, and other internal variables. 
+
+Definition at line \mbox{\hyperlink{event__manager_8h_source_l00104}{104}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
 
 \Hypertarget{class_event_manager_ade6acde43327a4e792bb8256dd6350f0}\index{EventManager@{EventManager}!````~EventManager@{\texorpdfstring{$\sim$}{\string~}EventManager}}
 \index{````~EventManager@{\texorpdfstring{$\sim$}{\string~}EventManager}!EventManager@{EventManager}}
 \doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}EventManager()}{\string~EventManager()}}
 {\footnotesize\ttfamily \label{class_event_manager_ade6acde43327a4e792bb8256dd6350f0} 
 virtual Event\+Manager\+::\texorpdfstring{$\sim$}{\string~}\+Event\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+Virtual destructor for the \doxylink{class_event_manager}{Event\+Manager}. 
 
 
 
@@ -81,8 +106,26 @@ virtual void Event\+Manager\+::init (\begin{DoxyParamCaption}{}{}\end{DoxyParamC
 
 
 
-Definition at line \mbox{\hyperlink{event__manager_8h_source_l00099}{99}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
+Initializes the \doxylink{class_event_manager}{Event\+Manager}. 
 
+Loads events from storage. 
+
+Definition at line \mbox{\hyperlink{event__manager_8h_source_l00122}{122}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_event_manager_ab9c4d0fbfc9cf7743eac02bee6223728_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_event_manager_ab9c4d0fbfc9cf7743eac02bee6223728_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{class_event_manager_ae73a56091dc8713bb86a11abb6742a14}\index{EventManager@{EventManager}!logEvent@{logEvent}}
 \index{logEvent@{logEvent}!EventManager@{EventManager}}
 \doxysubsubsection{\texorpdfstring{logEvent()}{logEvent()}}
@@ -91,8 +134,32 @@ void Event\+Manager\+::log\+Event (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]
 
 
 
-Definition at line \mbox{\hyperlink{event__manager_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{event__manager_8cpp_source}{event\+\_\+manager.\+cpp}}.
+Logs an event. 
 
+Logs an event to the event buffer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em group} & The event group. \\
+\hline
+{\em event} & The event identifier.\\
+\hline
+{\em group} & The event group. \\
+\hline
+{\em event} & The event ID.\\
+\hline
+\end{DoxyParams}
+Logs the event with a timestamp, group, and event ID. Prints the event to the UART, and saves the event to storage if the buffer is full or if it\textquotesingle{}s a power-\/related event. 
+
+Definition at line \mbox{\hyperlink{event__manager_8cpp_source_l00080}{80}} of file \mbox{\hyperlink{event__manager_8cpp_source}{event\+\_\+manager.\+cpp}}.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_event_manager_ae73a56091dc8713bb86a11abb6742a14_cgraph}
+\end{center}
+\end{figure}
 \Hypertarget{class_event_manager_a00648cfe8c39fbd59cc4c593113e5573}\index{EventManager@{EventManager}!getEvent@{getEvent}}
 \index{getEvent@{getEvent}!EventManager@{EventManager}}
 \doxysubsubsection{\texorpdfstring{getEvent()}{getEvent()}}
@@ -101,7 +168,27 @@ const \mbox{\hyperlink{class_event_log}{Event\+Log}} \& Event\+Manager\+::get\+E
 
 
 
-Definition at line \mbox{\hyperlink{event__manager_8cpp_source_l00056}{56}} of file \mbox{\hyperlink{event__manager_8cpp_source}{event\+\_\+manager.\+cpp}}.
+Retrieves an event from the event buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The index of the event to retrieve. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A const reference to the \doxylink{class_event_log}{Event\+Log} at the specified index.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The index of the event to retrieve. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A const reference to the \doxylink{class_event_log}{Event\+Log} at the specified index. Returns an empty event if the index is out of bounds. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{event__manager_8cpp_source_l00114}{114}} of file \mbox{\hyperlink{event__manager_8cpp_source}{event\+\_\+manager.\+cpp}}.
 
 \Hypertarget{class_event_manager_abd8630355ef48f46c5286f232adb5993}\index{EventManager@{EventManager}!getEventCount@{getEventCount}}
 \index{getEventCount@{getEventCount}!EventManager@{EventManager}}
@@ -111,7 +198,14 @@ size\+\_\+t Event\+Manager\+::get\+Event\+Count (\begin{DoxyParamCaption}{}{}\en
 
 
 
-Definition at line \mbox{\hyperlink{event__manager_8h_source_l00105}{105}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
+Gets the number of events in the buffer. 
+
+\begin{DoxyReturn}{Returns}
+The number of events in the buffer. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{event__manager_8h_source_l00144}{144}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
 
 \Hypertarget{class_event_manager_ad369ac9b7ab0251070e0075745836a40}\index{EventManager@{EventManager}!saveToStorage@{saveToStorage}}
 \index{saveToStorage@{saveToStorage}!EventManager@{EventManager}}
@@ -121,8 +215,22 @@ virtual bool Event\+Manager\+::save\+To\+Storage (\begin{DoxyParamCaption}{}{}\e
 
 
 
+Saves the events to storage. 
+
+\begin{DoxyReturn}{Returns}
+True if the events were successfully saved, false otherwise. 
+\end{DoxyReturn}
+
+
 Implemented in \mbox{\hyperlink{class_event_manager_impl_a8bd15b8b1b4d2439740934f087d97f98}{Event\+Manager\+Impl}}.
 
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_event_manager_ad369ac9b7ab0251070e0075745836a40_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{class_event_manager_a6722258e4e3df939224d07786427afc9}\index{EventManager@{EventManager}!loadFromStorage@{loadFromStorage}}
 \index{loadFromStorage@{loadFromStorage}!EventManager@{EventManager}}
 \doxysubsubsection{\texorpdfstring{loadFromStorage()}{loadFromStorage()}}
@@ -131,8 +239,22 @@ virtual bool Event\+Manager\+::load\+From\+Storage (\begin{DoxyParamCaption}{}{}
 
 
 
+Loads the events from storage. 
+
+\begin{DoxyReturn}{Returns}
+True if the events were successfully loaded, false otherwise. 
+\end{DoxyReturn}
+
+
 Implemented in \mbox{\hyperlink{class_event_manager_impl_ada54a3fd8ad03891318e203ad0a82155}{Event\+Manager\+Impl}}.
 
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_event_manager_a6722258e4e3df939224d07786427afc9_icgraph}
+\end{center}
+\end{figure}
 
 
 \doxysubsection{Member Data Documentation}
@@ -144,7 +266,11 @@ Implemented in \mbox{\hyperlink{class_event_manager_impl_ada54a3fd8ad03891318e20
 
 
 
-Definition at line \mbox{\hyperlink{event__manager_8h_source_l00111}{111}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
+Event buffer. 
+
+
+
+Definition at line \mbox{\hyperlink{event__manager_8h_source_l00159}{159}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
 
 \Hypertarget{class_event_manager_ab74418c8064525f34692dff74dd28d82}\index{EventManager@{EventManager}!eventCount@{eventCount}}
 \index{eventCount@{eventCount}!EventManager@{EventManager}}
@@ -154,7 +280,11 @@ size\+\_\+t Event\+Manager\+::event\+Count\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{event__manager_8h_source_l00112}{112}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
+Number of events in the buffer. 
+
+
+
+Definition at line \mbox{\hyperlink{event__manager_8h_source_l00160}{160}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
 
 \Hypertarget{class_event_manager_ad97f788895da6e30b3237982a7bcd810}\index{EventManager@{EventManager}!writeIndex@{writeIndex}}
 \index{writeIndex@{writeIndex}!EventManager@{EventManager}}
@@ -164,7 +294,11 @@ size\+\_\+t Event\+Manager\+::write\+Index\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{event__manager_8h_source_l00113}{113}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
+Index of the next event to be written. 
+
+
+
+Definition at line \mbox{\hyperlink{event__manager_8h_source_l00161}{161}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
 
 \Hypertarget{class_event_manager_a970381a54ae432d262830ad74048c94e}\index{EventManager@{EventManager}!eventMutex@{eventMutex}}
 \index{eventMutex@{eventMutex}!EventManager@{EventManager}}
@@ -174,7 +308,11 @@ mutex\+\_\+t Event\+Manager\+::event\+Mutex\hspace{0.3cm}{\ttfamily [protected]}
 
 
 
-Definition at line \mbox{\hyperlink{event__manager_8h_source_l00114}{114}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
+Mutex for protecting the event buffer. 
+
+
+
+Definition at line \mbox{\hyperlink{event__manager_8h_source_l00162}{162}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
 
 \Hypertarget{class_event_manager_a31b1b079c272a1d7022ed84b01927186}\index{EventManager@{EventManager}!nextEventId@{nextEventId}}
 \index{nextEventId@{nextEventId}!EventManager@{EventManager}}
@@ -184,7 +322,11 @@ volatile uint16\+\_\+t Event\+Manager\+::next\+Event\+Id\hspace{0.3cm}{\ttfamily
 
 
 
-Definition at line \mbox{\hyperlink{event__manager_8h_source_l00115}{115}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
+Next event ID. 
+
+
+
+Definition at line \mbox{\hyperlink{event__manager_8h_source_l00163}{163}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
 
 \Hypertarget{class_event_manager_aed2eb3a8bc611f5594eb62304c7b4754}\index{EventManager@{EventManager}!needsPersistence@{needsPersistence}}
 \index{needsPersistence@{needsPersistence}!EventManager@{EventManager}}
@@ -194,11 +336,15 @@ bool Event\+Manager\+::needs\+Persistence\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{event__manager_8h_source_l00116}{116}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
+Flag indicating whether the events need to be saved to storage. 
+
+
+
+Definition at line \mbox{\hyperlink{event__manager_8h_source_l00164}{164}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
 
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{event__manager_8h}{event\+\_\+manager.\+h}}\item 
-\mbox{\hyperlink{event__manager_8cpp}{event\+\_\+manager.\+cpp}}\end{DoxyCompactItemize}
+lib/eventman/\mbox{\hyperlink{event__manager_8h}{event\+\_\+manager.\+h}}\item 
+lib/eventman/\mbox{\hyperlink{event__manager_8cpp}{event\+\_\+manager.\+cpp}}\end{DoxyCompactItemize}

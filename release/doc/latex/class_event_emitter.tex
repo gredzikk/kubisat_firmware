@@ -2,19 +2,24 @@
 \hypertarget{class_event_emitter}{}\label{class_event_emitter}\index{EventEmitter@{EventEmitter}}
 
 
+Provides a static method for emitting events.  
+
+
+
+
 {\ttfamily \#include $<$event\+\_\+manager.\+h$>$}
 
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 {\footnotesize template$<$typename T$>$ }\\static void \mbox{\hyperlink{class_event_emitter_a539d733505f9a793439a9cfc4f2af079}{emit}} (\mbox{\hyperlink{event__manager_8h_a87aefa0e7b725125ea1a741c80858aa7}{Event\+Group}} \mbox{\hyperlink{event__manager_8h_ad4291fcb880eb5ecb178b53e32f55741}{group}}, T \mbox{\hyperlink{event__manager_8h_aeef6900f411bc223febdd92c9435693b}{event}})
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Emits an event. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
+Provides a static method for emitting events. 
 
-
-Definition at line \mbox{\hyperlink{event__manager_8h_source_l00139}{139}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
+Definition at line \mbox{\hyperlink{event__manager_8h_source_l00214}{214}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
 
 
 
@@ -28,10 +33,33 @@ static void Event\+Emitter\+::emit (\begin{DoxyParamCaption}\item[{\mbox{\hyperl
 
 
 
-Definition at line \mbox{\hyperlink{event__manager_8h_source_l00142}{142}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
+Emits an event. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em group} & The event group. \\
+\hline
+{\em event} & The event identifier. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of the event identifier. \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line \mbox{\hyperlink{event__manager_8h_source_l00223}{223}} of file \mbox{\hyperlink{event__manager_8h_source}{event\+\_\+manager.\+h}}.
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_event_emitter_a539d733505f9a793439a9cfc4f2af079_icgraph}
+\end{center}
+\end{figure}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{event__manager_8h}{event\+\_\+manager.\+h}}\end{DoxyCompactItemize}
+lib/eventman/\mbox{\hyperlink{event__manager_8h}{event\+\_\+manager.\+h}}\end{DoxyCompactItemize}
