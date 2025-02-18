@@ -82,3 +82,111 @@ std::string DS3231::preZero(uint8_t val) {
     }
     return std::to_string(val);
 }
+
+bool DS3231::setTimeUnix(uint32_t unixTime) {
+    DateTime dt = unixToDateTime(unixTime);
+    uint8_t weekdayIndex = 0;
+    // Calculate weekday (0 = Sunday, 1 = Monday, etc.)
+    time_t t = unixTime;
+    struct tm* tmp = gmtime(&t);
+    weekdayIndex = tmp->tm_wday;
+    
+    return setTime(dt.second, dt.minute, dt.hour, 
+                  weekdayIndex, dt.day, dt.month, dt.year);
+}
+
+uint32_t DS3231::getTimeUnix() {
+    DateTime dt = getDateTime();
+    return dateTimeToUnix(dt);
+}
+
+DateTime DS3231::getDateTime() {
+    DateTime dt;
+    uint8_t buffer[7];
+    uint8_t reg = RTC_REGISTER;
+    
+    if (i2c_write_blocking(i2c, address, &reg, 1, true) != 1) {
+        return DateTime{0};
+    }
+    
+    if (i2c_read_blocking(i2c, address, buffer, sizeof(buffer), false) != sizeof(buffer)) {
+        return DateTime{0};
+    }
+
+    dt.second = bcd2bin(buffer[0]);
+    dt.minute = bcd2bin(buffer[1]);
+    dt.hour = bcd2bin(buffer[2]);
+    dt.weekday = WEEKDAYS[bcd2bin(buffer[3])];
+    dt.day = bcd2bin(buffer[4]);
+    dt.month = bcd2bin(buffer[5]);
+    dt.year = bcd2bin(buffer[6]) + 2000;
+    
+    return dt;
+}
+
+uint64_t DS3231::getTimeInteger() {
+    DateTime dt = getDateTime();
+    return static_cast<uint64_t>(dt.year) * 10000000000ULL +
+           static_cast<uint64_t>(dt.month) * 100000000ULL +
+           static_cast<uint64_t>(dt.day) * 1000000ULL +
+           static_cast<uint64_t>(dt.hour) * 10000ULL +
+           static_cast<uint64_t>(dt.minute) * 100ULL +
+           static_cast<uint64_t>(dt.second);
+}
+
+uint32_t DS3231::dateTimeToUnix(const DateTime& dt) {
+    struct tm timeinfo = {};
+    timeinfo.tm_year = dt.year - 1900;
+    timeinfo.tm_mon = dt.month - 1;
+    timeinfo.tm_mday = dt.day;
+    timeinfo.tm_hour = dt.hour;
+    timeinfo.tm_min = dt.minute;
+    timeinfo.tm_sec = dt.second;
+    return mktime(&timeinfo);
+}
+
+DateTime DS3231::unixToDateTime(uint32_t unixTime) {
+    DateTime dt;
+    time_t t = unixTime;
+    struct tm* tmp = gmtime(&t);
+    
+    dt.year = tmp->tm_year + 1900;
+    dt.month = tmp->tm_mon + 1;
+    dt.day = tmp->tm_mday;
+    dt.hour = tmp->tm_hour;
+    dt.minute = tmp->tm_min;
+    dt.second = tmp->tm_sec;
+    dt.weekday = WEEKDAYS[tmp->tm_wday];
+    
+    return dt;
+}
+
+uint32_t DS3231::getTimeUnixLocal() {
+    uint32_t utcTime = getTimeUnix();
+    return utcTime + (timezoneOffset * 60); // Convert minutes to seconds
+}
+
+DateTime DS3231::getDateTimeLocal() {
+    DateTime utc = getDateTime();
+    return applyTimezone(utc, timezoneOffset);
+}
+
+DateTime DS3231::applyTimezone(const DateTime& utc, int16_t offsetMinutes) {
+    time_t t = dateTimeToUnix(utc) + (offsetMinutes * 60);
+    return unixToDateTime(t);
+}
+
+bool DS3231::needsSync() {
+    uint32_t now = getTimeUnix();
+    
+    // Check if sync interval has passed
+    if (now - lastSyncTime >= syncInterval) {
+        return true;
+    }
+    
+    // Calculate drift since last sync
+    float driftSeconds = (now - lastSyncTime) * (clockDrift / 1000000.0f);
+    
+    // If drift is more than 1 second, sync is needed
+    return std::abs(driftSeconds) >= 1.0f;
+}

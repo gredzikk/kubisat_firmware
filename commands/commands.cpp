@@ -18,10 +18,17 @@ CommandMap commandHandlers = {
     {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(6)), handleGetCurrentChargeTotal},    // Group 2, Command 6
     {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(7)), handleGetCurrentDraw},           // Group 2, Command 7
     {((static_cast<uint32_t>(3) << 8) | static_cast<uint32_t>(0)), handleTime},                     // Group 3, Command 0
+    {((static_cast<uint32_t>(3) << 8) | static_cast<uint32_t>(1)), handleGetTimezoneOffset},        // Group 3, Command 1
+    {((static_cast<uint32_t>(3) << 8) | static_cast<uint32_t>(2)), handleSetTimezoneOffset},        // Group 3, Command 2
+    {((static_cast<uint32_t>(3) << 8) | static_cast<uint32_t>(3)), handleGetClockSyncInterval},     // Group 3, Command 3
+    {((static_cast<uint32_t>(3) << 8) | static_cast<uint32_t>(4)), handleSetClockSyncInterval},     // Group 3, Command 4
+    {((static_cast<uint32_t>(3) << 8) | static_cast<uint32_t>(5)), handleGetClockDrift},            // Group 3, Command 5
+    {((static_cast<uint32_t>(3) << 8) | static_cast<uint32_t>(6)), handleSetClockDrift},            // Group 3, Command 6
+    {((static_cast<uint32_t>(3) << 8) | static_cast<uint32_t>(7)), handleGetLastSyncTime},          // Group 3, Command 7
     {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(1)), handleGPSPowerStatus},           // Group 7, Command 1
     {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(2)), handleEnableGPSTransparentMode}, // Group 7, Command 3
-    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(3)), handleGetRMCData},     // Group 7, Command 3
-    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(4)), handleGetGGAData},     // Group 7, Command 4
+    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(3)), handleGetRMCData},               // Group 7, Command 3
+    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(4)), handleGetGGAData},               // Group 7, Command 4
 };
 
 

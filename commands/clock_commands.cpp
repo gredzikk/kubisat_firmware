@@ -55,3 +55,77 @@ Frame handleTime(const std::string& param, OperationType operationType) {
         return buildFrame(ExecutionResult::ERROR, 3, 0, "FAILED TO GET TIME");
     }
 }
+
+Frame handleGetTimezoneOffset(const std::string& param, OperationType operationType) {
+    if (operationType != OperationType::GET || !param.empty()) {
+        return buildFrame(ExecutionResult::ERROR, 3, 1, "INVALID REQUEST");
+    }
+    return buildFrame(ExecutionResult::SUCCESS, 3, 1, 
+                     std::to_string(systemClock.getTimezoneOffset()));
+}
+
+Frame handleSetTimezoneOffset(const std::string& param, OperationType operationType) {
+    if (operationType != OperationType::SET || param.empty()) {
+        return buildFrame(ExecutionResult::ERROR, 3, 2, "INVALID REQUEST");
+    }
+    try {
+        int16_t offset = std::stoi(param);
+        if (offset < -720 || offset > 720) { // ±12 hours in minutes
+            return buildFrame(ExecutionResult::ERROR, 3, 2, "INVALID OFFSET");
+        }
+        systemClock.setTimezoneOffset(offset);
+        return buildFrame(ExecutionResult::SUCCESS, 3, 2, param);
+    } catch (...) {
+        return buildFrame(ExecutionResult::ERROR, 3, 2, "INVALID PARAMETER");
+    }
+}
+
+Frame handleGetClockSyncInterval(const std::string& param, OperationType operationType) {
+    if (operationType != OperationType::GET || !param.empty()) {
+        return buildFrame(ExecutionResult::ERROR, 3, 3, "INVALID REQUEST");
+    }
+    return buildFrame(ExecutionResult::SUCCESS, 3, 3, 
+                     std::to_string(systemClock.getClockSyncInterval()));
+}
+
+Frame handleSetClockSyncInterval(const std::string& param, OperationType operationType) {
+    if (operationType != OperationType::SET || param.empty()) {
+        return buildFrame(ExecutionResult::ERROR, 3, 4, "INVALID REQUEST");
+    }
+    try {
+        uint32_t interval = std::stoul(param);
+        systemClock.setClockSyncInterval(interval);
+        return buildFrame(ExecutionResult::SUCCESS, 3, 4, param);
+    } catch (...) {
+        return buildFrame(ExecutionResult::ERROR, 3, 4, "INVALID PARAMETER");
+    }
+}
+
+Frame handleGetClockDrift(const std::string& param, OperationType operationType) {
+    if (operationType != OperationType::GET || !param.empty()) {
+        return buildFrame(ExecutionResult::ERROR, 3, 5, "INVALID REQUEST");
+    }
+    return buildFrame(ExecutionResult::SUCCESS, 3, 5, 
+                     std::to_string(systemClock.getClockDrift()));
+}
+
+Frame handleSetClockDrift(const std::string& param, OperationType operationType) {
+    if (operationType != OperationType::SET || param.empty()) {
+        return buildFrame(ExecutionResult::ERROR, 3, 6, "INVALID REQUEST");
+    }
+    try {
+        float drift = std::stof(param);
+        systemClock.setClockDrift(drift);
+        return buildFrame(ExecutionResult::SUCCESS, 3, 6, param);
+    } catch (...) {
+        return buildFrame(ExecutionResult::ERROR, 3, 6, "INVALID PARAMETER");
+    }
+}
+
+Frame handleGetLastSyncTime(const std::string& param, OperationType operationType) {
+    if (operationType != OperationType::GET || !param.empty()) {
+        return buildFrame(ExecutionResult::ERROR, 3, 7, "INVALID REQUEST");
+    }
+    return buildFrame(ExecutionResult::SUCCESS, 3, 7, 
+                     std::to_string(systemClock.getLastSyncTime()));
+}
