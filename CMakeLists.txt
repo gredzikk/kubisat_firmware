@@ -104,7 +104,7 @@ target_compile_options(main PRIVATE
         -Wno-error  # Disable treating warnings as errors
     )
 
-pico_enable_filesystem(${CMAKE_PROJECT_NAME})
+pico_enable_filesystem(${CMAKE_PROJECT_NAME} FS_INIT storage.cpp)
 
 pico_set_program_name(main "kubisat_firmware")
 pico_set_program_version(main "0.1")
@@ -127,6 +127,13 @@ target_link_libraries(main PRIVATE
     MPU6050_lib   
     PowerManager_lib
     pico_multicore
+    blockdevice_flash
+    blockdevice_heap
+    blockdevice_loopback
+    blockdevice_sd
+    filesystem_fat
+    filesystem_littlefs
+    filesystem_vfs
 )
 
 target_include_directories(main PRIVATE
@@ -136,7 +143,10 @@ target_include_directories(main PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/frame_model
     ${CMAKE_CURRENT_SOURCE_DIR}/lib/GPS
     ${CMAKE_CURRENT_SOURCE_DIR}/lib/GPS/NMEA
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/pico-vfs/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/pico-vfs/vendor/littlefs  # Add this
 )
+
 pico_add_extra_outputs(main)
 
 add_custom_command(
