@@ -11,9 +11,14 @@ if(DOXYGEN_FOUND)
 
     # Convert input directories list to Doxygen format
     string(REPLACE ";" " " DOXYGEN_INPUT_DIRS 
-        "${CMAKE_CURRENT_SOURCE_DIR}/commands \
+        "${CMAKE_CURRENT_SOURCE_DIR}/lib/comms \
          ${CMAKE_CURRENT_SOURCE_DIR}/lib \
-         ${CMAKE_CURRENT_SOURCE_DIR}/src \
+         ${CMAKE_CURRENT_SOURCE_DIR}/lib/powerman \
+         ${CMAKE_CURRENT_SOURCE_DIR}/lib/storage \
+         ${CMAKE_CURRENT_SOURCE_DIR}/lib/sensors \
+         ${CMAKE_CURRENT_SOURCE_DIR}/lib/eventman \
+         ${CMAKE_CURRENT_SOURCE_DIR}/lib/clock \
+         ${CMAKE_CURRENT_SOURCE_DIR}/lib/location \
          ${CMAKE_CURRENT_SOURCE_DIR}")
 
     # Convert exclude patterns to Doxygen format

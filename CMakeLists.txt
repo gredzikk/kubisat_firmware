@@ -120,8 +120,8 @@ add_custom_command(
     COMMAND ${CMAKE_COMMAND}
         -DLANGUAGE:STRING="C"
         -DHEADER_DIR:PATH="${CMAKE_SOURCE_DIR}"
-        -DCACHE_DIR:PATH="${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}"
-        -P "${CMAKE_CURRENT_SOURCE_DIR}/build_number.cmake"
+        -DCACHE_DIR:PATH="${CMAKE_SOURCE_DIR}/cmake"
+        -P "${CMAKE_SOURCE_DIR}/cmake/build_number.cmake"
 )
 
 # Release artifacts

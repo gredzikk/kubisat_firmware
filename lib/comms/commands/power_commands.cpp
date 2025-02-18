@@ -14,7 +14,8 @@
  * @return Frame containing:
  *         - Success: String of Power Manager IDs
  *         - Error: Error message
- * @note KBST;0;GET;2;0;;TSBK
+ * @note <b>KBST;0;GET;2;0;;TSBK</b>
+ * @note This command is used to retrieve the IDs of the Power Manager
  * @ingroup PowerCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 2.0
  */
@@ -40,7 +41,8 @@ Frame handleGetPowerManagerIDs(const std::string& param, OperationType operation
  * @return Frame containing:
  *         - Success: Battery voltage in Volts
  *         - Error: Error message
- * @note KBST;0;GET;2;2;;TSBK
+ * @note <b>KBST;0;GET;2;2;;TSBK</b>
+ * @note This command is used to retrieve the battery voltage
  * @ingroup PowerCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 2.2
  */
@@ -68,7 +70,8 @@ Frame handleGetVoltageBattery(const std::string& param, OperationType operationT
  * @return Frame containing:
  *         - Success: 5V rail voltage in Volts
  *         - Error: Error message
- * @note KBST;0;GET;2;3;;TSBK
+ * @note <b>KBST;0;GET;2;3;;TSBK</b>
+ * @note This command is used to retrieve the 5V rail voltage
  * @ingroup PowerCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 2.3
  */
@@ -96,7 +99,8 @@ Frame handleGetVoltage5V(const std::string& param, OperationType operationType) 
  * @return Frame containing:
  *         - Success: USB charge current in milliamps
  *         - Error: Error message
- * @note KBST;0;GET;2;4;;TSBK
+ * @note <b>KBST;0;GET;2;4;;TSBK</b>
+ * @note This command is used to retrieve the USB charge current
  * @ingroup PowerCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 2.4
  */
@@ -124,7 +128,8 @@ Frame handleGetCurrentChargeUSB(const std::string& param, OperationType operatio
  * @return Frame containing:
  *         - Success: Solar charge current in milliamps
  *         - Error: Error message
- * @note KBST;0;GET;2;5;;TSBK
+ * @note <b>KBST;0;GET;2;5;;TSBK</b>
+ * @note This command is used to retrieve the solar panel charge current
  * @ingroup PowerCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 2.5
  */
@@ -152,7 +157,8 @@ Frame handleGetCurrentChargeSolar(const std::string& param, OperationType operat
  * @return Frame containing:
  *         - Success: Total charge current (USB + Solar) in milliamps
  *         - Error: Error message
- * @note KBST;0;GET;2;6;;TSBK
+ * @note <b>KBST;0;GET;2;6;;TSBK</b>
+ * @note This command is used to retrieve the total charge current
  * @ingroup PowerCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 2.6
  */
@@ -180,7 +186,8 @@ Frame handleGetCurrentChargeTotal(const std::string& param, OperationType operat
  * @return Frame containing:
  *         - Success: System current consumption in milliamps
  *         - Error: Error message
- * @note KBST;0;GET;2;7;;TSBK
+ * @note <b>KBST;0;GET;2;7;;TSBK</b>
+ * @note This command is used to retrieve the system current draw
  * @ingroup PowerCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 2.7
  */
