@@ -1,5 +1,5 @@
 <map id="SensorWrapper::SensorWrapper" name="SensorWrapper::SensorWrapper">
-<area shape="rect" id="Node000001" title="Default constructor for SensorWrapper." alt="" coords="240,5,447,32"/>
-<area shape="rect" id="Node000002" href="$class_sensor_wrapper.html#adac086bdfb57168899df56fc431c5f41" title="Provides a global instance of SensorWrapper." alt="" coords="5,5,192,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="224,21,192,21,192,16,224,16"/>
+<area shape="rect" id="Node000001" title="Default constructor for SensorWrapper." alt="" coords="190,13,397,40"/>
+<area shape="rect" id="Node000002" href="$class_sensor_wrapper.html#a915dcb3ade11776f3cbf4638313e92d1" title="Provides a global instance of SensorWrapper." alt="" coords="5,5,142,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="174,29,142,29,142,24,174,24"/>
 </map>

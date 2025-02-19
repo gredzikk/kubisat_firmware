@@ -1,0 +1,32 @@
+<map id="send_message" name="send_message">
+<area shape="rect" id="Node000001" title="Sends a message using LoRa." alt="" coords="885,199,994,225"/>
+<area shape="rect" id="Node000002" href="$send_8cpp.html#ae6c6f3b673e7e83306da7ea2458d3241" title="Sends a Frame using LoRa." alt="" coords="748,199,837,225"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="869,215,838,215,838,209,869,209"/>
+<area shape="rect" id="Node000003" href="$frame_8cpp.html#a0b3438ff642c0934321101e1f0b8d82d" title="Converts a string into a Frame instance." alt="" coords="547,85,651,112"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="754,193,622,115,625,110,756,188"/>
+<area shape="rect" id="Node000004" href="$frame_8cpp.html#a8b9c5fd031b899c6c7867adcde4ac11f" title="Executes a command based on the command key and the parameter." alt="" coords="308,5,416,32"/>
+<area shape="poly" id="edge12_Node000002_Node000004" title=" " alt="" coords="778,185,748,128,726,99,698,76,664,57,628,43,551,25,478,18,416,17,416,12,478,12,552,19,629,37,667,52,701,71,730,95,753,125,783,183"/>
+<area shape="rect" id="Node000006" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,117,55,144"/>
+<area shape="poly" id="edge16_Node000002_Node000006" title=" " alt="" coords="732,213,459,196,281,178,102,152,54,140,56,135,103,147,282,173,459,190,732,207"/>
+<area shape="rect" id="Node000011" href="$group___diagnostic_commands.html#ga3ab5723218b68d3ac5cd864e00ed157a" title="Reboot system to USB firmware loader." alt="" coords="498,224,700,251"/>
+<area shape="poly" id="edge13_Node000002_Node000011" title=" " alt="" coords="733,222,701,227,700,221,732,217"/>
+<area shape="rect" id="Node000012" href="$main_8cpp.html#a8fa5379b5bec497b881cec19f2b38779" title=" " alt="" coords="314,263,410,289"/>
+<area shape="poly" id="edge14_Node000002_Node000012" title=" " alt="" coords="761,236,733,253,700,265,622,281,542,287,469,287,410,284,410,278,469,282,542,282,621,275,699,260,730,248,758,232"/>
+<area shape="rect" id="Node000013" href="$frame_8cpp.html#af49224563adb4bf0b91daa5ab78120ca" title="Sends the event register value to the ground station." alt="" coords="555,325,643,352"/>
+<area shape="poly" id="edge17_Node000002_Node000013" title=" " alt="" coords="774,240,742,275,701,309,673,323,644,332,643,327,671,318,698,304,739,272,770,236"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="547,82,449,47,413,35,415,30,451,41,549,77"/>
+<area shape="rect" id="Node000008" href="$test__frame__coding_8cpp.html#a75deef6947cf7117a58214b4298ecec9" title=" " alt="" coords="277,56,447,83"/>
+<area shape="poly" id="edge8_Node000003_Node000008" title=" " alt="" coords="531,93,447,83,448,77,532,88"/>
+<area shape="rect" id="Node000010" href="$test__frame__coding_8cpp.html#a054000b3d2c0abb2e13b9109ae0969ef" title=" " alt="" coords="274,107,450,149"/>
+<area shape="poly" id="edge10_Node000003_Node000010" title=" " alt="" coords="532,110,451,120,450,114,531,104"/>
+<area shape="rect" id="Node000005" href="$receive_8cpp.html#a14ffba44d46e00b23bd72bdb3a4d58d1" title="Handles UART input." alt="" coords="103,7,226,33"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="293,22,226,22,226,17,293,16"/>
+<area shape="rect" id="Node000007" href="$receive_8cpp.html#a3f494105dee3a08e1244febc81982517" title="Callback function for handling received LoRa packets." alt="" coords="122,59,206,85"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="296,39,208,63,206,58,295,34"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="113,43,104,49,68,84,42,119,38,115,64,81,101,45,110,39"/>
+<area shape="poly" id="edge7_Node000007_Node000006" title=" " alt="" coords="119,94,104,101,56,122,54,118,102,96,117,90"/>
+<area shape="rect" id="Node000009" href="$test__runner_8cpp.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="140,111,189,137"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="297,90,190,120,189,115,296,85"/>
+<area shape="poly" id="edge11_Node000010_Node000009" title=" " alt="" coords="258,129,189,127,189,122,258,123"/>
+<area shape="poly" id="edge15_Node000012_Node000006" title=" " alt="" coords="298,271,203,250,150,232,101,208,65,177,39,146,43,143,68,173,104,203,152,227,204,245,300,266"/>
+</map>

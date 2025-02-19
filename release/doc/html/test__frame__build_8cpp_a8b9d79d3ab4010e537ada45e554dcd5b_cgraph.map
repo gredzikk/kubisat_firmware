@@ -1,0 +1,7 @@
+<map id="test_frame_build_success" name="test_frame_build_success">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,13,179,40"/>
+<area shape="rect" id="Node000002" href="$frame_8cpp.html#a29170691faa10727d607a73861cacbeb" title="Builds a Frame instance." alt="" coords="227,13,315,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="179,24,211,24,211,29,179,29"/>
+<area shape="rect" id="Node000003" href="$utils__converters_8cpp.html#a29531ed9ad98ab78384a8a2f37f4e77d" title="Converts a ValueUnit to a string." alt="" coords="363,5,493,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="316,24,348,24,348,29,316,29"/>
+</map>

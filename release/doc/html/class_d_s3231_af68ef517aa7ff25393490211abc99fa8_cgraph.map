@@ -1,0 +1,11 @@
+<map id="DS3231::set_time" name="DS3231::set_time">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,81,132,108"/>
+<area shape="rect" id="Node000002" href="$class_d_s3231.html#aa8ad05d783b0b67f10e8726863ff4891" title="Library function that takes an 8 bit unsigned integer and converts into Binary Coded Decimal number t..." alt="" coords="187,5,326,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,78,179,42,196,35,198,40,181,46,99,83"/>
+<area shape="rect" id="Node000003" href="$class_d_s3231.html#ae3895581e62c411451d12de3e7558207" title="Library function to read a specific I2C register adress." alt="" coords="181,56,332,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="132,84,166,79,166,84,132,89"/>
+<area shape="rect" id="Node000004" href="$class_d_s3231.html#a2fa69b2c58e800b2a06e4966ca21b59c" title="Library function to write to a specific I2C register adress." alt="" coords="180,107,333,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="132,101,165,105,164,110,132,106"/>
+<area shape="rect" id="Node000005" href="$utils_8cpp.html#acd86977d05fa330749958ace0f2798de" title="Prints a message to the UART with a timestamp and core number." alt="" coords="219,157,294,184"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="99,106,181,143,205,152,203,157,179,148,97,111"/>
+</map>

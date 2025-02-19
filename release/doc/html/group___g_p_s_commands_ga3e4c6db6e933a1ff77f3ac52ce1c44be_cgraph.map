@@ -1,0 +1,11 @@
+<map id="handle_enable_gps_uart_passthrough" name="handle_enable_gps_uart_passthrough">
+<area shape="rect" id="Node000001" title="Handler for enabling GPS transparent mode (UART pass&#45;through)" alt="" coords="5,48,167,91"/>
+<area shape="rect" id="Node000002" href="$class_event_emitter.html#a539d733505f9a793439a9cfc4f2af079" title="Emits an event." alt="" coords="215,5,345,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="167,46,211,34,212,39,168,51"/>
+<area shape="rect" id="Node000003" href="$frame_8cpp.html#a29170691faa10727d607a73861cacbeb" title="Builds a Frame instance." alt="" coords="236,56,324,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="167,67,220,67,220,72,167,72"/>
+<area shape="rect" id="Node000005" href="$utils_8cpp.html#acd86977d05fa330749958ace0f2798de" title="Prints a message to the UART with a timestamp and core number." alt="" coords="242,107,318,133"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="168,88,228,104,226,109,167,93"/>
+<area shape="rect" id="Node000004" href="$utils__converters_8cpp.html#a29531ed9ad98ab78384a8a2f37f4e77d" title="Converts a ValueUnit to a string." alt="" coords="393,48,523,91"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="325,67,377,67,377,72,325,72"/>
+</map>

@@ -1,28 +1,50 @@
+// test_runner.cpp
 #include "unity.h"
-#include <stdio.h>
 #include "pico/stdlib.h"
-#include "hardware/spi.h"
-#include "hardware/i2c.h"
 #include "hardware/uart.h"
 
-extern void test_example(void);
-
-void setUp(void) {}
-void tearDown(void) {}
+// External test function declarations
+extern void test_frame_encode_basic(void);
+extern void test_frame_decode_basic(void);
+extern void test_frame_decode_invalid_header(void);
+extern void test_frame_build_success(void);
+extern void test_frame_build_error(void);
+extern void test_frame_build_info(void);
+extern void test_operation_type_conversion(void);
+extern void test_value_unit_type_conversion(void);
+extern void test_exception_type_conversion(void);
+extern void test_hex_string_conversion(void);
 
 int main(void) {
-    stdio_init_all(); // Initialize stdio
+    stdio_init_all();
     uart_init(uart0, 115200);
-    gpio_set_function(0, UART_FUNCSEL_NUM(DEBUG_UART_PORT, 0));
-    gpio_set_function(1, UART_FUNCSEL_NUM(DEBUG_UART_PORT, 1));
+    gpio_set_function(0, GPIO_FUNC_UART);
+    gpio_set_function(1, GPIO_FUNC_UART);
 
-    uart_puts(uart0, "Starting tests...\n");
     UNITY_BEGIN();
+    uart_puts(uart0, "begin unity tests\n");
+    
+    // Frame codec tests
+    uart_puts(uart0, "begin frame codec tests\n");
+    RUN_TEST(test_frame_encode_basic);
+    RUN_TEST(test_frame_decode_basic);
+    RUN_TEST(test_frame_decode_invalid_header);
+    uart_puts(uart0, "end frame codec tests\n");
+ 
+    // Frame build tests
+    uart_puts(uart0, "begin frame build tests\n");
+    RUN_TEST(test_frame_build_success);
+    RUN_TEST(test_frame_build_error);
+    RUN_TEST(test_frame_build_info);
+    uart_puts(uart0, "end frame build tests\n");
+    
+    // Converter tests
+    uart_puts(uart0, "begin converter tests\n");
+    RUN_TEST(test_operation_type_conversion);
+    RUN_TEST(test_value_unit_type_conversion);
+    RUN_TEST(test_exception_type_conversion);
+    RUN_TEST(test_hex_string_conversion);
+    uart_puts(uart0, "end converter tests\n");
 
-    uart_puts(uart0, "Running test_example...\n");
-    RUN_TEST(test_example);
-    uart_puts(uart0, "test_example complete.\n");
-
-    uart_puts(uart0, "Tests complete.\n");
     return UNITY_END();
 }

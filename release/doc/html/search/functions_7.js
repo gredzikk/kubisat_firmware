@@ -19,10 +19,11 @@ var searchData=
   ['get_5fshunt_5fvoltage_16',['get_shunt_voltage',['../class_i_n_a3221.html#ad3efd805c34a44d72cd72d9b9fd1ee15',1,'INA3221']]],
   ['get_5ftime_17',['get_time',['../class_d_s3231.html#ad5a93c1afc0e44f96e08ce99258c5228',1,'DS3231']]],
   ['get_5ftype_18',['get_type',['../class_b_h1750_wrapper.html#a2b08ef514e8a5e0ad7d16e425492f136',1,'BH1750Wrapper::get_type()'],['../class_b_m_e280_wrapper.html#a7e58fc23e849c53ea83e05de73d35668',1,'BME280Wrapper::get_type()'],['../class_h_m_c5883_l_wrapper.html#a9be1b3abf26bb59943767ea271315f42',1,'HMC5883LWrapper::get_type()'],['../class_i_sensor.html#a9f49291a82b00d50ae215eeda8b74d94',1,'ISensor::get_type()'],['../class_m_p_u6050_wrapper.html#a32a311d3813ffb7f9e73d08523aa0284',1,'MPU6050Wrapper::get_type()']]],
-  ['get_5fvoltage_19',['get_voltage',['../class_i_n_a3221.html#a7cd8cfc6d59f9b85fe1e33f10be222c6',1,'INA3221']]],
-  ['get_5fvoltage_5f5v_20',['get_voltage_5v',['../class_power_manager.html#a746a5447e25915240923157db1c6faf6',1,'PowerManager']]],
-  ['get_5fvoltage_5fbattery_21',['get_voltage_battery',['../class_power_manager.html#aaa04cde3f4961b49234e5a12dcb1a202',1,'PowerManager']]],
-  ['getsignalbandwidth_22',['getSignalBandwidth',['../class_lo_ra_class.html#a810b0f66f8589f7bcbbe08ce80f41959',1,'LoRaClass']]],
-  ['getspreadingfactor_23',['getSpreadingFactor',['../class_lo_ra_class.html#aa1b8dc4023526ec67c852555e6ed2593',1,'LoRaClass']]],
-  ['getwriteerror_24',['getWriteError',['../class_print.html#a88a4a829fb5d589efb43955ad0cbddcc',1,'Print']]]
+  ['get_5funix_5ftime_19',['get_unix_time',['../class_d_s3231.html#a2de3663610d5d17f9b6e6354b72cc1b4',1,'DS3231']]],
+  ['get_5fvoltage_20',['get_voltage',['../class_i_n_a3221.html#a7cd8cfc6d59f9b85fe1e33f10be222c6',1,'INA3221']]],
+  ['get_5fvoltage_5f5v_21',['get_voltage_5v',['../class_power_manager.html#a746a5447e25915240923157db1c6faf6',1,'PowerManager']]],
+  ['get_5fvoltage_5fbattery_22',['get_voltage_battery',['../class_power_manager.html#aaa04cde3f4961b49234e5a12dcb1a202',1,'PowerManager']]],
+  ['getsignalbandwidth_23',['getSignalBandwidth',['../class_lo_ra_class.html#a810b0f66f8589f7bcbbe08ce80f41959',1,'LoRaClass']]],
+  ['getspreadingfactor_24',['getSpreadingFactor',['../class_lo_ra_class.html#aa1b8dc4023526ec67c852555e6ed2593',1,'LoRaClass']]],
+  ['getwriteerror_25',['getWriteError',['../class_print.html#a88a4a829fb5d589efb43955ad0cbddcc',1,'Print']]]
 ];

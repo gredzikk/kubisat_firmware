@@ -1,0 +1,58 @@
+<map id="main" name="main">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,253,55,280"/>
+<area shape="rect" id="Node000002" href="$test__converters_8cpp.html#a39614a5168c66582048a91039771d903" title=" " alt="" coords="124,5,262,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="30,253,35,217,47,167,68,113,83,88,101,65,112,55,115,59,105,68,87,91,73,116,52,168,40,218,35,254"/>
+<area shape="rect" id="Node000004" href="$test__frame__build_8cpp.html#a6293acd10886f2f4dfd46c0f9b4d3bb9" title=" " alt="" coords="339,72,489,99"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="31,252,38,224,51,188,72,151,101,121,127,105,154,93,212,78,270,72,324,72,324,77,270,77,213,83,156,98,129,110,104,125,76,154,56,190,43,225,36,253"/>
+<area shape="rect" id="Node000007" href="$test__frame__build_8cpp.html#a9fb40fc4c0a9cb36690dd62d5f497c22" title=" " alt="" coords="342,123,487,149"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="34,252,57,205,76,179,101,159,156,136,215,123,273,119,326,121,326,127,273,125,215,129,158,141,104,164,80,183,62,207,39,254"/>
+<area shape="rect" id="Node000008" href="$test__frame__build_8cpp.html#a8b9d79d3ab4010e537ada45e554dcd5b" title=" " alt="" coords="106,173,280,200"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="48,250,101,216,131,203,133,208,104,221,51,255"/>
+<area shape="rect" id="Node000009" href="$test__frame__coding_8cpp.html#a75deef6947cf7117a58214b4298ecec9" title=" " alt="" coords="108,396,278,423"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="40,279,64,324,82,349,104,371,130,387,127,392,101,375,78,353,59,327,35,282"/>
+<area shape="rect" id="Node000018" href="$test__frame__coding_8cpp.html#a054000b3d2c0abb2e13b9109ae0969ef" title=" " alt="" coords="105,275,281,317"/>
+<area shape="poly" id="edge22_Node000001_Node000018" title=" " alt="" coords="56,268,90,275,89,280,55,274"/>
+<area shape="rect" id="Node000019" href="$test__frame__coding_8cpp.html#a85d94957544c2947761ccefd9bf74540" title=" " alt="" coords="108,451,278,477"/>
+<area shape="poly" id="edge24_Node000001_Node000019" title=" " alt="" coords="36,280,42,311,55,352,75,395,105,433,115,441,112,445,101,437,71,398,50,354,37,313,31,281"/>
+<area shape="rect" id="Node000020" href="$test__converters_8cpp.html#ad2d60ef4ab9bcd7adf10127705269acf" title=" " alt="" coords="103,527,283,553"/>
+<area shape="poly" id="edge27_Node000001_Node000020" title=" " alt="" coords="35,280,40,319,51,374,72,433,87,462,105,488,122,504,142,517,139,521,118,508,101,491,82,464,67,435,46,375,35,320,30,281"/>
+<area shape="rect" id="Node000022" href="$test__converters_8cpp.html#ac5d778420db42483f7174157aadbd274" title=" " alt="" coords="346,333,482,376"/>
+<area shape="poly" id="edge29_Node000001_Node000022" title=" " alt="" coords="44,279,69,304,104,327,161,345,221,355,279,359,331,359,331,364,279,365,220,361,159,350,102,332,66,309,40,282"/>
+<area shape="rect" id="Node000023" href="$test__converters_8cpp.html#a6e6f514b17b431b344cc576f52e2c086" title=" " alt="" coords="556,165,698,208"/>
+<area shape="poly" id="edge32_Node000001_Node000023" title=" " alt="" coords="55,261,540,195,541,201,55,266"/>
+<area shape="rect" id="Node000003" href="$utils__converters_8cpp.html#a1c9dd53c768dca60c82e3d9152b0fbc2" title="Converts an ExceptionType to a string." alt="" coords="331,13,497,40"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="262,24,316,24,316,29,262,29"/>
+<area shape="rect" id="Node000005" href="$frame_8cpp.html#a29170691faa10727d607a73861cacbeb" title="Builds a Frame instance." alt="" coords="583,115,671,141"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="485,97,568,114,567,119,484,102"/>
+<area shape="rect" id="Node000006" href="$utils__converters_8cpp.html#a29531ed9ad98ab78384a8a2f37f4e77d" title="Converts a ValueUnit to a string." alt="" coords="757,136,887,179"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="672,132,742,143,741,148,671,137"/>
+<area shape="poly" id="edge7_Node000007_Node000005" title=" " alt="" coords="487,131,567,128,567,133,487,136"/>
+<area shape="poly" id="edge9_Node000008_Node000005" title=" " alt="" coords="279,181,384,173,497,159,568,143,569,148,498,164,384,178,280,186"/>
+<area shape="rect" id="Node000010" href="$test__frame__common_8h.html#aa36a5b46f6db003d0e51c506b1164eda" title=" " alt="" coords="351,451,477,477"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="251,421,343,444,342,449,249,426"/>
+<area shape="rect" id="Node000011" href="$frame_8cpp.html#a0b3438ff642c0934321101e1f0b8d82d" title="Converts a string into a Frame instance." alt="" coords="362,283,466,309"/>
+<area shape="poly" id="edge12_Node000009_Node000011" title=" " alt="" coords="211,393,263,357,330,319,347,312,349,317,332,324,266,361,214,398"/>
+<area shape="rect" id="Node000013" href="$frame_8cpp.html#a3ae6df528775be58890bf406c906a056" title="Encodes a Frame instance into a string." alt="" coords="770,435,874,461"/>
+<area shape="poly" id="edge21_Node000009_Node000013" title=" " alt="" coords="279,412,755,441,754,447,278,417"/>
+<area shape="poly" id="edge13_Node000011_Node000005" title=" " alt="" coords="426,281,544,151,567,140,569,144,547,155,430,284"/>
+<area shape="rect" id="Node000012" href="$send_8cpp.html#ae6c6f3b673e7e83306da7ea2458d3241" title="Sends a Frame using LoRa." alt="" coords="582,283,672,309"/>
+<area shape="poly" id="edge14_Node000011_Node000012" title=" " alt="" coords="466,293,567,293,567,299,466,299"/>
+<area shape="rect" id="Node000016" href="$utils_8cpp.html#acd86977d05fa330749958ace0f2798de" title="Prints a message to the UART with a timestamp and core number." alt="" coords="979,257,1054,284"/>
+<area shape="poly" id="edge20_Node000011_Node000016" title=" " alt="" coords="466,281,545,268,662,261,779,259,964,265,963,270,779,264,662,266,546,273,467,286"/>
+<area shape="rect" id="Node000017" href="$utils__converters_8cpp.html#a4e9ddea19ddd04177180c2dfae26b15b" title="Converts a string to an OperationType." alt="" coords="545,333,709,360"/>
+<area shape="poly" id="edge19_Node000011_Node000017" title=" " alt="" coords="467,306,554,327,553,332,466,311"/>
+<area shape="poly" id="edge15_Node000012_Node000013" title=" " alt="" coords="673,303,710,319,740,342,766,369,806,420,802,423,762,373,736,346,707,324,671,308"/>
+<area shape="rect" id="Node000015" href="$send_8cpp.html#a42881e6476e0ce51ee9f6a99a7318d3b" title="Sends a message using LoRa." alt="" coords="767,283,876,309"/>
+<area shape="poly" id="edge17_Node000012_Node000015" title=" " alt="" coords="672,293,752,293,752,299,672,299"/>
+<area shape="rect" id="Node000014" href="$utils__converters_8cpp.html#ab218e62029b4451e910d8caf0fd05804" title="Converts an OperationType to a string." alt="" coords="935,409,1098,436"/>
+<area shape="poly" id="edge16_Node000013_Node000014" title=" " alt="" coords="874,439,919,433,920,438,875,444"/>
+<area shape="poly" id="edge18_Node000015_Node000016" title=" " alt="" coords="876,286,963,275,964,280,877,292"/>
+<area shape="poly" id="edge23_Node000018_Node000011" title=" " alt="" coords="281,293,347,293,347,299,281,299"/>
+<area shape="poly" id="edge25_Node000019_Node000010" title=" " alt="" coords="278,461,335,461,335,467,278,467"/>
+<area shape="poly" id="edge26_Node000019_Node000013" title=" " alt="" coords="257,475,331,487,448,490,564,484,670,472,754,458,755,464,671,477,565,489,448,496,331,492,256,481"/>
+<area shape="rect" id="Node000021" href="$utils__converters_8cpp.html#ae890cacb07dd22727e93c9115c09d49e" title="Converts a hex string to a vector of bytes." alt="" coords="345,552,483,579"/>
+<area shape="poly" id="edge28_Node000020_Node000021" title=" " alt="" coords="283,548,330,553,329,558,283,553"/>
+<area shape="poly" id="edge30_Node000022_Node000014" title=" " alt="" coords="483,361,546,369,920,410,920,416,545,375,482,367"/>
+<area shape="poly" id="edge31_Node000022_Node000017" title=" " alt="" coords="482,349,529,348,530,353,482,355"/>
+<area shape="poly" id="edge33_Node000023_Node000006" title=" " alt="" coords="698,173,741,167,741,172,699,179"/>
+</map>

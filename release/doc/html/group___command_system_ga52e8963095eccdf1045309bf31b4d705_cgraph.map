@@ -1,0 +1,7 @@
+<map id="execute_command" name="execute_command">
+<area shape="rect" id="Node000001" title="Executes a command based on its key." alt="" coords="5,13,137,40"/>
+<area shape="rect" id="Node000002" href="$frame_8cpp.html#a29170691faa10727d607a73861cacbeb" title="Builds a Frame instance." alt="" coords="185,13,273,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,24,169,24,169,29,137,29"/>
+<area shape="rect" id="Node000003" href="$utils__converters_8cpp.html#a29531ed9ad98ab78384a8a2f37f4e77d" title="Converts a ValueUnit to a string." alt="" coords="321,5,451,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="274,24,306,24,306,29,274,29"/>
+</map>

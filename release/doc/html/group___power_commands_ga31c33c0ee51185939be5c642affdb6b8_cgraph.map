@@ -1,0 +1,9 @@
+<map id="handle_get_current_draw" name="handle_get_current_draw">
+<area shape="rect" id="Node000001" title="Handler for getting system current draw." alt="" coords="5,39,172,65"/>
+<area shape="rect" id="Node000002" href="$frame_8cpp.html#a29170691faa10727d607a73861cacbeb" title="Builds a Frame instance." alt="" coords="220,13,308,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="172,37,204,33,205,38,173,43"/>
+<area shape="rect" id="Node000004" href="$utils_8cpp.html#acd86977d05fa330749958ace0f2798de" title="Prints a message to the UART with a timestamp and core number." alt="" coords="226,64,302,91"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="173,61,211,67,210,72,172,67"/>
+<area shape="rect" id="Node000003" href="$utils__converters_8cpp.html#a29531ed9ad98ab78384a8a2f37f4e77d" title="Converts a ValueUnit to a string." alt="" coords="356,5,486,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="309,24,341,24,341,29,309,29"/>
+</map>

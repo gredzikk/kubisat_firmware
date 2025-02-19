@@ -114,6 +114,20 @@ $(function(){initNavTree('storage_8h.html',''); initResizable(true); });
 <code>#include &quot;<a class="el" href="pin__config_8h_source.html">pin_config.h</a>&quot;</code><br />
 <code>#include &quot;lfs.h&quot;</code><br />
 <code>#include &quot;filesystem/fat.h&quot;</code><br />
+</div><div class="textblock"><div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for storage.h:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="storage_8h__incl.svg" width="100%" height="440"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+</div><div class="textblock"><div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> This graph shows which files directly or indirectly include this file:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="storage_8h__dep__incl.svg" width="270" height="187"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <p><a href="storage_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -128,19 +142,14 @@ Functions</h2></td></tr>
 <tr class="memdesc:afb19e37469a751aa61de3dcd0c70b4b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the file system on the SD card.  <br /></td></tr>
 <tr class="separator:afb19e37469a751aa61de3dcd0c70b4b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a921d0d7089c0c7731762035e7feeb27a" id="r_a921d0d7089c0c7731762035e7feeb27a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_file_handle.html">FileHandle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a921d0d7089c0c7731762035e7feeb27a">fs_open_file</a> (const char *filename, const char *mode)</td></tr>
-<tr class="memdesc:a921d0d7089c0c7731762035e7feeb27a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a file.  <br /></td></tr>
 <tr class="separator:a921d0d7089c0c7731762035e7feeb27a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab35cc4af25dd4a32624e51bf0fcda5b" id="r_aab35cc4af25dd4a32624e51bf0fcda5b"><td class="memItemLeft" align="right" valign="top">ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab35cc4af25dd4a32624e51bf0fcda5b">fs_write_file</a> (<a class="el" href="struct_file_handle.html">FileHandle</a> &amp;handle, const void *<a class="el" href="main_8cpp.html#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a>, size_t size)</td></tr>
-<tr class="memdesc:aab35cc4af25dd4a32624e51bf0fcda5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes data to a file.  <br /></td></tr>
 <tr class="separator:aab35cc4af25dd4a32624e51bf0fcda5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a259e40f946e1178329ed6cdf18c35b0c" id="r_a259e40f946e1178329ed6cdf18c35b0c"><td class="memItemLeft" align="right" valign="top">ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a259e40f946e1178329ed6cdf18c35b0c">fs_read_file</a> (<a class="el" href="struct_file_handle.html">FileHandle</a> &amp;handle, void *<a class="el" href="main_8cpp.html#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a>, size_t size)</td></tr>
-<tr class="memdesc:a259e40f946e1178329ed6cdf18c35b0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads data from a file.  <br /></td></tr>
 <tr class="separator:a259e40f946e1178329ed6cdf18c35b0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ed8daa820da91b458072334ecec9618" id="r_a1ed8daa820da91b458072334ecec9618"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ed8daa820da91b458072334ecec9618">fs_close_file</a> (<a class="el" href="struct_file_handle.html">FileHandle</a> &amp;handle)</td></tr>
-<tr class="memdesc:a1ed8daa820da91b458072334ecec9618"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes a file.  <br /></td></tr>
 <tr class="separator:a1ed8daa820da91b458072334ecec9618"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d0e5bbd1f57f47164521ca84c8e6fd1" id="r_a4d0e5bbd1f57f47164521ca84c8e6fd1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d0e5bbd1f57f47164521ca84c8e6fd1">fs_file_exists</a> (const char *filename)</td></tr>
-<tr class="memdesc:a4d0e5bbd1f57f47164521ca84c8e6fd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a file exists.  <br /></td></tr>
 <tr class="separator:a4d0e5bbd1f57f47164521ca84c8e6fd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -164,6 +173,20 @@ Functions</h2></td></tr>
 <p>Mounts the littlefs file system on the SD card. If mounting fails, it formats the SD card with littlefs and then attempts to mount again. </p>
 
 <p class="definition">Definition at line <a class="el" href="storage_8cpp_source.html#l00023">23</a> of file <a class="el" href="storage_8cpp_source.html">storage.cpp</a>.</p>
+<div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="storage_8h_afb19e37469a751aa61de3dcd0c70b4b0_cgraph.svg" width="191" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-3" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="storage_8h_afb19e37469a751aa61de3dcd0c70b4b0_icgraph.svg" width="308" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -185,19 +208,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Opens a file. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">filename</td><td>The name of the file to open. </td></tr>
-    <tr><td class="paramname">mode</td><td>The mode in which to open the file (e.g., "r", "w", "a"). </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="struct_file_handle.html">FileHandle</a> structure containing the file descriptor and a flag indicating if the file is open.</dd></dl>
-<p>Opens the specified file with the given mode. Converts the mode string to appropriate flags for the <code>open</code> system call. </p>
-
-<p class="definition">Definition at line <a class="el" href="storage_8cpp_source.html#l00065">65</a> of file <a class="el" href="storage_8cpp_source.html">storage.cpp</a>.</p>
 
 </div>
 </div>
@@ -225,20 +235,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Writes data to a file. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">handle</td><td>A reference to the <a class="el" href="struct_file_handle.html">FileHandle</a> structure for the file. </td></tr>
-    <tr><td class="paramname">buffer</td><td>A pointer to the buffer containing the data to write. </td></tr>
-    <tr><td class="paramname">size</td><td>The number of bytes to write. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The number of bytes written, or -1 on error.</dd></dl>
-<p>Writes data from the provided buffer to the file associated with the given <a class="el" href="struct_file_handle.html">FileHandle</a>. </p>
-
-<p class="definition">Definition at line <a class="el" href="storage_8cpp_source.html#l00097">97</a> of file <a class="el" href="storage_8cpp_source.html">storage.cpp</a>.</p>
-
 </div>
 </div>
 <a id="a259e40f946e1178329ed6cdf18c35b0c" name="a259e40f946e1178329ed6cdf18c35b0c"></a>
@@ -265,20 +261,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Reads data from a file. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">handle</td><td>A reference to the <a class="el" href="struct_file_handle.html">FileHandle</a> structure for the file. </td></tr>
-    <tr><td class="paramname">buffer</td><td>A pointer to the buffer to store the read data. </td></tr>
-    <tr><td class="paramname">size</td><td>The number of bytes to read. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The number of bytes read, or -1 on error.</dd></dl>
-<p>Reads data from the file associated with the given <a class="el" href="struct_file_handle.html">FileHandle</a> into the provided buffer. </p>
-
-<p class="definition">Definition at line <a class="el" href="storage_8cpp_source.html#l00121">121</a> of file <a class="el" href="storage_8cpp_source.html">storage.cpp</a>.</p>
-
 </div>
 </div>
 <a id="a1ed8daa820da91b458072334ecec9618" name="a1ed8daa820da91b458072334ecec9618"></a>
@@ -296,18 +278,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Closes a file. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">handle</td><td>A reference to the <a class="el" href="struct_file_handle.html">FileHandle</a> structure for the file. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the file was closed successfully, false otherwise.</dd></dl>
-<p>Closes the file associated with the given <a class="el" href="struct_file_handle.html">FileHandle</a>. </p>
-
-<p class="definition">Definition at line <a class="el" href="storage_8cpp_source.html#l00143">143</a> of file <a class="el" href="storage_8cpp_source.html">storage.cpp</a>.</p>
-
 </div>
 </div>
 <a id="a4d0e5bbd1f57f47164521ca84c8e6fd1" name="a4d0e5bbd1f57f47164521ca84c8e6fd1"></a>
@@ -324,18 +294,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Checks if a file exists. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">filename</td><td>The name of the file to check. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the file exists, false otherwise.</dd></dl>
-<p>Checks if a file with the given name exists in the file system. </p>
-
-<p class="definition">Definition at line <a class="el" href="storage_8cpp_source.html#l00169">169</a> of file <a class="el" href="storage_8cpp_source.html">storage.cpp</a>.</p>
 
 </div>
 </div>

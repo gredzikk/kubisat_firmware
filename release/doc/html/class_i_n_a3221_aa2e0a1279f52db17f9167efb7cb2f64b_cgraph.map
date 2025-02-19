@@ -1,0 +1,7 @@
+<map id="INA3221::set_bus_measurement_enable" name="INA3221::set_bus_measurement_enable">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,23,218,65"/>
+<area shape="rect" id="Node000002" href="$class_i_n_a3221.html#a0b4c630038abf482bef36f3083ab20ff" title=" " alt="" coords="267,5,380,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="218,29,252,25,252,30,218,34"/>
+<area shape="rect" id="Node000003" href="$class_i_n_a3221.html#aea00c9c6baf85bd94794ee7b3b47d2c7" title=" " alt="" coords="266,56,381,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="218,54,251,58,250,63,218,59"/>
+</map>

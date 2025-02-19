@@ -11,8 +11,10 @@
 /**
  * @brief Handler for listing all available commands on UART
  * @param param Empty string expected
- * @param operationType Must be GET
+ * @param operationType GET
  * @return Frame containing success/error and command list
+ * @note <b>KBST;0;GET;1;0;;TSBK</b>
+ * @note Print all available commands on UART port
  * @ingroup DiagnosticCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 0
  */
@@ -44,8 +46,10 @@ Frame handle_get_commands_list(const std::string& param, OperationType operation
 /**
  * @brief Get firmware build version
  * @param param Empty string expected
- * @param operationType Must be GET
+ * @param operationType GET
  * @return Frame containing build number
+ * @note <b>KBST;0;GET;1;1;;TSBK</b>
+ * @note Get the firmware build version
  * @ingroup DiagnosticCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 1
  */
@@ -64,6 +68,8 @@ Frame handle_get_build_version(const std::string& param, OperationType operation
  * @param param Empty string expected
  * @param operationType Must be SET
  * @return Frame with operation result
+ * @note <b>KBST;0;SET;1;9;;TSBK</b>
+ * @note Reboot the system to USB firmware loader
  * @ingroup DiagnosticCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 2
  */

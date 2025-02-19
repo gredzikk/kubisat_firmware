@@ -39,22 +39,25 @@ Frame handle_time(const std::string& param, OperationType operationType) {
     if (operationType == OperationType::SET) {
         try {
             time_t newTime = std::stoll(param);
-            struct tm* timeinfo = localtime(&newTime);
-
-            if (timeinfo != nullptr) {
-                // Set the time on the RTC
-                
-                EventEmitter::emit(EventGroup::CLOCK, ClockEvent::CHANGED);
-                return frame_build(ExecutionResult::SUCCESS, 3, 0, "Time set successfully");
+            if (newTime > 0) {
+                uart_print("Setting time to: " + std::to_string(newTime));
+                int status = systemClock.set_unix_time(newTime);
+                if (status == 0) {
+                    time_t time_after_set = systemClock.get_unix_time();
+                    EventEmitter::emit(EventGroup::CLOCK, ClockEvent::CHANGED);
+                    return frame_build(ExecutionResult::SUCCESS, 3, 0, std::to_string(time_after_set));
+                } else {
+                    return frame_build(ExecutionResult::ERROR, 3, 0, "FAILED TO SET TIME");
+                }
             } else {
-                return frame_build(ExecutionResult::ERROR, 3, 0, "FAILED TO SET TIME");
+                return frame_build(ExecutionResult::ERROR, 3, 0, "TIME CANNOT BE 0");
             }
         } catch (...) {
             return frame_build(ExecutionResult::ERROR, 3, 0, "INVALID TIME FORMAT");
         }
     }
 
-    uint32_t timeUnix = 2;
+    uint32_t timeUnix = systemClock.get_unix_time();
     if (timeUnix != 0) {
         std::stringstream ss;
         ss << timeUnix;

@@ -1,0 +1,7 @@
+<map id="handle_get_gga_data" name="handle_get_gga_data">
+<area shape="rect" id="Node000001" title="Handler for retrieving GPS GGA (Global Positioning System Fix Data) data." alt="" coords="5,13,150,40"/>
+<area shape="rect" id="Node000002" href="$frame_8cpp.html#a29170691faa10727d607a73861cacbeb" title="Builds a Frame instance." alt="" coords="198,13,286,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="150,24,182,24,182,29,150,29"/>
+<area shape="rect" id="Node000003" href="$utils__converters_8cpp.html#a29531ed9ad98ab78384a8a2f37f4e77d" title="Converts a ValueUnit to a string." alt="" coords="334,5,464,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="287,24,319,24,319,29,287,29"/>
+</map>

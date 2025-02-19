@@ -89,6 +89,7 @@ int fs_format(filesystem_t *fs, blockdevice_t *device) {
     if (!device->is_initialized) {
         int err = device->init(device);
         if (err != BD_ERROR_OK) {
+            printf("fs_format: blockdevice init failed\n");
             return _error_remap(err);
         }
     }

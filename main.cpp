@@ -56,6 +56,9 @@ bool init_systems() {
         uart_print("Written " + std::to_string(bytesWritten) + " bytes.");
         int closeStatus = fclose(fp);
         uart_print("Close file status: " + std::to_string(closeStatus));
+        struct stat buffer;
+        std::string fileString = "file exists after closing: " + std::to_string(stat(LOG_FILENAME, &buffer));
+        uart_print(fileString);
         fs_unmount("/");
     }
 
@@ -85,13 +88,13 @@ int main()
     time_data.date = 14;
     time_data.month = 11;
     time_data.year = 24;
-    time_data.century = 0; // Assuming 21st century
+    time_data.century = 0; 
 
-    bool clockInitStatus = systemClock.set_time(&time_data); // Pass the struct pointer
+    int clockInitStatus = systemClock.set_time(&time_data); 
     if (clockInitStatus) {
-        uart_print("Clock init success");
+        uart_print("Clock init success: " + std::to_string(clockInitStatus));
     } else {
-        uart_print("Clock init error");
+        uart_print("Clock init error: " + std::to_string(clockInitStatus));
     }
     gpio_put(PICO_DEFAULT_LED_PIN, 1);
 

@@ -1,5 +1,5 @@
 <map id="EventManager::init" name="EventManager::init">
-<area shape="rect" id="Node000001" title="Initializes the EventManager." alt="" coords="5,5,136,32"/>
-<area shape="rect" id="Node000002" href="$class_event_manager.html#a6722258e4e3df939224d07786427afc9" title="Loads the events from storage." alt="" coords="184,5,396,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,16,168,16,168,21,136,21"/>
+<area shape="rect" id="Node000001" title="Initializes the EventManager." alt="" coords="5,13,136,40"/>
+<area shape="rect" id="Node000002" href="$class_event_manager.html#a64a6589e4a25afff95ee6f4b4e294203" title="Loads the events from storage." alt="" coords="184,5,321,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,24,168,24,168,29,136,29"/>
 </map>

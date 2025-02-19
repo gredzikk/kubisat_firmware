@@ -1,0 +1,85 @@
+<map id="value_unit_type_to_string" name="value_unit_type_to_string">
+<area shape="rect" id="Node000001" title="Converts a ValueUnit to a string." alt="" coords="943,1189,1073,1231"/>
+<area shape="rect" id="Node000002" href="$frame_8cpp.html#a29170691faa10727d607a73861cacbeb" title="Builds a Frame instance." alt="" coords="780,834,868,861"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="987,1176,830,862,835,860,992,1173"/>
+<area shape="rect" id="Node000037" href="$test__converters_8cpp.html#a6e6f514b17b431b344cc576f52e2c086" title=" " alt="" coords="754,1218,895,1261"/>
+<area shape="poly" id="edge45_Node000001_Node000037" title=" " alt="" coords="928,1225,896,1231,895,1225,927,1220"/>
+<area shape="rect" id="Node000003" href="$group___command_system.html#ga52e8963095eccdf1045309bf31b4d705" title="Executes a command based on its key." alt="" coords="536,141,668,167"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="819,819,811,685,791,496,776,399,756,310,732,237,719,209,704,188,687,174,667,165,669,160,690,170,708,184,723,206,737,235,761,309,781,398,796,495,816,685,824,818"/>
+<area shape="rect" id="Node000004" href="$frame_8cpp.html#a8b9c5fd031b899c6c7867adcde4ac11f" title="Executes a command based on the command key and the parameter." alt="" coords="308,191,416,218"/>
+<area shape="poly" id="edge14_Node000002_Node000004" title=" " alt="" coords="819,819,812,691,793,513,778,422,758,341,734,275,719,250,704,232,684,220,654,212,577,202,492,201,416,204,416,198,492,196,578,197,655,206,686,215,707,228,724,247,739,272,763,339,783,421,798,512,817,691,825,818"/>
+<area shape="rect" id="Node000006" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,115,55,142"/>
+<area shape="poly" id="edge37_Node000002_Node000006" title=" " alt="" coords="821,819,818,664,813,556,804,441,790,326,769,223,756,178,741,139,723,108,704,85,666,57,625,36,581,21,535,12,487,9,439,9,343,21,252,43,170,70,56,119,54,114,168,65,250,38,342,16,439,4,488,3,535,7,582,16,627,31,669,53,707,81,728,105,746,137,761,176,774,221,795,325,810,440,819,556,824,664,826,818"/>
+<area shape="rect" id="Node000008" href="$frame_8cpp.html#a0b3438ff642c0934321101e1f0b8d82d" title="Converts a string into a Frame instance." alt="" coords="550,242,654,269"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="818,819,807,704,785,545,769,464,751,390,729,330,704,289,681,272,653,263,655,258,683,267,708,285,734,328,756,389,774,463,790,544,812,704,823,819"/>
+<area shape="rect" id="Node000012" href="$group___event_commands.html#gaaa3951cee1a13c3f497c96c0f3be9f95" title="Handler for getting total number of events in the log." alt="" coords="521,343,683,370"/>
+<area shape="poly" id="edge15_Node000002_Node000012" title=" " alt="" coords="817,819,803,721,779,590,764,524,746,465,726,416,704,384,682,369,685,365,708,380,731,414,751,463,769,523,785,589,809,720,822,818"/>
+<area shape="rect" id="Node000013" href="$group___clock_commands.html#gae0bd51ede980e34daf37928a625bd170" title="Handler for getting and setting clock synchronization interval." alt="" coords="511,394,693,421"/>
+<area shape="poly" id="edge16_Node000002_Node000013" title=" " alt="" coords="821,818,819,741,814,692,804,638,789,583,769,529,740,478,704,434,688,423,691,419,707,431,745,475,773,526,795,581,809,637,819,691,824,741,827,818"/>
+<area shape="rect" id="Node000014" href="$group___g_p_s_commands.html#ga3e4c6db6e933a1ff77f3ac52ce1c44be" title="Handler for enabling GPS transparent mode (UART pass&#45;through)" alt="" coords="521,445,683,487"/>
+<area shape="poly" id="edge17_Node000002_Node000014" title=" " alt="" coords="819,818,812,753,793,668,779,623,759,579,734,538,704,501,682,486,685,481,707,497,739,534,764,576,784,621,799,667,817,752,824,818"/>
+<area shape="rect" id="Node000015" href="$group___diagnostic_commands.html#ga3ab5723218b68d3ac5cd864e00ed157a" title="Reboot system to USB firmware loader." alt="" coords="501,511,703,538"/>
+<area shape="poly" id="edge18_Node000002_Node000015" title=" " alt="" coords="818,819,808,762,789,690,774,652,755,615,732,581,704,552,687,541,690,536,707,548,736,578,760,612,779,650,794,688,814,761,823,818"/>
+<area shape="rect" id="Node000016" href="$group___diagnostic_commands.html#ga517fbfd05cbec86489314348cb3f9995" title="Get firmware build version." alt="" coords="518,562,686,589"/>
+<area shape="poly" id="edge19_Node000002_Node000016" title=" " alt="" coords="815,819,803,771,781,713,749,653,728,626,704,603,684,591,687,586,707,598,732,622,753,650,786,710,808,770,820,818"/>
+<area shape="rect" id="Node000017" href="$group___diagnostic_commands.html#ga74736b8d0e49df14f97e3e20cd3418c7" title="Handler for listing all available commands on UART." alt="" coords="512,613,692,639"/>
+<area shape="poly" id="edge20_Node000002_Node000017" title=" " alt="" coords="811,820,796,782,774,736,743,691,704,653,684,642,687,637,707,649,747,688,778,734,801,779,816,818"/>
+<area shape="rect" id="Node000018" href="$group___power_commands.html#gacda455c78e43fa4ad2a93215b440c0ef" title="Handler for getting solar panel charge current." alt="" coords="536,663,668,706"/>
+<area shape="poly" id="edge21_Node000002_Node000018" title=" " alt="" coords="804,823,762,771,735,743,704,720,667,702,669,697,707,716,738,739,766,767,808,819"/>
+<area shape="rect" id="Node000019" href="$group___power_commands.html#gaf14f25e1c7a2f89881a0f9fbcb7f1807" title="Handler for getting total charge current." alt="" coords="536,730,668,773"/>
+<area shape="poly" id="edge22_Node000002_Node000019" title=" " alt="" coords="785,828,705,787,667,773,669,768,707,782,788,823"/>
+<area shape="rect" id="Node000020" href="$group___power_commands.html#ga6e5a897c92aaeae8b2fb25faa50bb19d" title="Handler for getting USB charge current." alt="" coords="536,797,668,839"/>
+<area shape="poly" id="edge23_Node000002_Node000020" title=" " alt="" coords="764,842,668,829,669,824,765,837"/>
+<area shape="rect" id="Node000021" href="$group___power_commands.html#ga31c33c0ee51185939be5c642affdb6b8" title="Handler for getting system current draw." alt="" coords="519,863,685,890"/>
+<area shape="poly" id="edge24_Node000002_Node000021" title=" " alt="" coords="765,858,686,868,685,863,764,852"/>
+<area shape="rect" id="Node000022" href="$group___g_p_s_commands.html#ga617ca7e129f14b0ca4f0d6eb333cbf27" title="Handler for retrieving GPS GGA (Global Positioning System Fix Data) data." alt="" coords="530,914,674,941"/>
+<area shape="poly" id="edge25_Node000002_Node000022" title=" " alt="" coords="785,870,707,904,669,916,667,911,705,899,783,865"/>
+<area shape="rect" id="Node000023" href="$group___event_commands.html#ga9a7182db399c2b40ea66db5989d10471" title="Handler for retrieving last N events from the event log." alt="" coords="523,965,681,991"/>
+<area shape="poly" id="edge26_Node000002_Node000023" title=" " alt="" coords="803,874,762,916,735,937,707,955,679,966,677,961,704,950,732,933,758,912,800,871"/>
+<area shape="rect" id="Node000024" href="$group___clock_commands.html#ga8fad2991aef05583a47a5b1072ffece0" title="Handler for getting last clock sync time." alt="" coords="512,1015,692,1042"/>
+<area shape="poly" id="edge27_Node000002_Node000024" title=" " alt="" coords="812,876,772,941,742,976,707,1005,684,1017,682,1012,704,1001,738,972,767,938,808,873"/>
+<area shape="rect" id="Node000025" href="$group___power_commands.html#ga847b0ed9bf4c252edb1440831739e1ca" title="Handler for retrieving Power Manager IDs." alt="" coords="498,1066,706,1093"/>
+<area shape="poly" id="edge28_Node000002_Node000025" title=" " alt="" coords="818,876,803,917,780,965,749,1014,729,1037,707,1056,687,1068,684,1063,704,1052,725,1033,744,1011,776,963,798,915,813,874"/>
+<area shape="rect" id="Node000026" href="$group___g_p_s_commands.html#ga8e18759b90b7902e535f50aceae81f2e" title="Handler for retrieving GPS RMC (Recommended Minimum Navigation) data." alt="" coords="529,1117,675,1143"/>
+<area shape="poly" id="edge29_Node000002_Node000026" title=" " alt="" coords="821,877,809,926,788,989,755,1052,733,1081,707,1107,676,1123,674,1119,704,1102,729,1078,750,1049,783,987,804,925,816,875"/>
+<area shape="rect" id="Node000027" href="$group___power_commands.html#ga24497d675dc02a7ec46ed0327a9de54a" title="Handler for getting 5V rail voltage." alt="" coords="525,1167,679,1194"/>
+<area shape="poly" id="edge30_Node000002_Node000027" title=" " alt="" coords="823,876,815,935,795,1011,780,1051,761,1090,737,1126,707,1157,681,1173,678,1168,704,1153,733,1122,756,1087,775,1049,790,1010,809,934,818,876"/>
+<area shape="rect" id="Node000028" href="$group___power_commands.html#ga06487ba124c57bc39009eb235ec8cab4" title="Handler for getting battery voltage." alt="" coords="535,1218,669,1261"/>
+<area shape="poly" id="edge31_Node000002_Node000028" title=" " alt="" coords="825,877,818,944,800,1032,785,1079,765,1126,740,1169,708,1208,690,1221,670,1230,668,1225,687,1216,704,1204,735,1166,760,1123,780,1078,795,1031,813,943,819,876"/>
+<area shape="rect" id="Node000029" href="$group___g_p_s_commands.html#ga926ab365cf351bb507a8c38066ee2eeb" title="Handler for controlling GPS module power state." alt="" coords="516,1285,688,1311"/>
+<area shape="poly" id="edge32_Node000002_Node000029" title=" " alt="" coords="822,876,807,966,782,1086,749,1200,729,1244,708,1274,690,1287,687,1282,704,1271,724,1241,744,1198,777,1084,801,966,816,875"/>
+<area shape="rect" id="Node000030" href="$group___clock_commands.html#gaece0975a9dd699742e1db5a411bcc93c" title="Handler for getting and setting system time." alt="" coords="556,1335,648,1362"/>
+<area shape="poly" id="edge33_Node000002_Node000030" title=" " alt="" coords="820,876,770,1124,737,1254,722,1300,708,1325,680,1342,649,1350,648,1345,678,1338,704,1321,717,1298,732,1252,765,1123,815,875"/>
+<area shape="rect" id="Node000031" href="$group___clock_commands.html#ga026ff03f9aa86d2bd305090836f4a79a" title="Handler for getting and setting timezone offset." alt="" coords="523,1386,681,1413"/>
+<area shape="poly" id="edge34_Node000002_Node000031" title=" " alt="" coords="820,876,763,1158,730,1304,717,1352,708,1376,683,1392,680,1388,704,1372,712,1351,725,1303,758,1157,815,875"/>
+<area shape="rect" id="Node000032" href="$main_8cpp.html#a8fa5379b5bec497b881cec19f2b38779" title=" " alt="" coords="314,90,410,117"/>
+<area shape="poly" id="edge35_Node000002_Node000032" title=" " alt="" coords="820,818,816,672,800,463,785,357,765,260,738,181,722,152,704,130,671,107,635,92,596,82,555,78,476,82,411,93,410,88,476,76,555,73,596,77,637,86,674,103,707,127,726,149,743,179,770,258,791,356,805,463,821,672,825,818"/>
+<area shape="rect" id="Node000033" href="$frame_8cpp.html#af49224563adb4bf0b91daa5ab78120ca" title="Sends the event register value to the ground station." alt="" coords="558,1487,646,1514"/>
+<area shape="poly" id="edge38_Node000002_Node000033" title=" " alt="" coords="820,876,756,1206,751,1247,751,1284,754,1348,752,1377,746,1407,732,1438,708,1470,680,1490,648,1500,646,1495,677,1485,704,1467,727,1435,741,1406,747,1377,748,1348,745,1284,746,1247,751,1205,815,875"/>
+<area shape="rect" id="Node000034" href="$test__frame__build_8cpp.html#a6293acd10886f2f4dfd46c0f9b4d3bb9" title=" " alt="" coords="287,594,437,621"/>
+<area shape="poly" id="edge39_Node000002_Node000034" title=" " alt="" coords="818,819,808,710,787,561,772,487,753,420,730,367,718,347,704,333,678,315,653,302,628,295,604,293,579,296,554,304,500,333,486,345,477,357,469,383,464,413,453,448,409,532,374,595,369,592,405,529,448,446,459,412,463,381,472,354,482,341,497,329,552,299,578,291,604,288,629,290,655,297,681,310,707,329,722,344,735,365,758,419,777,486,792,560,813,709,824,818"/>
+<area shape="rect" id="Node000035" href="$test__frame__build_8cpp.html#a9fb40fc4c0a9cb36690dd62d5f497c22" title=" " alt="" coords="290,914,435,941"/>
+<area shape="poly" id="edge41_Node000002_Node000035" title=" " alt="" coords="820,876,758,1192,708,1426,681,1446,654,1459,629,1468,603,1470,577,1467,551,1459,524,1445,497,1427,481,1411,467,1390,442,1334,420,1264,402,1188,375,1039,362,941,368,941,381,1039,407,1187,425,1263,447,1332,472,1388,486,1408,500,1422,527,1441,553,1454,578,1462,603,1465,627,1462,652,1455,678,1441,703,1423,753,1191,815,875"/>
+<area shape="rect" id="Node000036" href="$test__frame__build_8cpp.html#a8b9d79d3ab4010e537ada45e554dcd5b" title=" " alt="" coords="276,1503,449,1530"/>
+<area shape="poly" id="edge43_Node000002_Node000036" title=" " alt="" coords="820,876,756,1206,751,1279,748,1375,744,1423,737,1467,725,1503,708,1528,671,1551,630,1565,587,1570,543,1569,460,1554,396,1533,397,1528,461,1549,543,1564,587,1565,629,1560,669,1547,704,1524,720,1500,732,1465,739,1422,743,1375,746,1279,751,1206,814,875"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="521,173,417,196,416,191,520,168"/>
+<area shape="rect" id="Node000005" href="$receive_8cpp.html#a14ffba44d46e00b23bd72bdb3a4d58d1" title="Handles UART input." alt="" coords="103,141,226,167"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="293,190,219,170,220,165,294,184"/>
+<area shape="rect" id="Node000007" href="$receive_8cpp.html#a3f494105dee3a08e1244febc81982517" title="Callback function for handling received LoRa packets." alt="" coords="122,191,206,218"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="293,207,207,207,207,202,293,202"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="87,142,55,136,56,130,88,137"/>
+<area shape="poly" id="edge7_Node000007_Node000006" title=" " alt="" coords="112,187,101,181,47,144,50,140,104,177,114,182"/>
+<area shape="poly" id="edge9_Node000008_Node000004" title=" " alt="" coords="534,244,416,218,417,213,535,239"/>
+<area shape="rect" id="Node000009" href="$test__frame__coding_8cpp.html#a75deef6947cf7117a58214b4298ecec9" title=" " alt="" coords="277,409,447,435"/>
+<area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="537,273,500,289,446,341,379,410,375,406,442,337,497,285,534,268"/>
+<area shape="rect" id="Node000011" href="$test__frame__coding_8cpp.html#a054000b3d2c0abb2e13b9109ae0969ef" title=" " alt="" coords="274,275,450,318"/>
+<area shape="poly" id="edge12_Node000008_Node000011" title=" " alt="" coords="535,269,451,284,450,279,535,264"/>
+<area shape="rect" id="Node000010" href="$test__runner_8cpp.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="140,619,189,646"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="340,448,180,621,176,617,336,445"/>
+<area shape="poly" id="edge13_Node000011_Node000010" title=" " alt="" coords="330,331,302,363,276,398,241,461,210,524,173,620,168,618,206,522,236,458,272,395,298,359,326,328"/>
+<area shape="poly" id="edge36_Node000032_Node000006" title=" " alt="" coords="299,111,55,129,55,124,299,105"/>
+<area shape="poly" id="edge40_Node000034_Node000010" title=" " alt="" coords="272,621,190,632,189,627,271,616"/>
+<area shape="poly" id="edge42_Node000035_Node000010" title=" " alt="" coords="341,902,173,648,177,645,346,899"/>
+<area shape="poly" id="edge44_Node000036_Node000010" title=" " alt="" coords="352,1488,166,647,171,646,357,1487"/>
+<area shape="poly" id="edge46_Node000037_Node000010" title=" " alt="" coords="825,1276,820,1343,802,1426,787,1468,767,1509,741,1545,707,1575,649,1611,592,1636,536,1650,481,1653,428,1644,375,1623,323,1589,272,1544,260,1523,248,1489,227,1389,210,1258,195,1110,173,823,164,647,169,646,179,823,200,1110,215,1258,233,1389,253,1488,264,1521,276,1540,326,1585,377,1618,429,1639,482,1648,535,1645,590,1631,646,1606,704,1570,737,1541,762,1506,782,1466,797,1424,814,1342,820,1276"/>
+</map>

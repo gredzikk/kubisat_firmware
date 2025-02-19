@@ -1,0 +1,5 @@
+<map id="DS3231::read_temperature" name="DS3231::read_temperature">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,183,32"/>
+<area shape="rect" id="Node000002" href="$class_d_s3231.html#ae3895581e62c411451d12de3e7558207" title="Library function to read a specific I2C register adress." alt="" coords="231,5,381,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="183,16,216,16,216,21,183,21"/>
+</map>

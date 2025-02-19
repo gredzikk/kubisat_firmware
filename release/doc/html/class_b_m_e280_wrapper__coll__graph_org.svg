@@ -52,7 +52,7 @@
 <polygon fill="#9a32cd" stroke="#9a32cd" points="81.01,-60.85 90.05,-66.37 86.43,-56.42 81.01,-60.85"/>
 </a>
 </g>
-<text text-anchor="middle" x="92.71" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> sensor</text>
+<text text-anchor="middle" x="95.34" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> sensor_</text>
 </g>
 <!-- Node4 -->
 <g id="Node000004" class="node">

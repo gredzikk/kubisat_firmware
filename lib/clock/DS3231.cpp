@@ -1,4 +1,5 @@
 #include "DS3231.h"
+#include "utils.h"
 
 DS3231::DS3231(i2c_inst_t *i2c_instance) : i2c(i2c_instance), ds3231_addr(DS3231_DEVICE_ADRESS) {}
 
@@ -7,7 +8,8 @@ int DS3231::set_time(ds3231_data_t *data) {
     if (i2c_read_reg(DS3231_SECONDS_REG, 7, temp))
         return -1;
 
-    /* Checking if time values are within correct ranges. */
+    uart_print("Time read, converting to BCD and writing");
+
     if (data->seconds > 59)
         data->seconds = 59;
 
@@ -48,6 +50,11 @@ int DS3231::set_time(ds3231_data_t *data) {
 
     temp[6] = bin_to_bcd(data->year);
 
+    uart_print("Writing time to DS3231");
+    std::string timeStr = "Time: " + std::to_string(data->hours) + ":" + std::to_string(data->minutes) + ":" + std::to_string(data->seconds);
+    uart_print(timeStr);
+    std::string dateStr = "Date: " + std::to_string(data->date) + "/" + std::to_string(data->month) + "/" + std::to_string(data->year);
+    uart_print(dateStr);
     if (i2c_write_reg(DS3231_SECONDS_REG, 7, temp))
         return -1;
     return 0;
@@ -67,6 +74,12 @@ int DS3231::get_time(ds3231_data_t *data) {
     data->century = (raw_data[5] & 0x80) >> 7;
     data->year = bcd_to_bin(raw_data[6]);
 
+    uart_print("Reading time from DS3231");
+    std::string timeStr = "Time: " + std::to_string(data->hours) + ":" + std::to_string(data->minutes) + ":" + std::to_string(data->seconds);
+    uart_print(timeStr);
+    std::string dateStr = "Date: " + std::to_string(data->date) + "/" + std::to_string(data->month) + "/" + std::to_string(data->year);
+    uart_print(dateStr);
+
     return 0;
 }
 
@@ -77,6 +90,44 @@ int DS3231::read_temperature(float *resolution) {
 
     *resolution = temp[0] + (float)(1 / (temp[1] >> 6));
     return 0;
+}
+
+int DS3231::set_unix_time(time_t unix_time) {
+    struct tm *timeinfo = gmtime(&unix_time);
+    ds3231_data_t data;
+
+    data.seconds = timeinfo->tm_sec;
+    data.minutes = timeinfo->tm_min;
+    data.hours = timeinfo->tm_hour;
+    data.day = timeinfo->tm_wday == 0 ? 7 : timeinfo->tm_wday; // Sunday is 0 in tm struct, but 1 in DS3231
+    data.date = timeinfo->tm_mday;
+    data.month = timeinfo->tm_mon + 1; // Month is 0-11 in tm struct, but 1-12 in DS3231
+    data.year = timeinfo->tm_year - 100; // Year is since 1900, we want the last two digits
+    data.century = timeinfo->tm_year >= 2000;
+
+    return set_time(&data);
+}
+
+time_t DS3231::get_unix_time() {
+    ds3231_data_t data;
+    if (get_time(&data)) {
+        return -1; // Indicate error
+    }
+
+    struct tm timeinfo;
+    timeinfo.tm_sec = data.seconds;
+    timeinfo.tm_min = data.minutes;
+    timeinfo.tm_hour = data.hours;
+    timeinfo.tm_mday = data.date;
+    timeinfo.tm_mon = data.month - 1; // Month is 0-11 in tm struct, but 1-12 in DS3231
+    timeinfo.tm_year = data.year + 100; // Year is since 1900
+
+    // mktime assumes that tm_wday and tm_yday are uninitialized
+    timeinfo.tm_wday = 0;
+    timeinfo.tm_yday = 0;
+    timeinfo.tm_isdst = 0; // Set to 0 to use UTC
+
+    return mktime(&timeinfo);
 }
 
 /**

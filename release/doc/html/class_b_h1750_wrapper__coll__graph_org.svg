@@ -52,7 +52,7 @@
 <polygon fill="#9a32cd" stroke="#9a32cd" points="80.37,-59.01 88.15,-66.21 86.56,-55.73 80.37,-59.01"/>
 </a>
 </g>
-<text text-anchor="middle" x="95.63" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> sensor</text>
+<text text-anchor="middle" x="98.26" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> sensor_</text>
 </g>
 </g>
 </svg>

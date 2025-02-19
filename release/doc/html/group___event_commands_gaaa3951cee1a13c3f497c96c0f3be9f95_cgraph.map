@@ -1,0 +1,7 @@
+<map id="hadnle_get_event_count" name="hadnle_get_event_count">
+<area shape="rect" id="Node000001" title="Handler for getting total number of events in the log." alt="" coords="5,13,168,40"/>
+<area shape="rect" id="Node000002" href="$frame_8cpp.html#a29170691faa10727d607a73861cacbeb" title="Builds a Frame instance." alt="" coords="216,13,304,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="168,24,200,24,200,29,168,29"/>
+<area shape="rect" id="Node000003" href="$utils__converters_8cpp.html#a29531ed9ad98ab78384a8a2f37f4e77d" title="Converts a ValueUnit to a string." alt="" coords="352,5,482,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="305,24,337,24,337,29,305,29"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="handle_gps_power_status" name="handle_gps_power_status">
+<area shape="rect" id="Node000001" title="Handler for controlling GPS module power state." alt="" coords="5,31,178,57"/>
+<area shape="rect" id="Node000002" href="$class_event_emitter.html#a539d733505f9a793439a9cfc4f2af079" title="Emits an event." alt="" coords="226,5,356,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="178,30,210,26,210,32,178,36"/>
+<area shape="rect" id="Node000003" href="$frame_8cpp.html#a29170691faa10727d607a73861cacbeb" title="Builds a Frame instance." alt="" coords="247,56,335,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="178,52,232,59,231,65,178,58"/>
+<area shape="rect" id="Node000004" href="$utils__converters_8cpp.html#a29531ed9ad98ab78384a8a2f37f4e77d" title="Converts a ValueUnit to a string." alt="" coords="404,48,534,91"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="336,67,388,67,388,72,336,72"/>
+</map>

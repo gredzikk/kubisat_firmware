@@ -1,0 +1,9 @@
+<map id="EventManager::log_event" name="EventManager::log_event">
+<area shape="rect" id="Node000001" title="Logs an event." alt="" coords="5,72,175,99"/>
+<area shape="rect" id="Node000002" href="$class_event_manager.html#a8ba3c824f2327911af8aabeef05392e1" title="Saves the events to storage." alt="" coords="223,5,364,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="138,69,207,49,209,54,140,74"/>
+<area shape="rect" id="Node000003" href="$class_event_log.html#aff20f0a19416becca99ed24cf303a26f" title="Converts the EventLog to a string representation." alt="" coords="226,72,360,99"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="175,83,211,83,211,88,175,88"/>
+<area shape="rect" id="Node000004" href="$utils_8cpp.html#acd86977d05fa330749958ace0f2798de" title="Prints a message to the UART with a timestamp and core number." alt="" coords="256,123,331,149"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="147,97,241,120,240,126,146,102"/>
+</map>

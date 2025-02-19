@@ -21,8 +21,8 @@
  *           - GG: Event Group (8-bit)
  *           - EE: Event Type (8-bit)
  *         - Error: "INVALID OPERATION", "INVALID COUNT", or "INVALID PARAMETER"
- * @note KBST;0;GET;5;1;20;TSBK
- *       Returns up to 20 most recent events
+ * @note <b>KBST;0;GET;5;1;20;TSBK</b>
+ * @note Returns up to 10 most recent events
  * @ingroup EventCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 5.1
  */
@@ -75,7 +75,8 @@ Frame handle_get_last_events(const std::string& param, OperationType operationTy
  * @return Frame containing:
  *         - Success: Number of events currently in the log
  *         - Error: "INVALID REQUEST"
- * @note KBST;0;GET;5;2;;TSBK
+ * @note <b>KBST;0;GET;5;2;;TSBK</b>
+ * @note Returns the total number of events in the log
  * @ingroup EventCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 5.2
  */

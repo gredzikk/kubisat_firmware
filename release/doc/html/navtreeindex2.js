@@ -1,5 +1,7 @@
 var NAVTREEINDEX2 =
 {
+"class_power_manager.html#a8ce6e244ea42b3c06f5875d495c53b38":[2,0,21,2],
+"class_power_manager.html#a9a117ff74fc946d35061bbb29b144080":[2,0,21,22],
 "class_power_manager.html#aa9ea91634936a20fb03d65ff8878867e":[2,0,21,0],
 "class_power_manager.html#aaa04cde3f4961b49234e5a12dcb1a202":[2,0,21,7],
 "class_power_manager.html#aaae8c02e1bab8d229321603d163852d8":[2,0,21,5],
@@ -97,6 +99,7 @@ var NAVTREEINDEX2 =
 "dir_95bc18144412456f5cbabe059a4294ca.html":[3,0,0,3],
 "dir_97aefd0d527b934f1d99a682da8fe6a9.html":[3,0,0],
 "dir_a2e9fde2cb3a710d934bef3a22578e2f.html":[3,0,0,0],
+"dir_cf5bcdfdb7c8a968d4b92b14833c211f.html":[3,0,1,0],
 "dir_d47969a7e5a3a3861afa43f50b4fd372.html":[3,0,0,5,2],
 "dir_d723fabaddb0f15643ed0df13b7a612d.html":[3,0,0,5,0],
 "dir_e3444725e96b02ac10c64ea3bdf19bda.html":[3,0,0,6],
@@ -246,8 +249,5 @@ var NAVTREEINDEX2 =
 "globals_m.html":[3,1,0,10],
 "globals_n.html":[3,1,0,11],
 "globals_o.html":[3,1,0,12],
-"globals_p.html":[3,1,0,13],
-"globals_r.html":[3,1,0,14],
-"globals_s.html":[3,1,0,15],
-"globals_t.html":[3,1,0,16]
+"globals_p.html":[3,1,0,13]
 };

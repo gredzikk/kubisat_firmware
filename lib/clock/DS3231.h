@@ -5,6 +5,7 @@
 #include <array>
 #include "pico/stdlib.h"
 #include "hardware/i2c.h"
+#include <time.h>
 
 #define DS3231_DEVICE_ADRESS            0x68
 
@@ -55,6 +56,8 @@ class DS3231 {
         int set_time(ds3231_data_t *data);
         int get_time(ds3231_data_t *data);
         int read_temperature(float *resolution);
+        time_t get_unix_time();
+        int set_unix_time(time_t unix_time);
     
         private:
         i2c_inst_t *i2c;

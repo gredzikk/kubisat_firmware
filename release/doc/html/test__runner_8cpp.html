@@ -103,28 +103,46 @@ $(function(){initNavTree('test__runner_8cpp.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;unity.h&quot;</code><br />
-<code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &quot;pico/stdlib.h&quot;</code><br />
-<code>#include &quot;hardware/spi.h&quot;</code><br />
-<code>#include &quot;hardware/i2c.h&quot;</code><br />
 <code>#include &quot;hardware/uart.h&quot;</code><br />
+</div><div class="textblock"><div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for test_runner.cpp:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="test__runner_8cpp__incl.svg" width="322" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <p><a href="test__runner_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a259567b00a479208d0ff7ed24cd3f050" id="r_a259567b00a479208d0ff7ed24cd3f050"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a259567b00a479208d0ff7ed24cd3f050">test_example</a> (void)</td></tr>
-<tr class="separator:a259567b00a479208d0ff7ed24cd3f050"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95c834d6178047ce9e1bce7cbfea2836" id="r_a95c834d6178047ce9e1bce7cbfea2836"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a95c834d6178047ce9e1bce7cbfea2836">setUp</a> (void)</td></tr>
-<tr class="separator:a95c834d6178047ce9e1bce7cbfea2836"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9909011e5fea0c018842eec4d93d0662" id="r_a9909011e5fea0c018842eec4d93d0662"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9909011e5fea0c018842eec4d93d0662">tearDown</a> (void)</td></tr>
-<tr class="separator:a9909011e5fea0c018842eec4d93d0662"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0defa558c4494de63320ed447c344190" id="r_a0defa558c4494de63320ed447c344190"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0defa558c4494de63320ed447c344190">test_frame_encode_basic</a> (void)</td></tr>
+<tr class="separator:a0defa558c4494de63320ed447c344190"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a213ff190eeab143a216ab4a9b5289853" id="r_a213ff190eeab143a216ab4a9b5289853"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a213ff190eeab143a216ab4a9b5289853">test_frame_decode_basic</a> (void)</td></tr>
+<tr class="separator:a213ff190eeab143a216ab4a9b5289853"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfd11d9875e0e57c17b24fd75d09f14f" id="r_abfd11d9875e0e57c17b24fd75d09f14f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abfd11d9875e0e57c17b24fd75d09f14f">test_frame_decode_invalid_header</a> (void)</td></tr>
+<tr class="separator:abfd11d9875e0e57c17b24fd75d09f14f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37101db5f0d636c7f9f4b22d47272724" id="r_a37101db5f0d636c7f9f4b22d47272724"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37101db5f0d636c7f9f4b22d47272724">test_frame_build_success</a> (void)</td></tr>
+<tr class="separator:a37101db5f0d636c7f9f4b22d47272724"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecd460198cd933d46eaf47cac92d5232" id="r_aecd460198cd933d46eaf47cac92d5232"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aecd460198cd933d46eaf47cac92d5232">test_frame_build_error</a> (void)</td></tr>
+<tr class="separator:aecd460198cd933d46eaf47cac92d5232"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33d87e47c4ad325b8390aed331f9d190" id="r_a33d87e47c4ad325b8390aed331f9d190"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a33d87e47c4ad325b8390aed331f9d190">test_frame_build_info</a> (void)</td></tr>
+<tr class="separator:a33d87e47c4ad325b8390aed331f9d190"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9346a3277e1e63be27b864219440bed" id="r_aa9346a3277e1e63be27b864219440bed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa9346a3277e1e63be27b864219440bed">test_operation_type_conversion</a> (void)</td></tr>
+<tr class="separator:aa9346a3277e1e63be27b864219440bed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5982477f2c62f65eca16f0ad6c30ccad" id="r_a5982477f2c62f65eca16f0ad6c30ccad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5982477f2c62f65eca16f0ad6c30ccad">test_value_unit_type_conversion</a> (void)</td></tr>
+<tr class="separator:a5982477f2c62f65eca16f0ad6c30ccad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52f35b00ffa8fe834c335cc6709a089b" id="r_a52f35b00ffa8fe834c335cc6709a089b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52f35b00ffa8fe834c335cc6709a089b">test_exception_type_conversion</a> (void)</td></tr>
+<tr class="separator:a52f35b00ffa8fe834c335cc6709a089b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20683dc6c7ef8035f8767e34a31602de" id="r_a20683dc6c7ef8035f8767e34a31602de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a20683dc6c7ef8035f8767e34a31602de">test_hex_string_conversion</a> (void)</td></tr>
+<tr class="separator:a20683dc6c7ef8035f8767e34a31602de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a840291bc02cba5474a4cb46a9b9566fe" id="r_a840291bc02cba5474a4cb46a9b9566fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a840291bc02cba5474a4cb46a9b9566fe">main</a> (void)</td></tr>
 <tr class="separator:a840291bc02cba5474a4cb46a9b9566fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a259567b00a479208d0ff7ed24cd3f050" name="a259567b00a479208d0ff7ed24cd3f050"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a259567b00a479208d0ff7ed24cd3f050">&#9670;&#160;</a></span>test_example()</h2>
+<a id="a0defa558c4494de63320ed447c344190" name="a0defa558c4494de63320ed447c344190"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0defa558c4494de63320ed447c344190">&#9670;&#160;</a></span>test_frame_encode_basic()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -133,7 +151,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void test_example </td>
+          <td class="memname">void test_frame_encode_basic </td>
           <td>(</td>
           <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -146,45 +164,390 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__example_8cpp_source.html#l00004">4</a> of file <a class="el" href="test__example_8cpp_source.html">test_example.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__frame__coding_8cpp_source.html#l00004">4</a> of file <a class="el" href="test__frame__coding_8cpp_source.html">test_frame_coding.cpp</a>.</p>
+<div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="test__runner_8cpp_a0defa558c4494de63320ed447c344190_cgraph.svg" width="567" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="test__runner_8cpp_a0defa558c4494de63320ed447c344190_icgraph.svg" width="279" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
-<a id="a95c834d6178047ce9e1bce7cbfea2836" name="a95c834d6178047ce9e1bce7cbfea2836"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a95c834d6178047ce9e1bce7cbfea2836">&#9670;&#160;</a></span>setUp()</h2>
+<a id="a213ff190eeab143a216ab4a9b5289853" name="a213ff190eeab143a216ab4a9b5289853"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a213ff190eeab143a216ab4a9b5289853">&#9670;&#160;</a></span>test_frame_decode_basic()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void setUp </td>
+          <td class="memname">void test_frame_decode_basic </td>
           <td>(</td>
           <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__runner_8cpp_source.html#l00010">10</a> of file <a class="el" href="test__runner_8cpp_source.html">test_runner.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__frame__coding_8cpp_source.html#l00014">14</a> of file <a class="el" href="test__frame__coding_8cpp_source.html">test_frame_coding.cpp</a>.</p>
+<div id="dynsection-3" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="test__runner_8cpp_a213ff190eeab143a216ab4a9b5289853_cgraph.svg" width="100%" height="480"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div id="dynsection-4" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="test__runner_8cpp_a213ff190eeab143a216ab4a9b5289853_icgraph.svg" width="279" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
-<a id="a9909011e5fea0c018842eec4d93d0662" name="a9909011e5fea0c018842eec4d93d0662"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9909011e5fea0c018842eec4d93d0662">&#9670;&#160;</a></span>tearDown()</h2>
+<a id="abfd11d9875e0e57c17b24fd75d09f14f" name="abfd11d9875e0e57c17b24fd75d09f14f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfd11d9875e0e57c17b24fd75d09f14f">&#9670;&#160;</a></span>test_frame_decode_invalid_header()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void tearDown </td>
+          <td class="memname">void test_frame_decode_invalid_header </td>
           <td>(</td>
           <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__runner_8cpp_source.html#l00011">11</a> of file <a class="el" href="test__runner_8cpp_source.html">test_runner.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__frame__coding_8cpp_source.html#l00026">26</a> of file <a class="el" href="test__frame__coding_8cpp_source.html">test_frame_coding.cpp</a>.</p>
+<div id="dynsection-5" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="test__runner_8cpp_abfd11d9875e0e57c17b24fd75d09f14f_cgraph.svg" width="100%" height="492"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div id="dynsection-6" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="test__runner_8cpp_abfd11d9875e0e57c17b24fd75d09f14f_icgraph.svg" width="284" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a37101db5f0d636c7f9f4b22d47272724" name="a37101db5f0d636c7f9f4b22d47272724"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37101db5f0d636c7f9f4b22d47272724">&#9670;&#160;</a></span>test_frame_build_success()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void test_frame_build_success </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="test__frame__build_8cpp_source.html#l00004">4</a> of file <a class="el" href="test__frame__build_8cpp_source.html">test_frame_build.cpp</a>.</p>
+<div id="dynsection-7" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="test__runner_8cpp_a37101db5f0d636c7f9f4b22d47272724_cgraph.svg" width="499" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-8" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="test__runner_8cpp_a37101db5f0d636c7f9f4b22d47272724_icgraph.svg" width="282" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="aecd460198cd933d46eaf47cac92d5232" name="aecd460198cd933d46eaf47cac92d5232"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecd460198cd933d46eaf47cac92d5232">&#9670;&#160;</a></span>test_frame_build_error()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void test_frame_build_error </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="test__frame__build_8cpp_source.html#l00015">15</a> of file <a class="el" href="test__frame__build_8cpp_source.html">test_frame_build.cpp</a>.</p>
+<div id="dynsection-9" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="test__runner_8cpp_aecd460198cd933d46eaf47cac92d5232_cgraph.svg" width="476" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-10" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="test__runner_8cpp_aecd460198cd933d46eaf47cac92d5232_icgraph.svg" width="259" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a33d87e47c4ad325b8390aed331f9d190" name="a33d87e47c4ad325b8390aed331f9d190"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33d87e47c4ad325b8390aed331f9d190">&#9670;&#160;</a></span>test_frame_build_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void test_frame_build_info </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="test__frame__build_8cpp_source.html#l00024">24</a> of file <a class="el" href="test__frame__build_8cpp_source.html">test_frame_build.cpp</a>.</p>
+<div id="dynsection-11" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="test__runner_8cpp_a33d87e47c4ad325b8390aed331f9d190_cgraph.svg" width="471" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-12" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="test__runner_8cpp_a33d87e47c4ad325b8390aed331f9d190_icgraph.svg" width="254" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="aa9346a3277e1e63be27b864219440bed" name="aa9346a3277e1e63be27b864219440bed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9346a3277e1e63be27b864219440bed">&#9670;&#160;</a></span>test_operation_type_conversion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void test_operation_type_conversion </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="test__converters_8cpp_source.html#l00004">4</a> of file <a class="el" href="test__converters_8cpp_source.html">test_converters.cpp</a>.</p>
+<div id="dynsection-13" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="test__runner_8cpp_aa9346a3277e1e63be27b864219440bed_cgraph.svg" width="358" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-14" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-14-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="test__runner_8cpp_aa9346a3277e1e63be27b864219440bed_icgraph.svg" width="244" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a5982477f2c62f65eca16f0ad6c30ccad" name="a5982477f2c62f65eca16f0ad6c30ccad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5982477f2c62f65eca16f0ad6c30ccad">&#9670;&#160;</a></span>test_value_unit_type_conversion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void test_value_unit_type_conversion </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="test__converters_8cpp_source.html#l00013">13</a> of file <a class="el" href="test__converters_8cpp_source.html">test_converters.cpp</a>.</p>
+<div id="dynsection-15" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-15-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-15-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="test__runner_8cpp_a5982477f2c62f65eca16f0ad6c30ccad_cgraph.svg" width="331" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-16" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-16-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-16-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="test__runner_8cpp_a5982477f2c62f65eca16f0ad6c30ccad_icgraph.svg" width="250" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a52f35b00ffa8fe834c335cc6709a089b" name="a52f35b00ffa8fe834c335cc6709a089b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52f35b00ffa8fe834c335cc6709a089b">&#9670;&#160;</a></span>test_exception_type_conversion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void test_exception_type_conversion </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="test__converters_8cpp_source.html#l00020">20</a> of file <a class="el" href="test__converters_8cpp_source.html">test_converters.cpp</a>.</p>
+<div id="dynsection-17" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-17-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-17-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-17-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="test__runner_8cpp_a52f35b00ffa8fe834c335cc6709a089b_cgraph.svg" width="364" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-18" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-18-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-18-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-18-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="test__runner_8cpp_a52f35b00ffa8fe834c335cc6709a089b_icgraph.svg" width="247" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a20683dc6c7ef8035f8767e34a31602de" name="a20683dc6c7ef8035f8767e34a31602de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20683dc6c7ef8035f8767e34a31602de">&#9670;&#160;</a></span>test_hex_string_conversion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void test_hex_string_conversion </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="test__converters_8cpp_source.html#l00027">27</a> of file <a class="el" href="test__converters_8cpp_source.html">test_converters.cpp</a>.</p>
+<div id="dynsection-19" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-19-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-19-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-19-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="test__runner_8cpp_a20683dc6c7ef8035f8767e34a31602de_cgraph.svg" width="378" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-20" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-20-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-20-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-20-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="test__runner_8cpp_a20683dc6c7ef8035f8767e34a31602de_icgraph.svg" width="288" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -203,7 +566,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__runner_8cpp_source.html#l00013">13</a> of file <a class="el" href="test__runner_8cpp_source.html">test_runner.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__runner_8cpp_source.html#l00018">18</a> of file <a class="el" href="test__runner_8cpp_source.html">test_runner.cpp</a>.</p>
+<div id="dynsection-21" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-21-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-21-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-21-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="test__runner_8cpp_a840291bc02cba5474a4cb46a9b9566fe_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
