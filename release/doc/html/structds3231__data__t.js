@@ -6,6 +6,6 @@ var structds3231__data__t =
     [ "day", "structds3231__data__t.html#aee218cfb9904c839652d2edbfc0922b8", null ],
     [ "date", "structds3231__data__t.html#a423c1692433240cff62cef05fec405f1", null ],
     [ "month", "structds3231__data__t.html#a00ef663eddc6780133279fcb2a4fddea", null ],
-    [ "century", "structds3231__data__t.html#a4728d8488a2cacc95d111a1721965e37", null ],
-    [ "year", "structds3231__data__t.html#aaee28b1b2ecbfe8070da619e5f54e31e", null ]
+    [ "year", "structds3231__data__t.html#aaee28b1b2ecbfe8070da619e5f54e31e", null ],
+    [ "century", "structds3231__data__t.html#a6f8ab5102e32c35741e4a8d5ec292437", null ]
 ];

@@ -12,5 +12,6 @@ var searchData=
   ['is_5fcharging_5fsolar_9',['is_charging_solar',['../class_power_manager.html#a3682b0fca1bb98fd44740714895cc9dd',1,'PowerManager']]],
   ['is_5fcharging_5fusb_10',['is_charging_usb',['../class_power_manager.html#a80bb34a3f9cd27d753252c66402c6a91',1,'PowerManager']]],
   ['is_5finitialized_11',['is_initialized',['../class_b_h1750_wrapper.html#aac6fd3165dff7b9356a136a0d677dbcc',1,'BH1750Wrapper::is_initialized()'],['../class_b_m_e280_wrapper.html#a8a8f43b3849093362cd8006ecb266376',1,'BME280Wrapper::is_initialized()'],['../class_h_m_c5883_l_wrapper.html#aa8fef1832b14c758f6e73f88412615fd',1,'HMC5883LWrapper::is_initialized()'],['../class_i_sensor.html#ab0583ca3425ecead66c8f2f2836825e8',1,'ISensor::is_initialized()'],['../class_m_p_u6050_wrapper.html#ad12d631edc144428d1c13f73e3e355b4',1,'MPU6050Wrapper::is_initialized()']]],
-  ['istransmitting_12',['isTransmitting',['../class_lo_ra_class.html#a3b9ea4a954095979f6e3ae037d8c3d5e',1,'LoRaClass']]]
+  ['isrunning_12',['isRunning',['../class_erriez_d_s3231.html#a0afd9f881a55af0623f3cc20402820c5',1,'ErriezDS3231']]],
+  ['istransmitting_13',['isTransmitting',['../class_lo_ra_class.html#a3b9ea4a954095979f6e3ae037d8c3d5e',1,'LoRaClass']]]
 ];

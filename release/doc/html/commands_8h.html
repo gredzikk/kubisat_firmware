@@ -186,6 +186,12 @@ Functions</h2></td></tr>
 <tr class="memitem:gaaa3951cee1a13c3f497c96c0f3be9f95" id="r_gaaa3951cee1a13c3f497c96c0f3be9f95"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___event_commands.html#gaaa3951cee1a13c3f497c96c0f3be9f95">hadnle_get_event_count</a> (const std::string &amp;param, <a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a> operationType)</td></tr>
 <tr class="memdesc:gaaa3951cee1a13c3f497c96c0f3be9f95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler for getting total number of events in the log.  <br /></td></tr>
 <tr class="separator:gaaa3951cee1a13c3f497c96c0f3be9f95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc768cf94aac4e11301443f30529b738" id="r_acc768cf94aac4e11301443f30529b738"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acc768cf94aac4e11301443f30529b738">handle_list_files</a> (const std::string &amp;param, <a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a> operationType)</td></tr>
+<tr class="memdesc:acc768cf94aac4e11301443f30529b738"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the list files command.  <br /></td></tr>
+<tr class="separator:acc768cf94aac4e11301443f30529b738"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ebbe9d6a73f10f9887975fe4f968aad" id="r_a1ebbe9d6a73f10f9887975fe4f968aad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ebbe9d6a73f10f9887975fe4f968aad">handle_file_download</a> (const std::string &amp;param, <a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a> operationType)</td></tr>
+<tr class="memdesc:a1ebbe9d6a73f10f9887975fe4f968aad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the file download command.  <br /></td></tr>
+<tr class="separator:a1ebbe9d6a73f10f9887975fe4f968aad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga52e8963095eccdf1045309bf31b4d705" id="r_ga52e8963095eccdf1045309bf31b4d705"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___command_system.html#ga52e8963095eccdf1045309bf31b4d705">execute_command</a> (uint32_t commandKey, const std::string &amp;param, <a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a> operationType)</td></tr>
 <tr class="memdesc:ga52e8963095eccdf1045309bf31b4d705"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a command based on its key.  <br /></td></tr>
 <tr class="separator:ga52e8963095eccdf1045309bf31b4d705"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -196,6 +202,89 @@ Variables</h2></td></tr>
 <tr class="memdesc:ga04a0515603ba347ef314678876f3fa26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global map of all command handlers.  <br /></td></tr>
 <tr class="separator:ga04a0515603ba347ef314678876f3fa26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="acc768cf94aac4e11301443f30529b738" name="acc768cf94aac4e11301443f30529b738"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc768cf94aac4e11301443f30529b738">&#9670;&#160;</a></span>handle_list_files()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> handle_list_files </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>param</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a></td>          <td class="paramname"><span class="paramname"><em>operationType</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Handles the list files command. </p>
+<p>This function lists the files in the root directory of the SD card and sends the filename and size of each file to the ground station in separate frames.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">param</td><td>Unused. </td></tr>
+    <tr><td class="paramname">operationType</td><td>The operation type (must be GET). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="struct_frame.html">Frame</a> indicating the result of the operation. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="storage__commands_8cpp_source.html#l00089">89</a> of file <a class="el" href="storage__commands_8cpp_source.html">storage_commands.cpp</a>.</p>
+<div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="commands_8h_acc768cf94aac4e11301443f30529b738_cgraph.svg" width="652" height="155"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a1ebbe9d6a73f10f9887975fe4f968aad" name="a1ebbe9d6a73f10f9887975fe4f968aad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ebbe9d6a73f10f9887975fe4f968aad">&#9670;&#160;</a></span>handle_file_download()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> handle_file_download </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>param</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a></td>          <td class="paramname"><span class="paramname"><em>operationType</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Handles the file download command. </p>
+<p>This function reads a file from the SD card and sends it to the ground station in blocks over LoRa. The ground station must acknowledge each block before the next block is sent. A checksum is calculated and sent at the end of the transmission to verify data integrity.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">param</td><td>The filename to download. </td></tr>
+    <tr><td class="paramname">operationType</td><td>The operation type (must be SET). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="struct_frame.html">Frame</a> indicating the result of the operation. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="storage__commands_8cpp_source.html#l00014">14</a> of file <a class="el" href="storage__commands_8cpp_source.html">storage_commands.cpp</a>.</p>
+<div id="dynsection-3" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="commands_8h_a1ebbe9d6a73f10f9887975fe4f968aad_cgraph.svg" width="100%" height="499"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

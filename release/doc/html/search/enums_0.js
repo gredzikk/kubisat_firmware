@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['clockevent_0',['ClockEvent',['../event__manager_8h.html#a163ce349de3451c81f50080e5fbe62a2',1,'event_manager.h']]],
-  ['commandaccesslevel_1',['CommandAccessLevel',['../protocol_8h.html#a1a30b781d6fac5ca0b850dd8b3726d8d',1,'protocol.h']]],
-  ['commsevent_2',['CommsEvent',['../event__manager_8h.html#a0270a0464efae26aefb8cf32a45e20ad',1,'event_manager.h']]]
+  ['alarm1type_0',['Alarm1Type',['../_erriez_d_s3231_8h.html#aa29471da8f6d22930cc9159a55a49273',1,'ErriezDS3231.h']]],
+  ['alarm2type_1',['Alarm2Type',['../_erriez_d_s3231_8h.html#a2561c628950a85b8f502b7055c3acd8b',1,'ErriezDS3231.h']]],
+  ['alarmid_2',['AlarmId',['../_erriez_d_s3231_8h.html#abdac868b647b120d540abd60d35e0feb',1,'ErriezDS3231.h']]]
 ];

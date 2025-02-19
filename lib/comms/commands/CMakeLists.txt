@@ -9,6 +9,8 @@ add_library(commands_lib STATIC
     gps_commands.cpp
     power_commands.cpp
     event_commands.cpp
+    storage_commands.cpp
+    storage_commands_utils.cpp
 )
 
 target_include_directories(commands_lib PUBLIC
@@ -22,6 +24,7 @@ target_include_directories(commands_lib PUBLIC
     ${CMAKE_SOURCE_DIR}/lib/eventman
     ${CMAKE_SOURCE_DIR}/lib/clock
     ${CMAKE_SOURCE_DIR}/lib/location
+    ${CMAKE_SOURCE_DIR}/lib/storage
 
 )
 
@@ -29,4 +32,13 @@ target_link_libraries(commands_lib PUBLIC
     pico_stdlib
     hardware_i2c
     hardware_spi
+    hardware_flash
+    blockdevice_flash
+    blockdevice_heap
+    blockdevice_loopback
+    blockdevice_sd
+    filesystem_fat
+    filesystem_littlefs
+    filesystem_vfs
+    storage_lib
 )

@@ -20,6 +20,8 @@ var commands_8h =
     [ "handle_get_current_draw", "group___power_commands.html#ga31c33c0ee51185939be5c642affdb6b8", null ],
     [ "handle_get_last_events", "group___event_commands.html#ga9a7182db399c2b40ea66db5989d10471", null ],
     [ "hadnle_get_event_count", "group___event_commands.html#gaaa3951cee1a13c3f497c96c0f3be9f95", null ],
+    [ "handle_list_files", "commands_8h.html#acc768cf94aac4e11301443f30529b738", null ],
+    [ "handle_file_download", "commands_8h.html#a1ebbe9d6a73f10f9887975fe4f968aad", null ],
     [ "execute_command", "group___command_system.html#ga52e8963095eccdf1045309bf31b4d705", null ],
     [ "commandHandlers", "group___command_system.html#ga04a0515603ba347ef314678876f3fa26", null ]
 ];

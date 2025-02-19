@@ -6,7 +6,7 @@ var hierarchy =
     [ "INA3221::conf_reg_t", "struct_i_n_a3221_1_1conf__reg__t.html", null ],
     [ "DS3231", "class_d_s3231.html", null ],
     [ "ds3231_data_t", "structds3231__data__t.html", null ],
-    [ "ds3231_t", "structds3231__t.html", null ],
+    [ "ErriezDS3231", "class_erriez_d_s3231.html", null ],
     [ "EventEmitter", "class_event_emitter.html", null ],
     [ "EventLog", "class_event_log.html", null ],
     [ "EventManager", "class_event_manager.html", [

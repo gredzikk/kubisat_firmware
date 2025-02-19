@@ -1,0 +1,7 @@
+<map id="ErriezDS3231::read" name="ErriezDS3231::read">
+<area shape="rect" id="Node000001" title="Read date and time from RTC." alt="" coords="5,31,141,57"/>
+<area shape="rect" id="Node000002" href="$class_erriez_d_s3231.html#a471af5f04b95c6021e9d5a551ad46099" title="BCD to decimal conversion." alt="" coords="189,5,358,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="141,33,173,29,173,34,142,38"/>
+<area shape="rect" id="Node000003" href="$class_erriez_d_s3231.html#a9715869e0186e4f6a30dfd6a372875c1" title="Read buffer from RTC." alt="" coords="189,56,358,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="142,50,173,54,173,59,141,55"/>
+</map>

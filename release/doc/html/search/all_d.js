@@ -13,5 +13,6 @@ var searchData=
   ['operationtype_10',['OperationType',['../protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047',1,'protocol.h']]],
   ['operationtype_11',['operationType',['../struct_frame.html#a6ad0b81e9434fee37a64535a0c58facb',1,'Frame']]],
   ['outgoing_12',['outgoing',['../communication_8cpp.html#a13c45747091f32644e83d65348c61232',1,'communication.cpp']]],
-  ['overcharge_13',['OVERCHARGE',['../event__manager_8h.html#a8b04683add0105a3bf3200eee3d9d3e6a575fea54d116603bb4c778db18fbde98',1,'event_manager.h']]]
+  ['outputclockpinenable_13',['outputClockPinEnable',['../class_erriez_d_s3231.html#ae727762d57acd14507190e26b53dcf82',1,'ErriezDS3231']]],
+  ['overcharge_14',['OVERCHARGE',['../event__manager_8h.html#a8b04683add0105a3bf3200eee3d9d3e6a575fea54d116603bb4c778db18fbde98',1,'event_manager.h']]]
 ];

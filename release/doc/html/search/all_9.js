@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['i2c_0',['i2c',['../structds3231__t.html#a3a28c0ca59958e73e60600b04d6b6ef8',1,'ds3231_t::i2c'],['../class_d_s3231.html#afff19e512928fce8a6f9b50885df3732',1,'DS3231::i2c'],['../class_h_m_c5883_l.html#a5e63fceb40ec1b9427757a4ee206b12f',1,'HMC5883L::i2c']]],
+  ['i2c_0',['i2c',['../class_d_s3231.html#afff19e512928fce8a6f9b50885df3732',1,'DS3231::i2c'],['../class_h_m_c5883_l.html#a5e63fceb40ec1b9427757a4ee206b12f',1,'HMC5883L::i2c']]],
   ['i2c_5fport_1',['i2c_port',['../class_b_m_e280.html#ac402b86b5376fcfebefad1c8cec948b2',1,'BME280']]],
   ['i2c_5fread_5freg_2',['i2c_read_reg',['../class_d_s3231.html#ae3895581e62c411451d12de3e7558207',1,'DS3231']]],
   ['i2c_5fwrite_5freg_3',['i2c_write_reg',['../class_d_s3231.html#a2fa69b2c58e800b2a06e4966ca21b59c',1,'DS3231']]],
@@ -85,5 +85,6 @@ var searchData=
   ['isensor_2ecpp_82',['ISensor.cpp',['../_i_sensor_8cpp.html',1,'']]],
   ['isensor_2eh_83',['ISensor.h',['../_i_sensor_8h.html',1,'']]],
   ['isr_5fprefix_84',['ISR_PREFIX',['../_lo_ra-_r_p2040_8cpp.html#ab88889208ad180d9427b0f8b1e3f2cd0',1,'LoRa-RP2040.cpp']]],
-  ['istransmitting_85',['isTransmitting',['../class_lo_ra_class.html#a3b9ea4a954095979f6e3ae037d8c3d5e',1,'LoRaClass']]]
+  ['isrunning_85',['isRunning',['../class_erriez_d_s3231.html#a0afd9f881a55af0623f3cc20402820c5',1,'ErriezDS3231']]],
+  ['istransmitting_86',['isTransmitting',['../class_lo_ra_class.html#a3b9ea4a954095979f6e3ae037d8c3d5e',1,'LoRaClass']]]
 ];

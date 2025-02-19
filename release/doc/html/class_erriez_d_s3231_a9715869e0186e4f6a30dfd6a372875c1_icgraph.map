@@ -1,0 +1,30 @@
+<map id="ErriezDS3231::readBuffer" name="ErriezDS3231::readBuffer">
+<area shape="rect" id="Node000001" title="Read buffer from RTC." alt="" coords="907,81,1076,108"/>
+<area shape="rect" id="Node000002" href="$class_erriez_d_s3231.html#a57de666506f26c9524ef1a7a2aff23ad" title="Read temperature." alt="" coords="658,5,859,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="942,78,858,47,818,35,819,30,859,41,944,73"/>
+<area shape="rect" id="Node000003" href="$class_erriez_d_s3231.html#abaa1d99e3954802c1be37e9dfd585ba9" title="Read time from RTC." alt="" coords="680,56,837,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="891,86,837,81,838,75,892,81"/>
+<area shape="rect" id="Node000004" href="$class_erriez_d_s3231.html#a0261677270cc639a23daebbabcf0e6fc" title="Read date and time from RTC." alt="" coords="691,107,826,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="892,108,827,115,826,110,891,103"/>
+<area shape="rect" id="Node000008" href="$class_erriez_d_s3231.html#aab9ee8e4653b2806a82cf12a22c5c1dd" title="Read register." alt="" coords="666,183,851,209"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="946,117,792,185,790,180,944,112"/>
+<area shape="rect" id="Node000005" href="$class_erriez_d_s3231.html#a5c4f30f85b325e4bcdecd976cfda0f93" title="Get date time." alt="" coords="425,17,610,44"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="675,105,657,97,642,87,632,77,623,68,609,58,581,47,583,42,612,54,626,64,636,74,646,83,660,92,677,100"/>
+<area shape="rect" id="Node000006" href="$class_erriez_d_s3231.html#a05a1fab6a5d852c6b7e7749754cc7a63" title="Read Unix UTC epoch time_t." alt="" coords="435,68,600,95"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="675,109,600,97,601,92,676,104"/>
+<area shape="rect" id="Node000007" href="$class_erriez_d_s3231.html#a1942791ed2f5550ab5114c2dc2ac6722" title="Write time to RTC." alt="" coords="19,125,177,152"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="676,125,177,139,177,134,675,120"/>
+<area shape="rect" id="Node000009" href="$class_erriez_d_s3231.html#a8830174ba45fcf625206207191d7e58b" title="Initialize and detect DS3231 RTC." alt="" coords="447,169,588,196"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="650,193,589,189,589,184,651,187"/>
+<area shape="rect" id="Node000010" href="$class_erriez_d_s3231.html#a47dd1340fc2ecac52cff00c3cffc7e6d" title="Enable or disable oscillator when running on V&#45;BAT." alt="" coords="427,220,608,247"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="654,215,609,222,608,217,653,210"/>
+<area shape="rect" id="Node000014" href="$class_erriez_d_s3231.html#a0afd9f881a55af0623f3cc20402820c5" title="Read RTC OSF (Oscillator Stop Flag) from status register." alt="" coords="434,271,602,297"/>
+<area shape="poly" id="edge14_Node000008_Node000014" title=" " alt="" coords="715,219,611,261,575,273,573,267,609,256,713,214"/>
+<area shape="rect" id="Node000011" href="$class_erriez_d_s3231.html#a50426dfe02af86852f777e392936fa08" title="Write date and time to RTC." alt="" coords="239,195,377,221"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="411,223,377,219,377,214,412,218"/>
+<area shape="poly" id="edge13_Node000011_Node000007" title=" " alt="" coords="250,192,140,155,142,150,252,187"/>
+<area shape="rect" id="Node000012" href="$class_erriez_d_s3231.html#aefebda4120d747f48feb0d1c53468c63" title="Set date time." alt="" coords="5,188,191,215"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="223,208,191,207,191,202,223,203"/>
+<area shape="rect" id="Node000013" href="$class_erriez_d_s3231.html#a4d06bb8eff5952b794a09fa41fccf01c" title="Write Unix epoch UTC time to RTC." alt="" coords="15,239,181,265"/>
+<area shape="poly" id="edge12_Node000011_Node000013" title=" " alt="" coords="227,228,166,241,165,235,226,222"/>
+</map>

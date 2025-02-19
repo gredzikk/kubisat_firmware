@@ -6,11 +6,12 @@ var searchData=
   ['warn_5falert_5flatch_5fen_3',['warn_alert_latch_en',['../struct_i_n_a3221_1_1masken__reg__t.html#a96cadcb3794fddf964748ba6669b9b2f',1,'INA3221::masken_reg_t']]],
   ['watchdog_5freset_4',['WATCHDOG_RESET',['../event__manager_8h.html#a77219d2f280eaad8c79825f50cf78785aeaa5ce6b67cf5155de76d00a3bb3ff71',1,'event_manager.h']]],
   ['wednesday_5',['WEDNESDAY',['../_d_s3231_8h.html#aa6c7328ce7a3193e4084941d6141904fa68288a23958cd9e1705fd81f0ee729c7',1,'DS3231.h']]],
-  ['write_6',['write',['../class_lo_ra_class.html#a90b450cefff42e5522be08d159a93b44',1,'LoRaClass::write(uint8_t byte)'],['../class_lo_ra_class.html#a4b251b35d67bd9363dc44b6324cfc69c',1,'LoRaClass::write(const uint8_t *buffer, size_t size)'],['../class_print.html#a5be30d49adae2406a270c29ba9a3e0a3',1,'Print::write(uint8_t)=0'],['../class_print.html#a5b40e0e9cab1f2fe5bb0cb22ffe5adda',1,'Print::write(const char *str)'],['../class_print.html#ad98d820df11e2697be1e4b1ea30b4a23',1,'Print::write(const uint8_t *buffer, size_t size)'],['../class_print.html#abfdd93a61c4b95a3ba41680188505e73',1,'Print::write(const char *buffer, size_t size)']]],
+  ['write_6',['write',['../class_lo_ra_class.html#a90b450cefff42e5522be08d159a93b44',1,'LoRaClass::write(uint8_t byte)'],['../class_lo_ra_class.html#a4b251b35d67bd9363dc44b6324cfc69c',1,'LoRaClass::write(const uint8_t *buffer, size_t size)'],['../class_print.html#a5be30d49adae2406a270c29ba9a3e0a3',1,'Print::write(uint8_t)=0'],['../class_print.html#a5b40e0e9cab1f2fe5bb0cb22ffe5adda',1,'Print::write(const char *str)'],['../class_print.html#ad98d820df11e2697be1e4b1ea30b4a23',1,'Print::write(const uint8_t *buffer, size_t size)'],['../class_print.html#abfdd93a61c4b95a3ba41680188505e73',1,'Print::write(const char *buffer, size_t size)'],['../class_erriez_d_s3231.html#a50426dfe02af86852f777e392936fa08',1,'ErriezDS3231::write()']]],
   ['write8_7',['write8',['../class_b_h1750.html#a3208587c6a4e0a6428f53c176c0b2970',1,'BH1750']]],
   ['write_5ferror_8',['write_error',['../class_print.html#ae922182b62afa3b8434397b7a54e70c4',1,'Print']]],
   ['write_5fonly_9',['WRITE_ONLY',['../protocol_8h.html#a1a30b781d6fac5ca0b850dd8b3726d8dad8fddf06187e680ab5a6355f76a17357',1,'protocol.h']]],
   ['write_5fregister_10',['write_register',['../class_h_m_c5883_l.html#aa01445e6b52bc745c61ed749d4b36af6',1,'HMC5883L']]],
-  ['writeindex_11',['writeIndex',['../class_event_manager.html#ad97f788895da6e30b3237982a7bcd810',1,'EventManager']]],
-  ['writeregister_12',['writeRegister',['../class_lo_ra_class.html#a77e7c77aa54174b352a26e1510f66f98',1,'LoRaClass']]]
+  ['writebuffer_11',['writeBuffer',['../class_erriez_d_s3231.html#a7cd8a1aa0a720d8ecc687e58ddfe110d',1,'ErriezDS3231']]],
+  ['writeindex_12',['writeIndex',['../class_event_manager.html#ad97f788895da6e30b3237982a7bcd810',1,'EventManager']]],
+  ['writeregister_13',['writeRegister',['../class_lo_ra_class.html#a77e7c77aa54174b352a26e1510f66f98',1,'LoRaClass::writeRegister()'],['../class_erriez_d_s3231.html#a2d53e7b9c88c576fe778502b7845a5ce',1,'ErriezDS3231::writeRegister()']]]
 ];

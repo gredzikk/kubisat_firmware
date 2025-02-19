@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['i2c_0',['i2c',['../structds3231__t.html#a3a28c0ca59958e73e60600b04d6b6ef8',1,'ds3231_t::i2c'],['../class_d_s3231.html#afff19e512928fce8a6f9b50885df3732',1,'DS3231::i2c'],['../class_h_m_c5883_l.html#a5e63fceb40ec1b9427757a4ee206b12f',1,'HMC5883L::i2c']]],
+  ['i2c_0',['i2c',['../class_d_s3231.html#afff19e512928fce8a6f9b50885df3732',1,'DS3231::i2c'],['../class_h_m_c5883_l.html#a5e63fceb40ec1b9427757a4ee206b12f',1,'HMC5883L::i2c']]],
   ['i2c_5fport_1',['i2c_port',['../class_b_m_e280.html#ac402b86b5376fcfebefad1c8cec948b2',1,'BME280']]],
   ['id_2',['id',['../class_event_log.html#a5e0923e12450e6b7c782c7f6630f4563',1,'EventLog::id'],['../event__manager_8h.html#a4fc3a0c58dfbd1e68224521185cb9384',1,'id:&#160;event_manager.h']]],
   ['ina3221_5f_3',['ina3221_',['../class_power_manager.html#abea16b2f44ce36a0add67c1950c36533',1,'PowerManager']]],

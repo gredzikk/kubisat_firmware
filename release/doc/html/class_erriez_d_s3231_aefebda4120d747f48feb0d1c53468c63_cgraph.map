@@ -1,0 +1,18 @@
+<map id="ErriezDS3231::setDateTime" name="ErriezDS3231::setDateTime">
+<area shape="rect" id="Node000001" title="Set date time." alt="" coords="5,107,191,133"/>
+<area shape="rect" id="Node000002" href="$class_erriez_d_s3231.html#a50426dfe02af86852f777e392936fa08" title="Write date and time to RTC." alt="" coords="239,107,377,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="191,117,223,117,223,123,191,123"/>
+<area shape="rect" id="Node000003" href="$class_erriez_d_s3231.html#a47dd1340fc2ecac52cff00c3cffc7e6d" title="Enable or disable oscillator when running on V&#45;BAT." alt="" coords="425,56,606,83"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="365,103,443,84,444,89,366,109"/>
+<area shape="rect" id="Node000007" href="$class_erriez_d_s3231.html#a7cd8a1aa0a720d8ecc687e58ddfe110d" title="Write buffer to RTC." alt="" coords="890,81,1062,108"/>
+<area shape="poly" id="edge8_Node000002_Node000007" title=" " alt="" coords="377,115,874,96,875,101,377,120"/>
+<area shape="rect" id="Node000008" href="$class_erriez_d_s3231.html#a169b93f6712c85c516a629b96ab0e3c8" title="Decimal to BCD conversion." alt="" coords="432,157,600,184"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="366,131,444,151,443,156,365,137"/>
+<area shape="rect" id="Node000004" href="$class_erriez_d_s3231.html#aab9ee8e4653b2806a82cf12a22c5c1dd" title="Read register." alt="" coords="656,5,840,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="580,53,668,33,669,38,581,58"/>
+<area shape="rect" id="Node000006" href="$class_erriez_d_s3231.html#a2d53e7b9c88c576fe778502b7845a5ce" title="Write register." alt="" coords="654,56,842,83"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="606,67,639,67,639,72,606,72"/>
+<area shape="rect" id="Node000005" href="$class_erriez_d_s3231.html#a9715869e0186e4f6a30dfd6a372875c1" title="Read buffer from RTC." alt="" coords="891,5,1060,32"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="840,16,875,16,875,21,840,21"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="843,77,874,81,874,86,842,82"/>
+</map>

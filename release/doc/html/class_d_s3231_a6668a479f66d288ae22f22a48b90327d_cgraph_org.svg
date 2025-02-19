@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="class_d_s3231.html#ae3895581e62c411451d12de3e7558207" target="_top" xlink:title="Library function to read a specific I2C register adress.">
+<g id="a_Node000002"><a xlink:href="class_d_s3231.html#ae3895581e62c411451d12de3e7558207" target="_top" xlink:title="Library function to read a specific I2C register address.">
 <polygon fill="white" stroke="#666666" points="281.75,-20 169,-20 169,0 281.75,0 281.75,-20"/>
 <text text-anchor="middle" x="225.38" y="-6.5" font-family="Helvetica,sans-Serif" font-size="10.00">DS3231::i2c_read_reg</text>
 </a>

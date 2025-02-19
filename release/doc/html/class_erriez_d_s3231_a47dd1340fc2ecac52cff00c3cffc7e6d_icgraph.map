@@ -1,0 +1,11 @@
+<map id="ErriezDS3231::clockEnable" name="ErriezDS3231::clockEnable">
+<area shape="rect" id="Node000001" title="Enable or disable oscillator when running on V&#45;BAT." alt="" coords="425,56,606,83"/>
+<area shape="rect" id="Node000002" href="$class_erriez_d_s3231.html#a50426dfe02af86852f777e392936fa08" title="Write date and time to RTC." alt="" coords="239,56,377,83"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="409,72,377,72,377,67,409,67"/>
+<area shape="rect" id="Node000003" href="$class_erriez_d_s3231.html#aefebda4120d747f48feb0d1c53468c63" title="Set date time." alt="" coords="5,5,191,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="234,54,156,35,157,30,235,49"/>
+<area shape="rect" id="Node000004" href="$class_erriez_d_s3231.html#a4d06bb8eff5952b794a09fa41fccf01c" title="Write Unix epoch UTC time to RTC." alt="" coords="15,56,181,83"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="223,72,181,72,181,67,223,67"/>
+<area shape="rect" id="Node000005" href="$class_erriez_d_s3231.html#a1942791ed2f5550ab5114c2dc2ac6722" title="Write time to RTC." alt="" coords="19,107,177,133"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="235,89,157,109,156,103,234,84"/>
+</map>

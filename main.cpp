@@ -13,6 +13,7 @@ void core1_entry() {
     while (true) {
         collect_gps_data();
         check_power_events(powerManager); 
+        sleep_ms(100);
     }
 }
 
@@ -80,27 +81,6 @@ int main()
     multicore_launch_core1(core1_entry);
 
     gpio_put(PICO_DEFAULT_LED_PIN, 0);
-    ds3231_data_t time_data;
-    time_data.seconds = 0;
-    time_data.minutes = 41;
-    time_data.hours = 20;
-    time_data.day = 4;
-    time_data.date = 14;
-    time_data.month = 11;
-    time_data.year = 24;
-    time_data.century = 0; 
-
-    int clockInitStatus = systemClock.set_time(&time_data); 
-    if (clockInitStatus) {
-        uart_print("Clock init success: " + std::to_string(clockInitStatus));
-    } else {
-        uart_print("Clock init error: " + std::to_string(clockInitStatus));
-    }
-    gpio_put(PICO_DEFAULT_LED_PIN, 1);
-
-
-
-    gpio_put(PICO_DEFAULT_LED_PIN, 0);
     bool powerManagerInitStatus = powerManager.initialize();
     if (powerManagerInitStatus)
     {
@@ -113,7 +93,6 @@ int main()
         uart_print("Power manager init error");
     }
     gpio_put(PICO_DEFAULT_LED_PIN, 1);
-
 
 
     for (int i = 5; i > 0; --i)

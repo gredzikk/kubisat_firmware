@@ -1,6 +1,5 @@
 var _d_s3231_8h =
 [
-    [ "ds3231_t", "structds3231__t.html", "structds3231__t" ],
     [ "ds3231_data_t", "structds3231__data__t.html", "structds3231__data__t" ],
     [ "DS3231", "class_d_s3231.html", "class_d_s3231" ],
     [ "DS3231_DEVICE_ADRESS", "_d_s3231_8h.html#a68499515579b64a93102faa8aa3bc7da", null ],
@@ -15,8 +14,6 @@ var _d_s3231_8h =
     [ "DS3231_CONTROL_STATUS_REG", "_d_s3231_8h.html#a53a5c42970982dc1b206ab3d89b66d7f", null ],
     [ "DS3231_TEMPERATURE_MSB_REG", "_d_s3231_8h.html#a060f7761a61d71f62686737ee757c761", null ],
     [ "DS3231_TEMPERATURE_LSB_REG", "_d_s3231_8h.html#aca79e38f1e1fb739c15aa78131014e18", null ],
-    [ "ds3231_t", "_d_s3231_8h.html#a6fe5dac69ce312f38dd11e57c40d80c4", null ],
-    [ "ds3231_data_t", "_d_s3231_8h.html#a4da45e4018de364d6d526e46679548e0", null ],
     [ "days_of_week", "_d_s3231_8h.html#aa6c7328ce7a3193e4084941d6141904f", [
       [ "MONDAY", "_d_s3231_8h.html#aa6c7328ce7a3193e4084941d6141904fac82db3248a96794aaefb922ea5fb293c", null ],
       [ "TUESDAY", "_d_s3231_8h.html#aa6c7328ce7a3193e4084941d6141904fa347c4455723bb1bc2709647607a2b282", null ],

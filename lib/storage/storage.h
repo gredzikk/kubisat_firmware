@@ -12,6 +12,7 @@
 #include "pin_config.h"
 #include "lfs.h" 
 #include "filesystem/fat.h"
+
 struct FileHandle {
     int fd;
     bool is_open;

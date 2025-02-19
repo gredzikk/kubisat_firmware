@@ -23,7 +23,13 @@ var searchData=
   ['get_5fvoltage_20',['get_voltage',['../class_i_n_a3221.html#a7cd8cfc6d59f9b85fe1e33f10be222c6',1,'INA3221']]],
   ['get_5fvoltage_5f5v_21',['get_voltage_5v',['../class_power_manager.html#a746a5447e25915240923157db1c6faf6',1,'PowerManager']]],
   ['get_5fvoltage_5fbattery_22',['get_voltage_battery',['../class_power_manager.html#aaa04cde3f4961b49234e5a12dcb1a202',1,'PowerManager']]],
-  ['getsignalbandwidth_23',['getSignalBandwidth',['../class_lo_ra_class.html#a810b0f66f8589f7bcbbe08ce80f41959',1,'LoRaClass']]],
-  ['getspreadingfactor_24',['getSpreadingFactor',['../class_lo_ra_class.html#aa1b8dc4023526ec67c852555e6ed2593',1,'LoRaClass']]],
-  ['getwriteerror_25',['getWriteError',['../class_print.html#a88a4a829fb5d589efb43955ad0cbddcc',1,'Print']]]
+  ['getagingoffset_23',['getAgingOffset',['../class_erriez_d_s3231.html#a34e80a1e8279139e85e60b5852197076',1,'ErriezDS3231']]],
+  ['getalarmflag_24',['getAlarmFlag',['../class_erriez_d_s3231.html#ad41fe80dbb5eafa734656bab103847bb',1,'ErriezDS3231']]],
+  ['getdatetime_25',['getDateTime',['../class_erriez_d_s3231.html#a5c4f30f85b325e4bcdecd976cfda0f93',1,'ErriezDS3231']]],
+  ['getepoch_26',['getEpoch',['../class_erriez_d_s3231.html#a05a1fab6a5d852c6b7e7749754cc7a63',1,'ErriezDS3231']]],
+  ['getsignalbandwidth_27',['getSignalBandwidth',['../class_lo_ra_class.html#a810b0f66f8589f7bcbbe08ce80f41959',1,'LoRaClass']]],
+  ['getspreadingfactor_28',['getSpreadingFactor',['../class_lo_ra_class.html#aa1b8dc4023526ec67c852555e6ed2593',1,'LoRaClass']]],
+  ['gettemperature_29',['getTemperature',['../class_erriez_d_s3231.html#a57de666506f26c9524ef1a7a2aff23ad',1,'ErriezDS3231']]],
+  ['gettime_30',['getTime',['../class_erriez_d_s3231.html#abaa1d99e3954802c1be37e9dfd585ba9',1,'ErriezDS3231']]],
+  ['getwriteerror_31',['getWriteError',['../class_print.html#a88a4a829fb5d589efb43955ad0cbddcc',1,'Print']]]
 ];

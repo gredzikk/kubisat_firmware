@@ -7,7 +7,7 @@ var annotated_dup =
     [ "BME280Wrapper", "class_b_m_e280_wrapper.html", "class_b_m_e280_wrapper" ],
     [ "DS3231", "class_d_s3231.html", "class_d_s3231" ],
     [ "ds3231_data_t", "structds3231__data__t.html", "structds3231__data__t" ],
-    [ "ds3231_t", "structds3231__t.html", "structds3231__t" ],
+    [ "ErriezDS3231", "class_erriez_d_s3231.html", "class_erriez_d_s3231" ],
     [ "EventEmitter", "class_event_emitter.html", "class_event_emitter" ],
     [ "EventLog", "class_event_log.html", "class_event_log" ],
     [ "EventManager", "class_event_manager.html", "class_event_manager" ],

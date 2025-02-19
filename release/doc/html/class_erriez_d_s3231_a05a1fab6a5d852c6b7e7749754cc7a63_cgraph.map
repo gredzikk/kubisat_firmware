@@ -1,0 +1,9 @@
+<map id="ErriezDS3231::getEpoch" name="ErriezDS3231::getEpoch">
+<area shape="rect" id="Node000001" title="Read Unix UTC epoch time_t." alt="" coords="5,31,171,57"/>
+<area shape="rect" id="Node000002" href="$class_erriez_d_s3231.html#a0261677270cc639a23daebbabcf0e6fc" title="Read date and time from RTC." alt="" coords="219,31,354,57"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="171,41,203,41,203,47,171,47"/>
+<area shape="rect" id="Node000003" href="$class_erriez_d_s3231.html#a471af5f04b95c6021e9d5a551ad46099" title="BCD to decimal conversion." alt="" coords="402,5,571,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="354,33,386,29,387,34,355,38"/>
+<area shape="rect" id="Node000004" href="$class_erriez_d_s3231.html#a9715869e0186e4f6a30dfd6a372875c1" title="Read buffer from RTC." alt="" coords="402,56,571,83"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="355,50,387,54,386,59,354,55"/>
+</map>

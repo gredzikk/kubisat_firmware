@@ -1,0 +1,5 @@
+<map id="ErriezDS3231::readRegister" name="ErriezDS3231::readRegister">
+<area shape="rect" id="Node000001" title="Read register." alt="" coords="5,5,190,32"/>
+<area shape="rect" id="Node000002" href="$class_erriez_d_s3231.html#a9715869e0186e4f6a30dfd6a372875c1" title="Read buffer from RTC." alt="" coords="238,5,407,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="190,16,222,16,222,21,190,21"/>
+</map>

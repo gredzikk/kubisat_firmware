@@ -38,7 +38,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="class_d_s3231.html#ac7a9f58b408406930da56317de9f2a34" target="_top" xlink:title="Library function that takes a BCD number and converts it to an unsigned 8 bit integer.">
+<g id="a_Node000003"><a xlink:href="class_d_s3231.html#ac7a9f58b408406930da56317de9f2a34" target="_top" xlink:title="Library function that takes a BCD number and converts it to an unsigned 8&#45;bit integer.">
 <polygon fill="white" stroke="#666666" points="393.38,-96 288.88,-96 288.88,-76 393.38,-76 393.38,-96"/>
 <text text-anchor="middle" x="341.12" y="-82.5" font-family="Helvetica,sans-Serif" font-size="10.00">DS3231::bcd_to_bin</text>
 </a>
@@ -56,7 +56,7 @@
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="class_d_s3231.html#ae3895581e62c411451d12de3e7558207" target="_top" xlink:title="Library function to read a specific I2C register adress.">
+<g id="a_Node000004"><a xlink:href="class_d_s3231.html#ae3895581e62c411451d12de3e7558207" target="_top" xlink:title="Library function to read a specific I2C register address.">
 <polygon fill="white" stroke="#666666" points="397.5,-58 284.75,-58 284.75,-38 397.5,-38 397.5,-58"/>
 <text text-anchor="middle" x="341.12" y="-44.5" font-family="Helvetica,sans-Serif" font-size="10.00">DS3231::i2c_read_reg</text>
 </a>

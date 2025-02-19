@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['days_5fof_5fweek_0',['days_of_week',['../_d_s3231_8h.html#aa6c7328ce7a3193e4084941d6141904f',1,'DS3231.h']]]
+  ['clockevent_0',['ClockEvent',['../event__manager_8h.html#a163ce349de3451c81f50080e5fbe62a2',1,'event_manager.h']]],
+  ['commandaccesslevel_1',['CommandAccessLevel',['../protocol_8h.html#a1a30b781d6fac5ca0b850dd8b3726d8d',1,'protocol.h']]],
+  ['commsevent_2',['CommsEvent',['../event__manager_8h.html#a0270a0464efae26aefb8cf32a45e20ad',1,'event_manager.h']]]
 ];

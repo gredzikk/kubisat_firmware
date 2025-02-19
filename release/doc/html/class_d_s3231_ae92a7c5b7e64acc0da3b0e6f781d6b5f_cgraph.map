@@ -1,0 +1,7 @@
+<map id="DS3231::clock_enable" name="DS3231::clock_enable">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,158,57"/>
+<area shape="rect" id="Node000002" href="$class_d_s3231.html#ae3895581e62c411451d12de3e7558207" title="Library function to read a specific I2C register address." alt="" coords="207,5,358,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="158,32,192,27,192,33,159,37"/>
+<area shape="rect" id="Node000003" href="$class_d_s3231.html#a2fa69b2c58e800b2a06e4966ca21b59c" title="Library function to write to a specific I2C register address." alt="" coords="206,56,359,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="159,51,190,55,190,60,158,56"/>
+</map>

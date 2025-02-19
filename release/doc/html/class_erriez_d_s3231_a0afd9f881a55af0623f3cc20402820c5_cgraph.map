@@ -1,0 +1,7 @@
+<map id="ErriezDS3231::isRunning" name="ErriezDS3231::isRunning">
+<area shape="rect" id="Node000001" title="Read RTC OSF (Oscillator Stop Flag) from status register." alt="" coords="5,5,174,32"/>
+<area shape="rect" id="Node000002" href="$class_erriez_d_s3231.html#aab9ee8e4653b2806a82cf12a22c5c1dd" title="Read register." alt="" coords="222,5,406,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="174,16,206,16,206,21,174,21"/>
+<area shape="rect" id="Node000003" href="$class_erriez_d_s3231.html#a9715869e0186e4f6a30dfd6a372875c1" title="Read buffer from RTC." alt="" coords="454,5,623,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="406,16,439,16,439,21,406,21"/>
+</map>

@@ -1,0 +1,23 @@
+<map id="ErriezDS3231::setTime" name="ErriezDS3231::setTime">
+<area shape="rect" id="Node000001" title="Write time to RTC." alt="" coords="5,132,163,159"/>
+<area shape="rect" id="Node000002" href="$class_erriez_d_s3231.html#a0261677270cc639a23daebbabcf0e6fc" title="Read date and time from RTC." alt="" coords="212,56,348,83"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,129,228,86,230,91,122,134"/>
+<area shape="rect" id="Node000005" href="$class_erriez_d_s3231.html#a50426dfe02af86852f777e392936fa08" title="Write date and time to RTC." alt="" coords="211,183,349,209"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="139,157,211,176,210,181,138,162"/>
+<area shape="rect" id="Node000003" href="$class_erriez_d_s3231.html#a471af5f04b95c6021e9d5a551ad46099" title="BCD to decimal conversion." alt="" coords="403,5,572,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="337,53,415,34,416,39,338,58"/>
+<area shape="rect" id="Node000004" href="$class_erriez_d_s3231.html#a9715869e0186e4f6a30dfd6a372875c1" title="Read buffer from RTC." alt="" coords="863,95,1032,121"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="348,69,556,77,814,92,848,95,847,100,813,97,556,82,348,74"/>
+<area shape="rect" id="Node000006" href="$class_erriez_d_s3231.html#a47dd1340fc2ecac52cff00c3cffc7e6d" title="Enable or disable oscillator when running on V&#45;BAT." alt="" coords="397,157,578,184"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="349,185,381,181,382,186,350,190"/>
+<area shape="rect" id="Node000009" href="$class_erriez_d_s3231.html#a7cd8a1aa0a720d8ecc687e58ddfe110d" title="Write buffer to RTC." alt="" coords="862,171,1034,197"/>
+<area shape="poly" id="edge11_Node000005_Node000009" title=" " alt="" coords="349,195,557,198,814,193,846,191,846,197,814,199,557,203,349,201"/>
+<area shape="rect" id="Node000010" href="$class_erriez_d_s3231.html#a169b93f6712c85c516a629b96ab0e3c8" title="Decimal to BCD conversion." alt="" coords="404,259,572,285"/>
+<area shape="poly" id="edge10_Node000005_Node000010" title=" " alt="" coords="318,207,398,237,434,251,432,256,396,243,316,212"/>
+<area shape="rect" id="Node000007" href="$class_erriez_d_s3231.html#aab9ee8e4653b2806a82cf12a22c5c1dd" title="Read register." alt="" coords="628,107,812,133"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="552,154,640,135,641,140,553,159"/>
+<area shape="rect" id="Node000008" href="$class_erriez_d_s3231.html#a2d53e7b9c88c576fe778502b7845a5ce" title="Write register." alt="" coords="626,157,814,184"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="578,168,611,168,611,173,578,173"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="812,112,847,111,847,116,812,118"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="814,174,846,175,846,181,814,179"/>
+</map>
