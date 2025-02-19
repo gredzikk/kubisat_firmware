@@ -14,16 +14,16 @@ unsigned long interval = 0;
  * @details Sets the LoRa pins and attempts to begin LoRa communication at a specified frequency.
  *          Emits a CommsEvent::RADIO_INIT event on success or a CommsEvent::RADIO_ERROR event on failure.
  */
-bool initializeRadio() {
-    LoRa.setPins(csPin, resetPin, irqPin);
+bool initialize_radio() {
+    LoRa.set_pins(lora_cs_pin, lora_reset_pin, lora_irq_pin);
     long frequency = 433E6;
     bool initStatus = false;
     if (!LoRa.begin(frequency))
     {
-        uartPrint("LoRa init failed. Check your connections.");
+        uart_print("LoRa init failed. Check your connections.");
         initStatus = false;
     } else {
-        uartPrint("LoRa initialized with frequency " + std::to_string(frequency));
+        uart_print("LoRa initialized with frequency " + std::to_string(frequency));
         initStatus = true;
     }
 

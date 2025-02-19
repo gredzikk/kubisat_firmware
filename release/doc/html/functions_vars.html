@@ -121,7 +121,7 @@ $(function(){initNavTree('functions_vars.html',''); initResizable(true); });
 <h3><a id="index_a" name="index_a"></a>- a -</h3><ul>
 <li>ADDR_SDO_HIGH&#160;:&#160;<a class="el" href="class_b_m_e280.html#a9dd91f7d1c5ed613d89aaf38be0bd362">BME280</a></li>
 <li>ADDR_SDO_LOW&#160;:&#160;<a class="el" href="class_b_m_e280.html#a328e1cfc7421d11670a772f68f7181b9">BME280</a></li>
-<li>address&#160;:&#160;<a class="el" href="class_d_s3231.html#a220290093650973f7ba16872e33b8b96">DS3231</a>, <a class="el" href="class_h_m_c5883_l.html#ab0f984a6afb4c434cb32d736a9aaa671">HMC5883L</a></li>
+<li>address&#160;:&#160;<a class="el" href="class_h_m_c5883_l.html#ab0f984a6afb4c434cb32d736a9aaa671">HMC5883L</a></li>
 <li>avg_mode&#160;:&#160;<a class="el" href="struct_i_n_a3221_1_1conf__reg__t.html#a2336f127fcd7bf551db4142c495c54f5">INA3221::conf_reg_t</a></li>
 </ul>
 
@@ -133,9 +133,12 @@ $(function(){initNavTree('functions_vars.html',''); initResizable(true); });
 
 <h3><a id="index_c" name="index_c"></a>- c -</h3><ul>
 <li>calib_params&#160;:&#160;<a class="el" href="class_b_m_e280.html#ab61c36455871833809cff71b5fd3397f">BME280</a></li>
+<li>century&#160;:&#160;<a class="el" href="structds3231__data__t.html#a4728d8488a2cacc95d111a1721965e37">ds3231_data_t</a></li>
 <li>ch1_en&#160;:&#160;<a class="el" href="struct_i_n_a3221_1_1conf__reg__t.html#ab763a286b340cd4cda77c7d59411c244">INA3221::conf_reg_t</a></li>
 <li>ch2_en&#160;:&#160;<a class="el" href="struct_i_n_a3221_1_1conf__reg__t.html#a04f0db25a67d43c2ad63dfa5dd2fb1ee">INA3221::conf_reg_t</a></li>
 <li>ch3_en&#160;:&#160;<a class="el" href="struct_i_n_a3221_1_1conf__reg__t.html#a3b03b9771ee7a690d62d6fd4fe644867">INA3221::conf_reg_t</a></li>
+<li>charging_solar_active_&#160;:&#160;<a class="el" href="class_power_manager.html#a81537e3dfbf977ed5e9346a0a2673743">PowerManager</a></li>
+<li>charging_usb_active_&#160;:&#160;<a class="el" href="class_power_manager.html#a9a117ff74fc946d35061bbb29b144080">PowerManager</a></li>
 <li>command&#160;:&#160;<a class="el" href="struct_frame.html#a2fa1a9d8fa7eb710234eb68bf376e6de">Frame</a></li>
 <li>conv_ready&#160;:&#160;<a class="el" href="struct_i_n_a3221_1_1masken__reg__t.html#a1cd5f40e6d2a70f0c8e9d382932886d6">INA3221::masken_reg_t</a></li>
 <li>crit_alert_ch1&#160;:&#160;<a class="el" href="struct_i_n_a3221_1_1masken__reg__t.html#a560db4fe3259835dc8fd38c22ebe1ef5">INA3221::masken_reg_t</a></li>
@@ -146,7 +149,8 @@ $(function(){initNavTree('functions_vars.html',''); initResizable(true); });
 
 
 <h3><a id="index_d" name="index_d"></a>- d -</h3><ul>
-<li>day&#160;:&#160;<a class="el" href="struct_date_time.html#a727866b5ecdfda1edf946efe86aa74af">DateTime</a></li>
+<li>date&#160;:&#160;<a class="el" href="structds3231__data__t.html#a423c1692433240cff62cef05fec405f1">ds3231_data_t</a></li>
+<li>day&#160;:&#160;<a class="el" href="structds3231__data__t.html#aee218cfb9904c839652d2edbfc0922b8">ds3231_data_t</a></li>
 <li>device_addr&#160;:&#160;<a class="el" href="class_b_m_e280.html#ae8a52ae32e8cefd398dedf8913737626">BME280</a></li>
 <li>dig_h1&#160;:&#160;<a class="el" href="struct_b_m_e280_calib_param.html#a38419a07942da4717394516a883441d7">BME280CalibParam</a></li>
 <li>dig_h2&#160;:&#160;<a class="el" href="struct_b_m_e280_calib_param.html#a87481b9ca1a2cbb278432f576f3e69c3">BME280CalibParam</a></li>
@@ -167,6 +171,7 @@ $(function(){initNavTree('functions_vars.html',''); initResizable(true); });
 <li>dig_t2&#160;:&#160;<a class="el" href="struct_b_m_e280_calib_param.html#a941c68e822ef43924d09131723141e91">BME280CalibParam</a></li>
 <li>dig_t3&#160;:&#160;<a class="el" href="struct_b_m_e280_calib_param.html#aca269be642c7d623650b30c8afbaa36d">BME280CalibParam</a></li>
 <li>direction&#160;:&#160;<a class="el" href="struct_frame.html#a380c3287d8bc0718ed7a3b93e303dbe5">Frame</a></li>
+<li>ds3231_addr&#160;:&#160;<a class="el" href="class_d_s3231.html#a6759d5d4e1ac0d12ab09016a42931aaf">DS3231</a>, <a class="el" href="structds3231__t.html#a5fc8e10745577859f508fa2a36cdbe89">ds3231_t</a></li>
 </ul>
 
 
@@ -187,40 +192,34 @@ $(function(){initNavTree('functions_vars.html',''); initResizable(true); });
 
 
 <h3><a id="index_g" name="index_g"></a>- g -</h3><ul>
-<li>gga_mutex&#160;:&#160;<a class="el" href="class_n_m_e_a_data.html#afe04b61742fac871746c1c2d4ef0aa17">NMEAData</a></li>
-<li>ggaTokens&#160;:&#160;<a class="el" href="class_n_m_e_a_data.html#a26084e69305d4565dd1372e2004d6c98">NMEAData</a></li>
+<li>gga_mutex_&#160;:&#160;<a class="el" href="class_n_m_e_a_data.html#ac6581aa69dfe380d6d0ae9c5b74bec39">NMEAData</a></li>
+<li>gga_tokens_&#160;:&#160;<a class="el" href="class_n_m_e_a_data.html#a37d9f4f27f6b0b16e2649bce3a2a25f7">NMEAData</a></li>
 <li>group&#160;:&#160;<a class="el" href="class_event_log.html#a5209ffdb8dc4bf7f87f3ec44b2ae63e3">EventLog</a>, <a class="el" href="struct_frame.html#abd1ff8cb6b3d53706a97ea15727ddd4f">Frame</a></li>
 </ul>
 
 
 <h3><a id="index_h" name="index_h"></a>- h -</h3><ul>
 <li>header&#160;:&#160;<a class="el" href="struct_frame.html#ae969aefac1bd27476536aae3de4eacee">Frame</a></li>
-<li>hour&#160;:&#160;<a class="el" href="struct_date_time.html#ad7812eb3752d2309263267d4bc3c79a0">DateTime</a></li>
+<li>hours&#160;:&#160;<a class="el" href="structds3231__data__t.html#af9a684044ad2809b7933046586e923a4">ds3231_data_t</a></li>
 </ul>
 
 
 <h3><a id="index_i" name="index_i"></a>- i -</h3><ul>
-<li>i2c&#160;:&#160;<a class="el" href="class_d_s3231.html#afff19e512928fce8a6f9b50885df3732">DS3231</a>, <a class="el" href="class_h_m_c5883_l.html#a5e63fceb40ec1b9427757a4ee206b12f">HMC5883L</a></li>
+<li>i2c&#160;:&#160;<a class="el" href="class_d_s3231.html#afff19e512928fce8a6f9b50885df3732">DS3231</a>, <a class="el" href="structds3231__t.html#a3a28c0ca59958e73e60600b04d6b6ef8">ds3231_t</a>, <a class="el" href="class_h_m_c5883_l.html#a5e63fceb40ec1b9427757a4ee206b12f">HMC5883L</a></li>
 <li>i2c_port&#160;:&#160;<a class="el" href="class_b_m_e280.html#ac402b86b5376fcfebefad1c8cec948b2">BME280</a></li>
 <li>id&#160;:&#160;<a class="el" href="class_event_log.html#a5e0923e12450e6b7c782c7f6630f4563">EventLog</a></li>
-<li>ina3221&#160;:&#160;<a class="el" href="class_power_manager.html#a5917758068dfeead4ae68840f5bfb493">PowerManager</a></li>
-<li>initialized&#160;:&#160;<a class="el" href="class_b_h1750_wrapper.html#a260b8f66366a5174cc8b0b92dda72e31">BH1750Wrapper</a>, <a class="el" href="class_b_m_e280.html#a34b991139b081ff5ebe7943383ac9a97">BME280</a>, <a class="el" href="class_b_m_e280_wrapper.html#ae2d7f4ac2d6e02784ec9a8b5982795f8">BME280Wrapper</a>, <a class="el" href="class_h_m_c5883_l_wrapper.html#af52be1c1aad99526965b952521da56f6">HMC5883LWrapper</a>, <a class="el" href="class_m_p_u6050_wrapper.html#a39989e57457ea5c1a230aede7d3f4921">MPU6050Wrapper</a>, <a class="el" href="class_power_manager.html#a5cf8825fbe9a81810be2f444dff008f1">PowerManager</a></li>
+<li>ina3221_&#160;:&#160;<a class="el" href="class_power_manager.html#abea16b2f44ce36a0add67c1950c36533">PowerManager</a></li>
+<li>initialized_&#160;:&#160;<a class="el" href="class_b_h1750_wrapper.html#ab0cdac42cf8911c4062e0771697c824f">BH1750Wrapper</a>, <a class="el" href="class_b_m_e280.html#a98fccac5568413564c5a44d20a405f24">BME280</a>, <a class="el" href="class_b_m_e280_wrapper.html#abae03384db98d9d2c79fd7e4fd3341a2">BME280Wrapper</a>, <a class="el" href="class_h_m_c5883_l_wrapper.html#a78712f0f57a355113f2f6b5ba21aa3bf">HMC5883LWrapper</a>, <a class="el" href="class_m_p_u6050_wrapper.html#a40edead07218623550dcbbb679363da0">MPU6050Wrapper</a>, <a class="el" href="class_power_manager.html#aba8ae7755a7720fd2c757a4567bed089">PowerManager</a></li>
 <li>is_open&#160;:&#160;<a class="el" href="struct_file_handle.html#a1c2451d05e2d2937da92fe194e9281cf">FileHandle</a></li>
 </ul>
 
 
-<h3><a id="index_l" name="index_l"></a>- l -</h3><ul>
-<li>lastSyncTime&#160;:&#160;<a class="el" href="class_d_s3231.html#ab05e9cb92a0de071fc81a3d8e6488b73">DS3231</a></li>
-</ul>
-
-
 <h3><a id="index_m" name="index_m"></a>- m -</h3><ul>
-<li>minute&#160;:&#160;<a class="el" href="struct_date_time.html#abc5bfa47937548c7aaad1970ba759af3">DateTime</a></li>
+<li>minutes&#160;:&#160;<a class="el" href="structds3231__data__t.html#a87a05374fcbe47c9ce7e9abe28d864d3">ds3231_data_t</a></li>
 <li>mode_bus_en&#160;:&#160;<a class="el" href="struct_i_n_a3221_1_1conf__reg__t.html#aec23450c7605d5c0013b8fa27a72056c">INA3221::conf_reg_t</a></li>
 <li>mode_continious_en&#160;:&#160;<a class="el" href="struct_i_n_a3221_1_1conf__reg__t.html#af152fe0cc058165ef37c6986e9d8177f">INA3221::conf_reg_t</a></li>
 <li>mode_shunt_en&#160;:&#160;<a class="el" href="struct_i_n_a3221_1_1conf__reg__t.html#a663e6b256bd24e6b9161e35a36aac0fc">INA3221::conf_reg_t</a></li>
-<li>month&#160;:&#160;<a class="el" href="struct_date_time.html#ac895afb51c74941c50205f746b709148">DateTime</a></li>
-<li>mutex&#160;:&#160;<a class="el" href="class_power_manager.html#a4ad6368f2ca15f6f68da17814e77870e">PowerManager</a></li>
+<li>month&#160;:&#160;<a class="el" href="structds3231__data__t.html#a00ef663eddc6780133279fcb2a4fddea">ds3231_data_t</a></li>
 </ul>
 
 
@@ -237,6 +236,7 @@ $(function(){initNavTree('functions_vars.html',''); initResizable(true); });
 
 
 <h3><a id="index_p" name="index_p"></a>- p -</h3><ul>
+<li>powerman_mutex_&#160;:&#160;<a class="el" href="class_power_manager.html#a6dd057ebce0e2bdc31c9c26fd435b4c6">PowerManager</a></li>
 <li>pwr_valid_alert&#160;:&#160;<a class="el" href="struct_i_n_a3221_1_1masken__reg__t.html#aa1dab85b61d3075ff5633e32f497c68a">INA3221::masken_reg_t</a></li>
 </ul>
 
@@ -281,15 +281,14 @@ $(function(){initNavTree('functions_vars.html',''); initResizable(true); });
 <li>REG_TEMPERATURE_MSB&#160;:&#160;<a class="el" href="class_b_m_e280.html#a45770a88a9613f8de93d69ae47a9f7c4">BME280</a></li>
 <li>reserved&#160;:&#160;<a class="el" href="struct_i_n_a3221_1_1masken__reg__t.html#ab6a76a29c77b8315e11e434cfab1e614">INA3221::masken_reg_t</a></li>
 <li>reset&#160;:&#160;<a class="el" href="struct_i_n_a3221_1_1conf__reg__t.html#aaa94a05775ef55a4624e85c8ad9ffd4d">INA3221::conf_reg_t</a></li>
-<li>rmc_mutex&#160;:&#160;<a class="el" href="class_n_m_e_a_data.html#aa355456dd1bdd1e9af6c37ae9c4ef4f0">NMEAData</a></li>
-<li>rmcTokens&#160;:&#160;<a class="el" href="class_n_m_e_a_data.html#a8010adc7a34a3d04c06c428f28f5b498">NMEAData</a></li>
-<li>RTC_REGISTER&#160;:&#160;<a class="el" href="class_d_s3231.html#af87c9b9232490e63de80b4e4c8aec81f">DS3231</a></li>
+<li>rmc_mutex_&#160;:&#160;<a class="el" href="class_n_m_e_a_data.html#a16aa54aea671d3fbfe225260e2471cc5">NMEAData</a></li>
+<li>rmc_tokens_&#160;:&#160;<a class="el" href="class_n_m_e_a_data.html#a7a1e0ff49504a279c43577108ea35dd3">NMEAData</a></li>
 </ul>
 
 
 <h3><a id="index_s" name="index_s"></a>- s -</h3><ul>
-<li>second&#160;:&#160;<a class="el" href="struct_date_time.html#afb74c1792d0f0f9d3b0d2295554fa39d">DateTime</a></li>
-<li>sensor&#160;:&#160;<a class="el" href="class_b_h1750_wrapper.html#a254f46eb45a19e87f32ae62ca4ef0135">BH1750Wrapper</a>, <a class="el" href="class_b_m_e280_wrapper.html#ae9fee0cb8d5bc7f1b0a953d0ddc5fc09">BME280Wrapper</a>, <a class="el" href="class_h_m_c5883_l_wrapper.html#a676ad07965bad428b637c46152b7c6eb">HMC5883LWrapper</a>, <a class="el" href="class_m_p_u6050_wrapper.html#abcd0f6b03f36a595e65c8ac1526a69cd">MPU6050Wrapper</a></li>
+<li>seconds&#160;:&#160;<a class="el" href="structds3231__data__t.html#ab26ab1755b5a872aa78172182e8b54da">ds3231_data_t</a></li>
+<li>sensor_&#160;:&#160;<a class="el" href="class_b_h1750_wrapper.html#a6f64981c2e5ad9b14f2e33a840b84006">BH1750Wrapper</a>, <a class="el" href="class_b_m_e280_wrapper.html#af81435c0538d4ea96b1dbb8324626095">BME280Wrapper</a>, <a class="el" href="class_h_m_c5883_l_wrapper.html#aa54e4887152b66f7f55b961165a82a71">HMC5883LWrapper</a>, <a class="el" href="class_m_p_u6050_wrapper.html#a5e4be51f4accd9f4f92c1ebcc6d767ce">MPU6050Wrapper</a></li>
 <li>sensors&#160;:&#160;<a class="el" href="class_sensor_wrapper.html#ae06e367395181a74d676c533393b47be">SensorWrapper</a></li>
 <li>shunt_conv_time&#160;:&#160;<a class="el" href="struct_i_n_a3221_1_1conf__reg__t.html#a23045ef81337be493027a335570ac906">INA3221::conf_reg_t</a></li>
 <li>shunt_sum_alert&#160;:&#160;<a class="el" href="struct_i_n_a3221_1_1masken__reg__t.html#a36c00c8592655c20461730b551378212">INA3221::masken_reg_t</a></li>
@@ -297,15 +296,12 @@ $(function(){initNavTree('functions_vars.html',''); initResizable(true); });
 <li>shunt_sum_en_ch2&#160;:&#160;<a class="el" href="struct_i_n_a3221_1_1masken__reg__t.html#a8f65bef9c6f13a79dbd22116ee170295">INA3221::masken_reg_t</a></li>
 <li>shunt_sum_en_ch3&#160;:&#160;<a class="el" href="struct_i_n_a3221_1_1masken__reg__t.html#abb9fdf6a9d488261b13b8918035856ea">INA3221::masken_reg_t</a></li>
 <li>SOLAR_CURRENT_THRESHOLD&#160;:&#160;<a class="el" href="class_power_manager.html#aeb488c42ec47e1a8de0446717d339cce">PowerManager</a></li>
-<li>solarActive&#160;:&#160;<a class="el" href="class_power_manager.html#a521e99a9e28cca2525988f572379c936">PowerManager</a></li>
-<li>syncInterval&#160;:&#160;<a class="el" href="class_d_s3231.html#a1a30fcf3e2d4b9c4951129ac09c1ce4c">DS3231</a></li>
 </ul>
 
 
 <h3><a id="index_t" name="index_t"></a>- t -</h3><ul>
 <li>t_fine&#160;:&#160;<a class="el" href="class_b_m_e280.html#ad20f44914b78395f4d4bc64f4a68b369">BME280</a></li>
 <li>timestamp&#160;:&#160;<a class="el" href="class_event_log.html#aea248a425dedf15b5cee31ce2884db40">EventLog</a></li>
-<li>timezoneOffset&#160;:&#160;<a class="el" href="class_d_s3231.html#a330fb98438d9762df3d7da7ed2f38d25">DS3231</a></li>
 <li>timing_ctrl_alert&#160;:&#160;<a class="el" href="struct_i_n_a3221_1_1masken__reg__t.html#a592f9e0661f6261694437ae3769ac17a">INA3221::masken_reg_t</a></li>
 </ul>
 
@@ -313,7 +309,6 @@ $(function(){initNavTree('functions_vars.html',''); initResizable(true); });
 <h3><a id="index_u" name="index_u"></a>- u -</h3><ul>
 <li>unit&#160;:&#160;<a class="el" href="struct_frame.html#a6481c04c9c112a41a50c24696454afa8">Frame</a></li>
 <li>USB_CURRENT_THRESHOLD&#160;:&#160;<a class="el" href="class_power_manager.html#afc4246cc3b434053c59cf2dcccf4bc64">PowerManager</a></li>
-<li>usbConnected&#160;:&#160;<a class="el" href="class_power_manager.html#a3676187deac57a79034f59f58ac4b746">PowerManager</a></li>
 </ul>
 
 
@@ -329,15 +324,13 @@ $(function(){initNavTree('functions_vars.html',''); initResizable(true); });
 <li>warn_alert_ch2&#160;:&#160;<a class="el" href="struct_i_n_a3221_1_1masken__reg__t.html#ab8cc409f51b0b1a101bc50b4eb87c0de">INA3221::masken_reg_t</a></li>
 <li>warn_alert_ch3&#160;:&#160;<a class="el" href="struct_i_n_a3221_1_1masken__reg__t.html#a12aeac3138ab9f59e72119c3bec458a8">INA3221::masken_reg_t</a></li>
 <li>warn_alert_latch_en&#160;:&#160;<a class="el" href="struct_i_n_a3221_1_1masken__reg__t.html#a96cadcb3794fddf964748ba6669b9b2f">INA3221::masken_reg_t</a></li>
-<li>weekday&#160;:&#160;<a class="el" href="struct_date_time.html#a5b762acddaaa0138a96b05159f2c2e23">DateTime</a></li>
-<li>WEEKDAYS&#160;:&#160;<a class="el" href="class_d_s3231.html#aaecfb4d1dafaed2f892bf579aadbd7a3">DS3231</a></li>
 <li>write_error&#160;:&#160;<a class="el" href="class_print.html#ae922182b62afa3b8434397b7a54e70c4">Print</a></li>
 <li>writeIndex&#160;:&#160;<a class="el" href="class_event_manager.html#ad97f788895da6e30b3237982a7bcd810">EventManager</a></li>
 </ul>
 
 
 <h3><a id="index_y" name="index_y"></a>- y -</h3><ul>
-<li>year&#160;:&#160;<a class="el" href="struct_date_time.html#a0a61d60280541502e47f9a7fd6e1c8d2">DateTime</a></li>
+<li>year&#160;:&#160;<a class="el" href="structds3231__data__t.html#aaee28b1b2ecbfe8070da619e5f54e31e">ds3231_data_t</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

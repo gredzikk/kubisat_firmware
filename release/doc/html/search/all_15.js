@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['year_0',['year',['../struct_date_time.html#a0a61d60280541502e47f9a7fd6e1c8d2',1,'DateTime']]]
+  ['year_0',['year',['../structds3231__data__t.html#aaee28b1b2ecbfe8070da619e5f54e31e',1,'ds3231_data_t']]]
 ];

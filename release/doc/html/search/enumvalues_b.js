@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['one_5ftime_5fhigh_5fres_5fmode_0',['ONE_TIME_HIGH_RES_MODE',['../class_b_h1750.html#a8402147d4b96294da6362b538d4827c0ae6af2d70de1e4c57254d72b3b1b57e35',1,'BH1750']]],
-  ['one_5ftime_5fhigh_5fres_5fmode_5f2_1',['ONE_TIME_HIGH_RES_MODE_2',['../class_b_h1750.html#a8402147d4b96294da6362b538d4827c0a459f53ea14165ac4c845757c4c93022a',1,'BH1750']]],
-  ['one_5ftime_5flow_5fres_5fmode_2',['ONE_TIME_LOW_RES_MODE',['../class_b_h1750.html#a8402147d4b96294da6362b538d4827c0a4f81ddfb660e4f3e0bc4228c61ff6dc6',1,'BH1750']]],
-  ['overcharge_3',['OVERCHARGE',['../event__manager_8h.html#a8b04683add0105a3bf3200eee3d9d3e6a575fea54d116603bb4c778db18fbde98',1,'event_manager.h']]]
+  ['none_0',['NONE',['../protocol_8h.html#a1a30b781d6fac5ca0b850dd8b3726d8dab50339a10e1de285ac99d4c3990b8693',1,'NONE:&#160;protocol.h'],['../protocol_8h.html#a0e0f0f1661d7aeb71ed9698bff6c6383ab50339a10e1de285ac99d4c3990b8693',1,'NONE:&#160;protocol.h']]],
+  ['not_5fallowed_1',['NOT_ALLOWED',['../protocol_8h.html#a0e0f0f1661d7aeb71ed9698bff6c6383a4596302bc1e8ce6e62188e769aac94cf',1,'protocol.h']]]
 ];

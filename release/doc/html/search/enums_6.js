@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['powerevent_0',['PowerEvent',['../event__manager_8h.html#a8b04683add0105a3bf3200eee3d9d3e6',1,'event_manager.h']]]
+  ['operationtype_0',['OperationType',['../protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047',1,'protocol.h']]]
 ];

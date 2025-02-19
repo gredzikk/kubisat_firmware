@@ -1,6 +1,6 @@
 var group___diagnostic_commands =
 [
-    [ "handleListCommands", "group___diagnostic_commands.html#gade74b82cf2c20d93c5e0ce624cd7ca77", null ],
-    [ "handleGetBuildVersion", "group___diagnostic_commands.html#ga5ebac5711334cb3584974b2b74556543", null ],
-    [ "handleEnterBootloaderMode", "group___diagnostic_commands.html#ga3a6c6092cd01fd9c13ab429f4a34326d", null ]
+    [ "handle_get_commands_list", "group___diagnostic_commands.html#ga74736b8d0e49df14f97e3e20cd3418c7", null ],
+    [ "handle_get_build_version", "group___diagnostic_commands.html#ga517fbfd05cbec86489314348cb3f9995", null ],
+    [ "handle_enter_bootloader_mode", "group___diagnostic_commands.html#ga3ab5723218b68d3ac5cd864e00ed157a", null ]
 ];

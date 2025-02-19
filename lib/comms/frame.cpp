@@ -16,10 +16,10 @@ extern volatile uint16_t eventRegister;
  * @details The encoded string includes the frame direction, operation type, group, command, value, and unit,
  *          all delimited by the DELIMITER character. The string is encapsulated by FRAME_BEGIN and FRAME_END.
  */
-std::string encodeFrame(const Frame& frame) {
+std::string frame_encode(const Frame& frame) {
     std::stringstream ss;
     ss << static_cast<int>(frame.direction) << DELIMITER
-       << operationTypeToString(frame.operationType) << DELIMITER
+       << operation_type_to_string(frame.operationType) << DELIMITER
        << static_cast<int>(frame.group) << DELIMITER
        << static_cast<int>(frame.command) << DELIMITER
        << frame.value;
@@ -41,7 +41,7 @@ std::string encodeFrame(const Frame& frame) {
  *          If an error occurs during parsing, an error message is printed to the UART, an error frame is built and sent,
  *          and the exception is re-thrown.
  */
-Frame decodeFrame(const std::string& data) {
+Frame frame_decode(const std::string& data) {
     try {
         Frame frame;
         std::stringstream ss(data);
@@ -67,7 +67,7 @@ Frame decodeFrame(const std::string& data) {
         frame.direction = std::stoi(token);
 
         std::getline(frameDataStream, token, DELIMITER);
-        frame.operationType = stringToOperationType(token);
+        frame.operationType = string_to_operation_type(token);
 
         std::getline(frameDataStream, token, DELIMITER);
         frame.group = std::stoi(token);
@@ -83,9 +83,9 @@ Frame decodeFrame(const std::string& data) {
 
         return frame;
     } catch (const std::exception& e) {
-        uartPrint("Frame error: " + std::string(e.what()));
-        Frame errorFrame = buildFrame(ExecutionResult::ERROR, 0, 0, e.what()); 
-        sendFrame(errorFrame);
+        uart_print("Frame error: " + std::string(e.what()));
+        Frame errorFrame = frame_build(ExecutionResult::ERROR, 0, 0, e.what()); 
+        send_frame(errorFrame);
         throw; 
     }
 }
@@ -97,17 +97,17 @@ Frame decodeFrame(const std::string& data) {
  * @details Decodes the frame data, extracts the command key, and executes the corresponding command.
  *          Sends the response frame. If an error occurs, an error frame is built and sent.
  */
-void processFrameData(const std::string& data) {
+void frame_process(const std::string& data) {
     try {
-        Frame frame = decodeFrame(data);
+        Frame frame = frame_decode(data);
         uint32_t commandKey = (static_cast<uint32_t>(frame.group) << 8) | static_cast<uint32_t>(frame.command);
 
-        Frame responseFrame = executeCommand(commandKey, frame.value, frame.operationType);
+        Frame responseFrame = execute_command(commandKey, frame.value, frame.operationType);
 
-        sendFrame(responseFrame);
+        send_frame(responseFrame);
     } catch (const std::exception& e) {
-        Frame errorFrame = buildFrame(ExecutionResult::ERROR, 0, 0, e.what()); 
-        sendFrame(errorFrame);
+        Frame errorFrame = frame_build(ExecutionResult::ERROR, 0, 0, e.what()); 
+        send_frame(errorFrame);
     }
 }
 
@@ -116,19 +116,19 @@ void processFrameData(const std::string& data) {
  * @brief Sends the event register value to the ground station.
  * @details This function is called in the main loop to send the current value of the event register.
  */
-void sendEventRegister() {
+void send_event() {
     std::stringstream ss;
     ss << std::hex << std::setw(4) << std::setfill('0') << static_cast<int>(eventRegister);
     std::string eventValue = ss.str();
 
-    Frame eventFrame = buildFrame(
+    Frame eventFrame = frame_build(
         ExecutionResult::SUCCESS, // Result: success as this is a normal status update
         8,                        // Group ID: 8 (EVENTS)
         0,                        // Command ID: 0 (EVENT_REGISTER)
         eventValue                // Value: event register value
     );
 
-    sendFrame(eventFrame);
+    send_frame(eventFrame);
 }
 
 
@@ -143,7 +143,7 @@ void sendEventRegister() {
  * @details Constructs a Frame instance based on the provided parameters. The frame direction and operation type
  *          are set based on the execution result.
  */
-Frame buildFrame(ExecutionResult result, uint8_t group, uint8_t command, 
+Frame frame_build(ExecutionResult result, uint8_t group, uint8_t command, 
                 const std::string& value, const ValueUnit unitType) {
     Frame frame;
     frame.header = FRAME_BEGIN;
@@ -154,21 +154,21 @@ Frame buildFrame(ExecutionResult result, uint8_t group, uint8_t command,
             frame.direction = 1;
             frame.operationType = OperationType::ANS;
             frame.value = value;
-            frame.unit = valueUnitTypeToString(unitType);
+            frame.unit = value_unit_type_to_string(unitType);
             break;
             
         case ExecutionResult::ERROR:
             frame.direction = 1;
             frame.operationType = OperationType::ERR;
             frame.value = value; 
-            frame.unit = valueUnitTypeToString(ValueUnit::UNDEFINED);
+            frame.unit = value_unit_type_to_string(ValueUnit::UNDEFINED);
             break;
 
         case ExecutionResult::INFO:
             frame.direction = 1;
             frame.operationType = OperationType::INF;
             frame.value = value;
-            frame.unit = valueUnitTypeToString(ValueUnit::UNDEFINED);
+            frame.unit = value_unit_type_to_string(ValueUnit::UNDEFINED);
             break;
     }
     

@@ -131,163 +131,61 @@ public:
     // Initializes INA3221
     bool begin();
 
-    // Sets shunt resistor value in mOhm
-    void setShuntRes(uint32_t res_ch1, uint32_t res_ch2, uint32_t res_ch3);
-
-    // Sets filter resistors value in Ohm
-    void setFilterRes(uint32_t res_ch1, uint32_t res_ch2, uint32_t res_ch3);
-
-    // Sets I2C address of INA3221
-    void setAddr(ina3221_addr_t addr) { _i2c_addr = addr; }
-
     // Gets a register value.
-    uint16_t getReg(ina3221_reg_t reg);
+    uint16_t read_register(ina3221_reg_t reg);
 
     // Resets INA3221
     void reset();
 
     // Sets operating mode to power-down
-    void setModePowerDown();
+    void set_mode_power_down();
 
     // Sets operating mode to continious
-    void setModeContinious();
+    void set_mode_continuous();
 
     // Sets operating mode to triggered (single-shot)
-    void setModeTriggered();
+    void set_mode_triggered();
 
     // Enables shunt-voltage measurement
-    void setShuntMeasEnable();
+    void set_shunt_measurement_enable();
 
     // Disables shunt-voltage mesurement
-    void setShuntMeasDisable();
+    void set_shunt_measurement_disable();
 
     // Enables bus-voltage measurement
-    void setBusMeasEnable();
+    void set_bus_measurement_enable();
 
     // Disables bus-voltage measureement
-    void setBusMeasDisable();
+    void set_bus_measurement_disable();
 
     // Sets averaging mode. Sets number of samples that are collected
     // and averaged togehter.
-    void setAveragingMode(ina3221_avg_mode_t mode);
+    void set_averaging_mode(ina3221_avg_mode_t mode);
 
     // Sets bus-voltage conversion time.
-    void setBusConversionTime(ina3221_conv_time_t convTime);
+    void set_bus_conversion_time(ina3221_conv_time_t convTime);
 
     // Sets shunt-voltage conversion time.
-    void setShuntConversionTime(ina3221_conv_time_t convTime);
-
-    // Sets critical alert limit for a channel
-    void setCritAlertLimit(ina3221_ch_t channel, int32_t voltageuV);
-
-    // Sets warning alert limit for a channel
-    void setWarnAlertLimit(ina3221_ch_t channel, int32_t voltageuV);
-
-    // Sets power-valid upper-limit voltage. The power-valid condition
-    // is reached when all bus-voltage channels exceed the value set.
-    // When the powervalid condition is met, the PV alert pin asserts high.
-    void setPwrValidUpLimit(int16_t voltagemV);
-
-    // Sets power-valid lower-limit voltage. If any bus-voltage channel drops
-    // below the power-valid lower-limit, the PV alert pin pulls low.
-    void setPwrValidLowLimit(int16_t voltagemV);
-
-    // Sets the value that is compared to the Shunt-Voltage Sum register value
-    // following each completed cycle of all selected channels to detect
-    // for system overcurrent events.
-    void setShuntSumAlertLimit(int32_t voltagemV);
-
-    // Sets the current value that is compared to the sum all currents.
-    // This function is a helper for setShuntSumAlertLim(). It onverts current
-    // value to shunt voltage value.
-    void setCurrentSumAlertLimit(int32_t currentmA);
-
-    // Enables warning alert latch.
-    void setWarnAlertLatchEnable();
-
-    // Disables warning alert latch.
-    void setWarnAlertLatchDisable();
-
-    // Enables critical alert latch.
-    void setCritAlertLatchEnable();
-
-    // Disables critical alert latch.
-    void setCritAlertLatchDisable();
-
-    // Reads flags from Mask/Enable register.
-    // When Mask/Enable register is read, flags are cleared.
-    // Use getTimingCtrlAlertFlag(), getPwrValidAlertFlag(),
-    // getCurrentSumAlertFlag() and getConvReadyFlag() to get flags after
-    // readFlags() is called.
-    void readFlags();
-
-    // Gets timing-control-alert flag indicator.
-    bool getTimingCtrlAlertFlag();
-
-    // Gets power-valid-alert flag indicator.
-    bool getPwrValidAlertFlag();
-
-    // Gets summation-alert flag indicator.
-    bool getCurrentSumAlertFlag();
-
-    // Gets Conversion-ready flag.
-    bool getConversionReadyFlag();
+    void set_shunt_conversion_time(ina3221_conv_time_t convTime);
 
     // Gets manufacturer ID.
     // Should read 0x5449.
-    uint16_t getManufID();
+    uint16_t get_manufacturer_id();
 
     // Gets die ID.
     // Should read 0x3220.
-    uint16_t getDieID();
-
-    // Enables channel measurements
-    void setChannelEnable(ina3221_ch_t channel);
-
-    // Disables channel measurements
-    void setChannelDisable(ina3221_ch_t channel);
-
-    // Sets warning alert shunt voltage limit
-    void setWarnAlertShuntLimit(ina3221_ch_t channel, int32_t voltageuV);
-
-    // Sets critical alert shunt voltage limit
-    void setCritAlertShuntLimit(ina3221_ch_t channel, int32_t voltageuV);
-
-    // Sets warning alert current limit
-    void setWarnAlertCurrentLimit(ina3221_ch_t channel, int32_t currentmA);
-
-    // Sets critical alert current limit
-    void setCritAlertCurrentLimit(ina3221_ch_t channel, int32_t currentmA);
-
-    // Includes channel to fill Shunt-Voltage Sum register.
-    void setCurrentSumEnable(ina3221_ch_t channel);
-
-    // Excludes channel from filling Shunt-Voltage Sum register.
-    void setCurrentSumDisable(ina3221_ch_t channel);
+    uint16_t get_die_id();
 
     // Gets shunt voltage in uV.
-    int32_t getShuntVoltage(ina3221_ch_t channel);
-
-    // Gets warning alert flag.
-    bool getWarnAlertFlag(ina3221_ch_t channel);
-
-    // Gets critical alert flag.
-    bool getCritAlertFlag(ina3221_ch_t channel);
-
-    // Estimates offset voltage added by the series filter resitors
-    int32_t estimateOffsetVoltage(ina3221_ch_t channel, uint32_t busVoltage);
+    int32_t get_shunt_voltage(ina3221_ch_t channel);
 
     // Gets current in A.
-    float getCurrent(ina3221_ch_t channel);
+    float get_current(ina3221_ch_t channel);
 
-    float getCurrent_mA(ina3221_ch_t channel);
-    
-    // Gets current compensated with calculated offset voltage.
-    float getCurrentCompensated(ina3221_ch_t channel);
+    float get_current_ma(ina3221_ch_t channel);
 
-    float getCurrentCompensated_mA(ina3221_ch_t channel);
     // Gets bus voltage in V.
-    float getVoltage(ina3221_ch_t channel);
+    float get_voltage(ina3221_ch_t channel);
 };
 
 #endif

@@ -110,8 +110,15 @@ $(function(){initNavTree('class_i_sensor.html',''); initResizable(true); });
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_i_sensor__inherit__graph.svg" width="579" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
+ <div class="center">
+  <img src="class_i_sensor.png" usemap="#ISensor_map" alt=""/>
+  <map id="ISensor_map" name="ISensor_map">
+<area href="class_b_h1750_wrapper.html" alt="BH1750Wrapper" shape="rect" coords="0,56,125,80"/>
+<area href="class_b_m_e280_wrapper.html" alt="BME280Wrapper" shape="rect" coords="135,56,260,80"/>
+<area href="class_h_m_c5883_l_wrapper.html" alt="HMC5883LWrapper" shape="rect" coords="270,56,395,80"/>
+<area href="class_m_p_u6050_wrapper.html" alt="MPU6050Wrapper" shape="rect" coords="405,56,530,80"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -119,12 +126,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:adbd5b40ebbf9a78b9845d22dddfac351"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28051b0215d618d82556c8bb2c0abd29" id="r_a28051b0215d618d82556c8bb2c0abd29"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a28051b0215d618d82556c8bb2c0abd29">init</a> ()=0</td></tr>
 <tr class="separator:a28051b0215d618d82556c8bb2c0abd29"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8363f6253e47aa23d04c07334f49b5d" id="r_ae8363f6253e47aa23d04c07334f49b5d"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8363f6253e47aa23d04c07334f49b5d">readData</a> (<a class="el" href="_i_sensor_8h.html#a21b0301bb3eb76855366980212c8ae5e">SensorDataTypeIdentifier</a> type)=0</td></tr>
-<tr class="separator:ae8363f6253e47aa23d04c07334f49b5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35a720334040ca754deb0931fc6f1b50" id="r_a35a720334040ca754deb0931fc6f1b50"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a35a720334040ca754deb0931fc6f1b50">isInitialized</a> () const =0</td></tr>
-<tr class="separator:a35a720334040ca754deb0931fc6f1b50"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a649cfa6c1888996f392f401e7d26125c" id="r_a649cfa6c1888996f392f401e7d26125c"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="_i_sensor_8h.html#a213c434cb928c4ca22513e2302632435">SensorType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a649cfa6c1888996f392f401e7d26125c">getType</a> () const =0</td></tr>
-<tr class="separator:a649cfa6c1888996f392f401e7d26125c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2c115be1f140c8e0a6e3b615a84ac05" id="r_ab2c115be1f140c8e0a6e3b615a84ac05"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2c115be1f140c8e0a6e3b615a84ac05">read_data</a> (<a class="el" href="_i_sensor_8h.html#a21b0301bb3eb76855366980212c8ae5e">SensorDataTypeIdentifier</a> type)=0</td></tr>
+<tr class="separator:ab2c115be1f140c8e0a6e3b615a84ac05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0583ca3425ecead66c8f2f2836825e8" id="r_ab0583ca3425ecead66c8f2f2836825e8"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab0583ca3425ecead66c8f2f2836825e8">is_initialized</a> () const =0</td></tr>
+<tr class="separator:ab0583ca3425ecead66c8f2f2836825e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f49291a82b00d50ae215eeda8b74d94" id="r_a9f49291a82b00d50ae215eeda8b74d94"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="_i_sensor_8h.html#a213c434cb928c4ca22513e2302632435">SensorType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f49291a82b00d50ae215eeda8b74d94">get_type</a> () const =0</td></tr>
+<tr class="separator:a9f49291a82b00d50ae215eeda8b74d94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5fd04ca51fa10cb8d0bcc835b14fb33" id="r_aa5fd04ca51fa10cb8d0bcc835b14fb33"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5fd04ca51fa10cb8d0bcc835b14fb33">configure</a> (const std::map&lt; std::string, std::string &gt; &amp;config)=0</td></tr>
 <tr class="separator:aa5fd04ca51fa10cb8d0bcc835b14fb33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -185,8 +192,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ae8363f6253e47aa23d04c07334f49b5d" name="ae8363f6253e47aa23d04c07334f49b5d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae8363f6253e47aa23d04c07334f49b5d">&#9670;&#160;</a></span>readData()</h2>
+<a id="ab2c115be1f140c8e0a6e3b615a84ac05" name="ab2c115be1f140c8e0a6e3b615a84ac05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2c115be1f140c8e0a6e3b615a84ac05">&#9670;&#160;</a></span>read_data()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -195,7 +202,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual float ISensor::readData </td>
+          <td class="memname">virtual float ISensor::read_data </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="_i_sensor_8h.html#a21b0301bb3eb76855366980212c8ae5e">SensorDataTypeIdentifier</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span></td><td>)</td>
           <td></td>
@@ -208,12 +215,12 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_b_h1750_wrapper.html#a150e9bb5fb1185d6b1619565c66c5f62">BH1750Wrapper</a>, <a class="el" href="class_b_m_e280_wrapper.html#af3e891953ad05fe0b83c0cb51aab2055">BME280Wrapper</a>, <a class="el" href="class_h_m_c5883_l_wrapper.html#a76c63b1af36c160c9e7ebf7dc10f872b">HMC5883LWrapper</a>, and <a class="el" href="class_m_p_u6050_wrapper.html#a80ab2265d434c951fb99f29bdb0e965a">MPU6050Wrapper</a>.</p>
+<p>Implemented in <a class="el" href="class_b_h1750_wrapper.html#ad6efe95b3e808a9a58db399ec2219332">BH1750Wrapper</a>, <a class="el" href="class_b_m_e280_wrapper.html#a3dde32da2bf19f87fbb0adfaf492ee82">BME280Wrapper</a>, <a class="el" href="class_h_m_c5883_l_wrapper.html#adae87b75c84cc74246b606def4f90b43">HMC5883LWrapper</a>, and <a class="el" href="class_m_p_u6050_wrapper.html#af9ecffb6a2c3ad22ddb2bf950c390bfd">MPU6050Wrapper</a>.</p>
 
 </div>
 </div>
-<a id="a35a720334040ca754deb0931fc6f1b50" name="a35a720334040ca754deb0931fc6f1b50"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a35a720334040ca754deb0931fc6f1b50">&#9670;&#160;</a></span>isInitialized()</h2>
+<a id="ab0583ca3425ecead66c8f2f2836825e8" name="ab0583ca3425ecead66c8f2f2836825e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0583ca3425ecead66c8f2f2836825e8">&#9670;&#160;</a></span>is_initialized()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -222,7 +229,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual bool ISensor::isInitialized </td>
+          <td class="memname">virtual bool ISensor::is_initialized </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -235,12 +242,12 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_b_h1750_wrapper.html#a17eee3fe5b77e07d5aceed51c5277709">BH1750Wrapper</a>, <a class="el" href="class_b_m_e280_wrapper.html#afa864237c62a7cd64d74cf18f9b7a2ac">BME280Wrapper</a>, <a class="el" href="class_h_m_c5883_l_wrapper.html#abacf4eeaaff893112e1aa3c20b23ce38">HMC5883LWrapper</a>, and <a class="el" href="class_m_p_u6050_wrapper.html#a56ac18f3459bcbfcfcc42c8c1b6a6be7">MPU6050Wrapper</a>.</p>
+<p>Implemented in <a class="el" href="class_b_h1750_wrapper.html#aac6fd3165dff7b9356a136a0d677dbcc">BH1750Wrapper</a>, <a class="el" href="class_b_m_e280_wrapper.html#a8a8f43b3849093362cd8006ecb266376">BME280Wrapper</a>, <a class="el" href="class_h_m_c5883_l_wrapper.html#aa8fef1832b14c758f6e73f88412615fd">HMC5883LWrapper</a>, and <a class="el" href="class_m_p_u6050_wrapper.html#ad12d631edc144428d1c13f73e3e355b4">MPU6050Wrapper</a>.</p>
 
 </div>
 </div>
-<a id="a649cfa6c1888996f392f401e7d26125c" name="a649cfa6c1888996f392f401e7d26125c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a649cfa6c1888996f392f401e7d26125c">&#9670;&#160;</a></span>getType()</h2>
+<a id="a9f49291a82b00d50ae215eeda8b74d94" name="a9f49291a82b00d50ae215eeda8b74d94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f49291a82b00d50ae215eeda8b74d94">&#9670;&#160;</a></span>get_type()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -249,7 +256,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual <a class="el" href="_i_sensor_8h.html#a213c434cb928c4ca22513e2302632435">SensorType</a> ISensor::getType </td>
+          <td class="memname">virtual <a class="el" href="_i_sensor_8h.html#a213c434cb928c4ca22513e2302632435">SensorType</a> ISensor::get_type </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -262,7 +269,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_b_h1750_wrapper.html#aa107682828326c965d10db863e704bde">BH1750Wrapper</a>, <a class="el" href="class_b_m_e280_wrapper.html#a7863eb6da292da01efdbffc4a93e4453">BME280Wrapper</a>, <a class="el" href="class_h_m_c5883_l_wrapper.html#a655c92b4d2040e76636a96f9ba63c56a">HMC5883LWrapper</a>, and <a class="el" href="class_m_p_u6050_wrapper.html#a922032d7b37976611de3a745e16fafde">MPU6050Wrapper</a>.</p>
+<p>Implemented in <a class="el" href="class_b_h1750_wrapper.html#a2b08ef514e8a5e0ad7d16e425492f136">BH1750Wrapper</a>, <a class="el" href="class_b_m_e280_wrapper.html#a7e58fc23e849c53ea83e05de73d35668">BME280Wrapper</a>, <a class="el" href="class_h_m_c5883_l_wrapper.html#a9be1b3abf26bb59943767ea271315f42">HMC5883LWrapper</a>, and <a class="el" href="class_m_p_u6050_wrapper.html#a32a311d3813ffb7f9e73d08523aa0284">MPU6050Wrapper</a>.</p>
 
 </div>
 </div>

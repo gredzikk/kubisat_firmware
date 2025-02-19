@@ -20,7 +20,7 @@
  * @brief Provides a global instance of SensorWrapper.
  * @return A reference to the single SensorWrapper instance.
  */
-SensorWrapper& SensorWrapper::getInstance() {
+SensorWrapper& SensorWrapper::get_instance() {
     static SensorWrapper instance;
     return instance;
 }
@@ -36,7 +36,7 @@ SensorWrapper::SensorWrapper() = default;
  * @param i2c The I2C interface pointer.
  * @return True if initialization succeeded, otherwise false.
  */
-bool SensorWrapper::initSensor(SensorType type, i2c_inst_t* i2c) {
+bool SensorWrapper::sensor_init(SensorType type, i2c_inst_t* i2c) {
     switch(type) {
         case SensorType::LIGHT:
             sensors[type] = new BH1750Wrapper();
@@ -60,9 +60,9 @@ bool SensorWrapper::initSensor(SensorType type, i2c_inst_t* i2c) {
  * @param config Key-value pairs for sensor configuration.
  * @return True if the sensor was successfully configured, otherwise false.
  */
-bool SensorWrapper::configureSensor(SensorType type, const std::map<std::string, std::string>& config) {
+bool SensorWrapper::sensor_configure(SensorType type, const std::map<std::string, std::string>& config) {
     auto it = sensors.find(type);
-    if (it != sensors.end() && it->second->isInitialized()) {
+    if (it != sensors.end() && it->second->is_initialized()) {
         return it->second->configure(config);
     }
     std::cerr << "Sensor not initialized or not found: " << static_cast<int>(type) << std::endl;
@@ -75,10 +75,10 @@ bool SensorWrapper::configureSensor(SensorType type, const std::map<std::string,
  * @param dataType The type of data to read (light level, temperature, etc.).
  * @return The requested measurement. Returns 0.0f if sensor not found or uninitialized.
  */
-float SensorWrapper::readSensorData(SensorType sensorType, SensorDataTypeIdentifier dataType) {
+float SensorWrapper::sensor_read_data(SensorType sensorType, SensorDataTypeIdentifier dataType) {
     auto it = sensors.find(sensorType);
-    if (it != sensors.end() && it->second->isInitialized()) {
-        return it->second->readData(dataType);
+    if (it != sensors.end() && it->second->is_initialized()) {
+        return it->second->read_data(dataType);
     }
     return 0.0f;
 }

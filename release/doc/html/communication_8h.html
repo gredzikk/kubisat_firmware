@@ -106,74 +106,58 @@ $(function(){initNavTree('communication_8h.html',''); initResizable(true); });
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &quot;<a class="el" href="protocol_8h_source.html">protocol.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="event__manager_8h_source.html">event_manager.h</a>&quot;</code><br />
-</div><div class="textblock"><div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for communication.h:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="communication_8h__incl.svg" width="100%" height="552"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-</div><div class="textblock"><div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> This graph shows which files directly or indirectly include this file:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="communication_8h__dep__incl.svg" width="100%" height="452"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
 </div>
 <p><a href="communication_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a520df448c1dc359f42111ac240081975" id="r_a520df448c1dc359f42111ac240081975"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a520df448c1dc359f42111ac240081975">initializeRadio</a> ()</td></tr>
-<tr class="memdesc:a520df448c1dc359f42111ac240081975"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the LoRa radio module.  <br /></td></tr>
-<tr class="separator:a520df448c1dc359f42111ac240081975"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a877f9c1d3485cf1521bc13996d39c1fb" id="r_a877f9c1d3485cf1521bc13996d39c1fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a877f9c1d3485cf1521bc13996d39c1fb">sendMessage</a> (std::string <a class="el" href="communication_8cpp.html#a13c45747091f32644e83d65348c61232">outgoing</a>)</td></tr>
-<tr class="separator:a877f9c1d3485cf1521bc13996d39c1fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a252a4ea5f222c6879d281cc2f9357b46" id="r_a252a4ea5f222c6879d281cc2f9357b46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a252a4ea5f222c6879d281cc2f9357b46">sendLargePacket</a> (const uint8_t *data, size_t length)</td></tr>
-<tr class="memdesc:a252a4ea5f222c6879d281cc2f9357b46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a large packet using LoRa.  <br /></td></tr>
-<tr class="separator:a252a4ea5f222c6879d281cc2f9357b46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54817002e33761dc61558b1138749dfb" id="r_a54817002e33761dc61558b1138749dfb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54817002e33761dc61558b1138749dfb">onReceive</a> (int packetSize)</td></tr>
-<tr class="memdesc:a54817002e33761dc61558b1138749dfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function for handling received LoRa packets.  <br /></td></tr>
-<tr class="separator:a54817002e33761dc61558b1138749dfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5e175a6a1482f700f9aee0b727b924f" id="r_ac5e175a6a1482f700f9aee0b727b924f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5e175a6a1482f700f9aee0b727b924f">handleUartInput</a> ()</td></tr>
-<tr class="memdesc:ac5e175a6a1482f700f9aee0b727b924f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles UART input.  <br /></td></tr>
-<tr class="separator:ac5e175a6a1482f700f9aee0b727b924f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b9407b2f579031cf4b705f1ac03ac31" id="r_a8b9407b2f579031cf4b705f1ac03ac31"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b9407b2f579031cf4b705f1ac03ac31">processFrameData</a> (const std::string &amp;data)</td></tr>
-<tr class="memdesc:a8b9407b2f579031cf4b705f1ac03ac31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a command based on the command key and the parameter.  <br /></td></tr>
-<tr class="separator:a8b9407b2f579031cf4b705f1ac03ac31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ea1f464aef22cd9918b6fe75659c535" id="r_a3ea1f464aef22cd9918b6fe75659c535"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ea1f464aef22cd9918b6fe75659c535">handleCommandFrame</a> (const <a class="el" href="struct_frame.html">Frame</a> &amp;frame)</td></tr>
-<tr class="separator:a3ea1f464aef22cd9918b6fe75659c535"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1907d400d2c8d8d054ba95bcf43276ea" id="r_ga1907d400d2c8d8d054ba95bcf43276ea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___command_system.html#ga1907d400d2c8d8d054ba95bcf43276ea">executeCommand</a> (uint32_t commandKey, const std::string &amp;param, <a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a> operationType)</td></tr>
-<tr class="memdesc:ga1907d400d2c8d8d054ba95bcf43276ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a command based on its key.  <br /></td></tr>
-<tr class="separator:ga1907d400d2c8d8d054ba95bcf43276ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6005ddd6320bebe2a680fa6b8efff6dd" id="r_a6005ddd6320bebe2a680fa6b8efff6dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6005ddd6320bebe2a680fa6b8efff6dd">sendEventRegister</a> ()</td></tr>
-<tr class="memdesc:a6005ddd6320bebe2a680fa6b8efff6dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends the event register value to the ground station.  <br /></td></tr>
-<tr class="separator:a6005ddd6320bebe2a680fa6b8efff6dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab53898fb6f45dfc657837a665a070959" id="r_ab53898fb6f45dfc657837a665a070959"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab53898fb6f45dfc657837a665a070959">encodeFrame</a> (const <a class="el" href="struct_frame.html">Frame</a> &amp;frame)</td></tr>
-<tr class="memdesc:ab53898fb6f45dfc657837a665a070959"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encodes a <a class="el" href="struct_frame.html">Frame</a> instance into a string.  <br /></td></tr>
-<tr class="separator:ab53898fb6f45dfc657837a665a070959"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f34bc31494430539db21206f084d39d" id="r_a8f34bc31494430539db21206f084d39d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f34bc31494430539db21206f084d39d">decodeFrame</a> (const std::string &amp;data)</td></tr>
-<tr class="memdesc:a8f34bc31494430539db21206f084d39d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a string into a <a class="el" href="struct_frame.html">Frame</a> instance.  <br /></td></tr>
-<tr class="separator:a8f34bc31494430539db21206f084d39d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54afeb73435419551a1b51a3fd5c3266" id="r_a54afeb73435419551a1b51a3fd5c3266"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54afeb73435419551a1b51a3fd5c3266">buildFrame</a> (<a class="el" href="protocol_8h.html#ad13fb53c92ad2af53a95ee45749796d1">ExecutionResult</a> result, uint8_t <a class="el" href="event__manager_8h.html#ad4291fcb880eb5ecb178b53e32f55741">group</a>, uint8_t command, const std::string &amp;value, const <a class="el" href="protocol_8h.html#a2d96449e2b52d45b5726af92084e0d8f">ValueUnit</a> unitType=<a class="el" href="protocol_8h.html#a2d96449e2b52d45b5726af92084e0d8fa0db45d2a4141101bdfe48e3314cfbca3">ValueUnit::UNDEFINED</a>)</td></tr>
-<tr class="memdesc:a54afeb73435419551a1b51a3fd5c3266"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds a <a class="el" href="struct_frame.html">Frame</a> instance.  <br /></td></tr>
-<tr class="separator:a54afeb73435419551a1b51a3fd5c3266"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6272bef4a482127bfe7c1b50d723d69d" id="r_a6272bef4a482127bfe7c1b50d723d69d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6272bef4a482127bfe7c1b50d723d69d">determineUnit</a> (uint8_t <a class="el" href="event__manager_8h.html#ad4291fcb880eb5ecb178b53e32f55741">group</a>, uint8_t command)</td></tr>
-<tr class="separator:a6272bef4a482127bfe7c1b50d723d69d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a752e7cc27f52d4ba064e691b3e240ed8" id="r_a752e7cc27f52d4ba064e691b3e240ed8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a752e7cc27f52d4ba064e691b3e240ed8">sendFrame</a> (const <a class="el" href="struct_frame.html">Frame</a> &amp;frame)</td></tr>
-<tr class="memdesc:a752e7cc27f52d4ba064e691b3e240ed8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a <a class="el" href="struct_frame.html">Frame</a> using LoRa.  <br /></td></tr>
-<tr class="separator:a752e7cc27f52d4ba064e691b3e240ed8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f817ba4ed9164098cd3947f7cc3f749" id="r_a8f817ba4ed9164098cd3947f7cc3f749"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f817ba4ed9164098cd3947f7cc3f749">initialize_radio</a> ()</td></tr>
+<tr class="memdesc:a8f817ba4ed9164098cd3947f7cc3f749"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the LoRa radio module.  <br /></td></tr>
+<tr class="separator:a8f817ba4ed9164098cd3947f7cc3f749"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f494105dee3a08e1244febc81982517" id="r_a3f494105dee3a08e1244febc81982517"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f494105dee3a08e1244febc81982517">on_receive</a> (int packetSize)</td></tr>
+<tr class="memdesc:a3f494105dee3a08e1244febc81982517"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function for handling received LoRa packets.  <br /></td></tr>
+<tr class="separator:a3f494105dee3a08e1244febc81982517"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14ffba44d46e00b23bd72bdb3a4d58d1" id="r_a14ffba44d46e00b23bd72bdb3a4d58d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a14ffba44d46e00b23bd72bdb3a4d58d1">handle_uart_input</a> ()</td></tr>
+<tr class="memdesc:a14ffba44d46e00b23bd72bdb3a4d58d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles UART input.  <br /></td></tr>
+<tr class="separator:a14ffba44d46e00b23bd72bdb3a4d58d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e567748586559735a2e90bb2ce7e871" id="r_a8e567748586559735a2e90bb2ce7e871"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e567748586559735a2e90bb2ce7e871">send_message</a> (std::string <a class="el" href="communication_8cpp.html#a13c45747091f32644e83d65348c61232">outgoing</a>)</td></tr>
+<tr class="separator:a8e567748586559735a2e90bb2ce7e871"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6c6f3b673e7e83306da7ea2458d3241" id="r_ae6c6f3b673e7e83306da7ea2458d3241"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6c6f3b673e7e83306da7ea2458d3241">send_frame</a> (const <a class="el" href="struct_frame.html">Frame</a> &amp;frame)</td></tr>
+<tr class="memdesc:ae6c6f3b673e7e83306da7ea2458d3241"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a <a class="el" href="struct_frame.html">Frame</a> using LoRa.  <br /></td></tr>
+<tr class="separator:ae6c6f3b673e7e83306da7ea2458d3241"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a207fb10d443babe78967d28c7565234a" id="r_a207fb10d443babe78967d28c7565234a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a207fb10d443babe78967d28c7565234a">split_and_send_message</a> (const uint8_t *data, size_t length)</td></tr>
+<tr class="memdesc:a207fb10d443babe78967d28c7565234a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a large packet using LoRa.  <br /></td></tr>
+<tr class="separator:a207fb10d443babe78967d28c7565234a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga52e8963095eccdf1045309bf31b4d705" id="r_ga52e8963095eccdf1045309bf31b4d705"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___command_system.html#ga52e8963095eccdf1045309bf31b4d705">execute_command</a> (uint32_t commandKey, const std::string &amp;param, <a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a> operationType)</td></tr>
+<tr class="memdesc:ga52e8963095eccdf1045309bf31b4d705"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a command based on its key.  <br /></td></tr>
+<tr class="separator:ga52e8963095eccdf1045309bf31b4d705"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af49224563adb4bf0b91daa5ab78120ca" id="r_af49224563adb4bf0b91daa5ab78120ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af49224563adb4bf0b91daa5ab78120ca">send_event</a> ()</td></tr>
+<tr class="memdesc:af49224563adb4bf0b91daa5ab78120ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends the event register value to the ground station.  <br /></td></tr>
+<tr class="separator:af49224563adb4bf0b91daa5ab78120ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b9c5fd031b899c6c7867adcde4ac11f" id="r_a8b9c5fd031b899c6c7867adcde4ac11f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b9c5fd031b899c6c7867adcde4ac11f">frame_process</a> (const std::string &amp;data)</td></tr>
+<tr class="memdesc:a8b9c5fd031b899c6c7867adcde4ac11f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a command based on the command key and the parameter.  <br /></td></tr>
+<tr class="separator:a8b9c5fd031b899c6c7867adcde4ac11f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ae6df528775be58890bf406c906a056" id="r_a3ae6df528775be58890bf406c906a056"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ae6df528775be58890bf406c906a056">frame_encode</a> (const <a class="el" href="struct_frame.html">Frame</a> &amp;frame)</td></tr>
+<tr class="memdesc:a3ae6df528775be58890bf406c906a056"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encodes a <a class="el" href="struct_frame.html">Frame</a> instance into a string.  <br /></td></tr>
+<tr class="separator:a3ae6df528775be58890bf406c906a056"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b3438ff642c0934321101e1f0b8d82d" id="r_a0b3438ff642c0934321101e1f0b8d82d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b3438ff642c0934321101e1f0b8d82d">frame_decode</a> (const std::string &amp;data)</td></tr>
+<tr class="memdesc:a0b3438ff642c0934321101e1f0b8d82d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a string into a <a class="el" href="struct_frame.html">Frame</a> instance.  <br /></td></tr>
+<tr class="separator:a0b3438ff642c0934321101e1f0b8d82d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70248162b9a616f543f470d88ccdf4a6" id="r_a70248162b9a616f543f470d88ccdf4a6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a70248162b9a616f543f470d88ccdf4a6">frame_build</a> (<a class="el" href="protocol_8h.html#ad13fb53c92ad2af53a95ee45749796d1">ExecutionResult</a> result, uint8_t <a class="el" href="event__manager_8h.html#ad4291fcb880eb5ecb178b53e32f55741">group</a>, uint8_t command, const std::string &amp;value, const <a class="el" href="protocol_8h.html#a2d96449e2b52d45b5726af92084e0d8f">ValueUnit</a> unitType=<a class="el" href="protocol_8h.html#a2d96449e2b52d45b5726af92084e0d8fa0db45d2a4141101bdfe48e3314cfbca3">ValueUnit::UNDEFINED</a>)</td></tr>
+<tr class="memdesc:a70248162b9a616f543f470d88ccdf4a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds a <a class="el" href="struct_frame.html">Frame</a> instance.  <br /></td></tr>
+<tr class="separator:a70248162b9a616f543f470d88ccdf4a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1df3cc2d97de283e0c229b2d87f39b47" id="r_a1df3cc2d97de283e0c229b2d87f39b47"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1df3cc2d97de283e0c229b2d87f39b47">determine_unit</a> (uint8_t <a class="el" href="event__manager_8h.html#ad4291fcb880eb5ecb178b53e32f55741">group</a>, uint8_t command)</td></tr>
+<tr class="separator:a1df3cc2d97de283e0c229b2d87f39b47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a520df448c1dc359f42111ac240081975" name="a520df448c1dc359f42111ac240081975"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a520df448c1dc359f42111ac240081975">&#9670;&#160;</a></span>initializeRadio()</h2>
+<a id="a8f817ba4ed9164098cd3947f7cc3f749" name="a8f817ba4ed9164098cd3947f7cc3f749"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f817ba4ed9164098cd3947f7cc3f749">&#9670;&#160;</a></span>initialize_radio()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool initializeRadio </td>
+          <td class="memname">bool initialize_radio </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -186,31 +170,67 @@ Functions</h2></td></tr>
 <p>Sets the LoRa pins and attempts to begin LoRa communication at a specified frequency. Emits a <a class="el" href="event__manager_8h.html#a0270a0464efae26aefb8cf32a45e20ada6651a96516b323db8bad9897081d76ed">CommsEvent::RADIO_INIT</a> event on success or a <a class="el" href="event__manager_8h.html#a0270a0464efae26aefb8cf32a45e20ada3b9824cc8a230f50d285d16795daa859">CommsEvent::RADIO_ERROR</a> event on failure. </p>
 
 <p class="definition">Definition at line <a class="el" href="communication_8cpp_source.html#l00017">17</a> of file <a class="el" href="communication_8cpp_source.html">communication.cpp</a>.</p>
-<div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="communication_8h_a520df448c1dc359f42111ac240081975_cgraph.svg" width="292" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-<div id="dynsection-3" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="communication_8h_a520df448c1dc359f42111ac240081975_icgraph.svg" width="350" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
 
 </div>
 </div>
-<a id="a877f9c1d3485cf1521bc13996d39c1fb" name="a877f9c1d3485cf1521bc13996d39c1fb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a877f9c1d3485cf1521bc13996d39c1fb">&#9670;&#160;</a></span>sendMessage()</h2>
+<a id="a3f494105dee3a08e1244febc81982517" name="a3f494105dee3a08e1244febc81982517"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f494105dee3a08e1244febc81982517">&#9670;&#160;</a></span>on_receive()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sendMessage </td>
+          <td class="memname">void on_receive </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>packetSize</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Callback function for handling received LoRa packets. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">packetSize</td><td>The size of the received packet.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Reads the received LoRa packet, extracts metadata, validates the lora_address_remote and local addresses, extracts the frame data, and processes it. Prints raw hex values for debugging. </p>
+
+<p class="definition">Definition at line <a class="el" href="receive_8cpp_source.html#l00015">15</a> of file <a class="el" href="receive_8cpp_source.html">receive.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a14ffba44d46e00b23bd72bdb3a4d58d1" name="a14ffba44d46e00b23bd72bdb3a4d58d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14ffba44d46e00b23bd72bdb3a4d58d1">&#9670;&#160;</a></span>handle_uart_input()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void handle_uart_input </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Handles UART input. </p>
+<p>Reads characters from the UART port, appends them to a buffer, and processes the buffer when a newline character is received. </p>
+
+<p class="definition">Definition at line <a class="el" href="receive_8cpp_source.html#l00077">77</a> of file <a class="el" href="receive_8cpp_source.html">receive.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a8e567748586559735a2e90bb2ce7e871" name="a8e567748586559735a2e90bb2ce7e871"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e567748586559735a2e90bb2ce7e871">&#9670;&#160;</a></span>send_message()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void send_message </td>
           <td>(</td>
           <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>outgoing</em></span></td><td>)</td>
           <td></td>
@@ -220,14 +240,42 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a252a4ea5f222c6879d281cc2f9357b46" name="a252a4ea5f222c6879d281cc2f9357b46"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a252a4ea5f222c6879d281cc2f9357b46">&#9670;&#160;</a></span>sendLargePacket()</h2>
+<a id="ae6c6f3b673e7e83306da7ea2458d3241" name="ae6c6f3b673e7e83306da7ea2458d3241"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6c6f3b673e7e83306da7ea2458d3241">&#9670;&#160;</a></span>send_frame()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sendLargePacket </td>
+          <td class="memname">void send_frame </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_frame.html">Frame</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sends a <a class="el" href="struct_frame.html">Frame</a> using LoRa. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td>The <a class="el" href="struct_frame.html">Frame</a> to send.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Encodes the <a class="el" href="struct_frame.html">Frame</a> into a string and sends it using the send_message function. </p>
+
+<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00042">42</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a207fb10d443babe78967d28c7565234a" name="a207fb10d443babe78967d28c7565234a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a207fb10d443babe78967d28c7565234a">&#9670;&#160;</a></span>split_and_send_message()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void split_and_send_message </td>
           <td>(</td>
           <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>, </td>
         </tr>
@@ -253,56 +301,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a54817002e33761dc61558b1138749dfb" name="a54817002e33761dc61558b1138749dfb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a54817002e33761dc61558b1138749dfb">&#9670;&#160;</a></span>onReceive()</h2>
+<a id="af49224563adb4bf0b91daa5ab78120ca" name="af49224563adb4bf0b91daa5ab78120ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af49224563adb4bf0b91daa5ab78120ca">&#9670;&#160;</a></span>send_event()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void onReceive </td>
-          <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>packetSize</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Callback function for handling received LoRa packets. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">packetSize</td><td>The size of the received packet.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Reads the received LoRa packet, extracts metadata, validates the destination and local addresses, extracts the frame data, and processes it. Prints raw hex values for debugging. </p>
-
-<p class="definition">Definition at line <a class="el" href="receive_8cpp_source.html#l00015">15</a> of file <a class="el" href="receive_8cpp_source.html">receive.cpp</a>.</p>
-<div id="dynsection-4" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="communication_8h_a54817002e33761dc61558b1138749dfb_cgraph.svg" width="100%" height="473"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-<div id="dynsection-5" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="communication_8h_a54817002e33761dc61558b1138749dfb_icgraph.svg" width="192" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
-</div>
-</div>
-<a id="ac5e175a6a1482f700f9aee0b727b924f" name="ac5e175a6a1482f700f9aee0b727b924f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac5e175a6a1482f700f9aee0b727b924f">&#9670;&#160;</a></span>handleUartInput()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void handleUartInput </td>
+          <td class="memname">void send_event </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -310,35 +316,21 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Handles UART input. </p>
-<p>Reads characters from the UART port, appends them to a buffer, and processes the buffer when a newline character is received. </p>
+<p>Sends the event register value to the ground station. </p>
+<p>This function is called in the main loop to send the current value of the event register. </p>
 
-<p class="definition">Definition at line <a class="el" href="receive_8cpp_source.html#l00077">77</a> of file <a class="el" href="receive_8cpp_source.html">receive.cpp</a>.</p>
-<div id="dynsection-6" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="communication_8h_ac5e175a6a1482f700f9aee0b727b924f_cgraph.svg" width="100%" height="473"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-<div id="dynsection-7" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="communication_8h_ac5e175a6a1482f700f9aee0b727b924f_icgraph.svg" width="222" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<p class="definition">Definition at line <a class="el" href="frame_8cpp_source.html#l00119">119</a> of file <a class="el" href="frame_8cpp_source.html">frame.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a8b9407b2f579031cf4b705f1ac03ac31" name="a8b9407b2f579031cf4b705f1ac03ac31"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8b9407b2f579031cf4b705f1ac03ac31">&#9670;&#160;</a></span>processFrameData()</h2>
+<a id="a8b9c5fd031b899c6c7867adcde4ac11f" name="a8b9c5fd031b899c6c7867adcde4ac11f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b9c5fd031b899c6c7867adcde4ac11f">&#9670;&#160;</a></span>frame_process()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void processFrameData </td>
+          <td class="memname">void frame_process </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>data</em></span></td><td>)</td>
           <td></td>
@@ -356,77 +348,17 @@ Functions</h2></td></tr>
 <p>Decodes the frame data, extracts the command key, and executes the corresponding command. Sends the response frame. If an error occurs, an error frame is built and sent. </p>
 
 <p class="definition">Definition at line <a class="el" href="frame_8cpp_source.html#l00100">100</a> of file <a class="el" href="frame_8cpp_source.html">frame.cpp</a>.</p>
-<div id="dynsection-8" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="communication_8h_a8b9407b2f579031cf4b705f1ac03ac31_cgraph.svg" width="100%" height="442"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-<div id="dynsection-9" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="communication_8h_a8b9407b2f579031cf4b705f1ac03ac31_icgraph.svg" width="402" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
 
 </div>
 </div>
-<a id="a3ea1f464aef22cd9918b6fe75659c535" name="a3ea1f464aef22cd9918b6fe75659c535"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3ea1f464aef22cd9918b6fe75659c535">&#9670;&#160;</a></span>handleCommandFrame()</h2>
+<a id="a3ae6df528775be58890bf406c906a056" name="a3ae6df528775be58890bf406c906a056"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ae6df528775be58890bf406c906a056">&#9670;&#160;</a></span>frame_encode()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void handleCommandFrame </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="struct_frame.html">Frame</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a6005ddd6320bebe2a680fa6b8efff6dd" name="a6005ddd6320bebe2a680fa6b8efff6dd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6005ddd6320bebe2a680fa6b8efff6dd">&#9670;&#160;</a></span>sendEventRegister()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void sendEventRegister </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sends the event register value to the ground station. </p>
-<p>This function is called in the main loop to send the current value of the event register. </p>
-
-<p class="definition">Definition at line <a class="el" href="frame_8cpp_source.html#l00119">119</a> of file <a class="el" href="frame_8cpp_source.html">frame.cpp</a>.</p>
-<div id="dynsection-10" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-10-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="communication_8h_a6005ddd6320bebe2a680fa6b8efff6dd_cgraph.svg" width="100%" height="404"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-
-</div>
-</div>
-<a id="ab53898fb6f45dfc657837a665a070959" name="ab53898fb6f45dfc657837a665a070959"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab53898fb6f45dfc657837a665a070959">&#9670;&#160;</a></span>encodeFrame()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string encodeFrame </td>
+          <td class="memname">std::string frame_encode </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="struct_frame.html">Frame</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
           <td></td>
@@ -445,31 +377,17 @@ Functions</h2></td></tr>
 <p>The encoded string includes the frame direction, operation type, group, command, value, and unit, all delimited by the DELIMITER character. The string is encapsulated by FRAME_BEGIN and FRAME_END. </p>
 
 <p class="definition">Definition at line <a class="el" href="frame_8cpp_source.html#l00019">19</a> of file <a class="el" href="frame_8cpp_source.html">frame.cpp</a>.</p>
-<div id="dynsection-11" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-11-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="communication_8h_ab53898fb6f45dfc657837a665a070959_cgraph.svg" width="310" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-<div id="dynsection-12" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-12-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="communication_8h_ab53898fb6f45dfc657837a665a070959_icgraph.svg" width="100%" height="518"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
 
 </div>
 </div>
-<a id="a8f34bc31494430539db21206f084d39d" name="a8f34bc31494430539db21206f084d39d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8f34bc31494430539db21206f084d39d">&#9670;&#160;</a></span>decodeFrame()</h2>
+<a id="a0b3438ff642c0934321101e1f0b8d82d" name="a0b3438ff642c0934321101e1f0b8d82d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b3438ff642c0934321101e1f0b8d82d">&#9670;&#160;</a></span>frame_decode()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> decodeFrame </td>
+          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> frame_decode </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>data</em></span></td><td>)</td>
           <td></td>
@@ -494,31 +412,17 @@ Functions</h2></td></tr>
 <p>Parses the input string, extracting the frame direction, operation type, group, command, value, and unit. If an error occurs during parsing, an error message is printed to the UART, an error frame is built and sent, and the exception is re-thrown. </p>
 
 <p class="definition">Definition at line <a class="el" href="frame_8cpp_source.html#l00044">44</a> of file <a class="el" href="frame_8cpp_source.html">frame.cpp</a>.</p>
-<div id="dynsection-13" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-13-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="communication_8h_a8f34bc31494430539db21206f084d39d_cgraph.svg" width="100%" height="480"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-<div id="dynsection-14" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-14-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="communication_8h_a8f34bc31494430539db21206f084d39d_icgraph.svg" width="551" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
 
 </div>
 </div>
-<a id="a54afeb73435419551a1b51a3fd5c3266" name="a54afeb73435419551a1b51a3fd5c3266"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a54afeb73435419551a1b51a3fd5c3266">&#9670;&#160;</a></span>buildFrame()</h2>
+<a id="a70248162b9a616f543f470d88ccdf4a6" name="a70248162b9a616f543f470d88ccdf4a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70248162b9a616f543f470d88ccdf4a6">&#9670;&#160;</a></span>frame_build()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> buildFrame </td>
+          <td class="memname"><a class="el" href="struct_frame.html">Frame</a> frame_build </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="protocol_8h.html#ad13fb53c92ad2af53a95ee45749796d1">ExecutionResult</a></td>          <td class="paramname"><span class="paramname"><em>result</em></span>, </td>
         </tr>
@@ -560,31 +464,17 @@ Functions</h2></td></tr>
 <p>Constructs a <a class="el" href="struct_frame.html">Frame</a> instance based on the provided parameters. The frame direction and operation type are set based on the execution result. </p>
 
 <p class="definition">Definition at line <a class="el" href="frame_8cpp_source.html#l00146">146</a> of file <a class="el" href="frame_8cpp_source.html">frame.cpp</a>.</p>
-<div id="dynsection-15" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-15-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-15-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="communication_8h_a54afeb73435419551a1b51a3fd5c3266_cgraph.svg" width="296" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-<div id="dynsection-16" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-16-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-16-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="communication_8h_a54afeb73435419551a1b51a3fd5c3266_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
 
 </div>
 </div>
-<a id="a6272bef4a482127bfe7c1b50d723d69d" name="a6272bef4a482127bfe7c1b50d723d69d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6272bef4a482127bfe7c1b50d723d69d">&#9670;&#160;</a></span>determineUnit()</h2>
+<a id="a1df3cc2d97de283e0c229b2d87f39b47" name="a1df3cc2d97de283e0c229b2d87f39b47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1df3cc2d97de283e0c229b2d87f39b47">&#9670;&#160;</a></span>determine_unit()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string determineUnit </td>
+          <td class="memname">std::string determine_unit </td>
           <td>(</td>
           <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>group</em></span>, </td>
         </tr>
@@ -595,48 +485,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<a id="a752e7cc27f52d4ba064e691b3e240ed8" name="a752e7cc27f52d4ba064e691b3e240ed8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a752e7cc27f52d4ba064e691b3e240ed8">&#9670;&#160;</a></span>sendFrame()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void sendFrame </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="struct_frame.html">Frame</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sends a <a class="el" href="struct_frame.html">Frame</a> using LoRa. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">frame</td><td>The <a class="el" href="struct_frame.html">Frame</a> to send.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Encodes the <a class="el" href="struct_frame.html">Frame</a> into a string and sends it using the sendMessage function. </p>
-
-<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00042">42</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
-<div id="dynsection-17" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-17-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-17-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-17-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="communication_8h_a752e7cc27f52d4ba064e691b3e240ed8_cgraph.svg" width="446" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-<div id="dynsection-18" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-18-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-18-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-18-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="communication_8h_a752e7cc27f52d4ba064e691b3e240ed8_icgraph.svg" width="100%" height="518"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
 
 </div>
 </div>

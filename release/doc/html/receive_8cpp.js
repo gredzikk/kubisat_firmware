@@ -1,5 +1,5 @@
 var receive_8cpp =
 [
-    [ "onReceive", "receive_8cpp.html#a54817002e33761dc61558b1138749dfb", null ],
-    [ "handleUartInput", "receive_8cpp.html#ac5e175a6a1482f700f9aee0b727b924f", null ]
+    [ "on_receive", "receive_8cpp.html#a3f494105dee3a08e1244febc81982517", null ],
+    [ "handle_uart_input", "receive_8cpp.html#a14ffba44d46e00b23bd72bdb3a4d58d1", null ]
 ];

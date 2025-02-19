@@ -34,18 +34,18 @@ class ISensor {
 public:
     virtual ~ISensor() = default;
     virtual bool init() = 0;
-    virtual float readData(SensorDataTypeIdentifier type) = 0;
-    virtual bool isInitialized() const = 0;
-    virtual SensorType getType() const = 0;
+    virtual float read_data(SensorDataTypeIdentifier type) = 0;
+    virtual bool is_initialized() const = 0;
+    virtual SensorType get_type() const = 0;
     virtual bool configure(const std::map<std::string, std::string>& config) = 0;
 };
 
 class SensorWrapper {
 public:
-    static SensorWrapper& getInstance();
-    bool initSensor(SensorType type, i2c_inst_t* i2c = nullptr);
-    bool configureSensor(SensorType type, const std::map<std::string, std::string>& config);
-    float readSensorData(SensorType sensorType, SensorDataTypeIdentifier dataType);
+    static SensorWrapper& get_instance();
+    bool sensor_init(SensorType type, i2c_inst_t* i2c = nullptr);
+    bool sensor_configure(SensorType type, const std::map<std::string, std::string>& config);
+    float sensor_read_data(SensorType sensorType, SensorDataTypeIdentifier dataType);
 
 private:
     std::map<SensorType, ISensor*> sensors;

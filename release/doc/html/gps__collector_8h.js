@@ -1,4 +1,4 @@
 var gps__collector_8h =
 [
-    [ "collectGPSData", "gps__collector_8h.html#abe46d88c89b1f730f6c9a230acac2a6a", null ]
+    [ "collect_gps_data", "gps__collector_8h.html#ab15765c10e67396e1684c586b3f65345", null ]
 ];

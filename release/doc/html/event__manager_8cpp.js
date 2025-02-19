@@ -1,6 +1,6 @@
 var event__manager_8cpp =
 [
-    [ "checkPowerEvents", "event__manager_8cpp.html#a467714d66058f52e4ac7aeb6df46b433", null ],
+    [ "check_power_events", "event__manager_8cpp.html#a3a1b3fdef7c62da5c917d3006cdc65dd", null ],
     [ "eventLogId", "event__manager_8cpp.html#ab144678e47784f421d98c3dfdbb53dc8", null ],
     [ "lastPowerState", "event__manager_8cpp.html#a2d4329f1e2606ca8f8535dae8c08afe5", null ],
     [ "FALL_RATE_THRESHOLD", "event__manager_8cpp.html#a234988dfb88db38997bd921cd5c32457", null ],

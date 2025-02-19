@@ -73,10 +73,10 @@ struct Frame {
     std::string footer;             // End marker
 };
 
-std::string exceptionTypeToString(ExceptionType type);
-std::string operationTypeToString(OperationType type);
-OperationType stringToOperationType(const std::string& str);
-std::vector<uint8_t> hexStringToBytes(const std::string& hexString);
-std::string valueUnitTypeToString(ValueUnit unit);
+std::string exception_type_to_string(ExceptionType type);
+std::string operation_type_to_string(OperationType type);
+OperationType string_to_operation_type(const std::string& str);
+std::vector<uint8_t> hex_string_to_bytes(const std::string& hexString);
+std::string value_unit_type_to_string(ValueUnit unit);
 
 #endif

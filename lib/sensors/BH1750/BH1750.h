@@ -27,7 +27,7 @@ public:
     BH1750(uint8_t addr = 0x23);
     bool begin(Mode mode = Mode::CONTINUOUS_HIGH_RES_MODE);
     void configure(Mode mode);
-    float readLightLevel();
+    float get_light_level();
 
 private:
     void write8(uint8_t data);

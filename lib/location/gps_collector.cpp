@@ -24,7 +24,7 @@ std::vector<std::string> splitString(const std::string& str, char delimiter) {
     return tokens;
 }
 
-void collectGPSData() {
+void collect_gps_data() {
     static char raw_data_buffer[MAX_RAW_DATA_LENGTH];
     static int raw_data_index = 0;
 
@@ -43,9 +43,9 @@ void collectGPSData() {
 
                 // Update the global vectors based on the sentence type
                 if (message.find("$GPRMC") == 0) {
-                    nmea_data.updateRmcTokens(tokens);
+                    nmea_data.update_rmc_tokens(tokens);
                 } else if (message.find("$GPGGA") == 0) {
-                    nmea_data.updateGgaTokens(tokens);
+                    nmea_data.update_gga_tokens(tokens);
                 }
             }
         } else {

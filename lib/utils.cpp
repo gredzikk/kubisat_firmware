@@ -23,7 +23,7 @@ static mutex_t uart_mutex;
  * @details Prints the given message to the specified UART, prepending it with a timestamp and the core number.
  *          Uses a mutex to ensure thread-safe access to the UART.
  */
-void uartPrint(const std::string& msg, bool logToFile, uart_inst_t* uart) {
+void uart_print(const std::string& msg, bool logToFile, uart_inst_t* uart) {
     static bool mutex_inited = false;
     if (!mutex_inited) {
         mutex_init(&uart_mutex);

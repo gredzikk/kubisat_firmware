@@ -21,7 +21,7 @@
  *          with littlefs and then attempts to mount again.
  */
 bool fs_init(void) {
-    uartPrint("fs_init littlefs on SD card\n");
+    uart_print("fs_init littlefs on SD card\n");
     blockdevice_t *sd = blockdevice_sd_create(SD_SPI_PORT,
                                               SD_MOSI_PIN,
                                               SD_MISO_PIN,
@@ -35,17 +35,17 @@ bool fs_init(void) {
     int err = fs_mount("/", fat, sd);
     if (err == -1) {
         statusString = "Formatting / with FAT";
-        uartPrint(statusString);
+        uart_print(statusString);
         err = fs_format(fat, sd);
         if (err == -1) {
             statusString = "fs_format error: " + std::string(strerror(errno));
-            uartPrint(statusString);
+            uart_print(statusString);
             return false;
         }
         err = fs_mount("/", fat, sd);
         if (err == -1) {
             statusString = "fs_mount error: " + std::string(strerror(errno));
-            uartPrint(statusString);
+            uart_print(statusString);
             return false;
         }
     }
@@ -79,7 +79,7 @@ FileHandle fs_open_file(const char* filename, const char* mode) {
         handle.is_open = true;
     } else {
         errorStr = "Failed to open file " + std::string(filename) + ": " + strerror(errno);
-        uartPrint(errorStr);
+        uart_print(errorStr);
     }
     
     return handle;
@@ -104,7 +104,7 @@ ssize_t fs_write_file(FileHandle& handle, const void* buffer, size_t size) {
     ssize_t written = write(handle.fd, buffer, size);
     if (written < 0) {
         errorStr = "Write failed: " + std::string(strerror(errno));
-        uartPrint(errorStr);
+        uart_print(errorStr);
     }
     return written;
 }
@@ -128,7 +128,7 @@ ssize_t fs_read_file(FileHandle& handle, void* buffer, size_t size) {
     ssize_t bytes_read = read(handle.fd, buffer, size);
     if (bytes_read < 0) {
         errorStr = "Read failed " + std::string(strerror(errno));
-        uartPrint(errorStr);
+        uart_print(errorStr);
     }
     return bytes_read;
 }
@@ -154,7 +154,7 @@ bool fs_close_file(FileHandle& handle) {
         return true;
     } else {
         errorStr = "Close failed " + std::string(strerror(errno));
-        uartPrint(errorStr);
+        uart_print(errorStr);
         return false;
     }
 }

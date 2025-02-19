@@ -35,11 +35,11 @@ var protocol_8h =
       [ "INVALID_OPERATION", "protocol_8h.html#a0e0f0f1661d7aeb71ed9698bff6c6383ade918d7abaea4c856c3c64720f3cbb7c", null ],
       [ "PARAM_UNECESSARY", "protocol_8h.html#a0e0f0f1661d7aeb71ed9698bff6c6383a62c989cb54431f5fa2a775b0ca55bb49", null ]
     ] ],
-    [ "exceptionTypeToString", "protocol_8h.html#a46ff7e9bd427919630557811f44f5473", null ],
-    [ "operationTypeToString", "protocol_8h.html#a82a11ce999902359454fa904a13ae297", null ],
-    [ "stringToOperationType", "protocol_8h.html#a245c34d9f7072236b66e9352a9d3466e", null ],
-    [ "hexStringToBytes", "protocol_8h.html#a4d6495102457200a5632a3286331d238", null ],
-    [ "valueUnitTypeToString", "protocol_8h.html#ab4cb9e6b491bd7711c69c9167a2b9286", null ],
+    [ "exception_type_to_string", "protocol_8h.html#a1c9dd53c768dca60c82e3d9152b0fbc2", null ],
+    [ "operation_type_to_string", "protocol_8h.html#ab218e62029b4451e910d8caf0fd05804", null ],
+    [ "string_to_operation_type", "protocol_8h.html#a4e9ddea19ddd04177180c2dfae26b15b", null ],
+    [ "hex_string_to_bytes", "protocol_8h.html#ae890cacb07dd22727e93c9115c09d49e", null ],
+    [ "value_unit_type_to_string", "protocol_8h.html#a29531ed9ad98ab78384a8a2f37f4e77d", null ],
     [ "FRAME_BEGIN", "protocol_8h.html#aa6688ce7f01167c4ecb45cc4c741cca0", null ],
     [ "FRAME_END", "protocol_8h.html#a38fcd5426cc3ba27b4260e4db4299072", null ],
     [ "DELIMITER", "protocol_8h.html#a32d67795a8b119935e98ba0da0d5be5f", null ]

@@ -4,8 +4,9 @@ var hierarchy =
     [ "BME280", "class_b_m_e280.html", null ],
     [ "BME280CalibParam", "struct_b_m_e280_calib_param.html", null ],
     [ "INA3221::conf_reg_t", "struct_i_n_a3221_1_1conf__reg__t.html", null ],
-    [ "DateTime", "struct_date_time.html", null ],
     [ "DS3231", "class_d_s3231.html", null ],
+    [ "ds3231_data_t", "structds3231__data__t.html", null ],
+    [ "ds3231_t", "structds3231__t.html", null ],
     [ "EventEmitter", "class_event_emitter.html", null ],
     [ "EventLog", "class_event_log.html", null ],
     [ "EventManager", "class_event_manager.html", [

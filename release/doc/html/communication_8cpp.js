@@ -1,6 +1,6 @@
 var communication_8cpp =
 [
-    [ "initializeRadio", "communication_8cpp.html#a520df448c1dc359f42111ac240081975", null ],
+    [ "initialize_radio", "communication_8cpp.html#a8f817ba4ed9164098cd3947f7cc3f749", null ],
     [ "outgoing", "communication_8cpp.html#a13c45747091f32644e83d65348c61232", null ],
     [ "msgCount", "communication_8cpp.html#a40654cfb6a32f90cfabc24c6a73398c3", null ],
     [ "lastSendTime", "communication_8cpp.html#a2843f69080a5607b99b835cc25627445", null ],

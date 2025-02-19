@@ -39,8 +39,6 @@ var searchData=
   ['reg_5ftemperature_5fmsb_36',['REG_TEMPERATURE_MSB',['../class_b_m_e280.html#a45770a88a9613f8de93d69ae47a9f7c4',1,'BME280']]],
   ['reserved_37',['reserved',['../struct_i_n_a3221_1_1masken__reg__t.html#ab6a76a29c77b8315e11e434cfab1e614',1,'INA3221::masken_reg_t']]],
   ['reset_38',['reset',['../struct_i_n_a3221_1_1conf__reg__t.html#aaa94a05775ef55a4624e85c8ad9ffd4d',1,'INA3221::conf_reg_t']]],
-  ['resetpin_39',['resetPin',['../pin__config_8cpp.html#a4447ea46d7cfa6ac5a7208f416e71cad',1,'resetPin:&#160;pin_config.cpp'],['../pin__config_8h.html#a4447ea46d7cfa6ac5a7208f416e71cad',1,'resetPin:&#160;pin_config.cpp']]],
-  ['rmc_5fmutex_40',['rmc_mutex',['../class_n_m_e_a_data.html#aa355456dd1bdd1e9af6c37ae9c4ef4f0',1,'NMEAData']]],
-  ['rmctokens_41',['rmcTokens',['../class_n_m_e_a_data.html#a8010adc7a34a3d04c06c428f28f5b498',1,'NMEAData']]],
-  ['rtc_5fregister_42',['RTC_REGISTER',['../class_d_s3231.html#af87c9b9232490e63de80b4e4c8aec81f',1,'DS3231']]]
+  ['rmc_5fmutex_5f_39',['rmc_mutex_',['../class_n_m_e_a_data.html#a16aa54aea671d3fbfe225260e2471cc5',1,'NMEAData']]],
+  ['rmc_5ftokens_5f_40',['rmc_tokens_',['../class_n_m_e_a_data.html#a7a1e0ff49504a279c43577108ea35dd3',1,'NMEAData']]]
 ];

@@ -37,7 +37,7 @@ void BH1750::configure(Mode mode) {
     }
 }
 
-float BH1750::readLightLevel() {
+float BH1750::get_light_level() {
     uint8_t buffer[2];
     i2c_read_blocking(i2c_default, _i2c_addr, buffer, 2, false);
     uint16_t level = (buffer[0] << 8) | buffer[1];

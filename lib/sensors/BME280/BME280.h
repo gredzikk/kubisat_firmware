@@ -73,7 +73,7 @@ private:
     BME280CalibParam calib_params;
 
     // Initialization status
-    bool initialized;
+    bool initialized_;
 
     // Fine temperature parameter needed for compensation
     mutable int32_t t_fine;

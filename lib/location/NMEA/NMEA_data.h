@@ -9,17 +9,17 @@
 class NMEAData {
 public:
     NMEAData();
-    void updateRmcTokens(const std::vector<std::string>& tokens);
-    void updateGgaTokens(const std::vector<std::string>& tokens);
+    void update_rmc_tokens(const std::vector<std::string>& tokens);
+    void update_gga_tokens(const std::vector<std::string>& tokens);
 
-    std::vector<std::string> getRmcTokens() const;
-    std::vector<std::string> getGgaTokens() const;
+    std::vector<std::string> get_rmc_tokens() const;
+    std::vector<std::string> get_gga_tokens() const;
 
 private:
-    std::vector<std::string> rmcTokens;
-    std::vector<std::string> ggaTokens;
-    mutex_t rmc_mutex;
-    mutex_t gga_mutex;
+    std::vector<std::string> rmc_tokens_;
+    std::vector<std::string> gga_tokens_;
+    mutex_t rmc_mutex_;
+    mutex_t gga_mutex_;
 };
 
 extern NMEAData nmea_data;

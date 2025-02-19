@@ -1,9 +1,9 @@
 var class_sensor_wrapper =
 [
     [ "SensorWrapper", "class_sensor_wrapper.html#a1702516a09884caf599fad7761dd04c1", null ],
-    [ "getInstance", "class_sensor_wrapper.html#adac086bdfb57168899df56fc431c5f41", null ],
-    [ "initSensor", "class_sensor_wrapper.html#acbec9bb41e3edd34146eacbf23a807a1", null ],
-    [ "configureSensor", "class_sensor_wrapper.html#aeaa7bbc1f7d31212348fd617392cc8d4", null ],
-    [ "readSensorData", "class_sensor_wrapper.html#a1b30eac9a56098470f130754134057b9", null ],
+    [ "get_instance", "class_sensor_wrapper.html#a915dcb3ade11776f3cbf4638313e92d1", null ],
+    [ "sensor_init", "class_sensor_wrapper.html#a38e407ee27a363c52ad3851b18d760df", null ],
+    [ "sensor_configure", "class_sensor_wrapper.html#a84e6c7d842f03f2d0c56ce8a4168aad8", null ],
+    [ "sensor_read_data", "class_sensor_wrapper.html#a520a555a247b29df07db5b482e2504db", null ],
     [ "sensors", "class_sensor_wrapper.html#ae06e367395181a74d676c533393b47be", null ]
 ];

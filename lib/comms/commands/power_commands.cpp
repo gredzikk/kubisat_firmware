@@ -19,18 +19,18 @@
  * @ingroup PowerCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 2.0
  */
-Frame handleGetPowerManagerIDs(const std::string& param, OperationType operationType) {
+Frame handle_get_power_manager_ids(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
-        return buildFrame(ExecutionResult::ERROR, 2, 0, "PARAM UNECESSARY");
+        return frame_build(ExecutionResult::ERROR, 2, 0, "PARAM UNECESSARY");
     }
 
     if (!(operationType == OperationType::GET)) {
-        return buildFrame(ExecutionResult::ERROR, 2, 0, "INVALID OPERATION");
+        return frame_build(ExecutionResult::ERROR, 2, 0, "INVALID OPERATION");
     }
 
     extern PowerManager powerManager;
-    std::string powerManagerIDS = powerManager.readIDs();
-    return buildFrame(ExecutionResult::SUCCESS, 2, 0, powerManagerIDS);
+    std::string powerManagerIDS = powerManager.read_device_ids();
+    return frame_build(ExecutionResult::SUCCESS, 2, 0, powerManagerIDS);
 }
 
 
@@ -46,20 +46,20 @@ Frame handleGetPowerManagerIDs(const std::string& param, OperationType operation
  * @ingroup PowerCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 2.2
  */
-Frame handleGetVoltageBattery(const std::string& param, OperationType operationType) {
+Frame handle_get_voltage_battery(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
-        return buildFrame(ExecutionResult::ERROR, 2, 2, "PARAM UNNECESSARY");
+        return frame_build(ExecutionResult::ERROR, 2, 2, "PARAM UNNECESSARY");
     }
 
     if (!(operationType == OperationType::GET)) {
-        uartPrint("SET operation not allowed for GetVoltageBattery");
-        return buildFrame(ExecutionResult::ERROR, 2, 2, "NOT ALLOWED");
+        uart_print("SET operation not allowed for GetVoltageBattery");
+        return frame_build(ExecutionResult::ERROR, 2, 2, "NOT ALLOWED");
     }
 
-    uartPrint("Getting battery voltage");
+    uart_print("Getting battery voltage");
     extern PowerManager powerManager;
-    float voltage = powerManager.getVoltageBattery();
-    return buildFrame(ExecutionResult::SUCCESS, 2, 2, std::to_string(voltage), ValueUnit::VOLT);
+    float voltage = powerManager.get_voltage_battery();
+    return frame_build(ExecutionResult::SUCCESS, 2, 2, std::to_string(voltage), ValueUnit::VOLT);
 }
 
 
@@ -75,20 +75,20 @@ Frame handleGetVoltageBattery(const std::string& param, OperationType operationT
  * @ingroup PowerCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 2.3
  */
-Frame handleGetVoltage5V(const std::string& param, OperationType operationType) {
+Frame handle_get_voltage_5v(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
-        return buildFrame(ExecutionResult::ERROR, 2, 3, "PARAM UNNECESSARY");
+        return frame_build(ExecutionResult::ERROR, 2, 3, "PARAM UNNECESSARY");
     }
 
     if (!(operationType == OperationType::GET)) {
-        uartPrint("SET operation not allowed for GetVoltage5V");
-        return buildFrame(ExecutionResult::ERROR, 2, 3, "NOT ALLOWED");
+        uart_print("SET operation not allowed for GetVoltage5V");
+        return frame_build(ExecutionResult::ERROR, 2, 3, "NOT ALLOWED");
     }
 
-    uartPrint("Getting 5V voltage");
+    uart_print("Getting 5V voltage");
     extern PowerManager powerManager;
-    float voltage = powerManager.getVoltage5V();
-    return buildFrame(ExecutionResult::SUCCESS, 2, 3, std::to_string(voltage), ValueUnit::VOLT);
+    float voltage = powerManager.get_voltage_5v();
+    return frame_build(ExecutionResult::SUCCESS, 2, 3, std::to_string(voltage), ValueUnit::VOLT);
 }
 
 
@@ -104,20 +104,20 @@ Frame handleGetVoltage5V(const std::string& param, OperationType operationType) 
  * @ingroup PowerCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 2.4
  */
-Frame handleGetCurrentChargeUSB(const std::string& param, OperationType operationType) {
+Frame handle_get_current_charge_usb(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
-        return buildFrame(ExecutionResult::ERROR, 2, 4, "PARAM UNNECESSARY");
+        return frame_build(ExecutionResult::ERROR, 2, 4, "PARAM UNNECESSARY");
     }
 
     if (!(operationType == OperationType::GET)) {
-        uartPrint("SET operation not allowed for GetCurrentChargeUSB");
-        return buildFrame(ExecutionResult::ERROR, 2, 4, "NOT ALLOWED");
+        uart_print("SET operation not allowed for GetCurrentChargeUSB");
+        return frame_build(ExecutionResult::ERROR, 2, 4, "NOT ALLOWED");
     }
 
-    uartPrint("Getting USB charge current");
+    uart_print("Getting USB charge current");
     extern PowerManager powerManager;
-    float chargeCurrent = powerManager.getCurrentChargeUSB();
-    return buildFrame(ExecutionResult::SUCCESS, 2, 4, std::to_string(chargeCurrent), ValueUnit::MILIAMP);
+    float chargeCurrent = powerManager.get_current_charge_usb();
+    return frame_build(ExecutionResult::SUCCESS, 2, 4, std::to_string(chargeCurrent), ValueUnit::MILIAMP);
 }
 
 
@@ -133,20 +133,20 @@ Frame handleGetCurrentChargeUSB(const std::string& param, OperationType operatio
  * @ingroup PowerCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 2.5
  */
-Frame handleGetCurrentChargeSolar(const std::string& param, OperationType operationType) {
+Frame handle_get_current_charge_solar(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
-        return buildFrame(ExecutionResult::ERROR, 2, 5, "PARAM UNNECESSARY");
+        return frame_build(ExecutionResult::ERROR, 2, 5, "PARAM UNNECESSARY");
     }
 
     if (!(operationType == OperationType::GET)) {
-        uartPrint("SET operation not allowed for GetCurrentChargeSolar");
-        return buildFrame(ExecutionResult::ERROR, 2, 5, "NOT ALLOWED");
+        uart_print("SET operation not allowed for GetCurrentChargeSolar");
+        return frame_build(ExecutionResult::ERROR, 2, 5, "NOT ALLOWED");
     }
 
-    uartPrint("Getting solar charge current");
+    uart_print("Getting solar charge current");
     extern PowerManager powerManager;
-    float chargeCurrent = powerManager.getCurrentChargeSolar();
-    return buildFrame(ExecutionResult::SUCCESS, 2, 5, std::to_string(chargeCurrent), ValueUnit::MILIAMP);
+    float chargeCurrent = powerManager.get_current_charge_solar();
+    return frame_build(ExecutionResult::SUCCESS, 2, 5, std::to_string(chargeCurrent), ValueUnit::MILIAMP);
 }
 
 
@@ -162,20 +162,20 @@ Frame handleGetCurrentChargeSolar(const std::string& param, OperationType operat
  * @ingroup PowerCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 2.6
  */
-Frame handleGetCurrentChargeTotal(const std::string& param, OperationType operationType) {
+Frame handle_get_current_charge_total(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
-        return buildFrame(ExecutionResult::ERROR, 2, 6, "PARAM UNNECESSARY");
+        return frame_build(ExecutionResult::ERROR, 2, 6, "PARAM UNNECESSARY");
     }
 
     if (!(operationType == OperationType::GET)) {
-        uartPrint("SET operation not allowed for GetCurrentChargeTotal");
-        return buildFrame(ExecutionResult::ERROR, 2, 6, "NOT ALLOWED");
+        uart_print("SET operation not allowed for GetCurrentChargeTotal");
+        return frame_build(ExecutionResult::ERROR, 2, 6, "NOT ALLOWED");
     }
 
-    uartPrint("Getting total charge current");
+    uart_print("Getting total charge current");
     extern PowerManager powerManager;
-    float chargeCurrent = powerManager.getCurrentChargeTotal();
-    return buildFrame(ExecutionResult::SUCCESS, 2, 6, std::to_string(chargeCurrent), ValueUnit::MILIAMP);
+    float chargeCurrent = powerManager.get_current_charge_total();
+    return frame_build(ExecutionResult::SUCCESS, 2, 6, std::to_string(chargeCurrent), ValueUnit::MILIAMP);
 }
 
 
@@ -191,20 +191,20 @@ Frame handleGetCurrentChargeTotal(const std::string& param, OperationType operat
  * @ingroup PowerCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 2.7
  */
-Frame handleGetCurrentDraw(const std::string& param, OperationType operationType) {
+Frame handle_get_current_draw(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
-        return buildFrame(ExecutionResult::ERROR, 2, 7, "PARAM UNNECESSARY");
+        return frame_build(ExecutionResult::ERROR, 2, 7, "PARAM UNNECESSARY");
     }
 
     if (!(operationType == OperationType::GET)) {
-        uartPrint("SET operation not allowed for GetCurrentDraw");
-        return buildFrame(ExecutionResult::ERROR, 2, 7, "NOT ALLOWED");
+        uart_print("SET operation not allowed for GetCurrentDraw");
+        return frame_build(ExecutionResult::ERROR, 2, 7, "NOT ALLOWED");
     }
 
     
     extern PowerManager powerManager;
-    float currentDraw = powerManager.getCurrentDraw();
-    uartPrint("Getting current draw");
-    return buildFrame(ExecutionResult::SUCCESS, 2, 7, std::to_string(currentDraw), ValueUnit::MILIAMP);
+    float currentDraw = powerManager.get_current_draw();
+    uart_print("Getting current draw");
+    return frame_build(ExecutionResult::SUCCESS, 2, 7, std::to_string(currentDraw), ValueUnit::MILIAMP);
 }
 /** @} */ // end of PowerCommands group

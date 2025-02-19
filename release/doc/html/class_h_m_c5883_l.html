@@ -119,10 +119,10 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a114c069b8221f2780b928063a393a183" id="r_a114c069b8221f2780b928063a393a183"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a114c069b8221f2780b928063a393a183">writeRegister</a> (uint8_t reg, uint8_t value)</td></tr>
-<tr class="separator:a114c069b8221f2780b928063a393a183"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a09a4be85064748579e1d44d8f1b305" id="r_a4a09a4be85064748579e1d44d8f1b305"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a09a4be85064748579e1d44d8f1b305">readRegisters</a> (uint8_t reg, uint8_t *<a class="el" href="main_8cpp.html#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a>, size_t length)</td></tr>
-<tr class="separator:a4a09a4be85064748579e1d44d8f1b305"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa01445e6b52bc745c61ed749d4b36af6" id="r_aa01445e6b52bc745c61ed749d4b36af6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa01445e6b52bc745c61ed749d4b36af6">write_register</a> (uint8_t reg, uint8_t value)</td></tr>
+<tr class="separator:aa01445e6b52bc745c61ed749d4b36af6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9367e6be50ab3c1ea4120bbdeb01b155" id="r_a9367e6be50ab3c1ea4120bbdeb01b155"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9367e6be50ab3c1ea4120bbdeb01b155">read_register</a> (uint8_t reg, uint8_t *<a class="el" href="main_8cpp.html#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a>, size_t length)</td></tr>
+<tr class="separator:a9367e6be50ab3c1ea4120bbdeb01b155"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -175,13 +175,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_h_m_c5883_l_8cpp_source.html#l00005">5</a> of file <a class="el" href="_h_m_c5883_l_8cpp_source.html">HMC5883L.cpp</a>.</p>
-<div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_h_m_c5883_l_aacf8416e7f9802ccf993b3e6c0dfe17b_cgraph.svg" width="344" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
 
 </div>
 </div>
@@ -210,18 +203,11 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_h_m_c5883_l_8cpp_source.html#l00013">13</a> of file <a class="el" href="_h_m_c5883_l_8cpp_source.html">HMC5883L.cpp</a>.</p>
-<div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_h_m_c5883_l_a8d34ff9a8ff20e12320df6ce5d64397f_cgraph.svg" width="356" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
 
 </div>
 </div>
-<a id="a114c069b8221f2780b928063a393a183" name="a114c069b8221f2780b928063a393a183"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a114c069b8221f2780b928063a393a183">&#9670;&#160;</a></span>writeRegister()</h2>
+<a id="aa01445e6b52bc745c61ed749d4b36af6" name="aa01445e6b52bc745c61ed749d4b36af6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa01445e6b52bc745c61ed749d4b36af6">&#9670;&#160;</a></span>write_register()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -230,7 +216,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool HMC5883L::writeRegister </td>
+          <td class="memname">bool HMC5883L::write_register </td>
           <td>(</td>
           <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>reg</em></span>, </td>
         </tr>
@@ -248,18 +234,11 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_h_m_c5883_l_8cpp_source.html#l00028">28</a> of file <a class="el" href="_h_m_c5883_l_8cpp_source.html">HMC5883L.cpp</a>.</p>
-<div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_h_m_c5883_l_a114c069b8221f2780b928063a393a183_icgraph.svg" width="344" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
 
 </div>
 </div>
-<a id="a4a09a4be85064748579e1d44d8f1b305" name="a4a09a4be85064748579e1d44d8f1b305"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4a09a4be85064748579e1d44d8f1b305">&#9670;&#160;</a></span>readRegisters()</h2>
+<a id="a9367e6be50ab3c1ea4120bbdeb01b155" name="a9367e6be50ab3c1ea4120bbdeb01b155"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9367e6be50ab3c1ea4120bbdeb01b155">&#9670;&#160;</a></span>read_register()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -268,7 +247,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool HMC5883L::readRegisters </td>
+          <td class="memname">bool HMC5883L::read_register </td>
           <td>(</td>
           <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>reg</em></span>, </td>
         </tr>
@@ -291,13 +270,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_h_m_c5883_l_8cpp_source.html#l00033">33</a> of file <a class="el" href="_h_m_c5883_l_8cpp_source.html">HMC5883L.cpp</a>.</p>
-<div id="dynsection-3" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_h_m_c5883_l_a4a09a4be85064748579e1d44d8f1b305_icgraph.svg" width="356" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
 
 </div>
 </div>

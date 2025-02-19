@@ -9,14 +9,14 @@ char buffer[BUFFER_SIZE];
 int bufferIndex = 0;
 
 void core1_entry() {
-    uartPrint("Starting core 1");
+    uart_print("Starting core 1");
     while (true) {
-        collectGPSData();
-        checkPowerEvents(powerManager);
+        collect_gps_data();
+        check_power_events(powerManager); 
     }
 }
 
-bool initSystems() {
+bool init_systems() {
     stdio_init_all();
 
     uart_init(DEBUG_UART_PORT, DEBUG_UART_BAUD_RATE);
@@ -45,84 +45,96 @@ bool initSystems() {
 
     bool radioInitSuccess = false;
 
-    radioInitSuccess = initializeRadio();
+    radioInitSuccess = initialize_radio();
     
-    // @todo[critical] Test sd card working
+    // TODO: everything runs properly without errors, but file does not exist on sd card after reading with usb reader
     bool sdInitDone = fs_init();
     if (sdInitDone){
         FILE *fp = fopen(LOG_FILENAME, "a");
-        uartPrint("Log file opened.");
+        uart_print("Log file opened.");
         int bytesWritten = fprintf(fp, "System init started.\n");
-        uartPrint("Written " + std::to_string(bytesWritten) + " bytes.");
+        uart_print("Written " + std::to_string(bytesWritten) + " bytes.");
         int closeStatus = fclose(fp);
-        uartPrint("Close file status: " + std::to_string(closeStatus));
+        uart_print("Close file status: " + std::to_string(closeStatus));
         fs_unmount("/");
     }
 
-    uartPrint("SD card init: " + std::to_string(sdInitDone));
+    uart_print("SD card init: " + std::to_string(sdInitDone));
     std::string bootString = "System init completed @ " + std::to_string(to_ms_since_boot(get_absolute_time())) + " ms";
-    uartPrint(bootString);
+    uart_print(bootString);
 
-    Frame boot = buildFrame(ExecutionResult::INFO, 0, 0, "HELLO");
-    sendFrame(boot);
+    Frame boot = frame_build(ExecutionResult::INFO, 0, 0, "HELLO");
+    send_frame(boot);
 
-    uartPrint("System init done.");
+    uart_print("System init done.");
     return radioInitSuccess;
 }
 
-void loggingRoutine();
 
 int main()
 {
-    initSystems();
+    init_systems();
     multicore_launch_core1(core1_entry);
 
-    systemClock.setTime(0, 41, 20, 4, 14, 11, 2024);
+    gpio_put(PICO_DEFAULT_LED_PIN, 0);
+    ds3231_data_t time_data;
+    time_data.seconds = 0;
+    time_data.minutes = 41;
+    time_data.hours = 20;
+    time_data.day = 4;
+    time_data.date = 14;
+    time_data.month = 11;
+    time_data.year = 24;
+    time_data.century = 0; // Assuming 21st century
+
+    bool clockInitStatus = systemClock.set_time(&time_data); // Pass the struct pointer
+    if (clockInitStatus) {
+        uart_print("Clock init success");
+    } else {
+        uart_print("Clock init error");
+    }
     gpio_put(PICO_DEFAULT_LED_PIN, 1);
 
-    if (powerManager.initialize())
+
+
+    gpio_put(PICO_DEFAULT_LED_PIN, 0);
+    bool powerManagerInitStatus = powerManager.initialize();
+    if (powerManagerInitStatus)
     {
         std::map<std::string, std::string> powerConfig = {
             {"operating_mode", "continuous"},
             {"averaging_mode", "16"},
         };
         powerManager.configure(powerConfig);
+    } else {
+        uart_print("Power manager init error");
     }
+    gpio_put(PICO_DEFAULT_LED_PIN, 1);
 
-    gpio_put(PICO_DEFAULT_LED_PIN, 0);
 
-    uartPrint("This message will only be printed to UART.");
-    // uartPrint("This message will be printed to UART and logged to Core 1.", true);
 
     for (int i = 5; i > 0; --i)
     {
         std::string intro = "Main loop starts in " + std::to_string(i) + " seconds...";
-        uartPrint(intro);
+        uart_print(intro);
         gpio_put(PICO_DEFAULT_LED_PIN, (i%2==0));
         sleep_ms(1000);
     }
     gpio_put(PICO_DEFAULT_LED_PIN, 1);
 
-    Frame boot = buildFrame(ExecutionResult::INFO, 0, 0, "START");
-    sendFrame(boot);
+    Frame boot = frame_build(ExecutionResult::INFO, 0, 0, "START");
+    send_frame(boot);
 
+    gpio_put(PICO_DEFAULT_LED_PIN, 0);
     while (true)
     {
-        int packetSize = LoRa.parsePacket();
+        int packetSize = LoRa.parse_packet();
         if (packetSize)
         {
-            onReceive(packetSize);
+            on_receive(packetSize);
         }
 
-        //acquireLock();
-        //float voltage = sharedData.voltage5V;
-        //releaseLock();
-
-        //std::string voltageReading = "Core 0: voltage from common data structure: " + std::to_string(voltage);
-        //uartPrint(voltageReading.c_str());
-
-        //collectGPSData();
-        handleUartInput();
+        handle_uart_input();
     }
 
     return 0;

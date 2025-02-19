@@ -4,5 +4,17 @@ var searchData=
   ['debug_5fuart_5fport_1',['DEBUG_UART_PORT',['../pin__config_8h.html#a1c9052d1656e86f50326fd275c54ca67',1,'pin_config.h']]],
   ['debug_5fuart_5frx_5fpin_2',['DEBUG_UART_RX_PIN',['../pin__config_8h.html#aaae74107573261e50cb72bcec8d2d3fe',1,'pin_config.h']]],
   ['debug_5fuart_5ftx_5fpin_3',['DEBUG_UART_TX_PIN',['../pin__config_8h.html#a94d099ea6efcf6e349a1e392b17ac6ee',1,'pin_config.h']]],
-  ['dec_4',['DEC',['../_print_8h.html#afe38ec6126e35e40049e27fdf4586ba5',1,'Print.h']]]
+  ['dec_4',['DEC',['../_print_8h.html#afe38ec6126e35e40049e27fdf4586ba5',1,'Print.h']]],
+  ['ds3231_5fcontrol_5freg_5',['DS3231_CONTROL_REG',['../_d_s3231_8h.html#ad7fbaf06d8602bc887e63624a2ac53a3',1,'DS3231.h']]],
+  ['ds3231_5fcontrol_5fstatus_5freg_6',['DS3231_CONTROL_STATUS_REG',['../_d_s3231_8h.html#a53a5c42970982dc1b206ab3d89b66d7f',1,'DS3231.h']]],
+  ['ds3231_5fdate_5freg_7',['DS3231_DATE_REG',['../_d_s3231_8h.html#aa92ca9692b253c1180a624259c4361b9',1,'DS3231.h']]],
+  ['ds3231_5fday_5freg_8',['DS3231_DAY_REG',['../_d_s3231_8h.html#abfe453f0f7d014cf606528d23d3f2b23',1,'DS3231.h']]],
+  ['ds3231_5fdevice_5fadress_9',['DS3231_DEVICE_ADRESS',['../_d_s3231_8h.html#a68499515579b64a93102faa8aa3bc7da',1,'DS3231.h']]],
+  ['ds3231_5fhours_5freg_10',['DS3231_HOURS_REG',['../_d_s3231_8h.html#a6459da6987e8010be8ce2c0d9e47acce',1,'DS3231.h']]],
+  ['ds3231_5fminutes_5freg_11',['DS3231_MINUTES_REG',['../_d_s3231_8h.html#afa9542dce591fec31304bca747996a88',1,'DS3231.h']]],
+  ['ds3231_5fmonth_5freg_12',['DS3231_MONTH_REG',['../_d_s3231_8h.html#ad135cbb06dd36b5fa19397fc384b73c2',1,'DS3231.h']]],
+  ['ds3231_5fseconds_5freg_13',['DS3231_SECONDS_REG',['../_d_s3231_8h.html#ad1d8c4ccb0fb45cde5f740f85acc2376',1,'DS3231.h']]],
+  ['ds3231_5ftemperature_5flsb_5freg_14',['DS3231_TEMPERATURE_LSB_REG',['../_d_s3231_8h.html#aca79e38f1e1fb739c15aa78131014e18',1,'DS3231.h']]],
+  ['ds3231_5ftemperature_5fmsb_5freg_15',['DS3231_TEMPERATURE_MSB_REG',['../_d_s3231_8h.html#a060f7761a61d71f62686737ee757c761',1,'DS3231.h']]],
+  ['ds3231_5fyear_5freg_16',['DS3231_YEAR_REG',['../_d_s3231_8h.html#ac650b8a133089c55a42c898cbe11b9da',1,'DS3231.h']]]
 ];

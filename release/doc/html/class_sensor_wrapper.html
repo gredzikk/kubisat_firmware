@@ -114,21 +114,21 @@ $(function(){initNavTree('class_sensor_wrapper.html',''); initResizable(true); }
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:acbec9bb41e3edd34146eacbf23a807a1" id="r_acbec9bb41e3edd34146eacbf23a807a1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acbec9bb41e3edd34146eacbf23a807a1">initSensor</a> (<a class="el" href="_i_sensor_8h.html#a213c434cb928c4ca22513e2302632435">SensorType</a> type, i2c_inst_t *i2c=nullptr)</td></tr>
-<tr class="memdesc:acbec9bb41e3edd34146eacbf23a807a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a given sensor type on the specified I2C bus.  <br /></td></tr>
-<tr class="separator:acbec9bb41e3edd34146eacbf23a807a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeaa7bbc1f7d31212348fd617392cc8d4" id="r_aeaa7bbc1f7d31212348fd617392cc8d4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeaa7bbc1f7d31212348fd617392cc8d4">configureSensor</a> (<a class="el" href="_i_sensor_8h.html#a213c434cb928c4ca22513e2302632435">SensorType</a> type, const std::map&lt; std::string, std::string &gt; &amp;config)</td></tr>
-<tr class="memdesc:aeaa7bbc1f7d31212348fd617392cc8d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures an already initialized sensor with supplied settings.  <br /></td></tr>
-<tr class="separator:aeaa7bbc1f7d31212348fd617392cc8d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b30eac9a56098470f130754134057b9" id="r_a1b30eac9a56098470f130754134057b9"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b30eac9a56098470f130754134057b9">readSensorData</a> (<a class="el" href="_i_sensor_8h.html#a213c434cb928c4ca22513e2302632435">SensorType</a> sensorType, <a class="el" href="_i_sensor_8h.html#a21b0301bb3eb76855366980212c8ae5e">SensorDataTypeIdentifier</a> dataType)</td></tr>
-<tr class="memdesc:a1b30eac9a56098470f130754134057b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a specific data type (e.g., temperature, humidity) from a sensor.  <br /></td></tr>
-<tr class="separator:a1b30eac9a56098470f130754134057b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38e407ee27a363c52ad3851b18d760df" id="r_a38e407ee27a363c52ad3851b18d760df"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38e407ee27a363c52ad3851b18d760df">sensor_init</a> (<a class="el" href="_i_sensor_8h.html#a213c434cb928c4ca22513e2302632435">SensorType</a> type, i2c_inst_t *i2c=nullptr)</td></tr>
+<tr class="memdesc:a38e407ee27a363c52ad3851b18d760df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a given sensor type on the specified I2C bus.  <br /></td></tr>
+<tr class="separator:a38e407ee27a363c52ad3851b18d760df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84e6c7d842f03f2d0c56ce8a4168aad8" id="r_a84e6c7d842f03f2d0c56ce8a4168aad8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84e6c7d842f03f2d0c56ce8a4168aad8">sensor_configure</a> (<a class="el" href="_i_sensor_8h.html#a213c434cb928c4ca22513e2302632435">SensorType</a> type, const std::map&lt; std::string, std::string &gt; &amp;config)</td></tr>
+<tr class="memdesc:a84e6c7d842f03f2d0c56ce8a4168aad8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures an already initialized sensor with supplied settings.  <br /></td></tr>
+<tr class="separator:a84e6c7d842f03f2d0c56ce8a4168aad8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a520a555a247b29df07db5b482e2504db" id="r_a520a555a247b29df07db5b482e2504db"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a520a555a247b29df07db5b482e2504db">sensor_read_data</a> (<a class="el" href="_i_sensor_8h.html#a213c434cb928c4ca22513e2302632435">SensorType</a> sensorType, <a class="el" href="_i_sensor_8h.html#a21b0301bb3eb76855366980212c8ae5e">SensorDataTypeIdentifier</a> dataType)</td></tr>
+<tr class="memdesc:a520a555a247b29df07db5b482e2504db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a specific data type (e.g., temperature, humidity) from a sensor.  <br /></td></tr>
+<tr class="separator:a520a555a247b29df07db5b482e2504db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:adac086bdfb57168899df56fc431c5f41" id="r_adac086bdfb57168899df56fc431c5f41"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_sensor_wrapper.html">SensorWrapper</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adac086bdfb57168899df56fc431c5f41">getInstance</a> ()</td></tr>
-<tr class="memdesc:adac086bdfb57168899df56fc431c5f41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides a global instance of <a class="el" href="class_sensor_wrapper.html" title="Manages different sensor types and provides a unified interface for accessing sensor data.">SensorWrapper</a>.  <br /></td></tr>
-<tr class="separator:adac086bdfb57168899df56fc431c5f41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a915dcb3ade11776f3cbf4638313e92d1" id="r_a915dcb3ade11776f3cbf4638313e92d1"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_sensor_wrapper.html">SensorWrapper</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a915dcb3ade11776f3cbf4638313e92d1">get_instance</a> ()</td></tr>
+<tr class="memdesc:a915dcb3ade11776f3cbf4638313e92d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides a global instance of <a class="el" href="class_sensor_wrapper.html" title="Manages different sensor types and provides a unified interface for accessing sensor data.">SensorWrapper</a>.  <br /></td></tr>
+<tr class="separator:a915dcb3ade11776f3cbf4638313e92d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -170,19 +170,12 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Default constructor for <a class="el" href="class_sensor_wrapper.html" title="Manages different sensor types and provides a unified interface for accessing sensor data.">SensorWrapper</a>. </p>
-<div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_sensor_wrapper_a1702516a09884caf599fad7761dd04c1_icgraph.svg" width="452" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="adac086bdfb57168899df56fc431c5f41" name="adac086bdfb57168899df56fc431c5f41"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adac086bdfb57168899df56fc431c5f41">&#9670;&#160;</a></span>getInstance()</h2>
+<a id="a915dcb3ade11776f3cbf4638313e92d1" name="a915dcb3ade11776f3cbf4638313e92d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a915dcb3ade11776f3cbf4638313e92d1">&#9670;&#160;</a></span>get_instance()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -191,7 +184,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_sensor_wrapper.html">SensorWrapper</a> &amp; SensorWrapper::getInstance </td>
+          <td class="memname"><a class="el" href="class_sensor_wrapper.html">SensorWrapper</a> &amp; SensorWrapper::get_instance </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -208,24 +201,17 @@ Private Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>A reference to the single <a class="el" href="class_sensor_wrapper.html" title="Manages different sensor types and provides a unified interface for accessing sensor data.">SensorWrapper</a> instance. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_i_sensor_8cpp_source.html#l00023">23</a> of file <a class="el" href="_i_sensor_8cpp_source.html">ISensor.cpp</a>.</p>
-<div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_sensor_wrapper_adac086bdfb57168899df56fc431c5f41_cgraph.svg" width="452" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
 
 </div>
 </div>
-<a id="acbec9bb41e3edd34146eacbf23a807a1" name="acbec9bb41e3edd34146eacbf23a807a1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acbec9bb41e3edd34146eacbf23a807a1">&#9670;&#160;</a></span>initSensor()</h2>
+<a id="a38e407ee27a363c52ad3851b18d760df" name="a38e407ee27a363c52ad3851b18d760df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38e407ee27a363c52ad3851b18d760df">&#9670;&#160;</a></span>sensor_init()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool SensorWrapper::initSensor </td>
+          <td class="memname">bool SensorWrapper::sensor_init </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="_i_sensor_8h.html#a213c434cb928c4ca22513e2302632435">SensorType</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span>, </td>
         </tr>
@@ -251,14 +237,14 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aeaa7bbc1f7d31212348fd617392cc8d4" name="aeaa7bbc1f7d31212348fd617392cc8d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeaa7bbc1f7d31212348fd617392cc8d4">&#9670;&#160;</a></span>configureSensor()</h2>
+<a id="a84e6c7d842f03f2d0c56ce8a4168aad8" name="a84e6c7d842f03f2d0c56ce8a4168aad8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84e6c7d842f03f2d0c56ce8a4168aad8">&#9670;&#160;</a></span>sensor_configure()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool SensorWrapper::configureSensor </td>
+          <td class="memname">bool SensorWrapper::sensor_configure </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="_i_sensor_8h.html#a213c434cb928c4ca22513e2302632435">SensorType</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span>, </td>
         </tr>
@@ -284,14 +270,14 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a1b30eac9a56098470f130754134057b9" name="a1b30eac9a56098470f130754134057b9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1b30eac9a56098470f130754134057b9">&#9670;&#160;</a></span>readSensorData()</h2>
+<a id="a520a555a247b29df07db5b482e2504db" name="a520a555a247b29df07db5b482e2504db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a520a555a247b29df07db5b482e2504db">&#9670;&#160;</a></span>sensor_read_data()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float SensorWrapper::readSensorData </td>
+          <td class="memname">float SensorWrapper::sensor_read_data </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="_i_sensor_8h.html#a213c434cb928c4ca22513e2302632435">SensorType</a></td>          <td class="paramname"><span class="paramname"><em>sensorType</em></span>, </td>
         </tr>

@@ -14,7 +14,7 @@ var class_b_h1750 =
     [ "BH1750", "class_b_h1750.html#ad3621c02c56c15e4f3d40f0974a376f2", null ],
     [ "begin", "class_b_h1750.html#ae0e57ed9ecc08464a6b98b733d420e11", null ],
     [ "configure", "class_b_h1750.html#ab4f497d6aabaa34ba1ace42206bca286", null ],
-    [ "readLightLevel", "class_b_h1750.html#a15a9940a67c05b9f9a781b032fa4701e", null ],
+    [ "get_light_level", "class_b_h1750.html#a831ade03a6c052408f259ee58d63c3e4", null ],
     [ "write8", "class_b_h1750.html#a3208587c6a4e0a6428f53c176c0b2970", null ],
     [ "_i2c_addr", "class_b_h1750.html#ab332014adec6fccc44f11da4034e788e", null ]
 ];

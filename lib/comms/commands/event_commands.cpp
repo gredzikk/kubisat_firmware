@@ -26,9 +26,9 @@
  * @ingroup EventCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 5.1
  */
-Frame handleGetLastEvents(const std::string& param, OperationType operationType) {
+Frame handle_get_last_events(const std::string& param, OperationType operationType) {
     if (operationType != OperationType::GET) {
-        return buildFrame(ExecutionResult::ERROR, 5, 1, "INVALID OPERATION");
+        return frame_build(ExecutionResult::ERROR, 5, 1, "INVALID OPERATION");
     }
 
     size_t count = 10; // Default number of events to return
@@ -36,22 +36,22 @@ Frame handleGetLastEvents(const std::string& param, OperationType operationType)
         try {
             count = std::stoul(param);
             if (count == 0 || count > EVENT_BUFFER_SIZE) {
-                return buildFrame(ExecutionResult::ERROR, 5, 1, "INVALID COUNT");
+                return frame_build(ExecutionResult::ERROR, 5, 1, "INVALID COUNT");
             }
         } catch (...) {
-            return buildFrame(ExecutionResult::ERROR, 5, 1, "INVALID PARAMETER");
+            return frame_build(ExecutionResult::ERROR, 5, 1, "INVALID PARAMETER");
         }
     }
 
     std::stringstream ss;
     ss << std::hex << std::uppercase << std::setfill('0');
     
-    size_t available = eventManager.getEventCount();
+    size_t available = eventManager.get_event_count();
     size_t toReturn = std::min(count, available);
     
     // Start from the most recent event
     for (size_t i = 0; i < toReturn; i++) {
-        const EventLog& event = eventManager.getEvent(available - 1 - i);
+        const EventLog& event = eventManager.get_event(available - 1 - i);
         // Format: IIIITTTTTTTTGGEE
         // IIII: 16-bit ID (4 hex chars)
         // TTTTTTTT: 32-bit timestamp (8 hex chars)
@@ -64,7 +64,7 @@ Frame handleGetLastEvents(const std::string& param, OperationType operationType)
         if (i < toReturn - 1) ss << "-";
     }
 
-    return buildFrame(ExecutionResult::SUCCESS, 5, 1, ss.str());
+    return frame_build(ExecutionResult::SUCCESS, 5, 1, ss.str());
 }
 
 
@@ -79,12 +79,12 @@ Frame handleGetLastEvents(const std::string& param, OperationType operationType)
  * @ingroup EventCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 5.2
  */
-Frame handleGetEventCount(const std::string& param, OperationType operationType) {
+Frame hadnle_get_event_count(const std::string& param, OperationType operationType) {
     if (operationType != OperationType::GET || !param.empty()) {
-        return buildFrame(ExecutionResult::ERROR, 5, 2, "INVALID REQUEST");
+        return frame_build(ExecutionResult::ERROR, 5, 2, "INVALID REQUEST");
     }
 
-    return buildFrame(ExecutionResult::SUCCESS, 5, 2, 
-                     std::to_string(eventManager.getEventCount()));
+    return frame_build(ExecutionResult::SUCCESS, 5, 2, 
+                     std::to_string(eventManager.get_event_count()));
 }
 /** @} */ // end of EventCommands group

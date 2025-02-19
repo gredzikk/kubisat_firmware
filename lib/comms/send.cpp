@@ -12,23 +12,23 @@
  * @details Converts the outgoing string to a C-style string, adds destination and local addresses,
  *          and sends the message using LoRa. Prints a log message to the UART.
  */
-void sendMessage(string outgoing)
+void send_message(string outgoing)
 {
     int n = outgoing.length();
     char send[n + 1];
     strcpy(send, outgoing.c_str());
 
     LoRa.beginPacket();       // start packet
-    LoRa.write(destination);  // add destination address
-    LoRa.write(localAddress); // add sender address
+    LoRa.write(lora_address_remote);  // add destination address
+    LoRa.write(lora_address_local); // add sender address
     LoRa.print(send);         // add payload
     LoRa.endPacket(false);    // finish packet and send it
 
     std::string messageToLog = "Sent message of size " + std::to_string(n);
-    messageToLog += " to 0x" + std::to_string(destination);
+    messageToLog += " to 0x" + std::to_string(lora_address_remote);
     messageToLog += " containing: " + string(send);
 
-    uartPrint(messageToLog);
+    uart_print(messageToLog);
     
     LoRa.flush();
 }
@@ -37,13 +37,13 @@ void sendMessage(string outgoing)
 /**
  * @brief Sends a Frame using LoRa.
  * @param frame The Frame to send.
- * @details Encodes the Frame into a string and sends it using the sendMessage function.
+ * @details Encodes the Frame into a string and sends it using the send_message function.
  */
-void sendFrame(const Frame& frame) {
+void send_frame(const Frame& frame) {
     
-    std::string encodedFrame = encodeFrame(frame);
-    // sendLargePacket(data, encodedFrame);
-    sendMessage(encodedFrame);
+    std::string encodedFrame = frame_encode(frame);
+    // split_and_send_message(data, encodedFrame);
+    send_message(encodedFrame);
 }
 
 
@@ -53,7 +53,7 @@ void sendFrame(const Frame& frame) {
  * @param length The length of the data.
  * @details Splits the data into chunks of MAX_PKT_SIZE and sends each chunk as a separate LoRa packet.
  */
-void sendLargePacket(const uint8_t* data, size_t length)
+void split_and_send_message(const uint8_t* data, size_t length)
 {
     const size_t MAX_PKT_SIZE = 255;
     size_t offset = 0;

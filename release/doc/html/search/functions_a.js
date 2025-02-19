@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['loadfromstorage_0',['loadFromStorage',['../class_event_manager.html#a6722258e4e3df939224d07786427afc9',1,'EventManager::loadFromStorage()'],['../class_event_manager_impl.html#ada54a3fd8ad03891318e203ad0a82155',1,'EventManagerImpl::loadFromStorage()']]],
-  ['logevent_1',['logEvent',['../class_event_manager.html#ae73a56091dc8713bb86a11abb6742a14',1,'EventManager']]],
-  ['loggingroutine_2',['loggingRoutine',['../main_8cpp.html#a01a8b38ee1cf3fd44cedf3f5a8f1dbde',1,'main.cpp']]],
-  ['loraclass_3',['LoRaClass',['../class_lo_ra_class.html#a750092f22f3838b419eafb8b411588e0',1,'LoRaClass']]]
+  ['load_5ffrom_5fstorage_0',['load_from_storage',['../class_event_manager.html#a64a6589e4a25afff95ee6f4b4e294203',1,'EventManager::load_from_storage()'],['../class_event_manager_impl.html#a325106badcbbc2acf68025ef30ccd8f0',1,'EventManagerImpl::load_from_storage()']]],
+  ['log_5fevent_1',['log_event',['../class_event_manager.html#a741f96e4376a42712561ceca16646c1b',1,'EventManager']]],
+  ['loraclass_2',['LoRaClass',['../class_lo_ra_class.html#a750092f22f3838b419eafb8b411588e0',1,'LoRaClass']]]
 ];

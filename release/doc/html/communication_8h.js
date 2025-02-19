@@ -1,17 +1,16 @@
 var communication_8h =
 [
-    [ "initializeRadio", "communication_8h.html#a520df448c1dc359f42111ac240081975", null ],
-    [ "sendMessage", "communication_8h.html#a877f9c1d3485cf1521bc13996d39c1fb", null ],
-    [ "sendLargePacket", "communication_8h.html#a252a4ea5f222c6879d281cc2f9357b46", null ],
-    [ "onReceive", "communication_8h.html#a54817002e33761dc61558b1138749dfb", null ],
-    [ "handleUartInput", "communication_8h.html#ac5e175a6a1482f700f9aee0b727b924f", null ],
-    [ "processFrameData", "communication_8h.html#a8b9407b2f579031cf4b705f1ac03ac31", null ],
-    [ "handleCommandFrame", "communication_8h.html#a3ea1f464aef22cd9918b6fe75659c535", null ],
-    [ "executeCommand", "group___command_system.html#ga1907d400d2c8d8d054ba95bcf43276ea", null ],
-    [ "sendEventRegister", "communication_8h.html#a6005ddd6320bebe2a680fa6b8efff6dd", null ],
-    [ "encodeFrame", "communication_8h.html#ab53898fb6f45dfc657837a665a070959", null ],
-    [ "decodeFrame", "communication_8h.html#a8f34bc31494430539db21206f084d39d", null ],
-    [ "buildFrame", "communication_8h.html#a54afeb73435419551a1b51a3fd5c3266", null ],
-    [ "determineUnit", "communication_8h.html#a6272bef4a482127bfe7c1b50d723d69d", null ],
-    [ "sendFrame", "communication_8h.html#a752e7cc27f52d4ba064e691b3e240ed8", null ]
+    [ "initialize_radio", "communication_8h.html#a8f817ba4ed9164098cd3947f7cc3f749", null ],
+    [ "on_receive", "communication_8h.html#a3f494105dee3a08e1244febc81982517", null ],
+    [ "handle_uart_input", "communication_8h.html#a14ffba44d46e00b23bd72bdb3a4d58d1", null ],
+    [ "send_message", "communication_8h.html#a8e567748586559735a2e90bb2ce7e871", null ],
+    [ "send_frame", "communication_8h.html#ae6c6f3b673e7e83306da7ea2458d3241", null ],
+    [ "split_and_send_message", "communication_8h.html#a207fb10d443babe78967d28c7565234a", null ],
+    [ "execute_command", "group___command_system.html#ga52e8963095eccdf1045309bf31b4d705", null ],
+    [ "send_event", "communication_8h.html#af49224563adb4bf0b91daa5ab78120ca", null ],
+    [ "frame_process", "communication_8h.html#a8b9c5fd031b899c6c7867adcde4ac11f", null ],
+    [ "frame_encode", "communication_8h.html#a3ae6df528775be58890bf406c906a056", null ],
+    [ "frame_decode", "communication_8h.html#a0b3438ff642c0934321101e1f0b8d82d", null ],
+    [ "frame_build", "communication_8h.html#a70248162b9a616f543f470d88ccdf4a6", null ],
+    [ "determine_unit", "communication_8h.html#a1df3cc2d97de283e0c229b2d87f39b47", null ]
 ];

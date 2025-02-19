@@ -112,7 +112,7 @@ $(function(){initNavTree('storage_8cpp_source.html',''); initResizable(true); })
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span></div>
 <div class="foldopen" id="foldopen00023" data-start="{" data-end="}">
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="storage_8cpp.html#afb19e37469a751aa61de3dcd0c70b4b0">   23</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="storage_8cpp.html#afb19e37469a751aa61de3dcd0c70b4b0">fs_init</a>(<span class="keywordtype">void</span>) {</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <a class="code hl_function" href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a>(<span class="stringliteral">&quot;fs_init littlefs on SD card\n&quot;</span>);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <a class="code hl_function" href="utils_8cpp.html#acd86977d05fa330749958ace0f2798de">uart_print</a>(<span class="stringliteral">&quot;fs_init littlefs on SD card\n&quot;</span>);</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    blockdevice_t *sd = blockdevice_sd_create(<a class="code hl_define" href="pin__config_8h.html#ae8e100b2951ae1785ada736a7d960a77">SD_SPI_PORT</a>,</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>                                              <a class="code hl_define" href="pin__config_8h.html#a1150cf94392cb54e7e979e6b69f210fb">SD_MOSI_PIN</a>,</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>                                              <a class="code hl_define" href="pin__config_8h.html#ad3aea67d9c7c7dc0be847a1467786abb">SD_MISO_PIN</a>,</div>
@@ -126,17 +126,17 @@ $(function(){initNavTree('storage_8cpp_source.html',''); initResizable(true); })
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">int</span> err = fs_mount(<span class="stringliteral">&quot;/&quot;</span>, fat, sd);</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordflow">if</span> (err == -1) {</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        statusString = <span class="stringliteral">&quot;Formatting / with FAT&quot;</span>;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <a class="code hl_function" href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a>(statusString);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <a class="code hl_function" href="utils_8cpp.html#acd86977d05fa330749958ace0f2798de">uart_print</a>(statusString);</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        err = fs_format(fat, sd);</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordflow">if</span> (err == -1) {</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            statusString = <span class="stringliteral">&quot;fs_format error: &quot;</span> + std::string(strerror(errno));</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <a class="code hl_function" href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a>(statusString);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <a class="code hl_function" href="utils_8cpp.html#acd86977d05fa330749958ace0f2798de">uart_print</a>(statusString);</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        }</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        err = fs_mount(<span class="stringliteral">&quot;/&quot;</span>, fat, sd);</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keywordflow">if</span> (err == -1) {</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            statusString = <span class="stringliteral">&quot;fs_mount error: &quot;</span> + std::string(strerror(errno));</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            <a class="code hl_function" href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a>(statusString);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            <a class="code hl_function" href="utils_8cpp.html#acd86977d05fa330749958ace0f2798de">uart_print</a>(statusString);</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        }</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    }</div>
@@ -164,7 +164,7 @@ $(function(){initNavTree('storage_8cpp_source.html',''); initResizable(true); })
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        handle.<a class="code hl_variable" href="struct_file_handle.html#a1c2451d05e2d2937da92fe194e9281cf">is_open</a> = <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        errorStr = <span class="stringliteral">&quot;Failed to open file &quot;</span> + std::string(filename) + <span class="stringliteral">&quot;: &quot;</span> + strerror(errno);</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <a class="code hl_function" href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a>(errorStr);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <a class="code hl_function" href="utils_8cpp.html#acd86977d05fa330749958ace0f2798de">uart_print</a>(errorStr);</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    }</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    </div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordflow">return</span> handle;</div>
@@ -183,7 +183,7 @@ $(function(){initNavTree('storage_8cpp_source.html',''); initResizable(true); })
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    ssize_t written = write(handle.<a class="code hl_variable" href="struct_file_handle.html#afc2bbe66c168d4d264f3af1ec037b122">fd</a>, <a class="code hl_variable" href="main_8cpp.html#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a>, size);</div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordflow">if</span> (written &lt; 0) {</div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        errorStr = <span class="stringliteral">&quot;Write failed: &quot;</span> + std::string(strerror(errno));</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <a class="code hl_function" href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a>(errorStr);</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <a class="code hl_function" href="utils_8cpp.html#acd86977d05fa330749958ace0f2798de">uart_print</a>(errorStr);</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    }</div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordflow">return</span> written;</div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>}</div>
@@ -201,7 +201,7 @@ $(function(){initNavTree('storage_8cpp_source.html',''); initResizable(true); })
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    ssize_t bytes_read = read(handle.<a class="code hl_variable" href="struct_file_handle.html#afc2bbe66c168d4d264f3af1ec037b122">fd</a>, <a class="code hl_variable" href="main_8cpp.html#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a>, size);</div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <span class="keywordflow">if</span> (bytes_read &lt; 0) {</div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        errorStr = <span class="stringliteral">&quot;Read failed &quot;</span> + std::string(strerror(errno));</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        <a class="code hl_function" href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a>(errorStr);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        <a class="code hl_function" href="utils_8cpp.html#acd86977d05fa330749958ace0f2798de">uart_print</a>(errorStr);</div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    }</div>
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="keywordflow">return</span> bytes_read;</div>
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>}</div>
@@ -223,7 +223,7 @@ $(function(){initNavTree('storage_8cpp_source.html',''); initResizable(true); })
 <div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        errorStr = <span class="stringliteral">&quot;Close failed &quot;</span> + std::string(strerror(errno));</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        <a class="code hl_function" href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a>(errorStr);</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        <a class="code hl_function" href="utils_8cpp.html#acd86977d05fa330749958ace0f2798de">uart_print</a>(errorStr);</div>
 <div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    }</div>
 <div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>}</div>
@@ -252,7 +252,7 @@ $(function(){initNavTree('storage_8cpp_source.html',''); initResizable(true); })
 <div class="ttc" id="astruct_file_handle_html"><div class="ttname"><a href="struct_file_handle.html">FileHandle</a></div><div class="ttdef"><b>Definition</b> <a href="storage_8h_source.html#l00015">storage.h:15</a></div></div>
 <div class="ttc" id="astruct_file_handle_html_a1c2451d05e2d2937da92fe194e9281cf"><div class="ttname"><a href="struct_file_handle.html#a1c2451d05e2d2937da92fe194e9281cf">FileHandle::is_open</a></div><div class="ttdeci">bool is_open</div><div class="ttdef"><b>Definition</b> <a href="storage_8h_source.html#l00017">storage.h:17</a></div></div>
 <div class="ttc" id="astruct_file_handle_html_afc2bbe66c168d4d264f3af1ec037b122"><div class="ttname"><a href="struct_file_handle.html#afc2bbe66c168d4d264f3af1ec037b122">FileHandle::fd</a></div><div class="ttdeci">int fd</div><div class="ttdef"><b>Definition</b> <a href="storage_8h_source.html#l00016">storage.h:16</a></div></div>
-<div class="ttc" id="autils_8cpp_html_aacbcecbe6b5428e3571b06ab2104e706"><div class="ttname"><a href="utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706">uartPrint</a></div><div class="ttdeci">void uartPrint(const std::string &amp;msg, bool logToFile, uart_inst_t *uart)</div><div class="ttdoc">Prints a message to the UART with a timestamp and core number.</div><div class="ttdef"><b>Definition</b> <a href="utils_8cpp_source.html#l00026">utils.cpp:26</a></div></div>
+<div class="ttc" id="autils_8cpp_html_acd86977d05fa330749958ace0f2798de"><div class="ttname"><a href="utils_8cpp.html#acd86977d05fa330749958ace0f2798de">uart_print</a></div><div class="ttdeci">void uart_print(const std::string &amp;msg, bool logToFile, uart_inst_t *uart)</div><div class="ttdoc">Prints a message to the UART with a timestamp and core number.</div><div class="ttdef"><b>Definition</b> <a href="utils_8cpp_source.html#l00026">utils.cpp:26</a></div></div>
 <div class="ttc" id="autils_8h_html"><div class="ttname"><a href="utils_8h.html">utils.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

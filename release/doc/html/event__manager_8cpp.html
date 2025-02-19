@@ -113,21 +113,14 @@ $(function(){initNavTree('event__manager_8cpp.html',''); initResizable(true); })
 <code>#include &quot;<a class="el" href="communication_8h_source.html">communication.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="utils_8h_source.html">utils.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>&quot;</code><br />
-</div><div class="textblock"><div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for event_manager.cpp:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="event__manager_8cpp__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
 </div>
 <p><a href="event__manager_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a467714d66058f52e4ac7aeb6df46b433" id="r_a467714d66058f52e4ac7aeb6df46b433"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a467714d66058f52e4ac7aeb6df46b433">checkPowerEvents</a> (<a class="el" href="class_power_manager.html">PowerManager</a> &amp;pm)</td></tr>
-<tr class="memdesc:a467714d66058f52e4ac7aeb6df46b433"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks power statuses and triggers events based on voltage trends.  <br /></td></tr>
-<tr class="separator:a467714d66058f52e4ac7aeb6df46b433"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a1b3fdef7c62da5c917d3006cdc65dd" id="r_a3a1b3fdef7c62da5c917d3006cdc65dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a1b3fdef7c62da5c917d3006cdc65dd">check_power_events</a> (<a class="el" href="class_power_manager.html">PowerManager</a> &amp;pm)</td></tr>
+<tr class="memdesc:a3a1b3fdef7c62da5c917d3006cdc65dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks power statuses and triggers events based on voltage trends.  <br /></td></tr>
+<tr class="separator:a3a1b3fdef7c62da5c917d3006cdc65dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -171,14 +164,14 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition in file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a467714d66058f52e4ac7aeb6df46b433" name="a467714d66058f52e4ac7aeb6df46b433"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a467714d66058f52e4ac7aeb6df46b433">&#9670;&#160;</a></span>checkPowerEvents()</h2>
+<a id="a3a1b3fdef7c62da5c917d3006cdc65dd" name="a3a1b3fdef7c62da5c917d3006cdc65dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a1b3fdef7c62da5c917d3006cdc65dd">&#9670;&#160;</a></span>check_power_events()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void checkPowerEvents </td>
+          <td class="memname">void check_power_events </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_power_manager.html">PowerManager</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pm</em></span></td><td>)</td>
           <td></td>
@@ -196,20 +189,6 @@ Variables</h2></td></tr>
 <p>Monitors the 5V voltage level, detects falling voltage trends, and triggers events for low battery, overcharge, and normal power conditions. Also checks solar charging and USB connection states. </p>
 
 <p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00139">139</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
-<div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="event__manager_8cpp_a467714d66058f52e4ac7aeb6df46b433_cgraph.svg" width="636" height="240"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-<div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="event__manager_8cpp_a467714d66058f52e4ac7aeb6df46b433_icgraph.svg" width="380" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
 
 </div>
 </div>

@@ -212,7 +212,7 @@ bool LoRaClass::isTransmitting()
   return false;
 }
 
-int LoRaClass::parsePacket(int size) 
+int LoRaClass::parse_packet(int size) 
 {
   int packetLength = 0;
 
@@ -647,7 +647,7 @@ uint8_t LoRaClass::random()
   return readRegister(REG_RSSI_WIDEBAND); 
 }
 
-void LoRaClass::setPins(int ss, int reset, int dio0) 
+void LoRaClass::set_pins(int ss, int reset, int dio0) 
 {
   _ss = ss;
   _reset = reset;

@@ -1,4 +1,3 @@
-// [lib/PowerManager/PowerManager.h](lib/PowerManager/PowerManager.h)
 #ifndef POWER_MANAGER_H
 #define POWER_MANAGER_H
 
@@ -13,16 +12,16 @@ class PowerManager {
 public:
     PowerManager(i2c_inst_t* i2c);
     bool initialize();
-    std::string readIDs();
-    float getCurrentChargeSolar();
-    float getCurrentChargeUSB();
-    float getCurrentChargeTotal();
-    float getCurrentDraw();
-    float getVoltageBattery();
-    float getVoltage5V();
+    std::string read_device_ids();
+    float get_current_charge_solar();
+    float get_current_charge_usb();
+    float get_current_charge_total();
+    float get_current_draw();
+    float get_voltage_battery();
+    float get_voltage_5v();
     void configure(const std::map<std::string, std::string>& config);
-    bool isSolarActive();
-    bool isUSBConnected();
+    bool is_charging_solar();
+    bool is_charging_usb();
     
     static constexpr float SOLAR_CURRENT_THRESHOLD = 50.0f;  // mA
     static constexpr float USB_CURRENT_THRESHOLD = 50.0f;    // mA
@@ -32,11 +31,11 @@ public:
     static constexpr int FALLING_TREND_REQUIRED = 3;         // samples
 
 private:
-    INA3221 ina3221;
-    bool initialized;
-    recursive_mutex_t mutex;
-    bool solarActive = false;
-    bool usbConnected = false;
+    INA3221 ina3221_;
+    bool initialized_;
+    recursive_mutex_t powerman_mutex_;
+    bool charging_solar_active_ = false;
+    bool charging_usb_active_ = false;
 };
 
 #endif // POWER_MANAGER_H

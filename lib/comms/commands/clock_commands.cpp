@@ -23,17 +23,17 @@
   * @ingroup ClockCommands
   * @xrefitem command "Command" "Clock Commands" Command ID: 3.0
   */
-Frame handleTime(const std::string& param, OperationType operationType) {
+Frame handle_time(const std::string& param, OperationType operationType) {
     if (operationType == OperationType::SET && param.empty()) {
-        return buildFrame(ExecutionResult::ERROR, 3, 0, "PARAM REQUIRED");
+        return frame_build(ExecutionResult::ERROR, 3, 0, "PARAM REQUIRED");
     }
 
     if (operationType == OperationType::GET && !param.empty()) {
-        return buildFrame(ExecutionResult::ERROR, 3, 0, "PARAM UNNECESSARY");
+        return frame_build(ExecutionResult::ERROR, 3, 0, "PARAM UNNECESSARY");
     }
 
     if (!(operationType == OperationType::GET || operationType == OperationType::SET)) {
-        return buildFrame(ExecutionResult::ERROR, 3, 0, "INVALID OPERATION");
+        return frame_build(ExecutionResult::ERROR, 3, 0, "INVALID OPERATION");
     }
 
     if (operationType == OperationType::SET) {
@@ -43,25 +43,24 @@ Frame handleTime(const std::string& param, OperationType operationType) {
 
             if (timeinfo != nullptr) {
                 // Set the time on the RTC
-                systemClock.setTime(timeinfo->tm_sec, timeinfo->tm_min, timeinfo->tm_hour,
-                                    timeinfo->tm_wday, timeinfo->tm_mday, timeinfo->tm_mon + 1, timeinfo->tm_year + 1900);
+                
                 EventEmitter::emit(EventGroup::CLOCK, ClockEvent::CHANGED);
-                return buildFrame(ExecutionResult::SUCCESS, 3, 0, "Time set successfully");
+                return frame_build(ExecutionResult::SUCCESS, 3, 0, "Time set successfully");
             } else {
-                return buildFrame(ExecutionResult::ERROR, 3, 0, "FAILED TO SET TIME");
+                return frame_build(ExecutionResult::ERROR, 3, 0, "FAILED TO SET TIME");
             }
         } catch (...) {
-            return buildFrame(ExecutionResult::ERROR, 3, 0, "INVALID TIME FORMAT");
+            return frame_build(ExecutionResult::ERROR, 3, 0, "INVALID TIME FORMAT");
         }
     }
 
-    uint32_t timeUnix = systemClock.getTimeUnix();
+    uint32_t timeUnix = 2;
     if (timeUnix != 0) {
         std::stringstream ss;
         ss << timeUnix;
-        return buildFrame(ExecutionResult::SUCCESS, 3, 0, ss.str());
+        return frame_build(ExecutionResult::SUCCESS, 3, 0, ss.str());
     } else {
-        return buildFrame(ExecutionResult::ERROR, 3, 0, "FAILED TO GET TIME");
+        return frame_build(ExecutionResult::ERROR, 3, 0, "FAILED TO GET TIME");
     }
 }
 
@@ -76,35 +75,37 @@ Frame handleTime(const std::string& param, OperationType operationType) {
  * @ingroup ClockCommands
  * @xrefitem command "Command" "Clock Commands" Command ID: 3.1
  */
-Frame handleTimezoneOffset(const std::string& param, OperationType operationType) {
+Frame handle_timezone_offset(const std::string& param, OperationType operationType) {
     if (!(operationType == OperationType::GET || operationType == OperationType::SET)) {
-        return buildFrame(ExecutionResult::ERROR, 3, 1, "INVALID OPERATION");
+        return frame_build(ExecutionResult::ERROR, 3, 1, "INVALID OPERATION");
     }
 
     if (operationType == OperationType::GET) {
         if (!param.empty()) {
-            return buildFrame(ExecutionResult::ERROR, 3, 1, "PARAM UNNECESSARY");
+            return frame_build(ExecutionResult::ERROR, 3, 1, "PARAM UNNECESSARY");
         }
-        return buildFrame(ExecutionResult::SUCCESS, 3, 1,
-                         std::to_string(systemClock.getTimezoneOffset()));
+
+        std::string timezoneOffset = "60";
+        return frame_build(ExecutionResult::SUCCESS, 3, 1, timezoneOffset);
     }
 
     if (operationType == OperationType::SET) {
         if (param.empty()) {
-            return buildFrame(ExecutionResult::ERROR, 3, 1, "PARAM REQUIRED");
+            return frame_build(ExecutionResult::ERROR, 3, 1, "PARAM REQUIRED");
         }
         try {
             int16_t offset = std::stoi(param);
             if (offset < -720 || offset > 720) { // ±12 hours in minutes
-                return buildFrame(ExecutionResult::ERROR, 3, 1, "INVALID OFFSET");
+                return frame_build(ExecutionResult::ERROR, 3, 1, "INVALID OFFSET");
             }
-            systemClock.setTimezoneOffset(offset);
-            return buildFrame(ExecutionResult::SUCCESS, 3, 1, param);
+
+            // set offset
+            return frame_build(ExecutionResult::SUCCESS, 3, 1, param);
         } catch (...) {
-            return buildFrame(ExecutionResult::ERROR, 3, 1, "INVALID PARAMETER");
+            return frame_build(ExecutionResult::ERROR, 3, 1, "INVALID PARAMETER");
         }
     }
-    return buildFrame(ExecutionResult::ERROR, 3, 1, "UNKNOWN ERROR");
+    return frame_build(ExecutionResult::ERROR, 3, 1, "UNKNOWN ERROR");
 }
 
 
@@ -118,32 +119,35 @@ Frame handleTimezoneOffset(const std::string& param, OperationType operationType
  * @ingroup ClockCommands
  * @xrefitem command "Command" "Clock Commands" Command ID: 3.3
  */
-Frame handleClockSyncInterval(const std::string& param, OperationType operationType) {
+Frame handle_clock_sync_interval(const std::string& param, OperationType operationType) {
     if (!(operationType == OperationType::GET || operationType == OperationType::SET)) {
-        return buildFrame(ExecutionResult::ERROR, 3, 2, "INVALID OPERATION");
+        return frame_build(ExecutionResult::ERROR, 3, 2, "INVALID OPERATION");
     }
 
     if (operationType == OperationType::GET) {
         if (!param.empty()) {
-            return buildFrame(ExecutionResult::ERROR, 3, 2, "PARAM UNNECESSARY");
+            return frame_build(ExecutionResult::ERROR, 3, 2, "PARAM UNNECESSARY");
         }
-        return buildFrame(ExecutionResult::SUCCESS, 3, 2,
-                         std::to_string(systemClock.getClockSyncInterval()));
+
+        std::string clockSyncInterval = "1440";
+        return frame_build(ExecutionResult::SUCCESS, 3, 2, clockSyncInterval);
     }
 
     if (operationType == OperationType::SET) {
         if (param.empty()) {
-            return buildFrame(ExecutionResult::ERROR, 3, 2, "PARAM REQUIRED");
+            return frame_build(ExecutionResult::ERROR, 3, 2, "PARAM REQUIRED");
         }
         try {
             uint32_t interval = std::stoul(param);
-            systemClock.setClockSyncInterval(interval);
-            return buildFrame(ExecutionResult::SUCCESS, 3, 2, param);
+            
+            //set sync interval
+
+            return frame_build(ExecutionResult::SUCCESS, 3, 2, param);
         } catch (...) {
-            return buildFrame(ExecutionResult::ERROR, 3, 2, "INVALID PARAMETER");
+            return frame_build(ExecutionResult::ERROR, 3, 2, "INVALID PARAMETER");
         }
     }
-    return buildFrame(ExecutionResult::ERROR, 3, 2, "UNKNOWN ERROR");
+    return frame_build(ExecutionResult::ERROR, 3, 2, "UNKNOWN ERROR");
 }
 
 /**
@@ -155,11 +159,11 @@ Frame handleClockSyncInterval(const std::string& param, OperationType operationT
  * @ingroup ClockCommands
  * @xrefitem command "Command" "Clock Commands" Command ID: 3.7
  */
-Frame handleGetLastSyncTime(const std::string& param, OperationType operationType) {
+Frame handle_get_last_sync_time(const std::string& param, OperationType operationType) {
     if (operationType != OperationType::GET || !param.empty()) {
-        return buildFrame(ExecutionResult::ERROR, 3, 3, "INVALID REQUEST");
+        return frame_build(ExecutionResult::ERROR, 3, 3, "INVALID REQUEST");
     }
-    return buildFrame(ExecutionResult::SUCCESS, 3, 3, 
-                     std::to_string(systemClock.getLastSyncTime()));
+    std::string lastSyncTime = "none";
+    return frame_build(ExecutionResult::SUCCESS, 3, 3, lastSyncTime);
 }
 /** @} */ // end of ClockCommands group

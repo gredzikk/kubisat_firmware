@@ -2,18 +2,18 @@
 #include <cmath>
 #include <cstdio>
 
-HMC5883LWrapper::HMC5883LWrapper(i2c_inst_t* i2c) : sensor(i2c), initialized(false) {}
+HMC5883LWrapper::HMC5883LWrapper(i2c_inst_t* i2c) : sensor_(i2c), initialized_(false) {}
 
 bool HMC5883LWrapper::init() {
-    initialized = sensor.init();
-    return initialized;
+    initialized_ = sensor_.init();
+    return initialized_;
 }
 
-float HMC5883LWrapper::readData(SensorDataTypeIdentifier type) {
-    if (!initialized) return 0.0f;
+float HMC5883LWrapper::read_data(SensorDataTypeIdentifier type) {
+    if (!initialized_) return 0.0f;
 
     int16_t x, y, z;
-    if (!sensor.read(x, y, z)) return 0.0f;
+    if (!sensor_.read(x, y, z)) return 0.0f;
 
     const float LSB_TO_UT = 100.0 / 1090.0;
     float x_uT = x * LSB_TO_UT;
@@ -32,11 +32,11 @@ float HMC5883LWrapper::readData(SensorDataTypeIdentifier type) {
     }
 }
 
-bool HMC5883LWrapper::isInitialized() const {
-    return initialized;
+bool HMC5883LWrapper::is_initialized() const {
+    return initialized_;
 }
 
-SensorType HMC5883LWrapper::getType() const {
+SensorType HMC5883LWrapper::get_type() const {
     return SensorType::MAGNETOMETER;
 }
 

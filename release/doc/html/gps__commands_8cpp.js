@@ -1,7 +1,7 @@
 var gps__commands_8cpp =
 [
-    [ "handleGPSPowerStatus", "group___g_p_s_commands.html#gaa4c13d7d324ffb354badf45e9ceffb1c", null ],
-    [ "handleEnableGPSTransparentMode", "group___g_p_s_commands.html#gad12f2e18bdfecbd5b6e8d8a84bb9cd77", null ],
-    [ "handleGetRMCData", "group___g_p_s_commands.html#ga71881bd1a0a285e4149db732a3f1b533", null ],
-    [ "handleGetGGAData", "group___g_p_s_commands.html#gaf1f6c0fb4266518353e088e8781ed143", null ]
+    [ "handle_gps_power_status", "group___g_p_s_commands.html#ga926ab365cf351bb507a8c38066ee2eeb", null ],
+    [ "handle_enable_gps_uart_passthrough", "group___g_p_s_commands.html#ga3e4c6db6e933a1ff77f3ac52ce1c44be", null ],
+    [ "handle_get_rmc_data", "group___g_p_s_commands.html#ga8e18759b90b7902e535f50aceae81f2e", null ],
+    [ "handle_get_gga_data", "group___g_p_s_commands.html#ga617ca7e129f14b0ca4f0d6eb333cbf27", null ]
 ];

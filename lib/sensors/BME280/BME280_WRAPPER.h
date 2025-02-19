@@ -7,16 +7,16 @@
 
 class BME280Wrapper : public ISensor {
 private:
-    BME280 sensor;
-    bool initialized = false;
+    BME280 sensor_;
+    bool initialized_ = false;
 
 public:
     BME280Wrapper(i2c_inst_t* i2c);
 
     bool init() override;
-    float readData(SensorDataTypeIdentifier type) override;
-    bool isInitialized() const override;
-    SensorType getType() const override;
+    float read_data(SensorDataTypeIdentifier type) override;
+    bool is_initialized() const override;
+    SensorType get_type() const override;
         bool configure(const std::map<std::string, std::string>& config) override;
 
 };

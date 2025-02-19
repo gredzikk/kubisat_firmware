@@ -52,11 +52,11 @@
 
 
 // LoRa constants - declare as extern
-extern const int csPin;      // LoRa radio chip select
-extern const int resetPin;   // LoRa radio reset  
-extern const int irqPin;     // LoRa hardware interrupt pin
-extern uint8_t localAddress; // address of this device
-extern uint8_t destination;  // destination to send to
+extern const int lora_cs_pin;      // LoRa radio chip select
+extern const int lora_reset_pin;   // LoRa radio reset  
+extern const int lora_irq_pin;     // LoRa hardware interrupt pin
+extern uint8_t lora_address_local; // address of this device
+extern uint8_t lora_address_remote;  // destination to send to
 
 
 #endif // PIN_CONFIG_H

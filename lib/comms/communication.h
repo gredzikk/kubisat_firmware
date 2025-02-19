@@ -6,33 +6,21 @@
 #include "protocol.h"
 #include "event_manager.h"
 
-bool initializeRadio();
-void sendMessage(std::string outgoing);
-void sendLargePacket(const uint8_t* data, size_t length);
-void onReceive(int packetSize);
-void handleUartInput();
-void processFrameData(const std::string& data);
+bool initialize_radio();
+void on_receive(int packetSize);
+void handle_uart_input();
+void send_message(std::string outgoing);
+void send_frame(const Frame& frame);
+void split_and_send_message(const uint8_t* data, size_t length);
 
+Frame execute_command(uint32_t commandKey, const std::string& param, OperationType operationType);
+void send_event();
 
-void handleCommandFrame(const Frame& frame);
-Frame executeCommand(uint32_t commandKey, const std::string& param, OperationType operationType);
-void sendEventRegister();
+void frame_process(const std::string& data);
+std::string frame_encode(const Frame& frame);
+Frame frame_decode(const std::string& data);
+Frame frame_build(ExecutionResult result, uint8_t group, uint8_t command,const std::string& value, const ValueUnit unitType  = ValueUnit::UNDEFINED);
 
-
-std::string encodeFrame(const Frame& frame);
-Frame decodeFrame(const std::string& data);
-
-Frame buildFrame(ExecutionResult result, uint8_t group, uint8_t command,const std::string& value, const ValueUnit unitType  = ValueUnit::UNDEFINED);
-std::string determineUnit(uint8_t group, uint8_t command);
-
-void sendMessage(std::string outgoing);
-void sendFrame(const Frame& frame);
-void sendLargePacket(const uint8_t* data, size_t length);
-
-
-void onReceive(int packetSize);
-void handleUartInput();
-void processFrameData(const std::string& data);
-
+std::string determine_unit(uint8_t group, uint8_t command);
 
 #endif

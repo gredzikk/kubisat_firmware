@@ -81,7 +81,7 @@ public:
      * @brief Converts the EventLog to a string representation.
      * @return A string representation of the EventLog.
      */
-    std::string toString() const {
+    std::string to_string() const {
         char buffer[256];
         snprintf(buffer, sizeof(buffer),
                     "EventLog: id=%u, timestamp=%lu, group=%u, event=%u",
@@ -120,7 +120,7 @@ class EventManager {
          * @details Loads events from storage.
          */
         virtual void init() {
-            loadFromStorage();
+            load_from_storage();
         }
     
         /**
@@ -128,32 +128,32 @@ class EventManager {
          * @param group The event group.
          * @param event The event identifier.
          */
-        void logEvent(uint8_t group, uint8_t event);
+        void log_event(uint8_t group, uint8_t event);
     
         /**
          * @brief Retrieves an event from the event buffer.
          * @param index The index of the event to retrieve.
          * @return A const reference to the EventLog at the specified index.
          */
-        const EventLog& getEvent(size_t index) const;
+        const EventLog& get_event(size_t index) const;
     
         /**
          * @brief Gets the number of events in the buffer.
          * @return The number of events in the buffer.
          */
-        size_t getEventCount() const { return eventCount; }
+        size_t get_event_count() const { return eventCount; }
     
         /**
          * @brief Saves the events to storage.
          * @return True if the events were successfully saved, false otherwise.
          */
-        virtual bool saveToStorage() = 0;
+        virtual bool save_to_storage() = 0;
     
         /**
          * @brief Loads the events from storage.
          * @return True if the events were successfully loaded, false otherwise.
          */
-        virtual bool loadFromStorage() = 0;
+        virtual bool load_from_storage() = 0;
     
     protected:
         EventLog events[EVENT_BUFFER_SIZE];  ///< Event buffer
@@ -184,7 +184,7 @@ class EventManagerImpl : public EventManager {
          * @return True if the events were successfully saved, false otherwise.
          * @details This method is not yet implemented.
          */
-        bool saveToStorage() override {
+        bool save_to_storage() override {
             // TODO: Implement based on chosen storage (SD/EEPROM)
             needsPersistence = false;
             return true;
@@ -195,7 +195,7 @@ class EventManagerImpl : public EventManager {
          * @return True if the events were successfully loaded, false otherwise.
          * @details This method is not yet implemented.
          */
-        bool loadFromStorage() override {
+        bool load_from_storage() override {
             // TODO: Implement based on chosen storage (SD/EEPROM)
             return false;
         }
@@ -221,7 +221,7 @@ class EventEmitter {
          */
     template<typename T>
     static void emit(EventGroup group, T event) {
-        eventManager.logEvent(
+        eventManager.log_event(
             static_cast<uint8_t>(group), 
             static_cast<uint8_t>(event)
         );
@@ -233,6 +233,6 @@ class EventEmitter {
  * @brief Checks power statuses and triggers events based on voltage trends.
  * @param pm Reference to the PowerManager object.
  */
-void checkPowerEvents(PowerManager& pm);
+void check_power_events(PowerManager& pm);
 
 #endif

@@ -12,7 +12,7 @@
 // BME280 (BME280) Class Implementation
 
 BME280::BME280(i2c_inst_t* i2cPort, uint8_t address)
-    : i2c_port(i2cPort), device_addr(address), calib_params{}, initialized(false), t_fine(0) {
+    : i2c_port(i2cPort), device_addr(address), calib_params{}, initialized_(false), t_fine(0) {
 }
 
 bool BME280::init() {
@@ -51,8 +51,8 @@ bool BME280::init() {
         return false;
     }
 
-    initialized = true;
-    std::cout << "BME280 sensor initialized successfully.\n";
+    initialized_ = true;
+    std::cout << "BME280 sensor initialized_ successfully.\n";
     return true;
 }
 
@@ -66,8 +66,8 @@ void BME280::reset() {
 }
 
 bool BME280::read_raw_all(int32_t* temperature, int32_t* pressure, int32_t* humidity) {
-    if (!initialized) {
-        std::cerr << "BME280 not initialized.\n";
+    if (!initialized_) {
+        std::cerr << "BME280 not initialized_.\n";
         return false;
     }
 

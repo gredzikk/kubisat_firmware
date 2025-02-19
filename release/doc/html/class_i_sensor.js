@@ -2,8 +2,8 @@ var class_i_sensor =
 [
     [ "~ISensor", "class_i_sensor.html#adbd5b40ebbf9a78b9845d22dddfac351", null ],
     [ "init", "class_i_sensor.html#a28051b0215d618d82556c8bb2c0abd29", null ],
-    [ "readData", "class_i_sensor.html#ae8363f6253e47aa23d04c07334f49b5d", null ],
-    [ "isInitialized", "class_i_sensor.html#a35a720334040ca754deb0931fc6f1b50", null ],
-    [ "getType", "class_i_sensor.html#a649cfa6c1888996f392f401e7d26125c", null ],
+    [ "read_data", "class_i_sensor.html#ab2c115be1f140c8e0a6e3b615a84ac05", null ],
+    [ "is_initialized", "class_i_sensor.html#ab0583ca3425ecead66c8f2f2836825e8", null ],
+    [ "get_type", "class_i_sensor.html#a9f49291a82b00d50ae215eeda8b74d94", null ],
     [ "configure", "class_i_sensor.html#aa5fd04ca51fa10cb8d0bcc835b14fb33", null ]
 ];

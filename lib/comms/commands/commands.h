@@ -8,37 +8,36 @@
 #include "protocol.h"
 
 // CLOCK
-Frame handleTime(const std::string& param, OperationType operationType);
-Frame handleTimezoneOffset(const std::string& param, OperationType operationType);
-Frame handleClockSyncInterval(const std::string& param, OperationType operationType);
-Frame handleGetLastSyncTime(const std::string& param, OperationType operationType);
+Frame handle_time(const std::string& param, OperationType operationType);
+Frame handle_timezone_offset(const std::string& param, OperationType operationType);
+Frame handle_clock_sync_interval(const std::string& param, OperationType operationType);
+Frame handle_get_last_sync_time(const std::string& param, OperationType operationType);
 
 // DIAG
-Frame handleListCommands(const std::string& param, OperationType operationType);
-Frame handleGetBuildVersion(const std::string& param, OperationType operationType);
-Frame handleGetCommandsTimestamp(const std::string& param, OperationType operationType);
-Frame handleEnterBootloaderMode(const std::string& param, OperationType operationType);
+Frame handle_get_commands_list(const std::string& param, OperationType operationType);
+Frame handle_get_build_version(const std::string& param, OperationType operationType);
+Frame handle_enter_bootloader_mode(const std::string& param, OperationType operationType);
 
 // GPS
-Frame handleGPSPowerStatus(const std::string& param, OperationType operationType);
-Frame handleEnableGPSTransparentMode(const std::string& param, OperationType operationType);
-Frame handleGetRMCData(const std::string& param, OperationType operationType);
-Frame handleGetGGAData(const std::string& param, OperationType operationType);
+Frame handle_gps_power_status(const std::string& param, OperationType operationType);
+Frame handle_enable_gps_uart_passthrough(const std::string& param, OperationType operationType);
+Frame handle_get_rmc_data(const std::string& param, OperationType operationType);
+Frame handle_get_gga_data(const std::string& param, OperationType operationType);
 
 // POWER
-Frame handleGetPowerManagerIDs(const std::string& param, OperationType operationType);
-Frame handleGetVoltageBattery(const std::string& param, OperationType operationType);
-Frame handleGetVoltage5V(const std::string& param, OperationType operationType);
-Frame handleGetCurrentChargeUSB(const std::string& param, OperationType operationType);
-Frame handleGetCurrentChargeSolar(const std::string& param, OperationType operationType);
-Frame handleGetCurrentChargeTotal(const std::string& param, OperationType operationType);
-Frame handleGetCurrentDraw(const std::string& param, OperationType operationType);
+Frame handle_get_power_manager_ids(const std::string& param, OperationType operationType);
+Frame handle_get_voltage_battery(const std::string& param, OperationType operationType);
+Frame handle_get_voltage_5v(const std::string& param, OperationType operationType);
+Frame handle_get_current_charge_usb(const std::string& param, OperationType operationType);
+Frame handle_get_current_charge_solar(const std::string& param, OperationType operationType);
+Frame handle_get_current_charge_total(const std::string& param, OperationType operationType);
+Frame handle_get_current_draw(const std::string& param, OperationType operationType);
 
 // EVENT
-Frame handleGetLastEvents(const std::string& param, OperationType operationType);
-Frame handleGetEventCount(const std::string& param, OperationType operationType);
+Frame handle_get_last_events(const std::string& param, OperationType operationType);
+Frame hadnle_get_event_count(const std::string& param, OperationType operationType);
 
-Frame executeCommand(uint32_t commandKey, const std::string& param, OperationType operationType);
+Frame execute_command(uint32_t commandKey, const std::string& param, OperationType operationType);
 extern std::map<uint32_t, std::function<Frame(const std::string&, OperationType)>> commandHandlers;
 
 #endif

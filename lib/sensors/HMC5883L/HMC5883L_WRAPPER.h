@@ -8,14 +8,14 @@ class HMC5883LWrapper : public ISensor {
 public:
     HMC5883LWrapper(i2c_inst_t* i2c);
     bool init() override;
-    float readData(SensorDataTypeIdentifier type) override;
-    bool isInitialized() const override;
-    SensorType getType() const override;
+    float read_data(SensorDataTypeIdentifier type) override;
+    bool is_initialized() const override;
+    SensorType get_type() const override;
     bool configure(const std::map<std::string, std::string>& config) override;
 
 private:
-    HMC5883L sensor;
-    bool initialized;
+    HMC5883L sensor_;
+    bool initialized_;
 };
 
 #endif

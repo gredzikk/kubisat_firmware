@@ -1,10 +1,8 @@
 var searchData=
 [
-  ['second_0',['SECOND',['../protocol_8h.html#a2d96449e2b52d45b5726af92084e0d8fa2200becb80f0019c4a2ccecec350d0db',1,'protocol.h']]],
-  ['set_1',['SET',['../protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047a8c52684db8f49511e9b44471716bf164',1,'protocol.h']]],
-  ['shutdown_2',['SHUTDOWN',['../event__manager_8h.html#a77219d2f280eaad8c79825f50cf78785ab9984206799a7f9fe4bd1b6c18db8112',1,'event_manager.h']]],
-  ['solar_5factive_3',['SOLAR_ACTIVE',['../event__manager_8h.html#a8b04683add0105a3bf3200eee3d9d3e6aa45a91985c176d6b5d3669bdf41b7e3b',1,'event_manager.h']]],
-  ['solar_5finactive_4',['SOLAR_INACTIVE',['../event__manager_8h.html#a8b04683add0105a3bf3200eee3d9d3e6a35899506cd4cd1e676d022eb14ecb669',1,'event_manager.h']]],
-  ['success_5',['SUCCESS',['../protocol_8h.html#ad13fb53c92ad2af53a95ee45749796d1ad0749aaba8b833466dfcbb0428e4f89c',1,'protocol.h']]],
-  ['system_6',['SYSTEM',['../event__manager_8h.html#a87aefa0e7b725125ea1a741c80858aa7afa177138f94a7ea01f549b1aa7893d03',1,'event_manager.h']]]
+  ['radio_5ferror_0',['RADIO_ERROR',['../event__manager_8h.html#a0270a0464efae26aefb8cf32a45e20ada3b9824cc8a230f50d285d16795daa859',1,'event_manager.h']]],
+  ['radio_5finit_1',['RADIO_INIT',['../event__manager_8h.html#a0270a0464efae26aefb8cf32a45e20ada6651a96516b323db8bad9897081d76ed',1,'event_manager.h']]],
+  ['read_5fonly_2',['READ_ONLY',['../protocol_8h.html#a1a30b781d6fac5ca0b850dd8b3726d8da47c7e7cb36a953a8c47e02000036bb44',1,'protocol.h']]],
+  ['read_5fwrite_3',['READ_WRITE',['../protocol_8h.html#a1a30b781d6fac5ca0b850dd8b3726d8daa7b843fb734e3b3fea8e5f902d3f4144',1,'protocol.h']]],
+  ['reset_4',['RESET',['../class_b_h1750.html#a8402147d4b96294da6362b538d4827c0ab5859d8721cfdc0312b2838b9c985bc1',1,'BH1750']]]
 ];

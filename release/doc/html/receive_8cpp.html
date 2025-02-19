@@ -106,38 +106,31 @@ $(function(){initNavTree('receive_8cpp.html',''); initResizable(true); });
 <p>Implements functions for receiving and processing data, including LoRa and UART input.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="communication_8h_source.html">communication.h</a>&quot;</code><br />
-</div><div class="textblock"><div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for receive.cpp:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="receive_8cpp__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
 </div>
 <p><a href="receive_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a54817002e33761dc61558b1138749dfb" id="r_a54817002e33761dc61558b1138749dfb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54817002e33761dc61558b1138749dfb">onReceive</a> (int packetSize)</td></tr>
-<tr class="memdesc:a54817002e33761dc61558b1138749dfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function for handling received LoRa packets.  <br /></td></tr>
-<tr class="separator:a54817002e33761dc61558b1138749dfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5e175a6a1482f700f9aee0b727b924f" id="r_ac5e175a6a1482f700f9aee0b727b924f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5e175a6a1482f700f9aee0b727b924f">handleUartInput</a> ()</td></tr>
-<tr class="memdesc:ac5e175a6a1482f700f9aee0b727b924f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles UART input.  <br /></td></tr>
-<tr class="separator:ac5e175a6a1482f700f9aee0b727b924f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f494105dee3a08e1244febc81982517" id="r_a3f494105dee3a08e1244febc81982517"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f494105dee3a08e1244febc81982517">on_receive</a> (int packetSize)</td></tr>
+<tr class="memdesc:a3f494105dee3a08e1244febc81982517"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function for handling received LoRa packets.  <br /></td></tr>
+<tr class="separator:a3f494105dee3a08e1244febc81982517"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14ffba44d46e00b23bd72bdb3a4d58d1" id="r_a14ffba44d46e00b23bd72bdb3a4d58d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a14ffba44d46e00b23bd72bdb3a4d58d1">handle_uart_input</a> ()</td></tr>
+<tr class="memdesc:a14ffba44d46e00b23bd72bdb3a4d58d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles UART input.  <br /></td></tr>
+<tr class="separator:a14ffba44d46e00b23bd72bdb3a4d58d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implements functions for receiving and processing data, including LoRa and UART input. </p>
 
 <p class="definition">Definition in file <a class="el" href="receive_8cpp_source.html">receive.cpp</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a54817002e33761dc61558b1138749dfb" name="a54817002e33761dc61558b1138749dfb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a54817002e33761dc61558b1138749dfb">&#9670;&#160;</a></span>onReceive()</h2>
+<a id="a3f494105dee3a08e1244febc81982517" name="a3f494105dee3a08e1244febc81982517"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f494105dee3a08e1244febc81982517">&#9670;&#160;</a></span>on_receive()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void onReceive </td>
+          <td class="memname">void on_receive </td>
           <td>(</td>
           <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>packetSize</em></span></td><td>)</td>
           <td></td>
@@ -152,34 +145,20 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Reads the received LoRa packet, extracts metadata, validates the destination and local addresses, extracts the frame data, and processes it. Prints raw hex values for debugging. </p>
+<p>Reads the received LoRa packet, extracts metadata, validates the lora_address_remote and local addresses, extracts the frame data, and processes it. Prints raw hex values for debugging. </p>
 
 <p class="definition">Definition at line <a class="el" href="receive_8cpp_source.html#l00015">15</a> of file <a class="el" href="receive_8cpp_source.html">receive.cpp</a>.</p>
-<div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="receive_8cpp_a54817002e33761dc61558b1138749dfb_cgraph.svg" width="100%" height="473"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-<div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="receive_8cpp_a54817002e33761dc61558b1138749dfb_icgraph.svg" width="192" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
 
 </div>
 </div>
-<a id="ac5e175a6a1482f700f9aee0b727b924f" name="ac5e175a6a1482f700f9aee0b727b924f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac5e175a6a1482f700f9aee0b727b924f">&#9670;&#160;</a></span>handleUartInput()</h2>
+<a id="a14ffba44d46e00b23bd72bdb3a4d58d1" name="a14ffba44d46e00b23bd72bdb3a4d58d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14ffba44d46e00b23bd72bdb3a4d58d1">&#9670;&#160;</a></span>handle_uart_input()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void handleUartInput </td>
+          <td class="memname">void handle_uart_input </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -191,20 +170,6 @@ Functions</h2></td></tr>
 <p>Reads characters from the UART port, appends them to a buffer, and processes the buffer when a newline character is received. </p>
 
 <p class="definition">Definition at line <a class="el" href="receive_8cpp_source.html#l00077">77</a> of file <a class="el" href="receive_8cpp_source.html">receive.cpp</a>.</p>
-<div id="dynsection-3" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="receive_8cpp_ac5e175a6a1482f700f9aee0b727b924f_cgraph.svg" width="100%" height="473"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-<div id="dynsection-4" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="receive_8cpp_ac5e175a6a1482f700f9aee0b727b924f_icgraph.svg" width="222" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
 
 </div>
 </div>

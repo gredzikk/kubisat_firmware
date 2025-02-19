@@ -104,21 +104,14 @@ $(function(){initNavTree('communication_8cpp.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="communication_8h_source.html">communication.h</a>&quot;</code><br />
-</div><div class="textblock"><div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for communication.cpp:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="communication_8cpp__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
 </div>
 <p><a href="communication_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a520df448c1dc359f42111ac240081975" id="r_a520df448c1dc359f42111ac240081975"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a520df448c1dc359f42111ac240081975">initializeRadio</a> ()</td></tr>
-<tr class="memdesc:a520df448c1dc359f42111ac240081975"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the LoRa radio module.  <br /></td></tr>
-<tr class="separator:a520df448c1dc359f42111ac240081975"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f817ba4ed9164098cd3947f7cc3f749" id="r_a8f817ba4ed9164098cd3947f7cc3f749"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f817ba4ed9164098cd3947f7cc3f749">initialize_radio</a> ()</td></tr>
+<tr class="memdesc:a8f817ba4ed9164098cd3947f7cc3f749"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the LoRa radio module.  <br /></td></tr>
+<tr class="separator:a8f817ba4ed9164098cd3947f7cc3f749"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -136,14 +129,14 @@ Variables</h2></td></tr>
 <tr class="separator:aaaceac04637cd33a7f3fffdd1711e6c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a520df448c1dc359f42111ac240081975" name="a520df448c1dc359f42111ac240081975"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a520df448c1dc359f42111ac240081975">&#9670;&#160;</a></span>initializeRadio()</h2>
+<a id="a8f817ba4ed9164098cd3947f7cc3f749" name="a8f817ba4ed9164098cd3947f7cc3f749"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f817ba4ed9164098cd3947f7cc3f749">&#9670;&#160;</a></span>initialize_radio()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool initializeRadio </td>
+          <td class="memname">bool initialize_radio </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -156,20 +149,6 @@ Variables</h2></td></tr>
 <p>Sets the LoRa pins and attempts to begin LoRa communication at a specified frequency. Emits a <a class="el" href="event__manager_8h.html#a0270a0464efae26aefb8cf32a45e20ada6651a96516b323db8bad9897081d76ed">CommsEvent::RADIO_INIT</a> event on success or a <a class="el" href="event__manager_8h.html#a0270a0464efae26aefb8cf32a45e20ada3b9824cc8a230f50d285d16795daa859">CommsEvent::RADIO_ERROR</a> event on failure. </p>
 
 <p class="definition">Definition at line <a class="el" href="communication_8cpp_source.html#l00017">17</a> of file <a class="el" href="communication_8cpp_source.html">communication.cpp</a>.</p>
-<div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="communication_8cpp_a520df448c1dc359f42111ac240081975_cgraph.svg" width="292" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-<div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="communication_8cpp_a520df448c1dc359f42111ac240081975_icgraph.svg" width="350" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
 
 </div>
 </div>

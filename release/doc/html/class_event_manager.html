@@ -114,15 +114,12 @@ $(function(){initNavTree('class_event_manager.html',''); initResizable(true); })
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_event_manager__inherit__graph.svg" width="142" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
-<div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for EventManager:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_event_manager__coll__graph.svg" width="116" height="128"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
+ <div class="center">
+  <img src="class_event_manager.png" usemap="#EventManager_map" alt=""/>
+  <map id="EventManager_map" name="EventManager_map">
+<area href="class_event_manager_impl.html" title="Implementation of the EventManager class." alt="EventManagerImpl" shape="rect" coords="0,56,117,80"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -135,21 +132,21 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab9c4d0fbfc9cf7743eac02bee6223728" id="r_ab9c4d0fbfc9cf7743eac02bee6223728"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab9c4d0fbfc9cf7743eac02bee6223728">init</a> ()</td></tr>
 <tr class="memdesc:ab9c4d0fbfc9cf7743eac02bee6223728"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the <a class="el" href="class_event_manager.html" title="Manages the event logging system.">EventManager</a>.  <br /></td></tr>
 <tr class="separator:ab9c4d0fbfc9cf7743eac02bee6223728"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae73a56091dc8713bb86a11abb6742a14" id="r_ae73a56091dc8713bb86a11abb6742a14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae73a56091dc8713bb86a11abb6742a14">logEvent</a> (uint8_t <a class="el" href="event__manager_8h.html#ad4291fcb880eb5ecb178b53e32f55741">group</a>, uint8_t <a class="el" href="event__manager_8h.html#aeef6900f411bc223febdd92c9435693b">event</a>)</td></tr>
-<tr class="memdesc:ae73a56091dc8713bb86a11abb6742a14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs an event.  <br /></td></tr>
-<tr class="separator:ae73a56091dc8713bb86a11abb6742a14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00648cfe8c39fbd59cc4c593113e5573" id="r_a00648cfe8c39fbd59cc4c593113e5573"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_event_log.html">EventLog</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a00648cfe8c39fbd59cc4c593113e5573">getEvent</a> (size_t index) const</td></tr>
-<tr class="memdesc:a00648cfe8c39fbd59cc4c593113e5573"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves an event from the event buffer.  <br /></td></tr>
-<tr class="separator:a00648cfe8c39fbd59cc4c593113e5573"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd8630355ef48f46c5286f232adb5993" id="r_abd8630355ef48f46c5286f232adb5993"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd8630355ef48f46c5286f232adb5993">getEventCount</a> () const</td></tr>
-<tr class="memdesc:abd8630355ef48f46c5286f232adb5993"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the number of events in the buffer.  <br /></td></tr>
-<tr class="separator:abd8630355ef48f46c5286f232adb5993"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad369ac9b7ab0251070e0075745836a40" id="r_ad369ac9b7ab0251070e0075745836a40"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad369ac9b7ab0251070e0075745836a40">saveToStorage</a> ()=0</td></tr>
-<tr class="memdesc:ad369ac9b7ab0251070e0075745836a40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves the events to storage.  <br /></td></tr>
-<tr class="separator:ad369ac9b7ab0251070e0075745836a40"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6722258e4e3df939224d07786427afc9" id="r_a6722258e4e3df939224d07786427afc9"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6722258e4e3df939224d07786427afc9">loadFromStorage</a> ()=0</td></tr>
-<tr class="memdesc:a6722258e4e3df939224d07786427afc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the events from storage.  <br /></td></tr>
-<tr class="separator:a6722258e4e3df939224d07786427afc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a741f96e4376a42712561ceca16646c1b" id="r_a741f96e4376a42712561ceca16646c1b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a741f96e4376a42712561ceca16646c1b">log_event</a> (uint8_t <a class="el" href="event__manager_8h.html#ad4291fcb880eb5ecb178b53e32f55741">group</a>, uint8_t <a class="el" href="event__manager_8h.html#aeef6900f411bc223febdd92c9435693b">event</a>)</td></tr>
+<tr class="memdesc:a741f96e4376a42712561ceca16646c1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs an event.  <br /></td></tr>
+<tr class="separator:a741f96e4376a42712561ceca16646c1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a884c7be3bfeb65337d9ee17dcca29563" id="r_a884c7be3bfeb65337d9ee17dcca29563"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_event_log.html">EventLog</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a884c7be3bfeb65337d9ee17dcca29563">get_event</a> (size_t index) const</td></tr>
+<tr class="memdesc:a884c7be3bfeb65337d9ee17dcca29563"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves an event from the event buffer.  <br /></td></tr>
+<tr class="separator:a884c7be3bfeb65337d9ee17dcca29563"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6e0ee2d88a1a08c7ffa89168b86b76f" id="r_ad6e0ee2d88a1a08c7ffa89168b86b76f"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad6e0ee2d88a1a08c7ffa89168b86b76f">get_event_count</a> () const</td></tr>
+<tr class="memdesc:ad6e0ee2d88a1a08c7ffa89168b86b76f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the number of events in the buffer.  <br /></td></tr>
+<tr class="separator:ad6e0ee2d88a1a08c7ffa89168b86b76f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ba3c824f2327911af8aabeef05392e1" id="r_a8ba3c824f2327911af8aabeef05392e1"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ba3c824f2327911af8aabeef05392e1">save_to_storage</a> ()=0</td></tr>
+<tr class="memdesc:a8ba3c824f2327911af8aabeef05392e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves the events to storage.  <br /></td></tr>
+<tr class="separator:a8ba3c824f2327911af8aabeef05392e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64a6589e4a25afff95ee6f4b4e294203" id="r_a64a6589e4a25afff95ee6f4b4e294203"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a64a6589e4a25afff95ee6f4b4e294203">load_from_storage</a> ()=0</td></tr>
+<tr class="memdesc:a64a6589e4a25afff95ee6f4b4e294203"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the events from storage.  <br /></td></tr>
+<tr class="separator:a64a6589e4a25afff95ee6f4b4e294203"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -262,31 +259,17 @@ Protected Attributes</h2></td></tr>
 <p>Loads events from storage. </p>
 
 <p class="definition">Definition at line <a class="el" href="event__manager_8h_source.html#l00122">122</a> of file <a class="el" href="event__manager_8h_source.html">event_manager.h</a>.</p>
-<div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_event_manager_ab9c4d0fbfc9cf7743eac02bee6223728_cgraph.svg" width="402" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-<div id="dynsection-3" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_event_manager_ab9c4d0fbfc9cf7743eac02bee6223728_icgraph.svg" width="436" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
 
 </div>
 </div>
-<a id="ae73a56091dc8713bb86a11abb6742a14" name="ae73a56091dc8713bb86a11abb6742a14"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae73a56091dc8713bb86a11abb6742a14">&#9670;&#160;</a></span>logEvent()</h2>
+<a id="a741f96e4376a42712561ceca16646c1b" name="a741f96e4376a42712561ceca16646c1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a741f96e4376a42712561ceca16646c1b">&#9670;&#160;</a></span>log_event()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void EventManager::logEvent </td>
+          <td class="memname">void EventManager::log_event </td>
           <td>(</td>
           <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>group</em></span>, </td>
         </tr>
@@ -312,24 +295,17 @@ Protected Attributes</h2></td></tr>
 <p>Logs the event with a timestamp, group, and event ID. Prints the event to the UART, and saves the event to storage if the buffer is full or if it's a power-related event. </p>
 
 <p class="definition">Definition at line <a class="el" href="event__manager_8cpp_source.html#l00080">80</a> of file <a class="el" href="event__manager_8cpp_source.html">event_manager.cpp</a>.</p>
-<div id="dynsection-4" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_event_manager_ae73a56091dc8713bb86a11abb6742a14_cgraph.svg" width="424" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
 
 </div>
 </div>
-<a id="a00648cfe8c39fbd59cc4c593113e5573" name="a00648cfe8c39fbd59cc4c593113e5573"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a00648cfe8c39fbd59cc4c593113e5573">&#9670;&#160;</a></span>getEvent()</h2>
+<a id="a884c7be3bfeb65337d9ee17dcca29563" name="a884c7be3bfeb65337d9ee17dcca29563"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a884c7be3bfeb65337d9ee17dcca29563">&#9670;&#160;</a></span>get_event()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="class_event_log.html">EventLog</a> &amp; EventManager::getEvent </td>
+          <td class="memname">const <a class="el" href="class_event_log.html">EventLog</a> &amp; EventManager::get_event </td>
           <td>(</td>
           <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span></td><td>)</td>
           <td> const</td>
@@ -357,8 +333,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="abd8630355ef48f46c5286f232adb5993" name="abd8630355ef48f46c5286f232adb5993"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abd8630355ef48f46c5286f232adb5993">&#9670;&#160;</a></span>getEventCount()</h2>
+<a id="ad6e0ee2d88a1a08c7ffa89168b86b76f" name="ad6e0ee2d88a1a08c7ffa89168b86b76f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6e0ee2d88a1a08c7ffa89168b86b76f">&#9670;&#160;</a></span>get_event_count()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -367,7 +343,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">size_t EventManager::getEventCount </td>
+          <td class="memname">size_t EventManager::get_event_count </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -387,8 +363,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ad369ac9b7ab0251070e0075745836a40" name="ad369ac9b7ab0251070e0075745836a40"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad369ac9b7ab0251070e0075745836a40">&#9670;&#160;</a></span>saveToStorage()</h2>
+<a id="a8ba3c824f2327911af8aabeef05392e1" name="a8ba3c824f2327911af8aabeef05392e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ba3c824f2327911af8aabeef05392e1">&#9670;&#160;</a></span>save_to_storage()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -397,7 +373,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual bool EventManager::saveToStorage </td>
+          <td class="memname">virtual bool EventManager::save_to_storage </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -413,19 +389,12 @@ Protected Attributes</h2></td></tr>
 <p>Saves the events to storage. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if the events were successfully saved, false otherwise. </dd></dl>
 
-<p>Implemented in <a class="el" href="class_event_manager_impl.html#a8bd15b8b1b4d2439740934f087d97f98">EventManagerImpl</a>.</p>
-<div id="dynsection-5" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_event_manager_ad369ac9b7ab0251070e0075745836a40_icgraph.svg" width="424" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<p>Implemented in <a class="el" href="class_event_manager_impl.html#a8b1eeaf4f4faeb0132d02a71f8c1ef3c">EventManagerImpl</a>.</p>
 
 </div>
 </div>
-<a id="a6722258e4e3df939224d07786427afc9" name="a6722258e4e3df939224d07786427afc9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6722258e4e3df939224d07786427afc9">&#9670;&#160;</a></span>loadFromStorage()</h2>
+<a id="a64a6589e4a25afff95ee6f4b4e294203" name="a64a6589e4a25afff95ee6f4b4e294203"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64a6589e4a25afff95ee6f4b4e294203">&#9670;&#160;</a></span>load_from_storage()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -434,7 +403,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual bool EventManager::loadFromStorage </td>
+          <td class="memname">virtual bool EventManager::load_from_storage </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -450,14 +419,7 @@ Protected Attributes</h2></td></tr>
 <p>Loads the events from storage. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if the events were successfully loaded, false otherwise. </dd></dl>
 
-<p>Implemented in <a class="el" href="class_event_manager_impl.html#ada54a3fd8ad03891318e203ad0a82155">EventManagerImpl</a>.</p>
-<div id="dynsection-6" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="class_event_manager_a6722258e4e3df939224d07786427afc9_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
+<p>Implemented in <a class="el" href="class_event_manager_impl.html#a325106badcbbc2acf68025ef30ccd8f0">EventManagerImpl</a>.</p>
 
 </div>
 </div>

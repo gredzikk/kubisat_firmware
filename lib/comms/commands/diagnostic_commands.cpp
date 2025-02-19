@@ -16,13 +16,13 @@
  * @ingroup DiagnosticCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 0
  */
-Frame handleListCommands(const std::string& param, OperationType operationType) {
+Frame handle_get_commands_list(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
-        return buildFrame(ExecutionResult::ERROR, 1, 0, "PARAM UNNECESSARY");
+        return frame_build(ExecutionResult::ERROR, 1, 0, "PARAM UNNECESSARY");
     }
 
     if (!(operationType == OperationType::GET)) {
-        return buildFrame(ExecutionResult::ERROR, 1, 0, "INVALID OPERATION");
+        return frame_build(ExecutionResult::ERROR, 1, 0, "INVALID OPERATION");
     }
 
     std::stringstream ss;
@@ -36,9 +36,9 @@ Frame handleListCommands(const std::string& param, OperationType operationType) 
     }
 
     std::string commandList = ss.str();
-    uartPrint(commandList, true); // Print to UART
+    uart_print(commandList, true); // Print to UART
 
-    return buildFrame(ExecutionResult::SUCCESS, 1, 0, "Commands listed on UART");
+    return frame_build(ExecutionResult::SUCCESS, 1, 0, "Commands listed on UART");
 }
 
 /**
@@ -49,14 +49,14 @@ Frame handleListCommands(const std::string& param, OperationType operationType) 
  * @ingroup DiagnosticCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 1
  */
-Frame handleGetBuildVersion(const std::string& param, OperationType operationType) {
+Frame handle_get_build_version(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
-        return buildFrame(ExecutionResult::ERROR, 1, 1, "PARAM UNECESSARY");
+        return frame_build(ExecutionResult::ERROR, 1, 1, "PARAM UNECESSARY");
     }
     if (operationType == OperationType::GET) {
-        return buildFrame(ExecutionResult::SUCCESS, 1, 1, std::to_string(BUILD_NUMBER));
+        return frame_build(ExecutionResult::SUCCESS, 1, 1, std::to_string(BUILD_NUMBER));
     }
-    return buildFrame(ExecutionResult::ERROR, 1, 1, "INVALID OPERATION");
+    return frame_build(ExecutionResult::ERROR, 1, 1, "INVALID OPERATION");
 }
 
 /**
@@ -67,30 +67,30 @@ Frame handleGetBuildVersion(const std::string& param, OperationType operationTyp
  * @ingroup DiagnosticCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 2
  */
-Frame handleEnterBootloaderMode(const std::string& param, OperationType operationType) {
+Frame handle_enter_bootloader_mode(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
-        return buildFrame(ExecutionResult::ERROR, 1, 9, "PARAM UNNECESSARY");
+        return frame_build(ExecutionResult::ERROR, 1, 9, "PARAM UNNECESSARY");
     }
 
     if (operationType != OperationType::SET) {
-        return buildFrame(ExecutionResult::ERROR, 1, 9, "INVALID OPERATION");
+        return frame_build(ExecutionResult::ERROR, 1, 9, "INVALID OPERATION");
     }
 
     // Build the success frame *before* resetting
-    Frame successFrame = buildFrame(ExecutionResult::SUCCESS, 1, 9, "REBOOT BOOTSEL");
+    Frame successFrame = frame_build(ExecutionResult::SUCCESS, 1, 9, "REBOOT BOOTSEL");
 
     // Send the success frame
-    uartPrint("Sending BOOTSEL confirmation...");
-    sendFrame(successFrame); // Assuming you have a sendFrame function
+    uart_print("Sending BOOTSEL confirmation...");
+    send_frame(successFrame); // Assuming you have a sendFrame function
 
     // Delay to ensure the frame is sent
     sleep_ms(100);
 
-    uartPrint("Entering BOOTSEL mode...");
+    uart_print("Entering BOOTSEL mode...");
     reset_usb_boot(0, 0); // Trigger BOOTSEL mode
 
     // The code will never reach here because the Pico will reset
-    return buildFrame(ExecutionResult::SUCCESS, 1, 9, "Entering BOOTSEL mode");
+    return frame_build(ExecutionResult::SUCCESS, 1, 9, "Entering BOOTSEL mode");
 }
 
 /** @} */ 

@@ -14,7 +14,7 @@ var class_b_m_e280 =
     [ "i2c_port", "class_b_m_e280.html#ac402b86b5376fcfebefad1c8cec948b2", null ],
     [ "device_addr", "class_b_m_e280.html#ae8a52ae32e8cefd398dedf8913737626", null ],
     [ "calib_params", "class_b_m_e280.html#ab61c36455871833809cff71b5fd3397f", null ],
-    [ "initialized", "class_b_m_e280.html#a34b991139b081ff5ebe7943383ac9a97", null ],
+    [ "initialized_", "class_b_m_e280.html#a98fccac5568413564c5a44d20a405f24", null ],
     [ "t_fine", "class_b_m_e280.html#ad20f44914b78395f4d4bc64f4a68b369", null ],
     [ "REG_CONFIG", "class_b_m_e280.html#a2b3d50ae8af2aea11c8ed21f1bec4ac8", null ],
     [ "REG_CTRL_MEAS", "class_b_m_e280.html#ab635154b47baca711a2b03fa7d469092", null ],

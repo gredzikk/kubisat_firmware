@@ -99,11 +99,8 @@ $(function(){initNavTree('class_d_s3231.html',''); initResizable(true); });
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_d_s3231-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">DS3231 Class Reference</div></div>
 </div><!--header-->
@@ -113,86 +110,43 @@ $(function(){initNavTree('class_d_s3231.html',''); initResizable(true); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad78b99a37b67a9912f39602d8802a358" id="r_ad78b99a37b67a9912f39602d8802a358"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad78b99a37b67a9912f39602d8802a358">DS3231</a> (i2c_inst_t *<a class="el" href="#afff19e512928fce8a6f9b50885df3732">i2c</a>, uint8_t <a class="el" href="#a220290093650973f7ba16872e33b8b96">address</a>=0x68)</td></tr>
-<tr class="separator:ad78b99a37b67a9912f39602d8802a358"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ead725bcb29001cfbf4279f249d6983" id="r_a6ead725bcb29001cfbf4279f249d6983"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ead725bcb29001cfbf4279f249d6983">setTime</a> (uint8_t sec, uint8_t min, uint8_t hour, uint8_t weekday, uint8_t day, uint8_t month, uint16_t year)</td></tr>
-<tr class="separator:a6ead725bcb29001cfbf4279f249d6983"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aedd5fa550aa8b38fabe4d44d9ba5a0af" id="r_aedd5fa550aa8b38fabe4d44d9ba5a0af"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aedd5fa550aa8b38fabe4d44d9ba5a0af">getTime</a> (uint8_t &amp;sec, uint8_t &amp;min, uint8_t &amp;hour, std::string &amp;weekday, uint8_t &amp;day, uint8_t &amp;month, uint16_t &amp;year)</td></tr>
-<tr class="separator:aedd5fa550aa8b38fabe4d44d9ba5a0af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7eb8bade221416e4035f1e7139b6154" id="r_af7eb8bade221416e4035f1e7139b6154"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7eb8bade221416e4035f1e7139b6154">getTimeString</a> ()</td></tr>
-<tr class="separator:af7eb8bade221416e4035f1e7139b6154"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a569f69050349e21823276ef29ff07a76" id="r_a569f69050349e21823276ef29ff07a76"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a569f69050349e21823276ef29ff07a76">setTimeUnix</a> (uint32_t unixTime)</td></tr>
-<tr class="separator:a569f69050349e21823276ef29ff07a76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93399e0145a53c558e316f6f95a20679" id="r_a93399e0145a53c558e316f6f95a20679"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a93399e0145a53c558e316f6f95a20679">getTimeUnix</a> ()</td></tr>
-<tr class="separator:a93399e0145a53c558e316f6f95a20679"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa19b08f3978eea489bc8af3a84d67e59" id="r_aa19b08f3978eea489bc8af3a84d67e59"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_date_time.html">DateTime</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa19b08f3978eea489bc8af3a84d67e59">getDateTime</a> ()</td></tr>
-<tr class="separator:aa19b08f3978eea489bc8af3a84d67e59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5680bedcb5cd48da26a4c0afcddb830" id="r_ac5680bedcb5cd48da26a4c0afcddb830"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5680bedcb5cd48da26a4c0afcddb830">getTimeInteger</a> ()</td></tr>
-<tr class="separator:ac5680bedcb5cd48da26a4c0afcddb830"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36868c55914308805cd333742bb2ee20" id="r_a36868c55914308805cd333742bb2ee20"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36868c55914308805cd333742bb2ee20">setTimezoneOffset</a> (int16_t offsetMinutes)</td></tr>
-<tr class="separator:a36868c55914308805cd333742bb2ee20"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb09486c2788bfc7773295e6af83cb21" id="r_afb09486c2788bfc7773295e6af83cb21"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb09486c2788bfc7773295e6af83cb21">getTimezoneOffset</a> () const</td></tr>
-<tr class="separator:afb09486c2788bfc7773295e6af83cb21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad95e3e60f1d82c37e7c03fac84249bc6" id="r_ad95e3e60f1d82c37e7c03fac84249bc6"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad95e3e60f1d82c37e7c03fac84249bc6">getTimeUnixLocal</a> ()</td></tr>
-<tr class="separator:ad95e3e60f1d82c37e7c03fac84249bc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b893299918613d8fb3521793b848d6d" id="r_a4b893299918613d8fb3521793b848d6d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_date_time.html">DateTime</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b893299918613d8fb3521793b848d6d">getDateTimeLocal</a> ()</td></tr>
-<tr class="separator:a4b893299918613d8fb3521793b848d6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f052be5b03cb0c5fea045f49b770cc8" id="r_a2f052be5b03cb0c5fea045f49b770cc8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f052be5b03cb0c5fea045f49b770cc8">setClockSyncInterval</a> (uint32_t intervalSeconds)</td></tr>
-<tr class="separator:a2f052be5b03cb0c5fea045f49b770cc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82a03a071b6b21c5271d9856f7c9396e" id="r_a82a03a071b6b21c5271d9856f7c9396e"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a82a03a071b6b21c5271d9856f7c9396e">getClockSyncInterval</a> () const</td></tr>
-<tr class="separator:a82a03a071b6b21c5271d9856f7c9396e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a902d42a635136368ad7987d7d6d84f19" id="r_a902d42a635136368ad7987d7d6d84f19"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a902d42a635136368ad7987d7d6d84f19">setLastSyncTime</a> (uint32_t unixTime)</td></tr>
-<tr class="separator:a902d42a635136368ad7987d7d6d84f19"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a564eaf6a11ee0f1a8c8aad30cd49af6f" id="r_a564eaf6a11ee0f1a8c8aad30cd49af6f"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a564eaf6a11ee0f1a8c8aad30cd49af6f">getLastSyncTime</a> () const</td></tr>
-<tr class="separator:a564eaf6a11ee0f1a8c8aad30cd49af6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
-Static Public Attributes</h2></td></tr>
-<tr class="memitem:aaecfb4d1dafaed2f892bf579aadbd7a3" id="r_aaecfb4d1dafaed2f892bf579aadbd7a3"><td class="memItemLeft" align="right" valign="top">static const std::array&lt; std::string, 7 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaecfb4d1dafaed2f892bf579aadbd7a3">WEEKDAYS</a></td></tr>
-<tr class="separator:aaecfb4d1dafaed2f892bf579aadbd7a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc7723eadd86cc5f66c93066affbbeb7" id="r_acc7723eadd86cc5f66c93066affbbeb7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acc7723eadd86cc5f66c93066affbbeb7">DS3231</a> (i2c_inst_t *<a class="el" href="#afff19e512928fce8a6f9b50885df3732">i2c</a>)</td></tr>
+<tr class="separator:acc7723eadd86cc5f66c93066affbbeb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af68ef517aa7ff25393490211abc99fa8" id="r_af68ef517aa7ff25393490211abc99fa8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af68ef517aa7ff25393490211abc99fa8">set_time</a> (<a class="el" href="structds3231__data__t.html">ds3231_data_t</a> *data)</td></tr>
+<tr class="separator:af68ef517aa7ff25393490211abc99fa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5a93c1afc0e44f96e08ce99258c5228" id="r_ad5a93c1afc0e44f96e08ce99258c5228"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad5a93c1afc0e44f96e08ce99258c5228">get_time</a> (<a class="el" href="structds3231__data__t.html">ds3231_data_t</a> *data)</td></tr>
+<tr class="separator:ad5a93c1afc0e44f96e08ce99258c5228"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6668a479f66d288ae22f22a48b90327d" id="r_a6668a479f66d288ae22f22a48b90327d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6668a479f66d288ae22f22a48b90327d">read_temperature</a> (float *resolution)</td></tr>
+<tr class="separator:a6668a479f66d288ae22f22a48b90327d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a389e756fdd8f645d6025906bbce5abd8" id="r_a389e756fdd8f645d6025906bbce5abd8"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a389e756fdd8f645d6025906bbce5abd8">bcd2bin</a> (uint8_t val)</td></tr>
-<tr class="separator:a389e756fdd8f645d6025906bbce5abd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41f5aabf74e5a66093116999648806ab" id="r_a41f5aabf74e5a66093116999648806ab"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a41f5aabf74e5a66093116999648806ab">bin2bcd</a> (uint8_t val)</td></tr>
-<tr class="separator:a41f5aabf74e5a66093116999648806ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada371a466a46dd550e6eded5217627b5" id="r_ada371a466a46dd550e6eded5217627b5"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada371a466a46dd550e6eded5217627b5">preZero</a> (uint8_t val)</td></tr>
-<tr class="separator:ada371a466a46dd550e6eded5217627b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:accd8b405f5d30b7b26bb2ca4d84a8fa8" id="r_accd8b405f5d30b7b26bb2ca4d84a8fa8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_date_time.html">DateTime</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#accd8b405f5d30b7b26bb2ca4d84a8fa8">applyTimezone</a> (const <a class="el" href="struct_date_time.html">DateTime</a> &amp;utc, int16_t offsetMinutes)</td></tr>
-<tr class="separator:accd8b405f5d30b7b26bb2ca4d84a8fa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
-Static Private Member Functions</h2></td></tr>
-<tr class="memitem:ae6c4f2144a772c44f7adbace7f86dfa1" id="r_ae6c4f2144a772c44f7adbace7f86dfa1"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6c4f2144a772c44f7adbace7f86dfa1">dateTimeToUnix</a> (const <a class="el" href="struct_date_time.html">DateTime</a> &amp;dt)</td></tr>
-<tr class="separator:ae6c4f2144a772c44f7adbace7f86dfa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40a965b965496e5b0e7758040c5d9ce7" id="r_a40a965b965496e5b0e7758040c5d9ce7"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_date_time.html">DateTime</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a40a965b965496e5b0e7758040c5d9ce7">unixToDateTime</a> (uint32_t unixTime)</td></tr>
-<tr class="separator:a40a965b965496e5b0e7758040c5d9ce7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8ad05d783b0b67f10e8726863ff4891" id="r_aa8ad05d783b0b67f10e8726863ff4891"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8ad05d783b0b67f10e8726863ff4891">bin_to_bcd</a> (const uint8_t data)</td></tr>
+<tr class="memdesc:aa8ad05d783b0b67f10e8726863ff4891"><td class="mdescLeft">&#160;</td><td class="mdescRight">Library function that takes an 8 bit unsigned integer and converts into Binary Coded Decimal number that can be written to <a class="el" href="class_d_s3231.html">DS3231</a> registers.  <br /></td></tr>
+<tr class="separator:aa8ad05d783b0b67f10e8726863ff4891"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7a9f58b408406930da56317de9f2a34" id="r_ac7a9f58b408406930da56317de9f2a34"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7a9f58b408406930da56317de9f2a34">bcd_to_bin</a> (const uint8_t bcd)</td></tr>
+<tr class="memdesc:ac7a9f58b408406930da56317de9f2a34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Library function that takes a BCD number and converts it to an unsigned 8 bit integer.  <br /></td></tr>
+<tr class="separator:ac7a9f58b408406930da56317de9f2a34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fa69b2c58e800b2a06e4966ca21b59c" id="r_a2fa69b2c58e800b2a06e4966ca21b59c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2fa69b2c58e800b2a06e4966ca21b59c">i2c_write_reg</a> (uint8_t reg_addr, size_t length, uint8_t *data)</td></tr>
+<tr class="memdesc:a2fa69b2c58e800b2a06e4966ca21b59c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Library function to write to a specific I2C register adress.  <br /></td></tr>
+<tr class="separator:a2fa69b2c58e800b2a06e4966ca21b59c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3895581e62c411451d12de3e7558207" id="r_ae3895581e62c411451d12de3e7558207"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3895581e62c411451d12de3e7558207">i2c_read_reg</a> (uint8_t reg_addr, size_t length, uint8_t *data)</td></tr>
+<tr class="memdesc:ae3895581e62c411451d12de3e7558207"><td class="mdescLeft">&#160;</td><td class="mdescRight">Library function to read a specific I2C register adress.  <br /></td></tr>
+<tr class="separator:ae3895581e62c411451d12de3e7558207"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:afff19e512928fce8a6f9b50885df3732" id="r_afff19e512928fce8a6f9b50885df3732"><td class="memItemLeft" align="right" valign="top">i2c_inst_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afff19e512928fce8a6f9b50885df3732">i2c</a></td></tr>
 <tr class="separator:afff19e512928fce8a6f9b50885df3732"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a220290093650973f7ba16872e33b8b96" id="r_a220290093650973f7ba16872e33b8b96"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a220290093650973f7ba16872e33b8b96">address</a></td></tr>
-<tr class="separator:a220290093650973f7ba16872e33b8b96"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a330fb98438d9762df3d7da7ed2f38d25" id="r_a330fb98438d9762df3d7da7ed2f38d25"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a330fb98438d9762df3d7da7ed2f38d25">timezoneOffset</a> = 0</td></tr>
-<tr class="separator:a330fb98438d9762df3d7da7ed2f38d25"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a30fcf3e2d4b9c4951129ac09c1ce4c" id="r_a1a30fcf3e2d4b9c4951129ac09c1ce4c"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1a30fcf3e2d4b9c4951129ac09c1ce4c">syncInterval</a> = 86400</td></tr>
-<tr class="separator:a1a30fcf3e2d4b9c4951129ac09c1ce4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab05e9cb92a0de071fc81a3d8e6488b73" id="r_ab05e9cb92a0de071fc81a3d8e6488b73"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab05e9cb92a0de071fc81a3d8e6488b73">lastSyncTime</a> = 0</td></tr>
-<tr class="separator:ab05e9cb92a0de071fc81a3d8e6488b73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:af87c9b9232490e63de80b4e4c8aec81f" id="r_af87c9b9232490e63de80b4e4c8aec81f"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af87c9b9232490e63de80b4e4c8aec81f">RTC_REGISTER</a> = 0x00</td></tr>
-<tr class="separator:af87c9b9232490e63de80b4e4c8aec81f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6759d5d4e1ac0d12ab09016a42931aaf" id="r_a6759d5d4e1ac0d12ab09016a42931aaf"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6759d5d4e1ac0d12ab09016a42931aaf">ds3231_addr</a></td></tr>
+<tr class="separator:a6759d5d4e1ac0d12ab09016a42931aaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00019">19</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00052">52</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ad78b99a37b67a9912f39602d8802a358" name="ad78b99a37b67a9912f39602d8802a358"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad78b99a37b67a9912f39602d8802a358">&#9670;&#160;</a></span>DS3231()</h2>
+<a id="acc7723eadd86cc5f66c93066affbbeb7" name="acc7723eadd86cc5f66c93066affbbeb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc7723eadd86cc5f66c93066affbbeb7">&#9670;&#160;</a></span>DS3231()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -200,291 +154,195 @@ Static Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">DS3231::DS3231 </td>
           <td>(</td>
-          <td class="paramtype">i2c_inst_t *</td>          <td class="paramname"><span class="paramname"><em>i2c</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">i2c_inst_t *</td>          <td class="paramname"><span class="paramname"><em>i2c</em></span></td><td>)</td>
           <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>address</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0x68</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00010">10</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00003">3</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a6ead725bcb29001cfbf4279f249d6983" name="a6ead725bcb29001cfbf4279f249d6983"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6ead725bcb29001cfbf4279f249d6983">&#9670;&#160;</a></span>setTime()</h2>
+<a id="af68ef517aa7ff25393490211abc99fa8" name="af68ef517aa7ff25393490211abc99fa8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af68ef517aa7ff25393490211abc99fa8">&#9670;&#160;</a></span>set_time()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool DS3231::setTime </td>
+          <td class="memname">int DS3231::set_time </td>
           <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>sec</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"><a class="el" href="structds3231__data__t.html">ds3231_data_t</a> *</td>          <td class="paramname"><span class="paramname"><em>data</em></span></td><td>)</td>
           <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>min</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>hour</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>weekday</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>day</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>month</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>year</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00013">13</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
-<div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_a6ead725bcb29001cfbf4279f249d6983_cgraph.svg" width="304" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-<div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_a6ead725bcb29001cfbf4279f249d6983_icgraph.svg" width="332" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00005">5</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
 
 </div>
 </div>
-<a id="aedd5fa550aa8b38fabe4d44d9ba5a0af" name="aedd5fa550aa8b38fabe4d44d9ba5a0af"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aedd5fa550aa8b38fabe4d44d9ba5a0af">&#9670;&#160;</a></span>getTime()</h2>
+<a id="ad5a93c1afc0e44f96e08ce99258c5228" name="ad5a93c1afc0e44f96e08ce99258c5228"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5a93c1afc0e44f96e08ce99258c5228">&#9670;&#160;</a></span>get_time()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool DS3231::getTime </td>
+          <td class="memname">int DS3231::get_time </td>
           <td>(</td>
-          <td class="paramtype">uint8_t &amp;</td>          <td class="paramname"><span class="paramname"><em>sec</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"><a class="el" href="structds3231__data__t.html">ds3231_data_t</a> *</td>          <td class="paramname"><span class="paramname"><em>data</em></span></td><td>)</td>
           <td></td>
-          <td class="paramtype">uint8_t &amp;</td>          <td class="paramname"><span class="paramname"><em>min</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t &amp;</td>          <td class="paramname"><span class="paramname"><em>hour</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>weekday</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t &amp;</td>          <td class="paramname"><span class="paramname"><em>day</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t &amp;</td>          <td class="paramname"><span class="paramname"><em>month</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint16_t &amp;</td>          <td class="paramname"><span class="paramname"><em>year</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00033">33</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
-<div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_aedd5fa550aa8b38fabe4d44d9ba5a0af_cgraph.svg" width="304" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-<div id="dynsection-3" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_aedd5fa550aa8b38fabe4d44d9ba5a0af_icgraph.svg" width="340" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00056">56</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
 
 </div>
 </div>
-<a id="af7eb8bade221416e4035f1e7139b6154" name="af7eb8bade221416e4035f1e7139b6154"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af7eb8bade221416e4035f1e7139b6154">&#9670;&#160;</a></span>getTimeString()</h2>
+<a id="a6668a479f66d288ae22f22a48b90327d" name="a6668a479f66d288ae22f22a48b90327d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6668a479f66d288ae22f22a48b90327d">&#9670;&#160;</a></span>read_temperature()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string DS3231::getTimeString </td>
+          <td class="memname">int DS3231::read_temperature </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">float *</td>          <td class="paramname"><span class="paramname"><em>resolution</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00057">57</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
-<div id="dynsection-4" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_af7eb8bade221416e4035f1e7139b6154_cgraph.svg" width="510" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00073">73</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a569f69050349e21823276ef29ff07a76" name="a569f69050349e21823276ef29ff07a76"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a569f69050349e21823276ef29ff07a76">&#9670;&#160;</a></span>setTimeUnix()</h2>
+<a id="aa8ad05d783b0b67f10e8726863ff4891" name="aa8ad05d783b0b67f10e8726863ff4891"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8ad05d783b0b67f10e8726863ff4891">&#9670;&#160;</a></span>bin_to_bcd()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool DS3231::setTimeUnix </td>
+          <td class="memname">uint8_t DS3231::bin_to_bcd </td>
           <td>(</td>
-          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>unixTime</em></span></td><td>)</td>
+          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>data</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00094">94</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
-<div id="dynsection-5" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_a569f69050349e21823276ef29ff07a76_cgraph.svg" width="550" height="114"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<p>Library function that takes an 8 bit unsigned integer and converts into Binary Coded Decimal number that can be written to <a class="el" href="class_d_s3231.html">DS3231</a> registers. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>Number to be converted. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Number in BCD form. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00131">131</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a93399e0145a53c558e316f6f95a20679" name="a93399e0145a53c558e316f6f95a20679"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a93399e0145a53c558e316f6f95a20679">&#9670;&#160;</a></span>getTimeUnix()</h2>
+<a id="ac7a9f58b408406930da56317de9f2a34" name="ac7a9f58b408406930da56317de9f2a34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7a9f58b408406930da56317de9f2a34">&#9670;&#160;</a></span>bcd_to_bin()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint32_t DS3231::getTimeUnix </td>
+          <td class="memname">uint8_t DS3231::bcd_to_bin </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>bcd</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00106">106</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
-<div id="dynsection-6" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_a93399e0145a53c558e316f6f95a20679_cgraph.svg" width="550" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-<div id="dynsection-7" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_a93399e0145a53c558e316f6f95a20679_icgraph.svg" width="391" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<p>Library function that takes a BCD number and converts it to an unsigned 8 bit integer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">bcd</td><td>BCD number to be converted. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Unsigned 8 bit integer. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00143">143</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
 
 </div>
 </div>
-<a id="aa19b08f3978eea489bc8af3a84d67e59" name="aa19b08f3978eea489bc8af3a84d67e59"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa19b08f3978eea489bc8af3a84d67e59">&#9670;&#160;</a></span>getDateTime()</h2>
+<a id="a2fa69b2c58e800b2a06e4966ca21b59c" name="a2fa69b2c58e800b2a06e4966ca21b59c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fa69b2c58e800b2a06e4966ca21b59c">&#9670;&#160;</a></span>i2c_write_reg()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_date_time.html">DateTime</a> DS3231::getDateTime </td>
+          <td class="memname">int DS3231::i2c_write_reg </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>reg_addr</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>length</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>&#160;)</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+
+<p>Library function to write to a specific I2C register adress. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">reg_addr</td><td>Register adress to be written. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">length</td><td>Length of the data to be written in bytes. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>Pointer to the data buffer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 if succesful, -1 if i2c failure. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00111">111</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
-<div id="dynsection-8" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_aa19b08f3978eea489bc8af3a84d67e59_cgraph.svg" width="332" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-<div id="dynsection-9" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_aa19b08f3978eea489bc8af3a84d67e59_icgraph.svg" width="622" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
 
 </div>
 </div>
-<a id="ac5680bedcb5cd48da26a4c0afcddb830" name="ac5680bedcb5cd48da26a4c0afcddb830"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac5680bedcb5cd48da26a4c0afcddb830">&#9670;&#160;</a></span>getTimeInteger()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint64_t DS3231::getTimeInteger </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00135">135</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
-<div id="dynsection-10" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-10-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_ac5680bedcb5cd48da26a4c0afcddb830_cgraph.svg" width="543" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
-</div>
-</div>
-<a id="a36868c55914308805cd333742bb2ee20" name="a36868c55914308805cd333742bb2ee20"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a36868c55914308805cd333742bb2ee20">&#9670;&#160;</a></span>setTimezoneOffset()</h2>
+<a id="ae3895581e62c411451d12de3e7558207" name="ae3895581e62c411451d12de3e7558207"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3895581e62c411451d12de3e7558207">&#9670;&#160;</a></span>i2c_read_reg()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -493,391 +351,19 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void DS3231::setTimezoneOffset </td>
+          <td class="memname">int DS3231::i2c_read_reg </td>
           <td>(</td>
-          <td class="paramtype">int16_t</td>          <td class="paramname"><span class="paramname"><em>offsetMinutes</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00040">40</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
-
-</div>
-</div>
-<a id="afb09486c2788bfc7773295e6af83cb21" name="afb09486c2788bfc7773295e6af83cb21"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb09486c2788bfc7773295e6af83cb21">&#9670;&#160;</a></span>getTimezoneOffset()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int16_t DS3231::getTimezoneOffset </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00041">41</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
-
-</div>
-</div>
-<a id="ad95e3e60f1d82c37e7c03fac84249bc6" name="ad95e3e60f1d82c37e7c03fac84249bc6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad95e3e60f1d82c37e7c03fac84249bc6">&#9670;&#160;</a></span>getTimeUnixLocal()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint32_t DS3231::getTimeUnixLocal </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00172">172</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
-<div id="dynsection-11" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-11-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="class_d_s3231_ad95e3e60f1d82c37e7c03fac84249bc6_cgraph.svg" width="100%" height="366"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-
-</div>
-</div>
-<a id="a4b893299918613d8fb3521793b848d6d" name="a4b893299918613d8fb3521793b848d6d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4b893299918613d8fb3521793b848d6d">&#9670;&#160;</a></span>getDateTimeLocal()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_date_time.html">DateTime</a> DS3231::getDateTimeLocal </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00177">177</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
-<div id="dynsection-12" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-12-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_a4b893299918613d8fb3521793b848d6d_cgraph.svg" width="626" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
-</div>
-</div>
-<a id="a2f052be5b03cb0c5fea045f49b770cc8" name="a2f052be5b03cb0c5fea045f49b770cc8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2f052be5b03cb0c5fea045f49b770cc8">&#9670;&#160;</a></span>setClockSyncInterval()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void DS3231::setClockSyncInterval </td>
-          <td>(</td>
-          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>intervalSeconds</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00046">46</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
-
-</div>
-</div>
-<a id="a82a03a071b6b21c5271d9856f7c9396e" name="a82a03a071b6b21c5271d9856f7c9396e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a82a03a071b6b21c5271d9856f7c9396e">&#9670;&#160;</a></span>getClockSyncInterval()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint32_t DS3231::getClockSyncInterval </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00047">47</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
-
-</div>
-</div>
-<a id="a902d42a635136368ad7987d7d6d84f19" name="a902d42a635136368ad7987d7d6d84f19"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a902d42a635136368ad7987d7d6d84f19">&#9670;&#160;</a></span>setLastSyncTime()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void DS3231::setLastSyncTime </td>
-          <td>(</td>
-          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>unixTime</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00049">49</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
-
-</div>
-</div>
-<a id="a564eaf6a11ee0f1a8c8aad30cd49af6f" name="a564eaf6a11ee0f1a8c8aad30cd49af6f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a564eaf6a11ee0f1a8c8aad30cd49af6f">&#9670;&#160;</a></span>getLastSyncTime()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint32_t DS3231::getLastSyncTime </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00050">50</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
-
-</div>
-</div>
-<a id="a389e756fdd8f645d6025906bbce5abd8" name="a389e756fdd8f645d6025906bbce5abd8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a389e756fdd8f645d6025906bbce5abd8">&#9670;&#160;</a></span>bcd2bin()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t DS3231::bcd2bin </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>val</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00079">79</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
-<div id="dynsection-13" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-13-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="class_d_s3231_a389e756fdd8f645d6025906bbce5abd8_icgraph.svg" width="100%" height="442"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-
-</div>
-</div>
-<a id="a41f5aabf74e5a66093116999648806ab" name="a41f5aabf74e5a66093116999648806ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a41f5aabf74e5a66093116999648806ab">&#9670;&#160;</a></span>bin2bcd()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t DS3231::bin2bcd </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>val</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00083">83</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
-<div id="dynsection-14" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-14-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_a41f5aabf74e5a66093116999648806ab_icgraph.svg" width="502" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
-</div>
-</div>
-<a id="ada371a466a46dd550e6eded5217627b5" name="ada371a466a46dd550e6eded5217627b5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ada371a466a46dd550e6eded5217627b5">&#9670;&#160;</a></span>preZero()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string DS3231::preZero </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>val</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00087">87</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
-
-</div>
-</div>
-<a id="ae6c4f2144a772c44f7adbace7f86dfa1" name="ae6c4f2144a772c44f7adbace7f86dfa1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae6c4f2144a772c44f7adbace7f86dfa1">&#9670;&#160;</a></span>dateTimeToUnix()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint32_t DS3231::dateTimeToUnix </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="struct_date_time.html">DateTime</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>dt</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00145">145</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
-<div id="dynsection-15" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-15-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-15-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_ae6c4f2144a772c44f7adbace7f86dfa1_icgraph.svg" width="626" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
-</div>
-</div>
-<a id="a40a965b965496e5b0e7758040c5d9ce7" name="a40a965b965496e5b0e7758040c5d9ce7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a40a965b965496e5b0e7758040c5d9ce7">&#9670;&#160;</a></span>unixToDateTime()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_date_time.html">DateTime</a> DS3231::unixToDateTime </td>
-          <td>(</td>
-          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>unixTime</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00156">156</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
-<div id="dynsection-16" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-16-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-16-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_a40a965b965496e5b0e7758040c5d9ce7_icgraph.svg" width="626" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
-</div>
-</div>
-<a id="accd8b405f5d30b7b26bb2ca4d84a8fa8" name="accd8b405f5d30b7b26bb2ca4d84a8fa8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#accd8b405f5d30b7b26bb2ca4d84a8fa8">&#9670;&#160;</a></span>applyTimezone()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_date_time.html">DateTime</a> DS3231::applyTimezone </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="struct_date_time.html">DateTime</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>utc</em></span>, </td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>reg_addr</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int16_t</td>          <td class="paramname"><span class="paramname"><em>offsetMinutes</em></span>&#160;)</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>length</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -887,52 +373,22 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00182">182</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
-<div id="dynsection-17" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-17-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-17-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-17-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_accd8b405f5d30b7b26bb2ca4d84a8fa8_cgraph.svg" width="395" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-<div id="dynsection-18" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-18-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-18-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-18-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_d_s3231_accd8b405f5d30b7b26bb2ca4d84a8fa8_icgraph.svg" width="406" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<p>Library function to read a specific I2C register adress. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">reg_addr</td><td>Register adress to be read. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">length</td><td>length of the data in bytes to be read. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">data</td><td>Buffer to store the read data. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 if succesful, -1 if i2c failure. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_d_s3231_8cpp_source.html#l00090">90</a> of file <a class="el" href="_d_s3231_8cpp_source.html">DS3231.cpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="aaecfb4d1dafaed2f892bf579aadbd7a3" name="aaecfb4d1dafaed2f892bf579aadbd7a3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaecfb4d1dafaed2f892bf579aadbd7a3">&#9670;&#160;</a></span>WEEKDAYS</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const std::array&lt; std::string, 7 &gt; DS3231::WEEKDAYS</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    <span class="stringliteral">&quot;SUN&quot;</span>, <span class="stringliteral">&quot;MON&quot;</span>, <span class="stringliteral">&quot;TUE&quot;</span>, <span class="stringliteral">&quot;WED&quot;</span>, <span class="stringliteral">&quot;THU&quot;</span>, <span class="stringliteral">&quot;FRI&quot;</span>, <span class="stringliteral">&quot;SAT&quot;</span></div>
-<div class="line">}</div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00006">6</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
-
-</div>
-</div>
 <a id="afff19e512928fce8a6f9b50885df3732" name="afff19e512928fce8a6f9b50885df3732"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afff19e512928fce8a6f9b50885df3732">&#9670;&#160;</a></span>i2c</h2>
 
@@ -953,127 +409,31 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00054">54</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
-
-</div>
-</div>
-<a id="a220290093650973f7ba16872e33b8b96" name="a220290093650973f7ba16872e33b8b96"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a220290093650973f7ba16872e33b8b96">&#9670;&#160;</a></span>address</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t DS3231::address</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00055">55</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
-
-</div>
-</div>
-<a id="af87c9b9232490e63de80b4e4c8aec81f" name="af87c9b9232490e63de80b4e4c8aec81f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af87c9b9232490e63de80b4e4c8aec81f">&#9670;&#160;</a></span>RTC_REGISTER</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t DS3231::RTC_REGISTER = 0x00</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00056">56</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
-
-</div>
-</div>
-<a id="a330fb98438d9762df3d7da7ed2f38d25" name="a330fb98438d9762df3d7da7ed2f38d25"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a330fb98438d9762df3d7da7ed2f38d25">&#9670;&#160;</a></span>timezoneOffset</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int16_t DS3231::timezoneOffset = 0</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00058">58</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
-
-</div>
-</div>
-<a id="a1a30fcf3e2d4b9c4951129ac09c1ce4c" name="a1a30fcf3e2d4b9c4951129ac09c1ce4c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1a30fcf3e2d4b9c4951129ac09c1ce4c">&#9670;&#160;</a></span>syncInterval</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint32_t DS3231::syncInterval = 86400</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00059">59</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
-
-</div>
-</div>
-<a id="ab05e9cb92a0de071fc81a3d8e6488b73" name="ab05e9cb92a0de071fc81a3d8e6488b73"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab05e9cb92a0de071fc81a3d8e6488b73">&#9670;&#160;</a></span>lastSyncTime</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint32_t DS3231::lastSyncTime = 0</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 <p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00060">60</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
+
+</div>
+</div>
+<a id="a6759d5d4e1ac0d12ab09016a42931aaf" name="a6759d5d4e1ac0d12ab09016a42931aaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6759d5d4e1ac0d12ab09016a42931aaf">&#9670;&#160;</a></span>ds3231_addr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DS3231::ds3231_addr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00061">61</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
 
 </div>
 </div>

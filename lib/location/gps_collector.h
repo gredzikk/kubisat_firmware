@@ -7,6 +7,6 @@
 #include "pin_config.h"
 
 // Function to collect GPS data from the UART
-void collectGPSData();
+void collect_gps_data();
 
 #endif

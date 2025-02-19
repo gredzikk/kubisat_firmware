@@ -24,7 +24,7 @@ public:
   int beginPacket(int implicitHeader = false);
   int endPacket(bool async = false);
 
-  int parsePacket(int size = 0);
+  int parse_packet(int size = 0);
   int packetRssi();
   float packetSnr();
   long packetFrequencyError();
@@ -75,7 +75,7 @@ public:
 
   uint8_t random();
 
-  void setPins(int ss = LORA_DEFAULT_SS_PIN, int reset = LORA_DEFAULT_RESET_PIN, int dio0 = LORA_DEFAULT_DIO0_PIN);
+  void set_pins(int ss = LORA_DEFAULT_SS_PIN, int reset = LORA_DEFAULT_RESET_PIN, int dio0 = LORA_DEFAULT_DIO0_PIN);
   void setSPI(spi_inst_t &spi);
   void setSPIFrequency(uint32_t frequency);
 

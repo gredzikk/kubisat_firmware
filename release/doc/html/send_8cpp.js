@@ -1,6 +1,6 @@
 var send_8cpp =
 [
-    [ "sendMessage", "send_8cpp.html#adcc720dc971ce8b237b26df434b65bb2", null ],
-    [ "sendFrame", "send_8cpp.html#a752e7cc27f52d4ba064e691b3e240ed8", null ],
-    [ "sendLargePacket", "send_8cpp.html#a252a4ea5f222c6879d281cc2f9357b46", null ]
+    [ "send_message", "send_8cpp.html#a42881e6476e0ce51ee9f6a99a7318d3b", null ],
+    [ "send_frame", "send_8cpp.html#ae6c6f3b673e7e83306da7ea2458d3241", null ],
+    [ "split_and_send_message", "send_8cpp.html#a207fb10d443babe78967d28c7565234a", null ]
 ];

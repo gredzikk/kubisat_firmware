@@ -98,7 +98,10 @@ $(function(){initNavTree('_d_s3231_8h.html',''); initResizable(true); });
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle"><div class="title">DS3231.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -106,30 +109,315 @@ $(function(){initNavTree('_d_s3231_8h.html',''); initResizable(true); });
 <code>#include &lt;array&gt;</code><br />
 <code>#include &quot;pico/stdlib.h&quot;</code><br />
 <code>#include &quot;hardware/i2c.h&quot;</code><br />
-</div><div class="textblock"><div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for DS3231.h:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_d_s3231_8h__incl.svg" width="384" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-</div><div class="textblock"><div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> This graph shows which files directly or indirectly include this file:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="_d_s3231_8h__dep__incl.svg" width="100%" height="452"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
 </div>
 <p><a href="_d_s3231_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_date_time.html">DateTime</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structds3231__t.html">ds3231_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structds3231__data__t.html">ds3231_data_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_s3231.html">DS3231</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a68499515579b64a93102faa8aa3bc7da" id="r_a68499515579b64a93102faa8aa3bc7da"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a68499515579b64a93102faa8aa3bc7da">DS3231_DEVICE_ADRESS</a>&#160;&#160;&#160;0x68</td></tr>
+<tr class="separator:a68499515579b64a93102faa8aa3bc7da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1d8c4ccb0fb45cde5f740f85acc2376" id="r_ad1d8c4ccb0fb45cde5f740f85acc2376"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1d8c4ccb0fb45cde5f740f85acc2376">DS3231_SECONDS_REG</a>&#160;&#160;&#160;0x00</td></tr>
+<tr class="separator:ad1d8c4ccb0fb45cde5f740f85acc2376"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa9542dce591fec31304bca747996a88" id="r_afa9542dce591fec31304bca747996a88"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afa9542dce591fec31304bca747996a88">DS3231_MINUTES_REG</a>&#160;&#160;&#160;0x01</td></tr>
+<tr class="separator:afa9542dce591fec31304bca747996a88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6459da6987e8010be8ce2c0d9e47acce" id="r_a6459da6987e8010be8ce2c0d9e47acce"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6459da6987e8010be8ce2c0d9e47acce">DS3231_HOURS_REG</a>&#160;&#160;&#160;0x02</td></tr>
+<tr class="separator:a6459da6987e8010be8ce2c0d9e47acce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfe453f0f7d014cf606528d23d3f2b23" id="r_abfe453f0f7d014cf606528d23d3f2b23"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abfe453f0f7d014cf606528d23d3f2b23">DS3231_DAY_REG</a>&#160;&#160;&#160;0x03</td></tr>
+<tr class="separator:abfe453f0f7d014cf606528d23d3f2b23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa92ca9692b253c1180a624259c4361b9" id="r_aa92ca9692b253c1180a624259c4361b9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa92ca9692b253c1180a624259c4361b9">DS3231_DATE_REG</a>&#160;&#160;&#160;0x04</td></tr>
+<tr class="separator:aa92ca9692b253c1180a624259c4361b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad135cbb06dd36b5fa19397fc384b73c2" id="r_ad135cbb06dd36b5fa19397fc384b73c2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad135cbb06dd36b5fa19397fc384b73c2">DS3231_MONTH_REG</a>&#160;&#160;&#160;0x05</td></tr>
+<tr class="separator:ad135cbb06dd36b5fa19397fc384b73c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac650b8a133089c55a42c898cbe11b9da" id="r_ac650b8a133089c55a42c898cbe11b9da"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac650b8a133089c55a42c898cbe11b9da">DS3231_YEAR_REG</a>&#160;&#160;&#160;0x06</td></tr>
+<tr class="separator:ac650b8a133089c55a42c898cbe11b9da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7fbaf06d8602bc887e63624a2ac53a3" id="r_ad7fbaf06d8602bc887e63624a2ac53a3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7fbaf06d8602bc887e63624a2ac53a3">DS3231_CONTROL_REG</a>&#160;&#160;&#160;0x0E</td></tr>
+<tr class="separator:ad7fbaf06d8602bc887e63624a2ac53a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53a5c42970982dc1b206ab3d89b66d7f" id="r_a53a5c42970982dc1b206ab3d89b66d7f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a53a5c42970982dc1b206ab3d89b66d7f">DS3231_CONTROL_STATUS_REG</a>&#160;&#160;&#160;0x0F</td></tr>
+<tr class="separator:a53a5c42970982dc1b206ab3d89b66d7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a060f7761a61d71f62686737ee757c761" id="r_a060f7761a61d71f62686737ee757c761"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a060f7761a61d71f62686737ee757c761">DS3231_TEMPERATURE_MSB_REG</a>&#160;&#160;&#160;0x11</td></tr>
+<tr class="separator:a060f7761a61d71f62686737ee757c761"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca79e38f1e1fb739c15aa78131014e18" id="r_aca79e38f1e1fb739c15aa78131014e18"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca79e38f1e1fb739c15aa78131014e18">DS3231_TEMPERATURE_LSB_REG</a>&#160;&#160;&#160;0x12</td></tr>
+<tr class="separator:aca79e38f1e1fb739c15aa78131014e18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a6fe5dac69ce312f38dd11e57c40d80c4" id="r_a6fe5dac69ce312f38dd11e57c40d80c4"><td class="memItemLeft" align="right" valign="top">typedef struct ds3231_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6fe5dac69ce312f38dd11e57c40d80c4">ds3231_t</a></td></tr>
+<tr class="separator:a6fe5dac69ce312f38dd11e57c40d80c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4da45e4018de364d6d526e46679548e0" id="r_a4da45e4018de364d6d526e46679548e0"><td class="memItemLeft" align="right" valign="top">typedef struct ds3231_data_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4da45e4018de364d6d526e46679548e0">ds3231_data_t</a></td></tr>
+<tr class="separator:a4da45e4018de364d6d526e46679548e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:aa6c7328ce7a3193e4084941d6141904f" id="r_aa6c7328ce7a3193e4084941d6141904f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa6c7328ce7a3193e4084941d6141904f">days_of_week</a> { <br />
+&#160;&#160;<a class="el" href="#aa6c7328ce7a3193e4084941d6141904fac82db3248a96794aaefb922ea5fb293c">MONDAY</a> = 1
+, <a class="el" href="#aa6c7328ce7a3193e4084941d6141904fa347c4455723bb1bc2709647607a2b282">TUESDAY</a>
+, <a class="el" href="#aa6c7328ce7a3193e4084941d6141904fa68288a23958cd9e1705fd81f0ee729c7">WEDNESDAY</a>
+, <a class="el" href="#aa6c7328ce7a3193e4084941d6141904fab4bfd6f883437c6cf31486dcf03ce0ff">THURSDAY</a>
+, <br />
+&#160;&#160;<a class="el" href="#aa6c7328ce7a3193e4084941d6141904fa8f589731fd90a9890c0df9a9c3f96131">FRIDAY</a>
+, <a class="el" href="#aa6c7328ce7a3193e4084941d6141904fa31bbcd6fa6a28095ef8de658126aa5ec">SATURDAY</a>
+, <a class="el" href="#aa6c7328ce7a3193e4084941d6141904fad86a75e0b97510de54435996ae45b8d2">SUNDAY</a>
+<br />
+ }</td></tr>
+<tr class="separator:aa6c7328ce7a3193e4084941d6141904f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a68499515579b64a93102faa8aa3bc7da" name="a68499515579b64a93102faa8aa3bc7da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68499515579b64a93102faa8aa3bc7da">&#9670;&#160;</a></span>DS3231_DEVICE_ADRESS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DS3231_DEVICE_ADRESS&#160;&#160;&#160;0x68</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00009">9</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
+
+</div>
+</div>
+<a id="ad1d8c4ccb0fb45cde5f740f85acc2376" name="ad1d8c4ccb0fb45cde5f740f85acc2376"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1d8c4ccb0fb45cde5f740f85acc2376">&#9670;&#160;</a></span>DS3231_SECONDS_REG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DS3231_SECONDS_REG&#160;&#160;&#160;0x00</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00011">11</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
+
+</div>
+</div>
+<a id="afa9542dce591fec31304bca747996a88" name="afa9542dce591fec31304bca747996a88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa9542dce591fec31304bca747996a88">&#9670;&#160;</a></span>DS3231_MINUTES_REG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DS3231_MINUTES_REG&#160;&#160;&#160;0x01</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00012">12</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
+
+</div>
+</div>
+<a id="a6459da6987e8010be8ce2c0d9e47acce" name="a6459da6987e8010be8ce2c0d9e47acce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6459da6987e8010be8ce2c0d9e47acce">&#9670;&#160;</a></span>DS3231_HOURS_REG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DS3231_HOURS_REG&#160;&#160;&#160;0x02</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00013">13</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
+
+</div>
+</div>
+<a id="abfe453f0f7d014cf606528d23d3f2b23" name="abfe453f0f7d014cf606528d23d3f2b23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfe453f0f7d014cf606528d23d3f2b23">&#9670;&#160;</a></span>DS3231_DAY_REG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DS3231_DAY_REG&#160;&#160;&#160;0x03</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00014">14</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
+
+</div>
+</div>
+<a id="aa92ca9692b253c1180a624259c4361b9" name="aa92ca9692b253c1180a624259c4361b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa92ca9692b253c1180a624259c4361b9">&#9670;&#160;</a></span>DS3231_DATE_REG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DS3231_DATE_REG&#160;&#160;&#160;0x04</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00015">15</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
+
+</div>
+</div>
+<a id="ad135cbb06dd36b5fa19397fc384b73c2" name="ad135cbb06dd36b5fa19397fc384b73c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad135cbb06dd36b5fa19397fc384b73c2">&#9670;&#160;</a></span>DS3231_MONTH_REG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DS3231_MONTH_REG&#160;&#160;&#160;0x05</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00016">16</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
+
+</div>
+</div>
+<a id="ac650b8a133089c55a42c898cbe11b9da" name="ac650b8a133089c55a42c898cbe11b9da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac650b8a133089c55a42c898cbe11b9da">&#9670;&#160;</a></span>DS3231_YEAR_REG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DS3231_YEAR_REG&#160;&#160;&#160;0x06</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00017">17</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
+
+</div>
+</div>
+<a id="ad7fbaf06d8602bc887e63624a2ac53a3" name="ad7fbaf06d8602bc887e63624a2ac53a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7fbaf06d8602bc887e63624a2ac53a3">&#9670;&#160;</a></span>DS3231_CONTROL_REG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DS3231_CONTROL_REG&#160;&#160;&#160;0x0E</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00019">19</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
+
+</div>
+</div>
+<a id="a53a5c42970982dc1b206ab3d89b66d7f" name="a53a5c42970982dc1b206ab3d89b66d7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53a5c42970982dc1b206ab3d89b66d7f">&#9670;&#160;</a></span>DS3231_CONTROL_STATUS_REG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DS3231_CONTROL_STATUS_REG&#160;&#160;&#160;0x0F</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00020">20</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
+
+</div>
+</div>
+<a id="a060f7761a61d71f62686737ee757c761" name="a060f7761a61d71f62686737ee757c761"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a060f7761a61d71f62686737ee757c761">&#9670;&#160;</a></span>DS3231_TEMPERATURE_MSB_REG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DS3231_TEMPERATURE_MSB_REG&#160;&#160;&#160;0x11</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00022">22</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
+
+</div>
+</div>
+<a id="aca79e38f1e1fb739c15aa78131014e18" name="aca79e38f1e1fb739c15aa78131014e18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca79e38f1e1fb739c15aa78131014e18">&#9670;&#160;</a></span>DS3231_TEMPERATURE_LSB_REG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DS3231_TEMPERATURE_LSB_REG&#160;&#160;&#160;0x12</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00023">23</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="a6fe5dac69ce312f38dd11e57c40d80c4" name="a6fe5dac69ce312f38dd11e57c40d80c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fe5dac69ce312f38dd11e57c40d80c4">&#9670;&#160;</a></span>ds3231_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct ds3231_t ds3231_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4da45e4018de364d6d526e46679548e0" name="a4da45e4018de364d6d526e46679548e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4da45e4018de364d6d526e46679548e0">&#9670;&#160;</a></span>ds3231_data_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct ds3231_data_t ds3231_data_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="aa6c7328ce7a3193e4084941d6141904f" name="aa6c7328ce7a3193e4084941d6141904f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6c7328ce7a3193e4084941d6141904f">&#9670;&#160;</a></span>days_of_week</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#aa6c7328ce7a3193e4084941d6141904f">days_of_week</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aa6c7328ce7a3193e4084941d6141904fac82db3248a96794aaefb922ea5fb293c" name="aa6c7328ce7a3193e4084941d6141904fac82db3248a96794aaefb922ea5fb293c"></a>MONDAY&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aa6c7328ce7a3193e4084941d6141904fa347c4455723bb1bc2709647607a2b282" name="aa6c7328ce7a3193e4084941d6141904fa347c4455723bb1bc2709647607a2b282"></a>TUESDAY&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aa6c7328ce7a3193e4084941d6141904fa68288a23958cd9e1705fd81f0ee729c7" name="aa6c7328ce7a3193e4084941d6141904fa68288a23958cd9e1705fd81f0ee729c7"></a>WEDNESDAY&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aa6c7328ce7a3193e4084941d6141904fab4bfd6f883437c6cf31486dcf03ce0ff" name="aa6c7328ce7a3193e4084941d6141904fab4bfd6f883437c6cf31486dcf03ce0ff"></a>THURSDAY&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aa6c7328ce7a3193e4084941d6141904fa8f589731fd90a9890c0df9a9c3f96131" name="aa6c7328ce7a3193e4084941d6141904fa8f589731fd90a9890c0df9a9c3f96131"></a>FRIDAY&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aa6c7328ce7a3193e4084941d6141904fa31bbcd6fa6a28095ef8de658126aa5ec" name="aa6c7328ce7a3193e4084941d6141904fa31bbcd6fa6a28095ef8de658126aa5ec"></a>SATURDAY&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aa6c7328ce7a3193e4084941d6141904fad86a75e0b97510de54435996ae45b8d2" name="aa6c7328ce7a3193e4084941d6141904fad86a75e0b97510de54435996ae45b8d2"></a>SUNDAY&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="_d_s3231_8h_source.html#l00025">25</a> of file <a class="el" href="_d_s3231_8h_source.html">DS3231.h</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

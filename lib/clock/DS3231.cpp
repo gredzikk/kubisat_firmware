@@ -1,185 +1,147 @@
 #include "DS3231.h"
-#include <iomanip>
-#include <sstream>
-#include "utils.h"
 
-const std::array<std::string, 7> DS3231::WEEKDAYS = {
-    "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"
-};
+DS3231::DS3231(i2c_inst_t *i2c_instance) : i2c(i2c_instance), ds3231_addr(DS3231_DEVICE_ADRESS) {}
 
-DS3231::DS3231(i2c_inst_t *i2c_port, uint8_t address) : i2c(i2c_port), address(address) {
+int DS3231::set_time(ds3231_data_t *data) {
+    uint8_t temp[7] = {0};
+    if (i2c_read_reg(DS3231_SECONDS_REG, 7, temp))
+        return -1;
+
+    /* Checking if time values are within correct ranges. */
+    if (data->seconds > 59)
+        data->seconds = 59;
+
+    if (data->minutes > 59)
+        data->minutes = 59;
+
+    if (data->hours > 23)
+        data->hours = 23;
+
+    if (data->day > 7)
+        data->day = 7;
+    else if (data->day < 1)
+        data->day = 1;
+
+    if (data->date > 31)
+        data->date = 31;
+    else if (data->date < 1)
+        data->date = 1;
+
+    if (data->month > 12)
+        data->month = 12;
+    else if (data->month < 1)
+        data->month = 1;
+
+    if (data->year > 99)
+        data->year = 99;
+
+    temp[0] = bin_to_bcd(data->seconds);
+    temp[1] = bin_to_bcd(data->minutes);
+    temp[2] = bin_to_bcd(data->hours);
+    temp[2] &= ~(0x01 << 6);
+    temp[3] = bin_to_bcd(data->day);
+    temp[4] = bin_to_bcd(data->date);
+    temp[5] = bin_to_bcd(data->month);
+
+    if (data->century)
+        temp[5] |= (0x01 << 7);
+
+    temp[6] = bin_to_bcd(data->year);
+
+    if (i2c_write_reg(DS3231_SECONDS_REG, 7, temp))
+        return -1;
+    return 0;
 }
 
-bool DS3231::setTime(uint8_t sec, uint8_t min, uint8_t hour,
-                    uint8_t weekday, uint8_t day, uint8_t month, uint16_t year) {
-    
-    std::string timeStr = "Setting time: " + std::to_string(year) + "-" + std::to_string(month) + "-" + std::to_string(day) + " " + std::to_string(hour) + ":" + std::to_string(min) + ":" + std::to_string(sec);
-    uartPrint(timeStr); 
-    uint8_t buffer[8];
-    buffer[0] = 0;
-    buffer[1] = bin2bcd(sec);
-    buffer[2] = bin2bcd(min);
-    buffer[3] = bin2bcd(hour);
-    buffer[4] = bin2bcd(weekday);
-    buffer[5] = bin2bcd(day);
-    buffer[6] = bin2bcd(month);
-    buffer[7] = bin2bcd(year - 2000);
-    // Write time to RTC
-    uint8_t reg = RTC_REGISTER;
-    i2c_write_blocking(i2c, address, &reg, 1, true);
-    return i2c_write_blocking(i2c, address, buffer, sizeof(buffer), false) == sizeof(buffer);
+int DS3231::get_time(ds3231_data_t *data) {
+    uint8_t raw_data[7];
+    if (i2c_read_reg(DS3231_SECONDS_REG, 7, raw_data))
+        return -1;
+
+    data->seconds = bcd_to_bin(raw_data[0] & 0x7F); // Masking for CH bit (clock halt)
+    data->minutes = bcd_to_bin(raw_data[1] & 0x7F);
+    data->hours = bcd_to_bin(raw_data[2] & 0x3F);   // Masking for 12/24 hour mode bit
+    data->day = raw_data[3] & 0x07;                  // Day of week (1-7)
+    data->date = bcd_to_bin(raw_data[4] & 0x3F);
+    data->month = bcd_to_bin(raw_data[5] & 0x1F);   // Masking for century bit
+    data->century = (raw_data[5] & 0x80) >> 7;
+    data->year = bcd_to_bin(raw_data[6]);
+
+    return 0;
 }
 
-bool DS3231::getTime(uint8_t& sec, uint8_t& min, uint8_t& hour,
-                    std::string& weekday, uint8_t& day, uint8_t& month, uint16_t& year) {
-    uint8_t buffer[7];
-    uint8_t reg = RTC_REGISTER;
-    
-    if (i2c_write_blocking(i2c, address, &reg, 1, true) != 1) {
-        return false;
+int DS3231::read_temperature(float *resolution) {
+    uint8_t temp[2] = {0, 0};
+    if (i2c_read_reg(DS3231_TEMPERATURE_MSB_REG, 2, temp))
+        return -1;
+
+    *resolution = temp[0] + (float)(1 / (temp[1] >> 6));
+    return 0;
+}
+
+/**
+ * @brief               Library function to read a specific I2C register adress.
+ *
+ * @param[in] reg_addr  Register adress to be read.
+ * @param[in] length    length of the data in bytes to be read.
+ * @param[out] data     Buffer to store the read data.
+ * @return              0 if succesful, -1 if i2c failure.
+ */
+int DS3231::i2c_read_reg(uint8_t reg_addr, size_t length, uint8_t *data) {
+    if (!length)
+        return -1;
+    uint8_t reg = reg_addr;
+    if (i2c_write_blocking(i2c, ds3231_addr, &reg, 1, true) == PICO_ERROR_GENERIC) {
+        return -1;
     }
-    
-    if (i2c_read_blocking(i2c, address, buffer, sizeof(buffer), false) != sizeof(buffer)) {
-        return false;
+    if (i2c_read_blocking(i2c, ds3231_addr, data, length, false) == PICO_ERROR_GENERIC) {
+        return -1;
     }
-
-    sec = bcd2bin(buffer[0]);
-    min = bcd2bin(buffer[1]);
-    hour = bcd2bin(buffer[2]);
-    weekday = WEEKDAYS[bcd2bin(buffer[3])];
-    day = bcd2bin(buffer[4]);
-    month = bcd2bin(buffer[5]);
-    year = bcd2bin(buffer[6]) + 2000;
-    
-    return true;
+    return 0;
 }
 
-std::string DS3231::getTimeString() {
-    uint8_t sec, min, hour, day, month;
-    uint16_t year;
-    std::string weekday;
-    
-    if (!getTime(sec, min, hour, weekday, day, month, year)) {
-        return "Error reading RTC";
+/**
+ * @brief               Library function to write to a specific I2C register adress.
+ *
+ * @param[in] reg_addr  Register adress to be written.
+ * @param[in] length    Length of the data to be written in bytes.
+ * @param[in] data      Pointer to the data buffer.
+ * @return              0 if succesful, -1 if i2c failure.
+ */
+int DS3231::i2c_write_reg(uint8_t reg_addr, size_t length, uint8_t *data) {
+    if (!length)
+        return -1;
+    uint8_t messeage[length + 1];
+    messeage[0] = reg_addr;
+    for (int i = 0; i < length; i++) {
+        messeage[i + 1] = data[i];
     }
-    
-    std::stringstream ss;
-    ss << std::setw(2) << std::setfill('0') << static_cast<int>(hour) << ":"
-       << std::setw(2) << std::setfill('0') << static_cast<int>(min) << ":"
-       << std::setw(2) << std::setfill('0') << static_cast<int>(sec)
-       << "      " << weekday << " "
-       << std::setw(2) << std::setfill('0') << static_cast<int>(day) << "."
-       << std::setw(2) << std::setfill('0') << static_cast<int>(month) << "."
-       << year;
-    
-    return ss.str();
+    if (i2c_write_blocking(i2c, ds3231_addr, messeage, (length + 1), false) == PICO_ERROR_GENERIC)
+        return -1;
+    return 0;
 }
 
-
-uint8_t DS3231::bcd2bin(uint8_t val) {
-    return ((val/16) * 10) + (val % 16);
+/**
+ * @brief           Library function that takes an 8 bit unsigned integer and converts into
+ *  Binary Coded Decimal number that can be written to DS3231 registers.
+ *
+ * @param[in] data  Number to be converted.
+ * @return          Number in BCD form.
+ */
+uint8_t DS3231::bin_to_bcd(const uint8_t data) {
+    uint8_t ones_digit = (uint8_t)(data % 10);
+    uint8_t twos_digit = (uint8_t)(data - ones_digit) / 10;
+    return ((twos_digit << 4) + ones_digit);
 }
 
-uint8_t DS3231::bin2bcd(uint8_t val) {
-    return ((val/10) * 16) + (val % 10);
-}
-
-std::string DS3231::preZero(uint8_t val) {
-    if (val < 10) {
-        return "0" + std::to_string(val);
-    }
-    return std::to_string(val);
-}
-
-bool DS3231::setTimeUnix(uint32_t unixTime) {
-    DateTime dt = unixToDateTime(unixTime);
-    uint8_t weekdayIndex = 0;
-    // Calculate weekday (0 = Sunday, 1 = Monday, etc.)
-    time_t t = unixTime;
-    struct tm* tmp = gmtime(&t);
-    weekdayIndex = tmp->tm_wday;
-    
-    return setTime(dt.second, dt.minute, dt.hour, 
-                  weekdayIndex, dt.day, dt.month, dt.year);
-}
-
-uint32_t DS3231::getTimeUnix() {
-    DateTime dt = getDateTime();
-    return dateTimeToUnix(dt);
-}
-
-DateTime DS3231::getDateTime() {
-    DateTime dt;
-    uint8_t buffer[7];
-    uint8_t reg = RTC_REGISTER;
-    
-    if (i2c_write_blocking(i2c, address, &reg, 1, true) != 1) {
-        return DateTime{0};
-    }
-    
-    if (i2c_read_blocking(i2c, address, buffer, sizeof(buffer), false) != sizeof(buffer)) {
-        return DateTime{0};
-    }
-
-    dt.second = bcd2bin(buffer[0]);
-    dt.minute = bcd2bin(buffer[1]);
-    dt.hour = bcd2bin(buffer[2]);
-    dt.weekday = WEEKDAYS[bcd2bin(buffer[3])];
-    dt.day = bcd2bin(buffer[4]);
-    dt.month = bcd2bin(buffer[5]);
-    dt.year = bcd2bin(buffer[6]) + 2000;
-    
-    return dt;
-}
-
-uint64_t DS3231::getTimeInteger() {
-    DateTime dt = getDateTime();
-    return static_cast<uint64_t>(dt.year) * 10000000000ULL +
-           static_cast<uint64_t>(dt.month) * 100000000ULL +
-           static_cast<uint64_t>(dt.day) * 1000000ULL +
-           static_cast<uint64_t>(dt.hour) * 10000ULL +
-           static_cast<uint64_t>(dt.minute) * 100ULL +
-           static_cast<uint64_t>(dt.second);
-}
-
-uint32_t DS3231::dateTimeToUnix(const DateTime& dt) {
-    struct tm timeinfo = {};
-    timeinfo.tm_year = dt.year - 1900;
-    timeinfo.tm_mon = dt.month - 1;
-    timeinfo.tm_mday = dt.day;
-    timeinfo.tm_hour = dt.hour;
-    timeinfo.tm_min = dt.minute;
-    timeinfo.tm_sec = dt.second;
-    return mktime(&timeinfo);
-}
-
-DateTime DS3231::unixToDateTime(uint32_t unixTime) {
-    DateTime dt;
-    time_t t = unixTime;
-    struct tm* tmp = gmtime(&t);
-    
-    dt.year = tmp->tm_year + 1900;
-    dt.month = tmp->tm_mon + 1;
-    dt.day = tmp->tm_mday;
-    dt.hour = tmp->tm_hour;
-    dt.minute = tmp->tm_min;
-    dt.second = tmp->tm_sec;
-    dt.weekday = WEEKDAYS[tmp->tm_wday];
-    
-    return dt;
-}
-
-uint32_t DS3231::getTimeUnixLocal() {
-    uint32_t utcTime = getTimeUnix();
-    return utcTime + (timezoneOffset * 60); // Convert minutes to seconds
-}
-
-DateTime DS3231::getDateTimeLocal() {
-    DateTime utc = getDateTime();
-    return applyTimezone(utc, timezoneOffset);
-}
-
-DateTime DS3231::applyTimezone(const DateTime& utc, int16_t offsetMinutes) {
-    time_t t = dateTimeToUnix(utc) + (offsetMinutes * 60);
-    return unixToDateTime(t);
+/**
+ * @brief           Library function that takes a BCD number and converts it to an unsigned 8 bit integer.
+ * 
+ * @param[in] bcd   BCD number to be converted.
+ * @return          Unsigned 8 bit integer.
+ */
+uint8_t DS3231::bcd_to_bin(const uint8_t bcd) {
+    uint8_t ones_digit = (uint8_t)(bcd & 0x0F);
+    uint8_t twos_digit = (uint8_t)(bcd >> 4);
+    return (twos_digit * 10 + ones_digit);
 }

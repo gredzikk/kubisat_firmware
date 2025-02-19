@@ -13,8 +13,8 @@ private:
     i2c_inst_t* i2c;
     uint8_t address;
 
-    bool writeRegister(uint8_t reg, uint8_t value);
-    bool readRegisters(uint8_t reg, uint8_t* buffer, size_t length);
+    bool write_register(uint8_t reg, uint8_t value);
+    bool read_register(uint8_t reg, uint8_t* buffer, size_t length);
 };
 
 #endif

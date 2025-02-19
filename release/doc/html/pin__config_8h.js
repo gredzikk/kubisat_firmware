@@ -32,9 +32,9 @@ var pin__config_8h =
     [ "LORA_DEFAULT_DIO0_PIN", "pin__config_8h.html#a03b70d2799e743f3b9504f1af09f6056", null ],
     [ "PA_OUTPUT_RFO_PIN", "pin__config_8h.html#a2e3b6a161ad5eb403513d08741a1fbed", null ],
     [ "PA_OUTPUT_PA_BOOST_PIN", "pin__config_8h.html#ab6ed143304b1d46d46eca2713b74c54d", null ],
-    [ "csPin", "pin__config_8h.html#a7e30722535c99b71f449a1eb7bb262aa", null ],
-    [ "resetPin", "pin__config_8h.html#a4447ea46d7cfa6ac5a7208f416e71cad", null ],
-    [ "irqPin", "pin__config_8h.html#a0c6d69bce8a4e8814e1a96d9ea38d1a8", null ],
-    [ "localAddress", "pin__config_8h.html#a91a4799f60e5d2bbf7a0ee600912f51f", null ],
-    [ "destination", "pin__config_8h.html#a42676c2cae17bc2fa151feea9e192342", null ]
+    [ "lora_cs_pin", "pin__config_8h.html#a1ab6bc8dc045cbac73ad53707513f800", null ],
+    [ "lora_reset_pin", "pin__config_8h.html#a10d9de36efdd63dd3f477b4ed68e3157", null ],
+    [ "lora_irq_pin", "pin__config_8h.html#aa1985b9a52606f40d54a22d4f68a5788", null ],
+    [ "lora_address_local", "pin__config_8h.html#ab4976c568e259b8bea50771f90fe16bd", null ],
+    [ "lora_address_remote", "pin__config_8h.html#a524d13f8eb363984e4232df4c1eb1611", null ]
 ];

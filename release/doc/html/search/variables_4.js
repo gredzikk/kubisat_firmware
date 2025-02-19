@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['day_0',['day',['../struct_date_time.html#a727866b5ecdfda1edf946efe86aa74af',1,'DateTime']]],
-  ['delimiter_1',['DELIMITER',['../protocol_8h.html#a32d67795a8b119935e98ba0da0d5be5f',1,'protocol.h']]],
-  ['destination_2',['destination',['../pin__config_8cpp.html#a42676c2cae17bc2fa151feea9e192342',1,'destination:&#160;pin_config.cpp'],['../pin__config_8h.html#a42676c2cae17bc2fa151feea9e192342',1,'destination:&#160;pin_config.cpp']]],
+  ['date_0',['date',['../structds3231__data__t.html#a423c1692433240cff62cef05fec405f1',1,'ds3231_data_t']]],
+  ['day_1',['day',['../structds3231__data__t.html#aee218cfb9904c839652d2edbfc0922b8',1,'ds3231_data_t']]],
+  ['delimiter_2',['DELIMITER',['../protocol_8h.html#a32d67795a8b119935e98ba0da0d5be5f',1,'protocol.h']]],
   ['device_5faddr_3',['device_addr',['../class_b_m_e280.html#ae8a52ae32e8cefd398dedf8913737626',1,'BME280']]],
   ['dig_5fh1_4',['dig_h1',['../struct_b_m_e280_calib_param.html#a38419a07942da4717394516a883441d7',1,'BME280CalibParam']]],
   ['dig_5fh2_5',['dig_h2',['../struct_b_m_e280_calib_param.html#a87481b9ca1a2cbb278432f576f3e69c3',1,'BME280CalibParam']]],
@@ -22,5 +22,6 @@ var searchData=
   ['dig_5ft1_19',['dig_t1',['../struct_b_m_e280_calib_param.html#afbeeeb1ce65458659a5ba34a183920e6',1,'BME280CalibParam']]],
   ['dig_5ft2_20',['dig_t2',['../struct_b_m_e280_calib_param.html#a941c68e822ef43924d09131723141e91',1,'BME280CalibParam']]],
   ['dig_5ft3_21',['dig_t3',['../struct_b_m_e280_calib_param.html#aca269be642c7d623650b30c8afbaa36d',1,'BME280CalibParam']]],
-  ['direction_22',['direction',['../struct_frame.html#a380c3287d8bc0718ed7a3b93e303dbe5',1,'Frame']]]
+  ['direction_22',['direction',['../struct_frame.html#a380c3287d8bc0718ed7a3b93e303dbe5',1,'Frame']]],
+  ['ds3231_5faddr_23',['ds3231_addr',['../structds3231__t.html#a5fc8e10745577859f508fa2a36cdbe89',1,'ds3231_t::ds3231_addr'],['../class_d_s3231.html#a6759d5d4e1ac0d12ab09016a42931aaf',1,'DS3231::ds3231_addr']]]
 ];

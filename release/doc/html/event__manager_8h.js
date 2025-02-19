@@ -51,8 +51,8 @@ var event__manager_8h =
       [ "GPS_SYNC", "event__manager_8h.html#a163ce349de3451c81f50080e5fbe62a2a2d05bfe5f19cdad10f55634937f0b61e", null ]
     ] ],
     [ "__attribute__", "event__manager_8h.html#a7984471c52fd4915392929f854c6620c", null ],
-    [ "toString", "event__manager_8h.html#a6bbf13289f6c919d96bae17ef018f988", null ],
-    [ "checkPowerEvents", "event__manager_8h.html#a467714d66058f52e4ac7aeb6df46b433", null ],
+    [ "to_string", "event__manager_8h.html#a576de7b60eacee3f1a70393a005502cd", null ],
+    [ "check_power_events", "event__manager_8h.html#a3a1b3fdef7c62da5c917d3006cdc65dd", null ],
     [ "id", "event__manager_8h.html#a4fc3a0c58dfbd1e68224521185cb9384", null ],
     [ "timestamp", "event__manager_8h.html#ab20b0c7772544cf5d318507f34231fbe", null ],
     [ "group", "event__manager_8h.html#ad4291fcb880eb5ecb178b53e32f55741", null ],

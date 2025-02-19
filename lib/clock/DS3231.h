@@ -6,67 +6,64 @@
 #include "pico/stdlib.h"
 #include "hardware/i2c.h"
 
-struct DateTime {
-    uint16_t year;
-    uint8_t month;
-    uint8_t day;
-    uint8_t hour;
-    uint8_t minute;
-    uint8_t second;
-    std::string weekday;
+#define DS3231_DEVICE_ADRESS            0x68
+
+#define DS3231_SECONDS_REG              0x00
+#define DS3231_MINUTES_REG              0x01
+#define DS3231_HOURS_REG                0x02
+#define DS3231_DAY_REG                  0x03
+#define DS3231_DATE_REG                 0x04
+#define DS3231_MONTH_REG                0x05
+#define DS3231_YEAR_REG                 0x06
+
+#define DS3231_CONTROL_REG              0x0E
+#define DS3231_CONTROL_STATUS_REG       0x0F
+
+#define DS3231_TEMPERATURE_MSB_REG      0x11
+#define DS3231_TEMPERATURE_LSB_REG      0x12
+
+enum days_of_week {
+    MONDAY  = 1,
+    TUESDAY,
+    WEDNESDAY,
+    THURSDAY,
+    FRIDAY,
+    SATURDAY,
+    SUNDAY
 };
+
+typedef struct ds3231_t {
+    i2c_inst_t * i2c;
+    uint8_t ds3231_addr;
+} ds3231_t;
+
+
+typedef struct ds3231_data_t {
+    uint8_t seconds;
+    uint8_t minutes;
+    uint8_t hours;
+    uint8_t day;
+    uint8_t date;
+    uint8_t month;
+    uint8_t century;
+    uint8_t year;
+} ds3231_data_t;
 
 class DS3231 {
-public:
-    // Weekday names
-    static const std::array<std::string, 7> WEEKDAYS;
+    public:
+        DS3231(i2c_inst_t *i2c);
+        int set_time(ds3231_data_t *data);
+        int get_time(ds3231_data_t *data);
+        int read_temperature(float *resolution);
     
-    // Constructor
-    DS3231(i2c_inst_t *i2c, uint8_t address = 0x68);
-
-    // Set time using binary-coded decimal format
-    bool setTime(uint8_t sec, uint8_t min, uint8_t hour, 
-                 uint8_t weekday, uint8_t day, uint8_t month, uint16_t year);
+        private:
+        i2c_inst_t *i2c;
+        uint8_t ds3231_addr;
+        uint8_t bin_to_bcd(const uint8_t data);
+        uint8_t bcd_to_bin(const uint8_t bcd);
+        int i2c_write_reg(uint8_t reg_addr, size_t length, uint8_t *data);
+        int i2c_read_reg(uint8_t reg_addr, size_t length, uint8_t *data);
+    };
     
-    // Get time in two formats
-    bool getTime(uint8_t& sec, uint8_t& min, uint8_t& hour,
-                std::string& weekday, uint8_t& day, uint8_t& month, uint16_t& year);
-    std::string getTimeString();
-    bool setTimeUnix(uint32_t unixTime);
-    uint32_t getTimeUnix();
-    DateTime getDateTime();
-    uint64_t getTimeInteger(); // Returns YYYYMMDDHHMMSS
-
-    void setTimezoneOffset(int16_t offsetMinutes) { timezoneOffset = offsetMinutes; }
-    int16_t getTimezoneOffset() const { return timezoneOffset; }
-    
-    uint32_t getTimeUnixLocal();
-    DateTime getDateTimeLocal();
-    
-    void setClockSyncInterval(uint32_t intervalSeconds) { syncInterval = intervalSeconds; }
-    uint32_t getClockSyncInterval() const { return syncInterval; }
-    
-    void setLastSyncTime(uint32_t unixTime) { lastSyncTime = unixTime; }
-    uint32_t getLastSyncTime() const { return lastSyncTime; }
-
-
-private:
-    i2c_inst_t* i2c;
-    uint8_t address;
-    static constexpr uint8_t RTC_REGISTER = 0x00;
-
-    int16_t timezoneOffset = 0;      // Offset in minutes from UTC
-    uint32_t syncInterval = 86400;    // Default sync interval: 24 hours
-    uint32_t lastSyncTime = 0;        // Last successful GPS sync time
-    
-    // Utility functions
-    uint8_t bcd2bin(uint8_t val);
-    uint8_t bin2bcd(uint8_t val);
-    std::string preZero(uint8_t val);
-    static uint32_t dateTimeToUnix(const DateTime& dt);
-    static DateTime unixToDateTime(uint32_t unixTime);
-    DateTime applyTimezone(const DateTime& utc, int16_t offsetMinutes);
-
-};
 
 #endif

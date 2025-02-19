@@ -4,26 +4,26 @@
 #include <iostream>
 
 BH1750Wrapper::BH1750Wrapper() {
-    sensor.configure(BH1750::Mode::CONTINUOUS_HIGH_RES_MODE);
+    sensor_.configure(BH1750::Mode::CONTINUOUS_HIGH_RES_MODE);
 }
 
 bool BH1750Wrapper::init() {
-    initialized = sensor.begin();
-    return initialized;
+    initialized_ = sensor_.begin();
+    return initialized_;
 }
 
-float BH1750Wrapper::readData(SensorDataTypeIdentifier type) {
+float BH1750Wrapper::read_data(SensorDataTypeIdentifier type) {
     if (type == SensorDataTypeIdentifier::LIGHT_LEVEL) {
-        return sensor.readLightLevel();
+        return sensor_.get_light_level();
     }
     return 0.0f;
 }
 
-bool BH1750Wrapper::isInitialized() const { 
-    return initialized; 
+bool BH1750Wrapper::is_initialized() const { 
+    return initialized_; 
 }
 
-SensorType BH1750Wrapper::getType() const { 
+SensorType BH1750Wrapper::get_type() const { 
     return SensorType::LIGHT; 
 }
 
@@ -31,22 +31,22 @@ bool BH1750Wrapper::configure(const std::map<std::string, std::string>& config) 
     for (const auto& [key, value] : config) {
         if (key == "measurement_mode") {
             if (value == "continuously_high_resolution") {
-                sensor.configure(BH1750::Mode::CONTINUOUS_HIGH_RES_MODE);
+                sensor_.configure(BH1750::Mode::CONTINUOUS_HIGH_RES_MODE);
             }
             else if (value == "continuously_high_resolution_2") {
-                sensor.configure(BH1750::Mode::CONTINUOUS_HIGH_RES_MODE_2);
+                sensor_.configure(BH1750::Mode::CONTINUOUS_HIGH_RES_MODE_2);
             }
             else if (value == "continuously_low_resolution") {
-                sensor.configure(BH1750::Mode::CONTINUOUS_LOW_RES_MODE);
+                sensor_.configure(BH1750::Mode::CONTINUOUS_LOW_RES_MODE);
             }
             else if (value == "one_time_high_resolution") {
-                sensor.configure(BH1750::Mode::ONE_TIME_HIGH_RES_MODE);
+                sensor_.configure(BH1750::Mode::ONE_TIME_HIGH_RES_MODE);
             }
             else if (value == "one_time_high_resolution_2") {
-                sensor.configure(BH1750::Mode::ONE_TIME_HIGH_RES_MODE_2);
+                sensor_.configure(BH1750::Mode::ONE_TIME_HIGH_RES_MODE_2);
             }
             else if (value == "one_time_low_resolution") {
-                sensor.configure(BH1750::Mode::ONE_TIME_LOW_RES_MODE);
+                sensor_.configure(BH1750::Mode::ONE_TIME_LOW_RES_MODE);
             }
             else {
                 std::cerr << "[BH1750Wrapper] Unknown measurement_mode value: " << value << std::endl;
