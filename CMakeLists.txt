@@ -79,6 +79,32 @@ target_compile_options(main PRIVATE
     -Wno-error
 )
 
+add_library(unity STATIC
+    unity/src/unity.c
+)
+
+target_include_directories(unity PUBLIC 
+    unity/src
+)
+
+add_executable(test_runner
+    test/test_runner.cpp
+    test/test_example.cpp 
+)
+
+target_link_libraries(test_runner PRIVATE
+    unity
+    pico_stdlib
+    hardware_spi
+    hardware_i2c
+    hardware_uart
+)
+
+target_include_directories(test_runner PRIVATE
+    ${CMAKE_CURRENT_LIST_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}
+)
+
 # Include directories
 target_include_directories(main PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}
@@ -123,11 +149,13 @@ target_link_libraries(main PRIVATE
 )
 
 # Build information
+file(READ "${CMAKE_SOURCE_DIR}/cmake/CMakeBuildNumberCache.txt" CURRENT_BUILD_NUMBER)
+string(STRIP "${CURRENT_BUILD_NUMBER}" CURRENT_BUILD_NUMBER)
 pico_set_program_name(main "kubisat_firmware")
-pico_set_program_version(main "0.1")
+pico_set_program_version(main "0.276")
 pico_add_extra_outputs(main)
+pico_add_extra_outputs(test_runner)
 
-# Build number update
 add_custom_command(
     TARGET main
     PRE_BUILD
@@ -138,17 +166,29 @@ add_custom_command(
         -P "${CMAKE_SOURCE_DIR}/cmake/build_number.cmake"
 )
 
+
+# Copy and rename main.uf2
 add_custom_command(
     TARGET main POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_CURRENT_SOURCE_DIR}/release"
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
         "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.uf2"
-        "${CMAKE_CURRENT_SOURCE_DIR}/release/${PROJECT_NAME}.uf2"
-    COMMENT "Copying ${PROJECT_NAME}.uf2 to release directory"
+        "${CMAKE_CURRENT_SOURCE_DIR}/release/${PROJECT_NAME}_v${CURRENT_BUILD_NUMBER}.uf2"
+    COMMENT "Copying ${PROJECT_NAME}.uf2 to release directory with build number"
     VERBATIM
 )
 
-# Include graph generation
+# Copy and rename test_runner.uf2
+add_custom_command(
+    TARGET test_runner POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_CURRENT_SOURCE_DIR}/release"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${CMAKE_BINARY_DIR}/test_runner.uf2"
+        "${CMAKE_CURRENT_SOURCE_DIR}/release/test_runner_v${CURRENT_BUILD_NUMBER}.uf2"
+    COMMENT "Copying test_runner.uf2 to release directory with build number"
+    VERBATIM
+)
+
 find_package(Python3 REQUIRED)
 find_program(DOT_EXECUTABLE dot)
 

@@ -32,10 +32,11 @@ var searchData=
   ['setspreadingfactor_29',['setSpreadingFactor',['../class_lo_ra_class.html#aff3deaecc03da514af3a05e5e0c38e69',1,'LoRaClass']]],
   ['setsyncword_30',['setSyncWord',['../class_lo_ra_class.html#a4e0190dbf43200a959ef38ff910aee2d',1,'LoRaClass']]],
   ['settxpower_31',['setTxPower',['../class_lo_ra_class.html#ae113ad79caf2255287433de45b0e5b5e',1,'LoRaClass']]],
-  ['setwriteerror_32',['setWriteError',['../class_print.html#a46656410e23c0ec14d7a01b38b3b6f00',1,'Print']]],
-  ['singletransfer_33',['singleTransfer',['../class_lo_ra_class.html#a3a0c0649c595b1176b5fb1ae41210ee3',1,'LoRaClass']]],
-  ['sleep_34',['sleep',['../class_lo_ra_class.html#a24390e2c96490b16ca8733e274164ae0',1,'LoRaClass']]],
-  ['split_5fand_5fsend_5fmessage_35',['split_and_send_message',['../communication_8h.html#a207fb10d443babe78967d28c7565234a',1,'split_and_send_message(const uint8_t *data, size_t length):&#160;send.cpp'],['../send_8cpp.html#a207fb10d443babe78967d28c7565234a',1,'split_and_send_message(const uint8_t *data, size_t length):&#160;send.cpp']]],
-  ['splitstring_36',['splitString',['../gps__collector_8cpp.html#a0509cbb838eb47985372ff8889e507f5',1,'gps_collector.cpp']]],
-  ['string_5fto_5foperation_5ftype_37',['string_to_operation_type',['../protocol_8h.html#a4e9ddea19ddd04177180c2dfae26b15b',1,'string_to_operation_type(const std::string &amp;str):&#160;utils_converters.cpp'],['../utils__converters_8cpp.html#a4e9ddea19ddd04177180c2dfae26b15b',1,'string_to_operation_type(const std::string &amp;str):&#160;utils_converters.cpp']]]
+  ['setup_32',['setUp',['../test__runner_8cpp.html#a95c834d6178047ce9e1bce7cbfea2836',1,'test_runner.cpp']]],
+  ['setwriteerror_33',['setWriteError',['../class_print.html#a46656410e23c0ec14d7a01b38b3b6f00',1,'Print']]],
+  ['singletransfer_34',['singleTransfer',['../class_lo_ra_class.html#a3a0c0649c595b1176b5fb1ae41210ee3',1,'LoRaClass']]],
+  ['sleep_35',['sleep',['../class_lo_ra_class.html#a24390e2c96490b16ca8733e274164ae0',1,'LoRaClass']]],
+  ['split_5fand_5fsend_5fmessage_36',['split_and_send_message',['../communication_8h.html#a207fb10d443babe78967d28c7565234a',1,'split_and_send_message(const uint8_t *data, size_t length):&#160;send.cpp'],['../send_8cpp.html#a207fb10d443babe78967d28c7565234a',1,'split_and_send_message(const uint8_t *data, size_t length):&#160;send.cpp']]],
+  ['splitstring_37',['splitString',['../gps__collector_8cpp.html#a0509cbb838eb47985372ff8889e507f5',1,'gps_collector.cpp']]],
+  ['string_5fto_5foperation_5ftype_38',['string_to_operation_type',['../protocol_8h.html#a4e9ddea19ddd04177180c2dfae26b15b',1,'string_to_operation_type(const std::string &amp;str):&#160;utils_converters.cpp'],['../utils__converters_8cpp.html#a4e9ddea19ddd04177180c2dfae26b15b',1,'string_to_operation_type(const std::string &amp;str):&#160;utils_converters.cpp']]]
 ];

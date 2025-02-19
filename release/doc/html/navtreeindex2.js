@@ -87,6 +87,7 @@ var NAVTREEINDEX2 =
 "diagnostic__commands_8cpp.html":[3,0,0,1,0,3],
 "diagnostic__commands_8cpp_source.html":[3,0,0,1,0,3],
 "dir_02f0c049ccc272600b5c0807539558ee.html":[3,0,0,5,1],
+"dir_13e138d54eb8818da29c3992edef070a.html":[3,0,1],
 "dir_2a555c3ab4d03c92730db360c69e26f3.html":[3,0,0,4],
 "dir_34c5981239e63ab3b5309e3cc451d23c.html":[3,0,0,1,1],
 "dir_3777c4d6009675e764f4fb47c10be9f8.html":[3,0,0,2],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "globals_p.html":[3,1,0,13],
 "globals_r.html":[3,1,0,14],
 "globals_s.html":[3,1,0,15],
-"globals_t.html":[3,1,0,16],
-"globals_type.html":[3,1,3]
+"globals_t.html":[3,1,0,16]
 };

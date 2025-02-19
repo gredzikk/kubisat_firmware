@@ -4,7 +4,7 @@ var searchData=
   ['mag_5ffield_5fy_1',['MAG_FIELD_Y',['../_i_sensor_8h.html#a21b0301bb3eb76855366980212c8ae5ea78f2cbc8bdf1c0b3fd850b61b498aec4',1,'ISensor.h']]],
   ['mag_5ffield_5fz_2',['MAG_FIELD_Z',['../_i_sensor_8h.html#a21b0301bb3eb76855366980212c8ae5ea9cbf4039cff07b4022c091d7504fbce3',1,'ISensor.h']]],
   ['magnetometer_3',['MAGNETOMETER',['../_i_sensor_8h.html#a213c434cb928c4ca22513e2302632435acf29c1440f69cc71f0169036831ef688',1,'ISensor.h']]],
-  ['main_4',['main',['../main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main.cpp']]],
+  ['main_4',['main',['../main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;main.cpp'],['../test__runner_8cpp.html#a840291bc02cba5474a4cb46a9b9566fe',1,'main(void):&#160;test_runner.cpp']]],
   ['main_2ecpp_5',['main.cpp',['../main_8cpp.html',1,'']]],
   ['main_5fi2c_5fport_6',['MAIN_I2C_PORT',['../pin__config_8h.html#ae122c78708c186c48bc347669332c550',1,'pin_config.h']]],
   ['main_5fi2c_5fscl_5fpin_7',['MAIN_I2C_SCL_PIN',['../pin__config_8h.html#a9e17f76dd11280c50d7625b62557b29f',1,'pin_config.h']]],
