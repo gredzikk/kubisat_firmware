@@ -64,6 +64,27 @@ Frame handle_get_build_version(const std::string& param, OperationType operation
 }
 
 
+/**
+ * @brief Handles setting or getting the UART verbosity level.
+ *
+ * This function allows the user to either retrieve the current UART verbosity
+ * level or set a new verbosity level.
+ *
+ * @param param The desired verbosity level (0-5) as a string.  If empty, the
+ *              current level is returned.
+ * @param operationType The operation type.  Must be GET to retrieve the current
+ *                      level, or SET to set a new level.
+ * @return A Frame indicating the result of the operation.
+ *         - Success (GET): Frame containing the current verbosity level.
+ *         - Success (SET): Frame with "LEVEL SET" message.
+ *         - Error: Frame with error message (e.g., "INVALID LEVEL (0-5)", "INVALID FORMAT").
+ *
+ * @note <b>KBST;0;GET;1;8;;TSBK</b> - Gets the current verbosity level.
+ * @note <b>KBST;0;SET;1;8;[level];TSBK</b> - Sets the verbosity level.
+ * @note Example: <b>KBST;0;SET;1;8;2;TSBK</b> - Sets the verbosity level to 2.
+ * @ingroup DiagnosticCommands
+ * @xrefitem command "Command" "List of Commands" Command ID: 1.8
+ */
 Frame handle_verbosity(const std::string& param, OperationType operationType) {
     if (param.empty()) {
         uart_print("Current verbosity level: " + std::to_string(static_cast<int>(g_uart_verbosity)),  VerbosityLevel::INFO);
@@ -73,8 +94,8 @@ Frame handle_verbosity(const std::string& param, OperationType operationType) {
 
     try {
         int level = std::stoi(param);
-        if (level < 0 || level > 3) {
-            return frame_build(ExecutionResult::ERROR, 1, 8, "INVALID LEVEL (0-3)");
+        if (level < 0 || level > 5) {
+            return frame_build(ExecutionResult::ERROR, 1, 8, "INVALID LEVEL (0-5)");
         }
         g_uart_verbosity = static_cast<VerbosityLevel>(level);
         return frame_build(ExecutionResult::SUCCESS, 1, 8, "LEVEL SET");

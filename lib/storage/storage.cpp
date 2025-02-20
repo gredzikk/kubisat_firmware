@@ -21,7 +21,7 @@
  *          with littlefs and then attempts to mount again.
  */
 bool fs_init(void) {
-    uart_print("fs_init littlefs on SD card", VerbosityLevel::ERROR);
+    uart_print("fs_init littlefs on SD card", VerbosityLevel::INFO);
     blockdevice_t *sd = blockdevice_sd_create(SD_SPI_PORT,
                                               SD_MOSI_PIN,
                                               SD_MISO_PIN,

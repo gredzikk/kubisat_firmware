@@ -82,7 +82,7 @@ void EventManager::log_event(uint8_t group, uint8_t event) {
 
     EventLog& log = events[writeIndex];
     log.id = nextEventId++;
-    log.timestamp = 2; // placeholder
+    log.timestamp = systemClock.get_unix_time();
     log.group = group;
     log.event = event;
 

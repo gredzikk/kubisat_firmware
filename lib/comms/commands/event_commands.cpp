@@ -80,7 +80,7 @@ Frame handle_get_last_events(const std::string& param, OperationType operationTy
  * @ingroup EventCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 5.2
  */
-Frame hadnle_get_event_count(const std::string& param, OperationType operationType) {
+Frame handle_get_event_count(const std::string& param, OperationType operationType) {
     if (operationType != OperationType::GET || !param.empty()) {
         return frame_build(ExecutionResult::ERROR, 5, 2, "INVALID REQUEST");
     }

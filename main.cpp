@@ -1,6 +1,6 @@
 #include "includes.h"
 
-#define LOG_FILENAME "log.txt"
+#define LOG_FILENAME "/log.txt"
 
 PowerManager powerManager(MAIN_I2C_PORT);
 DS3231 systemClock(MAIN_I2C_PORT);
@@ -51,17 +51,29 @@ bool init_systems() {
     
     // TODO: everything runs properly without errors, but file does not exist on sd card after reading with usb reader
     bool sdInitDone = fs_init();
-    if (sdInitDone){
-        FILE *fp = fopen(LOG_FILENAME, "a");
-        uart_print("Log file opened.");
-        int bytesWritten = fprintf(fp, "System init started.\n");
-        uart_print("Written " + std::to_string(bytesWritten) + " bytes.");
-        int closeStatus = fclose(fp);
-        uart_print("Close file status: " + std::to_string(closeStatus));
-        struct stat buffer;
-        std::string fileString = "file exists after closing: " + std::to_string(stat(LOG_FILENAME, &buffer));
-        uart_print(fileString);
-        fs_unmount("/");
+    if (sdInitDone) {
+        FILE *fp = fopen(LOG_FILENAME, "w");
+        if (fp) {
+            uart_print("Log file opened.");
+            int bytesWritten = fprintf(fp, "System init started.\n");
+            uart_print("Written " + std::to_string(bytesWritten) + " bytes.");
+            int closeStatus = fclose(fp);
+            uart_print("Close file status: " + std::to_string(closeStatus));
+
+            // Get file size
+            struct stat file_stat;
+            if (stat(LOG_FILENAME, &file_stat) == 0) {
+                size_t fileSize = file_stat.st_size;
+                uart_print("File size: " + std::to_string(fileSize) + " bytes");
+            } else {
+                uart_print("Failed to get file size");
+            }
+
+            // Print file path (assuming it's in the root directory)
+            uart_print("File path: /" + std::string(LOG_FILENAME));
+        } else {
+            uart_print("Failed to open log file for writing.");
+        }
     }
 
     uart_print("SD card init: " + std::to_string(sdInitDone));
@@ -108,7 +120,6 @@ int main()
     Frame boot = frame_build(ExecutionResult::INFO, 0, 0, "START");
     send_frame(boot);
 
-    gpio_put(PICO_DEFAULT_LED_PIN, 0);
     while (true)
     {
         int packetSize = LoRa.parse_packet();

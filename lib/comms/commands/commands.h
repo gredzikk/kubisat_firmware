@@ -36,13 +36,13 @@ Frame handle_get_current_draw(const std::string& param, OperationType operationT
 
 // EVENT
 Frame handle_get_last_events(const std::string& param, OperationType operationType);
-Frame hadnle_get_event_count(const std::string& param, OperationType operationType);
+Frame handle_get_event_count(const std::string& param, OperationType operationType);
 
 
 //STORAGE
 Frame handle_list_files(const std::string& param, OperationType operationType);
 Frame handle_file_download(const std::string& param, OperationType operationType);
-
+Frame handle_mount(const std::string& param, OperationType operationType);
 
 Frame execute_command(uint32_t commandKey, const std::string& param, OperationType operationType);
 extern std::map<uint32_t, std::function<Frame(const std::string&, OperationType)>> commandHandlers;

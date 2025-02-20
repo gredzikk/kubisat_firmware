@@ -9,11 +9,17 @@
 #include "dirent.h"
 
 #define MAX_BLOCK_SIZE  250
-#define DOWNLOAD_GROUP 6
+#define STORAGE_GROUP 6
 #define START_COMMAND 1
 #define DATA_COMMAND 2
 #define END_COMMAND 3
 #define LIST_FILES_COMMAND 0
+#define MOUNT_COMMAND 4 
+/**
+ * @defgroup StorageCommands Storage Commands
+ * @brief Commands for interacting with the SD card storage.
+ * @{
+ */
 
 /**
  * @brief Handles the file download command.
@@ -24,19 +30,26 @@
  * transmission to verify data integrity.
  *
  * @param param The filename to download.
- * @param operationType The operation type (must be SET).
+ * @param operationType The operation type (must be GET).
  * @return A Frame indicating the result of the operation.
+ *         - Success: Frame with "File download complete" message.
+ *         - Error: Frame with error message (e.g., "File not found", "ACK timeout").
+ *
+ * @note <b>KBST;0;GET;6;1;[filename];TSBK</b>
+ * @note Example: <b>KBST;0;GET;6;1;test.txt;TSBK</b> - Downloads the file "test.txt".
+ * @ingroup StorageCommands
+ * @xrefitem command "Command" "List of Commands" Command ID: 6.1
  */
 Frame handle_file_download(const std::string& param, OperationType operationType) {
-    if (operationType != OperationType::SET) {
-        return frame_build(ExecutionResult::ERROR, DOWNLOAD_GROUP, START_COMMAND, "Invalid operation type");
+    if (operationType != OperationType::GET) {
+        return frame_build(ExecutionResult::ERROR, STORAGE_GROUP, START_COMMAND, "Invalid operation type");
     }
 
     const char* filename = param.c_str();
     FILE* file = fopen(filename, "rb");
 
     if (!file) {
-        return frame_build(ExecutionResult::ERROR, DOWNLOAD_GROUP, START_COMMAND, "File not found");
+        return frame_build(ExecutionResult::ERROR, STORAGE_GROUP, START_COMMAND, "File not found");
     }
 
     // Get file size
@@ -45,16 +58,16 @@ Frame handle_file_download(const std::string& param, OperationType operationType
     fseek(file, 0, SEEK_SET);
 
     // Send file size to ground station
-    Frame sizeFrame = frame_build(ExecutionResult::INFO, DOWNLOAD_GROUP, START_COMMAND, std::to_string(fileSize));
+    Frame sizeFrame = frame_build(ExecutionResult::INFO, STORAGE_GROUP, START_COMMAND, std::to_string(fileSize));
     send_frame(sizeFrame);
 
     size_t block_size = MAX_BLOCK_SIZE;
     size_t block_count = (fileSize + block_size - 1) / block_size;
 
     // Send block size and count
-    Frame blockSizeFrame = frame_build(ExecutionResult::INFO, DOWNLOAD_GROUP, START_COMMAND, std::to_string(block_size));
+    Frame blockSizeFrame = frame_build(ExecutionResult::INFO, STORAGE_GROUP, START_COMMAND, std::to_string(block_size));
     send_frame(blockSizeFrame);
-    Frame blockCountFrame = frame_build(ExecutionResult::INFO, DOWNLOAD_GROUP, START_COMMAND, std::to_string(block_count));
+    Frame blockCountFrame = frame_build(ExecutionResult::INFO, STORAGE_GROUP, START_COMMAND, std::to_string(block_count));
     send_frame(blockCountFrame);
 
     uint8_t buffer[MAX_BLOCK_SIZE];
@@ -70,7 +83,7 @@ Frame handle_file_download(const std::string& param, OperationType operationType
         // Wait for ACK
         if (!receive_ack()) {
             fclose(file);
-            return frame_build(ExecutionResult::ERROR, DOWNLOAD_GROUP, DATA_COMMAND, "ACK timeout");
+            return frame_build(ExecutionResult::ERROR, STORAGE_GROUP, DATA_COMMAND, "ACK timeout");
         }
         blockIndex++;
     }
@@ -80,10 +93,10 @@ Frame handle_file_download(const std::string& param, OperationType operationType
     // Send end frame with checksum
     std::stringstream ss;
     ss << std::hex << totalChecksum;
-    Frame endFrame = frame_build(ExecutionResult::SUCCESS, DOWNLOAD_GROUP, END_COMMAND, ss.str());
+    Frame endFrame = frame_build(ExecutionResult::SUCCESS, STORAGE_GROUP, END_COMMAND, ss.str());
     send_frame(endFrame);
 
-    return frame_build(ExecutionResult::SUCCESS, DOWNLOAD_GROUP, END_COMMAND, "File download complete");
+    return frame_build(ExecutionResult::SUCCESS, STORAGE_GROUP, END_COMMAND, "File download complete");
 }
 
 
@@ -96,10 +109,17 @@ Frame handle_file_download(const std::string& param, OperationType operationType
  * @param param Unused.
  * @param operationType The operation type (must be GET).
  * @return A Frame indicating the result of the operation.
+ *         - Success: Frame with "File listing complete" message.
+ *         - Error: Frame with error message (e.g., "Could not open directory").
+ *
+ * @note <b>KBST;0;GET;6;0;;TSBK</b>
+ * @note This command lists the files and their sizes in the root directory of the SD card.
+ * @ingroup StorageCommands
+ * @xrefitem command "Command" "List of Commands" Command ID: 6.0
  */
 Frame handle_list_files(const std::string& param, OperationType operationType) {
     if (operationType != OperationType::GET) {
-        return frame_build(ExecutionResult::ERROR, DOWNLOAD_GROUP, LIST_FILES_COMMAND, "Invalid operation type");
+        return frame_build(ExecutionResult::ERROR, STORAGE_GROUP, LIST_FILES_COMMAND, "Invalid operation type");
     }
 
     DIR *dir;
@@ -129,12 +149,56 @@ Frame handle_list_files(const std::string& param, OperationType operationType) {
             // Create and send frame with filename and size
             char fileInfo[512];
             snprintf(fileInfo, sizeof(fileInfo), "%s:%zu", filename, fileSize);
-            Frame fileFrame = frame_build(ExecutionResult::INFO, DOWNLOAD_GROUP, LIST_FILES_COMMAND, fileInfo);
+            Frame fileFrame = frame_build(ExecutionResult::INFO, STORAGE_GROUP, LIST_FILES_COMMAND, fileInfo);
+            uart_print(fileInfo, VerbosityLevel::INFO);
             send_frame(fileFrame);
         }
         closedir(dir);
-        return frame_build(ExecutionResult::SUCCESS, DOWNLOAD_GROUP, LIST_FILES_COMMAND, "File listing complete");
+        return frame_build(ExecutionResult::SUCCESS, STORAGE_GROUP, LIST_FILES_COMMAND, "File listing complete");
     } else {
-        return frame_build(ExecutionResult::ERROR, DOWNLOAD_GROUP, LIST_FILES_COMMAND, "Could not open directory");
+        return frame_build(ExecutionResult::ERROR, STORAGE_GROUP, LIST_FILES_COMMAND, "Could not open directory");
     }
 }
+
+
+/**
+ * @brief Handles the SD card mount/unmount command.
+ *
+ * This function mounts or unmounts the SD card.
+ *
+ * @param param "0" to unmount, "1" to mount.
+ * @param operationType The operation type (must be SET).
+ * @return A Frame indicating the result of the operation.
+ *         - Success: Frame with "SD card mounted" or "SD card unmounted" message.
+ *         - Error: Frame with error message (e.g., "Invalid parameter", "Mount failed", "Unmount failed").
+ *
+ * @note <b>KBST;0;SET;6;4;[0|1];TSBK</b>
+ * @note Example: <b>KBST;0;SET;6;4;1;TSBK</b> - Mounts the SD card.
+ * @ingroup StorageCommands
+ * @xrefitem command "Command" "List of Commands" Command ID: 6.4
+ */
+Frame handle_mount(const std::string& param, OperationType operationType) {
+    if (operationType != OperationType::SET) {
+        return frame_build(ExecutionResult::ERROR, STORAGE_GROUP, MOUNT_COMMAND, "Invalid operation type");
+    }
+
+    if (param == "1") {
+        // Mount SD card
+        if (fs_init()) {
+            return frame_build(ExecutionResult::SUCCESS, STORAGE_GROUP, MOUNT_COMMAND, "SD card mounted");
+        } else {
+            return frame_build(ExecutionResult::ERROR, STORAGE_GROUP, MOUNT_COMMAND, "Mount failed");
+        }
+    } else if (param == "0") {
+        // Unmount SD card (Implement unmount function in storage.c)
+        if (fs_unmount("/")) { // Assuming you have an unmount function
+           return frame_build(ExecutionResult::SUCCESS, STORAGE_GROUP, MOUNT_COMMAND, "SD card unmounted");
+        } else {
+           return frame_build(ExecutionResult::ERROR, STORAGE_GROUP, MOUNT_COMMAND, "Unmount failed");
+        }
+        return frame_build(ExecutionResult::ERROR, STORAGE_GROUP, MOUNT_COMMAND, "Unmount not implemented");
+    } else {
+        return frame_build(ExecutionResult::ERROR, STORAGE_GROUP, MOUNT_COMMAND, "Invalid parameter");
+    }
+}
+/** @} */ // StorageCommands

@@ -46,6 +46,7 @@ std::string get_level_prefix(VerbosityLevel level) {
         case VerbosityLevel::WARNING: return "WARNING: ";
         case VerbosityLevel::INFO:    return "INFO: ";
         case VerbosityLevel::DEBUG:   return "DEBUG: ";
+        case VerbosityLevel::EVENT:   return "EVENT: ";
         default:                      return "";
     }
 }
