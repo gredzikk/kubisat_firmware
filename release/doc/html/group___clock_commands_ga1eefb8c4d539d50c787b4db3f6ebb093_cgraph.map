@@ -1,9 +1,0 @@
-<map id="handleTime" name="handleTime">
-<area shape="rect" id="Node000001" title="Handler for getting and setting system time." alt="" coords="5,31,94,57"/>
-<area shape="rect" id="Node000002" href="$frame_8cpp.html#a5f43260949ee244d3ee66068eb1d7fc1" title="Builds a Frame instance." alt="" coords="164,5,250,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,34,149,25,150,31,95,40"/>
-<area shape="rect" id="Node000004" href="$class_event_emitter.html#a539d733505f9a793439a9cfc4f2af079" title="Emits an event." alt="" coords="142,56,272,83"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="95,48,127,54,126,59,94,54"/>
-<area shape="rect" id="Node000003" href="$utils__converters_8cpp.html#ab4cb9e6b491bd7711c69c9167a2b9286" title="Converts a ValueUnit to a string." alt="" coords="320,5,472,32"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="250,16,305,16,305,21,250,21"/>
-</map>

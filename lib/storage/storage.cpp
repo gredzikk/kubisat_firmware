@@ -21,7 +21,7 @@
  *          with littlefs and then attempts to mount again.
  */
 bool fs_init(void) {
-    uart_print("fs_init littlefs on SD card\n");
+    uart_print("fs_init littlefs on SD card", VerbosityLevel::ERROR);
     blockdevice_t *sd = blockdevice_sd_create(SD_SPI_PORT,
                                               SD_MOSI_PIN,
                                               SD_MISO_PIN,
@@ -35,17 +35,17 @@ bool fs_init(void) {
     int err = fs_mount("/", fat, sd);
     if (err == -1) {
         statusString = "Formatting / with FAT";
-        uart_print(statusString);
+        uart_print(statusString, VerbosityLevel::INFO);
         err = fs_format(fat, sd);
         if (err == -1) {
             statusString = "fs_format error: " + std::string(strerror(errno));
-            uart_print(statusString);
+            uart_print(statusString, VerbosityLevel::ERROR);
             return false;
         }
         err = fs_mount("/", fat, sd);
         if (err == -1) {
             statusString = "fs_mount error: " + std::string(strerror(errno));
-            uart_print(statusString);
+            uart_print(statusString, VerbosityLevel::ERROR);
             return false;
         }
     }

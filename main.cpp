@@ -1,5 +1,7 @@
 #include "includes.h"
 
+#define LOG_FILENAME "log.txt"
+
 PowerManager powerManager(MAIN_I2C_PORT);
 DS3231 systemClock(MAIN_I2C_PORT);
 
@@ -7,7 +9,7 @@ char buffer[BUFFER_SIZE];
 int bufferIndex = 0;
 
 void core1_entry() {
-    uart_print("Starting core 1");
+    uart_print("Starting core 1", VerbosityLevel::DEBUG);
     while (true) {
         collect_gps_data();
         check_power_events(powerManager); 

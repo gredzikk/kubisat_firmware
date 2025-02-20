@@ -8,6 +8,10 @@ if(DOXYGEN_FOUND)
     set(DOC_OUTPUT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/release/doc")
     set(DOXYGEN_IN "${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile")
     set(DOXYGEN_OUT "${CMAKE_CURRENT_BINARY_DIR}/Doxyfile")
+    set(LATEX_OUTPUT_DIR "${DOC_OUTPUT_DIR}/latex")
+    set(FINAL_DOC_NAME "doc_${CURRENT_BUILD_NUMBER}.pdf")
+    set(FINAL_DOC_PATH "${DOC_OUTPUT_DIR}/${FINAL_DOC_NAME}")
+
 
     # Convert input directories list to Doxygen format
     string(REPLACE ";" " " DOXYGEN_INPUT_DIRS 
@@ -43,11 +47,8 @@ if(DOXYGEN_FOUND)
     # Configure Doxygen file
     configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
 
-    # Add documentation generation to build process
-    add_custom_command(
-        TARGET main
-        PRE_BUILD
-        COMMAND ${CMAKE_COMMAND} -E env 
+    add_custom_target(doc
+        COMMAND ${CMAKE_COMMAND} -E env
             "HAVE_DOT=${HAVE_DOT}"
             "DOT_PATH=${DOT_PATH}"
             "DOC_OUTPUT_DIR=${DOC_OUTPUT_DIR}"
@@ -57,5 +58,15 @@ if(DOXYGEN_FOUND)
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
         COMMENT "Generating documentation in release/doc"
         VERBATIM
+        # Add command to run make.bat after Doxygen
+        COMMAND cmd /c ${DOC_OUTPUT_DIR}/latex/make.bat
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different "${LATEX_OUTPUT_DIR}/refman.pdf" "${FINAL_DOC_PATH}"
+        COMMAND ${CMAKE_COMMAND} -E rm -rf ${LATEX_OUTPUT_DIR}
+
+
+        COMMENT "Building LaTeX documentation"
     )
+
+    # Optionally, add a message to the build output
+    message(STATUS "Doxygen documentation will be generated when 'make doc' is run")
 endif()

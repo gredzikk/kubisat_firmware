@@ -1,5 +1,0 @@
-<map id="encodeFrame" name="encodeFrame">
-<area shape="rect" id="Node000001" title="Encodes a Frame instance into a string." alt="" coords="5,5,106,32"/>
-<area shape="rect" id="Node000002" href="$utils__converters_8cpp.html#a82a11ce999902359454fa904a13ae297" title="Converts an OperationType to a string." alt="" coords="154,5,304,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,16,138,16,138,21,106,21"/>
-</map>

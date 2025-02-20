@@ -1,5 +1,0 @@
-<map id="ErriezDS3231::getTemperature" name="ErriezDS3231::getTemperature">
-<area shape="rect" id="Node000001" title="Read temperature." alt="" coords="5,5,206,32"/>
-<area shape="rect" id="Node000002" href="$class_erriez_d_s3231.html#a9715869e0186e4f6a30dfd6a372875c1" title="Read buffer from RTC." alt="" coords="254,5,423,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="206,16,238,16,238,21,206,21"/>
-</map>

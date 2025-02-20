@@ -38,7 +38,7 @@ Frame handle_get_commands_list(const std::string& param, OperationType operation
     }
 
     std::string commandList = ss.str();
-    uart_print(commandList); // Print to UART
+    uart_print(commandList, VerbosityLevel::INFO); // Print to UART
 
     return frame_build(ExecutionResult::SUCCESS, 1, 0, "Commands listed on UART");
 }
@@ -112,7 +112,7 @@ Frame handle_enter_bootloader_mode(const std::string& param, OperationType opera
     // Delay to ensure the frame is sent
     sleep_ms(100);
 
-    uart_print("Entering BOOTSEL mode...");
+    uart_print("Entering BOOTSEL mode...", VerbosityLevel::WARNING);
     reset_usb_boot(0, 0); // Trigger BOOTSEL mode
 
     // The code will never reach here because the Pico will reset

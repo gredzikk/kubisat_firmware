@@ -1,9 +1,0 @@
-<map id="handle_get_commands_list" name="handle_get_commands_list">
-<area shape="rect" id="Node000001" title="Handler for listing all available commands on UART." alt="" coords="5,39,185,65"/>
-<area shape="rect" id="Node000002" href="$frame_8cpp.html#a29170691faa10727d607a73861cacbeb" title="Builds a Frame instance." alt="" coords="233,13,321,40"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="184,37,217,32,217,38,185,42"/>
-<area shape="rect" id="Node000004" href="$utils_8cpp.html#acd86977d05fa330749958ace0f2798de" title="Prints a message to the UART with a timestamp and core number." alt="" coords="239,64,314,91"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="185,62,224,67,224,73,184,67"/>
-<area shape="rect" id="Node000003" href="$utils__converters_8cpp.html#a29531ed9ad98ab78384a8a2f37f4e77d" title="Converts a ValueUnit to a string." alt="" coords="369,5,499,48"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="322,24,354,24,354,29,322,29"/>
-</map>

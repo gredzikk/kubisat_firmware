@@ -1,8 +1,0 @@
-<map id="BH1750::write8" name="BH1750::write8">
-<area shape="rect" id="Node000001" title=" " alt="" coords="338,5,449,32"/>
-<area shape="rect" id="Node000002" href="$class_b_h1750.html#ae0e57ed9ecc08464a6b98b733d420e11" title=" " alt="" coords="5,5,113,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="322,21,113,21,113,16,322,16"/>
-<area shape="rect" id="Node000003" href="$class_b_h1750.html#ab4f497d6aabaa34ba1ace42206bca286" title=" " alt="" coords="161,31,290,57"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="323,32,291,37,290,32,322,27"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="145,34,113,29,113,24,146,29"/>
-</map>

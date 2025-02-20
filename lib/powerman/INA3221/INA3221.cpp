@@ -54,7 +54,7 @@ INA3221::INA3221(ina3221_addr_t addr, i2c_inst_t* i2c)
  * @details Sets up shunt resistors, filter resistors, and verifies device IDs
  */
 bool INA3221::begin() {
-    uart_print("INA3221 initializing...\n");
+    uart_print("INA3221 initializing...", VerbosityLevel::DEBUG);
 
     _shuntRes[0] = 10;
     _shuntRes[1] = 10;
@@ -69,13 +69,13 @@ bool INA3221::begin() {
     std::stringstream ss;
     ss << "INA3221 Manufacturer ID: 0x" << std::hex << manuf_id 
               << ", Die ID: 0x" << die_id << std::endl;
-    uart_print(ss.str());
+    uart_print(ss.str(), VerbosityLevel::INFO);
 
     if (manuf_id == 0x5449 && die_id == 0x3220) { 
-       uart_print("INA3221 found and initialized.");
+       uart_print("INA3221 found and initialized.", VerbosityLevel::INFO);
         return true;
     } else {
-        uart_print("INA3221 initialization failed. Incorrect IDs.");
+        uart_print("INA3221 initialization failed. Incorrect IDs.", VerbosityLevel::ERROR);
         return false;
     }
 

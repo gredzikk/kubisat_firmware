@@ -28,7 +28,7 @@ void send_message(string outgoing)
     messageToLog += " to 0x" + std::to_string(lora_address_remote);
     messageToLog += " containing: " + string(send);
 
-    uart_print(messageToLog);
+    uart_print(messageToLog, VerbosityLevel::DEBUG);
     
     LoRa.flush();
 }

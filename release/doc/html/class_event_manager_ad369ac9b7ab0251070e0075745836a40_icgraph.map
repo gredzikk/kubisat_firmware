@@ -1,5 +1,0 @@
-<map id="EventManager::saveToStorage" name="EventManager::saveToStorage">
-<area shape="rect" id="Node000001" title="Saves the events to storage." alt="" coords="218,5,418,32"/>
-<area shape="rect" id="Node000002" href="$class_event_manager.html#ae73a56091dc8713bb86a11abb6742a14" title="Logs an event." alt="" coords="5,5,170,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="202,21,170,21,170,16,202,16"/>
-</map>

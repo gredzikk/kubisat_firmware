@@ -155,31 +155,6 @@ add_custom_command(
     VERBATIM
 )
 
-# Copy and rename test_runner.uf2
-# add_custom_command(
-#     TARGET test_runner POST_BUILD
-#     COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_CURRENT_SOURCE_DIR}/release"
-#     COMMAND ${CMAKE_COMMAND} -E copy_if_different
-#         "${CMAKE_BINARY_DIR}/test_runner.uf2"
-#         "${CMAKE_CURRENT_SOURCE_DIR}/release/test_runner_v${CURRENT_BUILD_NUMBER}.uf2"
-#     COMMENT "Copying test_runner.uf2 to release directory with build number"
-#     VERBATIM
-# )
-
-find_package(Python3 REQUIRED)
-find_program(DOT_EXECUTABLE dot)
-
-if(DOT_EXECUTABLE)
-    add_custom_command(
-        TARGET main POST_BUILD
-        COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/generate_include_graph.py
-        COMMAND ${DOT_EXECUTABLE} -Tpng include_graph.dot -o ${CMAKE_CURRENT_SOURCE_DIR}/release/include_graph.png
-        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-        COMMENT "Generating include dependency graph"
-        VERBATIM
-    )
-endif()
-
 add_custom_command(
     TARGET main POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E echo "Release artifacts created successfully"

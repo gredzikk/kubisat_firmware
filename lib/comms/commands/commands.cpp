@@ -27,7 +27,7 @@ using CommandMap = std::map<uint32_t, CommandHandler>;
 CommandMap commandHandlers = {
     {((static_cast<uint32_t>(1) << 8) | static_cast<uint32_t>(0)), handle_get_commands_list},               // Group 1, Command 0
     {((static_cast<uint32_t>(1) << 8) | static_cast<uint32_t>(1)), handle_get_build_version},               // Group 1, Command 1
-    {((static_cast<uint32_t>(1) << 8) | static_cast<uint32_t>(9)), handle_verbosity},                       // Group 1, Command 9
+    {((static_cast<uint32_t>(1) << 8) | static_cast<uint32_t>(8)), handle_verbosity},                       // Group 1, Command 9
     {((static_cast<uint32_t>(1) << 8) | static_cast<uint32_t>(9)), handle_enter_bootloader_mode},           // Group 1, Command 9
     {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(0)), handle_get_power_manager_ids},           // Group 2, Command 0
     {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(2)), handle_get_voltage_battery},             // Group 2, Command 2

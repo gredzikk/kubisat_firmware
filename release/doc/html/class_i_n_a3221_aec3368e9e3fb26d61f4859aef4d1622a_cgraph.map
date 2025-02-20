@@ -1,7 +1,0 @@
-<map id="INA3221::setBusMeasDisable" name="INA3221::setBusMeasDisable">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,203,57"/>
-<area shape="rect" id="Node000002" href="$class_i_n_a3221.html#a0b4c630038abf482bef36f3083ab20ff" title=" " alt="" coords="252,5,364,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="203,29,236,25,237,30,204,34"/>
-<area shape="rect" id="Node000003" href="$class_i_n_a3221.html#aea00c9c6baf85bd94794ee7b3b47d2c7" title=" " alt="" coords="251,56,366,83"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="204,54,235,58,235,63,203,59"/>
-</map>

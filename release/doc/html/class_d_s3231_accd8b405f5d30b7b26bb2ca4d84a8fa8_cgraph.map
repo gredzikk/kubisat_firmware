@@ -1,7 +1,0 @@
-<map id="DS3231::applyTimezone" name="DS3231::applyTimezone">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,170,57"/>
-<area shape="rect" id="Node000002" href="$class_d_s3231.html#ae6c4f2144a772c44f7adbace7f86dfa1" title=" " alt="" coords="218,5,389,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="170,32,202,28,202,33,170,37"/>
-<area shape="rect" id="Node000003" href="$class_d_s3231.html#a40a965b965496e5b0e7758040c5d9ce7" title=" " alt="" coords="218,56,389,83"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="170,51,202,55,202,60,170,56"/>
-</map>

@@ -1,7 +1,0 @@
-<map id="LoRaClass::sleep" name="LoRaClass::sleep">
-<area shape="rect" id="Node000001" title=" " alt="" coords="179,31,304,57"/>
-<area shape="rect" id="Node000002" href="$class_lo_ra_class.html#a3c5b6ee156c14f20238f46292c116d96" title=" " alt="" coords="5,5,131,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,35,130,30,131,25,164,30"/>
-<area shape="rect" id="Node000003" href="$class_lo_ra_class.html#a7a444720541f652a1352b643b6d35369" title=" " alt="" coords="10,56,126,83"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="164,58,127,64,126,58,163,53"/>
-</map>

@@ -1,7 +1,0 @@
-<map id="INA3221::estimateOffsetVoltage" name="INA3221::estimateOffsetVoltage">
-<area shape="rect" id="Node000001" title=" " alt="" coords="303,31,511,57"/>
-<area shape="rect" id="Node000002" href="$class_i_n_a3221.html#a4d6fc129ecefc2b28187ffa0652a1127" title=" " alt="" coords="19,5,241,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="287,36,242,32,242,26,288,30"/>
-<area shape="rect" id="Node000003" href="$class_i_n_a3221.html#a8156d9fca27f9aadab3d99bec9925c44" title=" " alt="" coords="5,56,255,83"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="287,58,256,61,255,55,287,52"/>
-</map>

@@ -13,7 +13,7 @@ int DS3231::set_time(ds3231_data_t *data) {
 
     // Enable oscillator
     if (clock_enable() != 0) {
-        printf("Error: Failed to enable clock oscillator\n");
+        uart_print("Failed to enable clock oscillator", VerbosityLevel::ERROR);
         return -1;
     }
 
@@ -49,18 +49,16 @@ int DS3231::set_time(ds3231_data_t *data) {
         temp[5] |= (0x01 << 7);
     temp[6] = bin_to_bcd(data->year);
 
-    printf("BCD values to be written to DS3231: %02X %02X %02X %02X %02X %02X %02X\n",
-           temp[0], temp[1], temp[2], temp[3], temp[4], temp[5], temp[6]);
+    std::string status = "BCD values to be written to DS3231: " + std::to_string(temp[0]) + " " + 
+                        std::to_string(temp[1]) + " " + std::to_string(temp[2]) + " " + 
+                        std::to_string(temp[3]) + " " + std::to_string(temp[4]) + " " + 
+                        std::to_string(temp[5]) + " " + std::to_string(temp[6]);
 
-    uart_print("Writing time to DS3231");
-    std::string timeStr = "Time: " + std::to_string(data->hours) + ":" + std::to_string(data->minutes) + ":" + std::to_string(data->seconds);
-    uart_print(timeStr);
-    std::string dateStr = "Date: " + std::to_string(data->date) + "/" + std::to_string(data->month) + "/" + std::to_string(data->year);
-    uart_print(dateStr);
+    uart_print(status, VerbosityLevel::DEBUG);
 
     int result = i2c_write_reg(DS3231_SECONDS_REG, 7, temp);
     if (result != 0) {
-        printf("Error: Failed to write time to DS3231\n");
+        uart_print("i2c write failed", VerbosityLevel::ERROR);
         return -1;
     }
 
@@ -68,15 +66,20 @@ int DS3231::set_time(ds3231_data_t *data) {
 }
 
 int DS3231::get_time(ds3231_data_t *data) {
+    std::string status;
     uint8_t raw_data[7];
     int result = i2c_read_reg(DS3231_SECONDS_REG, 7, raw_data);
     if (result != 0) {
-        printf("Error: Failed to read time from DS3231\n");
+        status = "Failed to read time from DS3231";
+        uart_print(status, VerbosityLevel::ERROR);
         return -1;
     }
 
-    printf("Raw BCD values read from DS3231: %02X %02X %02X %02X %02X %02X %02X\n",
-           raw_data[0], raw_data[1], raw_data[2], raw_data[3], raw_data[4], raw_data[5], raw_data[6]);
+    status = "Raw BCD values read from DS3231: " + std::to_string(raw_data[0]) + " " + 
+            std::to_string(raw_data[1]) + " " + std::to_string(raw_data[2]) + " " + 
+            std::to_string(raw_data[3]) + " " + std::to_string(raw_data[4]) + " " + 
+            std::to_string(raw_data[5]) + " " + std::to_string(raw_data[6]);
+    uart_print(status, VerbosityLevel::DEBUG);
 
     data->seconds = bcd_to_bin(raw_data[0] & 0x7F); // Masking for CH bit (clock halt)
     data->minutes = bcd_to_bin(raw_data[1] & 0x7F);
@@ -91,24 +94,26 @@ int DS3231::get_time(ds3231_data_t *data) {
     if (data->seconds > 59 || data->minutes > 59 || data->hours > 23 ||
         data->day < 1 || data->day > 7 || data->date < 1 || data->date > 31 ||
         data->month < 1 || data->month > 12 || data->year > 99) {
-        printf("Error: Invalid data read from DS3231\n");
+        uart_print("Invalid data read from DS3231", VerbosityLevel::ERROR);
         return -1;
     }
 
-    uart_print("Reading time from DS3231");
+    uart_print("Reading time from DS3231", VerbosityLevel::DEBUG);
     std::string timeStr = "Time: " + std::to_string(data->hours) + ":" + std::to_string(data->minutes) + ":" + std::to_string(data->seconds);
-    uart_print(timeStr);
+    uart_print(timeStr, VerbosityLevel::DEBUG);
     std::string dateStr = "Date: " + std::to_string(data->date) + "/" + std::to_string(data->month) + "/" + std::to_string(data->year);
-    uart_print(dateStr);
+    uart_print(dateStr, VerbosityLevel::DEBUG);
 
     return 0;
 }
 
 int DS3231::read_temperature(float *resolution) {
+    std::string status;
     uint8_t temp[2];
     int result = i2c_read_reg(DS3231_TEMPERATURE_MSB_REG, 2, temp);
     if (result != 0) {
-        printf("Error: Failed to read temperature from DS3231\n");
+        status = "Failed to read temperature from DS3231";
+        uart_print(status, VerbosityLevel::ERROR);
         return -1;
     }
 
@@ -132,17 +137,21 @@ int DS3231::i2c_read_reg(uint8_t reg_addr, size_t length, uint8_t *data) {
     if (!length)
         return -1;
 
+    std::string status = "Reading register " + std::to_string(reg_addr) + " from DS3231";
+    uart_print(status, VerbosityLevel::DEBUG);
     recursive_mutex_enter_blocking(&clock_mutex_);
     uint8_t reg = reg_addr;
     int write_result = i2c_write_blocking(i2c, ds3231_addr, &reg, 1, true);
     if (write_result == PICO_ERROR_GENERIC) {
-        printf("Error: i2c_write_blocking failed in i2c_read_reg\n");
+        status = "Failed to write register address to DS3231";
+        uart_print(status, VerbosityLevel::ERROR);
         recursive_mutex_exit(&clock_mutex_);
         return -1;
     }
     int read_result = i2c_read_blocking(i2c, ds3231_addr, data, length, false);
     if (read_result == PICO_ERROR_GENERIC) {
-        printf("Error: i2c_read_blocking failed in i2c_read_reg\n");
+        status = "Failed to read register data from DS3231";
+        uart_print(status, VerbosityLevel::ERROR);
         recursive_mutex_exit(&clock_mutex_);
         return -1;
     }
@@ -171,7 +180,7 @@ int DS3231::i2c_write_reg(uint8_t reg_addr, size_t length, uint8_t *data) {
     }
     int write_result = i2c_write_blocking(i2c, ds3231_addr, message, (length + 1), false);
     if (write_result == PICO_ERROR_GENERIC) {
-        printf("Error: i2c_write_blocking failed in i2c_write_reg\n");
+        uart_print("Error: i2c_write_blocking failed in i2c_write_reg", VerbosityLevel::ERROR);
         recursive_mutex_exit(&clock_mutex_);
         return -1;
     }
@@ -208,7 +217,7 @@ uint8_t DS3231::bcd_to_bin(const uint8_t bcd) {
 int DS3231::set_unix_time(time_t unix_time) {
     struct tm *timeinfo = gmtime(&unix_time);
     if (timeinfo == NULL) {
-        printf("Error: gmtime() failed\n");
+        uart_print("Error: gmtime() failed", VerbosityLevel::ERROR);
         return -1;
     }
 
@@ -246,7 +255,7 @@ time_t DS3231::get_unix_time() {
 
     time_t timestamp = mktime(&timeinfo);
     if (timestamp == (time_t)(-1)) {
-        printf("Error: mktime() failed\n");
+        uart_print("Error: mktime() failed", VerbosityLevel::ERROR);
         return -1;
     }
 
@@ -254,10 +263,12 @@ time_t DS3231::get_unix_time() {
 }
 
 int DS3231::clock_enable() {
+    std::string status;
     uint8_t control_reg = 0;
     int result = i2c_read_reg(DS3231_CONTROL_REG, 1, &control_reg);
     if (result != 0) {
-        printf("Error: Failed to read control register\n");
+        status = "Failed to read control register";
+        uart_print(status, VerbosityLevel::ERROR);
         return -1;
     }
 
@@ -266,7 +277,8 @@ int DS3231::clock_enable() {
 
     result = i2c_write_reg(DS3231_CONTROL_REG, 1, &control_reg);
     if (result != 0) {
-        printf("Error: Failed to write control register\n");
+        status = "Failed to write control register";
+        uart_print(status, VerbosityLevel::ERROR);
         return -1;
     }
 

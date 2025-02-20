@@ -1,9 +1,0 @@
-<map id="ErriezDS3231::read" name="ErriezDS3231::read">
-<area shape="rect" id="Node000001" title="Read date and time from RTC." alt="" coords="239,56,374,83"/>
-<area shape="rect" id="Node000002" href="$class_erriez_d_s3231.html#a5c4f30f85b325e4bcdecd976cfda0f93" title="Get date time." alt="" coords="5,5,191,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="233,54,155,35,157,30,234,49"/>
-<area shape="rect" id="Node000003" href="$class_erriez_d_s3231.html#a05a1fab6a5d852c6b7e7749754cc7a63" title="Read Unix UTC epoch time_t." alt="" coords="15,56,181,83"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="223,72,181,72,181,67,223,67"/>
-<area shape="rect" id="Node000004" href="$class_erriez_d_s3231.html#a1942791ed2f5550ab5114c2dc2ac6722" title="Write time to RTC." alt="" coords="19,107,177,133"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="234,89,157,109,155,103,233,84"/>
-</map>

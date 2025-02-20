@@ -1,7 +1,0 @@
-<map id="DS3231::setTime" name="DS3231::setTime">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,129,57"/>
-<area shape="rect" id="Node000002" href="$class_d_s3231.html#a41f5aabf74e5a66093116999648806ab" title=" " alt="" coords="177,5,298,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,32,161,27,161,33,129,37"/>
-<area shape="rect" id="Node000003" href="$utils_8cpp.html#aacbcecbe6b5428e3571b06ab2104e706" title="Prints a message to the UART with a timestamp and core number." alt="" coords="202,56,272,83"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="129,51,187,59,186,65,128,56"/>
-</map>

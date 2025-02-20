@@ -1,7 +1,0 @@
-<map id="initialize_radio" name="initialize_radio">
-<area shape="rect" id="Node000001" title="Initializes the LoRa radio module." alt="" coords="5,31,109,57"/>
-<area shape="rect" id="Node000002" href="$class_event_emitter.html#a539d733505f9a793439a9cfc4f2af079" title="Emits an event." alt="" coords="157,5,287,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,33,141,28,141,34,110,39"/>
-<area shape="rect" id="Node000003" href="$utils_8cpp.html#acd86977d05fa330749958ace0f2798de" title="Prints a message to the UART with a timestamp and core number." alt="" coords="184,56,260,83"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="110,49,169,59,169,64,109,55"/>
-</map>

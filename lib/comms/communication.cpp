@@ -20,10 +20,10 @@ bool initialize_radio() {
     bool initStatus = false;
     if (!LoRa.begin(frequency))
     {
-        uart_print("LoRa init failed. Check your connections.");
+        uart_print("LoRa init failed. Check your connections.", VerbosityLevel::WARNING);
         initStatus = false;
     } else {
-        uart_print("LoRa initialized with frequency " + std::to_string(frequency));
+        uart_print("LoRa initialized with frequency " + std::to_string(frequency), VerbosityLevel::INFO);
         initStatus = true;
     }
 

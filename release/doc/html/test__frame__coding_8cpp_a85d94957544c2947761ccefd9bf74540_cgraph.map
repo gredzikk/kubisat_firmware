@@ -1,9 +1,0 @@
-<map id="test_frame_encode_basic" name="test_frame_encode_basic">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,176,57"/>
-<area shape="rect" id="Node000002" href="$test__frame__common_8h.html#aa36a5b46f6db003d0e51c506b1164eda" title=" " alt="" coords="224,5,350,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="176,30,208,26,209,31,177,36"/>
-<area shape="rect" id="Node000003" href="$frame_8cpp.html#a3ae6df528775be58890bf406c906a056" title="Encodes a Frame instance into a string." alt="" coords="235,56,338,83"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="177,52,220,58,220,63,176,58"/>
-<area shape="rect" id="Node000004" href="$utils__converters_8cpp.html#ab218e62029b4451e910d8caf0fd05804" title="Converts an OperationType to a string." alt="" coords="398,56,561,83"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="339,67,383,67,383,72,339,72"/>
-</map>

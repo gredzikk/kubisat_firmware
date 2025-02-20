@@ -1,7 +1,0 @@
-<map id="LoRaClass::available" name="LoRaClass::available">
-<area shape="rect" id="Node000001" title=" " alt="" coords="176,31,321,57"/>
-<area shape="rect" id="Node000002" href="$class_lo_ra_class.html#aef2cd89f65d2833bcfa6e6d1134982cd" title=" " alt="" coords="5,5,128,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,34,128,30,129,25,160,29"/>
-<area shape="rect" id="Node000003" href="$class_lo_ra_class.html#a79c869845ca0bab8bca42cc2a6ea96bb" title=" " alt="" coords="7,56,126,83"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="161,59,127,64,126,58,160,54"/>
-</map>

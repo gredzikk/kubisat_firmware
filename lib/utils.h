@@ -21,6 +21,7 @@
 #define ANSI_GREEN   "\033[32m"
 #define ANSI_YELLOW  "\033[33m"
 #define ANSI_BLUE    "\033[34m"
+#define ANSI_CYAN    "\033[36m"
 #define ANSI_RESET   "\033[0m"
 
 
@@ -32,7 +33,8 @@ enum class VerbosityLevel {
     ERROR = 1,   /**< Only critical errors */
     WARNING = 2, /**< Warnings and errors */
     INFO = 3,    /**< Normal operation information */
-    DEBUG = 4    /**< Detailed debug information */
+    DEBUG = 4,    /**< Detailed debug information */
+    EVENT = 5    /**< Events */
 };
 
 

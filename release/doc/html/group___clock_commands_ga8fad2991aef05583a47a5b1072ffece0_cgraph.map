@@ -1,7 +1,0 @@
-<map id="handle_get_last_sync_time" name="handle_get_last_sync_time">
-<area shape="rect" id="Node000001" title="Handler for getting last clock sync time." alt="" coords="5,13,185,40"/>
-<area shape="rect" id="Node000002" href="$frame_8cpp.html#a29170691faa10727d607a73861cacbeb" title="Builds a Frame instance." alt="" coords="233,13,321,40"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="185,24,217,24,217,29,185,29"/>
-<area shape="rect" id="Node000003" href="$utils__converters_8cpp.html#a29531ed9ad98ab78384a8a2f37f4e77d" title="Converts a ValueUnit to a string." alt="" coords="369,5,499,48"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="322,24,354,24,354,29,322,29"/>
-</map>

@@ -1,9 +1,0 @@
-<map id="LoRaClass::implicitHeaderMode" name="LoRaClass::implicitHeaderMode">
-<area shape="rect" id="Node000001" title=" " alt="" coords="226,56,435,83"/>
-<area shape="rect" id="Node000002" href="$class_lo_ra_class.html#a22d4ee8aaded004bb91b70ee15c57e2d" title=" " alt="" coords="8,5,175,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="249,55,157,35,158,30,250,50"/>
-<area shape="rect" id="Node000003" href="$class_lo_ra_class.html#abc23789599769a0fdc5c9dbee33bc27f" title=" " alt="" coords="5,56,178,83"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="210,72,178,72,178,67,210,67"/>
-<area shape="rect" id="Node000004" href="$class_lo_ra_class.html#a3a19d8829af07604d570f4085a4eec45" title=" " alt="" coords="23,107,160,133"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="250,89,158,109,157,103,249,84"/>
-</map>

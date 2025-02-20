@@ -1,7 +1,0 @@
-<map id="INA3221::getCurrent_mA" name="INA3221::getCurrent_mA">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,174,32"/>
-<area shape="rect" id="Node000002" href="$class_i_n_a3221.html#a7cae0eec9dedb5b64ad3bbefc289468b" title=" " alt="" coords="222,5,397,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="174,16,206,16,206,21,174,21"/>
-<area shape="rect" id="Node000003" href="$class_i_n_a3221.html#a0b4c630038abf482bef36f3083ab20ff" title=" " alt="" coords="445,5,557,32"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="397,16,429,16,429,21,397,21"/>
-</map>

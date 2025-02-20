@@ -1,7 +1,0 @@
-<map id="BME280::init" name="BME280::init">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,35,102,61"/>
-<area shape="rect" id="Node000002" href="$class_b_m_e280.html#aba168dd8fb74f3b101922c50e60542cb" title=" " alt="" coords="150,5,328,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,38,135,32,136,38,102,43"/>
-<area shape="rect" id="Node000003" href="$class_b_m_e280.html#a9bdaf8aa0c2a67ab6fd0b611c69753e6" title=" " alt="" coords="157,56,320,99"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="102,53,142,59,141,65,101,58"/>
-</map>

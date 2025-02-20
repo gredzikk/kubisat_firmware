@@ -29,6 +29,7 @@ std::string get_level_color(VerbosityLevel level) {
         case VerbosityLevel::WARNING: return ANSI_YELLOW;
         case VerbosityLevel::INFO:    return ANSI_GREEN;
         case VerbosityLevel::DEBUG:   return ANSI_BLUE;
+        case VerbosityLevel::EVENT:    return ANSI_CYAN;
         default:                      return "";
     }
 }
@@ -65,7 +66,6 @@ void uart_print(const std::string& msg, VerbosityLevel level, bool logToFile, ua
     static bool mutex_inited = false;
     if (!mutex_inited) {
         mutex_init(&uart_mutex);
-        mutex_init(&log_mutex);
         mutex_inited = true;
     }
 
@@ -77,30 +77,12 @@ void uart_print(const std::string& msg, VerbosityLevel level, bool logToFile, ua
     std::string prefix = get_level_prefix(level);
     std::string msgToSend = "[" + std::to_string(timestamp) + "ms] - Core " + 
                            std::to_string(core_num) + ": " + 
-                           color + prefix + msg + ANSI_RESET + "\r\n";
+                           color + prefix + ANSI_RESET + msg + "\r\n";
 
     // Print to UART
     mutex_enter_blocking(&uart_mutex);
     uart_puts(uart, msgToSend.c_str());
     mutex_exit(&uart_mutex);
-
-    // Store in log buffer if requested
-    if (logToFile) {
-        mutex_enter_blocking(&log_mutex);
-        LogMessage logMsg = {
-            .timestamp = timestamp,
-            .core_num = core_num,
-            .level = level,
-            .message = msg
-        };
-        pending_logs.push(logMsg);
-        
-        // If buffer is full, trigger storage flush
-        if (pending_logs.size() >= MAX_LOG_BUFFER_SIZE) {
-            flush_logs_to_storage();
-        }
-        mutex_exit(&log_mutex);
-    }
 }
 
 

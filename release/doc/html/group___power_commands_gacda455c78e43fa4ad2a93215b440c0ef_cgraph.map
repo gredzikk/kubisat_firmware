@@ -1,9 +1,0 @@
-<map id="handle_get_current_charge_solar" name="handle_get_current_charge_solar">
-<area shape="rect" id="Node000001" title="Handler for getting solar panel charge current." alt="" coords="5,31,137,73"/>
-<area shape="rect" id="Node000002" href="$frame_8cpp.html#a29170691faa10727d607a73861cacbeb" title="Builds a Frame instance." alt="" coords="185,13,273,40"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,39,169,34,170,39,138,44"/>
-<area shape="rect" id="Node000004" href="$utils_8cpp.html#acd86977d05fa330749958ace0f2798de" title="Prints a message to the UART with a timestamp and core number." alt="" coords="191,64,266,91"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="138,60,176,66,175,72,137,65"/>
-<area shape="rect" id="Node000003" href="$utils__converters_8cpp.html#a29531ed9ad98ab78384a8a2f37f4e77d" title="Converts a ValueUnit to a string." alt="" coords="321,5,451,48"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="274,24,306,24,306,29,274,29"/>
-</map>

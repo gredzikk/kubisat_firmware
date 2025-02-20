@@ -40,7 +40,6 @@ Frame handle_time(const std::string& param, OperationType operationType) {
         try {
             time_t newTime = std::stoll(param);
             if (newTime > 0) {
-                uart_print("Setting time to: " + std::to_string(newTime));
                 int status = systemClock.set_unix_time(newTime);
                 if (status == 0) {
                     time_t time_after_set = systemClock.get_unix_time();

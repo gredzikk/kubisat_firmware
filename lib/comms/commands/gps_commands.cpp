@@ -74,7 +74,6 @@ Frame handle_gps_power_status(const std::string& param, OperationType operationT
 Frame handle_enable_gps_uart_passthrough(const std::string& param, OperationType operationType) {
     // Validate operation type
     if (!(operationType == OperationType::SET)) {
-        uart_print("GET operation not allowed for EnableGPSTransparentMode");
         return frame_build(ExecutionResult::ERROR, 7, 2, "NOT ALLOWED");
     }
 
@@ -102,7 +101,7 @@ Frame handle_enable_gps_uart_passthrough(const std::string& param, OperationType
                          std::to_string(gpsBaudRate) + " for " + 
                          std::to_string(timeoutMs/1000) + "s\r\n" +
                          "Send " + EXIT_SEQUENCE + " to exit";
-    uart_print(message);
+    uart_print(message, VerbosityLevel::INFO);
     
     // Allow time for message to be sent before baudrate change
     sleep_ms(10);
@@ -150,7 +149,7 @@ Frame handle_enable_gps_uart_passthrough(const std::string& param, OperationType
     
     std::string exitReason = exitRequested ? "USER_EXIT" : "TIMEOUT";
     std::string response = "GPS UART BRIDGE EXIT: " + exitReason;
-    uart_print(response);
+    uart_print(response, VerbosityLevel::INFO);
     
     return frame_build(ExecutionResult::SUCCESS, 7, 2, response);
 }

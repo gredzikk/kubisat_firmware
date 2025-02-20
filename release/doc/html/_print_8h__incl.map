@@ -1,9 +1,0 @@
-<map id="lib/comms/LoRa/Print.h" name="lib/comms/LoRa/Print.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="59,5,217,32"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,80,84,107"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,35,74,73,71,68,120,30"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="108,80,168,107"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="140,33,140,64,135,64,135,33"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="192,80,246,107"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="154,31,196,68,192,72,150,35"/>
-</map>

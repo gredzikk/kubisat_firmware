@@ -28,12 +28,12 @@ void on_receive(int packetSize) {
     
     // Validate metadata (optional, for security)
     if (receivedDestination != lora_address_local) {
-        uart_print("Error: Destination address mismatch!");
+        uart_print("Error: Destination address mismatch!", VerbosityLevel::ERROR);
         return;
     }
     
     if (receivedLocalAddress != lora_address_remote) {
-        uart_print("Error: Local address mismatch!");
+        uart_print("Error: Local address mismatch!", VerbosityLevel::ERROR);
         return;
     }
 
@@ -52,7 +52,7 @@ void on_receive(int packetSize) {
         hexDump << std::hex << std::setfill('0') << std::setw(2) 
                 << static_cast<int>(buffer[i]) << " ";
     }
-    uart_print(hexDump.str());
+    uart_print(hexDump.str(), VerbosityLevel::DEBUG);
     
     // Find frame boundaries
     size_t headerPos = received.find(FRAME_BEGIN);
@@ -60,10 +60,10 @@ void on_receive(int packetSize) {
     
     if (headerPos != std::string::npos && footerPos != std::string::npos && footerPos > headerPos) {
         std::string frameData = received.substr(headerPos, footerPos + FRAME_END.length() - headerPos);
-        uart_print("Extracted frame (length=" + std::to_string(frameData.length()) + "): " + frameData);
+        uart_print("Extracted frame (length=" + std::to_string(frameData.length()) + "): " + frameData, VerbosityLevel::DEBUG);
         frame_process(frameData, Interface::LORA);  
     } else {
-        uart_print("No valid frame found in received data");
+        uart_print("No valid frame found in received data", VerbosityLevel::WARNING);
     }
 }
 
@@ -80,7 +80,7 @@ void handle_uart_input() {
         char c = uart_getc(DEBUG_UART_PORT);
 
         if (c == '\r' || c == '\n') {
-            uart_print("Received UART string: " + uartBuffer);
+            uart_print("Received UART string: " + uartBuffer, VerbosityLevel::DEBUG);
             frame_process(uartBuffer, Interface::UART); 
             uartBuffer.clear();
         } else {

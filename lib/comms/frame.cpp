@@ -83,7 +83,7 @@ Frame frame_decode(const std::string& data) {
 
         return frame;
     } catch (const std::exception& e) {
-        uart_print("Frame error: " + std::string(e.what()));
+        uart_print("Frame error: " + std::string(e.what()), VerbosityLevel::ERROR);
         Frame errorFrame = frame_build(ExecutionResult::ERROR, 0, 0, e.what()); 
         send_frame(errorFrame);
         throw; 

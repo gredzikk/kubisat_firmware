@@ -1,7 +1,0 @@
-<map id="DS3231::getTimeString" name="DS3231::getTimeString">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,163,32"/>
-<area shape="rect" id="Node000002" href="$class_d_s3231.html#aedd5fa550aa8b38fabe4d44d9ba5a0af" title=" " alt="" coords="211,5,334,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,16,195,16,195,21,163,21"/>
-<area shape="rect" id="Node000003" href="$class_d_s3231.html#a389e756fdd8f645d6025906bbce5abd8" title=" " alt="" coords="382,5,503,32"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="334,16,366,16,366,21,334,21"/>
-</map>

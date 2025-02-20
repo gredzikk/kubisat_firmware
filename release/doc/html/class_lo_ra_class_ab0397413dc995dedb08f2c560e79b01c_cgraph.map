@@ -1,7 +1,0 @@
-<map id="LoRaClass::idle" name="LoRaClass::idle">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,120,32"/>
-<area shape="rect" id="Node000002" href="$class_lo_ra_class.html#a77e7c77aa54174b352a26e1510f66f98" title=" " alt="" coords="168,5,339,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,16,152,16,152,21,120,21"/>
-<area shape="rect" id="Node000003" href="$class_lo_ra_class.html#a3a0c0649c595b1176b5fb1ae41210ee3" title=" " alt="" coords="387,5,563,32"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="339,16,371,16,371,21,339,21"/>
-</map>
