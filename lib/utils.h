@@ -33,8 +33,8 @@ enum class VerbosityLevel {
     ERROR = 1,   /**< Only critical errors */
     WARNING = 2, /**< Warnings and errors */
     INFO = 3,    /**< Normal operation information */
-    DEBUG = 4,    /**< Detailed debug information */
-    EVENT = 5    /**< Events */
+    EVENT = 4,   /**< Events */
+    DEBUG = 5   /**< Detailed debug information */
 };
 
 

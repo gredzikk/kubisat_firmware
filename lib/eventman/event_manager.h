@@ -9,7 +9,7 @@
 #include "utils.h"
 
 #define EVENT_BUFFER_SIZE 10
-#define EVENT_LOG_FILE "/event_log.txt"
+#define EVENT_LOG_FILE "/event_log.csv"
 
 // Event Groups
 enum class EventGroup : uint8_t {
@@ -197,13 +197,19 @@ class EventManagerImpl : public EventManager {
             FILE *file = fopen(EVENT_LOG_FILE, "a");
             if (file) {
                 for (size_t i = 0; i < eventCount; i++) {
-                    fwrite(&events[i], sizeof(EventLog), 1, file);
+                    fprintf(file, "%u;%lu;%u;%u\n", 
+                        events[i].id,
+                        events[i].timestamp,
+                        events[i].group,
+                        events[i].event
+                    );
                 }
                 fclose(file);
                 needsPersistence = false;
                 uart_print("Events saved to storage", VerbosityLevel::INFO);
                 return true;
             }
+            return false;
         }
     
         /**

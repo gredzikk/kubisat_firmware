@@ -45,11 +45,12 @@ bool init_systems() {
     }
     system("color");
 
+    uart_print("System init started.");
+    
     bool radioInitSuccess = false;
 
     radioInitSuccess = initialize_radio();
     
-    // TODO: everything runs properly without errors, but file does not exist on sd card after reading with usb reader
     bool sdInitDone = fs_init();
     if (sdInitDone) {
         FILE *fp = fopen(LOG_FILENAME, "w");
