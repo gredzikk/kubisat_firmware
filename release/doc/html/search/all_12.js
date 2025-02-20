@@ -3,7 +3,7 @@ var searchData=
   ['uart_0',['UART',['../protocol_8h.html#a209a41a363c6409f7276f93a08cc7ab0acec5769b01fb096efaf0d6186823c78f',1,'protocol.h']]],
   ['uart_5ferror_1',['UART_ERROR',['../event__manager_8h.html#a0270a0464efae26aefb8cf32a45e20adae7987a4741412b725a5a1a24867f9b62',1,'event_manager.h']]],
   ['uart_5fmutex_2',['uart_mutex',['../utils_8cpp.html#a1a79e1136e3879e08124c966946cf7b4',1,'utils.cpp']]],
-  ['uart_5fprint_3',['uart_print',['../utils_8cpp.html#acd86977d05fa330749958ace0f2798de',1,'uart_print(const std::string &amp;msg, bool logToFile, uart_inst_t *uart):&#160;utils.cpp'],['../utils_8h.html#a1742e86aa0036799f971dea15081f283',1,'uart_print(const std::string &amp;msg, bool logToFile=false, uart_inst_t *uart=DEBUG_UART_PORT):&#160;utils.cpp']]],
+  ['uart_5fprint_3',['uart_print',['../utils_8cpp.html#a41821df841f43ee369cbc052b68c1cc6',1,'uart_print(const std::string &amp;msg, VerbosityLevel level, bool logToFile, uart_inst_t *uart):&#160;utils.cpp'],['../utils_8h.html#aea62f09fb7702b02c3b34ce5f6824d24',1,'uart_print(const std::string &amp;msg, VerbosityLevel level=VerbosityLevel::INFO, bool logToFile=false, uart_inst_t *uart=DEBUG_UART_PORT):&#160;utils.cpp']]],
   ['unconfigured_5fpower_5fdown_4',['UNCONFIGURED_POWER_DOWN',['../class_b_h1750.html#a8402147d4b96294da6362b538d4827c0a9d4b69a5f725a5105a480e2e5d67e851',1,'BH1750']]],
   ['undefined_5',['UNDEFINED',['../protocol_8h.html#a2d96449e2b52d45b5726af92084e0d8fa0db45d2a4141101bdfe48e3314cfbca3',1,'protocol.h']]],
   ['unit_6',['unit',['../struct_frame.html#a6481c04c9c112a41a50c24696454afa8',1,'Frame']]],

@@ -1,7 +1,5 @@
 #include "includes.h"
 
-#define LOG_FILENAME "log.txt"
-
 PowerManager powerManager(MAIN_I2C_PORT);
 DS3231 systemClock(MAIN_I2C_PORT);
 
@@ -43,6 +41,7 @@ bool init_systems() {
         gpio_set_dir(GPS_POWER_ENABLE_PIN, GPIO_OUT);
         gpio_put(GPS_POWER_ENABLE_PIN, 1); 
     }
+    system("color");
 
     bool radioInitSuccess = false;
 

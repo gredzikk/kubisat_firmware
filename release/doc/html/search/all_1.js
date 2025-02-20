@@ -25,7 +25,12 @@ var searchData=
   ['alarminterruptenable_22',['alarmInterruptEnable',['../class_erriez_d_s3231.html#a63a7a3811ad205d800e07c0ca4466a29',1,'ErriezDS3231']]],
   ['alert_20functions_23',['Alert Functions',['../group___i_n_a3221___alert.html',1,'']]],
   ['ans_24',['ANS',['../protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047a4e062fc2814c180a9e08b1d204ab31bd',1,'protocol.h']]],
-  ['available_25',['available',['../class_lo_ra_class.html#a99f2ee51a5ab27319cc965ebd575e58c',1,'LoRaClass']]],
-  ['availableforwrite_26',['availableForWrite',['../class_print.html#ae278602698f895c25820f18da4e765be',1,'Print']]],
-  ['avg_5fmode_27',['avg_mode',['../struct_i_n_a3221_1_1conf__reg__t.html#a2336f127fcd7bf551db4142c495c54f5',1,'INA3221::conf_reg_t']]]
+  ['ansi_5fblue_25',['ANSI_BLUE',['../utils_8h.html#a50a197ede59d7694515c3dad4557cf00',1,'utils.h']]],
+  ['ansi_5fgreen_26',['ANSI_GREEN',['../utils_8h.html#ad050fd71ced44460a0c723a1715c40e5',1,'utils.h']]],
+  ['ansi_5fred_27',['ANSI_RED',['../utils_8h.html#a7f026776e12ac1b5e7736c24b756085d',1,'utils.h']]],
+  ['ansi_5freset_28',['ANSI_RESET',['../utils_8h.html#af77a445894f2f750d43cf2182cd29e55',1,'utils.h']]],
+  ['ansi_5fyellow_29',['ANSI_YELLOW',['../utils_8h.html#af6e8b5c7b35e8bff4c581efd8019c798',1,'utils.h']]],
+  ['available_30',['available',['../class_lo_ra_class.html#a99f2ee51a5ab27319cc965ebd575e58c',1,'LoRaClass']]],
+  ['availableforwrite_31',['availableForWrite',['../class_print.html#ae278602698f895c25820f18da4e765be',1,'Print']]],
+  ['avg_5fmode_32',['avg_mode',['../struct_i_n_a3221_1_1conf__reg__t.html#a2336f127fcd7bf551db4142c495c54f5',1,'INA3221::conf_reg_t']]]
 ];

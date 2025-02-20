@@ -18,6 +18,7 @@ var annotated_dup =
     [ "HMC5883LWrapper", "class_h_m_c5883_l_wrapper.html", "class_h_m_c5883_l_wrapper" ],
     [ "INA3221", "class_i_n_a3221.html", "class_i_n_a3221" ],
     [ "ISensor", "class_i_sensor.html", "class_i_sensor" ],
+    [ "LogMessage", "struct_log_message.html", "struct_log_message" ],
     [ "LoRaClass", "class_lo_ra_class.html", "class_lo_ra_class" ],
     [ "MPU6050Wrapper", "class_m_p_u6050_wrapper.html", "class_m_p_u6050_wrapper" ],
     [ "NMEAData", "class_n_m_e_a_data.html", "class_n_m_e_a_data" ],

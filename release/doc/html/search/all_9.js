@@ -64,7 +64,7 @@ var searchData=
   ['ina3221_5freg_5ft_61',['ina3221_reg_t',['../_i_n_a3221_8h.html#ab65aa8f8eb9bcf239a91549d25e022d7',1,'INA3221.h']]],
   ['includes_2eh_62',['includes.h',['../includes_8h.html',1,'']]],
   ['inf_63',['INF',['../protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047a9517fd0bf8faa655990a4dffe358e13e',1,'protocol.h']]],
-  ['info_64',['INFO',['../protocol_8h.html#ad13fb53c92ad2af53a95ee45749796d1a551b723eafd6a31d444fcb2f5920fbd3',1,'protocol.h']]],
+  ['info_64',['INFO',['../protocol_8h.html#ad13fb53c92ad2af53a95ee45749796d1a551b723eafd6a31d444fcb2f5920fbd3',1,'INFO:&#160;protocol.h'],['../utils_8h.html#aa3c64681f366ffad5f46dd37fe772adaa551b723eafd6a31d444fcb2f5920fbd3',1,'INFO:&#160;utils.h']]],
   ['init_65',['init',['../class_event_manager.html#ab9c4d0fbfc9cf7743eac02bee6223728',1,'EventManager::init()'],['../class_b_h1750_wrapper.html#a2f9561a5cce4fe2241a0e74f69e4dadb',1,'BH1750Wrapper::init()'],['../class_b_m_e280.html#a549f7c534b3c0168148188bca5c30e7b',1,'BME280::init()'],['../class_b_m_e280_wrapper.html#a06cd239056ccf58985bd545f684960bd',1,'BME280Wrapper::init()'],['../class_h_m_c5883_l.html#aacf8416e7f9802ccf993b3e6c0dfe17b',1,'HMC5883L::init()'],['../class_h_m_c5883_l_wrapper.html#ab7a5997ae98ed9bc37fdd5ab0afe2fb2',1,'HMC5883LWrapper::init()'],['../class_i_sensor.html#a28051b0215d618d82556c8bb2c0abd29',1,'ISensor::init()'],['../class_m_p_u6050_wrapper.html#a9c0278899b5d7899fbb5ceb9b2f9e957',1,'MPU6050Wrapper::init()']]],
   ['init_5fsystems_66',['init_systems',['../main_8cpp.html#a8fa5379b5bec497b881cec19f2b38779',1,'main.cpp']]],
   ['initialize_67',['initialize',['../class_power_manager.html#a217939b880543bfff917203a06d45258',1,'PowerManager']]],

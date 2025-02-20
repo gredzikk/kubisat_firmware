@@ -12,7 +12,7 @@ var searchData=
   ['erriezds3231_9',['ErriezDS3231',['../class_erriez_d_s3231.html',1,'']]],
   ['erriezds3231_2ecpp_10',['ErriezDS3231.cpp',['../_erriez_d_s3231_8cpp.html',1,'']]],
   ['erriezds3231_2eh_11',['ErriezDS3231.h',['../_erriez_d_s3231_8h.html',1,'']]],
-  ['error_12',['ERROR',['../protocol_8h.html#ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5',1,'ERROR:&#160;protocol.h'],['../event__manager_8h.html#ac4e11c8779c20adc9210532538cdc463abb1ca97ec761fc37101737ba0aa2e7c5',1,'ERROR:&#160;event_manager.h']]],
+  ['error_12',['ERROR',['../protocol_8h.html#ad13fb53c92ad2af53a95ee45749796d1abb1ca97ec761fc37101737ba0aa2e7c5',1,'ERROR:&#160;protocol.h'],['../event__manager_8h.html#ac4e11c8779c20adc9210532538cdc463abb1ca97ec761fc37101737ba0aa2e7c5',1,'ERROR:&#160;event_manager.h'],['../utils_8h.html#aa3c64681f366ffad5f46dd37fe772adaabb1ca97ec761fc37101737ba0aa2e7c5',1,'ERROR:&#160;utils.h']]],
   ['event_13',['event',['../class_event_log.html#a4ba1b6d820bf66740aac49fd299f1ea2',1,'EventLog::event'],['../event__manager_8h.html#aeef6900f411bc223febdd92c9435693b',1,'event:&#160;event_manager.h']]],
   ['event_20commands_14',['Event Commands',['../group___event_commands.html',1,'']]],
   ['event_5fbuffer_5fsize_15',['EVENT_BUFFER_SIZE',['../event__manager_8h.html#acc4dda1aaabc9862fe79fd94e0b722bf',1,'event_manager.h']]],

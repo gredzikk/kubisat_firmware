@@ -16,6 +16,7 @@ Frame handle_get_last_sync_time(const std::string& param, OperationType operatio
 // DIAG
 Frame handle_get_commands_list(const std::string& param, OperationType operationType);
 Frame handle_get_build_version(const std::string& param, OperationType operationType);
+Frame handle_verbosity(const std::string& param, OperationType operationType);
 Frame handle_enter_bootloader_mode(const std::string& param, OperationType operationType);
 
 // GPS

@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['pa_5fboost_0',['PA_BOOST',['../_lo_ra-_r_p2040_8cpp.html#a39afdedd4b8d71d6dbe5d497cde2ffd3',1,'LoRa-RP2040.cpp']]],
-  ['pa_5foutput_5fpa_5fboost_5fpin_1',['PA_OUTPUT_PA_BOOST_PIN',['../pin__config_8h.html#ab6ed143304b1d46d46eca2713b74c54d',1,'pin_config.h']]],
-  ['pa_5foutput_5frfo_5fpin_2',['PA_OUTPUT_RFO_PIN',['../pin__config_8h.html#a2e3b6a161ad5eb403513d08741a1fbed',1,'pin_config.h']]]
+  ['oct_0',['OCT',['../_print_8h.html#a904777e8f3d21de0a6679d2c9f0f1eec',1,'Print.h']]]
 ];

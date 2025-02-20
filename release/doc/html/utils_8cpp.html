@@ -105,24 +105,42 @@ $(function(){initNavTree('utils_8cpp.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 
-<p>Implements utility functions for the Kubisat firmware.  
+<p>Implementation of utility functions for the Kubisat firmware.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="utils_8h_source.html">utils.h</a>&quot;</code><br />
 <code>#include &quot;pico/multicore.h&quot;</code><br />
 <code>#include &quot;pico/sync.h&quot;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;queue&gt;</code><br />
 </div>
 <p><a href="utils_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a905b7c29adff0a55966dc2bdd1578a6c" id="r_a905b7c29adff0a55966dc2bdd1578a6c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a905b7c29adff0a55966dc2bdd1578a6c">LOG_FILENAME</a>&#160;&#160;&#160;&quot;log.txt&quot;</td></tr>
-<tr class="separator:a905b7c29adff0a55966dc2bdd1578a6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a850e71de3b212f1933df4c118b13c68a" id="r_a850e71de3b212f1933df4c118b13c68a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a850e71de3b212f1933df4c118b13c68a">MAX_LOG_BUFFER_SIZE</a>&#160;&#160;&#160;100</td></tr>
+<tr class="memdesc:a850e71de3b212f1933df4c118b13c68a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum number of log messages to buffer before storage flush.  <br /></td></tr>
+<tr class="separator:a850e71de3b212f1933df4c118b13c68a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:acd86977d05fa330749958ace0f2798de" id="r_acd86977d05fa330749958ace0f2798de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd86977d05fa330749958ace0f2798de">uart_print</a> (const std::string &amp;msg, bool logToFile, uart_inst_t *uart)</td></tr>
-<tr class="memdesc:acd86977d05fa330749958ace0f2798de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints a message to the UART with a timestamp and core number.  <br /></td></tr>
-<tr class="separator:acd86977d05fa330749958ace0f2798de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf789fe33654f611491a7e8e15befee8" id="r_acf789fe33654f611491a7e8e15befee8"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf789fe33654f611491a7e8e15befee8">get_level_color</a> (<a class="el" href="utils_8h.html#aa3c64681f366ffad5f46dd37fe772ada">VerbosityLevel</a> level)</td></tr>
+<tr class="memdesc:acf789fe33654f611491a7e8e15befee8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets ANSI color code for verbosity level.  <br /></td></tr>
+<tr class="separator:acf789fe33654f611491a7e8e15befee8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a389a9e465dbdf5ec71f19fcc92588e8d" id="r_a389a9e465dbdf5ec71f19fcc92588e8d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a389a9e465dbdf5ec71f19fcc92588e8d">get_level_prefix</a> (<a class="el" href="utils_8h.html#aa3c64681f366ffad5f46dd37fe772ada">VerbosityLevel</a> level)</td></tr>
+<tr class="memdesc:a389a9e465dbdf5ec71f19fcc92588e8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets text prefix for verbosity level.  <br /></td></tr>
+<tr class="separator:a389a9e465dbdf5ec71f19fcc92588e8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41821df841f43ee369cbc052b68c1cc6" id="r_a41821df841f43ee369cbc052b68c1cc6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a41821df841f43ee369cbc052b68c1cc6">uart_print</a> (const std::string &amp;msg, <a class="el" href="utils_8h.html#aa3c64681f366ffad5f46dd37fe772ada">VerbosityLevel</a> level, bool logToFile, uart_inst_t *uart)</td></tr>
+<tr class="memdesc:a41821df841f43ee369cbc052b68c1cc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints a message to the UART with a timestamp and core number.  <br /></td></tr>
+<tr class="separator:a41821df841f43ee369cbc052b68c1cc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3d88f553fb39367d284cd253cefbaea" id="r_ac3d88f553fb39367d284cd253cefbaea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3d88f553fb39367d284cd253cefbaea">flush_logs_to_storage</a> ()</td></tr>
+<tr class="memdesc:ac3d88f553fb39367d284cd253cefbaea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flushes all pending logs to storage.  <br /></td></tr>
+<tr class="separator:ac3d88f553fb39367d284cd253cefbaea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7cf331cce1049b77095c2e6cfee8572" id="r_ab7cf331cce1049b77095c2e6cfee8572"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab7cf331cce1049b77095c2e6cfee8572">log_to_storage</a> (const <a class="el" href="struct_log_message.html">LogMessage</a> &amp;logMsg)</td></tr>
+<tr class="memdesc:ab7cf331cce1049b77095c2e6cfee8572"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a single log message to storage.  <br /></td></tr>
+<tr class="separator:ab7cf331cce1049b77095c2e6cfee8572"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc785ad2524b778f0c11680d62226f0a" id="r_afc785ad2524b778f0c11680d62226f0a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="struct_log_message.html">LogMessage</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc785ad2524b778f0c11680d62226f0a">get_logs_by_level</a> (<a class="el" href="utils_8h.html#aa3c64681f366ffad5f46dd37fe772ada">VerbosityLevel</a> level)</td></tr>
+<tr class="memdesc:afc785ad2524b778f0c11680d62226f0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves logs filtered by verbosity level.  <br /></td></tr>
+<tr class="separator:afc785ad2524b778f0c11680d62226f0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a662798a1967f4a4ea55257255d0fbbf4" id="r_a662798a1967f4a4ea55257255d0fbbf4"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a662798a1967f4a4ea55257255d0fbbf4">crc16</a> (const uint8_t *data, size_t length)</td></tr>
 <tr class="memdesc:a662798a1967f4a4ea55257255d0fbbf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the CRC16 checksum of the given data.  <br /></td></tr>
 <tr class="separator:a662798a1967f4a4ea55257255d0fbbf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -130,33 +148,103 @@ Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a1a79e1136e3879e08124c966946cf7b4" id="r_a1a79e1136e3879e08124c966946cf7b4"><td class="memItemLeft" align="right" valign="top">static mutex_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1a79e1136e3879e08124c966946cf7b4">uart_mutex</a></td></tr>
+<tr class="memdesc:a1a79e1136e3879e08124c966946cf7b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutex for UART access protection.  <br /></td></tr>
 <tr class="separator:a1a79e1136e3879e08124c966946cf7b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0949483c3c39e35dc7501828bd701d5" id="r_ae0949483c3c39e35dc7501828bd701d5"><td class="memItemLeft" align="right" valign="top">static mutex_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae0949483c3c39e35dc7501828bd701d5">log_mutex</a></td></tr>
+<tr class="memdesc:ae0949483c3c39e35dc7501828bd701d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutex for log buffer access protection.  <br /></td></tr>
+<tr class="separator:ae0949483c3c39e35dc7501828bd701d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12f0c94952cbd05fef337287f7ec9144" id="r_a12f0c94952cbd05fef337287f7ec9144"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utils_8h.html#aa3c64681f366ffad5f46dd37fe772ada">VerbosityLevel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12f0c94952cbd05fef337287f7ec9144">g_uart_verbosity</a> = <a class="el" href="utils_8h.html#aa3c64681f366ffad5f46dd37fe772adaa551b723eafd6a31d444fcb2f5920fbd3">VerbosityLevel::INFO</a></td></tr>
+<tr class="memdesc:a12f0c94952cbd05fef337287f7ec9144"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global verbosity level setting.  <br /></td></tr>
+<tr class="separator:a12f0c94952cbd05fef337287f7ec9144"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7b9fe5cd8b556f6bc893fc8174fc155" id="r_ae7b9fe5cd8b556f6bc893fc8174fc155"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; <a class="el" href="struct_log_message.html">LogMessage</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7b9fe5cd8b556f6bc893fc8174fc155">log_buffer</a></td></tr>
+<tr class="memdesc:ae7b9fe5cd8b556f6bc893fc8174fc155"><td class="mdescLeft">&#160;</td><td class="mdescRight">Circular buffer for storing logs in memory.  <br /></td></tr>
+<tr class="separator:ae7b9fe5cd8b556f6bc893fc8174fc155"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86fbe4032fa8fd068ac312394d04a039" id="r_a86fbe4032fa8fd068ac312394d04a039"><td class="memItemLeft" align="right" valign="top">static std::queue&lt; <a class="el" href="struct_log_message.html">LogMessage</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86fbe4032fa8fd068ac312394d04a039">pending_logs</a></td></tr>
+<tr class="memdesc:a86fbe4032fa8fd068ac312394d04a039"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queue for pending logs waiting to be written to storage.  <br /></td></tr>
+<tr class="separator:a86fbe4032fa8fd068ac312394d04a039"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Implements utility functions for the Kubisat firmware. </p>
-<p>This file contains various utility functions, including UART printing with timestamps, and CRC16 calculation. </p>
+<div class="textblock"><p>Implementation of utility functions for the Kubisat firmware. </p>
 
 <p class="definition">Definition in file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a905b7c29adff0a55966dc2bdd1578a6c" name="a905b7c29adff0a55966dc2bdd1578a6c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a905b7c29adff0a55966dc2bdd1578a6c">&#9670;&#160;</a></span>LOG_FILENAME</h2>
+<a id="a850e71de3b212f1933df4c118b13c68a" name="a850e71de3b212f1933df4c118b13c68a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a850e71de3b212f1933df4c118b13c68a">&#9670;&#160;</a></span>MAX_LOG_BUFFER_SIZE</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LOG_FILENAME&#160;&#160;&#160;&quot;log.txt&quot;</td>
+          <td class="memname">#define MAX_LOG_BUFFER_SIZE&#160;&#160;&#160;100</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00005">5</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+<p>Maximum number of log messages to buffer before storage flush. </p>
+
+<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00013">13</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="acd86977d05fa330749958ace0f2798de" name="acd86977d05fa330749958ace0f2798de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acd86977d05fa330749958ace0f2798de">&#9670;&#160;</a></span>uart_print()</h2>
+<a id="acf789fe33654f611491a7e8e15befee8" name="acf789fe33654f611491a7e8e15befee8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf789fe33654f611491a7e8e15befee8">&#9670;&#160;</a></span>get_level_color()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string get_level_color </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="utils_8h.html#aa3c64681f366ffad5f46dd37fe772ada">VerbosityLevel</a></td>          <td class="paramname"><span class="paramname"><em>level</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets ANSI color code for verbosity level. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">level</td><td>The verbosity level </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ANSI color escape sequence </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00035">35</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a389a9e465dbdf5ec71f19fcc92588e8d" name="a389a9e465dbdf5ec71f19fcc92588e8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a389a9e465dbdf5ec71f19fcc92588e8d">&#9670;&#160;</a></span>get_level_prefix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string get_level_prefix </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="utils_8h.html#aa3c64681f366ffad5f46dd37fe772ada">VerbosityLevel</a></td>          <td class="paramname"><span class="paramname"><em>level</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets text prefix for verbosity level. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">level</td><td>The verbosity level </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Text prefix for the level </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00051">51</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a41821df841f43ee369cbc052b68c1cc6" name="a41821df841f43ee369cbc052b68c1cc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41821df841f43ee369cbc052b68c1cc6">&#9670;&#160;</a></span>uart_print()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -165,6 +253,11 @@ Variables</h2></td></tr>
           <td class="memname">void uart_print </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>msg</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="utils_8h.html#aa3c64681f366ffad5f46dd37fe772ada">VerbosityLevel</a></td>          <td class="paramname"><span class="paramname"><em>level</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -180,6 +273,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Prints a message to the UART with a timestamp and core number. </p>
+<p>Prints a message to UART with timestamp and formatting.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">msg</td><td>The message to print. </td></tr>
@@ -190,7 +284,89 @@ Variables</h2></td></tr>
 </dl>
 <p>Prints the given message to the specified UART, prepending it with a timestamp and the core number. Uses a mutex to ensure thread-safe access to the UART. </p>
 
-<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00026">26</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00069">69</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ac3d88f553fb39367d284cd253cefbaea" name="ac3d88f553fb39367d284cd253cefbaea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3d88f553fb39367d284cd253cefbaea">&#9670;&#160;</a></span>flush_logs_to_storage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void flush_logs_to_storage </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Flushes all pending logs to storage. </p>
+<p>Flushes pending logs to storage.</p>
+<p>Thread-safe operation that moves logs from memory buffer to persistent storage </p>
+
+<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00120">120</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ab7cf331cce1049b77095c2e6cfee8572" name="ab7cf331cce1049b77095c2e6cfee8572"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7cf331cce1049b77095c2e6cfee8572">&#9670;&#160;</a></span>log_to_storage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void log_to_storage </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_log_message.html">LogMessage</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>logMsg</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Writes a single log message to storage. </p>
+<p>Stores a log message to persistent storage.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">logMsg</td><td>The log message to write</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Opens log file in append mode and writes formatted message </p>
+
+<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00136">136</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+
+</div>
+</div>
+<a id="afc785ad2524b778f0c11680d62226f0a" name="afc785ad2524b778f0c11680d62226f0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc785ad2524b778f0c11680d62226f0a">&#9670;&#160;</a></span>get_logs_by_level()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="struct_log_message.html">LogMessage</a> &gt; get_logs_by_level </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="utils_8h.html#aa3c64681f366ffad5f46dd37fe772ada">VerbosityLevel</a></td>          <td class="paramname"><span class="paramname"><em>level</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieves logs filtered by verbosity level. </p>
+<p>Retrieves logs of a specific verbosity level.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">level</td><td>The verbosity level to filter by </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector containing matching log messages</dd></dl>
+<p>Thread-safe operation that searches the log buffer </p>
+
+<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00156">156</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
 
 </div>
 </div>
@@ -214,6 +390,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Calculates the CRC16 checksum of the given data. </p>
+<p>Calculates CRC16 checksum.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">data</td><td>A pointer to the data buffer. </td></tr>
@@ -224,7 +401,7 @@ Variables</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The CRC16 checksum.</dd></dl>
 <p>Calculates the CRC16 checksum using the standard algorithm. </p>
 
-<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00053">53</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00175">175</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
 
 </div>
 </div>
@@ -249,7 +426,106 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00007">7</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+<p>Mutex for UART access protection. </p>
+
+<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00016">16</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ae0949483c3c39e35dc7501828bd701d5" name="ae0949483c3c39e35dc7501828bd701d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0949483c3c39e35dc7501828bd701d5">&#9670;&#160;</a></span>log_mutex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mutex_t log_mutex</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Mutex for log buffer access protection. </p>
+
+<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00019">19</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a12f0c94952cbd05fef337287f7ec9144" name="a12f0c94952cbd05fef337287f7ec9144"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12f0c94952cbd05fef337287f7ec9144">&#9670;&#160;</a></span>g_uart_verbosity</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="utils_8h.html#aa3c64681f366ffad5f46dd37fe772ada">VerbosityLevel</a> g_uart_verbosity = <a class="el" href="utils_8h.html#aa3c64681f366ffad5f46dd37fe772adaa551b723eafd6a31d444fcb2f5920fbd3">VerbosityLevel::INFO</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Global verbosity level setting. </p>
+<p>Global verbosity level setting for UART output. </p>
+
+<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00022">22</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ae7b9fe5cd8b556f6bc893fc8174fc155" name="ae7b9fe5cd8b556f6bc893fc8174fc155"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7b9fe5cd8b556f6bc893fc8174fc155">&#9670;&#160;</a></span>log_buffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="struct_log_message.html">LogMessage</a>&gt; log_buffer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Circular buffer for storing logs in memory. </p>
+
+<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00025">25</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a86fbe4032fa8fd068ac312394d04a039" name="a86fbe4032fa8fd068ac312394d04a039"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86fbe4032fa8fd068ac312394d04a039">&#9670;&#160;</a></span>pending_logs</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::queue&lt;<a class="el" href="struct_log_message.html">LogMessage</a>&gt; pending_logs</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Queue for pending logs waiting to be written to storage. </p>
+
+<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00028">28</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
 
 </div>
 </div>

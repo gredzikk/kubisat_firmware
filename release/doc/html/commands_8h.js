@@ -6,6 +6,7 @@ var commands_8h =
     [ "handle_get_last_sync_time", "group___clock_commands.html#ga8fad2991aef05583a47a5b1072ffece0", null ],
     [ "handle_get_commands_list", "group___diagnostic_commands.html#ga74736b8d0e49df14f97e3e20cd3418c7", null ],
     [ "handle_get_build_version", "group___diagnostic_commands.html#ga517fbfd05cbec86489314348cb3f9995", null ],
+    [ "handle_verbosity", "group___diagnostic_commands.html#gab8507e5db7439d5f4d51a770b4ebf7b9", null ],
     [ "handle_enter_bootloader_mode", "group___diagnostic_commands.html#ga3ab5723218b68d3ac5cd864e00ed157a", null ],
     [ "handle_gps_power_status", "group___g_p_s_commands.html#ga926ab365cf351bb507a8c38066ee2eeb", null ],
     [ "handle_enable_gps_uart_passthrough", "group___g_p_s_commands.html#ga3e4c6db6e933a1ff77f3ac52ce1c44be", null ],

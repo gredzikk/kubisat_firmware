@@ -22,6 +22,7 @@ var hierarchy =
       [ "HMC5883LWrapper", "class_h_m_c5883_l_wrapper.html", null ],
       [ "MPU6050Wrapper", "class_m_p_u6050_wrapper.html", null ]
     ] ],
+    [ "LogMessage", "struct_log_message.html", null ],
     [ "INA3221::masken_reg_t", "struct_i_n_a3221_1_1masken__reg__t.html", null ],
     [ "NMEAData", "class_n_m_e_a_data.html", null ],
     [ "PowerManager", "class_power_manager.html", null ],

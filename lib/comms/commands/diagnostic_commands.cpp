@@ -38,7 +38,7 @@ Frame handle_get_commands_list(const std::string& param, OperationType operation
     }
 
     std::string commandList = ss.str();
-    uart_print(commandList, true); // Print to UART
+    uart_print(commandList); // Print to UART
 
     return frame_build(ExecutionResult::SUCCESS, 1, 0, "Commands listed on UART");
 }
@@ -61,6 +61,26 @@ Frame handle_get_build_version(const std::string& param, OperationType operation
         return frame_build(ExecutionResult::SUCCESS, 1, 1, std::to_string(BUILD_NUMBER));
     }
     return frame_build(ExecutionResult::ERROR, 1, 1, "INVALID OPERATION");
+}
+
+
+Frame handle_verbosity(const std::string& param, OperationType operationType) {
+    if (param.empty()) {
+        uart_print("Current verbosity level: " + std::to_string(static_cast<int>(g_uart_verbosity)),  VerbosityLevel::INFO);
+        return frame_build(ExecutionResult::SUCCESS, 1, 8, 
+                         std::to_string(static_cast<int>(g_uart_verbosity)));
+    }
+
+    try {
+        int level = std::stoi(param);
+        if (level < 0 || level > 3) {
+            return frame_build(ExecutionResult::ERROR, 1, 8, "INVALID LEVEL (0-3)");
+        }
+        g_uart_verbosity = static_cast<VerbosityLevel>(level);
+        return frame_build(ExecutionResult::SUCCESS, 1, 8, "LEVEL SET");
+    } catch (...) {
+        return frame_build(ExecutionResult::ERROR, 1, 8, "INVALID FORMAT");
+    }
 }
 
 /**

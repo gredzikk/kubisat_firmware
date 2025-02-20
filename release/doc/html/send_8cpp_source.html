@@ -121,7 +121,7 @@ $(function(){initNavTree('send_8cpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    messageToLog += <span class="stringliteral">&quot; to 0x&quot;</span> + std::to_string(<a class="code hl_variable" href="pin__config_8cpp.html#a524d13f8eb363984e4232df4c1eb1611">lora_address_remote</a>);</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    messageToLog += <span class="stringliteral">&quot; containing: &quot;</span> + string(send);</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <a class="code hl_function" href="utils_8cpp.html#acd86977d05fa330749958ace0f2798de">uart_print</a>(messageToLog);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <a class="code hl_function" href="utils_8cpp.html#a41821df841f43ee369cbc052b68c1cc6">uart_print</a>(messageToLog);</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    </div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <a class="code hl_variable" href="_lo_ra-_r_p2040_8cpp.html#af4db0e30d2909faa29355167719f196c">LoRa</a>.flush();</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>}</div>
@@ -138,7 +138,7 @@ $(function(){initNavTree('send_8cpp_source.html',''); initResizable(true); });
 <div class="foldopen" id="foldopen00042" data-start="{" data-end="}">
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="communication_8h.html#a8ec7ba85230162ecba5bc19a53a0dd1e">   42</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="send_8cpp.html#a8ec7ba85230162ecba5bc19a53a0dd1e">send_frame_uart</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_frame.html">Frame</a>&amp; frame) {</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    std::string encodedFrame = <a class="code hl_function" href="communication_8h.html#a3ae6df528775be58890bf406c906a056">frame_encode</a>(frame);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <a class="code hl_function" href="utils_8cpp.html#acd86977d05fa330749958ace0f2798de">uart_print</a>(encodedFrame);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <a class="code hl_function" href="utils_8cpp.html#a41821df841f43ee369cbc052b68c1cc6">uart_print</a>(encodedFrame);</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>}</div>
 </div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
@@ -179,7 +179,7 @@ $(function(){initNavTree('send_8cpp_source.html',''); initResizable(true); });
 <div class="ttc" id="asend_8cpp_html_a8ec7ba85230162ecba5bc19a53a0dd1e"><div class="ttname"><a href="send_8cpp.html#a8ec7ba85230162ecba5bc19a53a0dd1e">send_frame_uart</a></div><div class="ttdeci">void send_frame_uart(const Frame &amp;frame)</div><div class="ttdef"><b>Definition</b> <a href="#l00042">send.cpp:42</a></div></div>
 <div class="ttc" id="asend_8cpp_html_ae6c6f3b673e7e83306da7ea2458d3241"><div class="ttname"><a href="send_8cpp.html#ae6c6f3b673e7e83306da7ea2458d3241">send_frame</a></div><div class="ttdeci">void send_frame(const Frame &amp;frame)</div><div class="ttdef"><b>Definition</b> <a href="#l00048">send.cpp:48</a></div></div>
 <div class="ttc" id="astruct_frame_html"><div class="ttname"><a href="struct_frame.html">Frame</a></div><div class="ttdef"><b>Definition</b> <a href="protocol_8h_source.html#l00070">protocol.h:70</a></div></div>
-<div class="ttc" id="autils_8cpp_html_acd86977d05fa330749958ace0f2798de"><div class="ttname"><a href="utils_8cpp.html#acd86977d05fa330749958ace0f2798de">uart_print</a></div><div class="ttdeci">void uart_print(const std::string &amp;msg, bool logToFile, uart_inst_t *uart)</div><div class="ttdoc">Prints a message to the UART with a timestamp and core number.</div><div class="ttdef"><b>Definition</b> <a href="utils_8cpp_source.html#l00026">utils.cpp:26</a></div></div>
+<div class="ttc" id="autils_8cpp_html_a41821df841f43ee369cbc052b68c1cc6"><div class="ttname"><a href="utils_8cpp.html#a41821df841f43ee369cbc052b68c1cc6">uart_print</a></div><div class="ttdeci">void uart_print(const std::string &amp;msg, VerbosityLevel level, bool logToFile, uart_inst_t *uart)</div><div class="ttdoc">Prints a message to the UART with a timestamp and core number.</div><div class="ttdef"><b>Definition</b> <a href="utils_8cpp_source.html#l00069">utils.cpp:69</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

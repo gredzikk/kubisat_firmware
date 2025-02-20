@@ -1,6 +1,5 @@
 var main_8cpp =
 [
-    [ "LOG_FILENAME", "main_8cpp.html#a905b7c29adff0a55966dc2bdd1578a6c", null ],
     [ "core1_entry", "main_8cpp.html#a9f153132b8b4afad133b952111e18bd9", null ],
     [ "init_systems", "main_8cpp.html#a8fa5379b5bec497b881cec19f2b38779", null ],
     [ "main", "main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4", null ],

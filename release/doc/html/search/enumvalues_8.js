@@ -45,7 +45,7 @@ var searchData=
   ['ina3221_5freg_5fshuntv_5fsum_42',['INA3221_REG_SHUNTV_SUM',['../_i_n_a3221_8h.html#ab65aa8f8eb9bcf239a91549d25e022d7a20054449f9483dda46ab462d00b51b5b',1,'INA3221.h']]],
   ['ina3221_5freg_5fshuntv_5fsum_5flim_43',['INA3221_REG_SHUNTV_SUM_LIM',['../_i_n_a3221_8h.html#ab65aa8f8eb9bcf239a91549d25e022d7a161afb7e8b4ae2eec4c2053c834dcbc5',1,'INA3221.h']]],
   ['inf_44',['INF',['../protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047a9517fd0bf8faa655990a4dffe358e13e',1,'protocol.h']]],
-  ['info_45',['INFO',['../protocol_8h.html#ad13fb53c92ad2af53a95ee45749796d1a551b723eafd6a31d444fcb2f5920fbd3',1,'protocol.h']]],
+  ['info_45',['INFO',['../protocol_8h.html#ad13fb53c92ad2af53a95ee45749796d1a551b723eafd6a31d444fcb2f5920fbd3',1,'INFO:&#160;protocol.h'],['../utils_8h.html#aa3c64681f366ffad5f46dd37fe772adaa551b723eafd6a31d444fcb2f5920fbd3',1,'INFO:&#160;utils.h']]],
   ['invalid_5foperation_46',['INVALID_OPERATION',['../protocol_8h.html#a0e0f0f1661d7aeb71ed9698bff6c6383ade918d7abaea4c856c3c64720f3cbb7c',1,'protocol.h']]],
   ['invalid_5fparam_47',['INVALID_PARAM',['../protocol_8h.html#a0e0f0f1661d7aeb71ed9698bff6c6383a4a775a051faafd7eed30f5a95548729a',1,'protocol.h']]]
 ];
