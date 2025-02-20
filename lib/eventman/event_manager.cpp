@@ -11,61 +11,73 @@
  * @brief Implements the event management system for the Kubisat firmware.
  * @details This file contains the implementation for logging events, managing event storage,
  *          and checking for specific events such as power status changes.
+ * @ingroup EventManagerGroup
  */
 
 
-/**
+ /**
  * @brief Global event log ID counter.
+ * @ingroup EventManagerGroup
  */
 volatile uint16_t eventLogId = 0;
 
 /**
  * @brief Stores the last known power state.
+ * @ingroup EventManagerGroup
  */
 static PowerEvent lastPowerState = PowerEvent::LOW_BATTERY;
 
 /**
  * @brief Threshold for detecting a falling voltage rate.
+ * @ingroup EventManagerGroup
  */
 static constexpr float FALL_RATE_THRESHOLD = -0.02f;
 
 /**
  * @brief Number of consecutive falling voltage readings required to trigger a power falling event.
+ * @ingroup EventManagerGroup
  */
 static constexpr int FALLING_TREND_REQUIRED = 3;
 
 /**
  * @brief Voltage threshold for detecting a low battery condition.
+ * @ingroup EventManagerGroup
  */
 static constexpr float VOLTAGE_LOW_THRESHOLD = 4.7f;
 
 /**
  * @brief Voltage threshold for detecting an overcharge condition.
+ * @ingroup EventManagerGroup
  */
 static constexpr float VOLTAGE_OVERCHARGE_THRESHOLD = 5.3f;
 
 /**
  * @brief Counter for consecutive falling voltage readings.
+ * @ingroup EventManagerGroup
  */
 static int fallingTrendCount = 0;
 
 /**
  * @brief Stores the last known solar charging state.
+ * @ingroup EventManagerGroup
  */
 bool lastSolarState = false;
 
 /**
  * @brief Stores the last known USB connection state.
+ * @ingroup EventManagerGroup
  */
 bool lastUSBState = false;
 
 /**
  * @brief External declaration of the system clock.
+ * @ingroup EventManagerGroup
  */
 extern DS3231 systemClock;
 
 /**
  * @brief Global instance of the EventManager implementation.
+ * @ingroup EventManagerGroup
  */
 EventManagerImpl eventManager;
 
@@ -76,6 +88,7 @@ EventManagerImpl eventManager;
  * @param event The event ID.
  * @details Logs the event with a timestamp, group, and event ID. Prints the event to the UART,
  *          and saves the event to storage if the buffer is full or if it's a power-related event.
+ * @ingroup EventManagerGroup
  */
 void EventManager::log_event(uint8_t group, uint8_t event) {
     mutex_enter_blocking(&eventMutex);
@@ -110,6 +123,7 @@ void EventManager::log_event(uint8_t group, uint8_t event) {
  * @brief Retrieves an event from the event buffer.
  * @param index The index of the event to retrieve.
  * @return A const reference to the EventLog at the specified index. Returns an empty event if the index is out of bounds.
+ * @ingroup EventManagerGroup
  */
 const EventLog& EventManager::get_event(size_t index) const {
     static const EventLog emptyEvent = {0, 0, 0, 0};  // Initialize {id, timestamp, group, event}
@@ -135,6 +149,7 @@ const EventLog& EventManager::get_event(size_t index) const {
  * @details Monitors the 5V voltage level, detects falling voltage trends, and triggers events
  *          for low battery, overcharge, and normal power conditions. Also checks solar charging
  *          and USB connection states.
+ * @ingroup EventManagerGroup
  */
 void check_power_events(PowerManager& pm) {
     float currentVoltage = pm.get_voltage_5v();

@@ -30,7 +30,8 @@ if(DOXYGEN_FOUND)
         "${CMAKE_CURRENT_SOURCE_DIR}/lib/storage/pico-vfs/* \
          */unity/* \
          */build/* \
-         */release/*")
+         */release/* \
+         */lib/comms/LoRa/*")
 
     # Check for Graphviz
     if(DOT_EXECUTABLE)

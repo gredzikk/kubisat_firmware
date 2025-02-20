@@ -7,6 +7,9 @@ extern volatile uint16_t eventRegister;
 /**
  * @file frame.cpp
  * @brief Implements functions for encoding, decoding, building, and processing Frames.
+ * @defgroup FrameHandling Frame Handling
+ * @brief Functions for encoding, decoding and building communication frames.
+ * @{
  */
 
 /**
@@ -15,6 +18,21 @@ extern volatile uint16_t eventRegister;
  * @return The Frame encoded as a string.
  * @details The encoded string includes the frame direction, operation type, group, command, value, and unit,
  *          all delimited by the DELIMITER character. The string is encapsulated by FRAME_BEGIN and FRAME_END.
+ * @code
+ * Frame myFrame;
+ * myFrame.header = FRAME_BEGIN;
+ * myFrame.direction = 0;
+ * myFrame.operationType = OperationType::GET;
+ * myFrame.group = 1;
+ * myFrame.command = 1;
+ * myFrame.value = "";
+ * myFrame.unit = "";
+ * myFrame.footer = FRAME_END;
+ *
+ * std::string encoded = frame_encode(myFrame);
+ * // encoded will be "KBST;0;GET;1;1;;TSBK"
+ * @endcode
+ * @ingroup FrameHandling
  */
 std::string frame_encode(const Frame& frame) {
     std::stringstream ss;
@@ -33,13 +51,13 @@ std::string frame_encode(const Frame& frame) {
 
 
 /**
- * @brief Converts a string into a Frame instance.
- * @param data The Frame data as a string.
- * @return The Frame instance.
- * @throws std::runtime_error if the frame header is invalid.
- * @details Parses the input string, extracting the frame direction, operation type, group, command, value, and unit.
- *          If an error occurs during parsing, an error message is printed to the UART, an error frame is built and sent,
- *          and the exception is re-thrown.
+ * @brief Decodes a string into a Frame instance.
+ * @param encodedFrame The string to decode.
+ * @return The Frame instance decoded from the string.
+ * @throws std::runtime_error if the frame is invalid.
+ * @details The decoded string is expected to be in the format:
+ *          FRAME_BEGIN;direction;operationType;group;command;value;unit;FRAME_END
+ * @ingroup FrameHandling
  */
 Frame frame_decode(const std::string& data) {
     try {
@@ -122,15 +140,14 @@ void frame_process(const std::string& data, Interface interface) {
 }
 
 /**
- * @brief Builds a Frame instance.
+ * @brief Builds a Frame instance based on the execution result, group, command, value, and unit.
  * @param result The execution result.
  * @param group The group ID.
- * @param command The command ID.
- * @param value The value.
- * @param unitType The value unit type.
+ * @param command The command ID within the group.
+ * @param value The payload value.
+ * @param unit The unit of measurement for the payload value.
  * @return The Frame instance.
- * @details Constructs a Frame instance based on the provided parameters. The frame direction and operation type
- *          are set based on the execution result.
+ * @ingroup FrameHandling
  */
 Frame frame_build(ExecutionResult result, uint8_t group, uint8_t command, 
                 const std::string& value, const ValueUnit unitType) {
@@ -166,3 +183,5 @@ Frame frame_build(ExecutionResult result, uint8_t group, uint8_t command,
     
     return frame;
 }
+
+/** @} */ // end of FrameHandling group
