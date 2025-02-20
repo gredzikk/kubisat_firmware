@@ -114,58 +114,59 @@ $(function(){initNavTree('storage_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="pin__config_8h.html">pin_config.h</a>&quot;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;lfs.h&quot;</span> </div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;filesystem/fat.h&quot;</span></div>
-<div class="foldopen" id="foldopen00015" data-start="{" data-end="};">
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="struct_file_handle.html">   15</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct_file_handle.html">FileHandle</a> {</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="struct_file_handle.html#afc2bbe66c168d4d264f3af1ec037b122">   16</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_file_handle.html#afc2bbe66c168d4d264f3af1ec037b122">fd</a>;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="struct_file_handle.html#a1c2451d05e2d2937da92fe194e9281cf">   17</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="struct_file_handle.html#a1c2451d05e2d2937da92fe194e9281cf">is_open</a>;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>};</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="struct_file_handle.html">   16</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct_file_handle.html">FileHandle</a> {</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="struct_file_handle.html#afc2bbe66c168d4d264f3af1ec037b122">   17</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_file_handle.html#afc2bbe66c168d4d264f3af1ec037b122">fd</a>;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="struct_file_handle.html#a1c2451d05e2d2937da92fe194e9281cf">   18</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="struct_file_handle.html#a1c2451d05e2d2937da92fe194e9281cf">is_open</a>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>};</div>
 </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keywordtype">bool</span> <a class="code hl_function" href="storage_8h.html#afb19e37469a751aa61de3dcd0c70b4b0">fs_init</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="storage_8h.html#a921d0d7089c0c7731762035e7feeb27a">   21</a></span><a class="code hl_struct" href="struct_file_handle.html">FileHandle</a> <a class="code hl_function" href="storage_8h.html#a921d0d7089c0c7731762035e7feeb27a">fs_open_file</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* filename, <span class="keyword">const</span> <span class="keywordtype">char</span>* mode);</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="storage_8h.html#aab35cc4af25dd4a32624e51bf0fcda5b">   22</a></span>ssize_t <a class="code hl_function" href="storage_8h.html#aab35cc4af25dd4a32624e51bf0fcda5b">fs_write_file</a>(<a class="code hl_struct" href="struct_file_handle.html">FileHandle</a>&amp; handle, <span class="keyword">const</span> <span class="keywordtype">void</span>* <a class="code hl_variable" href="main_8cpp.html#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a>, <span class="keywordtype">size_t</span> size);</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="storage_8h.html#a259e40f946e1178329ed6cdf18c35b0c">   23</a></span>ssize_t <a class="code hl_function" href="storage_8h.html#a259e40f946e1178329ed6cdf18c35b0c">fs_read_file</a>(<a class="code hl_struct" href="struct_file_handle.html">FileHandle</a>&amp; handle, <span class="keywordtype">void</span>* <a class="code hl_variable" href="main_8cpp.html#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a>, <span class="keywordtype">size_t</span> size);</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="storage_8h.html#a1ed8daa820da91b458072334ecec9618">   24</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="storage_8h.html#a1ed8daa820da91b458072334ecec9618">fs_close_file</a>(<a class="code hl_struct" href="struct_file_handle.html">FileHandle</a>&amp; handle);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="storage_8h.html#a4d0e5bbd1f57f47164521ca84c8e6fd1">   25</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="storage_8h.html#a4d0e5bbd1f57f47164521ca84c8e6fd1">fs_file_exists</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* filename);</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">// void example_file_operations() {</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">//     // Open a file for writing</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">//     FileHandle log_file = fs_open_file(&quot;/log.txt&quot;, &quot;w&quot;);</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">//     if (!log_file.is_open) {</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">//         uartPrint(&quot;Failed to open log file&quot;);</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">//         return;</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">//     }</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">//     // Write some data</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">//     const char* message = &quot;Hello, World!\n&quot;;</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">//     ssize_t written = fs_write_file(log_file, message, strlen(message));</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">//     if (written &lt; 0) {</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">//         uartPrint(&quot;Failed to write to log file&quot;);</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">//     }</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">//     // Close the file</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">//     fs_close_file(log_file);</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">//     // Open file for reading</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">//     log_file = fs_open_file(&quot;/log.txt&quot;, &quot;r&quot;);</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">//     if (!log_file.is_open) {</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">//         uartPrint(&quot;Failed to open log file for reading&quot;);</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">//         return;</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">//     }</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">//     // Read the data</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">//     char buffer[128];</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">//     ssize_t bytes_read = fs_read_file(log_file, buffer, sizeof(buffer) - 1);</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">//     if (bytes_read &gt; 0) {</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">//         buffer[bytes_read] = &#39;\0&#39;;  // Null terminate the string</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">//         uartPrint(buffer);</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">//     }</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">//     // Close the file</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">//     fs_close_file(log_file);</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">// }</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keywordtype">bool</span> <a class="code hl_function" href="storage_8h.html#afb19e37469a751aa61de3dcd0c70b4b0">fs_init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="storage_8h.html#a921d0d7089c0c7731762035e7feeb27a">   22</a></span><a class="code hl_struct" href="struct_file_handle.html">FileHandle</a> <a class="code hl_function" href="storage_8h.html#a921d0d7089c0c7731762035e7feeb27a">fs_open_file</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* filename, <span class="keyword">const</span> <span class="keywordtype">char</span>* mode);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="storage_8h.html#aab35cc4af25dd4a32624e51bf0fcda5b">   23</a></span>ssize_t <a class="code hl_function" href="storage_8h.html#aab35cc4af25dd4a32624e51bf0fcda5b">fs_write_file</a>(<a class="code hl_struct" href="struct_file_handle.html">FileHandle</a>&amp; handle, <span class="keyword">const</span> <span class="keywordtype">void</span>* <a class="code hl_variable" href="main_8cpp.html#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a>, <span class="keywordtype">size_t</span> size);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="storage_8h.html#a259e40f946e1178329ed6cdf18c35b0c">   24</a></span>ssize_t <a class="code hl_function" href="storage_8h.html#a259e40f946e1178329ed6cdf18c35b0c">fs_read_file</a>(<a class="code hl_struct" href="struct_file_handle.html">FileHandle</a>&amp; handle, <span class="keywordtype">void</span>* <a class="code hl_variable" href="main_8cpp.html#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a>, <span class="keywordtype">size_t</span> size);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="storage_8h.html#a1ed8daa820da91b458072334ecec9618">   25</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="storage_8h.html#a1ed8daa820da91b458072334ecec9618">fs_close_file</a>(<a class="code hl_struct" href="struct_file_handle.html">FileHandle</a>&amp; handle);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="storage_8h.html#a4d0e5bbd1f57f47164521ca84c8e6fd1">   26</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="storage_8h.html#a4d0e5bbd1f57f47164521ca84c8e6fd1">fs_file_exists</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* filename);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">// void example_file_operations() {</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">//     // Open a file for writing</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">//     FileHandle log_file = fs_open_file(&quot;/log.txt&quot;, &quot;w&quot;);</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">//     if (!log_file.is_open) {</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">//         uartPrint(&quot;Failed to open log file&quot;);</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">//         return;</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">//     }</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">//     // Write some data</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">//     const char* message = &quot;Hello, World!\n&quot;;</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">//     ssize_t written = fs_write_file(log_file, message, strlen(message));</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">//     if (written &lt; 0) {</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">//         uartPrint(&quot;Failed to write to log file&quot;);</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">//     }</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">//     // Close the file</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">//     fs_close_file(log_file);</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">//     // Open file for reading</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">//     log_file = fs_open_file(&quot;/log.txt&quot;, &quot;r&quot;);</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">//     if (!log_file.is_open) {</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">//         uartPrint(&quot;Failed to open log file for reading&quot;);</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">//         return;</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">//     }</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">//     // Read the data</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">//     char buffer[128];</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">//     ssize_t bytes_read = fs_read_file(log_file, buffer, sizeof(buffer) - 1);</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">//     if (bytes_read &gt; 0) {</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">//         buffer[bytes_read] = &#39;\0&#39;;  // Null terminate the string</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">//         uartPrint(buffer);</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">//     }</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">//     // Close the file</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">//     fs_close_file(log_file);</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">// }</span></div>
 <div class="ttc" id="amain_8cpp_html_af00b615ca097c43dbb02ae3a00ea3a62"><div class="ttname"><a href="main_8cpp.html#af00b615ca097c43dbb02ae3a00ea3a62">buffer</a></div><div class="ttdeci">char buffer[BUFFER_SIZE]</div><div class="ttdef"><b>Definition</b> <a href="main_8cpp_source.html#l00008">main.cpp:8</a></div></div>
 <div class="ttc" id="apin__config_8h_html"><div class="ttname"><a href="pin__config_8h.html">pin_config.h</a></div></div>
 <div class="ttc" id="astorage_8h_html_a1ed8daa820da91b458072334ecec9618"><div class="ttname"><a href="storage_8h.html#a1ed8daa820da91b458072334ecec9618">fs_close_file</a></div><div class="ttdeci">bool fs_close_file(FileHandle &amp;handle)</div></div>
@@ -174,9 +175,9 @@ $(function(){initNavTree('storage_8h_source.html',''); initResizable(true); });
 <div class="ttc" id="astorage_8h_html_a921d0d7089c0c7731762035e7feeb27a"><div class="ttname"><a href="storage_8h.html#a921d0d7089c0c7731762035e7feeb27a">fs_open_file</a></div><div class="ttdeci">FileHandle fs_open_file(const char *filename, const char *mode)</div></div>
 <div class="ttc" id="astorage_8h_html_aab35cc4af25dd4a32624e51bf0fcda5b"><div class="ttname"><a href="storage_8h.html#aab35cc4af25dd4a32624e51bf0fcda5b">fs_write_file</a></div><div class="ttdeci">ssize_t fs_write_file(FileHandle &amp;handle, const void *buffer, size_t size)</div></div>
 <div class="ttc" id="astorage_8h_html_afb19e37469a751aa61de3dcd0c70b4b0"><div class="ttname"><a href="storage_8h.html#afb19e37469a751aa61de3dcd0c70b4b0">fs_init</a></div><div class="ttdeci">bool fs_init(void)</div><div class="ttdoc">Initializes the file system on the SD card.</div><div class="ttdef"><b>Definition</b> <a href="storage_8cpp_source.html#l00023">storage.cpp:23</a></div></div>
-<div class="ttc" id="astruct_file_handle_html"><div class="ttname"><a href="struct_file_handle.html">FileHandle</a></div><div class="ttdef"><b>Definition</b> <a href="#l00015">storage.h:15</a></div></div>
-<div class="ttc" id="astruct_file_handle_html_a1c2451d05e2d2937da92fe194e9281cf"><div class="ttname"><a href="struct_file_handle.html#a1c2451d05e2d2937da92fe194e9281cf">FileHandle::is_open</a></div><div class="ttdeci">bool is_open</div><div class="ttdef"><b>Definition</b> <a href="#l00017">storage.h:17</a></div></div>
-<div class="ttc" id="astruct_file_handle_html_afc2bbe66c168d4d264f3af1ec037b122"><div class="ttname"><a href="struct_file_handle.html#afc2bbe66c168d4d264f3af1ec037b122">FileHandle::fd</a></div><div class="ttdeci">int fd</div><div class="ttdef"><b>Definition</b> <a href="#l00016">storage.h:16</a></div></div>
+<div class="ttc" id="astruct_file_handle_html"><div class="ttname"><a href="struct_file_handle.html">FileHandle</a></div><div class="ttdef"><b>Definition</b> <a href="#l00016">storage.h:16</a></div></div>
+<div class="ttc" id="astruct_file_handle_html_a1c2451d05e2d2937da92fe194e9281cf"><div class="ttname"><a href="struct_file_handle.html#a1c2451d05e2d2937da92fe194e9281cf">FileHandle::is_open</a></div><div class="ttdeci">bool is_open</div><div class="ttdef"><b>Definition</b> <a href="#l00018">storage.h:18</a></div></div>
+<div class="ttc" id="astruct_file_handle_html_afc2bbe66c168d4d264f3af1ec037b122"><div class="ttname"><a href="struct_file_handle.html#afc2bbe66c168d4d264f3af1ec037b122">FileHandle::fd</a></div><div class="ttdeci">int fd</div><div class="ttdef"><b>Definition</b> <a href="#l00017">storage.h:17</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

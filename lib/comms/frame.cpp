@@ -97,40 +97,29 @@ Frame frame_decode(const std::string& data) {
  * @details Decodes the frame data, extracts the command key, and executes the corresponding command.
  *          Sends the response frame. If an error occurs, an error frame is built and sent.
  */
-void frame_process(const std::string& data) {
+void frame_process(const std::string& data, Interface interface) {
     try {
         Frame frame = frame_decode(data);
         uint32_t commandKey = (static_cast<uint32_t>(frame.group) << 8) | static_cast<uint32_t>(frame.command);
 
         Frame responseFrame = execute_command(commandKey, frame.value, frame.operationType);
 
-        send_frame(responseFrame);
+        // Send response through the same interface that received the command
+        if (interface == Interface::UART) {
+            send_frame_uart(responseFrame);
+        } else if (interface == Interface::LORA) {
+            send_frame_lora(responseFrame);
+        }
     } catch (const std::exception& e) {
         Frame errorFrame = frame_build(ExecutionResult::ERROR, 0, 0, e.what()); 
-        send_frame(errorFrame);
+        // Send error through the same interface
+        if (interface == Interface::UART) {
+            send_frame_uart(errorFrame);
+        } else if (interface == Interface::LORA) {
+            send_frame_lora(errorFrame);
+        }
     }
 }
-
-
-/**
- * @brief Sends the event register value to the ground station.
- * @details This function is called in the main loop to send the current value of the event register.
- */
-void send_event() {
-    std::stringstream ss;
-    ss << std::hex << std::setw(4) << std::setfill('0') << static_cast<int>(eventRegister);
-    std::string eventValue = ss.str();
-
-    Frame eventFrame = frame_build(
-        ExecutionResult::SUCCESS, // Result: success as this is a normal status update
-        8,                        // Group ID: 8 (EVENTS)
-        0,                        // Command ID: 0 (EVENT_REGISTER)
-        eventValue                // Value: event register value
-    );
-
-    send_frame(eventFrame);
-}
-
 
 /**
  * @brief Builds a Frame instance.

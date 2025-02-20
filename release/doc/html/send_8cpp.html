@@ -106,13 +106,6 @@ $(function(){initNavTree('send_8cpp.html',''); initResizable(true); });
 <p>Implements functions for sending data, including LoRa messages and Frames.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="communication_8h_source.html">communication.h</a>&quot;</code><br />
-</div><div class="textblock"><div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for send.cpp:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="send_8cpp__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
 </div>
 <p><a href="send_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -121,8 +114,11 @@ Functions</h2></td></tr>
 <tr class="memitem:a42881e6476e0ce51ee9f6a99a7318d3b" id="r_a42881e6476e0ce51ee9f6a99a7318d3b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42881e6476e0ce51ee9f6a99a7318d3b">send_message</a> (string <a class="el" href="communication_8cpp.html#a13c45747091f32644e83d65348c61232">outgoing</a>)</td></tr>
 <tr class="memdesc:a42881e6476e0ce51ee9f6a99a7318d3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message using LoRa.  <br /></td></tr>
 <tr class="separator:a42881e6476e0ce51ee9f6a99a7318d3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a08614a5b6deb22c2d5658dbcfe78e2" id="r_a2a08614a5b6deb22c2d5658dbcfe78e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a08614a5b6deb22c2d5658dbcfe78e2">send_frame_lora</a> (const <a class="el" href="struct_frame.html">Frame</a> &amp;frame)</td></tr>
+<tr class="separator:a2a08614a5b6deb22c2d5658dbcfe78e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ec7ba85230162ecba5bc19a53a0dd1e" id="r_a8ec7ba85230162ecba5bc19a53a0dd1e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ec7ba85230162ecba5bc19a53a0dd1e">send_frame_uart</a> (const <a class="el" href="struct_frame.html">Frame</a> &amp;frame)</td></tr>
+<tr class="separator:a8ec7ba85230162ecba5bc19a53a0dd1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6c6f3b673e7e83306da7ea2458d3241" id="r_ae6c6f3b673e7e83306da7ea2458d3241"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6c6f3b673e7e83306da7ea2458d3241">send_frame</a> (const <a class="el" href="struct_frame.html">Frame</a> &amp;frame)</td></tr>
-<tr class="memdesc:ae6c6f3b673e7e83306da7ea2458d3241"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a <a class="el" href="struct_frame.html">Frame</a> using LoRa.  <br /></td></tr>
 <tr class="separator:ae6c6f3b673e7e83306da7ea2458d3241"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a207fb10d443babe78967d28c7565234a" id="r_a207fb10d443babe78967d28c7565234a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a207fb10d443babe78967d28c7565234a">split_and_send_message</a> (const uint8_t *data, size_t length)</td></tr>
 <tr class="memdesc:a207fb10d443babe78967d28c7565234a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a large packet using LoRa.  <br /></td></tr>
@@ -158,20 +154,44 @@ Functions</h2></td></tr>
 <p>Converts the outgoing string to a C-style string, adds destination and local addresses, and sends the message using LoRa. Prints a log message to the UART. </p>
 
 <p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00015">15</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
-<div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+
 </div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="send_8cpp_a42881e6476e0ce51ee9f6a99a7318d3b_cgraph.svg" width="244" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-<div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+<a id="a2a08614a5b6deb22c2d5658dbcfe78e2" name="a2a08614a5b6deb22c2d5658dbcfe78e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a08614a5b6deb22c2d5658dbcfe78e2">&#9670;&#160;</a></span>send_frame_lora()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void send_frame_lora </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_frame.html">Frame</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00037">37</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
+
 </div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="send_8cpp_a42881e6476e0ce51ee9f6a99a7318d3b_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
+<a id="a8ec7ba85230162ecba5bc19a53a0dd1e" name="a8ec7ba85230162ecba5bc19a53a0dd1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ec7ba85230162ecba5bc19a53a0dd1e">&#9670;&#160;</a></span>send_frame_uart()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void send_frame_uart </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_frame.html">Frame</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00042">42</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
 
 </div>
 </div>
@@ -190,30 +210,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sends a <a class="el" href="struct_frame.html">Frame</a> using LoRa. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">frame</td><td>The <a class="el" href="struct_frame.html">Frame</a> to send.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Encodes the <a class="el" href="struct_frame.html">Frame</a> into a string and sends it using the send_message function. </p>
-
-<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00042">42</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
-<div id="dynsection-3" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="send_8cpp_ae6c6f3b673e7e83306da7ea2458d3241_cgraph.svg" width="470" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-<div id="dynsection-4" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="send_8cpp_ae6c6f3b673e7e83306da7ea2458d3241_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
+<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00048">48</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
 
 </div>
 </div>
@@ -246,7 +243,7 @@ Functions</h2></td></tr>
 </dl>
 <p>Splits the data into chunks of MAX_PKT_SIZE and sends each chunk as a separate LoRa packet. </p>
 
-<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00056">56</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00059">59</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
 
 </div>
 </div>

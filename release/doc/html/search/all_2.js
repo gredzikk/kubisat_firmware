@@ -2,7 +2,7 @@ var searchData=
 [
   ['bcd_5fto_5fbin_0',['bcd_to_bin',['../class_d_s3231.html#ac7a9f58b408406930da56317de9f2a34',1,'DS3231']]],
   ['bcdtodec_1',['bcdToDec',['../class_erriez_d_s3231.html#a471af5f04b95c6021e9d5a551ad46099',1,'ErriezDS3231']]],
-  ['begin_2',['begin',['../class_lo_ra_class.html#a3c5b6ee156c14f20238f46292c116d96',1,'LoRaClass::begin()'],['../class_erriez_d_s3231.html#a8830174ba45fcf625206207191d7e58b',1,'ErriezDS3231::begin()'],['../class_i_n_a3221.html#a868af24425b042f330a0e7fae8210936',1,'INA3221::begin()'],['../class_b_h1750.html#ae0e57ed9ecc08464a6b98b733d420e11',1,'BH1750::begin()']]],
+  ['begin_2',['begin',['../class_lo_ra_class.html#a3c5b6ee156c14f20238f46292c116d96',1,'LoRaClass::begin()'],['../class_erriez_d_s3231.html#a8830174ba45fcf625206207191d7e58b',1,'ErriezDS3231::begin()'],['../group___i_n_a3221___config.html#ga868af24425b042f330a0e7fae8210936',1,'INA3221::begin()'],['../class_b_h1750.html#ae0e57ed9ecc08464a6b98b733d420e11',1,'BH1750::begin()']]],
   ['beginpacket_3',['beginPacket',['../class_lo_ra_class.html#a22d4ee8aaded004bb91b70ee15c57e2d',1,'LoRaClass']]],
   ['bh1750_4',['BH1750',['../class_b_h1750.html',1,'BH1750'],['../class_b_h1750.html#ad3621c02c56c15e4f3d40f0974a376f2',1,'BH1750::BH1750()']]],
   ['bh1750_2ecpp_5',['BH1750.cpp',['../_b_h1750_8cpp.html',1,'']]],

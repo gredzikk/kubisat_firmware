@@ -107,70 +107,113 @@ $(function(){initNavTree('class_i_n_a3221.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 
+<p><a class="el" href="class_i_n_a3221.html" title="INA3221 Triple-Channel Power Monitor driver class.">INA3221</a> Triple-Channel Power Monitor driver class.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_i_n_a3221_8h_source.html">INA3221.h</a>&gt;</code></p>
-<div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for INA3221:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_i_n_a3221__coll__graph.svg" width="174" height="128"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_i_n_a3221_1_1conf__reg__t.html">conf_reg_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration register bit fields.  <a href="struct_i_n_a3221_1_1conf__reg__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_i_n_a3221_1_1masken__reg__t.html">masken_reg_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mask/Enable register bit fields.  <a href="struct_i_n_a3221_1_1masken__reg__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a83066248e7dcda4d1b05ff0bf2f26fe3" id="r_a83066248e7dcda4d1b05ff0bf2f26fe3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83066248e7dcda4d1b05ff0bf2f26fe3">INA3221</a> (<a class="el" href="_i_n_a3221_8h.html#a5d97d22d72d02c98567c354e0b7292e3">ina3221_addr_t</a> addr, i2c_inst_t *i2c)</td></tr>
-<tr class="separator:a83066248e7dcda4d1b05ff0bf2f26fe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a868af24425b042f330a0e7fae8210936" id="r_a868af24425b042f330a0e7fae8210936"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a868af24425b042f330a0e7fae8210936">begin</a> ()</td></tr>
-<tr class="separator:a868af24425b042f330a0e7fae8210936"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3641fa1f57f0319efd9c1053e5125466" id="r_a3641fa1f57f0319efd9c1053e5125466"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3641fa1f57f0319efd9c1053e5125466">read_register</a> (<a class="el" href="_i_n_a3221_8h.html#ab65aa8f8eb9bcf239a91549d25e022d7">ina3221_reg_t</a> reg)</td></tr>
-<tr class="separator:a3641fa1f57f0319efd9c1053e5125466"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6c7cc5bf50be137d0fe29c28e830d40" id="r_ae6c7cc5bf50be137d0fe29c28e830d40"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6c7cc5bf50be137d0fe29c28e830d40">reset</a> ()</td></tr>
-<tr class="separator:ae6c7cc5bf50be137d0fe29c28e830d40"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab123176a3d1b1640fc78775121322d83" id="r_ab123176a3d1b1640fc78775121322d83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab123176a3d1b1640fc78775121322d83">set_mode_power_down</a> ()</td></tr>
-<tr class="separator:ab123176a3d1b1640fc78775121322d83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8663b152a156459c15aa258f27d15034" id="r_a8663b152a156459c15aa258f27d15034"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8663b152a156459c15aa258f27d15034">set_mode_continuous</a> ()</td></tr>
-<tr class="separator:a8663b152a156459c15aa258f27d15034"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a270f86fd739541bb5d4495e3d93e5d0e" id="r_a270f86fd739541bb5d4495e3d93e5d0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a270f86fd739541bb5d4495e3d93e5d0e">set_mode_triggered</a> ()</td></tr>
-<tr class="separator:a270f86fd739541bb5d4495e3d93e5d0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf37673d73bd189d1d789072a1e90f3c" id="r_aaf37673d73bd189d1d789072a1e90f3c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf37673d73bd189d1d789072a1e90f3c">set_shunt_measurement_enable</a> ()</td></tr>
-<tr class="separator:aaf37673d73bd189d1d789072a1e90f3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2e57e6c71e170300cc1966ea69e112a" id="r_af2e57e6c71e170300cc1966ea69e112a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2e57e6c71e170300cc1966ea69e112a">set_shunt_measurement_disable</a> ()</td></tr>
-<tr class="separator:af2e57e6c71e170300cc1966ea69e112a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2e0a1279f52db17f9167efb7cb2f64b" id="r_aa2e0a1279f52db17f9167efb7cb2f64b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2e0a1279f52db17f9167efb7cb2f64b">set_bus_measurement_enable</a> ()</td></tr>
-<tr class="separator:aa2e0a1279f52db17f9167efb7cb2f64b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40d79ef9f6d3c2b9f9796827a87f575b" id="r_a40d79ef9f6d3c2b9f9796827a87f575b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a40d79ef9f6d3c2b9f9796827a87f575b">set_bus_measurement_disable</a> ()</td></tr>
-<tr class="separator:a40d79ef9f6d3c2b9f9796827a87f575b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b525cfdf35573f8b3186219fd481b51" id="r_a5b525cfdf35573f8b3186219fd481b51"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b525cfdf35573f8b3186219fd481b51">set_averaging_mode</a> (<a class="el" href="_i_n_a3221_8h.html#ac7b201fe7943ec52b4c0ff76fedbeac4">ina3221_avg_mode_t</a> mode)</td></tr>
-<tr class="separator:a5b525cfdf35573f8b3186219fd481b51"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7fec9630c6d9fda2fa5230f46e200c7" id="r_ac7fec9630c6d9fda2fa5230f46e200c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7fec9630c6d9fda2fa5230f46e200c7">set_bus_conversion_time</a> (<a class="el" href="_i_n_a3221_8h.html#a5ce9d4e6475adebd76de9939de3324d3">ina3221_conv_time_t</a> convTime)</td></tr>
-<tr class="separator:ac7fec9630c6d9fda2fa5230f46e200c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96a07644259d702ec5b8d8b5f08b991f" id="r_a96a07644259d702ec5b8d8b5f08b991f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a96a07644259d702ec5b8d8b5f08b991f">set_shunt_conversion_time</a> (<a class="el" href="_i_n_a3221_8h.html#a5ce9d4e6475adebd76de9939de3324d3">ina3221_conv_time_t</a> convTime)</td></tr>
-<tr class="separator:a96a07644259d702ec5b8d8b5f08b991f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77a212d3a5c806f5c706da1bd7c294d0" id="r_a77a212d3a5c806f5c706da1bd7c294d0"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a77a212d3a5c806f5c706da1bd7c294d0">get_manufacturer_id</a> ()</td></tr>
-<tr class="separator:a77a212d3a5c806f5c706da1bd7c294d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a169cffd42ffacbd9dfca495a9f5389f0" id="r_a169cffd42ffacbd9dfca495a9f5389f0"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a169cffd42ffacbd9dfca495a9f5389f0">get_die_id</a> ()</td></tr>
-<tr class="separator:a169cffd42ffacbd9dfca495a9f5389f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3efd805c34a44d72cd72d9b9fd1ee15" id="r_ad3efd805c34a44d72cd72d9b9fd1ee15"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad3efd805c34a44d72cd72d9b9fd1ee15">get_shunt_voltage</a> (<a class="el" href="_i_n_a3221_8h.html#a1e8eddf1a4d7773268dccebc08ea37df">ina3221_ch_t</a> channel)</td></tr>
-<tr class="separator:ad3efd805c34a44d72cd72d9b9fd1ee15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga83066248e7dcda4d1b05ff0bf2f26fe3" id="r_ga83066248e7dcda4d1b05ff0bf2f26fe3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_n_a3221___config.html#ga83066248e7dcda4d1b05ff0bf2f26fe3">INA3221</a> (<a class="el" href="_i_n_a3221_8h.html#a5d97d22d72d02c98567c354e0b7292e3">ina3221_addr_t</a> addr, i2c_inst_t *i2c)</td></tr>
+<tr class="memdesc:ga83066248e7dcda4d1b05ff0bf2f26fe3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for <a class="el" href="class_i_n_a3221.html" title="INA3221 Triple-Channel Power Monitor driver class.">INA3221</a> class.  <br /></td></tr>
+<tr class="separator:ga83066248e7dcda4d1b05ff0bf2f26fe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga868af24425b042f330a0e7fae8210936" id="r_ga868af24425b042f330a0e7fae8210936"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_n_a3221___config.html#ga868af24425b042f330a0e7fae8210936">begin</a> ()</td></tr>
+<tr class="memdesc:ga868af24425b042f330a0e7fae8210936"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the <a class="el" href="class_i_n_a3221.html" title="INA3221 Triple-Channel Power Monitor driver class.">INA3221</a> device.  <br /></td></tr>
+<tr class="separator:ga868af24425b042f330a0e7fae8210936"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3641fa1f57f0319efd9c1053e5125466" id="r_ga3641fa1f57f0319efd9c1053e5125466"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_n_a3221___config.html#ga3641fa1f57f0319efd9c1053e5125466">read_register</a> (<a class="el" href="_i_n_a3221_8h.html#ab65aa8f8eb9bcf239a91549d25e022d7">ina3221_reg_t</a> reg)</td></tr>
+<tr class="memdesc:ga3641fa1f57f0319efd9c1053e5125466"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a register from the device.  <br /></td></tr>
+<tr class="separator:ga3641fa1f57f0319efd9c1053e5125466"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae6c7cc5bf50be137d0fe29c28e830d40" id="r_gae6c7cc5bf50be137d0fe29c28e830d40"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_n_a3221___config.html#gae6c7cc5bf50be137d0fe29c28e830d40">reset</a> ()</td></tr>
+<tr class="memdesc:gae6c7cc5bf50be137d0fe29c28e830d40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the <a class="el" href="class_i_n_a3221.html" title="INA3221 Triple-Channel Power Monitor driver class.">INA3221</a> to default settings.  <br /></td></tr>
+<tr class="separator:gae6c7cc5bf50be137d0fe29c28e830d40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab123176a3d1b1640fc78775121322d83" id="r_gab123176a3d1b1640fc78775121322d83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_n_a3221___config.html#gab123176a3d1b1640fc78775121322d83">set_mode_power_down</a> ()</td></tr>
+<tr class="memdesc:gab123176a3d1b1640fc78775121322d83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set device to power-down mode.  <br /></td></tr>
+<tr class="separator:gab123176a3d1b1640fc78775121322d83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8663b152a156459c15aa258f27d15034" id="r_ga8663b152a156459c15aa258f27d15034"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_n_a3221___config.html#ga8663b152a156459c15aa258f27d15034">set_mode_continuous</a> ()</td></tr>
+<tr class="memdesc:ga8663b152a156459c15aa258f27d15034"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set device to continuous measurement mode.  <br /></td></tr>
+<tr class="separator:ga8663b152a156459c15aa258f27d15034"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga270f86fd739541bb5d4495e3d93e5d0e" id="r_ga270f86fd739541bb5d4495e3d93e5d0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_n_a3221___config.html#ga270f86fd739541bb5d4495e3d93e5d0e">set_mode_triggered</a> ()</td></tr>
+<tr class="memdesc:ga270f86fd739541bb5d4495e3d93e5d0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set device to triggered measurement mode.  <br /></td></tr>
+<tr class="separator:ga270f86fd739541bb5d4495e3d93e5d0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaf37673d73bd189d1d789072a1e90f3c" id="r_gaaf37673d73bd189d1d789072a1e90f3c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_n_a3221___config.html#gaaf37673d73bd189d1d789072a1e90f3c">set_shunt_measurement_enable</a> ()</td></tr>
+<tr class="memdesc:gaaf37673d73bd189d1d789072a1e90f3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable shunt voltage measurements.  <br /></td></tr>
+<tr class="separator:gaaf37673d73bd189d1d789072a1e90f3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf2e57e6c71e170300cc1966ea69e112a" id="r_gaf2e57e6c71e170300cc1966ea69e112a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_n_a3221___config.html#gaf2e57e6c71e170300cc1966ea69e112a">set_shunt_measurement_disable</a> ()</td></tr>
+<tr class="memdesc:gaf2e57e6c71e170300cc1966ea69e112a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable shunt voltage measurements.  <br /></td></tr>
+<tr class="separator:gaf2e57e6c71e170300cc1966ea69e112a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa2e0a1279f52db17f9167efb7cb2f64b" id="r_gaa2e0a1279f52db17f9167efb7cb2f64b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_n_a3221___config.html#gaa2e0a1279f52db17f9167efb7cb2f64b">set_bus_measurement_enable</a> ()</td></tr>
+<tr class="memdesc:gaa2e0a1279f52db17f9167efb7cb2f64b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable bus voltage measurements.  <br /></td></tr>
+<tr class="separator:gaa2e0a1279f52db17f9167efb7cb2f64b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga40d79ef9f6d3c2b9f9796827a87f575b" id="r_ga40d79ef9f6d3c2b9f9796827a87f575b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_n_a3221___config.html#ga40d79ef9f6d3c2b9f9796827a87f575b">set_bus_measurement_disable</a> ()</td></tr>
+<tr class="memdesc:ga40d79ef9f6d3c2b9f9796827a87f575b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable bus voltage measurements.  <br /></td></tr>
+<tr class="separator:ga40d79ef9f6d3c2b9f9796827a87f575b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5b525cfdf35573f8b3186219fd481b51" id="r_ga5b525cfdf35573f8b3186219fd481b51"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_n_a3221___config.html#ga5b525cfdf35573f8b3186219fd481b51">set_averaging_mode</a> (<a class="el" href="_i_n_a3221_8h.html#ac7b201fe7943ec52b4c0ff76fedbeac4">ina3221_avg_mode_t</a> mode)</td></tr>
+<tr class="memdesc:ga5b525cfdf35573f8b3186219fd481b51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the averaging mode for measurements.  <br /></td></tr>
+<tr class="separator:ga5b525cfdf35573f8b3186219fd481b51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac7fec9630c6d9fda2fa5230f46e200c7" id="r_gac7fec9630c6d9fda2fa5230f46e200c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_n_a3221___config.html#gac7fec9630c6d9fda2fa5230f46e200c7">set_bus_conversion_time</a> (<a class="el" href="_i_n_a3221_8h.html#a5ce9d4e6475adebd76de9939de3324d3">ina3221_conv_time_t</a> convTime)</td></tr>
+<tr class="memdesc:gac7fec9630c6d9fda2fa5230f46e200c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set bus voltage conversion time.  <br /></td></tr>
+<tr class="separator:gac7fec9630c6d9fda2fa5230f46e200c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga96a07644259d702ec5b8d8b5f08b991f" id="r_ga96a07644259d702ec5b8d8b5f08b991f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_n_a3221___config.html#ga96a07644259d702ec5b8d8b5f08b991f">set_shunt_conversion_time</a> (<a class="el" href="_i_n_a3221_8h.html#a5ce9d4e6475adebd76de9939de3324d3">ina3221_conv_time_t</a> convTime)</td></tr>
+<tr class="memdesc:ga96a07644259d702ec5b8d8b5f08b991f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set shunt voltage conversion time.  <br /></td></tr>
+<tr class="separator:ga96a07644259d702ec5b8d8b5f08b991f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga77a212d3a5c806f5c706da1bd7c294d0" id="r_ga77a212d3a5c806f5c706da1bd7c294d0"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_n_a3221___config.html#ga77a212d3a5c806f5c706da1bd7c294d0">get_manufacturer_id</a> ()</td></tr>
+<tr class="memdesc:ga77a212d3a5c806f5c706da1bd7c294d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the manufacturer ID of the device.  <br /></td></tr>
+<tr class="separator:ga77a212d3a5c806f5c706da1bd7c294d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga169cffd42ffacbd9dfca495a9f5389f0" id="r_ga169cffd42ffacbd9dfca495a9f5389f0"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_n_a3221___config.html#ga169cffd42ffacbd9dfca495a9f5389f0">get_die_id</a> ()</td></tr>
+<tr class="memdesc:ga169cffd42ffacbd9dfca495a9f5389f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the die ID of the device.  <br /></td></tr>
+<tr class="separator:ga169cffd42ffacbd9dfca495a9f5389f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad3efd805c34a44d72cd72d9b9fd1ee15" id="r_gad3efd805c34a44d72cd72d9b9fd1ee15"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_n_a3221___measure.html#gad3efd805c34a44d72cd72d9b9fd1ee15">get_shunt_voltage</a> (<a class="el" href="_i_n_a3221_8h.html#a1e8eddf1a4d7773268dccebc08ea37df">ina3221_ch_t</a> channel)</td></tr>
+<tr class="memdesc:gad3efd805c34a44d72cd72d9b9fd1ee15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get shunt voltage for a specific channel.  <br /></td></tr>
+<tr class="separator:gad3efd805c34a44d72cd72d9b9fd1ee15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a476e1b130840ea57ce8ca072cc82b044" id="r_a476e1b130840ea57ce8ca072cc82b044"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a476e1b130840ea57ce8ca072cc82b044">get_current</a> (<a class="el" href="_i_n_a3221_8h.html#a1e8eddf1a4d7773268dccebc08ea37df">ina3221_ch_t</a> channel)</td></tr>
 <tr class="separator:a476e1b130840ea57ce8ca072cc82b044"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5ca21353c19c0f472e3df13bc20be08" id="r_aa5ca21353c19c0f472e3df13bc20be08"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5ca21353c19c0f472e3df13bc20be08">get_current_ma</a> (<a class="el" href="_i_n_a3221_8h.html#a1e8eddf1a4d7773268dccebc08ea37df">ina3221_ch_t</a> channel)</td></tr>
-<tr class="separator:aa5ca21353c19c0f472e3df13bc20be08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7cd8cfc6d59f9b85fe1e33f10be222c6" id="r_a7cd8cfc6d59f9b85fe1e33f10be222c6"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7cd8cfc6d59f9b85fe1e33f10be222c6">get_voltage</a> (<a class="el" href="_i_n_a3221_8h.html#a1e8eddf1a4d7773268dccebc08ea37df">ina3221_ch_t</a> channel)</td></tr>
-<tr class="separator:a7cd8cfc6d59f9b85fe1e33f10be222c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa5ca21353c19c0f472e3df13bc20be08" id="r_gaa5ca21353c19c0f472e3df13bc20be08"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_n_a3221___measure.html#gaa5ca21353c19c0f472e3df13bc20be08">get_current_ma</a> (<a class="el" href="_i_n_a3221_8h.html#a1e8eddf1a4d7773268dccebc08ea37df">ina3221_ch_t</a> channel)</td></tr>
+<tr class="memdesc:gaa5ca21353c19c0f472e3df13bc20be08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current for a specific channel.  <br /></td></tr>
+<tr class="separator:gaa5ca21353c19c0f472e3df13bc20be08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7cd8cfc6d59f9b85fe1e33f10be222c6" id="r_ga7cd8cfc6d59f9b85fe1e33f10be222c6"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_n_a3221___measure.html#ga7cd8cfc6d59f9b85fe1e33f10be222c6">get_voltage</a> (<a class="el" href="_i_n_a3221_8h.html#a1e8eddf1a4d7773268dccebc08ea37df">ina3221_ch_t</a> channel)</td></tr>
+<tr class="memdesc:ga7cd8cfc6d59f9b85fe1e33f10be222c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get bus voltage for a specific channel.  <br /></td></tr>
+<tr class="separator:ga7cd8cfc6d59f9b85fe1e33f10be222c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9996ec8cfa1819adc5c0d3cfcc821278" id="r_ga9996ec8cfa1819adc5c0d3cfcc821278"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_n_a3221___alert.html#ga9996ec8cfa1819adc5c0d3cfcc821278">set_warn_alert_limit</a> (<a class="el" href="_i_n_a3221_8h.html#a1e8eddf1a4d7773268dccebc08ea37df">ina3221_ch_t</a> channel, float voltage_v)</td></tr>
+<tr class="memdesc:ga9996ec8cfa1819adc5c0d3cfcc821278"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set warning alert voltage threshold for a channel.  <br /></td></tr>
+<tr class="separator:ga9996ec8cfa1819adc5c0d3cfcc821278"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3cfcc6433cb1003b68c440dc6421a506" id="r_ga3cfcc6433cb1003b68c440dc6421a506"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_n_a3221___alert.html#ga3cfcc6433cb1003b68c440dc6421a506">set_crit_alert_limit</a> (<a class="el" href="_i_n_a3221_8h.html#a1e8eddf1a4d7773268dccebc08ea37df">ina3221_ch_t</a> channel, float voltage_v)</td></tr>
+<tr class="memdesc:ga3cfcc6433cb1003b68c440dc6421a506"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set critical alert voltage threshold for a channel.  <br /></td></tr>
+<tr class="separator:ga3cfcc6433cb1003b68c440dc6421a506"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad243227f830f710159077135320a7541" id="r_gad243227f830f710159077135320a7541"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_n_a3221___alert.html#gad243227f830f710159077135320a7541">set_power_valid_limit</a> (float voltage_upper_v, float voltage_lower_v)</td></tr>
+<tr class="memdesc:gad243227f830f710159077135320a7541"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set power valid voltage range.  <br /></td></tr>
+<tr class="separator:gad243227f830f710159077135320a7541"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadeb995aadb8de1b7f2554f5ab4aa5040" id="r_gadeb995aadb8de1b7f2554f5ab4aa5040"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_n_a3221___alert.html#gadeb995aadb8de1b7f2554f5ab4aa5040">enable_alerts</a> ()</td></tr>
+<tr class="memdesc:gadeb995aadb8de1b7f2554f5ab4aa5040"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable all alert functions.  <br /></td></tr>
+<tr class="separator:gadeb995aadb8de1b7f2554f5ab4aa5040"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0803621a18c0c3a503d8a4e16dc60009" id="r_ga0803621a18c0c3a503d8a4e16dc60009"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_n_a3221___alert.html#ga0803621a18c0c3a503d8a4e16dc60009">get_warn_alert</a> (<a class="el" href="_i_n_a3221_8h.html#a1e8eddf1a4d7773268dccebc08ea37df">ina3221_ch_t</a> channel)</td></tr>
+<tr class="memdesc:ga0803621a18c0c3a503d8a4e16dc60009"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get warning alert status for a channel.  <br /></td></tr>
+<tr class="separator:ga0803621a18c0c3a503d8a4e16dc60009"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3e57db02d0820c7111334a92907574d4" id="r_ga3e57db02d0820c7111334a92907574d4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_n_a3221___alert.html#ga3e57db02d0820c7111334a92907574d4">get_crit_alert</a> (<a class="el" href="_i_n_a3221_8h.html#a1e8eddf1a4d7773268dccebc08ea37df">ina3221_ch_t</a> channel)</td></tr>
+<tr class="memdesc:ga3e57db02d0820c7111334a92907574d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get critical alert status for a channel.  <br /></td></tr>
+<tr class="separator:ga3e57db02d0820c7111334a92907574d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga84afcb021c7683a4b33a242efdab2909" id="r_ga84afcb021c7683a4b33a242efdab2909"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_n_a3221___alert.html#ga84afcb021c7683a4b33a242efdab2909">get_power_valid_alert</a> ()</td></tr>
+<tr class="memdesc:ga84afcb021c7683a4b33a242efdab2909"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get power valid alert status.  <br /></td></tr>
+<tr class="separator:ga84afcb021c7683a4b33a242efdab2909"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5ba4619070951c74b1f5dd0f1caac6ec" id="r_ga5ba4619070951c74b1f5dd0f1caac6ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_n_a3221___alert.html#ga5ba4619070951c74b1f5dd0f1caac6ec">set_alert_latch</a> (bool enable)</td></tr>
+<tr class="memdesc:ga5ba4619070951c74b1f5dd0f1caac6ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set alert latch mode.  <br /></td></tr>
+<tr class="separator:ga5ba4619070951c74b1f5dd0f1caac6ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a0b4c630038abf482bef36f3083ab20ff" id="r_a0b4c630038abf482bef36f3083ab20ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b4c630038abf482bef36f3083ab20ff">_read</a> (<a class="el" href="_i_n_a3221_8h.html#ab65aa8f8eb9bcf239a91549d25e022d7">ina3221_reg_t</a> reg, uint16_t *val)</td></tr>
+<tr class="memdesc:a0b4c630038abf482bef36f3083ab20ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a 16-bit register from the device.  <br /></td></tr>
 <tr class="separator:a0b4c630038abf482bef36f3083ab20ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea00c9c6baf85bd94794ee7b3b47d2c7" id="r_aea00c9c6baf85bd94794ee7b3b47d2c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea00c9c6baf85bd94794ee7b3b47d2c7">_write</a> (<a class="el" href="_i_n_a3221_8h.html#ab65aa8f8eb9bcf239a91549d25e022d7">ina3221_reg_t</a> reg, uint16_t *val)</td></tr>
+<tr class="memdesc:aea00c9c6baf85bd94794ee7b3b47d2c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a 16-bit value to a register.  <br /></td></tr>
 <tr class="separator:aea00c9c6baf85bd94794ee7b3b47d2c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -187,33 +230,11 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a1993533c947d9a944695359e70fa9618"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8h_source.html#l00073">73</a> of file <a class="el" href="_i_n_a3221_8h_source.html">INA3221.h</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a83066248e7dcda4d1b05ff0bf2f26fe3" name="a83066248e7dcda4d1b05ff0bf2f26fe3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a83066248e7dcda4d1b05ff0bf2f26fe3">&#9670;&#160;</a></span>INA3221()</h2>
+<div class="textblock"><p><a class="el" href="class_i_n_a3221.html" title="INA3221 Triple-Channel Power Monitor driver class.">INA3221</a> Triple-Channel Power Monitor driver class. </p>
+<p>Provides functionality for voltage, current, and power monitoring with configurable alerts and power valid monitoring </p>
 
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">INA3221::INA3221 </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="_i_n_a3221_8h.html#a5d97d22d72d02c98567c354e0b7292e3">ina3221_addr_t</a></td>          <td class="paramname"><span class="paramname"><em>addr</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">i2c_inst_t *</td>          <td class="paramname"><span class="paramname"><em>i2c</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8cpp_source.html#l00010">10</a> of file <a class="el" href="_i_n_a3221_8cpp_source.html">INA3221.cpp</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
+<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8h_source.html#l00096">96</a> of file <a class="el" href="_i_n_a3221_8h_source.html">INA3221.h</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a0b4c630038abf482bef36f3083ab20ff" name="a0b4c630038abf482bef36f3083ab20ff"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0b4c630038abf482bef36f3083ab20ff">&#9670;&#160;</a></span>_read()</h2>
 
@@ -241,14 +262,16 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8cpp_source.html#l00042">42</a> of file <a class="el" href="_i_n_a3221_8cpp_source.html">INA3221.cpp</a>.</p>
-<div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="class_i_n_a3221_a0b4c630038abf482bef36f3083ab20ff_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
+<p>Read a 16-bit register from the device. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>Register address </td></tr>
+    <tr><td class="paramname">val</td><td>Pointer to store the read value </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8cpp_source.html#l00513">513</a> of file <a class="el" href="_i_n_a3221_8cpp_source.html">INA3221.cpp</a>.</p>
 
 </div>
 </div>
@@ -279,451 +302,16 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8cpp_source.html#l00061">61</a> of file <a class="el" href="_i_n_a3221_8cpp_source.html">INA3221.cpp</a>.</p>
-<div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="class_i_n_a3221_aea00c9c6baf85bd94794ee7b3b47d2c7_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
+<p>Write a 16-bit value to a register. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>Register address </td></tr>
+    <tr><td class="paramname">val</td><td>Pointer to the value to write </td></tr>
+  </table>
+  </dd>
+</dl>
 
-</div>
-</div>
-<a id="a868af24425b042f330a0e7fae8210936" name="a868af24425b042f330a0e7fae8210936"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a868af24425b042f330a0e7fae8210936">&#9670;&#160;</a></span>begin()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool INA3221::begin </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8cpp_source.html#l00014">14</a> of file <a class="el" href="_i_n_a3221_8cpp_source.html">INA3221.cpp</a>.</p>
-<div id="dynsection-3" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_i_n_a3221_a868af24425b042f330a0e7fae8210936_cgraph.svg" width="530" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
-</div>
-</div>
-<a id="a3641fa1f57f0319efd9c1053e5125466" name="a3641fa1f57f0319efd9c1053e5125466"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3641fa1f57f0319efd9c1053e5125466">&#9670;&#160;</a></span>read_register()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint16_t INA3221::read_register </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="_i_n_a3221_8h.html#ab65aa8f8eb9bcf239a91549d25e022d7">ina3221_reg_t</a></td>          <td class="paramname"><span class="paramname"><em>reg</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8cpp_source.html#l00073">73</a> of file <a class="el" href="_i_n_a3221_8cpp_source.html">INA3221.cpp</a>.</p>
-<div id="dynsection-4" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_i_n_a3221_a3641fa1f57f0319efd9c1053e5125466_cgraph.svg" width="327" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
-</div>
-</div>
-<a id="ae6c7cc5bf50be137d0fe29c28e830d40" name="ae6c7cc5bf50be137d0fe29c28e830d40"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae6c7cc5bf50be137d0fe29c28e830d40">&#9670;&#160;</a></span>reset()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void INA3221::reset </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8cpp_source.html#l00079">79</a> of file <a class="el" href="_i_n_a3221_8cpp_source.html">INA3221.cpp</a>.</p>
-<div id="dynsection-5" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_i_n_a3221_ae6c7cc5bf50be137d0fe29c28e830d40_cgraph.svg" width="284" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
-</div>
-</div>
-<a id="ab123176a3d1b1640fc78775121322d83" name="ab123176a3d1b1640fc78775121322d83"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab123176a3d1b1640fc78775121322d83">&#9670;&#160;</a></span>set_mode_power_down()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void INA3221::set_mode_power_down </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8cpp_source.html#l00087">87</a> of file <a class="el" href="_i_n_a3221_8cpp_source.html">INA3221.cpp</a>.</p>
-<div id="dynsection-6" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_i_n_a3221_ab123176a3d1b1640fc78775121322d83_cgraph.svg" width="392" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
-</div>
-</div>
-<a id="a8663b152a156459c15aa258f27d15034" name="a8663b152a156459c15aa258f27d15034"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8663b152a156459c15aa258f27d15034">&#9670;&#160;</a></span>set_mode_continuous()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void INA3221::set_mode_continuous </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8cpp_source.html#l00096">96</a> of file <a class="el" href="_i_n_a3221_8cpp_source.html">INA3221.cpp</a>.</p>
-<div id="dynsection-7" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_i_n_a3221_a8663b152a156459c15aa258f27d15034_cgraph.svg" width="382" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
-</div>
-</div>
-<a id="a270f86fd739541bb5d4495e3d93e5d0e" name="a270f86fd739541bb5d4495e3d93e5d0e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a270f86fd739541bb5d4495e3d93e5d0e">&#9670;&#160;</a></span>set_mode_triggered()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void INA3221::set_mode_triggered </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8cpp_source.html#l00104">104</a> of file <a class="el" href="_i_n_a3221_8cpp_source.html">INA3221.cpp</a>.</p>
-<div id="dynsection-8" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_i_n_a3221_a270f86fd739541bb5d4495e3d93e5d0e_cgraph.svg" width="368" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
-</div>
-</div>
-<a id="aaf37673d73bd189d1d789072a1e90f3c" name="aaf37673d73bd189d1d789072a1e90f3c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf37673d73bd189d1d789072a1e90f3c">&#9670;&#160;</a></span>set_shunt_measurement_enable()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void INA3221::set_shunt_measurement_enable </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8cpp_source.html#l00112">112</a> of file <a class="el" href="_i_n_a3221_8cpp_source.html">INA3221.cpp</a>.</p>
-<div id="dynsection-9" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_i_n_a3221_aaf37673d73bd189d1d789072a1e90f3c_cgraph.svg" width="327" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
-</div>
-</div>
-<a id="af2e57e6c71e170300cc1966ea69e112a" name="af2e57e6c71e170300cc1966ea69e112a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af2e57e6c71e170300cc1966ea69e112a">&#9670;&#160;</a></span>set_shunt_measurement_disable()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void INA3221::set_shunt_measurement_disable </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8cpp_source.html#l00120">120</a> of file <a class="el" href="_i_n_a3221_8cpp_source.html">INA3221.cpp</a>.</p>
-<div id="dynsection-10" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-10-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_i_n_a3221_af2e57e6c71e170300cc1966ea69e112a_cgraph.svg" width="330" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
-</div>
-</div>
-<a id="aa2e0a1279f52db17f9167efb7cb2f64b" name="aa2e0a1279f52db17f9167efb7cb2f64b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa2e0a1279f52db17f9167efb7cb2f64b">&#9670;&#160;</a></span>set_bus_measurement_enable()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void INA3221::set_bus_measurement_enable </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8cpp_source.html#l00128">128</a> of file <a class="el" href="_i_n_a3221_8cpp_source.html">INA3221.cpp</a>.</p>
-<div id="dynsection-11" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-11-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_i_n_a3221_aa2e0a1279f52db17f9167efb7cb2f64b_cgraph.svg" width="387" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
-</div>
-</div>
-<a id="a40d79ef9f6d3c2b9f9796827a87f575b" name="a40d79ef9f6d3c2b9f9796827a87f575b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a40d79ef9f6d3c2b9f9796827a87f575b">&#9670;&#160;</a></span>set_bus_measurement_disable()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void INA3221::set_bus_measurement_disable </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8cpp_source.html#l00136">136</a> of file <a class="el" href="_i_n_a3221_8cpp_source.html">INA3221.cpp</a>.</p>
-<div id="dynsection-12" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-12-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_i_n_a3221_a40d79ef9f6d3c2b9f9796827a87f575b_cgraph.svg" width="387" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
-</div>
-</div>
-<a id="a5b525cfdf35573f8b3186219fd481b51" name="a5b525cfdf35573f8b3186219fd481b51"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5b525cfdf35573f8b3186219fd481b51">&#9670;&#160;</a></span>set_averaging_mode()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void INA3221::set_averaging_mode </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="_i_n_a3221_8h.html#ac7b201fe7943ec52b4c0ff76fedbeac4">ina3221_avg_mode_t</a></td>          <td class="paramname"><span class="paramname"><em>mode</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8cpp_source.html#l00144">144</a> of file <a class="el" href="_i_n_a3221_8cpp_source.html">INA3221.cpp</a>.</p>
-<div id="dynsection-13" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-13-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_i_n_a3221_a5b525cfdf35573f8b3186219fd481b51_cgraph.svg" width="375" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
-</div>
-</div>
-<a id="ac7fec9630c6d9fda2fa5230f46e200c7" name="ac7fec9630c6d9fda2fa5230f46e200c7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac7fec9630c6d9fda2fa5230f46e200c7">&#9670;&#160;</a></span>set_bus_conversion_time()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void INA3221::set_bus_conversion_time </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="_i_n_a3221_8h.html#a5ce9d4e6475adebd76de9939de3324d3">ina3221_conv_time_t</a></td>          <td class="paramname"><span class="paramname"><em>convTime</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8cpp_source.html#l00152">152</a> of file <a class="el" href="_i_n_a3221_8cpp_source.html">INA3221.cpp</a>.</p>
-<div id="dynsection-14" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-14-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_i_n_a3221_ac7fec9630c6d9fda2fa5230f46e200c7_cgraph.svg" width="403" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
-</div>
-</div>
-<a id="a96a07644259d702ec5b8d8b5f08b991f" name="a96a07644259d702ec5b8d8b5f08b991f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a96a07644259d702ec5b8d8b5f08b991f">&#9670;&#160;</a></span>set_shunt_conversion_time()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void INA3221::set_shunt_conversion_time </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="_i_n_a3221_8h.html#a5ce9d4e6475adebd76de9939de3324d3">ina3221_conv_time_t</a></td>          <td class="paramname"><span class="paramname"><em>convTime</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8cpp_source.html#l00160">160</a> of file <a class="el" href="_i_n_a3221_8cpp_source.html">INA3221.cpp</a>.</p>
-<div id="dynsection-15" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-15-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-15-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_i_n_a3221_a96a07644259d702ec5b8d8b5f08b991f_cgraph.svg" width="312" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
-</div>
-</div>
-<a id="a77a212d3a5c806f5c706da1bd7c294d0" name="a77a212d3a5c806f5c706da1bd7c294d0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a77a212d3a5c806f5c706da1bd7c294d0">&#9670;&#160;</a></span>get_manufacturer_id()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint16_t INA3221::get_manufacturer_id </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8cpp_source.html#l00168">168</a> of file <a class="el" href="_i_n_a3221_8cpp_source.html">INA3221.cpp</a>.</p>
-<div id="dynsection-16" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-16-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-16-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_i_n_a3221_a77a212d3a5c806f5c706da1bd7c294d0_cgraph.svg" width="370" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-<div id="dynsection-17" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-17-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-17-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-17-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_i_n_a3221_a77a212d3a5c806f5c706da1bd7c294d0_icgraph.svg" width="368" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
-</div>
-</div>
-<a id="a169cffd42ffacbd9dfca495a9f5389f0" name="a169cffd42ffacbd9dfca495a9f5389f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a169cffd42ffacbd9dfca495a9f5389f0">&#9670;&#160;</a></span>get_die_id()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint16_t INA3221::get_die_id </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8cpp_source.html#l00174">174</a> of file <a class="el" href="_i_n_a3221_8cpp_source.html">INA3221.cpp</a>.</p>
-<div id="dynsection-18" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-18-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-18-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-18-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_i_n_a3221_a169cffd42ffacbd9dfca495a9f5389f0_cgraph.svg" width="311" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-<div id="dynsection-19" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-19-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-19-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-19-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_i_n_a3221_a169cffd42ffacbd9dfca495a9f5389f0_icgraph.svg" width="310" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
-</div>
-</div>
-<a id="ad3efd805c34a44d72cd72d9b9fd1ee15" name="ad3efd805c34a44d72cd72d9b9fd1ee15"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad3efd805c34a44d72cd72d9b9fd1ee15">&#9670;&#160;</a></span>get_shunt_voltage()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t INA3221::get_shunt_voltage </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="_i_n_a3221_8h.html#a1e8eddf1a4d7773268dccebc08ea37df">ina3221_ch_t</a></td>          <td class="paramname"><span class="paramname"><em>channel</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8cpp_source.html#l00180">180</a> of file <a class="el" href="_i_n_a3221_8cpp_source.html">INA3221.cpp</a>.</p>
-<div id="dynsection-20" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-20-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-20-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-20-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_i_n_a3221_ad3efd805c34a44d72cd72d9b9fd1ee15_cgraph.svg" width="308" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-<div id="dynsection-21" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-21-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-21-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-21-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_i_n_a3221_ad3efd805c34a44d72cd72d9b9fd1ee15_icgraph.svg" width="367" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8cpp_source.html#l00539">539</a> of file <a class="el" href="_i_n_a3221_8cpp_source.html">INA3221.cpp</a>.</p>
 
 </div>
 </div>
@@ -741,58 +329,6 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa5ca21353c19c0f472e3df13bc20be08" name="aa5ca21353c19c0f472e3df13bc20be08"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa5ca21353c19c0f472e3df13bc20be08">&#9670;&#160;</a></span>get_current_ma()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float INA3221::get_current_ma </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="_i_n_a3221_8h.html#a1e8eddf1a4d7773268dccebc08ea37df">ina3221_ch_t</a></td>          <td class="paramname"><span class="paramname"><em>channel</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8cpp_source.html#l00205">205</a> of file <a class="el" href="_i_n_a3221_8cpp_source.html">INA3221.cpp</a>.</p>
-<div id="dynsection-22" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-22-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-22-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-22-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_i_n_a3221_aa5ca21353c19c0f472e3df13bc20be08_cgraph.svg" width="527" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
-</div>
-</div>
-<a id="a7cd8cfc6d59f9b85fe1e33f10be222c6" name="a7cd8cfc6d59f9b85fe1e33f10be222c6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7cd8cfc6d59f9b85fe1e33f10be222c6">&#9670;&#160;</a></span>get_voltage()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float INA3221::get_voltage </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="_i_n_a3221_8h.html#a1e8eddf1a4d7773268dccebc08ea37df">ina3221_ch_t</a></td>          <td class="paramname"><span class="paramname"><em>channel</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8cpp_source.html#l00214">214</a> of file <a class="el" href="_i_n_a3221_8cpp_source.html">INA3221.cpp</a>.</p>
-<div id="dynsection-23" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-23-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-23-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-23-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_i_n_a3221_a7cd8cfc6d59f9b85fe1e33f10be222c6_cgraph.svg" width="319" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
 
 </div>
 </div>
@@ -817,7 +353,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8h_source.html#l00109">109</a> of file <a class="el" href="_i_n_a3221_8h_source.html">INA3221.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8h_source.html#l00136">136</a> of file <a class="el" href="_i_n_a3221_8h_source.html">INA3221.h</a>.</p>
 
 </div>
 </div>
@@ -841,7 +377,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8h_source.html#l00111">111</a> of file <a class="el" href="_i_n_a3221_8h_source.html">INA3221.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8h_source.html#l00138">138</a> of file <a class="el" href="_i_n_a3221_8h_source.html">INA3221.h</a>.</p>
 
 </div>
 </div>
@@ -865,7 +401,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8h_source.html#l00114">114</a> of file <a class="el" href="_i_n_a3221_8h_source.html">INA3221.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8h_source.html#l00141">141</a> of file <a class="el" href="_i_n_a3221_8h_source.html">INA3221.h</a>.</p>
 
 </div>
 </div>
@@ -889,7 +425,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8h_source.html#l00117">117</a> of file <a class="el" href="_i_n_a3221_8h_source.html">INA3221.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8h_source.html#l00144">144</a> of file <a class="el" href="_i_n_a3221_8h_source.html">INA3221.h</a>.</p>
 
 </div>
 </div>
@@ -913,7 +449,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8h_source.html#l00120">120</a> of file <a class="el" href="_i_n_a3221_8h_source.html">INA3221.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_i_n_a3221_8h_source.html#l00147">147</a> of file <a class="el" href="_i_n_a3221_8h_source.html">INA3221.h</a>.</p>
 
 </div>
 </div>

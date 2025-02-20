@@ -22,6 +22,8 @@ public:
     void configure(const std::map<std::string, std::string>& config);
     bool is_charging_solar();
     bool is_charging_usb();
+    bool check_power_alerts();
+
     
     static constexpr float SOLAR_CURRENT_THRESHOLD = 50.0f;  // mA
     static constexpr float USB_CURRENT_THRESHOLD = 50.0f;    // mA

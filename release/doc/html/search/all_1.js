@@ -23,8 +23,9 @@ var searchData=
   ['alarm2type_20',['Alarm2Type',['../_erriez_d_s3231_8h.html#a2561c628950a85b8f502b7055c3acd8b',1,'ErriezDS3231.h']]],
   ['alarmid_21',['AlarmId',['../_erriez_d_s3231_8h.html#abdac868b647b120d540abd60d35e0feb',1,'ErriezDS3231.h']]],
   ['alarminterruptenable_22',['alarmInterruptEnable',['../class_erriez_d_s3231.html#a63a7a3811ad205d800e07c0ca4466a29',1,'ErriezDS3231']]],
-  ['ans_23',['ANS',['../protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047a4e062fc2814c180a9e08b1d204ab31bd',1,'protocol.h']]],
-  ['available_24',['available',['../class_lo_ra_class.html#a99f2ee51a5ab27319cc965ebd575e58c',1,'LoRaClass']]],
-  ['availableforwrite_25',['availableForWrite',['../class_print.html#ae278602698f895c25820f18da4e765be',1,'Print']]],
-  ['avg_5fmode_26',['avg_mode',['../struct_i_n_a3221_1_1conf__reg__t.html#a2336f127fcd7bf551db4142c495c54f5',1,'INA3221::conf_reg_t']]]
+  ['alert_20functions_23',['Alert Functions',['../group___i_n_a3221___alert.html',1,'']]],
+  ['ans_24',['ANS',['../protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047a4e062fc2814c180a9e08b1d204ab31bd',1,'protocol.h']]],
+  ['available_25',['available',['../class_lo_ra_class.html#a99f2ee51a5ab27319cc965ebd575e58c',1,'LoRaClass']]],
+  ['availableforwrite_26',['availableForWrite',['../class_print.html#ae278602698f895c25820f18da4e765be',1,'Print']]],
+  ['avg_5fmode_27',['avg_mode',['../struct_i_n_a3221_1_1conf__reg__t.html#a2336f127fcd7bf551db4142c495c54f5',1,'INA3221::conf_reg_t']]]
 ];

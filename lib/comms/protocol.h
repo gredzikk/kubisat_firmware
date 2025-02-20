@@ -62,6 +62,11 @@ enum class ExceptionType {
     PARAM_UNECESSARY
 };
 
+enum class Interface {
+    UART,
+    LORA
+};
+
 struct Frame {
     std::string header;             // Start marker
     uint8_t direction;              // 0 = ground->sat, 1 = sat->ground

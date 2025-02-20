@@ -5,6 +5,10 @@
 #include <iostream>
 #include <hardware/i2c.h>
 
+/**
+ * @file INA3221.h
+ * @brief Header file for the INA3221 triple-channel power monitor driver
+ */
 typedef enum {
     INA3221_ADDR40_GND = 0b1000000, // A0 pin -> GND
     INA3221_ADDR41_VCC = 0b1000001, // A0 pin -> VCC
@@ -12,17 +16,25 @@ typedef enum {
     INA3221_ADDR43_SCL = 0b1000011  // A0 pin -> SCL
 } ina3221_addr_t;
 
-// Channels
+/**
+ * @file INA3221.h
+ * @brief Header file for the INA3221 triple-channel power monitor driver
+ */
 typedef enum {
     INA3221_CH1 = 0,
     INA3221_CH2,
     INA3221_CH3,
 } ina3221_ch_t;
 
+/** @brief Number of channels in INA3221 */
 const int INA3221_CH_NUM = 3;
+/** @brief LSB value for shunt voltage measurements in microvolts */
 const int SHUNT_VOLTAGE_LSB_UV = 5;
 
-// Registers
+
+/**
+ * @brief Register addresses for INA3221
+ */
 typedef enum {
     INA3221_REG_CONF = 0,
     INA3221_REG_CH1_SHUNTV,
@@ -46,7 +58,10 @@ typedef enum {
     INA3221_REG_DIE_ID = 0xFF
 } ina3221_reg_t;
 
-// Conversion times
+/**
+ * @brief Conversion time settings
+ * @details Time taken for each measurement conversion
+ */
 typedef enum {
     INA3221_REG_CONF_CT_140US = 0,
     INA3221_REG_CONF_CT_204US,
@@ -58,7 +73,10 @@ typedef enum {
     INA3221_REG_CONF_CT_8244US
 } ina3221_conv_time_t;
 
-// Averaging modes
+/**
+ * @brief Averaging mode settings
+ * @details Number of samples to average for each measurement
+ */
 typedef enum {
     INA3221_REG_CONF_AVG_1 = 0,
     INA3221_REG_CONF_AVG_4,
@@ -70,9 +88,16 @@ typedef enum {
     INA3221_REG_CONF_AVG_1024
 } ina3221_avg_mode_t;
 
+/**
+ * @brief INA3221 Triple-Channel Power Monitor driver class
+ * @details Provides functionality for voltage, current, and power monitoring
+ *          with configurable alerts and power valid monitoring
+ */
 class INA3221 {
 
-    // Configuration register
+    /**
+     * @brief Configuration register bit fields
+     */
     typedef struct {
         uint16_t mode_shunt_en:1;
         uint16_t mode_bus_en:1;
@@ -86,7 +111,9 @@ class INA3221 {
         uint16_t reset:1;
     } conf_reg_t;
 
-    // Mask/Enable register
+    /**
+     * @brief Mask/Enable register bit fields
+     */
     typedef struct {
         uint16_t conv_ready:1;
         uint16_t timing_ctrl_alert:1;
@@ -186,6 +213,15 @@ public:
 
     // Gets bus voltage in V.
     float get_voltage(ina3221_ch_t channel);
+
+    void set_warn_alert_limit(ina3221_ch_t channel, float voltage_v);
+    void set_crit_alert_limit(ina3221_ch_t channel, float voltage_v);
+    void set_power_valid_limit(float voltage_upper_v, float voltage_lower_v);
+    void enable_alerts();
+    bool get_warn_alert(ina3221_ch_t channel);
+    bool get_crit_alert(ina3221_ch_t channel);
+    bool get_power_valid_alert();
+    void set_alert_latch(bool enable);
 };
 
 #endif

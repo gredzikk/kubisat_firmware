@@ -59,10 +59,9 @@ void on_receive(int packetSize) {
     size_t footerPos = received.find(FRAME_END);
     
     if (headerPos != std::string::npos && footerPos != std::string::npos && footerPos > headerPos) {
-        // Extract frame between header and footer
         std::string frameData = received.substr(headerPos, footerPos + FRAME_END.length() - headerPos);
         uart_print("Extracted frame (length=" + std::to_string(frameData.length()) + "): " + frameData);
-        frame_process(frameData);
+        frame_process(frameData, Interface::LORA);  
     } else {
         uart_print("No valid frame found in received data");
     }
@@ -75,17 +74,16 @@ void on_receive(int packetSize) {
  *          character is received.
  */
 void handle_uart_input() {
-    static std::string uartBuffer; // Static buffer to store UART input
+    static std::string uartBuffer;
 
     while (uart_is_readable(DEBUG_UART_PORT)) {
         char c = uart_getc(DEBUG_UART_PORT);
 
         if (c == '\r' || c == '\n') {
             uart_print("Received UART string: " + uartBuffer);
-            frame_process(uartBuffer); // Process the data
-            uartBuffer.clear(); // Clear the buffer for the next input
+            frame_process(uartBuffer, Interface::UART); 
+            uartBuffer.clear();
         } else {
-            // Append the character to the buffer
             uartBuffer += c;
         }
     }

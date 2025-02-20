@@ -1,0 +1,86 @@
+8.3.2 Alert Monitoring
+The INA3221 allows programmable thresholds that make sure the intended application operates within the
+desired operating conditions. Multiple monitoring functions are available using four alert pins: Critical, Warning,
+PV (power valid), and TC (timing control). These alert pins are open-drain connections.
+
+
+8.3.2.1 Critical Alert
+The critical-alert feature monitors functions based on individual conversions of each shunt-voltage channel. The
+critical-alert limit feature compares the shunt-voltage conversion for each shunt-voltage channel to the value
+programmed into the corresponding limit register, in order to determine if the measured value exceeds the
+intended limit. Exceeding the programmed limit indicates that the current through the shunt resistor is too high.
+At power-up, the default critical-alert limit value for each channel is set to the positive full-scale value, effectively
+disabling the alert. Program the corresponding limit registers at any time to begin monitoring for out-of-range
+conditions. The Critical alert pin pulls low if any channel measurement exceeds the limit present in the
+corresponding-channel critical-alert limit register. When the Critical alert pulls low, read the Mask/Enable register
+to determine which channel caused the critical alert flag indicator bit (CF1-3) to assert (= 1).
+
+
+8.3.2.1.1 Summation Control Function
+The INA3221 also allows the Critical alert pin to be controlled by the summation control function. This function
+adds the single shunt-voltage conversions for the desired channels (set by SCC1-3 in the Mask/Enable register)
+in order to compare the combined sum to the programmed limit.
+The SCC bits either disable the summation control function or allow the summation control function to switch
+between including two or three channels in the Shunt-Voltage Sum register. The Shunt-Voltage Sum Limit
+register contains the programmed value that is compared to the value in the Shunt-Voltage Sum register in order
+to determine if the total summed limit is exceeded. If the shunt-voltage sum limit value is exceeded, the Critical
+alert pin pulls low. Either the summation alert flag indicator bit (SF) or the individual critical alert limit bits (CF1-3)
+in the Mask/Enable register determine the source of the alert when the Critical alert pin pulls low.
+For the summation limit to have a meaningful value, use the same shunt-resistor value on all included channels.
+Unless equal shunt-resistor values are used for each channel, do not use this function to add the individual
+conversion values directly together in the Shunt-Voltage Sum register to report the total current.
+
+
+
+8.3.2.2 Warning Alert
+The warning alert monitors the averaged value of each shunt-voltage channel. The averaged value of each
+shunt-voltage channel is based on the number of averages set with the averaging mode bits (AVG1-3) in the
+Configuration register. The average value updates in the shunt-voltage output register each time there is a
+conversion on the corresponding channel. The device compares the averaged value to the value programmed in
+the corresponding-channel Warning Alert Limit register to determine if the averaged value has been exceeded,
+indicating whether the average current is too high. At power-up, the default warning-alert limit value for each
+channel is set to the positive full-scale value, effectively disabling the alert. The corresponding limit registers can
+be programmed at any time to begin monitoring for out-of-range conditions. The Warning alert pin pulls low if any
+channel measurements exceed the limit present in the corresponding-channel Warning Alert Limit register. When
+the Warning alert pin pulls low, read the Mask/Enable register in order to determine which channel warning alert
+flag indicator bit (WF1-3) is asserted (= 1).
+
+
+8.3.2.3 Power-Valid Alert
+The power-valid alert verifies if all power rails are above the required levels. This feature manages power
+sequencing, and validates the reported measurements based on system configuration. Power-valid mode starts
+at power-up, and detects when each channel exceeds a 10-V threshold. This 10-V level is the default value
+programmed into the Power-Valid Upper-Limit register. This value can be reprogrammed when the INA3221 is
+powered up to a valid supply-voltage level of at least 2.7 V. When all three bus-voltage measurements reach the
+programmed value loaded to the Power-Valid Upper-Limit register, the power-valid (PV) alert pin pulls high. PV
+powers up in a low state, and does not pull high until the power-valid conditions are met, indicating all bus
+voltage rails are above the power-valid upper-limit value. T
+
+When the power-valid conditions are met, and the PV pin pulls high, the INA3221 monitors if any bus-voltage
+measurements drop below 9 V. This 9-V level is the default value programmed into the Power-Valid Lower-Limit
+register. This value can also be reprogrammed when the INA3221 powers up to a supply voltage of at least 2.7
+V. If any bus-voltage measurement on the three channels drops below the Power-Valid Lower-Limit register
+value, the PV pin goes low, indicating that the power-valid condition is no longer met. At this point, the INA3221
+resumes monitoring the power rails for a power-valid condition set in the Power-Valid Upper-Limit register.
+The power-valid alert function is based on the power-valid conditions requirement that all three channels reach
+the intended Power-Valid Upper-Limit register value. If all three channels are not used, connect the unused
+channel IN- pin externally to one of the used channels in order to use the power-valid alert function. If the
+unused channel is not connected to a valid rail, the power-valid alert function cannot detect if all three channels
+reach the power-valid level. Float the unused channel IN+ pin.
+
+The power-valid function also requires that bus-voltage measurements are monitored. To detect changes in the
+power-valid state, enable bus-voltage measurements through one of the corresponding MODE-bit settings in the
+Configuration register. The single-shot bus-voltage mode periodically cycles between the bus-voltage
+measurements to make sure that the power-valid conditions are met.
+When all three bus-voltage measurements are completed, the device compares the results to the power-valid
+threshold values to determine the power-valid state. The bus-voltage measurement values remain in the
+corresponding channel output registers until the bus-voltage measurements are taken again, thus updating the
+output registers. When the output registers are updated, the values are again compared to the power-valid
+thresholds. Without taking periodic bus-voltage measurements, the INA3221 is unable to determine if the power
+valid conditions are maintained.
+
+
+The PV pin allows for a 0-V output that indicates a power-invalid condition. An output equal to the pull-up supply
+voltage connected to the VPU pin indicates a power-valid condition, as shown in Figure 20. It is also possible to
+divide down the high power-valid pull-up voltage by adding a resistor to ground at the PV output, thus allowing
+this function to interface with lower-voltage circuitry, if needed.

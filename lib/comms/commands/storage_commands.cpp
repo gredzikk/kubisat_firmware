@@ -6,6 +6,7 @@
 #include <sys/stat.h> 
 #include <errno.h>
 #include "storage_commands_utils.h"
+#include "dirent.h"
 
 #define MAX_BLOCK_SIZE  250
 #define DOWNLOAD_GROUP 6
@@ -31,17 +32,17 @@ Frame handle_file_download(const std::string& param, OperationType operationType
         return frame_build(ExecutionResult::ERROR, DOWNLOAD_GROUP, START_COMMAND, "Invalid operation type");
     }
 
-    std::string filename = param;
-    std::ifstream file(filename, std::ios::binary);
+    const char* filename = param.c_str();
+    FILE* file = fopen(filename, "rb");
 
-    if (!file.is_open()) {
+    if (!file) {
         return frame_build(ExecutionResult::ERROR, DOWNLOAD_GROUP, START_COMMAND, "File not found");
     }
 
     // Get file size
-    file.seekg(0, std::ios::end);
-    size_t fileSize = file.tellg();
-    file.seekg(0, std::ios::beg);
+    fseek(file, 0, SEEK_END);
+    size_t fileSize = ftell(file);
+    fseek(file, 0, SEEK_SET);
 
     // Send file size to ground station
     Frame sizeFrame = frame_build(ExecutionResult::INFO, DOWNLOAD_GROUP, START_COMMAND, std::to_string(fileSize));
@@ -50,11 +51,9 @@ Frame handle_file_download(const std::string& param, OperationType operationType
     size_t block_size = MAX_BLOCK_SIZE;
     size_t block_count = (fileSize + block_size - 1) / block_size;
 
-    // Send block size to ground station
+    // Send block size and count
     Frame blockSizeFrame = frame_build(ExecutionResult::INFO, DOWNLOAD_GROUP, START_COMMAND, std::to_string(block_size));
     send_frame(blockSizeFrame);
-
-    // Send block count to ground station
     Frame blockCountFrame = frame_build(ExecutionResult::INFO, DOWNLOAD_GROUP, START_COMMAND, std::to_string(block_count));
     send_frame(blockCountFrame);
 
@@ -63,23 +62,20 @@ Frame handle_file_download(const std::string& param, OperationType operationType
     uint32_t totalChecksum = 0;
     size_t blockIndex = 0;
 
-    while (file.good()) {
-        file.read(reinterpret_cast<char*>(buffer), MAX_BLOCK_SIZE);
-        bytesRead = file.gcount();
-
+    while ((bytesRead = fread(buffer, 1, MAX_BLOCK_SIZE, file)) > 0) {
         // Send data block
         send_data_block(buffer, bytesRead);
         totalChecksum = calculate_checksum(buffer, bytesRead);
 
-        // Wait for ACK (Implement receive_ack() function)
+        // Wait for ACK
         if (!receive_ack()) {
-            file.close();
+            fclose(file);
             return frame_build(ExecutionResult::ERROR, DOWNLOAD_GROUP, DATA_COMMAND, "ACK timeout");
         }
         blockIndex++;
     }
 
-    file.close();
+    fclose(file);
 
     // Send end frame with checksum
     std::stringstream ss;
@@ -108,26 +104,31 @@ Frame handle_list_files(const std::string& param, OperationType operationType) {
 
     DIR *dir;
     struct dirent *ent;
-    if ((dir = opendir("/")) != NULL) { // Open the root directory
+    if ((dir = opendir("/")) != NULL) {
         while ((ent = readdir(dir)) != NULL) {
-            std::string filename = ent->d_name;
+            const char* filename = ent->d_name;
 
             // Skip "." and ".." directories
-            if (filename == "." || filename == "..") {
+            if (strcmp(filename, ".") == 0 || strcmp(filename, "..") == 0) {
                 continue;
             }
 
-            // Get file size (if it's a file)
-            std::string filepath = "/" + filename;
-            std::ifstream file(filepath, std::ios::binary | std::ios::ate);
+            // Get file size
+            char filepath[256];
+            snprintf(filepath, sizeof(filepath), "/%s", filename);
+            
+            FILE* file = fopen(filepath, "rb");
             size_t fileSize = 0;
-            if (file.is_open()) {
-                fileSize = file.tellg();
-                file.close();
+            
+            if (file != NULL) {
+                fseek(file, 0, SEEK_END);
+                fileSize = ftell(file);
+                fclose(file);
             }
 
             // Create and send frame with filename and size
-            std::string fileInfo = filename + ":" + std::to_string(fileSize);
+            char fileInfo[512];
+            snprintf(fileInfo, sizeof(fileInfo), "%s:%zu", filename, fileSize);
             Frame fileFrame = frame_build(ExecutionResult::INFO, DOWNLOAD_GROUP, LIST_FILES_COMMAND, fileInfo);
             send_frame(fileFrame);
         }

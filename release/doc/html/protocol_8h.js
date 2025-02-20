@@ -35,6 +35,10 @@ var protocol_8h =
       [ "INVALID_OPERATION", "protocol_8h.html#a0e0f0f1661d7aeb71ed9698bff6c6383ade918d7abaea4c856c3c64720f3cbb7c", null ],
       [ "PARAM_UNECESSARY", "protocol_8h.html#a0e0f0f1661d7aeb71ed9698bff6c6383a62c989cb54431f5fa2a775b0ca55bb49", null ]
     ] ],
+    [ "Interface", "protocol_8h.html#a209a41a363c6409f7276f93a08cc7ab0", [
+      [ "UART", "protocol_8h.html#a209a41a363c6409f7276f93a08cc7ab0acec5769b01fb096efaf0d6186823c78f", null ],
+      [ "LORA", "protocol_8h.html#a209a41a363c6409f7276f93a08cc7ab0a0e968adc02e193605cca80a818a751aa", null ]
+    ] ],
     [ "exception_type_to_string", "protocol_8h.html#a1c9dd53c768dca60c82e3d9152b0fbc2", null ],
     [ "operation_type_to_string", "protocol_8h.html#ab218e62029b4451e910d8caf0fd05804", null ],
     [ "string_to_operation_type", "protocol_8h.html#a4e9ddea19ddd04177180c2dfae26b15b", null ],

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['event_20commands_0',['Event Commands',['../group___event_commands.html',1,'']]]
+  ['diagnostic_20commands_0',['Diagnostic Commands',['../group___diagnostic_commands.html',1,'']]]
 ];

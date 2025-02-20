@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['power_20commands_0',['Power Commands',['../group___power_commands.html',1,'']]]
+  ['gps_20commands_0',['GPS Commands',['../group___g_p_s_commands.html',1,'']]]
 ];

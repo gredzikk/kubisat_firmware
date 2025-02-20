@@ -14,6 +14,7 @@ target_include_directories(PowerManager_lib PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_SOURCE_DIR}
     ${CMAKE_SOURCE_DIR}/lib
+    ${CMAKE_SOURCE_DIR}/lib/eventman
 )
 
 target_link_libraries(PowerManager_lib PUBLIC

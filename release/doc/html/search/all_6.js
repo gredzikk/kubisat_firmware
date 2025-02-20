@@ -14,12 +14,13 @@ var searchData=
   ['frame_5fdecode_11',['frame_decode',['../communication_8h.html#a0b3438ff642c0934321101e1f0b8d82d',1,'frame_decode(const std::string &amp;data):&#160;frame.cpp'],['../frame_8cpp.html#a0b3438ff642c0934321101e1f0b8d82d',1,'frame_decode(const std::string &amp;data):&#160;frame.cpp']]],
   ['frame_5fencode_12',['frame_encode',['../communication_8h.html#a3ae6df528775be58890bf406c906a056',1,'frame_encode(const Frame &amp;frame):&#160;frame.cpp'],['../frame_8cpp.html#a3ae6df528775be58890bf406c906a056',1,'frame_encode(const Frame &amp;frame):&#160;frame.cpp']]],
   ['frame_5fend_13',['FRAME_END',['../protocol_8h.html#a38fcd5426cc3ba27b4260e4db4299072',1,'protocol.h']]],
-  ['frame_5fprocess_14',['frame_process',['../communication_8h.html#a8b9c5fd031b899c6c7867adcde4ac11f',1,'frame_process(const std::string &amp;data):&#160;frame.cpp'],['../frame_8cpp.html#a8b9c5fd031b899c6c7867adcde4ac11f',1,'frame_process(const std::string &amp;data):&#160;frame.cpp']]],
+  ['frame_5fprocess_14',['frame_process',['../communication_8h.html#af05369c30201e114f9546dfa74c75261',1,'frame_process(const std::string &amp;data, Interface interface):&#160;frame.cpp'],['../frame_8cpp.html#af05369c30201e114f9546dfa74c75261',1,'frame_process(const std::string &amp;data, Interface interface):&#160;frame.cpp']]],
   ['friday_15',['FRIDAY',['../_d_s3231_8h.html#aa6c7328ce7a3193e4084941d6141904fa8f589731fd90a9890c0df9a9c3f96131',1,'DS3231.h']]],
   ['fs_5fclose_5ffile_16',['fs_close_file',['../storage_8h.html#a1ed8daa820da91b458072334ecec9618',1,'storage.h']]],
   ['fs_5ffile_5fexists_17',['fs_file_exists',['../storage_8h.html#a4d0e5bbd1f57f47164521ca84c8e6fd1',1,'storage.h']]],
   ['fs_5finit_18',['fs_init',['../storage_8cpp.html#afb19e37469a751aa61de3dcd0c70b4b0',1,'fs_init(void):&#160;storage.cpp'],['../storage_8h.html#afb19e37469a751aa61de3dcd0c70b4b0',1,'fs_init(void):&#160;storage.cpp']]],
   ['fs_5fopen_5ffile_19',['fs_open_file',['../storage_8h.html#a921d0d7089c0c7731762035e7feeb27a',1,'storage.h']]],
   ['fs_5fread_5ffile_20',['fs_read_file',['../storage_8h.html#a259e40f946e1178329ed6cdf18c35b0c',1,'storage.h']]],
-  ['fs_5fwrite_5ffile_21',['fs_write_file',['../storage_8h.html#aab35cc4af25dd4a32624e51bf0fcda5b',1,'storage.h']]]
+  ['fs_5fwrite_5ffile_21',['fs_write_file',['../storage_8h.html#aab35cc4af25dd4a32624e51bf0fcda5b',1,'storage.h']]],
+  ['functions_22',['Functions',['../group___i_n_a3221___alert.html',1,'Alert Functions'],['../group___i_n_a3221___config.html',1,'Configuration Functions'],['../group___i_n_a3221___measure.html',1,'Measurement Functions']]]
 ];

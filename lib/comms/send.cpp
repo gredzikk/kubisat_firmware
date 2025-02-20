@@ -34,16 +34,19 @@ void send_message(string outgoing)
 }
 
 
-/**
- * @brief Sends a Frame using LoRa.
- * @param frame The Frame to send.
- * @details Encodes the Frame into a string and sends it using the send_message function.
- */
-void send_frame(const Frame& frame) {
-    
+void send_frame_lora(const Frame& frame) {
     std::string encodedFrame = frame_encode(frame);
-    // split_and_send_message(data, encodedFrame);
     send_message(encodedFrame);
+}
+
+void send_frame_uart(const Frame& frame) {
+    std::string encodedFrame = frame_encode(frame);
+    uart_print(encodedFrame);
+}
+
+[[deprecated("Use send_frame_lora or send_frame_uart instead")]]
+void send_frame(const Frame& frame) {
+    send_frame_lora(frame);
 }
 
 
@@ -67,3 +70,4 @@ void split_and_send_message(const uint8_t* data, size_t length)
         sleep_ms(100);
     }
 }
+

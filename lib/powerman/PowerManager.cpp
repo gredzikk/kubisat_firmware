@@ -1,17 +1,28 @@
 #include "PowerManager.h"
 #include <iostream>
+#include "event_manager.h"
 
 PowerManager::PowerManager(i2c_inst_t* i2c) 
     : ina3221_(INA3221_ADDR40_GND, i2c) {
         recursive_mutex_init(&powerman_mutex_);
     };
 
-bool PowerManager::initialize() {
-    recursive_mutex_enter_blocking(&powerman_mutex_);
-    initialized_ = ina3221_.begin();
-    recursive_mutex_exit(&powerman_mutex_);
-    return initialized_;
-}
+    bool PowerManager::initialize() {
+        recursive_mutex_enter_blocking(&powerman_mutex_);
+        initialized_ = ina3221_.begin();
+        
+        if (initialized_) {
+            // Set up alerts
+            ina3221_.set_warn_alert_limit(INA3221_CH2, VOLTAGE_LOW_THRESHOLD);
+            ina3221_.set_crit_alert_limit(INA3221_CH2, VOLTAGE_OVERCHARGE_THRESHOLD);
+            ina3221_.set_power_valid_limit(VOLTAGE_OVERCHARGE_THRESHOLD, VOLTAGE_LOW_THRESHOLD);
+            ina3221_.enable_alerts();
+            ina3221_.set_alert_latch(true);
+        }
+        
+        recursive_mutex_exit(&powerman_mutex_);
+        return initialized_;
+    }
 
 std::string PowerManager::read_device_ids() {
     if (!initialized_) return "noinit";
@@ -113,4 +124,33 @@ bool PowerManager::is_charging_usb() {
     bool connected = get_current_charge_usb() > USB_CURRENT_THRESHOLD;
     recursive_mutex_exit(&powerman_mutex_);
     return connected;
+}
+
+bool PowerManager::check_power_alerts() {
+    if (!initialized_) return false;
+    
+    recursive_mutex_enter_blocking(&powerman_mutex_);
+    
+    bool status_changed = false;
+    
+    // Check warning alert (low battery)
+    if (ina3221_.get_warn_alert(INA3221_CH2)) {
+        EventEmitter::emit(EventGroup::POWER, PowerEvent::LOW_BATTERY);
+        status_changed = true;
+    }
+    
+    // Check critical alert (overcharge)
+    if (ina3221_.get_crit_alert(INA3221_CH2)) {
+        EventEmitter::emit(EventGroup::POWER, PowerEvent::OVERCHARGE);
+        status_changed = true;
+    }
+    
+    // Check power valid alert
+    if (ina3221_.get_power_valid_alert()) {
+        EventEmitter::emit(EventGroup::POWER, PowerEvent::POWER_NORMAL);
+        status_changed = true;
+    }
+    
+    recursive_mutex_exit(&powerman_mutex_);
+    return status_changed;
 }

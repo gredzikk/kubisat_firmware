@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['system_0',['Command System',['../group___command_system.html',1,'']]]
+  ['ina3221_20power_20monitor_0',['INA3221 Power Monitor',['../group___i_n_a3221.html',1,'']]]
 ];

@@ -12,6 +12,7 @@ var class_power_manager =
     [ "configure", "class_power_manager.html#ae61a45a190d5293029e17c751f88bcd0", null ],
     [ "is_charging_solar", "class_power_manager.html#a3682b0fca1bb98fd44740714895cc9dd", null ],
     [ "is_charging_usb", "class_power_manager.html#a80bb34a3f9cd27d753252c66402c6a91", null ],
+    [ "check_power_alerts", "class_power_manager.html#a36855c075623d844c84ae07f66fac82e", null ],
     [ "SOLAR_CURRENT_THRESHOLD", "class_power_manager.html#aeb488c42ec47e1a8de0446717d339cce", null ],
     [ "USB_CURRENT_THRESHOLD", "class_power_manager.html#afc4246cc3b434053c59cf2dcccf4bc64", null ],
     [ "VOLTAGE_LOW_THRESHOLD", "class_power_manager.html#a426dcedc762549ed6c408708bd61b94e", null ],

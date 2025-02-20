@@ -98,13 +98,38 @@ $(function(){initNavTree('storage__commands_8cpp.html',''); initResizable(true);
 
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">storage_commands.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-
+<div class="textblock"><code>#include &quot;<a class="el" href="commands_8h_source.html">commands.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="communication_8h_source.html">communication.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="storage_8h_source.html">storage.h</a>&quot;</code><br />
+<code>#include &quot;filesystem/vfs.h&quot;</code><br />
+<code>#include &quot;filesystem/littlefs.h&quot;</code><br />
+<code>#include &lt;sys/stat.h&gt;</code><br />
+<code>#include &lt;errno.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="storage__commands__utils_8h_source.html">storage_commands_utils.h</a>&quot;</code><br />
+<code>#include &quot;dirent.h&quot;</code><br />
+</div>
 <p><a href="storage__commands_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:aa8bad2cd89820cdaf2a7f26392774014" id="r_aa8bad2cd89820cdaf2a7f26392774014"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8bad2cd89820cdaf2a7f26392774014">MAX_BLOCK_SIZE</a>&#160;&#160;&#160;250</td></tr>
+<tr class="separator:aa8bad2cd89820cdaf2a7f26392774014"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5e1f717b16040c87be7d71199196a7f" id="r_ac5e1f717b16040c87be7d71199196a7f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5e1f717b16040c87be7d71199196a7f">DOWNLOAD_GROUP</a>&#160;&#160;&#160;6</td></tr>
+<tr class="separator:ac5e1f717b16040c87be7d71199196a7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0a24a35f65c17efbaf70368d3ee84a4" id="r_ab0a24a35f65c17efbaf70368d3ee84a4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab0a24a35f65c17efbaf70368d3ee84a4">START_COMMAND</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:ab0a24a35f65c17efbaf70368d3ee84a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a765a6ff57d89a0c38ff7b398b2389889" id="r_a765a6ff57d89a0c38ff7b398b2389889"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a765a6ff57d89a0c38ff7b398b2389889">DATA_COMMAND</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:a765a6ff57d89a0c38ff7b398b2389889"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c64efae8dadfdf4bad585cad0f02ccf" id="r_a3c64efae8dadfdf4bad585cad0f02ccf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c64efae8dadfdf4bad585cad0f02ccf">END_COMMAND</a>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:a3c64efae8dadfdf4bad585cad0f02ccf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0f5e15ab967eb675094b6d7158e24c2" id="r_ae0f5e15ab967eb675094b6d7158e24c2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae0f5e15ab967eb675094b6d7158e24c2">LIST_FILES_COMMAND</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:ae0f5e15ab967eb675094b6d7158e24c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a1ebbe9d6a73f10f9887975fe4f968aad" id="r_a1ebbe9d6a73f10f9887975fe4f968aad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frame.html">Frame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ebbe9d6a73f10f9887975fe4f968aad">handle_file_download</a> (const std::string &amp;param, <a class="el" href="protocol_8h.html#a9a2c9c31d675b34f6ec35cc1ca89e047">OperationType</a> operationType)</td></tr>
@@ -114,6 +139,103 @@ Functions</h2></td></tr>
 <tr class="memdesc:acc768cf94aac4e11301443f30529b738"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the list files command.  <br /></td></tr>
 <tr class="separator:acc768cf94aac4e11301443f30529b738"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="aa8bad2cd89820cdaf2a7f26392774014" name="aa8bad2cd89820cdaf2a7f26392774014"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8bad2cd89820cdaf2a7f26392774014">&#9670;&#160;</a></span>MAX_BLOCK_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_BLOCK_SIZE&#160;&#160;&#160;250</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="storage__commands_8cpp_source.html#l00011">11</a> of file <a class="el" href="storage__commands_8cpp_source.html">storage_commands.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ac5e1f717b16040c87be7d71199196a7f" name="ac5e1f717b16040c87be7d71199196a7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5e1f717b16040c87be7d71199196a7f">&#9670;&#160;</a></span>DOWNLOAD_GROUP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DOWNLOAD_GROUP&#160;&#160;&#160;6</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="storage__commands_8cpp_source.html#l00012">12</a> of file <a class="el" href="storage__commands_8cpp_source.html">storage_commands.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ab0a24a35f65c17efbaf70368d3ee84a4" name="ab0a24a35f65c17efbaf70368d3ee84a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0a24a35f65c17efbaf70368d3ee84a4">&#9670;&#160;</a></span>START_COMMAND</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define START_COMMAND&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="storage__commands_8cpp_source.html#l00013">13</a> of file <a class="el" href="storage__commands_8cpp_source.html">storage_commands.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a765a6ff57d89a0c38ff7b398b2389889" name="a765a6ff57d89a0c38ff7b398b2389889"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a765a6ff57d89a0c38ff7b398b2389889">&#9670;&#160;</a></span>DATA_COMMAND</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DATA_COMMAND&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="storage__commands_8cpp_source.html#l00014">14</a> of file <a class="el" href="storage__commands_8cpp_source.html">storage_commands.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a3c64efae8dadfdf4bad585cad0f02ccf" name="a3c64efae8dadfdf4bad585cad0f02ccf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c64efae8dadfdf4bad585cad0f02ccf">&#9670;&#160;</a></span>END_COMMAND</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define END_COMMAND&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="storage__commands_8cpp_source.html#l00015">15</a> of file <a class="el" href="storage__commands_8cpp_source.html">storage_commands.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ae0f5e15ab967eb675094b6d7158e24c2" name="ae0f5e15ab967eb675094b6d7158e24c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0f5e15ab967eb675094b6d7158e24c2">&#9670;&#160;</a></span>LIST_FILES_COMMAND</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LIST_FILES_COMMAND&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="storage__commands_8cpp_source.html#l00016">16</a> of file <a class="el" href="storage__commands_8cpp_source.html">storage_commands.cpp</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a1ebbe9d6a73f10f9887975fe4f968aad" name="a1ebbe9d6a73f10f9887975fe4f968aad"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1ebbe9d6a73f10f9887975fe4f968aad">&#9670;&#160;</a></span>handle_file_download()</h2>
@@ -145,14 +267,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="struct_frame.html">Frame</a> indicating the result of the operation. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="storage__commands_8cpp_source.html#l00014">14</a> of file <a class="el" href="storage__commands_8cpp_source.html">storage_commands.cpp</a>.</p>
-<div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="storage__commands_8cpp_a1ebbe9d6a73f10f9887975fe4f968aad_cgraph.svg" width="100%" height="499"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
+<p class="definition">Definition at line <a class="el" href="storage__commands_8cpp_source.html#l00030">30</a> of file <a class="el" href="storage__commands_8cpp_source.html">storage_commands.cpp</a>.</p>
 
 </div>
 </div>
@@ -186,14 +301,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="struct_frame.html">Frame</a> indicating the result of the operation. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="storage__commands_8cpp_source.html#l00089">89</a> of file <a class="el" href="storage__commands_8cpp_source.html">storage_commands.cpp</a>.</p>
-<div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="storage__commands_8cpp_acc768cf94aac4e11301443f30529b738_cgraph.svg" width="652" height="155"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<p class="definition">Definition at line <a class="el" href="storage__commands_8cpp_source.html#l00100">100</a> of file <a class="el" href="storage__commands_8cpp_source.html">storage_commands.cpp</a>.</p>
 
 </div>
 </div>

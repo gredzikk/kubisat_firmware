@@ -10,6 +10,5 @@ var searchData=
   ['shunt_5fsum_5fen_5fch3_7',['shunt_sum_en_ch3',['../struct_i_n_a3221_1_1masken__reg__t.html#abb9fdf6a9d488261b13b8918035856ea',1,'INA3221::masken_reg_t']]],
   ['shunt_5fvoltage_5flsb_5fuv_8',['SHUNT_VOLTAGE_LSB_UV',['../_i_n_a3221_8h.html#aa3a72dd90727989b2008c8382184fe81',1,'INA3221.h']]],
   ['solar_5fcurrent_5fthreshold_9',['SOLAR_CURRENT_THRESHOLD',['../class_power_manager.html#aeb488c42ec47e1a8de0446717d339cce',1,'PowerManager']]],
-  ['start_5fcommand_10',['START_COMMAND',['../storage__commands__utils_8cpp.html#a54c9f1420777c26795cdd3953a9a43ce',1,'storage_commands_utils.cpp']]],
-  ['systemclock_11',['systemClock',['../group___clock_commands.html#gabfd573c8a839ac00ea3b96d691ea11c3',1,'systemClock:&#160;clock_commands.cpp'],['../event__manager_8cpp.html#abfd573c8a839ac00ea3b96d691ea11c3',1,'systemClock:&#160;event_manager.cpp'],['../main_8cpp.html#af9c066a94b810cae902343138b54f088',1,'systemClock:&#160;main.cpp']]]
+  ['systemclock_10',['systemClock',['../group___clock_commands.html#gabfd573c8a839ac00ea3b96d691ea11c3',1,'systemClock:&#160;clock_commands.cpp'],['../event__manager_8cpp.html#abfd573c8a839ac00ea3b96d691ea11c3',1,'systemClock:&#160;event_manager.cpp'],['../main_8cpp.html#af9c066a94b810cae902343138b54f088',1,'systemClock:&#160;main.cpp']]]
 ];
