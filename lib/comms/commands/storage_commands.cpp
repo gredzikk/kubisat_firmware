@@ -189,7 +189,7 @@ Frame handle_mount(const std::string& param, OperationType operationType) {
             return frame_build(ExecutionResult::ERROR, STORAGE_GROUP, MOUNT_COMMAND, "Mount failed");
         }
     } else if (param == "0") {
-        if (fs_unmount("/")) { 
+        if (fs_unmount("/") == 0) { 
             sd_card_mounted = false;
             return frame_build(ExecutionResult::SUCCESS, STORAGE_GROUP, MOUNT_COMMAND, "SD card unmounted");
         } else {

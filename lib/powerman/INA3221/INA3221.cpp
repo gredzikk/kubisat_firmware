@@ -68,11 +68,11 @@ bool INA3221::begin() {
     uint16_t die_id = get_die_id();
     std::stringstream ss;
     ss << "INA3221 Manufacturer ID: 0x" << std::hex << manuf_id 
-              << ", Die ID: 0x" << die_id << std::endl;
+              << ", Die ID: 0x" << die_id;
     uart_print(ss.str(), VerbosityLevel::INFO);
 
     if (manuf_id == 0x5449 && die_id == 0x3220) { 
-       uart_print("INA3221 found and initialized.", VerbosityLevel::INFO);
+       uart_print("INA3221 found and initialized.", VerbosityLevel::DEBUG);
         return true;
     } else {
         uart_print("INA3221 initialization failed. Incorrect IDs.", VerbosityLevel::ERROR);

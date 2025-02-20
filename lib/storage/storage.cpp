@@ -24,7 +24,7 @@ bool sd_card_mounted = false;
  */
 bool fs_init(void) {
     sd_card_mounted = false;
-    uart_print("fs_init littlefs on SD card", VerbosityLevel::INFO);
+    uart_print("fs_init littlefs on SD card", VerbosityLevel::DEBUG);
     blockdevice_t *sd = blockdevice_sd_create(SD_SPI_PORT,
                                               SD_MOSI_PIN,
                                               SD_MISO_PIN,
@@ -38,7 +38,7 @@ bool fs_init(void) {
     int err = fs_mount("/", fat, sd);
     if (err == -1) {
         statusString = "Formatting / with FAT";
-        uart_print(statusString, VerbosityLevel::INFO);
+        uart_print(statusString, VerbosityLevel::WARNING);
         err = fs_format(fat, sd);
         if (err == -1) {
             statusString = "fs_format error: " + std::string(strerror(errno));
