@@ -13,6 +13,9 @@
 #include "lfs.h" 
 #include "filesystem/fat.h"
 
+
+extern bool sd_card_mounted;
+
 struct FileHandle {
     int fd;
     bool is_open;

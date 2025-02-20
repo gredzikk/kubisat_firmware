@@ -183,18 +183,17 @@ Frame handle_mount(const std::string& param, OperationType operationType) {
     }
 
     if (param == "1") {
-        // Mount SD card
         if (fs_init()) {
             return frame_build(ExecutionResult::SUCCESS, STORAGE_GROUP, MOUNT_COMMAND, "SD card mounted");
         } else {
             return frame_build(ExecutionResult::ERROR, STORAGE_GROUP, MOUNT_COMMAND, "Mount failed");
         }
     } else if (param == "0") {
-        // Unmount SD card (Implement unmount function in storage.c)
-        if (fs_unmount("/")) { // Assuming you have an unmount function
-           return frame_build(ExecutionResult::SUCCESS, STORAGE_GROUP, MOUNT_COMMAND, "SD card unmounted");
+        if (fs_unmount("/")) { 
+            sd_card_mounted = false;
+            return frame_build(ExecutionResult::SUCCESS, STORAGE_GROUP, MOUNT_COMMAND, "SD card unmounted");
         } else {
-           return frame_build(ExecutionResult::ERROR, STORAGE_GROUP, MOUNT_COMMAND, "Unmount failed");
+            return frame_build(ExecutionResult::ERROR, STORAGE_GROUP, MOUNT_COMMAND, "Unmount failed");
         }
         return frame_build(ExecutionResult::ERROR, STORAGE_GROUP, MOUNT_COMMAND, "Unmount not implemented");
     } else {

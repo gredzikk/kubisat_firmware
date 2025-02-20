@@ -14,6 +14,8 @@
  *          reading, and closing files.
  */
 
+bool sd_card_mounted = false;
+
 /**
  * @brief Initializes the file system on the SD card.
  * @return True if initialization was successful, false otherwise.
@@ -21,6 +23,7 @@
  *          with littlefs and then attempts to mount again.
  */
 bool fs_init(void) {
+    sd_card_mounted = false;
     uart_print("fs_init littlefs on SD card", VerbosityLevel::INFO);
     blockdevice_t *sd = blockdevice_sd_create(SD_SPI_PORT,
                                               SD_MOSI_PIN,
@@ -50,5 +53,6 @@ bool fs_init(void) {
         }
     }
 
+    sd_card_mounted = true;
     return true;
 }

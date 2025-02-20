@@ -2,6 +2,12 @@
 #include <time.h>
 #include "DS3231.h" // Include the DS3231 header
 
+#define CLOCK_GROUP 3
+#define TIME 0
+#define TIMEZONE_OFFSET 1
+#define CLOCK_SYNC_INTERVAL 2
+#define LAST_SYNC_TIME 3
+
 /**
  * @defgroup ClockCommands Clock Management Commands
  * @brief Commands for managing system time and clock settings
@@ -23,47 +29,32 @@
   * @ingroup ClockCommands
   * @xrefitem command "Command" "Clock Commands" Command ID: 3.0
   */
-Frame handle_time(const std::string& param, OperationType operationType) {
-    if (operationType == OperationType::SET && param.empty()) {
-        return frame_build(ExecutionResult::ERROR, 3, 0, "PARAM REQUIRED");
-    }
-
-    if (operationType == OperationType::GET && !param.empty()) {
-        return frame_build(ExecutionResult::ERROR, 3, 0, "PARAM UNNECESSARY");
-    }
-
-    if (!(operationType == OperationType::GET || operationType == OperationType::SET)) {
-        return frame_build(ExecutionResult::ERROR, 3, 0, "INVALID OPERATION");
-    }
-
+ Frame handle_time(const std::string& param, OperationType operationType) {
+    // Validate operation type and parameter
     if (operationType == OperationType::SET) {
+        if (param.empty()) return frame_build(ExecutionResult::ERROR, CLOCK_GROUP, TIME, "PARAM REQUIRED");
         try {
             time_t newTime = std::stoll(param);
-            if (newTime > 0) {
-                int status = systemClock.set_unix_time(newTime);
-                if (status == 0) {
-                    time_t time_after_set = systemClock.get_unix_time();
-                    EventEmitter::emit(EventGroup::CLOCK, ClockEvent::CHANGED);
-                    return frame_build(ExecutionResult::SUCCESS, 3, 0, std::to_string(time_after_set));
-                } else {
-                    return frame_build(ExecutionResult::ERROR, 3, 0, "FAILED TO SET TIME");
-                }
-            } else {
-                return frame_build(ExecutionResult::ERROR, 3, 0, "TIME CANNOT BE 0");
-            }
+            if (newTime <= 0) return frame_build(ExecutionResult::ERROR, CLOCK_GROUP, TIME, "TIME MUST BE POSITIVE");
+
+            if (systemClock.set_unix_time(newTime) != 0) return frame_build(ExecutionResult::ERROR, CLOCK_GROUP, TIME, "FAILED TO SET TIME");
+
+            EventEmitter::emit(EventGroup::CLOCK, ClockEvent::CHANGED);
+            return frame_build(ExecutionResult::SUCCESS, CLOCK_GROUP, TIME, std::to_string(systemClock.get_unix_time()));
+
         } catch (...) {
-            return frame_build(ExecutionResult::ERROR, 3, 0, "INVALID TIME FORMAT");
+            return frame_build(ExecutionResult::ERROR, CLOCK_GROUP, TIME, "INVALID TIME FORMAT");
         }
+    } else if (operationType == OperationType::GET) {
+        if (!param.empty()) return frame_build(ExecutionResult::ERROR, CLOCK_GROUP, TIME, "PARAM UNNECESSARY");
+
+        uint32_t timeUnix = systemClock.get_unix_time();
+        if (timeUnix == 0) return frame_build(ExecutionResult::ERROR, CLOCK_GROUP, TIME, "FAILED TO GET TIME");
+
+        return frame_build(ExecutionResult::SUCCESS, CLOCK_GROUP, TIME, std::to_string(timeUnix));
     }
 
-    uint32_t timeUnix = systemClock.get_unix_time();
-    if (timeUnix != 0) {
-        std::stringstream ss;
-        ss << timeUnix;
-        return frame_build(ExecutionResult::SUCCESS, 3, 0, ss.str());
-    } else {
-        return frame_build(ExecutionResult::ERROR, 3, 0, "FAILED TO GET TIME");
-    }
+    return frame_build(ExecutionResult::ERROR, CLOCK_GROUP, TIME, "INVALID OPERATION");
 }
 
 
@@ -79,35 +70,35 @@ Frame handle_time(const std::string& param, OperationType operationType) {
  */
 Frame handle_timezone_offset(const std::string& param, OperationType operationType) {
     if (!(operationType == OperationType::GET || operationType == OperationType::SET)) {
-        return frame_build(ExecutionResult::ERROR, 3, 1, "INVALID OPERATION");
+        return frame_build(ExecutionResult::ERROR, CLOCK_GROUP, TIMEZONE_OFFSET, "INVALID OPERATION");
     }
 
     if (operationType == OperationType::GET) {
         if (!param.empty()) {
-            return frame_build(ExecutionResult::ERROR, 3, 1, "PARAM UNNECESSARY");
+            return frame_build(ExecutionResult::ERROR, CLOCK_GROUP, TIMEZONE_OFFSET, "PARAM UNNECESSARY");
         }
 
         std::string timezoneOffset = "60";
-        return frame_build(ExecutionResult::SUCCESS, 3, 1, timezoneOffset);
+        return frame_build(ExecutionResult::SUCCESS, CLOCK_GROUP, TIMEZONE_OFFSET, timezoneOffset);
     }
 
     if (operationType == OperationType::SET) {
         if (param.empty()) {
-            return frame_build(ExecutionResult::ERROR, 3, 1, "PARAM REQUIRED");
+            return frame_build(ExecutionResult::ERROR, CLOCK_GROUP, TIMEZONE_OFFSET, "PARAM REQUIRED");
         }
         try {
             int16_t offset = std::stoi(param);
             if (offset < -720 || offset > 720) { // ±12 hours in minutes
-                return frame_build(ExecutionResult::ERROR, 3, 1, "INVALID OFFSET");
+                return frame_build(ExecutionResult::ERROR, CLOCK_GROUP, TIMEZONE_OFFSET, "INVALID OFFSET");
             }
 
             // set offset
-            return frame_build(ExecutionResult::SUCCESS, 3, 1, param);
+            return frame_build(ExecutionResult::SUCCESS, CLOCK_GROUP, TIMEZONE_OFFSET, param);
         } catch (...) {
-            return frame_build(ExecutionResult::ERROR, 3, 1, "INVALID PARAMETER");
+            return frame_build(ExecutionResult::ERROR, CLOCK_GROUP, TIMEZONE_OFFSET, "INVALID PARAMETER");
         }
     }
-    return frame_build(ExecutionResult::ERROR, 3, 1, "UNKNOWN ERROR");
+    return frame_build(ExecutionResult::ERROR, CLOCK_GROUP, TIMEZONE_OFFSET, "UNKNOWN ERROR");
 }
 
 
@@ -123,33 +114,33 @@ Frame handle_timezone_offset(const std::string& param, OperationType operationTy
  */
 Frame handle_clock_sync_interval(const std::string& param, OperationType operationType) {
     if (!(operationType == OperationType::GET || operationType == OperationType::SET)) {
-        return frame_build(ExecutionResult::ERROR, 3, 2, "INVALID OPERATION");
+        return frame_build(ExecutionResult::ERROR, CLOCK_GROUP, CLOCK_SYNC_INTERVAL, "INVALID OPERATION");
     }
 
     if (operationType == OperationType::GET) {
         if (!param.empty()) {
-            return frame_build(ExecutionResult::ERROR, 3, 2, "PARAM UNNECESSARY");
+            return frame_build(ExecutionResult::ERROR, CLOCK_GROUP, CLOCK_SYNC_INTERVAL, "PARAM UNNECESSARY");
         }
 
         std::string clockSyncInterval = "1440";
-        return frame_build(ExecutionResult::SUCCESS, 3, 2, clockSyncInterval);
+        return frame_build(ExecutionResult::SUCCESS, CLOCK_GROUP, CLOCK_SYNC_INTERVAL, clockSyncInterval);
     }
 
     if (operationType == OperationType::SET) {
         if (param.empty()) {
-            return frame_build(ExecutionResult::ERROR, 3, 2, "PARAM REQUIRED");
+            return frame_build(ExecutionResult::ERROR, CLOCK_GROUP, CLOCK_SYNC_INTERVAL, "PARAM REQUIRED");
         }
         try {
             uint32_t interval = std::stoul(param);
             
             //set sync interval
 
-            return frame_build(ExecutionResult::SUCCESS, 3, 2, param);
+            return frame_build(ExecutionResult::SUCCESS, CLOCK_GROUP, CLOCK_SYNC_INTERVAL, param);
         } catch (...) {
-            return frame_build(ExecutionResult::ERROR, 3, 2, "INVALID PARAMETER");
+            return frame_build(ExecutionResult::ERROR, CLOCK_GROUP, CLOCK_SYNC_INTERVAL, "INVALID PARAMETER");
         }
     }
-    return frame_build(ExecutionResult::ERROR, 3, 2, "UNKNOWN ERROR");
+    return frame_build(ExecutionResult::ERROR, CLOCK_GROUP, CLOCK_SYNC_INTERVAL, "UNKNOWN ERROR");
 }
 
 /**
@@ -163,9 +154,9 @@ Frame handle_clock_sync_interval(const std::string& param, OperationType operati
  */
 Frame handle_get_last_sync_time(const std::string& param, OperationType operationType) {
     if (operationType != OperationType::GET || !param.empty()) {
-        return frame_build(ExecutionResult::ERROR, 3, 3, "INVALID REQUEST");
+        return frame_build(ExecutionResult::ERROR, CLOCK_GROUP, LAST_SYNC_TIME, "INVALID REQUEST");
     }
     std::string lastSyncTime = "none";
-    return frame_build(ExecutionResult::SUCCESS, 3, 3, lastSyncTime);
+    return frame_build(ExecutionResult::SUCCESS, CLOCK_GROUP, LAST_SYNC_TIME, lastSyncTime);
 }
 /** @} */ // end of ClockCommands group

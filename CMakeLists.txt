@@ -50,6 +50,7 @@ add_subdirectory(lib/powerman)
 add_subdirectory(lib/comms)
 add_subdirectory(lib/storage) 
 add_subdirectory(lib/storage/pico-vfs) 
+add_subdirectory(lib/eventman)
 
 # add_subdirectory(test)
 
@@ -123,6 +124,7 @@ target_link_libraries(main PRIVATE
     storage_lib
     clock_lib
     LoRa_pico_lib
+    eventman_lib
 )
 
 # Build information

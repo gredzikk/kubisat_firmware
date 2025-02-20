@@ -20,4 +20,6 @@ target_include_directories(PowerManager_lib PUBLIC
 target_link_libraries(PowerManager_lib PUBLIC
     pico_stdlib
     hardware_i2c
+    storage_lib
+    eventman_lib
 )

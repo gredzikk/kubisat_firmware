@@ -5,8 +5,11 @@
 #include <cstdint>
 #include <string>
 #include "pico/mutex.h"
+#include "storage.h"
+#include "utils.h"
 
-#define EVENT_BUFFER_SIZE 1000
+#define EVENT_BUFFER_SIZE 10
+#define EVENT_LOG_FILE "/event_log.txt"
 
 // Event Groups
 enum class EventGroup : uint8_t {
@@ -185,9 +188,22 @@ class EventManagerImpl : public EventManager {
          * @details This method is not yet implemented.
          */
         bool save_to_storage() override {
-            // TODO: Implement based on chosen storage (SD/EEPROM)
-            needsPersistence = false;
-            return true;
+            if(!sd_card_mounted) {
+                bool status = fs_init();
+                if(!status) {
+                    return false;
+                }
+            } 
+            FILE *file = fopen(EVENT_LOG_FILE, "a");
+            if (file) {
+                for (size_t i = 0; i < eventCount; i++) {
+                    fwrite(&events[i], sizeof(EventLog), 1, file);
+                }
+                fclose(file);
+                needsPersistence = false;
+                uart_print("Events saved to storage", VerbosityLevel::INFO);
+                return true;
+            }
         }
     
         /**
