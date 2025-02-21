@@ -245,7 +245,7 @@ static int format(filesystem_t *fs, blockdevice_t *device) {
 
     // Erase first handful of blocks
     bd_size_t header = 2 * device->erase_size;
-    printf("FAT: format() - Erasing header blocks, size: %zu\n", header); // Indicate erase start
+    printf("FAT: format() - Erasing header blocks, size: %llu\n", header); // Indicate erase start
     int err = device->erase(device, 0, header);
     if (err) {
         printf("FAT: format() - Erasing header blocks failed, error: %d\n", err); // Indicate erase failure
@@ -255,7 +255,7 @@ static int format(filesystem_t *fs, blockdevice_t *device) {
     printf("FAT: format() - Header blocks erased successfully.\n"); // Indicate erase success
 
     size_t program_size = device->program_size;
-    printf("FAT: format() - Allocating buffer for programming, size: %zu\n", program_size); // Indicate buffer alloc
+    printf("FAT: format() - Allocating buffer for programming, size: %llu\n", program_size); // Indicate buffer alloc
     void *buffer = malloc(program_size);
     if (!buffer) {
         printf("FAT: format() - Failed to allocate buffer\n"); // Indicate alloc failure
