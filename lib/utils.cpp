@@ -15,7 +15,7 @@ static mutex_t uart_mutex;
 
 
 /** @brief Global verbosity level setting */
-VerbosityLevel g_uart_verbosity = VerbosityLevel::EVENT;
+VerbosityLevel g_uart_verbosity = VerbosityLevel::DEBUG;
 
 
 /**

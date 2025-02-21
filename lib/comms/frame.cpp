@@ -116,6 +116,7 @@ Frame frame_decode(const std::string& data) {
  *          Sends the response frame. If an error occurs, an error frame is built and sent.
  */
 void frame_process(const std::string& data, Interface interface) {
+    uart_print("Processing frame: " + data, VerbosityLevel::WARNING);
     try {
         Frame frame = frame_decode(data);
         uint32_t commandKey = (static_cast<uint32_t>(frame.group) << 8) | static_cast<uint32_t>(frame.command);
