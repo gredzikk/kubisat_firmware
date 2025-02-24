@@ -30,6 +30,9 @@ SORT_BRIEF_DOCS      = NO
 SORT_GROUP_NAMES     = NO
 SORT_BY_SCOPE_NAME   = NO
 
+WARN_IF_UNDOCUMENTED = YES
+WARN_IF_UNDOC_ENUM_VAL = YES
+
 # Diagram settings
 HAVE_DOT             = @HAVE_DOT@
 DOT_PATH             = @DOT_PATH@
@@ -41,6 +44,8 @@ CALL_GRAPH          = YES
 CALLER_GRAPH        = YES
 DOT_IMAGE_FORMAT     = svg
 INTERACTIVE_SVG      = YES
+SHOW_USED_FILES = NO
+SHOW_FILES = NO
 
 # Additional settings
 GENERATE_LATEX       = YES
