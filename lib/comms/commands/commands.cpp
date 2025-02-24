@@ -66,7 +66,7 @@ Frame execute_command(uint32_t commandKey, const std::string& param, OperationTy
         CommandHandler handler = it->second;
         return handler(param, operationType);
     } else {
-        return frame_build(ExecutionResult::ERROR, 0, 0, "INVALID COMMAND");
+        return frame_build(OperationType::ERR, 0, 0, "INVALID COMMAND");
     }
 }
 /** @} */ // end of CommandSystem group

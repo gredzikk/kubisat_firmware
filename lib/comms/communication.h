@@ -21,7 +21,7 @@ Frame execute_command(uint32_t commandKey, const std::string& param, OperationTy
 void frame_process(const std::string& data, Interface interface);
 std::string frame_encode(const Frame& frame);
 Frame frame_decode(const std::string& data);
-Frame frame_build(ExecutionResult result, uint8_t group, uint8_t command,const std::string& value, const ValueUnit unitType  = ValueUnit::UNDEFINED);
+Frame frame_build(OperationType operation, uint8_t group, uint8_t command,const std::string& value, const ValueUnit unitType  = ValueUnit::UNDEFINED);
 
 std::string determine_unit(uint8_t group, uint8_t command);
 

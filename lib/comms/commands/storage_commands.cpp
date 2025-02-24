@@ -42,14 +42,14 @@
  */
 Frame handle_file_download(const std::string& param, OperationType operationType) {
     if (operationType != OperationType::GET) {
-        return frame_build(ExecutionResult::ERROR, STORAGE_GROUP, START_COMMAND, "Invalid operation type");
+        return frame_build(OperationType::ERR, STORAGE_GROUP, START_COMMAND, "Invalid operation type");
     }
 
     const char* filename = param.c_str();
     FILE* file = fopen(filename, "rb");
 
     if (!file) {
-        return frame_build(ExecutionResult::ERROR, STORAGE_GROUP, START_COMMAND, "File not found");
+        return frame_build(OperationType::ERR, STORAGE_GROUP, START_COMMAND, "File not found");
     }
 
     // Get file size
@@ -58,16 +58,16 @@ Frame handle_file_download(const std::string& param, OperationType operationType
     fseek(file, 0, SEEK_SET);
 
     // Send file size to ground station
-    Frame sizeFrame = frame_build(ExecutionResult::INFO, STORAGE_GROUP, START_COMMAND, std::to_string(fileSize));
+    Frame sizeFrame = frame_build(OperationType::VAL, STORAGE_GROUP, START_COMMAND, std::to_string(fileSize));
     send_frame(sizeFrame);
 
     size_t block_size = MAX_BLOCK_SIZE;
     size_t block_count = (fileSize + block_size - 1) / block_size;
 
     // Send block size and count
-    Frame blockSizeFrame = frame_build(ExecutionResult::INFO, STORAGE_GROUP, START_COMMAND, std::to_string(block_size));
+    Frame blockSizeFrame = frame_build(OperationType::VAL, STORAGE_GROUP, START_COMMAND, std::to_string(block_size));
     send_frame(blockSizeFrame);
-    Frame blockCountFrame = frame_build(ExecutionResult::INFO, STORAGE_GROUP, START_COMMAND, std::to_string(block_count));
+    Frame blockCountFrame = frame_build(OperationType::VAL, STORAGE_GROUP, START_COMMAND, std::to_string(block_count));
     send_frame(blockCountFrame);
 
     uint8_t buffer[MAX_BLOCK_SIZE];
@@ -83,7 +83,7 @@ Frame handle_file_download(const std::string& param, OperationType operationType
         // Wait for ACK
         if (!receive_ack()) {
             fclose(file);
-            return frame_build(ExecutionResult::ERROR, STORAGE_GROUP, DATA_COMMAND, "ACK timeout");
+            return frame_build(OperationType::ERR, STORAGE_GROUP, DATA_COMMAND, "ACK timeout");
         }
         blockIndex++;
     }
@@ -93,10 +93,10 @@ Frame handle_file_download(const std::string& param, OperationType operationType
     // Send end frame with checksum
     std::stringstream ss;
     ss << std::hex << totalChecksum;
-    Frame endFrame = frame_build(ExecutionResult::SUCCESS, STORAGE_GROUP, END_COMMAND, ss.str());
+    Frame endFrame = frame_build(OperationType::VAL, STORAGE_GROUP, END_COMMAND, ss.str());
     send_frame(endFrame);
 
-    return frame_build(ExecutionResult::SUCCESS, STORAGE_GROUP, END_COMMAND, "File download complete");
+    return frame_build(OperationType::VAL, STORAGE_GROUP, END_COMMAND, "File download complete");
 }
 
 
@@ -119,7 +119,7 @@ Frame handle_file_download(const std::string& param, OperationType operationType
  */
 Frame handle_list_files(const std::string& param, OperationType operationType) {
     if (operationType != OperationType::GET) {
-        return frame_build(ExecutionResult::ERROR, STORAGE_GROUP, LIST_FILES_COMMAND, "Invalid operation type");
+        return frame_build(OperationType::ERR, STORAGE_GROUP, LIST_FILES_COMMAND, "Invalid operation type");
     }
 
     DIR *dir;
@@ -149,14 +149,14 @@ Frame handle_list_files(const std::string& param, OperationType operationType) {
             // Create and send frame with filename and size
             char fileInfo[512];
             snprintf(fileInfo, sizeof(fileInfo), "%s:%zu", filename, fileSize);
-            Frame fileFrame = frame_build(ExecutionResult::INFO, STORAGE_GROUP, LIST_FILES_COMMAND, fileInfo);
+            Frame fileFrame = frame_build(OperationType::VAL, STORAGE_GROUP, LIST_FILES_COMMAND, fileInfo);
             uart_print(fileInfo, VerbosityLevel::INFO);
             send_frame(fileFrame);
         }
         closedir(dir);
-        return frame_build(ExecutionResult::SUCCESS, STORAGE_GROUP, LIST_FILES_COMMAND, "File listing complete");
+        return frame_build(OperationType::VAL, STORAGE_GROUP, LIST_FILES_COMMAND, "File listing complete");
     } else {
-        return frame_build(ExecutionResult::ERROR, STORAGE_GROUP, LIST_FILES_COMMAND, "Could not open directory");
+        return frame_build(OperationType::ERR, STORAGE_GROUP, LIST_FILES_COMMAND, "Could not open directory");
     }
 }
 
@@ -178,26 +178,27 @@ Frame handle_list_files(const std::string& param, OperationType operationType) {
  * @xrefitem command "Command" "List of Commands" Command ID: 6.4
  */
 Frame handle_mount(const std::string& param, OperationType operationType) {
-    if (operationType != OperationType::SET) {
-        return frame_build(ExecutionResult::ERROR, STORAGE_GROUP, MOUNT_COMMAND, "Invalid operation type");
-    }
-
-    if (param == "1") {
-        if (fs_init()) {
-            return frame_build(ExecutionResult::SUCCESS, STORAGE_GROUP, MOUNT_COMMAND, "SD card mounted");
+    if (operationType == OperationType::GET) {
+        return frame_build(OperationType::VAL, STORAGE_GROUP, MOUNT_COMMAND, std::to_string(sd_card_mounted));
+    } else if (operationType == OperationType::SET) {
+        if (param == "1") {
+            if (fs_init()) {
+                return frame_build(OperationType::RES, STORAGE_GROUP, MOUNT_COMMAND, "SD card mounted");
+            } else {
+                return frame_build(OperationType::ERR, STORAGE_GROUP, MOUNT_COMMAND, "Mount failed");
+            }
+        } else if (param == "0") {
+            if (fs_unmount("/") == 0) { 
+                sd_card_mounted = false;
+                return frame_build(OperationType::RES, STORAGE_GROUP, MOUNT_COMMAND, "SD card unmounted");
+            } else {
+                return frame_build(OperationType::ERR, STORAGE_GROUP, MOUNT_COMMAND, "Unmount failed");
+            }
         } else {
-            return frame_build(ExecutionResult::ERROR, STORAGE_GROUP, MOUNT_COMMAND, "Mount failed");
+            return frame_build(OperationType::ERR, STORAGE_GROUP, MOUNT_COMMAND, "Invalid parameter");
         }
-    } else if (param == "0") {
-        if (fs_unmount("/") == 0) { 
-            sd_card_mounted = false;
-            return frame_build(ExecutionResult::SUCCESS, STORAGE_GROUP, MOUNT_COMMAND, "SD card unmounted");
-        } else {
-            return frame_build(ExecutionResult::ERROR, STORAGE_GROUP, MOUNT_COMMAND, "Unmount failed");
-        }
-        return frame_build(ExecutionResult::ERROR, STORAGE_GROUP, MOUNT_COMMAND, "Unmount not implemented");
     } else {
-        return frame_build(ExecutionResult::ERROR, STORAGE_GROUP, MOUNT_COMMAND, "Invalid parameter");
+        return frame_build(OperationType::ERR, STORAGE_GROUP, MOUNT_COMMAND, "Invalid operation type");
     }
 }
 /** @} */ // StorageCommands

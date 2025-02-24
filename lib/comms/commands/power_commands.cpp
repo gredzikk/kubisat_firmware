@@ -21,16 +21,16 @@
  */
 Frame handle_get_power_manager_ids(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
-        return frame_build(ExecutionResult::ERROR, 2, 0, "PARAM UNECESSARY");
+        return frame_build(OperationType::ERR, 2, 0, "PARAM UNECESSARY");
     }
 
     if (!(operationType == OperationType::GET)) {
-        return frame_build(ExecutionResult::ERROR, 2, 0, "INVALID OPERATION");
+        return frame_build(OperationType::ERR, 2, 0, "INVALID OPERATION");
     }
 
     extern PowerManager powerManager;
     std::string powerManagerIDS = powerManager.read_device_ids();
-    return frame_build(ExecutionResult::SUCCESS, 2, 0, powerManagerIDS);
+    return frame_build(OperationType::VAL, 2, 0, powerManagerIDS);
 }
 
 
@@ -48,16 +48,16 @@ Frame handle_get_power_manager_ids(const std::string& param, OperationType opera
  */
 Frame handle_get_voltage_battery(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
-        return frame_build(ExecutionResult::ERROR, 2, 2, "PARAM UNNECESSARY");
+        return frame_build(OperationType::ERR, 2, 2, "PARAM UNNECESSARY");
     }
 
     if (!(operationType == OperationType::GET)) {
-        return frame_build(ExecutionResult::ERROR, 2, 2, "NOT ALLOWED");
+        return frame_build(OperationType::ERR, 2, 2, "NOT ALLOWED");
     }
 
     extern PowerManager powerManager;
     float voltage = powerManager.get_voltage_battery();
-    return frame_build(ExecutionResult::SUCCESS, 2, 2, std::to_string(voltage), ValueUnit::VOLT);
+    return frame_build(OperationType::VAL, 2, 2, std::to_string(voltage), ValueUnit::VOLT);
 }
 
 
@@ -75,16 +75,16 @@ Frame handle_get_voltage_battery(const std::string& param, OperationType operati
  */
 Frame handle_get_voltage_5v(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
-        return frame_build(ExecutionResult::ERROR, 2, 3, "PARAM UNNECESSARY");
+        return frame_build(OperationType::ERR, 2, 3, "PARAM UNNECESSARY");
     }
 
     if (!(operationType == OperationType::GET)) {
-        return frame_build(ExecutionResult::ERROR, 2, 3, "NOT ALLOWED");
+        return frame_build(OperationType::ERR, 2, 3, "NOT ALLOWED");
     }
 
     extern PowerManager powerManager;
     float voltage = powerManager.get_voltage_5v();
-    return frame_build(ExecutionResult::SUCCESS, 2, 3, std::to_string(voltage), ValueUnit::VOLT);
+    return frame_build(OperationType::VAL, 2, 3, std::to_string(voltage), ValueUnit::VOLT);
 }
 
 
@@ -102,16 +102,16 @@ Frame handle_get_voltage_5v(const std::string& param, OperationType operationTyp
  */
 Frame handle_get_current_charge_usb(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
-        return frame_build(ExecutionResult::ERROR, 2, 4, "PARAM UNNECESSARY");
+        return frame_build(OperationType::ERR, 2, 4, "PARAM UNNECESSARY");
     }
 
     if (!(operationType == OperationType::GET)) {
-        return frame_build(ExecutionResult::ERROR, 2, 4, "NOT ALLOWED");
+        return frame_build(OperationType::ERR, 2, 4, "NOT ALLOWED");
     }
 
     extern PowerManager powerManager;
     float chargeCurrent = powerManager.get_current_charge_usb();
-    return frame_build(ExecutionResult::SUCCESS, 2, 4, std::to_string(chargeCurrent), ValueUnit::MILIAMP);
+    return frame_build(OperationType::VAL, 2, 4, std::to_string(chargeCurrent), ValueUnit::MILIAMP);
 }
 
 
@@ -129,16 +129,16 @@ Frame handle_get_current_charge_usb(const std::string& param, OperationType oper
  */
 Frame handle_get_current_charge_solar(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
-        return frame_build(ExecutionResult::ERROR, 2, 5, "PARAM UNNECESSARY");
+        return frame_build(OperationType::ERR, 2, 5, "PARAM UNNECESSARY");
     }
 
     if (!(operationType == OperationType::GET)) {
-        return frame_build(ExecutionResult::ERROR, 2, 5, "NOT ALLOWED");
+        return frame_build(OperationType::ERR, 2, 5, "NOT ALLOWED");
     }
 
     extern PowerManager powerManager;
     float chargeCurrent = powerManager.get_current_charge_solar();
-    return frame_build(ExecutionResult::SUCCESS, 2, 5, std::to_string(chargeCurrent), ValueUnit::MILIAMP);
+    return frame_build(OperationType::VAL, 2, 5, std::to_string(chargeCurrent), ValueUnit::MILIAMP);
 }
 
 
@@ -156,16 +156,16 @@ Frame handle_get_current_charge_solar(const std::string& param, OperationType op
  */
 Frame handle_get_current_charge_total(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
-        return frame_build(ExecutionResult::ERROR, 2, 6, "PARAM UNNECESSARY");
+        return frame_build(OperationType::ERR, 2, 6, "PARAM UNNECESSARY");
     }
 
     if (!(operationType == OperationType::GET)) {
-        return frame_build(ExecutionResult::ERROR, 2, 6, "NOT ALLOWED");
+        return frame_build(OperationType::ERR, 2, 6, "NOT ALLOWED");
     }
 
     extern PowerManager powerManager;
     float chargeCurrent = powerManager.get_current_charge_total();
-    return frame_build(ExecutionResult::SUCCESS, 2, 6, std::to_string(chargeCurrent), ValueUnit::MILIAMP);
+    return frame_build(OperationType::VAL, 2, 6, std::to_string(chargeCurrent), ValueUnit::MILIAMP);
 }
 
 
@@ -183,16 +183,16 @@ Frame handle_get_current_charge_total(const std::string& param, OperationType op
  */
 Frame handle_get_current_draw(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
-        return frame_build(ExecutionResult::ERROR, 2, 7, "PARAM UNNECESSARY");
+        return frame_build(OperationType::ERR, 2, 7, "PARAM UNNECESSARY");
     }
 
     if (!(operationType == OperationType::GET)) {
-        return frame_build(ExecutionResult::ERROR, 2, 7, "NOT ALLOWED");
+        return frame_build(OperationType::ERR, 2, 7, "NOT ALLOWED");
     }
 
     
     extern PowerManager powerManager;
     float currentDraw = powerManager.get_current_draw();
-    return frame_build(ExecutionResult::SUCCESS, 2, 7, std::to_string(currentDraw), ValueUnit::MILIAMP);
+    return frame_build(OperationType::VAL, 2, 7, std::to_string(currentDraw), ValueUnit::MILIAMP);
 }
 /** @} */ // end of PowerCommands group

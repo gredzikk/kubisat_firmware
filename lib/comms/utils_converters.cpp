@@ -51,9 +51,9 @@ std::string operation_type_to_string(OperationType type) {
     switch (type) {
         case OperationType::GET: return "GET";
         case OperationType::SET: return "SET";
-        case OperationType::ANS: return "ANS";
+        case OperationType::VAL: return "VAL";
         case OperationType::ERR: return "ERR";
-        case OperationType::INF: return "INF";
+        case OperationType::RES: return "RES";
         default: return "UNKNOWN";
     }
 }
@@ -67,9 +67,9 @@ std::string operation_type_to_string(OperationType type) {
 OperationType string_to_operation_type(const std::string& str) {
     if (str == "GET") return OperationType::GET;
     if (str == "SET") return OperationType::SET;
-    if (str == "ANS") return OperationType::ANS;
+    if (str == "VAL") return OperationType::VAL;
     if (str == "ERR") return OperationType::ERR;
-    if (str == "INF") return OperationType::INF;
+    if (str == "RES") return OperationType::RES;
     return OperationType::GET; // Default to GET
 }
 

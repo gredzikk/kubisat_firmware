@@ -84,7 +84,7 @@ bool init_systems() {
         uart_print("Radio init: FAILED", VerbosityLevel::ERROR);
     }
 
-    Frame boot = frame_build(ExecutionResult::INFO, 0, 0, "HELLO");
+    Frame boot = frame_build(OperationType::RES, 0, 0, "HELLO");
     send_frame(boot);
 
     return radioInitSuccess;
@@ -110,7 +110,7 @@ int main()
         uart_print("Power manager init error", VerbosityLevel::ERROR);
     }
     
-    Frame boot = frame_build(ExecutionResult::INFO, 0, 0, "START");
+    Frame boot = frame_build(OperationType::RES, 0, 0, "START");
     send_frame(boot);
     
     std::string bootString = "System init completed @ " + std::to_string(to_ms_since_boot(get_absolute_time())) + " ms";

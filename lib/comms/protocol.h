@@ -39,21 +39,6 @@ const char DELIMITER = ';';
 
 
 /**
- * @enum ExecutionResult
- * @brief Represents the result of a command execution.
- */
-enum class ExecutionResult {
-    /** @brief Command executed successfully. */
-    SUCCESS,
-    /** @brief Command execution resulted in an error. */
-    ERROR,
-    /** @brief Command execution provided informational output. */
-    INFO
-};
-
-
-
-/**
  * @enum OperationType
  * @brief Represents the type of operation being performed.
  */
@@ -62,12 +47,13 @@ enum class OperationType {
     GET,
     /** @brief Set data. */
     SET,
-    /** @brief Answer to a command. */
-    ANS,
+    /** @brief Set command result. */
+    RES,
+    /** @brief Get command value. */
+    VAL,
     /** @brief Error occurred during command execution. */
     ERR,
-    /** @brief Informational message. */
-    INF
+
 };
 
 

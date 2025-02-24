@@ -20,11 +20,11 @@
  */
 Frame handle_get_commands_list(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
-        return frame_build(ExecutionResult::ERROR, 1, 0, "PARAM UNNECESSARY");
+        return frame_build(OperationType::ERR, 1, 0, "PARAM UNNECESSARY");
     }
 
     if (!(operationType == OperationType::GET)) {
-        return frame_build(ExecutionResult::ERROR, 1, 0, "INVALID OPERATION");
+        return frame_build(OperationType::ERR, 1, 0, "INVALID OPERATION");
     }
 
     std::stringstream ss;
@@ -40,7 +40,7 @@ Frame handle_get_commands_list(const std::string& param, OperationType operation
     std::string commandList = ss.str();
     uart_print(commandList, VerbosityLevel::INFO); // Print to UART
 
-    return frame_build(ExecutionResult::SUCCESS, 1, 0, "Commands listed on UART");
+    return frame_build(OperationType::VAL, 1, 0, "Commands listed on UART");
 }
 
 /**
@@ -55,12 +55,12 @@ Frame handle_get_commands_list(const std::string& param, OperationType operation
  */
 Frame handle_get_build_version(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
-        return frame_build(ExecutionResult::ERROR, 1, 1, "PARAM UNECESSARY");
+        return frame_build(OperationType::ERR, 1, 1, "PARAM UNECESSARY");
     }
     if (operationType == OperationType::GET) {
-        return frame_build(ExecutionResult::SUCCESS, 1, 1, std::to_string(BUILD_NUMBER));
+        return frame_build(OperationType::VAL, 1, 1, std::to_string(BUILD_NUMBER));
     }
-    return frame_build(ExecutionResult::ERROR, 1, 1, "INVALID OPERATION");
+    return frame_build(OperationType::ERR, 1, 1, "INVALID OPERATION");
 }
 
 
@@ -86,21 +86,21 @@ Frame handle_get_build_version(const std::string& param, OperationType operation
  * @xrefitem command "Command" "List of Commands" Command ID: 1.8
  */
 Frame handle_verbosity(const std::string& param, OperationType operationType) {
-    if (param.empty()) {
+    if (operationType == OperationType::GET && param.empty()) {
         uart_print("Current verbosity level: " + std::to_string(static_cast<int>(g_uart_verbosity)),  VerbosityLevel::INFO);
-        return frame_build(ExecutionResult::SUCCESS, 1, 8, 
+        return frame_build(OperationType::VAL, 1, 8, 
                          std::to_string(static_cast<int>(g_uart_verbosity)));
     }
 
     try {
         int level = std::stoi(param);
         if (level < 0 || level > 5) {
-            return frame_build(ExecutionResult::ERROR, 1, 8, "INVALID LEVEL (0-5)");
+            return frame_build(OperationType::ERR, 1, 8, "INVALID LEVEL (0-5)");
         }
         g_uart_verbosity = static_cast<VerbosityLevel>(level);
-        return frame_build(ExecutionResult::SUCCESS, 1, 8, "LEVEL SET");
+        return frame_build(OperationType::RES, 1, 8, "SET " + std::to_string(level));
     } catch (...) {
-        return frame_build(ExecutionResult::ERROR, 1, 8, "INVALID FORMAT");
+        return frame_build(OperationType::ERR, 1, 8, "INVALID FORMAT");
     }
 }
 
@@ -116,15 +116,15 @@ Frame handle_verbosity(const std::string& param, OperationType operationType) {
  */
 Frame handle_enter_bootloader_mode(const std::string& param, OperationType operationType) {
     if (!param.empty()) {
-        return frame_build(ExecutionResult::ERROR, 1, 9, "PARAM UNNECESSARY");
+        return frame_build(OperationType::ERR, 1, 9, "PARAM UNNECESSARY");
     }
 
     if (operationType != OperationType::SET) {
-        return frame_build(ExecutionResult::ERROR, 1, 9, "INVALID OPERATION");
+        return frame_build(OperationType::ERR, 1, 9, "INVALID OPERATION");
     }
 
     // Build the success frame *before* resetting
-    Frame successFrame = frame_build(ExecutionResult::SUCCESS, 1, 9, "REBOOT BOOTSEL");
+    Frame successFrame = frame_build(OperationType::RES, 1, 9, "REBOOT BOOTSEL");
 
     // Send the success frame
     uart_print("Sending BOOTSEL confirmation...");
@@ -137,7 +137,7 @@ Frame handle_enter_bootloader_mode(const std::string& param, OperationType opera
     reset_usb_boot(0, 0); // Trigger BOOTSEL mode
 
     // The code will never reach here because the Pico will reset
-    return frame_build(ExecutionResult::SUCCESS, 1, 9, "Entering BOOTSEL mode");
+    return frame_build(OperationType::RES, 1, 9, "Entering BOOTSEL mode");
 }
 
 /** @} */ 

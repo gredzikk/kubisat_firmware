@@ -25,34 +25,34 @@
  */
 Frame handle_gps_power_status(const std::string& param, OperationType operationType) {
     if (!(operationType == OperationType::GET || operationType == OperationType::SET)) {
-        return frame_build(ExecutionResult::ERROR, 7, 1, "INVALID OPERATION");
+        return frame_build(OperationType::ERR, 7, 1, "INVALID OPERATION");
     }
 
     if (operationType == OperationType::SET) {
         if (param.empty()) {
-            return frame_build(ExecutionResult::ERROR, 7, 1, "PARAM REQUIRED");
+            return frame_build(OperationType::ERR, 7, 1, "PARAM REQUIRED");
         }
 
         try {
             int powerStatus = std::stoi(param);
             if (powerStatus != 0 && powerStatus != 1) {
-                return frame_build(ExecutionResult::ERROR, 7, 1, "INVALID VALUE. USE 0 OR 1");
+                return frame_build(OperationType::ERR, 7, 1, "INVALID VALUE. USE 0 OR 1");
             }
             gpio_put(GPS_POWER_ENABLE_PIN, powerStatus);
             EventEmitter::emit(EventGroup::GPS, powerStatus ? GPSEvent::POWER_ON : GPSEvent::POWER_OFF);
-            return frame_build(ExecutionResult::SUCCESS, 7, 1, std::to_string(powerStatus));
+            return frame_build(OperationType::RES, 7, 1, std::to_string(powerStatus));
         } catch (...) {
-            return frame_build(ExecutionResult::ERROR, 7, 1, "INVALID PARAMETER FORMAT");
+            return frame_build(OperationType::ERR, 7, 1, "INVALID PARAMETER FORMAT");
         }
     }
 
     // GET operation
     if (!param.empty()) {
-        return frame_build(ExecutionResult::ERROR, 7, 1, "PARAM UNNECESSARY");
+        return frame_build(OperationType::ERR, 7, 1, "PARAM UNNECESSARY");
     }
 
     bool powerStatus = gpio_get(GPS_POWER_ENABLE_PIN);
-    return frame_build(ExecutionResult::SUCCESS, 7, 1, std::to_string(powerStatus));
+    return frame_build(OperationType::VAL, 7, 1, std::to_string(powerStatus));
 }
 
 
@@ -74,7 +74,7 @@ Frame handle_gps_power_status(const std::string& param, OperationType operationT
 Frame handle_enable_gps_uart_passthrough(const std::string& param, OperationType operationType) {
     // Validate operation type
     if (!(operationType == OperationType::SET)) {
-        return frame_build(ExecutionResult::ERROR, 7, 2, "NOT ALLOWED");
+        return frame_build(OperationType::ERR, 7, 2, "NOT ALLOWED");
     }
 
     // Parse and validate timeout parameter
@@ -82,7 +82,7 @@ Frame handle_enable_gps_uart_passthrough(const std::string& param, OperationType
     try {
         timeoutMs = param.empty() ? 60000u : std::stoul(param) * 1000;
     } catch (...) {
-        return frame_build(ExecutionResult::ERROR, 7, 2, "INVALID TIMEOUT FORMAT");
+        return frame_build(OperationType::ERR, 7, 2, "INVALID TIMEOUT FORMAT");
     }
 
     // Setup UART parameters and exit sequence
@@ -151,7 +151,7 @@ Frame handle_enable_gps_uart_passthrough(const std::string& param, OperationType
     std::string response = "GPS UART BRIDGE EXIT: " + exitReason;
     uart_print(response, VerbosityLevel::INFO);
     
-    return frame_build(ExecutionResult::SUCCESS, 7, 2, response);
+    return frame_build(OperationType::RES, 7, 2, response);
 }
 
 
@@ -169,16 +169,16 @@ Frame handle_enable_gps_uart_passthrough(const std::string& param, OperationType
  */
 Frame handle_get_rmc_data(const std::string& param, OperationType operationType) {
     if (operationType != OperationType::GET) {
-        return frame_build(ExecutionResult::ERROR, 7, 3, "INVALID OPERATION");
+        return frame_build(OperationType::ERR, 7, 3, "INVALID OPERATION");
     }
 
     if (!param.empty()) {
-        return frame_build(ExecutionResult::ERROR, 7, 3, "PARAM UNNECESSARY");
+        return frame_build(OperationType::ERR, 7, 3, "PARAM UNNECESSARY");
     }
 
     std::vector<std::string> tokens = nmea_data.get_rmc_tokens();
     if (tokens.empty()) {
-        return frame_build(ExecutionResult::ERROR, 7, 3, "NO RMC DATA");
+        return frame_build(OperationType::ERR, 7, 3, "NO RMC DATA");
     }
 
     // Join tokens with commas to create the response
@@ -190,7 +190,7 @@ Frame handle_get_rmc_data(const std::string& param, OperationType operationType)
         }
     }
 
-    return frame_build(ExecutionResult::SUCCESS, 7, 3, ss.str());
+    return frame_build(OperationType::VAL, 7, 3, ss.str());
 }
 
 
@@ -208,16 +208,16 @@ Frame handle_get_rmc_data(const std::string& param, OperationType operationType)
  */
 Frame handle_get_gga_data(const std::string& param, OperationType operationType) {
     if (operationType != OperationType::GET) {
-        return frame_build(ExecutionResult::ERROR, 7, 4, "INVALID OPERATION");
+        return frame_build(OperationType::ERR, 7, 4, "INVALID OPERATION");
     }
 
     if (!param.empty()) {
-        return frame_build(ExecutionResult::ERROR, 7, 4, "PARAM UNNECESSARY");
+        return frame_build(OperationType::ERR, 7, 4, "PARAM UNNECESSARY");
     }
 
     std::vector<std::string> tokens = nmea_data.get_gga_tokens();
     if (tokens.empty()) {
-        return frame_build(ExecutionResult::ERROR, 7, 4, "NO GGA DATA");
+        return frame_build(OperationType::ERR, 7, 4, "NO GGA DATA");
     }
 
     // Join tokens with commas to create the response
@@ -229,6 +229,6 @@ Frame handle_get_gga_data(const std::string& param, OperationType operationType)
         }
     }
 
-    return frame_build(ExecutionResult::SUCCESS, 7, 4, ss.str());
+    return frame_build(OperationType::VAL, 7, 4, ss.str());
 }
 /** @} */ // end of GPSCommands group

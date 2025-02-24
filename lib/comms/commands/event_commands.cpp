@@ -28,7 +28,7 @@
  */
 Frame handle_get_last_events(const std::string& param, OperationType operationType) {
     if (operationType != OperationType::GET) {
-        return frame_build(ExecutionResult::ERROR, 5, 1, "INVALID OPERATION");
+        return frame_build(OperationType::ERR, 5, 1, "INVALID OPERATION");
     }
 
     size_t count = 10; // Default number of events to return
@@ -36,10 +36,10 @@ Frame handle_get_last_events(const std::string& param, OperationType operationTy
         try {
             count = std::stoul(param);
             if (count == 0 || count > EVENT_BUFFER_SIZE) {
-                return frame_build(ExecutionResult::ERROR, 5, 1, "INVALID COUNT");
+                return frame_build(OperationType::ERR, 5, 1, "INVALID COUNT");
             }
         } catch (...) {
-            return frame_build(ExecutionResult::ERROR, 5, 1, "INVALID PARAMETER");
+            return frame_build(OperationType::ERR, 5, 1, "INVALID PARAMETER");
         }
     }
 
@@ -64,7 +64,7 @@ Frame handle_get_last_events(const std::string& param, OperationType operationTy
         if (i < toReturn - 1) ss << "-";
     }
 
-    return frame_build(ExecutionResult::SUCCESS, 5, 1, ss.str());
+    return frame_build(OperationType::VAL, 5, 1, ss.str());
 }
 
 
@@ -82,10 +82,10 @@ Frame handle_get_last_events(const std::string& param, OperationType operationTy
  */
 Frame handle_get_event_count(const std::string& param, OperationType operationType) {
     if (operationType != OperationType::GET || !param.empty()) {
-        return frame_build(ExecutionResult::ERROR, 5, 2, "INVALID REQUEST");
+        return frame_build(OperationType::ERR, 5, 2, "INVALID REQUEST");
     }
 
-    return frame_build(ExecutionResult::SUCCESS, 5, 2, 
+    return frame_build(OperationType::VAL, 5, 2, 
                      std::to_string(eventManager.get_event_count()));
 }
 /** @} */ // end of EventCommands group

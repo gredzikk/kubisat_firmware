@@ -2,7 +2,7 @@
 #include "test_frame_common.h"
 
 void test_frame_build_success() {
-    Frame frame = frame_build(ExecutionResult::SUCCESS, 1, 2, "test_value", ValueUnit::VOLT);
+    Frame frame = frame_build(OperationType::VAL, 1, 2, "test_value", ValueUnit::VOLT);
     
     TEST_ASSERT_EQUAL(1, frame.direction);
     TEST_ASSERT_EQUAL(OperationType::ANS, frame.operationType);
@@ -13,7 +13,7 @@ void test_frame_build_success() {
 }
 
 void test_frame_build_error() {
-    Frame frame = frame_build(ExecutionResult::ERROR, 1, 2, "error_message");
+    Frame frame = frame_build(OperationType::ERR, 1, 2, "error_message");
     
     TEST_ASSERT_EQUAL(1, frame.direction);
     TEST_ASSERT_EQUAL(OperationType::ERR, frame.operationType);
@@ -22,7 +22,7 @@ void test_frame_build_error() {
 }
 
 void test_frame_build_info() {
-    Frame frame = frame_build(ExecutionResult::INFO, 1, 2, "info_message");
+    Frame frame = frame_build(OperationType::RES, 1, 2, "info_message");
     
     TEST_ASSERT_EQUAL(1, frame.direction);
     TEST_ASSERT_EQUAL(OperationType::INF, frame.operationType);

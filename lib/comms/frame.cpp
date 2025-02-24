@@ -102,7 +102,7 @@ Frame frame_decode(const std::string& data) {
         return frame;
     } catch (const std::exception& e) {
         uart_print("Frame error: " + std::string(e.what()), VerbosityLevel::ERROR);
-        Frame errorFrame = frame_build(ExecutionResult::ERROR, 0, 0, e.what()); 
+        Frame errorFrame = frame_build(OperationType::ERR, 0, 0, e.what()); 
         send_frame(errorFrame);
         throw; 
     }
@@ -130,7 +130,7 @@ void frame_process(const std::string& data, Interface interface) {
             send_frame_lora(responseFrame);
         }
     } catch (const std::exception& e) {
-        Frame errorFrame = frame_build(ExecutionResult::ERROR, 0, 0, e.what()); 
+        Frame errorFrame = frame_build(OperationType::ERR, 0, 0, e.what()); 
         // Send error through the same interface
         if (interface == Interface::UART) {
             send_frame_uart(errorFrame);
@@ -150,32 +150,32 @@ void frame_process(const std::string& data, Interface interface) {
  * @return The Frame instance.
  * @ingroup FrameHandling
  */
-Frame frame_build(ExecutionResult result, uint8_t group, uint8_t command, 
+Frame frame_build(OperationType operation, uint8_t group, uint8_t command, 
                 const std::string& value, const ValueUnit unitType) {
     Frame frame;
     frame.header = FRAME_BEGIN;
     frame.footer = FRAME_END;
     
-    switch (result) {
-        case ExecutionResult::SUCCESS:
+    switch (operation) {
+        case OperationType::VAL:
             frame.direction = 1;
-            frame.operationType = OperationType::ANS;
+            frame.operationType = OperationType::VAL;
             frame.value = value;
             frame.unit = value_unit_type_to_string(unitType);
             break;
             
-        case ExecutionResult::ERROR:
+        case OperationType::ERR:
             frame.direction = 1;
             frame.operationType = OperationType::ERR;
             frame.value = value; 
             frame.unit = value_unit_type_to_string(ValueUnit::UNDEFINED);
             break;
-
-        case ExecutionResult::INFO:
+        
+        case OperationType::RES:
             frame.direction = 1;
-            frame.operationType = OperationType::INF;
+            frame.operationType = OperationType::RES;
             frame.value = value;
-            frame.unit = value_unit_type_to_string(ValueUnit::UNDEFINED);
+            frame.unit = value_unit_type_to_string(unitType);
             break;
     }
     
