@@ -8,8 +8,10 @@
 #include "storage.h"
 #include "utils.h"
 
-#define EVENT_BUFFER_SIZE 10
+#define EVENT_BUFFER_SIZE 1000
+#define EVENT_FLUSH_THRESHOLD 10
 #define EVENT_LOG_FILE "/event_log.csv"
+
 /**
  * @file event_manager.h
  * @brief Manages the event logging system for the Kubisat firmware.
@@ -171,8 +173,7 @@ class EventManager {
         EventManager()
             : eventCount(0)
             , writeIndex(0)
-            , nextEventId(0)
-            , needsPersistence(false)
+            , eventsSinceFlush(0)  // Add eventsSinceFlush initialization
         {
             mutex_init(&eventMutex);
         }
@@ -220,8 +221,8 @@ class EventManager {
          * @brief Loads the events from storage.
          * @return True if the events were successfully loaded, false otherwise.
          */
-        virtual bool load_from_storage() = 0;
-    
+        virtual bool load_from_storage() = 0;   
+
         protected:
         /** @brief Event buffer */
         EventLog events[EVENT_BUFFER_SIZE];
@@ -231,10 +232,10 @@ class EventManager {
         size_t writeIndex;
         /** @brief Mutex for protecting the event buffer */
         mutex_t eventMutex;
-        /** @brief Next event ID */
-        volatile uint16_t nextEventId;
-        /** @brief Flag indicating whether the events need to be saved to storage */
-        bool needsPersistence;
+        /** @brief Static event ID counter */
+        static uint16_t nextEventId;
+        /** @brief Number of events since last flush to storage */
+        size_t eventsSinceFlush;
     };
     
 
@@ -257,6 +258,7 @@ class EventManagerImpl : public EventManager {
          * @return True if the events were successfully saved, false otherwise.
          * @details This method is not yet implemented.
          */
+        public:
         bool save_to_storage() override {
             if(!sd_card_mounted) {
                 bool status = fs_init();
@@ -264,24 +266,31 @@ class EventManagerImpl : public EventManager {
                     return false;
                 }
             } 
+            
             FILE *file = fopen(EVENT_LOG_FILE, "a");
             if (file) {
-                for (size_t i = 0; i < eventCount; i++) {
+                // Calculate start index for last EVENT_FLUSH_THRESHOLD events
+                size_t startIdx = (writeIndex >= eventsSinceFlush) ? 
+                    writeIndex - eventsSinceFlush : 
+                    EVENT_BUFFER_SIZE - (eventsSinceFlush - writeIndex);
+
+                // Write only the most recent batch of events
+                for (size_t i = 0; i < eventsSinceFlush; i++) {
+                    size_t idx = (startIdx + i) % EVENT_BUFFER_SIZE;
                     fprintf(file, "%u;%lu;%u;%u\n", 
-                        events[i].id,
-                        events[i].timestamp,
-                        events[i].group,
-                        events[i].event
+                        events[idx].id,
+                        events[idx].timestamp,
+                        events[idx].group,
+                        events[idx].event
                     );
                 }
                 fclose(file);
-                needsPersistence = false;
                 uart_print("Events saved to storage", VerbosityLevel::INFO);
                 return true;
             }
             return false;
         }
-    
+        
         /**
          * @brief Loads the events from storage.
          * @return True if the events were successfully loaded, false otherwise.

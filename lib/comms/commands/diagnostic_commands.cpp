@@ -22,7 +22,7 @@ extern volatile bool g_pending_bootloader_reset;
  */
 std::vector<Frame> handle_get_commands_list(const std::string& param, OperationType operationType) {
     std::vector<Frame> frames;
-    
+
     if (!param.empty()) {
         frames.push_back(frame_build(OperationType::ERR, 1, 0, "PARAM_UNNECESSARY"));
         return frames;
@@ -33,13 +33,28 @@ std::vector<Frame> handle_get_commands_list(const std::string& param, OperationT
         return frames;
     }
 
+    std::string combinedCommandDetails;
     for (const auto& entry : commandHandlers) {
         uint32_t commandKey = entry.first;
         uint8_t group = (commandKey >> 8) & 0xFF;
         uint8_t command = commandKey & 0xFF;
 
-        std::string commandDetails = std::to_string(group) + "-" + std::to_string(command);
-        frames.push_back(frame_build(OperationType::SEQ, 1, 0, commandDetails));
+        std::string commandDetails = std::to_string(group) + "." + std::to_string(command);
+
+        if (combinedCommandDetails.length() + commandDetails.length() + 1 > 100) {
+            frames.push_back(frame_build(OperationType::SEQ, 1, 0, combinedCommandDetails));
+            combinedCommandDetails = "";
+        }
+
+        if (!combinedCommandDetails.empty()) {
+            combinedCommandDetails += "-";
+        }
+        combinedCommandDetails += commandDetails;
+    }
+
+    // Add any remaining commands
+    if (!combinedCommandDetails.empty()) {
+        frames.push_back(frame_build(OperationType::SEQ, 1, 0, combinedCommandDetails));
     }
 
     // Add final VAL frame

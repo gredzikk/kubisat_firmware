@@ -81,6 +81,7 @@ extern DS3231 systemClock;
  */
 EventManagerImpl eventManager;
 
+uint16_t EventManager::nextEventId = 0;
 
 /**
  * @brief Logs an event to the event buffer.
@@ -93,6 +94,12 @@ EventManagerImpl eventManager;
 void EventManager::log_event(uint8_t group, uint8_t event) {
     mutex_enter_blocking(&eventMutex);
 
+    // Clear buffer if it's full
+    if (eventCount >= EVENT_BUFFER_SIZE) {
+        eventCount = 0;
+        writeIndex = 0;
+    }
+
     EventLog& log = events[writeIndex];
     log.id = nextEventId++;
     log.timestamp = systemClock.get_unix_time();
@@ -103,16 +110,13 @@ void EventManager::log_event(uint8_t group, uint8_t event) {
     uart_print(log.to_string(), VerbosityLevel::EVENT);
 
     writeIndex = (writeIndex + 1) % EVENT_BUFFER_SIZE;
-    if (eventCount < EVENT_BUFFER_SIZE) {
-        eventCount++;
-    }
+    eventCount++;
+    eventsSinceFlush++;
 
-    // Set persistence flag on buffer full or power events
-    if (eventCount == EVENT_BUFFER_SIZE || 
-        (group == static_cast<uint8_t>(EventGroup::POWER) && 
-         event == static_cast<uint8_t>(PowerEvent::POWER_FALLING))) {
-        needsPersistence = true;
+    // Flush to storage every EVENT_FLUSH_THRESHOLD events
+    if (eventsSinceFlush >= EVENT_FLUSH_THRESHOLD) {
         save_to_storage();
+        eventsSinceFlush = 0;
     }
 
     mutex_exit(&eventMutex);
