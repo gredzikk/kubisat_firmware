@@ -130,38 +130,57 @@ std::vector<Frame> handle_list_files(const std::string& param, OperationType ope
 
     DIR* dir;
     struct dirent* ent;
+    int fileCount = 0; // Counter for the number of files
     if ((dir = opendir("/")) != NULL) {
+        // First, count the number of files
         while ((ent = readdir(dir)) != NULL) {
             const char* filename = ent->d_name;
-
-            // Skip "." and ".." directories
             if (strcmp(filename, ".") == 0 || strcmp(filename, "..") == 0) {
                 continue;
             }
-
-            // Get file size
-            char filepath[256];
-            snprintf(filepath, sizeof(filepath), "/%s", filename);
-
-            FILE* file = fopen(filepath, "rb");
-            size_t fileSize = 0;
-
-            if (file != NULL) {
-                fseek(file, 0, SEEK_END);
-                fileSize = ftell(file);
-                fclose(file);
-            }
-
-            // Create and send frame with filename and size
-            char fileInfo[512];
-            snprintf(fileInfo, sizeof(fileInfo), "%s:%zu", filename, fileSize);
-            frames.push_back(frame_build(OperationType::VAL, STORAGE_GROUP, LIST_FILES_COMMAND, fileInfo));
-            uart_print(fileInfo, VerbosityLevel::INFO);
-            send_frame(frames.back());
+            fileCount++;
         }
         closedir(dir);
-        frames.push_back(frame_build(OperationType::VAL, STORAGE_GROUP, LIST_FILES_COMMAND, "File listing complete"));
-        return frames;
+
+        // Send the number of files
+        frames.push_back(frame_build(OperationType::VAL, STORAGE_GROUP, LIST_FILES_COMMAND, std::to_string(fileCount)));
+
+        // Open the directory again to read file information
+        dir = opendir("/");
+        if (dir != NULL) {
+            while ((ent = readdir(dir)) != NULL) {
+                const char* filename = ent->d_name;
+
+                // Skip "." and ".." directories
+                if (strcmp(filename, ".") == 0 || strcmp(filename, "..") == 0) {
+                    continue;
+                }
+
+                // Get file size
+                char filepath[256];
+                snprintf(filepath, sizeof(filepath), "/%s", filename);
+
+                FILE* file = fopen(filepath, "rb");
+                size_t fileSize = 0;
+
+                if (file != NULL) {
+                    fseek(file, 0, SEEK_END);
+                    fileSize = ftell(file);
+                    fclose(file);
+                }
+
+                // Create and send frame with filename and size
+                char fileInfo[512];
+                snprintf(fileInfo, sizeof(fileInfo), "%s:%zu", filename, fileSize);
+                frames.push_back(frame_build(OperationType::SEQ, STORAGE_GROUP, LIST_FILES_COMMAND, fileInfo));
+            }
+            closedir(dir);
+            frames.push_back(frame_build(OperationType::VAL, STORAGE_GROUP, LIST_FILES_COMMAND, "FILE_LIST_DONE"));
+            return frames;
+        } else {
+            frames.push_back(frame_build(OperationType::ERR, STORAGE_GROUP, LIST_FILES_COMMAND, "Could not open directory for file info"));
+            return frames;
+        }
     } else {
         frames.push_back(frame_build(OperationType::ERR, STORAGE_GROUP, LIST_FILES_COMMAND, "Could not open directory"));
         return frames;

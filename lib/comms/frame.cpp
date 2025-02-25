@@ -129,6 +129,7 @@ void frame_process(const std::string& data, Interface interface) {
                 send_frame_uart(responseFrame);
             } else if (interface == Interface::LORA) {
                 send_frame_lora(responseFrame);
+                sleep_ms(50);
             }
         }
     } catch (const std::exception& e) {
@@ -175,6 +176,13 @@ Frame frame_build(OperationType operation, uint8_t group, uint8_t command,
         case OperationType::RES:
             frame.direction = 1;
             frame.operationType = OperationType::RES;
+            frame.value = value;
+            frame.unit = value_unit_type_to_string(unitType);
+            break;
+        
+        case OperationType::SEQ:
+            frame.direction = 1;
+            frame.operationType = OperationType::SEQ;
             frame.value = value;
             frame.unit = value_unit_type_to_string(unitType);
             break;

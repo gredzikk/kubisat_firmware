@@ -27,7 +27,7 @@ public:
     
     static constexpr float SOLAR_CURRENT_THRESHOLD = 50.0f;  // mA
     static constexpr float USB_CURRENT_THRESHOLD = 50.0f;    // mA
-    static constexpr float VOLTAGE_LOW_THRESHOLD = 4.7f;     // V
+    static constexpr float VOLTAGE_LOW_THRESHOLD = 4.6f;     // V
     static constexpr float VOLTAGE_OVERCHARGE_THRESHOLD = 5.3f; // V
     static constexpr float FALL_RATE_THRESHOLD = -0.02f;     // V/sample
     static constexpr int FALLING_TREND_REQUIRED = 3;         // samples
