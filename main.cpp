@@ -20,6 +20,7 @@ void process_pending_actions() {
 
 void core1_entry() {
     uart_print("Starting core 1", VerbosityLevel::DEBUG);
+    EventEmitter::emit(EventGroup::SYSTEM, SystemEvent::CORE1_START);
     while (true) {
         collect_gps_data();
         check_power_events(powerManager); 
@@ -48,12 +49,12 @@ bool init_systems() {
     gpio_pull_up(MAIN_I2C_SCL_PIN);
     gpio_pull_up(MAIN_I2C_SDA_PIN);
 
-    if (true)
-    {
-        gpio_init(GPS_POWER_ENABLE_PIN);
-        gpio_set_dir(GPS_POWER_ENABLE_PIN, GPIO_OUT);
-        gpio_put(GPS_POWER_ENABLE_PIN, 1); 
-    }
+    gpio_init(GPS_POWER_ENABLE_PIN);
+    gpio_set_dir(GPS_POWER_ENABLE_PIN, GPIO_OUT);
+    gpio_put(GPS_POWER_ENABLE_PIN, 1); 
+
+    EventEmitter::emit(EventGroup::GPS, GPSEvent::POWER_ON);
+    
     system("color");
 
     bool radioInitSuccess = false;
@@ -105,6 +106,7 @@ bool init_systems() {
 int main()
 {
     init_systems();
+    EventEmitter::emit(EventGroup::SYSTEM, SystemEvent::BOOT);
     multicore_launch_core1(core1_entry);
 
     gpio_put(PICO_DEFAULT_LED_PIN, 0);

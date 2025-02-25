@@ -114,7 +114,6 @@ std::vector<Frame> handle_enable_gps_uart_passthrough(const std::string& param, 
                          std::to_string(timeoutMs/1000) + "s\r\n" +
                          "Send " + EXIT_SEQUENCE + " to exit";
     uart_print(message, VerbosityLevel::INFO);
-    
     // Allow time for message to be sent before baudrate change
     sleep_ms(10);
     

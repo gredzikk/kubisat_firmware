@@ -136,8 +136,8 @@ std::vector<Frame> handle_verbosity(const std::string& param, OperationType oper
 std::vector<Frame> handle_enter_bootloader_mode(const std::string& param, OperationType operationType) {
     std::vector<Frame> frames;
     
-    if (!param.empty()) {
-        frames.push_back(frame_build(OperationType::ERR, 1, 9, "PARAM_UNNECESSARY"));
+    if (param != "USB") {
+    frames.push_back(frame_build(OperationType::ERR, 1, 9, "PARAM_INVALID"));
         return frames;
     }
 

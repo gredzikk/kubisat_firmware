@@ -1,5 +1,6 @@
 #include "PowerManager.h"
 #include <iostream>
+#include <sstream>
 #include "event_manager.h"
 
 PowerManager::PowerManager(i2c_inst_t* i2c) 
@@ -24,14 +25,19 @@ PowerManager::PowerManager(i2c_inst_t* i2c)
         return initialized_;
     }
 
-std::string PowerManager::read_device_ids() {
-    if (!initialized_) return "noinit";
-    recursive_mutex_enter_blocking(&powerman_mutex_);
-    std::string MAN = "MAN " + std::to_string(ina3221_.get_manufacturer_id());
-    std::string DIE = "DIE " + std::to_string(ina3221_.get_die_id());
-    recursive_mutex_exit(&powerman_mutex_);
-    return MAN + " - " + DIE;
-}
+    std::string PowerManager::read_device_ids() {
+        if (!initialized_) return "noinit";
+        recursive_mutex_enter_blocking(&powerman_mutex_);
+        std::stringstream man_ss;
+        man_ss << std::hex << ina3221_.get_manufacturer_id();
+        std::string MAN = "MAN 0x" + man_ss.str();
+    
+        std::stringstream die_ss;
+        die_ss << std::hex << ina3221_.get_die_id();
+        std::string DIE = "DIE 0x" + die_ss.str();
+        recursive_mutex_exit(&powerman_mutex_);
+        return MAN + " - " + DIE;
+    }
 
 float PowerManager::get_voltage_battery() {
     if (!initialized_) return 0.0f;

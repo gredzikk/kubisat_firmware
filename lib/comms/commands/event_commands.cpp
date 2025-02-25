@@ -26,20 +26,23 @@
  * @ingroup EventCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 5.1
  */
-Frame handle_get_last_events(const std::string& param, OperationType operationType) {
+std::vector<Frame> handle_get_last_events(const std::string& param, OperationType operationType) {
+    std::vector<Frame> frames;
     if (operationType != OperationType::GET) {
-        return frame_build(OperationType::ERR, 5, 1, "INVALID OPERATION");
+        frames.push_back(frame_build(OperationType::ERR, 5, 1, "INVALID OPERATION"));
+        return frames;
     }
-
     size_t count = 10; // Default number of events to return
     if (!param.empty()) {
         try {
             count = std::stoul(param);
             if (count == 0 || count > EVENT_BUFFER_SIZE) {
-                return frame_build(OperationType::ERR, 5, 1, "INVALID COUNT");
+                frames.push_back(frame_build(OperationType::ERR, 5, 1, "INVALID COUNT"));
+                return frames;
             }
         } catch (...) {
-            return frame_build(OperationType::ERR, 5, 1, "INVALID PARAMETER");
+            frames.push_back(frame_build(OperationType::ERR, 5, 1, "INVALID PARAMETER"));
+            return frames;
         }
     }
 
@@ -63,8 +66,8 @@ Frame handle_get_last_events(const std::string& param, OperationType operationTy
            << std::setw(2) << static_cast<int>(event.event);
         if (i < toReturn - 1) ss << "-";
     }
-
-    return frame_build(OperationType::VAL, 5, 1, ss.str());
+    frames.push_back(frame_build(OperationType::VAL, 5, 1, ss.str()));
+    return frames;
 }
 
 
@@ -80,12 +83,13 @@ Frame handle_get_last_events(const std::string& param, OperationType operationTy
  * @ingroup EventCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 5.2
  */
-Frame handle_get_event_count(const std::string& param, OperationType operationType) {
+std::vector<Frame> handle_get_event_count(const std::string& param, OperationType operationType) {
+    std::vector<Frame> frames;
     if (operationType != OperationType::GET || !param.empty()) {
-        return frame_build(OperationType::ERR, 5, 2, "INVALID REQUEST");
+        frames.push_back(frame_build(OperationType::ERR, 5, 2, "INVALID REQUEST"));
+        return frames;
     }
-
-    return frame_build(OperationType::VAL, 5, 2, 
-                     std::to_string(eventManager.get_event_count()));
+    frames.push_back(frame_build(OperationType::VAL, 5, 2, std::to_string(eventManager.get_event_count())));
+    return frames;
 }
 /** @} */ // end of EventCommands group
