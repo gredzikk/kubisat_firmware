@@ -9,6 +9,7 @@
 #include "pico/multicore.h"
 #include "event_manager.h"
 #include "lib/powerman/PowerManager.h" // Corrected path
+#include <pico/bootrom.h>
 
 #include "ISensor.h"
 #include "lib/sensors/BH1750/BH1750_WRAPPER.h" // Corrected path

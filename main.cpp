@@ -4,15 +4,26 @@
 
 PowerManager powerManager(MAIN_I2C_PORT);
 DS3231 systemClock(MAIN_I2C_PORT);
+volatile bool g_pending_bootloader_reset = false;
 
 char buffer[BUFFER_SIZE];
 int bufferIndex = 0;
+
+
+void process_pending_actions() {    
+    if (g_pending_bootloader_reset) {
+        sleep_ms(100);
+        uart_print("Entering BOOTSEL mode...", VerbosityLevel::WARNING);
+        reset_usb_boot(0, 0);
+    }
+}
 
 void core1_entry() {
     uart_print("Starting core 1", VerbosityLevel::DEBUG);
     while (true) {
         collect_gps_data();
         check_power_events(powerManager); 
+        process_pending_actions();
         sleep_ms(10);
     }
 }

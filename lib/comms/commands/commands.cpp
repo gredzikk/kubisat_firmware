@@ -12,7 +12,7 @@
  * @typedef CommandHandler
  * @brief Function type for command handlers
  */
-using CommandHandler = std::function<Frame(const std::string&, OperationType)>;
+using CommandHandler = std::function<std::vector<Frame>(const std::string&, OperationType)>;
 
 /**
  * @typedef CommandMap
@@ -60,13 +60,15 @@ CommandMap commandHandlers = {
  * @return Frame Response frame containing execution result
  * @details Looks up the command handler in commandHandlers map and executes it
  */
-Frame execute_command(uint32_t commandKey, const std::string& param, OperationType operationType) {
+std::vector<Frame> execute_command(uint32_t commandKey, const std::string& param, OperationType operationType) {
     auto it = commandHandlers.find(commandKey);
     if (it != commandHandlers.end()) {
         CommandHandler handler = it->second;
         return handler(param, operationType);
     } else {
-        return frame_build(OperationType::ERR, 0, 0, "INVALID COMMAND");
+        std::vector<Frame> frames;
+        frames.push_back(frame_build(OperationType::ERR, 0, 0, "INVALID COMMAND"));
+        return frames;
     }
 }
 /** @} */ // end of CommandSystem group

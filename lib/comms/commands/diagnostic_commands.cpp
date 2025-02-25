@@ -8,59 +8,74 @@
  * @{
  */
 
+extern volatile bool g_pending_bootloader_reset;
+
 /**
  * @brief Handler for listing all available commands on UART
  * @param param Empty string expected
  * @param operationType GET
- * @return Frame containing success/error and command list
+ * @return Vector of response frames - start frame, sequence of elements, end frame
  * @note <b>KBST;0;GET;1;0;;TSBK</b>
  * @note Print all available commands on UART port
  * @ingroup DiagnosticCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 0
  */
-Frame handle_get_commands_list(const std::string& param, OperationType operationType) {
+std::vector<Frame> handle_get_commands_list(const std::string& param, OperationType operationType) {
+    std::vector<Frame> frames;
+    
     if (!param.empty()) {
-        return frame_build(OperationType::ERR, 1, 0, "PARAM UNNECESSARY");
+        frames.push_back(frame_build(OperationType::ERR, 1, 0, "PARAM_UNNECESSARY"));
+        return frames;
     }
 
     if (!(operationType == OperationType::GET)) {
-        return frame_build(OperationType::ERR, 1, 0, "INVALID OPERATION");
+        frames.push_back(frame_build(OperationType::ERR, 1, 0, "INVALID_OPERATION"));
+        return frames;
     }
 
-    std::stringstream ss;
+    // Add each command as a SEQ frame
     for (const auto& entry : commandHandlers) {
         uint32_t commandKey = entry.first;
         uint8_t group = (commandKey >> 8) & 0xFF;
         uint8_t command = commandKey & 0xFF;
 
-        ss << "Group: " << static_cast<int>(group)
-           << ", Command: " << static_cast<int>(command) << "\n";
+        std::stringstream ss;
+        ss << group << "," << command;
+        
+        frames.push_back(frame_build(OperationType::SEQ, 1, 0, ss.str()));
     }
 
-    std::string commandList = ss.str();
-    uart_print(commandList, VerbosityLevel::INFO); // Print to UART
-
-    return frame_build(OperationType::VAL, 1, 0, "Commands listed on UART");
+    // Add final VAL frame
+    frames.push_back(frame_build(OperationType::VAL, 1, 0, "COMMAND LIST COMPLETE"));
+    return frames;
 }
+
 
 /**
  * @brief Get firmware build version
  * @param param Empty string expected
  * @param operationType GET
- * @return Frame containing build number
+ * @return One-element vector with result frame
  * @note <b>KBST;0;GET;1;1;;TSBK</b>
  * @note Get the firmware build version
  * @ingroup DiagnosticCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 1
  */
-Frame handle_get_build_version(const std::string& param, OperationType operationType) {
+std::vector<Frame> handle_get_build_version(const std::string& param, OperationType operationType) {
+    std::vector<Frame> frames;
+    
     if (!param.empty()) {
-        return frame_build(OperationType::ERR, 1, 1, "PARAM UNECESSARY");
+        frames.push_back(frame_build(OperationType::ERR, 1, 1, "PARAM_UNNECESSARY"));
+        return frames;
     }
+    
     if (operationType == OperationType::GET) {
-        return frame_build(OperationType::VAL, 1, 1, std::to_string(BUILD_NUMBER));
+        frames.push_back(frame_build(OperationType::VAL, 1, 1, std::to_string(BUILD_NUMBER)));
+        return frames;
     }
-    return frame_build(OperationType::ERR, 1, 1, "INVALID OPERATION");
+    
+    frames.push_back(frame_build(OperationType::ERR, 1, 1, "INVALID_OPERATION"));
+    return frames;
 }
 
 
@@ -74,7 +89,7 @@ Frame handle_get_build_version(const std::string& param, OperationType operation
  *              current level is returned.
  * @param operationType The operation type.  Must be GET to retrieve the current
  *                      level, or SET to set a new level.
- * @return A Frame indicating the result of the operation.
+ * @return Vector containing one frame indicating the result of the operation.
  *         - Success (GET): Frame containing the current verbosity level.
  *         - Success (SET): Frame with "LEVEL SET" message.
  *         - Error: Frame with error message (e.g., "INVALID LEVEL (0-5)", "INVALID FORMAT").
@@ -85,22 +100,29 @@ Frame handle_get_build_version(const std::string& param, OperationType operation
  * @ingroup DiagnosticCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 1.8
  */
-Frame handle_verbosity(const std::string& param, OperationType operationType) {
+std::vector<Frame> handle_verbosity(const std::string& param, OperationType operationType) {
+    std::vector<Frame> frames;
+    
     if (operationType == OperationType::GET && param.empty()) {
-        uart_print("Current verbosity level: " + std::to_string(static_cast<int>(g_uart_verbosity)),  VerbosityLevel::INFO);
-        return frame_build(OperationType::VAL, 1, 8, 
-                         std::to_string(static_cast<int>(g_uart_verbosity)));
+        uart_print("Current verbosity level: " + std::to_string(static_cast<int>(g_uart_verbosity)), 
+                  VerbosityLevel::INFO);
+        frames.push_back(frame_build(OperationType::VAL, 1, 8, 
+                        std::to_string(static_cast<int>(g_uart_verbosity))));
+        return frames;
     }
 
     try {
         int level = std::stoi(param);
         if (level < 0 || level > 5) {
-            return frame_build(OperationType::ERR, 1, 8, "INVALID LEVEL (0-5)");
+            frames.push_back(frame_build(OperationType::ERR, 1, 8, "INVALID LEVEL (0-5)"));
+            return frames;
         }
         g_uart_verbosity = static_cast<VerbosityLevel>(level);
-        return frame_build(OperationType::RES, 1, 8, "SET " + std::to_string(level));
+        frames.push_back(frame_build(OperationType::RES, 1, 8, "SET " + std::to_string(level)));
+        return frames;
     } catch (...) {
-        return frame_build(OperationType::ERR, 1, 8, "INVALID FORMAT");
+        frames.push_back(frame_build(OperationType::ERR, 1, 8, "INVALID FORMAT"));
+        return frames;
     }
 }
 
@@ -114,30 +136,25 @@ Frame handle_verbosity(const std::string& param, OperationType operationType) {
  * @ingroup DiagnosticCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 2
  */
-Frame handle_enter_bootloader_mode(const std::string& param, OperationType operationType) {
+std::vector<Frame> handle_enter_bootloader_mode(const std::string& param, OperationType operationType) {
+    std::vector<Frame> frames;
+    
     if (!param.empty()) {
-        return frame_build(OperationType::ERR, 1, 9, "PARAM UNNECESSARY");
+        frames.push_back(frame_build(OperationType::ERR, 1, 9, "PARAM_UNNECESSARY"));
+        return frames;
     }
 
     if (operationType != OperationType::SET) {
-        return frame_build(OperationType::ERR, 1, 9, "INVALID OPERATION");
+        frames.push_back(frame_build(OperationType::ERR, 1, 9, "INVALID_OPERATION"));
+        return frames;
     }
 
-    // Build the success frame *before* resetting
-    Frame successFrame = frame_build(OperationType::RES, 1, 9, "REBOOT BOOTSEL");
-
-    // Send the success frame
-    uart_print("Sending BOOTSEL confirmation...");
-    send_frame(successFrame); // Assuming you have a sendFrame function
-
-    // Delay to ensure the frame is sent
-    sleep_ms(100);
-
-    uart_print("Entering BOOTSEL mode...", VerbosityLevel::WARNING);
-    reset_usb_boot(0, 0); // Trigger BOOTSEL mode
-
-    // The code will never reach here because the Pico will reset
-    return frame_build(OperationType::RES, 1, 9, "Entering BOOTSEL mode");
+    frames.push_back(frame_build(OperationType::RES, 1, 9, "REBOOT BOOTSEL"));
+    
+    // Set flag to trigger reboot after function returns
+    g_pending_bootloader_reset = true;
+    
+    return frames;
 }
 
 /** @} */ 

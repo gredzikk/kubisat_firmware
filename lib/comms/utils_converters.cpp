@@ -54,6 +54,7 @@ std::string operation_type_to_string(OperationType type) {
         case OperationType::VAL: return "VAL";
         case OperationType::ERR: return "ERR";
         case OperationType::RES: return "RES";
+        case OperationType::SEQ: return "SEQ";
         default: return "UNKNOWN";
     }
 }
@@ -70,6 +71,7 @@ OperationType string_to_operation_type(const std::string& str) {
     if (str == "VAL") return OperationType::VAL;
     if (str == "ERR") return OperationType::ERR;
     if (str == "RES") return OperationType::RES;
+    if (str == "SEQ") return OperationType::SEQ;
     return OperationType::GET; // Default to GET
 }
 

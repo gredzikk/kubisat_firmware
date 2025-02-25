@@ -16,7 +16,7 @@ void send_frame_lora(const Frame& frame);
 
 void split_and_send_message(const uint8_t* data, size_t length);
 
-Frame execute_command(uint32_t commandKey, const std::string& param, OperationType operationType);
+std::vector<Frame> execute_command(uint32_t commandKey, const std::string& param, OperationType operationType);
 
 void frame_process(const std::string& data, Interface interface);
 std::string frame_encode(const Frame& frame);

@@ -1,6 +1,6 @@
 #include "communication.h"
 
-using CommandHandler = std::function<std::string(const std::string&, OperationType)>;
+using CommandHandler = std::function<std::vector<Frame>(const std::string&, OperationType)>;
 extern std::map<uint32_t, CommandHandler> commandHandlers;
 extern volatile uint16_t eventRegister;
 
@@ -121,17 +121,18 @@ void frame_process(const std::string& data, Interface interface) {
         Frame frame = frame_decode(data);
         uint32_t commandKey = (static_cast<uint32_t>(frame.group) << 8) | static_cast<uint32_t>(frame.command);
 
-        Frame responseFrame = execute_command(commandKey, frame.value, frame.operationType);
+        std::vector<Frame> responseFrames = execute_command(commandKey, frame.value, frame.operationType);
 
-        // Send response through the same interface that received the command
-        if (interface == Interface::UART) {
-            send_frame_uart(responseFrame);
-        } else if (interface == Interface::LORA) {
-            send_frame_lora(responseFrame);
+        // Send all responses through the same interface that received the command
+        for (const auto& responseFrame : responseFrames) {
+            if (interface == Interface::UART) {
+                send_frame_uart(responseFrame);
+            } else if (interface == Interface::LORA) {
+                send_frame_lora(responseFrame);
+            }
         }
     } catch (const std::exception& e) {
-        Frame errorFrame = frame_build(OperationType::ERR, 0, 0, e.what()); 
-        // Send error through the same interface
+        Frame errorFrame = frame_build(OperationType::ERR, 0, 0, e.what());
         if (interface == Interface::UART) {
             send_frame_uart(errorFrame);
         } else if (interface == Interface::LORA) {

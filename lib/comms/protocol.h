@@ -51,6 +51,8 @@ enum class OperationType {
     RES,
     /** @brief Get command value. */
     VAL,
+    /** @brief Sequence element response */
+    SEQ,
     /** @brief Error occurred during command execution. */
     ERR,
 
