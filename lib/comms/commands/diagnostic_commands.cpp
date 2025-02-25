@@ -33,20 +33,17 @@ std::vector<Frame> handle_get_commands_list(const std::string& param, OperationT
         return frames;
     }
 
-    // Add each command as a SEQ frame
     for (const auto& entry : commandHandlers) {
         uint32_t commandKey = entry.first;
         uint8_t group = (commandKey >> 8) & 0xFF;
         uint8_t command = commandKey & 0xFF;
 
-        std::stringstream ss;
-        ss << group << "," << command;
-        
-        frames.push_back(frame_build(OperationType::SEQ, 1, 0, ss.str()));
+        std::string commandDetails = std::to_string(group) + "-" + std::to_string(command);
+        frames.push_back(frame_build(OperationType::SEQ, 1, 0, commandDetails));
     }
 
     // Add final VAL frame
-    frames.push_back(frame_build(OperationType::VAL, 1, 0, "COMMAND LIST COMPLETE"));
+    frames.push_back(frame_build(OperationType::VAL, 1, 0, "SEQ_DONE"));
     return frames;
 }
 

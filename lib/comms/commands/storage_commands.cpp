@@ -175,7 +175,7 @@ std::vector<Frame> handle_list_files(const std::string& param, OperationType ope
                 frames.push_back(frame_build(OperationType::SEQ, STORAGE_GROUP, LIST_FILES_COMMAND, fileInfo));
             }
             closedir(dir);
-            frames.push_back(frame_build(OperationType::VAL, STORAGE_GROUP, LIST_FILES_COMMAND, "FILE_LIST_DONE"));
+            frames.push_back(frame_build(OperationType::VAL, STORAGE_GROUP, LIST_FILES_COMMAND, "SEQ_DONE"));
             return frames;
         } else {
             frames.push_back(frame_build(OperationType::ERR, STORAGE_GROUP, LIST_FILES_COMMAND, "Could not open directory for file info"));
