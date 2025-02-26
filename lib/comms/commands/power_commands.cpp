@@ -1,5 +1,14 @@
 #include "communication.h"
 
+#define POWER_GROUP 2
+#define POWER_MANAGER_IDS 0
+#define VOLTAGE_BATTERY 2
+#define VOLTAGE_MAIN 3
+#define CHARGE_USB 4
+#define CHARGE_SOLAR 5
+#define CHARGE_TOTAL 6
+#define DRAW_TOTAL 7
+
 /**
  * @defgroup PowerCommands Power Commands
  * @brief Commands for monitoring power subsystem and battery management
@@ -20,19 +29,23 @@
  */
 std::vector<Frame> handle_get_power_manager_ids(const std::string& param, OperationType operationType) {
     std::vector<Frame> frames;
+    std::string error_msg;
+
     if (!param.empty()) {
-        frames.push_back(frame_build(OperationType::ERR, 2, 0, "PARAM UNECESSARY"));
+        error_msg = error_code_to_string(ErrorCode::PARAM_UNNECESSARY);
+        frames.push_back(frame_build(OperationType::ERR, POWER_GROUP, POWER_MANAGER_IDS, error_msg));
         return frames;
     }
 
     if (!(operationType == OperationType::GET)) {
-        frames.push_back(frame_build(OperationType::ERR, 2, 0, "INVALID OPERATION"));
+        error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
+        frames.push_back(frame_build(OperationType::ERR, POWER_GROUP, POWER_MANAGER_IDS, error_msg));
         return frames;
     }
 
     extern PowerManager powerManager;
-    std::string powerManagerIDS = powerManager.read_device_ids();
-    frames.push_back(frame_build(OperationType::VAL, 2, 0, powerManagerIDS));
+    std::string power_manager_ids = powerManager.read_device_ids();
+    frames.push_back(frame_build(OperationType::VAL, POWER_GROUP, POWER_MANAGER_IDS, power_manager_ids));
     return frames;
 }
 
@@ -50,19 +63,23 @@ std::vector<Frame> handle_get_power_manager_ids(const std::string& param, Operat
  */
 std::vector<Frame> handle_get_voltage_battery(const std::string& param, OperationType operationType) {
     std::vector<Frame> frames;
+    std::string error_msg;
+
     if (!param.empty()) {
-        frames.push_back(frame_build(OperationType::ERR, 2, 2, "PARAM UNECESSARY"));
+        error_msg = error_code_to_string(ErrorCode::PARAM_UNNECESSARY);
+        frames.push_back(frame_build(OperationType::ERR, POWER_GROUP, VOLTAGE_BATTERY, error_msg));
         return frames;
     }
 
     if (!(operationType == OperationType::GET)) {
-        frames.push_back(frame_build(OperationType::ERR, 2, 2, "NOT ALLOWED"));
+        error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
+        frames.push_back(frame_build(OperationType::ERR, POWER_GROUP, VOLTAGE_BATTERY, error_msg));
         return frames;
     }
 
     extern PowerManager powerManager;
     float voltage = powerManager.get_voltage_battery();
-    frames.push_back(frame_build(OperationType::VAL, 2, 2, std::to_string(voltage), ValueUnit::VOLT));
+    frames.push_back(frame_build(OperationType::VAL, POWER_GROUP, VOLTAGE_BATTERY, std::to_string(voltage), ValueUnit::VOLT));
     return frames;
 }
 
@@ -80,19 +97,23 @@ std::vector<Frame> handle_get_voltage_battery(const std::string& param, Operatio
  */
 std::vector<Frame> handle_get_voltage_5v(const std::string& param, OperationType operationType) {
     std::vector<Frame> frames;
+    std::string error_msg;
+
     if (!param.empty()) {
-        frames.push_back(frame_build(OperationType::ERR, 2, 3, "PARAM UNECESSARY"));
+        error_msg = error_code_to_string(ErrorCode::PARAM_UNNECESSARY);
+        frames.push_back(frame_build(OperationType::ERR, POWER_GROUP, VOLTAGE_MAIN, error_msg));
         return frames;
     }
 
     if (!(operationType == OperationType::GET)) {
-        frames.push_back(frame_build(OperationType::ERR, 2, 3, "NOT ALLOWED"));
+        error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
+        frames.push_back(frame_build(OperationType::ERR, POWER_GROUP, VOLTAGE_MAIN, error_msg));
         return frames;
     }
 
     extern PowerManager powerManager;
     float voltage = powerManager.get_voltage_5v();
-    frames.push_back(frame_build(OperationType::VAL, 2, 3, std::to_string(voltage), ValueUnit::VOLT));
+    frames.push_back(frame_build(OperationType::VAL, POWER_GROUP, VOLTAGE_MAIN, std::to_string(voltage), ValueUnit::VOLT));
     return frames;
 }
 
@@ -110,19 +131,23 @@ std::vector<Frame> handle_get_voltage_5v(const std::string& param, OperationType
  */
 std::vector<Frame> handle_get_current_charge_usb(const std::string& param, OperationType operationType) {
     std::vector<Frame> frames;
+    std::string error_msg;
+
     if (!param.empty()) {
-        frames.push_back(frame_build(OperationType::ERR, 2, 4, "PARAM UNECESSARY"));
+        error_msg = error_code_to_string(ErrorCode::PARAM_UNNECESSARY);
+        frames.push_back(frame_build(OperationType::ERR, POWER_GROUP, CHARGE_USB, error_msg));
         return frames;
     }
 
     if (!(operationType == OperationType::GET)) {
-        frames.push_back(frame_build(OperationType::ERR, 2, 4, "NOT ALLOWED"));
+        error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
+        frames.push_back(frame_build(OperationType::ERR, POWER_GROUP, CHARGE_USB, error_msg));
         return frames;
     }
 
     extern PowerManager powerManager;
-    float chargeCurrent = powerManager.get_current_charge_usb();
-    frames.push_back(frame_build(OperationType::VAL, 2, 4, std::to_string(chargeCurrent), ValueUnit::MILIAMP));
+    float charge_current = powerManager.get_current_charge_usb();
+    frames.push_back(frame_build(OperationType::VAL, POWER_GROUP, CHARGE_USB, std::to_string(charge_current), ValueUnit::MILIAMP));
     return frames;
 }
 
@@ -140,19 +165,23 @@ std::vector<Frame> handle_get_current_charge_usb(const std::string& param, Opera
  */
 std::vector<Frame> handle_get_current_charge_solar(const std::string& param, OperationType operationType) {
     std::vector<Frame> frames;
+    std::string error_msg;
+
     if (!param.empty()) {
-        frames.push_back(frame_build(OperationType::ERR, 2, 5, "PARAM UNECESSARY"));
+        error_msg = error_code_to_string(ErrorCode::PARAM_UNNECESSARY);
+        frames.push_back(frame_build(OperationType::ERR, POWER_GROUP, CHARGE_SOLAR, error_msg));
         return frames;
     }
 
     if (!(operationType == OperationType::GET)) {
-        frames.push_back(frame_build(OperationType::ERR, 2, 5, "NOT ALLOWED"));
+        error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
+        frames.push_back(frame_build(OperationType::ERR, POWER_GROUP, CHARGE_SOLAR, error_msg));
         return frames;
     }
 
     extern PowerManager powerManager;
-    float chargeCurrent = powerManager.get_current_charge_solar();
-    frames.push_back(frame_build(OperationType::VAL, 2, 5, std::to_string(chargeCurrent), ValueUnit::MILIAMP));
+    float charge_current = powerManager.get_current_charge_solar();
+    frames.push_back(frame_build(OperationType::VAL, POWER_GROUP, CHARGE_SOLAR, std::to_string(charge_current), ValueUnit::MILIAMP));
     return frames;
 }
 
@@ -170,19 +199,23 @@ std::vector<Frame> handle_get_current_charge_solar(const std::string& param, Ope
  */
 std::vector<Frame> handle_get_current_charge_total(const std::string& param, OperationType operationType) {
     std::vector<Frame> frames;
+    std::string error_msg;
+
     if (!param.empty()) {
-        frames.push_back(frame_build(OperationType::ERR, 2, 6, "PARAM UNECESSARY"));
+        error_msg = error_code_to_string(ErrorCode::PARAM_UNNECESSARY);
+        frames.push_back(frame_build(OperationType::ERR, POWER_GROUP, CHARGE_TOTAL, error_msg));
         return frames;
     }
 
     if (!(operationType == OperationType::GET)) {
-        frames.push_back(frame_build(OperationType::ERR, 2, 6, "NOT ALLOWED"));
+        error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
+        frames.push_back(frame_build(OperationType::ERR, POWER_GROUP, CHARGE_TOTAL, error_msg));
         return frames;
     }
 
     extern PowerManager powerManager;
-    float chargeCurrent = powerManager.get_current_charge_total();
-    frames.push_back(frame_build(OperationType::VAL, 2, 6, std::to_string(chargeCurrent), ValueUnit::MILIAMP));
+    float charge_current = powerManager.get_current_charge_total();
+    frames.push_back(frame_build(OperationType::VAL, POWER_GROUP, CHARGE_TOTAL, std::to_string(charge_current), ValueUnit::MILIAMP));
     return frames;
 }
 
@@ -200,19 +233,23 @@ std::vector<Frame> handle_get_current_charge_total(const std::string& param, Ope
  */
 std::vector<Frame> handle_get_current_draw(const std::string& param, OperationType operationType) {
     std::vector<Frame> frames;
+    std::string error_msg;
+
     if (!param.empty()) {
-        frames.push_back(frame_build(OperationType::ERR, 2, 7, "PARAM UNECESSARY"));
+        error_msg = error_code_to_string(ErrorCode::PARAM_UNNECESSARY);
+        frames.push_back(frame_build(OperationType::ERR, POWER_GROUP, DRAW_TOTAL, error_msg));
         return frames;
     }
 
     if (!(operationType == OperationType::GET)) {
-        frames.push_back(frame_build(OperationType::ERR, 2, 7, "NOT ALLOWED"));
+        error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
+        frames.push_back(frame_build(OperationType::ERR, POWER_GROUP, DRAW_TOTAL, error_msg));
         return frames;
     }
 
     extern PowerManager powerManager;
-    float currentDraw = powerManager.get_current_draw();
-    frames.push_back(frame_build(OperationType::VAL, 2, 7, std::to_string(currentDraw), ValueUnit::MILIAMP));
+    float current_draw = powerManager.get_current_draw();
+    frames.push_back(frame_build(OperationType::VAL, POWER_GROUP, DRAW_TOTAL, std::to_string(current_draw), ValueUnit::MILIAMP));
     return frames;
 }
 /** @} */ // end of PowerCommands group

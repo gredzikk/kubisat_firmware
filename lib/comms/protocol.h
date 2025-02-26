@@ -39,6 +39,24 @@ const char DELIMITER = ';';
 
 
 /**
+ * @enum ErrorCode
+ * @brief Standard error codes for command responses
+ */
+enum class ErrorCode {
+    PARAM_UNNECESSARY,    // Parameter provided but not needed
+    PARAM_REQUIRED,       // Required parameter missing
+    PARAM_INVALID,        // Parameter has invalid format or value
+    INVALID_OPERATION,    // Operation not allowed for this command
+    NOT_ALLOWED,          // Operation not permitted
+    INVALID_FORMAT,       // Input format is incorrect
+    INVALID_VALUE,        // Value is outside expected range
+    FAIL_TO_SET,          // Failed to set provided value
+    INTERNAL_FAIL_TO_READ,// Failed to read from device in remote
+    UNKNOWN_ERROR         // Generic error
+};
+
+
+/**
  * @enum OperationType
  * @brief Represents the type of operation being performed.
  */
@@ -218,6 +236,7 @@ struct Frame {
 };
 
 std::string exception_type_to_string(ExceptionType type);
+std::string error_code_to_string(ErrorCode code);
 std::string operation_type_to_string(OperationType type);
 OperationType string_to_operation_type(const std::string& str);
 std::vector<uint8_t> hex_string_to_bytes(const std::string& hexString);

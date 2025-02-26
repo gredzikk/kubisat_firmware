@@ -76,6 +76,27 @@ OperationType string_to_operation_type(const std::string& str) {
 }
 
 /**
+ * @brief Converts an ErrorCode to its string representation
+ * @param code The error code
+ * @return String representation of the error code
+ */
+std::string error_code_to_string(ErrorCode code) {
+    switch (code) {
+        case ErrorCode::PARAM_UNNECESSARY:      return "PARAM_UNNECESSARY";
+        case ErrorCode::PARAM_REQUIRED:         return "PARAM_REQUIRED";
+        case ErrorCode::PARAM_INVALID:          return "PARAM_INVALID";
+        case ErrorCode::INVALID_OPERATION:      return "INVALID_OPERATION";
+        case ErrorCode::NOT_ALLOWED:            return "NOT_ALLOWED";
+        case ErrorCode::INVALID_FORMAT:         return "INVALID_FORMAT";
+        case ErrorCode::INVALID_VALUE:          return "INVALID_VALUE";
+        case ErrorCode::FAIL_TO_SET:            return "FAIL_TO_SET";
+        case ErrorCode::INTERNAL_FAIL_TO_READ:  return "INTERNAL_FAIL_TO_READ";
+        default:                                return "UNKNOWN_ERROR";
+    }
+}
+
+
+/**
  * @brief Converts a hex string to a vector of bytes.
  * @param hexString The hex string to convert.
  * @return A vector of bytes representing the hex string.

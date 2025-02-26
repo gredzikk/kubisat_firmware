@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include "pico/sync.h"
+#include <ctime>
 
 class NMEAData {
 public:
@@ -14,6 +15,10 @@ public:
 
     std::vector<std::string> get_rmc_tokens() const;
     std::vector<std::string> get_gga_tokens() const;
+
+    bool has_valid_time() const;
+
+    time_t get_unix_time() const;
 
 private:
     std::vector<std::string> rmc_tokens_;

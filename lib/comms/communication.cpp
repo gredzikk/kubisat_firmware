@@ -17,18 +17,18 @@ unsigned long interval = 0;
 bool initialize_radio() {
     LoRa.set_pins(lora_cs_pin, lora_reset_pin, lora_irq_pin);
     long frequency = 433E6;
-    bool initStatus = false;
+    bool init_status = false;
     if (!LoRa.begin(frequency))
     {
         uart_print("LoRa init failed. Check your connections.", VerbosityLevel::WARNING);
-        initStatus = false;
+        init_status = false;
     } else {
         uart_print("LoRa initialized with frequency " + std::to_string(frequency), VerbosityLevel::INFO);
-        initStatus = true;
+        init_status = true;
     }
 
-    EventEmitter::emit(EventGroup::COMMS, initStatus ? CommsEvent::RADIO_INIT : CommsEvent::RADIO_ERROR);
+    EventEmitter::emit(EventGroup::COMMS, init_status ? CommsEvent::RADIO_INIT : CommsEvent::RADIO_ERROR);
 
-    return initStatus;
+    return init_status;
 }
 

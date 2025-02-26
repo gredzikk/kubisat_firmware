@@ -8,60 +8,60 @@
 
 /**
  * @brief Callback function for handling received LoRa packets.
- * @param packetSize The size of the received packet.
+ * @param packet_size The size of the received packet.
  * @details Reads the received LoRa packet, extracts metadata, validates the lora_address_remote and local addresses,
  *          extracts the frame data, and processes it. Prints raw hex values for debugging.
  */
-void on_receive(int packetSize) {
-    if (packetSize == 0) return;
+void on_receive(int packet_size) {
+    if (packet_size == 0) return;
 
     uint8_t buffer[256];
-    int bytesRead = 0;
+    int bytes_read = 0;
     
-    while (LoRa.available() && bytesRead < packetSize) {
-        buffer[bytesRead++] = LoRa.read();
+    while (LoRa.available() && bytes_read < packet_size) {
+        buffer[bytes_read++] = LoRa.read();
     }
     
     // Extract LoRa metadata
-    uint8_t receivedDestination = buffer[0];
-    uint8_t receivedLocalAddress = buffer[1];
+    uint8_t received_destination = buffer[0];
+    uint8_t received_local_address = buffer[1];
     
     // Validate metadata (optional, for security)
-    if (receivedDestination != lora_address_local) {
+    if (received_destination != lora_address_local) {
         uart_print("Error: Destination address mismatch!", VerbosityLevel::ERROR);
         return;
     }
     
-    if (receivedLocalAddress != lora_address_remote) {
+    if (received_local_address != lora_address_remote) {
         uart_print("Error: Local address mismatch!", VerbosityLevel::ERROR);
         return;
     }
 
     // Find the starting index of the actual frame data
-    int startIndex = 2; // Start after the metadata
+    int start_index = 2; // Start after the metadata
     
     // Extract the frame data
-    std::string received = std::string(reinterpret_cast<char*>(buffer + startIndex), bytesRead - startIndex);
+    std::string received = std::string(reinterpret_cast<char*>(buffer + start_index), bytes_read - start_index);
     
     if (received.empty()) return;
     
     // Debug: Print raw hex values
-    std::stringstream hexDump;
-    hexDump << "Raw bytes: ";
-    for (int i = 0; i < bytesRead; i++) {
-        hexDump << std::hex << std::setfill('0') << std::setw(2) 
+    std::stringstream hex_dump;
+    hex_dump << "Raw bytes: ";
+    for (int i = 0; i < bytes_read; i++) {
+        hex_dump << std::hex << std::setfill('0') << std::setw(2) 
                 << static_cast<int>(buffer[i]) << " ";
     }
-    uart_print(hexDump.str(), VerbosityLevel::DEBUG);
+    uart_print(hex_dump.str(), VerbosityLevel::DEBUG);
     
     // Find frame boundaries
-    size_t headerPos = received.find(FRAME_BEGIN);
-    size_t footerPos = received.find(FRAME_END);
+    size_t header_pos = received.find(FRAME_BEGIN);
+    size_t footer_pos = received.find(FRAME_END);
     
-    if (headerPos != std::string::npos && footerPos != std::string::npos && footerPos > headerPos) {
-        std::string frameData = received.substr(headerPos, footerPos + FRAME_END.length() - headerPos);
-        uart_print("Extracted frame (length=" + std::to_string(frameData.length()) + "): " + frameData, VerbosityLevel::DEBUG);
-        frame_process(frameData, Interface::LORA);  
+    if (header_pos != std::string::npos && footer_pos != std::string::npos && footer_pos > header_pos) {
+        std::string frame_data = received.substr(header_pos, footer_pos + FRAME_END.length() - header_pos);
+        uart_print("Extracted frame (length=" + std::to_string(frame_data.length()) + "): " + frame_data, VerbosityLevel::DEBUG);
+        frame_process(frame_data, Interface::LORA);  
     } else {
         uart_print("No valid frame found in received data", VerbosityLevel::WARNING);
     }
@@ -74,17 +74,17 @@ void on_receive(int packetSize) {
  *          character is received.
  */
 void handle_uart_input() {
-    static std::string uartBuffer;
+    static std::string uart_buffer;
 
     while (uart_is_readable(DEBUG_UART_PORT)) {
         char c = uart_getc(DEBUG_UART_PORT);
 
         if (c == '\r' || c == '\n') {
-            uart_print("Received UART string: " + uartBuffer, VerbosityLevel::DEBUG);
-            frame_process(uartBuffer, Interface::UART); 
-            uartBuffer.clear();
+            uart_print("Received UART string: " + uart_buffer, VerbosityLevel::DEBUG);
+            frame_process(uart_buffer, Interface::UART); 
+            uart_buffer.clear();
         } else {
-            uartBuffer += c;
+            uart_buffer += c;
         }
     }
 }

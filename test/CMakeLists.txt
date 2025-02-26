@@ -9,21 +9,33 @@ add_executable(test_runner
     ${CMAKE_SOURCE_DIR}/unity/src/unity.c 
 )
 
+# Include all directories needed
 target_include_directories(test_runner PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_SOURCE_DIR}
     ${CMAKE_SOURCE_DIR}/unity/src
     ${CMAKE_SOURCE_DIR}/lib
-    ${CMAKE_SOURCE_DIR}/lib/comms 
+    ${CMAKE_SOURCE_DIR}/lib/comms
     ${CMAKE_SOURCE_DIR}/lib/powerman
+    ${CMAKE_SOURCE_DIR}/lib/sensors
+    ${CMAKE_SOURCE_DIR}/lib/storage
+    ${CMAKE_SOURCE_DIR}/lib/location
+    ${CMAKE_SOURCE_DIR}/lib/clock
 )
 
+# Link all libraries used by the main application
 target_link_libraries(test_runner PRIVATE
     pico_stdlib
     hardware_spi
     hardware_i2c
     hardware_uart
-    Comms_lib 
+    pico_multicore
+    Comms_lib
     PowerManager_lib
+    EventManager_lib
+    Sensors_lib
+    Storage_lib
+    Location_lib
+    Clock_lib
+    # Add any other libraries used by main.cpp
 )
-

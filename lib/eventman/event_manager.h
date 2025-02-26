@@ -127,7 +127,9 @@ enum class ClockEvent : uint8_t {
     /** @brief Clock changed event. */
     CHANGED  = 0x01,
     /** @brief Clock synchronized with GPS event. */
-    GPS_SYNC = 0x02
+    GPS_SYNC = 0x02,
+    /** @brief Sync interval but data not ready */
+    GPS_SYNC_DATA_NOT_READY = 0x03
 };
 
 

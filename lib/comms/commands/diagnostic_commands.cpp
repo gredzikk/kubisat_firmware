@@ -22,42 +22,43 @@ extern volatile bool g_pending_bootloader_reset;
  */
 std::vector<Frame> handle_get_commands_list(const std::string& param, OperationType operationType) {
     std::vector<Frame> frames;
+    std::string error_msg;
 
     if (!param.empty()) {
-        frames.push_back(frame_build(OperationType::ERR, 1, 0, "PARAM_UNNECESSARY"));
+        error_msg = error_code_to_string(ErrorCode::PARAM_UNNECESSARY);
+        frames.push_back(frame_build(OperationType::ERR, 1, 0, error_msg));
         return frames;
     }
 
     if (!(operationType == OperationType::GET)) {
-        frames.push_back(frame_build(OperationType::ERR, 1, 0, "INVALID_OPERATION"));
+        error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
+        frames.push_back(frame_build(OperationType::ERR, 1, 0, error_msg));
         return frames;
     }
 
-    std::string combinedCommandDetails;
-    for (const auto& entry : commandHandlers) {
-        uint32_t commandKey = entry.first;
-        uint8_t group = (commandKey >> 8) & 0xFF;
-        uint8_t command = commandKey & 0xFF;
+    std::string combined_command_details;
+    for (const auto& entry : command_handlers) {
+        uint32_t command_key = entry.first;
+        uint8_t group = (command_key >> 8) & 0xFF;
+        uint8_t command = command_key & 0xFF;
 
-        std::string commandDetails = std::to_string(group) + "." + std::to_string(command);
+        std::string command_details = std::to_string(group) + "." + std::to_string(command);
 
-        if (combinedCommandDetails.length() + commandDetails.length() + 1 > 100) {
-            frames.push_back(frame_build(OperationType::SEQ, 1, 0, combinedCommandDetails));
-            combinedCommandDetails = "";
+        if (combined_command_details.length() + command_details.length() + 1 > 100) {
+            frames.push_back(frame_build(OperationType::SEQ, 1, 0, combined_command_details));
+            combined_command_details = "";
         }
 
-        if (!combinedCommandDetails.empty()) {
-            combinedCommandDetails += "-";
+        if (!combined_command_details.empty()) {
+            combined_command_details += "-";
         }
-        combinedCommandDetails += commandDetails;
+        combined_command_details += command_details;
     }
 
-    // Add any remaining commands
-    if (!combinedCommandDetails.empty()) {
-        frames.push_back(frame_build(OperationType::SEQ, 1, 0, combinedCommandDetails));
+    if (!combined_command_details.empty()) {
+        frames.push_back(frame_build(OperationType::SEQ, 1, 0, combined_command_details));
     }
 
-    // Add final VAL frame
     frames.push_back(frame_build(OperationType::VAL, 1, 0, "SEQ_DONE"));
     return frames;
 }
@@ -75,9 +76,11 @@ std::vector<Frame> handle_get_commands_list(const std::string& param, OperationT
  */
 std::vector<Frame> handle_get_build_version(const std::string& param, OperationType operationType) {
     std::vector<Frame> frames;
-    
+    std::string error_msg;
+
     if (!param.empty()) {
-        frames.push_back(frame_build(OperationType::ERR, 1, 1, "PARAM_UNNECESSARY"));
+        error_msg = error_code_to_string(ErrorCode::PARAM_UNNECESSARY);
+        frames.push_back(frame_build(OperationType::ERR, 1, 1, error_msg));
         return frames;
     }
     
@@ -86,7 +89,8 @@ std::vector<Frame> handle_get_build_version(const std::string& param, OperationT
         return frames;
     }
     
-    frames.push_back(frame_build(OperationType::ERR, 1, 1, "INVALID_OPERATION"));
+    error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
+    frames.push_back(frame_build(OperationType::ERR, 1, 1, error_msg));
     return frames;
 }
 
@@ -114,7 +118,8 @@ std::vector<Frame> handle_get_build_version(const std::string& param, OperationT
  */
 std::vector<Frame> handle_verbosity(const std::string& param, OperationType operationType) {
     std::vector<Frame> frames;
-    
+    std::string error_msg;
+
     if (operationType == OperationType::GET && param.empty()) {
         uart_print("Current verbosity level: " + std::to_string(static_cast<int>(g_uart_verbosity)), 
                   VerbosityLevel::INFO);
@@ -126,14 +131,16 @@ std::vector<Frame> handle_verbosity(const std::string& param, OperationType oper
     try {
         int level = std::stoi(param);
         if (level < 0 || level > 5) {
-            frames.push_back(frame_build(OperationType::ERR, 1, 8, "INVALID LEVEL (0-5)"));
+            error_msg = error_code_to_string(ErrorCode::PARAM_INVALID);
+            frames.push_back(frame_build(OperationType::ERR, 1, 8, error_msg));
             return frames;
         }
         g_uart_verbosity = static_cast<VerbosityLevel>(level);
         frames.push_back(frame_build(OperationType::RES, 1, 8, "SET " + std::to_string(level)));
         return frames;
     } catch (...) {
-        frames.push_back(frame_build(OperationType::ERR, 1, 8, "INVALID FORMAT"));
+        error_msg = error_code_to_string(ErrorCode::INVALID_FORMAT);
+        frames.push_back(frame_build(OperationType::ERR, 1, 8, error_msg));
         return frames;
     }
 }
@@ -150,14 +157,17 @@ std::vector<Frame> handle_verbosity(const std::string& param, OperationType oper
  */
 std::vector<Frame> handle_enter_bootloader_mode(const std::string& param, OperationType operationType) {
     std::vector<Frame> frames;
-    
+    std::string error_msg;
+
     if (param != "USB") {
-    frames.push_back(frame_build(OperationType::ERR, 1, 9, "PARAM_INVALID"));
+        error_msg = error_code_to_string(ErrorCode::PARAM_INVALID);
+        frames.push_back(frame_build(OperationType::ERR, 1, 9, error_msg));
         return frames;
     }
 
     if (operationType != OperationType::SET) {
-        frames.push_back(frame_build(OperationType::ERR, 1, 9, "INVALID_OPERATION"));
+        error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
+        frames.push_back(frame_build(OperationType::ERR, 1, 9, error_msg));
         return frames;
     }
 

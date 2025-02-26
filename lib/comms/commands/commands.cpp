@@ -24,7 +24,7 @@ using CommandMap = std::map<uint32_t, CommandHandler>;
  * @brief Global map of all command handlers
  * @details Maps command keys (group << 8 | command) to their handler functions
  */
-CommandMap commandHandlers = {
+CommandMap command_handlers = {
     {((static_cast<uint32_t>(1) << 8) | static_cast<uint32_t>(0)), handle_get_commands_list},               // Group 1, Command 0
     {((static_cast<uint32_t>(1) << 8) | static_cast<uint32_t>(1)), handle_get_build_version},               // Group 1, Command 1
     {((static_cast<uint32_t>(1) << 8) | static_cast<uint32_t>(8)), handle_verbosity},                       // Group 1, Command 9
@@ -61,8 +61,8 @@ CommandMap commandHandlers = {
  * @details Looks up the command handler in commandHandlers map and executes it
  */
 std::vector<Frame> execute_command(uint32_t commandKey, const std::string& param, OperationType operationType) {
-    auto it = commandHandlers.find(commandKey);
-    if (it != commandHandlers.end()) {
+    auto it = command_handlers.find(commandKey);
+    if (it != command_handlers.end()) {
         CommandHandler handler = it->second;
         return handler(param, operationType);
     } else {

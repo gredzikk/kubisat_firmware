@@ -32,8 +32,11 @@
  */
 std::vector<Frame> handle_get_last_events(const std::string& param, OperationType operationType) {
     std::vector<Frame> frames;
+    std::string error_msg;
+
     if (operationType != OperationType::GET) {
-        frames.push_back(frame_build(OperationType::ERR, 5, 1, "INVALID OPERATION"));
+        error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
+        frames.push_back(frame_build(OperationType::ERR, 5, 1, error_msg));
         return frames;
     }
     size_t count = 10; // Default number of events to return
@@ -41,37 +44,39 @@ std::vector<Frame> handle_get_last_events(const std::string& param, OperationTyp
         try {
             count = std::stoul(param);
             if (count > EVENT_BUFFER_SIZE) {
-                frames.push_back(frame_build(OperationType::ERR, 5, 1, "INVALID COUNT"));
+                error_msg = error_code_to_string(ErrorCode::INVALID_VALUE);
+                frames.push_back(frame_build(OperationType::ERR, 5, 1, error_msg));
                 return frames;
             }
         } catch (...) {
-            frames.push_back(frame_build(OperationType::ERR, 5, 1, "INVALID PARAMETER"));
+            error_msg = error_code_to_string(ErrorCode::PARAM_INVALID);
+            frames.push_back(frame_build(OperationType::ERR, 5, 1, error_msg));
             return frames;
         }
     }
 
     size_t available = eventManager.get_event_count();
-    size_t toReturn = (count == 0) ? available : std::min(count, available);
-    size_t eventIndex = available;
+    size_t to_return = (count == 0) ? available : std::min(count, available);
+    size_t event_index = available;
 
-    while (toReturn > 0) {
+    while (to_return > 0) {
         std::stringstream ss;
         ss << std::hex << std::uppercase << std::setfill('0');
-        size_t eventsInFrame = 0;
+        size_t events_in_frame = 0;
 
-        for (size_t i = 0; i < 10 && toReturn > 0; ++i) {
-            eventIndex--;
-            const EventLog& event = eventManager.get_event(eventIndex);
+        for (size_t i = 0; i < 10 && to_return > 0; ++i) {
+            event_index--;
+            const EventLog& event = eventManager.get_event(event_index);
 
             ss << std::setw(4) << event.id
                << std::setw(8) << event.timestamp
                << std::setw(2) << static_cast<int>(event.group)
                << std::setw(2) << static_cast<int>(event.event);
 
-            if (toReturn > 1) ss << "-";
+            if (to_return > 1) ss << "-";
 
-            toReturn--;
-            eventsInFrame++;
+            to_return--;
+            events_in_frame++;
         }
         frames.push_back(frame_build(OperationType::SEQ, 5, 1, ss.str()));
     }
@@ -94,8 +99,11 @@ std::vector<Frame> handle_get_last_events(const std::string& param, OperationTyp
  */
 std::vector<Frame> handle_get_event_count(const std::string& param, OperationType operationType) {
     std::vector<Frame> frames;
+    std::string error_msg;
+
     if (operationType != OperationType::GET || !param.empty()) {
-        frames.push_back(frame_build(OperationType::ERR, 5, 2, "INVALID REQUEST"));
+        error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
+        frames.push_back(frame_build(OperationType::ERR, 5, 2, error_msg));
         return frames;
     }
     frames.push_back(frame_build(OperationType::VAL, 5, 2, std::to_string(eventManager.get_event_count())));

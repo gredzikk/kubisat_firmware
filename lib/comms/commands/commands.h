@@ -7,7 +7,6 @@
 #include <map>
 #include "protocol.h"
 
-
 // CLOCK
 std::vector<Frame> handle_time(const std::string& param, OperationType operationType);
 std::vector<Frame> handle_timezone_offset(const std::string& param, OperationType operationType);
@@ -50,6 +49,6 @@ std::vector<Frame> handle_file_download(const std::string& param, OperationType 
 std::vector<Frame> handle_mount(const std::string& param, OperationType operationType);
 
 std::vector<Frame> execute_command(uint32_t commandKey, const std::string& param, OperationType operationType);
-extern std::map<uint32_t, std::function<std::vector<Frame>(const std::string&, OperationType)>> commandHandlers;
+extern std::map<uint32_t, std::function<std::vector<Frame>(const std::string&, OperationType)>> command_handlers;
 
 #endif

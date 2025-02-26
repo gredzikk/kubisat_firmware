@@ -24,29 +24,24 @@ void send_message(string outgoing)
     LoRa.print(send);         // add payload
     LoRa.endPacket(false);    // finish packet and send it
 
-    std::string messageToLog = "Sent message of size " + std::to_string(n);
-    messageToLog += " to 0x" + std::to_string(lora_address_remote);
-    messageToLog += " containing: " + string(send);
+    std::string message_to_log = "Sent message of size " + std::to_string(n);
+    message_to_log += " to 0x" + std::to_string(lora_address_remote);
+    message_to_log += " containing: " + string(send);
 
-    uart_print(messageToLog, VerbosityLevel::DEBUG);
+    uart_print(message_to_log, VerbosityLevel::DEBUG);
     
     LoRa.flush();
 }
 
 
 void send_frame_lora(const Frame& frame) {
-    std::string encodedFrame = frame_encode(frame);
-    send_message(encodedFrame);
+    std::string encoded_frame = frame_encode(frame);
+    send_message(encoded_frame);
 }
 
 void send_frame_uart(const Frame& frame) {
-    std::string encodedFrame = frame_encode(frame);
-    uart_print(encodedFrame);
-}
-
-[[deprecated("Use send_frame_lora or send_frame_uart instead")]]
-void send_frame(const Frame& frame) {
-    send_frame_lora(frame);
+    std::string encoded_frame = frame_encode(frame);
+    uart_print(encoded_frame);
 }
 
 
@@ -62,11 +57,11 @@ void split_and_send_message(const uint8_t* data, size_t length)
     size_t offset = 0;
     while (offset < length)
     {
-        size_t chunkSize = ((length - offset) < MAX_PKT_SIZE) ? (length - offset) : MAX_PKT_SIZE;
+        size_t chunk_size = ((length - offset) < MAX_PKT_SIZE) ? (length - offset) : MAX_PKT_SIZE;
         LoRa.beginPacket();
-        LoRa.write(&data[offset], chunkSize);
+        LoRa.write(&data[offset], chunk_size);
         LoRa.endPacket();
-        offset += chunkSize;
+        offset += chunk_size;
         sleep_ms(100);
     }
 }

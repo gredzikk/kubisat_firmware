@@ -7,7 +7,7 @@ DS3231 systemClock(MAIN_I2C_PORT);
 volatile bool g_pending_bootloader_reset = false;
 
 char buffer[BUFFER_SIZE];
-int bufferIndex = 0;
+int buffer_index = 0;
 
 
 void process_pending_actions() {    
@@ -21,10 +21,25 @@ void process_pending_actions() {
 void core1_entry() {
     uart_print("Starting core 1", VerbosityLevel::DEBUG);
     EventEmitter::emit(EventGroup::SYSTEM, SystemEvent::CORE1_START);
+    
+    uint32_t last_clock_check_time = 0;
+    const uint32_t CLOCK_CHECK_INTERVAL_MS = 60000; 
+    
     while (true) {
         collect_gps_data();
-        check_power_events(powerManager); 
+        check_power_events(powerManager);
         process_pending_actions();
+        
+        uint32_t currentTime = to_ms_since_boot(get_absolute_time());
+        if (currentTime - last_clock_check_time >= CLOCK_CHECK_INTERVAL_MS) {
+            last_clock_check_time = currentTime;
+            
+            if (systemClock.is_sync_needed()) {
+                uart_print("Clock sync interval reached, attempting sync", VerbosityLevel::INFO);
+                systemClock.sync_clock_with_gps();
+            }
+        }
+        
         sleep_ms(10);
     }
 }
@@ -57,23 +72,23 @@ bool init_systems() {
     
     system("color");
 
-    bool radioInitSuccess = false;
-    radioInitSuccess = initialize_radio();
+    bool radio_init_status = false;
+    radio_init_status = initialize_radio();
     
-    bool sdInitDone = fs_init();
-    if (sdInitDone) {
+    bool sd_init_status = fs_init();
+    if (sd_init_status) {
         FILE *fp = fopen(LOG_FILENAME, "w");
         if (fp) {
             uart_print("Log file opened.", VerbosityLevel::DEBUG);
-            int bytesWritten = fprintf(fp, "System init started.\n");
-            uart_print("Written " + std::to_string(bytesWritten) + " bytes.", VerbosityLevel::DEBUG);
-            int closeStatus = fclose(fp);
-            uart_print("Close file status: " + std::to_string(closeStatus), VerbosityLevel::DEBUG);
+            int bytes_written = fprintf(fp, "System init started.\n");
+            uart_print("Written " + std::to_string(bytes_written) + " bytes.", VerbosityLevel::DEBUG);
+            int close_status = fclose(fp);
+            uart_print("Close file status: " + std::to_string(close_status), VerbosityLevel::DEBUG);
 
             struct stat file_stat;
             if (stat(LOG_FILENAME, &file_stat) == 0) {
-                size_t fileSize = file_stat.st_size;
-                uart_print("File size: " + std::to_string(fileSize) + " bytes", VerbosityLevel::DEBUG);
+                size_t file_size = file_stat.st_size;
+                uart_print("File size: " + std::to_string(file_size) + " bytes", VerbosityLevel::DEBUG);
             } else {
                 uart_print("Failed to get file size", VerbosityLevel::ERROR);
             }
@@ -84,22 +99,22 @@ bool init_systems() {
         }
     }
 
-    if (sdInitDone) {
+    if (sd_init_status) {
         uart_print("SD card init: OK", VerbosityLevel::DEBUG);
     } else {
         uart_print("SD card init: FAILED", VerbosityLevel::ERROR);
     }
 
-    if (radioInitSuccess) {
+    if (radio_init_status) {
         uart_print("Radio init: OK", VerbosityLevel::DEBUG);
     } else {
         uart_print("Radio init: FAILED", VerbosityLevel::ERROR);
     }
 
     Frame boot = frame_build(OperationType::RES, 0, 0, "HELLO");
-    send_frame(boot);
+    send_frame_lora(boot);
 
-    return radioInitSuccess;
+    return radio_init_status;
 }
 
 
@@ -111,32 +126,32 @@ int main()
 
     gpio_put(PICO_DEFAULT_LED_PIN, 0);
 
-    bool powerManagerInitStatus = powerManager.initialize();
-    if (powerManagerInitStatus)
+    bool power_manager_init_status = powerManager.initialize();
+    if (power_manager_init_status)
     {
-        std::map<std::string, std::string> powerConfig = {
+        std::map<std::string, std::string> power_config = {
             {"operating_mode", "continuous"},
             {"averaging_mode", "16"},
         };
-        powerManager.configure(powerConfig);
+        powerManager.configure(power_config);
     } else {
         uart_print("Power manager init error", VerbosityLevel::ERROR);
     }
     
     Frame boot = frame_build(OperationType::RES, 0, 0, "START");
-    send_frame(boot);
+    send_frame_lora(boot);
     
-    std::string bootString = "System init completed @ " + std::to_string(to_ms_since_boot(get_absolute_time())) + " ms";
-    uart_print(bootString, VerbosityLevel::WARNING);
+    std::string boot_string = "System init completed @ " + std::to_string(to_ms_since_boot(get_absolute_time())) + " ms";
+    uart_print(boot_string, VerbosityLevel::WARNING);
 
     gpio_put(PICO_DEFAULT_LED_PIN, 1);
 
     while (true)
     {
-        int packetSize = LoRa.parse_packet();
-        if (packetSize)
+        int packet_size = LoRa.parse_packet();
+        if (packet_size)
         {
-            on_receive(packetSize);
+            on_receive(packet_size);
         }
 
         handle_uart_input();

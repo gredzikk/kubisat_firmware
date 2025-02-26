@@ -73,16 +73,14 @@ void uart_print(const std::string& msg, VerbosityLevel level, bool logToFile, ua
     uint32_t timestamp = to_ms_since_boot(get_absolute_time());
     uint core_num = get_core_num();
 
-    // Create formatted message with color
     std::string color = get_level_color(level);
     std::string prefix = get_level_prefix(level);
-    std::string msgToSend = "[" + std::to_string(timestamp) + "ms] - Core " + 
+    std::string msg_to_send = "[" + std::to_string(timestamp) + "ms] - Core " + 
                            std::to_string(core_num) + ": " + 
                            color + prefix + ANSI_RESET + msg + "\r\n";
 
-    // Print to UART
     mutex_enter_blocking(&uart_mutex);
-    uart_puts(uart, msgToSend.c_str());
+    uart_puts(uart, msg_to_send.c_str());
     mutex_exit(&uart_mutex);
 }
 

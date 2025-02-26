@@ -34,21 +34,21 @@ bool fs_init(void) {
                                               false);
     filesystem_t *fat = filesystem_fat_create();
 
-    std::string statusString;
+    std::string status_string;
     int err = fs_mount("/", fat, sd);
     if (err == -1) {
-        statusString = "Formatting / with FAT";
-        uart_print(statusString, VerbosityLevel::WARNING);
+        status_string = "Formatting / with FAT";
+        uart_print(status_string, VerbosityLevel::WARNING);
         err = fs_format(fat, sd);
         if (err == -1) {
-            statusString = "fs_format error: " + std::string(strerror(errno));
-            uart_print(statusString, VerbosityLevel::ERROR);
+            status_string = "fs_format error: " + std::string(strerror(errno));
+            uart_print(status_string, VerbosityLevel::ERROR);
             return false;
         }
         err = fs_mount("/", fat, sd);
         if (err == -1) {
-            statusString = "fs_mount error: " + std::string(strerror(errno));
-            uart_print(statusString, VerbosityLevel::ERROR);
+            status_string = "fs_mount error: " + std::string(strerror(errno));
+            uart_print(status_string, VerbosityLevel::ERROR);
             return false;
         }
     }

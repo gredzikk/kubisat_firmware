@@ -31,21 +31,25 @@
  */
 std::vector<Frame> handle_time(const std::string& param, OperationType operationType) {
     std::vector<Frame> frames;
-    
+    std::string error_msg;
+
     if (operationType == OperationType::SET) {
         if (param.empty()) {
-            frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, TIME, "PARAM REQUIRED"));
+            error_msg = error_code_to_string(ErrorCode::PARAM_REQUIRED);
+            frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, TIME, error_msg));
             return frames;
         }
         try {
             time_t newTime = std::stoll(param);
             if (newTime <= 0) {
-                frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, TIME, "TIME MUST BE POSITIVE"));
+                error_msg = error_code_to_string(ErrorCode::INVALID_VALUE);
+                frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, TIME, error_msg));
                 return frames;
             }
 
             if (systemClock.set_unix_time(newTime) != 0) {
-                frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, TIME, "FAILED TO SET TIME"));
+                error_msg = error_code_to_string(ErrorCode::FAIL_TO_SET);
+                frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, TIME, error_msg));
                 return frames;
             }
 
@@ -53,26 +57,30 @@ std::vector<Frame> handle_time(const std::string& param, OperationType operation
             frames.push_back(frame_build(OperationType::RES, CLOCK_GROUP, TIME, std::to_string(systemClock.get_unix_time())));
             return frames;
         } catch (...) {
-            frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, TIME, "INVALID TIME FORMAT"));
+            error_msg = error_code_to_string(ErrorCode::INVALID_FORMAT);
+            frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, TIME, error_msg));
             return frames;
         }
     } else if (operationType == OperationType::GET) {
         if (!param.empty()) {
-            frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, TIME, "PARAM UNNECESSARY"));
+            error_msg = error_code_to_string(ErrorCode::PARAM_UNNECESSARY);
+            frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, TIME, error_msg));
             return frames;
         }
 
-        uint32_t timeUnix = systemClock.get_unix_time();
-        if (timeUnix == 0) {
-            frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, TIME, "FAILED TO GET TIME"));
+        uint32_t time_unix = systemClock.get_unix_time();
+        if (time_unix == 0) {
+            error_msg = error_code_to_string(ErrorCode::INTERNAL_FAIL_TO_READ);
+            frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, TIME, error_msg));
             return frames;
         }
 
-        frames.push_back(frame_build(OperationType::VAL, CLOCK_GROUP, TIME, std::to_string(timeUnix)));
+        frames.push_back(frame_build(OperationType::VAL, CLOCK_GROUP, TIME, std::to_string(time_unix)));
         return frames;
     }
 
-    frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, TIME, "INVALID OPERATION"));
+    error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
+    frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, TIME, error_msg));
     return frames;
 }
 
@@ -88,38 +96,50 @@ std::vector<Frame> handle_time(const std::string& param, OperationType operation
  */
 std::vector<Frame> handle_timezone_offset(const std::string& param, OperationType operationType) {
     std::vector<Frame> frames;
+    std::string error_msg;
 
     if (!(operationType == OperationType::GET || operationType == OperationType::SET)) {
-        frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, TIMEZONE_OFFSET, "INVALID OPERATION"));
+        error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
+        frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, TIMEZONE_OFFSET, error_msg));
         return frames;
     }
 
     if (operationType == OperationType::GET) {
         if (!param.empty()) {
-            frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, TIMEZONE_OFFSET, "PARAM UNNECESSARY"));
+            error_msg = error_code_to_string(ErrorCode::PARAM_UNNECESSARY);
+            frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, TIMEZONE_OFFSET, error_msg));
             return frames;
         }
 
-        frames.push_back(frame_build(OperationType::VAL, CLOCK_GROUP, TIMEZONE_OFFSET, "60"));
+        extern DS3231 systemclock;
+        int offset = systemClock.get_timezone_offset();
+        std::string offset_set = std::to_string(offset);
+        frames.push_back(frame_build(OperationType::VAL, CLOCK_GROUP, TIMEZONE_OFFSET, offset_set));
         return frames;
     }
 
     if (param.empty()) {
-        frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, TIMEZONE_OFFSET, "PARAM REQUIRED"));
+        error_msg = error_code_to_string(ErrorCode::PARAM_REQUIRED);
+        frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, TIMEZONE_OFFSET, error_msg));
         return frames;
     }
 
     try {
         int16_t offset = std::stoi(param);
         if (offset < -720 || offset > 720) {
-            frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, TIMEZONE_OFFSET, "INVALID OFFSET"));
+            error_msg = error_code_to_string(ErrorCode::PARAM_INVALID);
+            frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, TIMEZONE_OFFSET, error_msg));
             return frames;
         }
 
-        frames.push_back(frame_build(OperationType::RES, CLOCK_GROUP, TIMEZONE_OFFSET, param));
+        extern DS3231 systemClock;
+        systemClock.set_timezone_offset(offset);
+        std::string offset_set = std::to_string(offset);
+        frames.push_back(frame_build(OperationType::RES, CLOCK_GROUP, TIMEZONE_OFFSET, offset_set));
         return frames;
     } catch (...) {
-        frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, TIMEZONE_OFFSET, "INVALID PARAMETER"));
+        error_msg = error_code_to_string(ErrorCode::PARAM_INVALID);
+        frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, TIMEZONE_OFFSET, error_msg));
         return frames;
     }
 }
@@ -137,40 +157,50 @@ std::vector<Frame> handle_timezone_offset(const std::string& param, OperationTyp
  */
 std::vector<Frame> handle_clock_sync_interval(const std::string& param, OperationType operationType) {
     std::vector<Frame> frames;
+    std::string error_msg;
 
     if (!(operationType == OperationType::GET || operationType == OperationType::SET)) {
-        frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, CLOCK_SYNC_INTERVAL, "INVALID OPERATION"));
+        error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
+        frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, CLOCK_SYNC_INTERVAL, error_msg));
         return frames;
     }
 
     if (operationType == OperationType::GET) {
         if (!param.empty()) {
-            frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, CLOCK_SYNC_INTERVAL, "PARAM UNNECESSARY"));
+            error_msg = error_code_to_string(ErrorCode::PARAM_UNNECESSARY);
+            frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, CLOCK_SYNC_INTERVAL, error_msg));
             return frames;
         }
 
-        std::string clockSyncInterval = "1440";
+        extern DS3231 systemClock;
+        uint32_t syncInterval = systemClock.get_clock_sync_interval();
+        std::string clockSyncInterval = std::to_string(syncInterval);
         frames.push_back(frame_build(OperationType::VAL, CLOCK_GROUP, CLOCK_SYNC_INTERVAL, clockSyncInterval));
         return frames;
     }
 
     if (operationType == OperationType::SET) {
         if (param.empty()) {
-            frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, CLOCK_SYNC_INTERVAL, "PARAM REQUIRED"));
+            error_msg = error_code_to_string(ErrorCode::PARAM_REQUIRED);
+            frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, CLOCK_SYNC_INTERVAL, error_msg));
             return frames;
         }
         try {
             uint32_t interval = std::stoul(param);
             
-            //set sync interval
+            extern DS3231 systemClock;
+            systemClock.set_clock_sync_interval(interval);
+            std::string interval_set = std::to_string(interval);
 
-            frames.push_back(frame_build(OperationType::RES, CLOCK_GROUP, CLOCK_SYNC_INTERVAL, param));
+            frames.push_back(frame_build(OperationType::RES, CLOCK_GROUP, CLOCK_SYNC_INTERVAL, interval_set));
             return frames;
         } catch (...) {
-            frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, CLOCK_SYNC_INTERVAL, "INVALID PARAMETER"));
+            error_msg = error_code_to_string(ErrorCode::INVALID_VALUE);
+            frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, CLOCK_SYNC_INTERVAL, error_msg));
         }
     }
-    frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, CLOCK_SYNC_INTERVAL, "UNKNOWN ERROR"));
+    error_msg = error_code_to_string(ErrorCode::UNKNOWN_ERROR);
+    frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, CLOCK_SYNC_INTERVAL, error_msg));
     return frames;
 }
 
@@ -185,12 +215,24 @@ std::vector<Frame> handle_clock_sync_interval(const std::string& param, Operatio
  */
 std::vector<Frame> handle_get_last_sync_time(const std::string& param, OperationType operationType) {
     std::vector<Frame> frames;
+    std::string error_msg;
+
     if (operationType != OperationType::GET || !param.empty()) {
-        frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, LAST_SYNC_TIME, "INVALID REQUEST"));
+        error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
+        frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, LAST_SYNC_TIME, error_msg));
         return frames;
     }
-    std::string lastSyncTime = "none";
-    frames.push_back(frame_build(OperationType::VAL, CLOCK_GROUP, LAST_SYNC_TIME, lastSyncTime));
+
+    extern DS3231 systemClock;
+    time_t lastSyncTime = systemClock.get_last_sync_time();
+
+    if (lastSyncTime == 0) {
+        frames.push_back(frame_build(OperationType::VAL, CLOCK_GROUP, LAST_SYNC_TIME, "NEVER"));
+    } else {
+        frames.push_back(frame_build(OperationType::VAL, CLOCK_GROUP, LAST_SYNC_TIME, 
+                         std::to_string(lastSyncTime)));
+    }
+
     return frames;
 }
 /** @} */ // end of ClockCommands group

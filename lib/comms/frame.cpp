@@ -1,7 +1,7 @@
 #include "communication.h"
 
 using CommandHandler = std::function<std::vector<Frame>(const std::string&, OperationType)>;
-extern std::map<uint32_t, CommandHandler> commandHandlers;
+extern std::map<uint32_t, CommandHandler> command_handlers;
 extern volatile uint16_t eventRegister;
 
 /**
@@ -70,41 +70,40 @@ Frame frame_decode(const std::string& data) {
             throw std::runtime_error("Invalid frame header");
         frame.header = token;
 
-        std::string decodedFrameData;
+        std::string decoded_frame_data;
         while (std::getline(ss, token, DELIMITER)) {
             if (token == FRAME_END) break; 
-            decodedFrameData += token + DELIMITER;
+            decoded_frame_data += token + DELIMITER;
         }
-        if (!decodedFrameData.empty()) {
-            decodedFrameData.pop_back();
+        if (!decoded_frame_data.empty()) {
+            decoded_frame_data.pop_back();
         }
 
-        std::stringstream frameDataStream(decodedFrameData);
+        std::stringstream frame_data_stream(decoded_frame_data);
 
-        std::getline(frameDataStream, token, DELIMITER);
+        std::getline(frame_data_stream, token, DELIMITER);
         frame.direction = std::stoi(token);
 
-        std::getline(frameDataStream, token, DELIMITER);
+        std::getline(frame_data_stream, token, DELIMITER);
         frame.operationType = string_to_operation_type(token);
 
-        std::getline(frameDataStream, token, DELIMITER);
+        std::getline(frame_data_stream, token, DELIMITER);
         frame.group = std::stoi(token);
 
-        std::getline(frameDataStream, token, DELIMITER);
+        std::getline(frame_data_stream, token, DELIMITER);
         frame.command = std::stoi(token);
 
-        std::getline(frameDataStream, token, DELIMITER);
+        std::getline(frame_data_stream, token, DELIMITER);
         frame.value = token;
 
-        std::getline(frameDataStream, token, DELIMITER);
+        std::getline(frame_data_stream, token, DELIMITER);
         frame.unit = token;
 
         return frame;
     } catch (const std::exception& e) {
         uart_print("Frame error: " + std::string(e.what()), VerbosityLevel::ERROR);
-        Frame errorFrame = frame_build(OperationType::ERR, 0, 0, e.what()); 
-        send_frame(errorFrame);
-        throw; 
+        Frame error_frame = frame_build(OperationType::ERR, 0, 0, e.what()); 
+        return error_frame;
     }
 }
 
@@ -119,25 +118,25 @@ void frame_process(const std::string& data, Interface interface) {
     uart_print("Processing frame: " + data, VerbosityLevel::WARNING);
     try {
         Frame frame = frame_decode(data);
-        uint32_t commandKey = (static_cast<uint32_t>(frame.group) << 8) | static_cast<uint32_t>(frame.command);
+        uint32_t command_key = (static_cast<uint32_t>(frame.group) << 8) | static_cast<uint32_t>(frame.command);
 
-        std::vector<Frame> responseFrames = execute_command(commandKey, frame.value, frame.operationType);
+        std::vector<Frame> response_frames = execute_command(command_key, frame.value, frame.operationType);
 
         // Send all responses through the same interface that received the command
-        for (const auto& responseFrame : responseFrames) {
+        for (const auto& response_frame : response_frames) {
             if (interface == Interface::UART) {
-                send_frame_uart(responseFrame);
+                send_frame_uart(response_frame);
             } else if (interface == Interface::LORA) {
-                send_frame_lora(responseFrame);
+                send_frame_lora(response_frame);
                 sleep_ms(50);
             }
         }
     } catch (const std::exception& e) {
-        Frame errorFrame = frame_build(OperationType::ERR, 0, 0, e.what());
+        Frame error_frame = frame_build(OperationType::ERR, 0, 0, e.what());
         if (interface == Interface::UART) {
-            send_frame_uart(errorFrame);
+            send_frame_uart(error_frame);
         } else if (interface == Interface::LORA) {
-            send_frame_lora(errorFrame);
+            send_frame_lora(error_frame);
         }
     }
 }

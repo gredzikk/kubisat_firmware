@@ -10,7 +10,6 @@ bool initialize_radio();
 void on_receive(int packetSize);
 void handle_uart_input();
 void send_message(std::string outgoing);
-void send_frame(const Frame& frame);
 void send_frame_uart(const Frame& frame);
 void send_frame_lora(const Frame& frame);
 

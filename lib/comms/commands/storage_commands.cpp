@@ -57,31 +57,31 @@ std::vector<Frame> handle_file_download(const std::string& param, OperationType 
 
     // Get file size
     fseek(file, 0, SEEK_END);
-    size_t fileSize = ftell(file);
+    size_t file_size = ftell(file);
     fseek(file, 0, SEEK_SET);
 
     // Send file size to ground station
-    frames.push_back(frame_build(OperationType::VAL, STORAGE_GROUP, START_COMMAND, std::to_string(fileSize)));
-    send_frame(frames.back());
+    frames.push_back(frame_build(OperationType::VAL, STORAGE_GROUP, START_COMMAND, std::to_string(file_size)));
+    send_frame_uart(frames.back());
 
     size_t block_size = MAX_BLOCK_SIZE;
-    size_t block_count = (fileSize + block_size - 1) / block_size;
+    size_t block_count = (file_size + block_size - 1) / block_size;
 
     // Send block size and count
     frames.push_back(frame_build(OperationType::VAL, STORAGE_GROUP, START_COMMAND, std::to_string(block_size)));
-    send_frame(frames.back());
+    send_frame_uart(frames.back());
     frames.push_back(frame_build(OperationType::VAL, STORAGE_GROUP, START_COMMAND, std::to_string(block_count)));
-    send_frame(frames.back());
+    send_frame_uart(frames.back());
 
     uint8_t buffer[MAX_BLOCK_SIZE];
-    size_t bytesRead;
-    uint32_t totalChecksum = 0;
-    size_t blockIndex = 0;
+    size_t bytes_read;
+    uint32_t total_checksum = 0;
+    size_t block_index = 0;
 
-    while ((bytesRead = fread(buffer, 1, MAX_BLOCK_SIZE, file)) > 0) {
+    while ((bytes_read = fread(buffer, 1, MAX_BLOCK_SIZE, file)) > 0) {
         // Send data block
-        send_data_block(buffer, bytesRead);
-        totalChecksum = calculate_checksum(buffer, bytesRead);
+        send_data_block(buffer, bytes_read);
+        total_checksum = calculate_checksum(buffer, bytes_read);
 
         // Wait for ACK
         if (!receive_ack()) {
@@ -89,17 +89,16 @@ std::vector<Frame> handle_file_download(const std::string& param, OperationType 
             frames.push_back(frame_build(OperationType::ERR, STORAGE_GROUP, DATA_COMMAND, "ACK timeout"));
             return frames;
         }
-        blockIndex++;
+        block_index++;
     }
 
     fclose(file);
 
     // Send end frame with checksum
     std::stringstream ss;
-    ss << std::hex << totalChecksum;
+    ss << std::hex << total_checksum;
     frames.push_back(frame_build(OperationType::VAL, STORAGE_GROUP, END_COMMAND, ss.str()));
-    send_frame(frames.back());
-
+    
     frames.push_back(frame_build(OperationType::VAL, STORAGE_GROUP, END_COMMAND, "File download complete"));
     return frames;
 }
@@ -123,14 +122,17 @@ std::vector<Frame> handle_file_download(const std::string& param, OperationType 
  */
 std::vector<Frame> handle_list_files(const std::string& param, OperationType operationType) {
     std::vector<Frame> frames;
+    std::string error_msg;
+
     if (operationType != OperationType::GET) {
-        frames.push_back(frame_build(OperationType::ERR, STORAGE_GROUP, LIST_FILES_COMMAND, "Invalid operation type"));
+        error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
+        frames.push_back(frame_build(OperationType::ERR, STORAGE_GROUP, LIST_FILES_COMMAND, error_msg));
         return frames;
     }
 
     DIR* dir;
     struct dirent* ent;
-    int fileCount = 0; // Counter for the number of files
+    int file_count = 0; // Counter for the number of files
     if ((dir = opendir("/")) != NULL) {
         // First, count the number of files
         while ((ent = readdir(dir)) != NULL) {
@@ -138,12 +140,12 @@ std::vector<Frame> handle_list_files(const std::string& param, OperationType ope
             if (strcmp(filename, ".") == 0 || strcmp(filename, "..") == 0) {
                 continue;
             }
-            fileCount++;
+            file_count++;
         }
         closedir(dir);
 
         // Send the number of files
-        frames.push_back(frame_build(OperationType::VAL, STORAGE_GROUP, LIST_FILES_COMMAND, std::to_string(fileCount)));
+        frames.push_back(frame_build(OperationType::VAL, STORAGE_GROUP, LIST_FILES_COMMAND, std::to_string(file_count)));
 
         // Open the directory again to read file information
         dir = opendir("/");
@@ -161,28 +163,29 @@ std::vector<Frame> handle_list_files(const std::string& param, OperationType ope
                 snprintf(filepath, sizeof(filepath), "/%s", filename);
 
                 FILE* file = fopen(filepath, "rb");
-                size_t fileSize = 0;
+                size_t file_size = 0;
 
                 if (file != NULL) {
                     fseek(file, 0, SEEK_END);
-                    fileSize = ftell(file);
+                    file_size = ftell(file);
                     fclose(file);
                 }
 
                 // Create and send frame with filename and size
-                char fileInfo[512];
-                snprintf(fileInfo, sizeof(fileInfo), "%s:%zu", filename, fileSize);
-                frames.push_back(frame_build(OperationType::SEQ, STORAGE_GROUP, LIST_FILES_COMMAND, fileInfo));
+                char file_info[512];
+                snprintf(file_info, sizeof(file_info), "%s:%zu", filename, file_size);
+                frames.push_back(frame_build(OperationType::SEQ, STORAGE_GROUP, LIST_FILES_COMMAND, file_info));
             }
             closedir(dir);
             frames.push_back(frame_build(OperationType::VAL, STORAGE_GROUP, LIST_FILES_COMMAND, "SEQ_DONE"));
             return frames;
         } else {
-            frames.push_back(frame_build(OperationType::ERR, STORAGE_GROUP, LIST_FILES_COMMAND, "Could not open directory for file info"));
+            error_msg = error_code_to_string(ErrorCode::INTERNAL_FAIL_TO_READ);
+            frames.push_back(frame_build(OperationType::ERR, STORAGE_GROUP, LIST_FILES_COMMAND, error_msg));
             return frames;
         }
     } else {
-        frames.push_back(frame_build(OperationType::ERR, STORAGE_GROUP, LIST_FILES_COMMAND, "Could not open directory"));
+        frames.push_back(frame_build(OperationType::ERR, STORAGE_GROUP, LIST_FILES_COMMAND, error_msg));
         return frames;
     }
 }
@@ -205,33 +208,39 @@ std::vector<Frame> handle_list_files(const std::string& param, OperationType ope
  */
 std::vector<Frame> handle_mount(const std::string& param, OperationType operationType) {
     std::vector<Frame> frames;
+    std::string error_msg;
+
     if (operationType == OperationType::GET) {
         frames.push_back(frame_build(OperationType::VAL, STORAGE_GROUP, MOUNT_COMMAND, std::to_string(sd_card_mounted)));
         return frames;
     } else if (operationType == OperationType::SET) {
         if (param == "1") {
             if (fs_init()) {
-                frames.push_back(frame_build(OperationType::RES, STORAGE_GROUP, MOUNT_COMMAND, "SD card mounted"));
+                frames.push_back(frame_build(OperationType::RES, STORAGE_GROUP, MOUNT_COMMAND, "SD_MOUNT_OK"));
                 return frames;
             } else {
-                frames.push_back(frame_build(OperationType::ERR, STORAGE_GROUP, MOUNT_COMMAND, "Mount failed"));
+                error_msg = error_code_to_string(ErrorCode::FAIL_TO_SET);
+                frames.push_back(frame_build(OperationType::ERR, STORAGE_GROUP, MOUNT_COMMAND, error_msg));
                 return frames;
             }
         } else if (param == "0") {
             if (fs_unmount("/") == 0) {
                 sd_card_mounted = false;
-                frames.push_back(frame_build(OperationType::RES, STORAGE_GROUP, MOUNT_COMMAND, "SD card unmounted"));
+                frames.push_back(frame_build(OperationType::RES, STORAGE_GROUP, MOUNT_COMMAND, "SD_UNMOUNT_OK"));
                 return frames;
             } else {
-                frames.push_back(frame_build(OperationType::ERR, STORAGE_GROUP, MOUNT_COMMAND, "Unmount failed"));
+                error_msg = error_code_to_string(ErrorCode::FAIL_TO_SET);
+                frames.push_back(frame_build(OperationType::ERR, STORAGE_GROUP, MOUNT_COMMAND, error_msg));
                 return frames;
             }
         } else {
-            frames.push_back(frame_build(OperationType::ERR, STORAGE_GROUP, MOUNT_COMMAND, "Invalid parameter"));
+            error_msg = error_code_to_string(ErrorCode::PARAM_INVALID);
+            frames.push_back(frame_build(OperationType::ERR, STORAGE_GROUP, MOUNT_COMMAND, error_msg));
             return frames;
         }
     } else {
-        frames.push_back(frame_build(OperationType::ERR, STORAGE_GROUP, MOUNT_COMMAND, "Invalid operation type"));
+        error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
+        frames.push_back(frame_build(OperationType::ERR, STORAGE_GROUP, MOUNT_COMMAND, error_msg));
         return frames;
     }
 }
