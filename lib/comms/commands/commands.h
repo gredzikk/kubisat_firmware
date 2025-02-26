@@ -48,6 +48,11 @@ std::vector<Frame> handle_list_files(const std::string& param, OperationType ope
 std::vector<Frame> handle_file_download(const std::string& param, OperationType operationType);
 std::vector<Frame> handle_mount(const std::string& param, OperationType operationType);
 
+// SENSOR
+std::vector<Frame> handle_get_sensor_data(const std::string& param, OperationType operationType);
+std::vector<Frame> handle_sensor_config(const std::string& param, OperationType operationType);
+std::vector<Frame> handle_get_sensor_list(const std::string& param, OperationType operationType);
+
 std::vector<Frame> execute_command(uint32_t commandKey, const std::string& param, OperationType operationType);
 extern std::map<uint32_t, std::function<std::vector<Frame>(const std::string&, OperationType)>> command_handlers;
 

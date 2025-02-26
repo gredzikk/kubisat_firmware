@@ -11,6 +11,7 @@ add_library(commands_lib STATIC
     event_commands.cpp
     storage_commands.cpp
     storage_commands_utils.cpp
+    sensor_commands.cpp
 )
 
 target_include_directories(commands_lib PUBLIC
@@ -25,6 +26,7 @@ target_include_directories(commands_lib PUBLIC
     ${CMAKE_SOURCE_DIR}/lib/clock
     ${CMAKE_SOURCE_DIR}/lib/location
     ${CMAKE_SOURCE_DIR}/lib/storage
+    ${CMAKE_SOURCE_DIR}/lib/sensors
 
 )
 
@@ -41,4 +43,5 @@ target_link_libraries(commands_lib PUBLIC
     filesystem_littlefs
     filesystem_vfs
     storage_lib
+    Sensors_lib
 )

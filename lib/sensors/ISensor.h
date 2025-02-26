@@ -6,6 +6,7 @@
 #include "hardware/i2c.h"
 #include <map>
 #include <string>
+#include <vector>
 
 enum class SensorType {
     LIGHT,          // BH1750
@@ -46,6 +47,8 @@ public:
     bool sensor_init(SensorType type, i2c_inst_t* i2c = nullptr);
     bool sensor_configure(SensorType type, const std::map<std::string, std::string>& config);
     float sensor_read_data(SensorType sensorType, SensorDataTypeIdentifier dataType);
+    std::vector<SensorType> get_available_sensors();
+    ISensor* get_sensor(SensorType type);
 
 private:
     std::map<SensorType, ISensor*> sensors;

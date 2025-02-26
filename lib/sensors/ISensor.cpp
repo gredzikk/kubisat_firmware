@@ -82,3 +82,15 @@ float SensorWrapper::sensor_read_data(SensorType sensorType, SensorDataTypeIdent
     }
     return 0.0f;
 }
+
+/**
+ * @brief Retrieves a list of available sensor types.
+ * @return A vector of available sensor types.
+ */
+std::vector<SensorType> SensorWrapper::get_available_sensors() {
+    std::vector<SensorType> available_sensors;
+    for (const auto& sensor : sensors) {
+        available_sensors.push_back(sensor.first);
+    }
+    return available_sensors;
+}

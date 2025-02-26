@@ -40,6 +40,9 @@ CommandMap command_handlers = {
     {((static_cast<uint32_t>(3) << 8) | static_cast<uint32_t>(1)), handle_timezone_offset},                 // Group 3, Command 1
     {((static_cast<uint32_t>(3) << 8) | static_cast<uint32_t>(2)), handle_clock_sync_interval},             // Group 3, Command 2         
     {((static_cast<uint32_t>(3) << 8) | static_cast<uint32_t>(3)), handle_get_last_sync_time},              // Group 3, Command 3
+    {((static_cast<uint32_t>(4) << 8) | static_cast<uint32_t>(0)), handle_get_sensor_data},                 // Group 4, Command 0
+    {((static_cast<uint32_t>(4) << 8) | static_cast<uint32_t>(1)), handle_sensor_config},                   // Group 4, Command 1
+    {((static_cast<uint32_t>(4) << 8) | static_cast<uint32_t>(3)), handle_get_sensor_list},                 // Group 4, Command 3
     {((static_cast<uint32_t>(5) << 8) | static_cast<uint32_t>(1)), handle_get_last_events},                 // Group 5, Command 1
     {((static_cast<uint32_t>(5) << 8) | static_cast<uint32_t>(2)), handle_get_event_count},                 // Group 5, Command 2
     {((static_cast<uint32_t>(6) << 8) | static_cast<uint32_t>(0)), handle_list_files},                      // Group 6, Command 0
