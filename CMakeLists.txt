@@ -24,69 +24,56 @@ set(PICO_BOARD pico CACHE STRING "Board type")
 set(PICO_CXX_ENABLE_EXCEPTIONS 1)
 set(PICO_CXX_ENABLE_RTTI 1)
 
+# VS Code Pico extension configuration (only needed once)
+if(WIN32)
+    set(USERHOME $ENV{USERPROFILE})
+else()
+    set(USERHOME $ENV{HOME})
+endif()
+set(sdkVersion 2.0.0)
+set(toolchainVersion 13_2_Rel1)
+set(picotoolVersion 2.0.0)
+set(picoVscode ${USERHOME}/.pico-sdk/cmake/pico-vscode.cmake)
+if (EXISTS ${picoVscode})
+    include(${picoVscode})
+endif()
+
 # SDK initialization
 include(pico_sdk_import.cmake)
 project(main C CXX ASM)
 pico_sdk_init()
 
-# Create common include interface library
-add_library(kubisat_includes INTERFACE)
-target_include_directories(kubisat_includes INTERFACE
-    ${CMAKE_SOURCE_DIR}
-    ${CMAKE_SOURCE_DIR}/lib
+# Library dependencies
+add_subdirectory(lib/sensors)
+add_subdirectory(lib/clock)
+add_subdirectory(lib/powerman)
+add_subdirectory(lib/comms)
+add_subdirectory(lib/storage) 
+add_subdirectory(lib/storage/pico-vfs) 
+add_subdirectory(lib/eventman)
+
+# add_subdirectory(test)
+
+
+# Main executable sources
+set(MAIN_SOURCES
+    main.cpp
+    lib/sensors/ISensor.cpp
+    lib/pin_config.cpp
+    lib/eventman/event_manager.cpp
+    lib/utils.cpp
+    lib/storage/storage.cpp
 )
 
-# Create location library for GPS functionality
-add_library(Location_lib STATIC
+set(GPS_SOURCES
     lib/location/gps_collector.cpp
     lib/location/NMEA/NMEA_data.cpp
 )
 
-target_include_directories(Location_lib PUBLIC
-    ${CMAKE_SOURCE_DIR}/lib/location
-    ${CMAKE_SOURCE_DIR}/lib/location/NMEA
-)
-
-target_link_libraries(Location_lib PUBLIC
-    kubisat_includes
-    pico_stdlib
-    hardware_uart
-)
-
-target_include_directories(Utils_lib PUBLIC
-    ${CMAKE_SOURCE_DIR}/lib/utils
-)
-
-target_link_libraries(Utils_lib PUBLIC
-    kubisat_includes
-    pico_stdlib
-    hardware_uart
-)
-
-# Library dependencies - Order matters!
-# Base libraries with no interdependencies come first
-add_subdirectory(lib/sensors)
-add_subdirectory(lib/storage)
-add_subdirectory(lib/storage/pico-vfs)
-add_subdirectory(lib/eventman)
-
-# Mid-level libraries
-add_subdirectory(lib/clock)
-add_subdirectory(lib/powerman)
-
-# Top-level libraries
-add_subdirectory(lib/comms)
-
-# Final linking of interdependent libraries - Resolve circular dependencies here
-# Note: We don't add these in the individual CMakeLists.txt files to avoid circular dependencies
-target_link_libraries(eventman_lib PUBLIC Utils_lib)
-target_link_libraries(clock_lib PUBLIC eventman_lib storage_lib Location_lib)
-target_link_libraries(PowerManager_lib PUBLIC eventman_lib Utils_lib)
-target_link_libraries(Comms_lib PUBLIC eventman_lib clock_lib PowerManager_lib)
-
 # Main target
 add_executable(main
-    main.cpp
+    ${MAIN_SOURCES}
+    ${GPS_SOURCES}
 )
 
 # Compiler flags
@@ -96,25 +83,47 @@ target_compile_options(main PRIVATE
     -Wno-error
 )
 
-# File system initialization
+# Include directories
+target_include_directories(main PRIVATE
+    ${CMAKE_CURRENT_LIST_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/sensors
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/powerman
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/comms
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/comms/commands
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/location
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/location/NMEA
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/storage
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/storage/pico-vfs/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/storage/pico-vfs/vendor/littlefs
+)
+
+# Dependencies and configuration
 pico_enable_filesystem(${CMAKE_PROJECT_NAME} FS_INIT lib/storage/storage.cpp)
 pico_enable_stdio_uart(main 1)
 pico_enable_stdio_usb(main 0)
 
-# Link libraries to main executable
+# Link libraries
 target_link_libraries(main PRIVATE
     pico_stdlib
     hardware_spi
     hardware_i2c
     hardware_uart
     pico_multicore
+    blockdevice_flash
+    blockdevice_heap
+    blockdevice_loopback
+    blockdevice_sd
+    filesystem_fat
+    filesystem_littlefs
+    filesystem_vfs
     Sensors_lib
     Comms_lib
     PowerManager_lib
     storage_lib
     clock_lib
-    Location_lib
-    Utils_lib
+    LoRa_pico_lib
     eventman_lib
 )
 
@@ -124,12 +133,8 @@ string(STRIP "${CURRENT_BUILD_NUMBER}" CURRENT_BUILD_NUMBER)
 pico_set_program_name(main "kubisat_firmware")
 pico_set_program_version(main "0.276")
 pico_add_extra_outputs(main)
-
-# Uncomment to enable testing
-# add_subdirectory(test)
 # pico_add_extra_outputs(test_runner)
 
-# Update build number
 add_custom_command(
     TARGET main
     PRE_BUILD
@@ -139,6 +144,7 @@ add_custom_command(
         -DCACHE_DIR:PATH="${CMAKE_SOURCE_DIR}/cmake"
         -P "${CMAKE_SOURCE_DIR}/cmake/build_number.cmake"
 )
+
 
 # Copy and rename main.uf2
 add_custom_command(

@@ -8,10 +8,15 @@ add_library(storage_lib STATIC
 
 target_include_directories(storage_lib PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_SOURCE_DIR}
+    ${CMAKE_SOURCE_DIR}/lib
+    ${CMAKE_SOURCE_DIR}/lib/storage
+    ${CMAKE_SOURCE_DIR}/lib/storage/pico-vfs
+    ${CMAKE_SOURCE_DIR}/lib/storage/pico-vfs/include/blockdevice
+    ${CMAKE_SOURCE_DIR}/lib/storage/pico-vfs/vendor/littlefs
 )
 
 target_link_libraries(storage_lib PUBLIC
-    kubisat_includes
     pico_stdlib
     hardware_flash
     blockdevice_flash
