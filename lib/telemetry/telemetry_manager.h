@@ -21,6 +21,7 @@
  #include "pico/stdlib.h"
  #include "lib/location/NMEA/nmea_data.h"
  
+
  /**
   * @brief Initialize the telemetry system
   * @return True if initialization was successful

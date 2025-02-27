@@ -18,11 +18,14 @@ void send_message(string outgoing)
     char send[n + 1];
     strcpy(send, outgoing.c_str());
 
+    uart_print("LoRa packet begin", VerbosityLevel::DEBUG);
     LoRa.beginPacket();       // start packet
     LoRa.write(lora_address_remote);  // add destination address
     LoRa.write(lora_address_local); // add sender address
     LoRa.print(send);         // add payload
-    LoRa.endPacket(false);    // finish packet and send it
+    LoRa.endPacket(true);    // finish packet and send it
+
+    uart_print("LoRa packet end", VerbosityLevel::DEBUG);
 
     std::string message_to_log = "Sent message of size " + std::to_string(n);
     message_to_log += " to 0x" + std::to_string(lora_address_remote);
@@ -35,8 +38,10 @@ void send_message(string outgoing)
 
 
 void send_frame_lora(const Frame& frame) {
-    std::string encoded_frame = frame_encode(frame);
-    send_message(encoded_frame);
+    uart_print("Sending frame via LoRa", VerbosityLevel::DEBUG);
+    string outgoing = frame_encode(frame);
+    send_message(outgoing);
+    uart_print("Frame sent via LoRa", VerbosityLevel::DEBUG);
 }
 
 void send_frame_uart(const Frame& frame) {

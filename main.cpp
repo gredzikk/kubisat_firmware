@@ -10,16 +10,6 @@ volatile bool pause_gps_collection = false;
 char buffer[BUFFER_SIZE];
 int buffer_index = 0;
 
-
-void process_pending_actions() {    
-    if (g_pending_bootloader_reset) {
-        sleep_ms(100);
-        uart_print("Entering BOOTSEL mode...", VerbosityLevel::WARNING);
-        reset_usb_boot(0, 0);
-    }
-}
-
-
 void core1_entry() {
     uart_print("Starting core 1", VerbosityLevel::DEBUG);
     EventEmitter::emit(EventGroup::SYSTEM, SystemEvent::CORE1_START);
@@ -27,12 +17,11 @@ void core1_entry() {
     uint32_t last_clock_check_time = 0;
     uint32_t last_telemetry_time = 0;
     uint32_t telemetry_collection_counter = 0;
-    
+
     telemetry_init();
 
     while (true) {
         collect_gps_data();
-        process_pending_actions();
         
         uint32_t currentTime = to_ms_since_boot(get_absolute_time());
         
@@ -53,6 +42,12 @@ void core1_entry() {
             if (is_telemetry_flush_time(telemetry_collection_counter)) {
                 flush_telemetry();
             }
+        }
+
+        if (g_pending_bootloader_reset) {
+            sleep_ms(100);
+            uart_print("Entering BOOTSEL mode...", VerbosityLevel::WARNING);
+            reset_usb_boot(0, 0);
         }
         
         sleep_ms(10);

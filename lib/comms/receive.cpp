@@ -14,6 +14,7 @@
  */
 void on_receive(int packet_size) {
     if (packet_size == 0) return;
+    uart_print("Received LoRa packet of size " + std::to_string(packet_size), VerbosityLevel::DEBUG);
 
     uint8_t buffer[256];
     int bytes_read = 0;
@@ -21,6 +22,8 @@ void on_receive(int packet_size) {
     while (LoRa.available() && bytes_read < packet_size) {
         buffer[bytes_read++] = LoRa.read();
     }
+
+    uart_print("Received " + std::to_string(bytes_read) + " bytes", VerbosityLevel::DEBUG);
     
     // Extract LoRa metadata
     uint8_t received_destination = buffer[0];

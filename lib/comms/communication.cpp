@@ -32,3 +32,13 @@ bool initialize_radio() {
     return init_status;
 }
 
+void reinitialize_radio() {
+    uart_print("Re-initializing LoRa radio", VerbosityLevel::INFO);
+    if (!LoRa.begin(433E6)) { // Replace 433E6 with your frequency
+        uart_print("LoRa re-init failed", VerbosityLevel::ERROR);
+    } else {
+        uart_print("LoRa re-init successful", VerbosityLevel::INFO);
+        // Verify radio state
+    }
+}
+

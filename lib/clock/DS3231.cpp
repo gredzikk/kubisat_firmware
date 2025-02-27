@@ -109,12 +109,6 @@ int DS3231::get_time(ds3231_data_t *data) {
         return -1;
     }
 
-    status = "Raw BCD values read from DS3231: " + std::to_string(raw_data[0]) + " " + 
-            std::to_string(raw_data[1]) + " " + std::to_string(raw_data[2]) + " " + 
-            std::to_string(raw_data[3]) + " " + std::to_string(raw_data[4]) + " " + 
-            std::to_string(raw_data[5]) + " " + std::to_string(raw_data[6]);
-    uart_print(status, VerbosityLevel::DEBUG);
-
     data->seconds = bcd_to_bin(raw_data[0] & 0x7F); // Masking for CH bit (clock halt)
     data->minutes = bcd_to_bin(raw_data[1] & 0x7F);
     data->hours = bcd_to_bin(raw_data[2] & 0x3F);   // Masking for 12/24 hour mode bit
@@ -130,12 +124,6 @@ int DS3231::get_time(ds3231_data_t *data) {
         uart_print("Invalid data read from DS3231", VerbosityLevel::ERROR);
         return -1;
     }
-
-    uart_print("Reading time from DS3231", VerbosityLevel::DEBUG);
-    std::string timeStr = "Time: " + std::to_string(data->hours) + ":" + std::to_string(data->minutes) + ":" + std::to_string(data->seconds);
-    uart_print(timeStr, VerbosityLevel::DEBUG);
-    std::string dateStr = "Date: " + std::to_string(data->date) + "/" + std::to_string(data->month) + "/" + std::to_string(data->year);
-    uart_print(dateStr, VerbosityLevel::DEBUG);
 
     return 0;
 }

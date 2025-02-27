@@ -26,7 +26,7 @@ target_include_directories(commands_lib PUBLIC
     ${CMAKE_SOURCE_DIR}/lib/location
     ${CMAKE_SOURCE_DIR}/lib/storage
     ${CMAKE_SOURCE_DIR}/lib/sensors
-
+    ${CMAKE_SOURCE_DIR}/lib/telemetry
 )
 
 target_link_libraries(commands_lib PUBLIC

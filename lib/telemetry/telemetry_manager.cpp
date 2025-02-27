@@ -9,6 +9,7 @@
 #include <iomanip>
 #include <sstream>
 #include <cstdio>
+#include "communication.h"
 
 /**
  * @file telemetry_manager.cpp
@@ -114,6 +115,7 @@ struct TelemetryRecord {
         return ss.str();
     }
 };
+
 
 /**
  * @brief Circular buffer for telemetry records
@@ -222,17 +224,17 @@ bool collect_telemetry() {
     }
     
     mutex_exit(&telemetry_mutex);
+
+    uart_print("Telemetry collected", VerbosityLevel::DEBUG);
+
     return true;
 }
 
 bool flush_telemetry() {
     if (!sd_card_mounted) {
-        bool status = fs_init();
-        if (!status) {
-            uart_print("Failed to mount storage for telemetry flush", VerbosityLevel::ERROR);
-            return false;
-        }
+        return false;
     }
+    
     
     mutex_enter_blocking(&telemetry_mutex);
     
