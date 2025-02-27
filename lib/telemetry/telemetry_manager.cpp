@@ -116,9 +116,12 @@ struct TelemetryRecord {
 };
 
 /**
- * @brief Circular buffer for storing telemetry records before they're written to storage
+ * @brief Circular buffer for telemetry records
  */
-static std::deque<TelemetryRecord> telemetry_buffer;
+#define TELEMETRY_BUFFER_SIZE 20  // Much smaller than before
+static TelemetryRecord telemetry_buffer[TELEMETRY_BUFFER_SIZE];
+static size_t telemetry_buffer_count = 0;
+static size_t telemetry_buffer_write_index = 0;
 
 /**
  * @brief Mutex for thread-safe access to the telemetry buffer
@@ -209,12 +212,13 @@ bool collect_telemetry() {
         record.altitude = "";
     }
     
-    // Add to buffer with mutex protection
     mutex_enter_blocking(&telemetry_mutex);
     
-    telemetry_buffer.push_back(record);
-    if (telemetry_buffer.size() > flush_threshold) {
-        telemetry_buffer.pop_front(); // Keep buffer size limited
+    // Add to circular buffer
+    telemetry_buffer[telemetry_buffer_write_index] = record;
+    telemetry_buffer_write_index = (telemetry_buffer_write_index + 1) % TELEMETRY_BUFFER_SIZE;
+    if (telemetry_buffer_count < TELEMETRY_BUFFER_SIZE) {
+        telemetry_buffer_count++;
     }
     
     mutex_exit(&telemetry_mutex);
@@ -232,7 +236,7 @@ bool flush_telemetry() {
     
     mutex_enter_blocking(&telemetry_mutex);
     
-    if (telemetry_buffer.empty()) {
+    if (telemetry_buffer_count == 0) {
         mutex_exit(&telemetry_mutex);
         return true; // Nothing to save
     }
@@ -244,19 +248,26 @@ bool flush_telemetry() {
         return false;
     }
     
+    // Calculate start index (for circular buffer)
+    size_t read_index = 0;
+    if (telemetry_buffer_count == TELEMETRY_BUFFER_SIZE) {
+        // Buffer is full, start from oldest entry
+        read_index = telemetry_buffer_write_index;
+    }
+    
     // Write all records to CSV
-    for (const auto& record : telemetry_buffer) {
-        fprintf(file, "%s\n", record.to_csv().c_str());
+    for (size_t i = 0; i < telemetry_buffer_count; i++) {
+        fprintf(file, "%s\n", telemetry_buffer[read_index].to_csv().c_str());
+        read_index = (read_index + 1) % TELEMETRY_BUFFER_SIZE;
     }
     
     // Clear buffer after successful write
-    telemetry_buffer.clear();
+    telemetry_buffer_count = 0;
+    telemetry_buffer_write_index = 0;
     
     fclose(file);
     
     mutex_exit(&telemetry_mutex);
-    
-    uart_print("Flushed telemetry data to storage", VerbosityLevel::DEBUG);
     return true;
 }
 

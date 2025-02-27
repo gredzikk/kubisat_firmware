@@ -7,11 +7,8 @@
 #include <errno.h>
 #include "dirent.h"
 
-#define MAX_BLOCK_SIZE 250
 #define STORAGE_GROUP 6
-#define START_COMMAND 1
-#define DATA_COMMAND 2
-#define END_COMMAND 3
+
 #define LIST_FILES_COMMAND 0
 #define MOUNT_COMMAND 4
 /**
@@ -19,88 +16,6 @@
  * @brief Commands for interacting with the SD card storage.
  * @{
  */
-
-/**
- * @brief Handles the file download command.
- *
- * This function reads a file from the SD card and sends it to the ground station
- * in blocks over LoRa. The ground station must acknowledge each block before
- * the next block is sent. A checksum is calculated and sent at the end of the
- * transmission to verify data integrity.
- *
- * @param param The filename to download.
- * @param operationType The operation type (must be GET).
- * @return A vector of Frames indicating the result of the operation.
- *         - Success: Frame with "File download complete" message.
- *         - Error: Frame with error message (e.g., "File not found", "ACK timeout").
- *
- * @note <b>KBST;0;GET;6;1;[filename];TSBK</b>
- * @note Example: <b>KBST;0;GET;6;1;test.txt;TSBK</b> - Downloads the file "test.txt".
- * @ingroup StorageCommands
- * @xrefitem command "Command" "List of Commands" Command ID: 6.1
- */
-std::vector<Frame> handle_file_download(const std::string& param, OperationType operationType) {
-    std::vector<Frame> frames;
-    if (operationType != OperationType::GET) {
-        frames.push_back(frame_build(OperationType::ERR, STORAGE_GROUP, START_COMMAND, "Invalid operation type"));
-        return frames;
-    }
-
-    const char* filename = param.c_str();
-    FILE* file = fopen(filename, "rb");
-
-    if (!file) {
-        frames.push_back(frame_build(OperationType::ERR, STORAGE_GROUP, START_COMMAND, "File not found"));
-        return frames;
-    }
-
-    // Get file size
-    fseek(file, 0, SEEK_END);
-    size_t file_size = ftell(file);
-    fseek(file, 0, SEEK_SET);
-
-    // Send file size to ground station
-    frames.push_back(frame_build(OperationType::VAL, STORAGE_GROUP, START_COMMAND, std::to_string(file_size)));
-    send_frame_uart(frames.back());
-
-    size_t block_size = MAX_BLOCK_SIZE;
-    size_t block_count = (file_size + block_size - 1) / block_size;
-
-    // Send block size and count
-    frames.push_back(frame_build(OperationType::VAL, STORAGE_GROUP, START_COMMAND, std::to_string(block_size)));
-    send_frame_uart(frames.back());
-    frames.push_back(frame_build(OperationType::VAL, STORAGE_GROUP, START_COMMAND, std::to_string(block_count)));
-    send_frame_uart(frames.back());
-
-    uint8_t buffer[MAX_BLOCK_SIZE];
-    size_t bytes_read;
-    uint32_t total_checksum = 0;
-    size_t block_index = 0;
-
-    while ((bytes_read = fread(buffer, 1, MAX_BLOCK_SIZE, file)) > 0) {
-        // Convert binary to transmission-safe format
-        std::string block_data = base64_encode(buffer, bytes_read);
-        
-        // Add block data and index to frame
-        std::string frame_data = std::to_string(block_index) + ":" + block_data;
-        frames.push_back(frame_build(OperationType::SEQ, STORAGE_GROUP, DATA_COMMAND, frame_data));
-        
-        // Update checksum
-        total_checksum += calculate_checksum(buffer, bytes_read);
-        
-        block_index++;
-    }
-    
-    fclose(file);
-
-
-    std::stringstream ss;
-    ss << std::hex << total_checksum;
-    frames.push_back(frame_build(OperationType::VAL, STORAGE_GROUP, END_COMMAND, ss.str()));
-    
-    frames.push_back(frame_build(OperationType::VAL, STORAGE_GROUP, END_COMMAND, "File download complete"));
-    return frames;
-}
 
 /**
  * @brief Handles the list files command.

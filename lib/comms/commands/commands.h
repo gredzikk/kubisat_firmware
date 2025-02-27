@@ -45,7 +45,6 @@ std::vector<Frame> handle_get_event_count(const std::string& param, OperationTyp
 
 //STORAGE
 std::vector<Frame> handle_list_files(const std::string& param, OperationType operationType);
-std::vector<Frame> handle_file_download(const std::string& param, OperationType operationType);
 std::vector<Frame> handle_mount(const std::string& param, OperationType operationType);
 
 // SENSOR

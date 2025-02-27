@@ -5,6 +5,7 @@
 PowerManager powerManager(MAIN_I2C_PORT);
 DS3231 systemClock(MAIN_I2C_PORT);
 volatile bool g_pending_bootloader_reset = false;
+volatile bool pause_gps_collection = false;
 
 char buffer[BUFFER_SIZE];
 int buffer_index = 0;
@@ -17,6 +18,7 @@ void process_pending_actions() {
         reset_usb_boot(0, 0);
     }
 }
+
 
 void core1_entry() {
     uart_print("Starting core 1", VerbosityLevel::DEBUG);

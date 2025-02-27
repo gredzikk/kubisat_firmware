@@ -8,7 +8,7 @@
 #include "storage.h"
 #include "utils.h"
 
-#define EVENT_BUFFER_SIZE 1000
+#define EVENT_BUFFER_SIZE 100
 #define EVENT_FLUSH_THRESHOLD 10
 #define EVENT_LOG_FILE "/event_log.csv"
 

@@ -263,7 +263,7 @@ private:
     uint8_t bcd_to_bin(const uint8_t bcd);
 
     recursive_mutex_t clock_mutex_;          ///< Mutex for thread-safe I2C access
-    int16_t timezone_offset_minutes_ = 0;    ///< Timezone offset in minutes, default: UTC
+    int16_t timezone_offset_minutes_ = 60;    ///< Timezone offset in minutes, default: UTC
     uint32_t sync_interval_minutes_ = 1440;  ///< Sync interval in minutes, default: 24 hours
     time_t last_sync_time_ = 0;              ///< Last sync timestamp, 0 = never synced
 };

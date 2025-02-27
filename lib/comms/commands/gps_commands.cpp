@@ -110,26 +110,26 @@ std::vector<Frame> handle_enable_gps_uart_passthrough(const std::string& param, 
     const std::string EXIT_SEQUENCE = "##EXIT##";
     std::string input_buffer;
     bool exit_requested = false;
+    static volatile bool pause_gps_collection = false;
+    pause_gps_collection = true;
+    sleep_ms(100); 
+
     uint32_t original_baud_rate = DEBUG_UART_BAUD_RATE;
     uint32_t gps_baud_rate = GPS_UART_BAUD_RATE;
     uint32_t start_time = to_ms_since_boot(get_absolute_time());
 
-    // Log start of transparent mode
     EventEmitter::emit(EventGroup::GPS, GPSEvent::PASS_THROUGH_START);
 
-    // Print startup message
     std::string message = "Entering GPS Serial Pass-Through Mode @" + 
                          std::to_string(gps_baud_rate) + " for " + 
                          std::to_string(timeout_ms/1000) + "s\r\n" +
                          "Send " + EXIT_SEQUENCE + " to exit";
     uart_print(message, VerbosityLevel::INFO);
-    // Allow time for message to be sent before baudrate change
+
     sleep_ms(10);
     
-    // Switch to GPS baudrate
     uart_set_baudrate(DEBUG_UART_PORT, gps_baud_rate);
 
-    // Main transparent mode loop
     while (!exit_requested) {
         while (uart_is_readable(DEBUG_UART_PORT)) {
             char ch = uart_getc(DEBUG_UART_PORT);
@@ -163,7 +163,9 @@ std::vector<Frame> handle_enable_gps_uart_passthrough(const std::string& param, 
 
     uart_set_baudrate(DEBUG_UART_PORT, original_baud_rate);
     
-    sleep_ms(10);
+    sleep_ms(50);
+    
+    pause_gps_collection = false;
 
     EventEmitter::emit(EventGroup::GPS, GPSEvent::PASS_THROUGH_END);
     

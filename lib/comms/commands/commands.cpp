@@ -46,7 +46,6 @@ CommandMap command_handlers = {
     {((static_cast<uint32_t>(5) << 8) | static_cast<uint32_t>(1)), handle_get_last_events},                 // Group 5, Command 1
     {((static_cast<uint32_t>(5) << 8) | static_cast<uint32_t>(2)), handle_get_event_count},                 // Group 5, Command 2
     {((static_cast<uint32_t>(6) << 8) | static_cast<uint32_t>(0)), handle_list_files},                      // Group 6, Command 0
-    {((static_cast<uint32_t>(6) << 8) | static_cast<uint32_t>(1)), handle_file_download},                   // Group 6, Command 1
     {((static_cast<uint32_t>(6) << 8) | static_cast<uint32_t>(4)), handle_mount},                           // Group 6, Command 4
     {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(1)), handle_gps_power_status},                // Group 7, Command 1
     {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(2)), handle_enable_gps_uart_passthrough},     // Group 7, Command 3

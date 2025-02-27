@@ -10,7 +10,9 @@
 #include "DS3231.h"
 #include <sstream>
 
-#define MAX_RAW_DATA_LENGTH 1024
+extern volatile bool pause_gps_collection;
+
+#define MAX_RAW_DATA_LENGTH 256
 
 extern NMEAData nmea_data;
 
@@ -25,6 +27,11 @@ std::vector<std::string> splitString(const std::string& str, char delimiter) {
 }
 
 void collect_gps_data() {
+
+    if (pause_gps_collection) {
+        return;
+    }
+
     static char raw_data_buffer[MAX_RAW_DATA_LENGTH];
     static int raw_data_index = 0;
 

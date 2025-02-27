@@ -88,7 +88,7 @@ std::vector<Frame> handle_get_build_version(const std::string& param, OperationT
         frames.push_back(frame_build(OperationType::VAL, 1, 1, std::to_string(BUILD_NUMBER)));
         return frames;
     }
-    
+
     error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
     frames.push_back(frame_build(OperationType::ERR, 1, 1, error_msg));
     return frames;
