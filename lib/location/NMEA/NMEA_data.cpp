@@ -34,7 +34,7 @@ std::vector<std::string> NMEAData::get_gga_tokens() const {
 }
 
 bool NMEAData::has_valid_time() const {
-    return rmc_tokens_.size() >= 10;
+    return rmc_tokens_.size() >= 10 && rmc_tokens_[1].length() > 5;
 }
 
 time_t NMEAData::get_unix_time() const {

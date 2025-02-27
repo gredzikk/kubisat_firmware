@@ -23,20 +23,33 @@ void core1_entry() {
     EventEmitter::emit(EventGroup::SYSTEM, SystemEvent::CORE1_START);
     
     uint32_t last_clock_check_time = 0;
-    const uint32_t CLOCK_CHECK_INTERVAL_MS = 60000; 
+    uint32_t last_telemetry_time = 0;
+    uint32_t telemetry_collection_counter = 0;
     
+    telemetry_init();
+
     while (true) {
         collect_gps_data();
-        check_power_events(powerManager);
         process_pending_actions();
         
         uint32_t currentTime = to_ms_since_boot(get_absolute_time());
-        if (currentTime - last_clock_check_time >= CLOCK_CHECK_INTERVAL_MS) {
+        
+        uint32_t check_interval_ms = systemClock.get_clock_sync_interval() * 60000;
+        if (currentTime - last_clock_check_time >= check_interval_ms) {
             last_clock_check_time = currentTime;
             
             if (systemClock.is_sync_needed()) {
                 uart_print("Clock sync interval reached, attempting sync", VerbosityLevel::INFO);
                 systemClock.sync_clock_with_gps();
+            }
+        }
+        
+        if (is_telemetry_collection_time(currentTime, last_telemetry_time)) {
+            collect_telemetry();
+            telemetry_collection_counter++;
+            
+            if (is_telemetry_flush_time(telemetry_collection_counter)) {
+                flush_telemetry();
             }
         }
         

@@ -68,7 +68,7 @@ std::vector<Frame> handle_time(const std::string& param, OperationType operation
             return frames;
         }
 
-        uint32_t time_unix = systemClock.get_unix_time();
+        uint32_t time_unix = systemClock.get_local_time();
         if (time_unix == 0) {
             error_msg = error_code_to_string(ErrorCode::INTERNAL_FAIL_TO_READ);
             frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, TIME, error_msg));

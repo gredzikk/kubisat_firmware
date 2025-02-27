@@ -32,5 +32,6 @@
 #include "lib/location/gps_collector.h"
 #include "lib/storage/storage.h" // Corrected path
 #include "lib/storage/pico-vfs/include/filesystem/vfs.h" // Corrected path
+#include "telemetry_manager.h"
 
 #endif

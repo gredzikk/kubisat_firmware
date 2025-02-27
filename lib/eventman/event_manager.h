@@ -331,13 +331,5 @@ class EventEmitter {
     }
 };
 
-
-/**
- * @brief Checks power statuses and triggers events based on voltage trends.
- * @param pm Reference to the PowerManager object.
- */
-void check_power_events(PowerManager& pm);
-
-
 #endif
 /** @} */ // End of EventManagerGroup
