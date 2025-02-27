@@ -10,47 +10,81 @@
 #include <sstream>
 #include <cstdio>
 
+/**
+ * @file telemetry_manager.cpp
+ * @brief Implementation of telemetry collection and storage functionality
+ * @details Handles collecting, buffering, and persisting telemetry data from various 
+ *          satellite subsystems including power, sensors, and GPS
+ */
+
+// External dependencies - these should be documented elsewhere
 extern PowerManager powerManager;
 extern DS3231 systemClock;
-extern NMEAData nmea_data; 
+extern NMEAData nmea_data;
 
+/**
+ * @brief Path to the telemetry CSV file on storage media
+ */
 #define TELEMETRY_CSV_PATH "/telemetry.csv"
+
+/**
+ * @brief Default interval between telemetry samples in milliseconds (2 seconds)
+ */
 #define DEFAULT_SAMPLE_INTERVAL_MS 2000
+
+/**
+ * @brief Default number of records to collect before flushing to storage
+ */
 #define DEFAULT_FLUSH_THRESHOLD 10
 
+/**
+ * @brief Current sampling interval in milliseconds
+ */
 static uint32_t sample_interval_ms = DEFAULT_SAMPLE_INTERVAL_MS;
+
+/**
+ * @brief Current flush threshold (number of records that triggers a flush)
+ */
 static uint32_t flush_threshold = DEFAULT_FLUSH_THRESHOLD;
 
+
+/**
+ * @struct TelemetryRecord
+ * @brief Structure representing a single telemetry data point
+ * @details Contains all measurements from power subsystem, sensors, and GPS data
+ *          collected at a specific point in time
+ */
 struct TelemetryRecord {
-    uint32_t timestamp;
+    uint32_t timestamp;       /**< Unix timestamp of the record */
     
     // Power data
-    float battery_voltage;
-    float system_voltage;
-    float charge_current_usb;
-    float charge_current_solar;
-    float discharge_current;
+    float battery_voltage;    /**< Battery voltage in volts */
+    float system_voltage;     /**< System 5V rail voltage in volts */
+    float charge_current_usb; /**< USB charging current in mA */
+    float charge_current_solar; /**< Solar charging current in mA */
+    float discharge_current;  /**< Battery discharge current in mA */
     
     // Environmental sensor data
-    float temperature;
-    float pressure;
-    float humidity;
-    float light_level;
+    float temperature;        /**< Temperature in degrees Celsius */
+    float pressure;           /**< Atmospheric pressure in hPa */
+    float humidity;           /**< Relative humidity in percent */
+    float light_level;        /**< Light level in lux */
     
     // GPS data - key RMC fields
-    std::string time;         // UTC time
-    std::string latitude;     // Latitude
-    std::string lat_dir;      // N/S
-    std::string longitude;    // Longitude
-    std::string lon_dir;      // E/W
-    std::string speed;        // Speed in knots
-    std::string course;       // Course in degrees
-    std::string date;         // Date
+    std::string time;         /**< UTC time from GPS */
+    std::string latitude;     /**< Latitude from GPS */
+    std::string lat_dir;      /**< N/S latitude direction */
+    std::string longitude;    /**< Longitude from GPS */
+    std::string lon_dir;      /**< E/W longitude direction */
+    std::string speed;        /**< Speed in knots */
+    std::string course;       /**< Course in degrees */
+    std::string date;         /**< Date from GPS */
     
     // GPS data - key GGA fields
-    std::string fix_quality;  // Fix quality
-    std::string satellites;   // Number of satellites
-    std::string altitude;     // Altitude
+    std::string fix_quality;  /**< GPS fix quality */
+    std::string satellites;   /**< Number of satellites in view */
+    std::string altitude;     /**< Altitude in meters */
+    
     
     // Convert record to CSV line
     std::string to_csv() const {
@@ -81,8 +115,14 @@ struct TelemetryRecord {
     }
 };
 
-// Circular buffer for telemetry records
+/**
+ * @brief Circular buffer for storing telemetry records before they're written to storage
+ */
 static std::deque<TelemetryRecord> telemetry_buffer;
+
+/**
+ * @brief Mutex for thread-safe access to the telemetry buffer
+ */
 static mutex_t telemetry_mutex;
 
 bool telemetry_init() {
@@ -127,7 +167,7 @@ bool collect_telemetry() {
     record.charge_current_solar = powerManager.get_current_charge_solar();
     record.discharge_current = powerManager.get_current_draw();
     
-    // Sensor data - check if sensors are available first
+    // Sensor data 
     record.temperature = sensor_wrapper.sensor_read_data(SensorType::ENVIRONMENT, SensorDataTypeIdentifier::TEMPERATURE);
     record.pressure = sensor_wrapper.sensor_read_data(SensorType::ENVIRONMENT, SensorDataTypeIdentifier::PRESSURE);
     record.humidity = sensor_wrapper.sensor_read_data(SensorType::ENVIRONMENT, SensorDataTypeIdentifier::HUMIDITY);
