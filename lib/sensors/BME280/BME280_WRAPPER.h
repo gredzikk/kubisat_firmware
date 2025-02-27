@@ -17,7 +17,11 @@ public:
     float read_data(SensorDataTypeIdentifier type) override;
     bool is_initialized() const override;
     SensorType get_type() const override;
-        bool configure(const std::map<std::string, std::string>& config) override;
+    bool configure(const std::map<std::string, std::string>& config) override;
+
+    uint8_t get_address() const override {
+        return 0x76;
+    }
 
 };
 

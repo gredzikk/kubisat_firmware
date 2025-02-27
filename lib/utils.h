@@ -67,12 +67,7 @@ void uart_print(const std::string& msg,
 
 
 
-/**
- * @brief Calculates CRC16 checksum
- * @param data Pointer to data buffer
- * @param length Length of data in bytes
- * @return Calculated CRC16 value
- */
-uint16_t crc16(const uint8_t *data, size_t length);
+std::string base64_encode(const uint8_t* input, size_t length);
 
+uint32_t calculate_checksum(const uint8_t* data, size_t length);
 #endif

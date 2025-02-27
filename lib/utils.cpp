@@ -3,6 +3,9 @@
 #include "pico/sync.h"
 #include <vector>
 #include <queue>
+#include <string>
+#include <array>
+
 
 /**
  * @file utils.cpp
@@ -85,24 +88,58 @@ void uart_print(const std::string& msg, VerbosityLevel level, bool logToFile, ua
 }
 
 
-/**
- * @brief Calculates the CRC16 checksum of the given data.
- * @param data A pointer to the data buffer.
- * @param length The length of the data in bytes.
- * @return The CRC16 checksum.
- * @details Calculates the CRC16 checksum using the standard algorithm.
- */
-uint16_t crc16(const uint8_t *data, size_t length) {
-    uint16_t crc = 0xFFFF;
-    for (size_t i = 0; i < length; i++) {
-        crc ^= data[i];
-        for (int j = 0; j < 8; j++) {
-            if (crc & 0x0001) {
-                crc = (crc >> 1) ^ 0xA001;
-            } else {
-                crc >>= 1;
-            }
+// Base64 encoding table
+static const char base64_chars[] = 
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+
+std::string base64_encode(const uint8_t* input, size_t length) {
+    std::string result;
+    result.reserve(((length + 2) / 3) * 4); // Reserve space for the result
+    
+    int i = 0;
+    int j = 0;
+    uint8_t char_array_3[3];
+    uint8_t char_array_4[4];
+    
+    while (length--) {
+        char_array_3[i++] = *(input++);
+        if (i == 3) {
+            char_array_4[0] = (char_array_3[0] & 0xfc) >> 2;
+            char_array_4[1] = ((char_array_3[0] & 0x03) << 4) + ((char_array_3[1] & 0xf0) >> 4);
+            char_array_4[2] = ((char_array_3[1] & 0x0f) << 2) + ((char_array_3[2] & 0xc0) >> 6);
+            char_array_4[3] = char_array_3[2] & 0x3f;
+            
+            for (i = 0; i < 4; i++)
+                result += base64_chars[char_array_4[i]];
+            i = 0;
         }
     }
-    return crc;
+    
+    // Handle the remaining bytes
+    if (i) {
+        for (j = i; j < 3; j++)
+            char_array_3[j] = '\0';
+        
+        char_array_4[0] = (char_array_3[0] & 0xfc) >> 2;
+        char_array_4[1] = ((char_array_3[0] & 0x03) << 4) + ((char_array_3[1] & 0xf0) >> 4);
+        char_array_4[2] = ((char_array_3[1] & 0x0f) << 2) + ((char_array_3[2] & 0xc0) >> 6);
+        
+        for (j = 0; j < i + 1; j++)
+            result += base64_chars[char_array_4[j]];
+        
+        while (i++ < 3)
+            result += '='; // Padding
+    }
+    
+    return result;
+}
+
+
+
+uint32_t calculate_checksum(const uint8_t* data, size_t length) {
+    uint32_t checksum = 0;
+    for (size_t i = 0; i < length; ++i) {
+        checksum ^= data[i];
+    }
+    return checksum;
 }

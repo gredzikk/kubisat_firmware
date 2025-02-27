@@ -3,6 +3,7 @@
 #include "lib/sensors/BH1750/BH1750_WRAPPER.h"
 #include "lib/sensors/BME280/BME280_WRAPPER.h"
 #include "lib/sensors/HMC5883L/HMC5883L_WRAPPER.h"
+#include "lib/utils.h"
 
 /**
  * @file ISensor.cpp
@@ -25,10 +26,12 @@ SensorWrapper& SensorWrapper::get_instance() {
     return instance;
 }
 
+
 /**
  * @brief Default constructor for SensorWrapper.
  */
 SensorWrapper::SensorWrapper() = default;
+
 
 /**
  * @brief Initializes a given sensor type on the specified I2C bus.
@@ -54,6 +57,7 @@ bool SensorWrapper::sensor_init(SensorType type, i2c_inst_t* i2c) {
     return sensors[type]->init();
 }
 
+
 /**
  * @brief Configures an already initialized sensor with supplied settings.
  * @param type The sensor type.
@@ -69,6 +73,7 @@ bool SensorWrapper::sensor_configure(SensorType type, const std::map<std::string
     return false;
 }
 
+
 /**
  * @brief Reads a specific data type (e.g., temperature, humidity) from a sensor.
  * @param sensorType The sensor type.
@@ -83,14 +88,60 @@ float SensorWrapper::sensor_read_data(SensorType sensorType, SensorDataTypeIdent
     return 0.0f;
 }
 
+
 /**
- * @brief Retrieves a list of available sensor types.
- * @return A vector of available sensor types.
+ * @brief Retrieves a list of available sensor types with their addresses
+ * @return A vector of pairs containing sensor type and I2C address
  */
-std::vector<SensorType> SensorWrapper::get_available_sensors() {
-    std::vector<SensorType> available_sensors;
-    for (const auto& sensor : sensors) {
-        available_sensors.push_back(sensor.first);
+std::vector<std::pair<SensorType, uint8_t>> SensorWrapper::get_available_sensors() {
+    std::vector<std::pair<SensorType, uint8_t>> available_sensors;
+    
+    for (const auto& sensor_pair : sensors) {
+        if (sensor_pair.second->is_initialized()) {
+            available_sensors.push_back({sensor_pair.first, sensor_pair.second->get_address()});
+        }
     }
+    
     return available_sensors;
 }
+
+
+/**
+ * @brief Scans the I2C bus for connected sensors
+ * @param i2c The I2C interface to scan
+ * @return Vector of pairs containing sensor type and I2C address of detected sensors
+ */
+std::vector<std::pair<SensorType, uint8_t>> SensorWrapper::scan_connected_sensors(i2c_inst_t* i2c) {
+    std::vector<std::pair<SensorType, uint8_t>> connected_sensors;
+    
+    // Define the address ranges to check for each sensor type
+    struct SensorAddressInfo {
+        SensorType type;
+        std::vector<uint8_t> addresses;
+    };
+    
+    std::vector<SensorAddressInfo> sensor_addresses = {
+        {SensorType::LIGHT, {0x23, 0x5C}},              // BH1750 addresses
+        {SensorType::ENVIRONMENT, {0x76, 0x77}},        // BME280 addresses
+        {SensorType::MAGNETOMETER, {0x0D, 0x1E}},       // HMC5883L addresses
+        {SensorType::IMU, {0x68, 0x69}}                 // MPU6050 addresses
+    };
+    
+    // Buffer for receiving ACK/NACK
+    uint8_t rxdata;
+    
+    for (const auto& sensor_info : sensor_addresses) {
+        for (uint8_t addr : sensor_info.addresses) {
+            // Try to read a byte from the device to see if it ACKs
+            int result = i2c_read_blocking(i2c, addr, &rxdata, 1, false);
+            if (result >= 0) {
+                // We received an ACK, so the device exists
+                connected_sensors.push_back({sensor_info.type, addr});
+                uart_print("Found sensor at address 0x" + std::to_string(addr), VerbosityLevel::DEBUG);
+            }
+        }
+    }
+    
+    return connected_sensors;
+}
+

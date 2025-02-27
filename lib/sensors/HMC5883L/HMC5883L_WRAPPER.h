@@ -13,6 +13,10 @@ public:
     SensorType get_type() const override;
     bool configure(const std::map<std::string, std::string>& config) override;
 
+    uint8_t get_address() const override {
+        return 0x0D;
+    }
+
 private:
     HMC5883L sensor_;
     bool initialized_;

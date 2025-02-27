@@ -21,6 +21,9 @@ public:
     
     bool configure(const std::map<std::string, std::string>& config);
 
+    uint8_t get_address() const override {
+        return 0x23;
+    }
 };
 
 #endif // BH1750_WRAPPER_H

@@ -5,7 +5,6 @@
 #include "filesystem/littlefs.h"
 #include <sys/stat.h>
 #include <errno.h>
-#include "storage_commands_utils.h"
 #include "dirent.h"
 
 #define MAX_BLOCK_SIZE 250
@@ -79,22 +78,22 @@ std::vector<Frame> handle_file_download(const std::string& param, OperationType 
     size_t block_index = 0;
 
     while ((bytes_read = fread(buffer, 1, MAX_BLOCK_SIZE, file)) > 0) {
-        // Send data block
-        send_data_block(buffer, bytes_read);
-        total_checksum = calculate_checksum(buffer, bytes_read);
-
-        // Wait for ACK
-        if (!receive_ack()) {
-            fclose(file);
-            frames.push_back(frame_build(OperationType::ERR, STORAGE_GROUP, DATA_COMMAND, "ACK timeout"));
-            return frames;
-        }
+        // Convert binary to transmission-safe format
+        std::string block_data = base64_encode(buffer, bytes_read);
+        
+        // Add block data and index to frame
+        std::string frame_data = std::to_string(block_index) + ":" + block_data;
+        frames.push_back(frame_build(OperationType::SEQ, STORAGE_GROUP, DATA_COMMAND, frame_data));
+        
+        // Update checksum
+        total_checksum += calculate_checksum(buffer, bytes_read);
+        
         block_index++;
     }
-
+    
     fclose(file);
 
-    // Send end frame with checksum
+
     std::stringstream ss;
     ss << std::hex << total_checksum;
     frames.push_back(frame_build(OperationType::VAL, STORAGE_GROUP, END_COMMAND, ss.str()));

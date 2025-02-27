@@ -331,7 +331,7 @@ std::vector<Frame> handle_get_sensor_list(const std::string& param, OperationTyp
     SensorWrapper& sensor_wrapper = SensorWrapper::get_instance();
     
     // Get list of available sensor types
-    std::vector<SensorType> available_sensors = sensor_wrapper.get_available_sensors();
+    std::vector<std::pair<SensorType, uint8_t>> available_sensors = sensor_wrapper.get_available_sensors();
     
     if (available_sensors.empty()) {
         frames.push_back(frame_build(OperationType::VAL, SENSOR_GROUP, 2, "No sensors available"));
@@ -341,26 +341,30 @@ std::vector<Frame> handle_get_sensor_list(const std::string& param, OperationTyp
     std::stringstream sensor_list;
     bool first = true;
     
-    for (SensorType sensor_type : available_sensors) {
+    for (const auto& sensor_info : available_sensors) {
         if (!first) {
             sensor_list << "|";
         }
         
-        switch (sensor_type) {
+        // Format: sensor_type:address (in hex)
+        std::stringstream addr_hex;
+        addr_hex << std::hex << static_cast<int>(sensor_info.second);
+        
+        switch (sensor_info.first) {
             case SensorType::LIGHT:
-                sensor_list << "light";
+                sensor_list << "light:0x" << addr_hex.str();
                 break;
             case SensorType::ENVIRONMENT:
-                sensor_list << "environment";
+                sensor_list << "environment:0x" << addr_hex.str();
                 break;
             case SensorType::MAGNETOMETER:
-                sensor_list << "magnetometer";
+                sensor_list << "magnetometer:0x" << addr_hex.str();
                 break;
             case SensorType::IMU:
-                sensor_list << "imu";
+                sensor_list << "imu:0x" << addr_hex.str();
                 break;
             default:
-                sensor_list << "unknown";
+                sensor_list << "unknown:0x" << addr_hex.str();
                 break;
         }
         

@@ -39,6 +39,7 @@ public:
     virtual bool is_initialized() const = 0;
     virtual SensorType get_type() const = 0;
     virtual bool configure(const std::map<std::string, std::string>& config) = 0;
+    virtual uint8_t get_address() const = 0;
 };
 
 class SensorWrapper {
@@ -47,9 +48,11 @@ public:
     bool sensor_init(SensorType type, i2c_inst_t* i2c = nullptr);
     bool sensor_configure(SensorType type, const std::map<std::string, std::string>& config);
     float sensor_read_data(SensorType sensorType, SensorDataTypeIdentifier dataType);
-    std::vector<SensorType> get_available_sensors();
     ISensor* get_sensor(SensorType type);
 
+    std::vector<std::pair<SensorType, uint8_t>> scan_connected_sensors(i2c_inst_t* i2c);
+    std::vector<std::pair<SensorType, uint8_t>> get_available_sensors();
+    
 private:
     std::map<SensorType, ISensor*> sensors;
     SensorWrapper();

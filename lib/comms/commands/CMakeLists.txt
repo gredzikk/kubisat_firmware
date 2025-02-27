@@ -10,7 +10,6 @@ add_library(commands_lib STATIC
     power_commands.cpp
     event_commands.cpp
     storage_commands.cpp
-    storage_commands_utils.cpp
     sensor_commands.cpp
 )
 
