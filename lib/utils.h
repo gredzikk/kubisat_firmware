@@ -66,8 +66,4 @@ void uart_print(const std::string& msg,
                uart_inst_t* uart = DEBUG_UART_PORT);
 
 
-
-std::string base64_encode(const uint8_t* input, size_t length);
-
-uint32_t calculate_checksum(const uint8_t* data, size_t length);
 #endif
