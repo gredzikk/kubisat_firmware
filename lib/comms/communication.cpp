@@ -22,7 +22,7 @@ bool initialize_radio() {
     // 433 MHz offers better penetration than 868/915 MHz
     if (!LoRa.begin(433E6)) {
         uart_print("LoRa initialization failed", VerbosityLevel::ERROR);
-        EventEmitter::emit(EventGroup::COMMUNICATIONS, CommsEvent::RADIO_ERROR);
+        EventEmitter::emit(EventGroup::COMMS, CommsEvent::RADIO_ERROR);
         return false;
     }
     
@@ -42,7 +42,7 @@ bool initialize_radio() {
     LoRa.receive();
     
     uart_print("LoRa radio initialized with long-range profile", VerbosityLevel::INFO);
-    EventEmitter::emit(EventGroup::COMMUNICATIONS, CommsEvent::RADIO_INIT);
+    EventEmitter::emit(EventGroup::COMMS, CommsEvent::RADIO_INIT);
     
     return true;
 }
