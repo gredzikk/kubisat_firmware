@@ -7,9 +7,15 @@
 extern void test_frame_encode_basic(void);
 extern void test_frame_decode_basic(void);
 extern void test_frame_decode_invalid_header(void);
-extern void test_frame_build_success(void);
-extern void test_frame_build_error(void);
-extern void test_frame_build_info(void);
+
+// FRAME BUILD
+extern void test_frame_build_get(void);
+extern void test_frame_build_set(void);
+extern void test_frame_build_res(void);
+extern void test_frame_build_seq(void);
+extern void test_frame_build_val(void);
+extern void test_frame_build_err(void);
+
 extern void test_operation_type_conversion(void);
 extern void test_value_unit_type_conversion(void);
 extern void test_exception_type_conversion(void);
@@ -41,9 +47,10 @@ int main(void) {
  
     // Frame build tests (pure software)
     uart_puts(uart0, "begin frame build tests\n");
-    RUN_TEST(test_frame_build_success);
-    RUN_TEST(test_frame_build_error);
-    RUN_TEST(test_frame_build_info);
+    RUN_TEST(test_frame_build_get);
+    RUN_TEST(test_frame_build_set);
+    RUN_TEST(test_frame_build_res);
+    RUN_TEST(test_frame_build_seq);
     uart_puts(uart0, "end frame build tests\n");
     
     // Converter tests (pure software)

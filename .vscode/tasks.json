@@ -74,14 +74,31 @@
             "command": "cmake",
             "args": [
                 "--build",
-                "${workspaceFolder}/build", // Adjust if your build directory is different
+                "${workspaceFolder}/build", 
                 "--target",
                 "doc"
             ],
             "group": "build",
             "problemMatcher": [
                 "$gcc"
-            ]
+            ],
+            "detail": "Generate tex doxygen and build pdf from that"
+        },
+        {
+            "label": "Build test runner",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "${workspaceFolder}/build", 
+                "--target",
+                "build_tests"
+            ],
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Build executables for test runner project"
         }
     ]
 }
