@@ -135,7 +135,6 @@ string(STRIP "${CURRENT_BUILD_NUMBER}" CURRENT_BUILD_NUMBER)
 pico_set_program_name(main "kubisat_firmware")
 pico_set_program_version(main "0.276")
 pico_add_extra_outputs(main)
-# pico_add_extra_outputs(test_runner)
 
 add_custom_command(
     TARGET main
@@ -148,7 +147,6 @@ add_custom_command(
 )
 
 
-# Copy and rename main.uf2
 add_custom_command(
     TARGET main POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_CURRENT_SOURCE_DIR}/release"
@@ -156,6 +154,16 @@ add_custom_command(
         "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.uf2"
         "${CMAKE_CURRENT_SOURCE_DIR}/release/${PROJECT_NAME}_v${CURRENT_BUILD_NUMBER}.uf2"
     COMMENT "Copying ${PROJECT_NAME}.uf2 to release directory with build number"
+    VERBATIM
+)
+
+add_custom_target(build_tests DEPENDS test_runner)
+add_custom_command(
+    TARGET build_tests POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${CMAKE_BINARY_DIR}/test/test_runner.uf2"
+        "${CMAKE_CURRENT_SOURCE_DIR}/release/test_runner_v${CURRENT_BUILD_NUMBER}.uf2"
+    COMMENT "Copying test_runner.uf2 to release directory"
     VERBATIM
 )
 

@@ -121,7 +121,7 @@ std::vector<Frame> handle_verbosity(const std::string& param, OperationType oper
     std::string error_msg;
 
     if (operationType == OperationType::GET && param.empty()) {
-        uart_print("Current verbosity level: " + std::to_string(static_cast<int>(g_uart_verbosity)), 
+        uart_print("GET_VERBOSITY_ " + std::to_string(static_cast<int>(g_uart_verbosity)), 
                   VerbosityLevel::INFO);
         frames.push_back(frame_build(OperationType::VAL, 1, 8, 
                         std::to_string(static_cast<int>(g_uart_verbosity))));
@@ -136,7 +136,7 @@ std::vector<Frame> handle_verbosity(const std::string& param, OperationType oper
             return frames;
         }
         g_uart_verbosity = static_cast<VerbosityLevel>(level);
-        frames.push_back(frame_build(OperationType::RES, 1, 8, "SET " + std::to_string(level)));
+        frames.push_back(frame_build(OperationType::RES, 1, 8, "SET_VERBOSITY_" + std::to_string(level)));
         return frames;
     } catch (...) {
         error_msg = error_code_to_string(ErrorCode::INVALID_FORMAT);
@@ -173,7 +173,6 @@ std::vector<Frame> handle_enter_bootloader_mode(const std::string& param, Operat
 
     frames.push_back(frame_build(OperationType::RES, 1, 9, "REBOOT BOOTSEL"));
     
-    // Set flag to trigger reboot after function returns
     g_pending_bootloader_reset = true;
     
     return frames;

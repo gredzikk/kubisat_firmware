@@ -38,10 +38,20 @@ void send_message(string outgoing)
 
 
 void send_frame_lora(const Frame& frame) {
-    uart_print("Sending frame via LoRa", VerbosityLevel::DEBUG);
-    string outgoing = frame_encode(frame);
-    send_message(outgoing);
-    uart_print("Frame sent via LoRa", VerbosityLevel::DEBUG);
+    if (LoRa.beginPacket()) {
+        std::string encoded_frame = frame_encode(frame);
+        LoRa.write((uint8_t*)encoded_frame.c_str(), encoded_frame.length());
+        
+        if (LoRa.endPacket()) {
+            uart_print("LoRa frame sent: " + encoded_frame, VerbosityLevel::DEBUG);
+        } else {
+            uart_print("Failed to send LoRa frame", VerbosityLevel::ERROR);
+            EventEmitter::emit(EventGroup::COMMS, CommsEvent::RADIO_ERROR);
+        }
+    } else {
+        uart_print("Failed to begin LoRa packet", VerbosityLevel::ERROR);
+        EventEmitter::emit(EventGroup::COMMS, CommsEvent::RADIO_ERROR);
+    }
 }
 
 void send_frame_uart(const Frame& frame) {
@@ -49,25 +59,4 @@ void send_frame_uart(const Frame& frame) {
     uart_print(encoded_frame);
 }
 
-
-/**
- * @brief Sends a large packet using LoRa.
- * @param data The data to send.
- * @param length The length of the data.
- * @details Splits the data into chunks of MAX_PKT_SIZE and sends each chunk as a separate LoRa packet.
- */
-void split_and_send_message(const uint8_t* data, size_t length)
-{
-    const size_t MAX_PKT_SIZE = 255;
-    size_t offset = 0;
-    while (offset < length)
-    {
-        size_t chunk_size = ((length - offset) < MAX_PKT_SIZE) ? (length - offset) : MAX_PKT_SIZE;
-        LoRa.beginPacket();
-        LoRa.write(&data[offset], chunk_size);
-        LoRa.endPacket();
-        offset += chunk_size;
-        sleep_ms(100);
-    }
-}
 
