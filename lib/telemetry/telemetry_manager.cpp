@@ -18,15 +18,21 @@
  *          satellite subsystems including power, sensors, and GPS
  */
 
-// External dependencies - these should be documented elsewhere
+
 extern PowerManager powerManager;
 extern DS3231 systemClock;
 extern NMEAData nmea_data;
+
 
 /**
  * @brief Path to the telemetry CSV file on storage media
  */
 #define TELEMETRY_CSV_PATH "/telemetry.csv"
+
+/**
+ * @brief Path to the sensor data CSV file on storage media
+ */
+#define SENSOR_DATA_CSV_PATH "/sensors.csv"
 
 /**
  * @brief Default interval between telemetry samples in milliseconds (2 seconds)
@@ -48,111 +54,67 @@ static uint32_t sample_interval_ms = DEFAULT_SAMPLE_INTERVAL_MS;
  */
 static uint32_t flush_threshold = DEFAULT_FLUSH_THRESHOLD;
 
-
-/**
- * @struct TelemetryRecord
- * @brief Structure representing a single telemetry data point
- * @details Contains all measurements from power subsystem, sensors, and GPS data
- *          collected at a specific point in time
- */
-struct TelemetryRecord {
-    uint32_t timestamp;       /**< Unix timestamp of the record */
-    
-    // Power data
-    float battery_voltage;    /**< Battery voltage in volts */
-    float system_voltage;     /**< System 5V rail voltage in volts */
-    float charge_current_usb; /**< USB charging current in mA */
-    float charge_current_solar; /**< Solar charging current in mA */
-    float discharge_current;  /**< Battery discharge current in mA */
-    
-    // Environmental sensor data
-    float temperature;        /**< Temperature in degrees Celsius */
-    float pressure;           /**< Atmospheric pressure in hPa */
-    float humidity;           /**< Relative humidity in percent */
-    float light_level;        /**< Light level in lux */
-    
-    // GPS data - key RMC fields
-    std::string time;         /**< UTC time from GPS */
-    std::string latitude;     /**< Latitude from GPS */
-    std::string lat_dir;      /**< N/S latitude direction */
-    std::string longitude;    /**< Longitude from GPS */
-    std::string lon_dir;      /**< E/W longitude direction */
-    std::string speed;        /**< Speed in knots */
-    std::string course;       /**< Course in degrees */
-    std::string date;         /**< Date from GPS */
-    
-    // GPS data - key GGA fields
-    std::string fix_quality;  /**< GPS fix quality */
-    std::string satellites;   /**< Number of satellites in view */
-    std::string altitude;     /**< Altitude in meters */
-    
-    
-    // Convert record to CSV line
-    std::string to_csv() const {
-        std::stringstream ss;
-        ss << timestamp << "," 
-           << std::fixed << std::setprecision(3)
-           << battery_voltage << ","
-           << system_voltage << ","
-           << charge_current_usb << ","
-           << charge_current_solar << ","
-           << discharge_current << ","
-           << temperature << ","
-           << pressure << ","
-           << humidity << ","
-           << light_level << ","
-           // GPS RMC data
-           << time << ","
-           << latitude << "," << lat_dir << ","
-           << longitude << "," << lon_dir << ","
-           << speed << ","
-           << course << ","
-           << date << ","
-           // GPS GGA data
-           << fix_quality << ","
-           << satellites << ","
-           << altitude;
-        return ss.str();
-    }
-};
-
-
 /**
  * @brief Circular buffer for telemetry records
  */
-#define TELEMETRY_BUFFER_SIZE 20  // Much smaller than before
-static TelemetryRecord telemetry_buffer[TELEMETRY_BUFFER_SIZE];
-static size_t telemetry_buffer_count = 0;
-static size_t telemetry_buffer_write_index = 0;
+TelemetryRecord telemetry_buffer[TELEMETRY_BUFFER_SIZE];
+size_t telemetry_buffer_count = 0;
+size_t telemetry_buffer_write_index = 0;
+
+/**
+ * @brief Circular buffer for sensor data records
+ */
+SensorDataRecord sensor_data_buffer[TELEMETRY_BUFFER_SIZE];
+size_t sensor_data_buffer_count = 0;
+size_t sensor_data_buffer_write_index = 0;
 
 /**
  * @brief Mutex for thread-safe access to the telemetry buffer
  */
-static mutex_t telemetry_mutex;
+mutex_t telemetry_mutex;
 
 bool telemetry_init() {
     mutex_init(&telemetry_mutex);
     
-    // Create CSV file with headers if it doesn't exist
+    // Create CSV files with headers if they don't exist
     if (sd_card_mounted) {
-        FILE* file = fopen(TELEMETRY_CSV_PATH, "r");
+        bool success = true;
+        
+        // Create telemetry CSV file
+        FILE* file = fopen(TELEMETRY_CSV_PATH, "w");
         if (!file) {
             file = fopen(TELEMETRY_CSV_PATH, "w");
             if (file) {
-                fprintf(file, "timestamp,battery_v,system_v,usb_ma,solar_ma,discharge_ma,temp_c,press_hpa,humidity_pct,light_lux,"
+                fprintf(file, "timestamp,build,battery_v,system_v,usb_ma,solar_ma,discharge_ma,"
                               "gps_time,latitude,lat_dir,longitude,lon_dir,speed_knots,course_deg,date,"
                               "fix_quality,satellites,altitude_m\n");
                 fclose(file);
                 uart_print("Created new telemetry log", VerbosityLevel::INFO);
-                return true;
             } else {
                 uart_print("Failed to create telemetry log", VerbosityLevel::ERROR);
-                return false;
+                success = false;
             }
         } else {
             fclose(file);
-            return true;
         }
+        
+        // Create sensor data CSV file
+        file = fopen(SENSOR_DATA_CSV_PATH, "w");
+        if (!file) {
+            file = fopen(SENSOR_DATA_CSV_PATH, "w");
+            if (file) {
+                fprintf(file, "timestamp,temperature,pressure,humidity,light\n");
+                fclose(file);
+                uart_print("Created new sensor data log", VerbosityLevel::INFO);
+            } else {
+                uart_print("Failed to create sensor data log", VerbosityLevel::ERROR);
+                success = false;
+            }
+        } else {
+            fclose(file);
+        }
+        
+        return success;
     }
     
     uart_print("Telemetry system initialized (storage not available)", VerbosityLevel::WARNING);
@@ -164,6 +126,7 @@ bool collect_telemetry() {
     
     TelemetryRecord record;
     record.timestamp = systemClock.get_unix_time();
+    record.build_version = std::to_string(BUILD_NUMBER);
     
     // Power data
     record.battery_voltage = powerManager.get_voltage_battery();
@@ -171,12 +134,6 @@ bool collect_telemetry() {
     record.charge_current_usb = powerManager.get_current_charge_usb();
     record.charge_current_solar = powerManager.get_current_charge_solar();
     record.discharge_current = powerManager.get_current_draw();
-    
-    // Sensor data 
-    record.temperature = sensor_wrapper.sensor_read_data(SensorType::ENVIRONMENT, SensorDataTypeIdentifier::TEMPERATURE);
-    record.pressure = sensor_wrapper.sensor_read_data(SensorType::ENVIRONMENT, SensorDataTypeIdentifier::PRESSURE);
-    record.humidity = sensor_wrapper.sensor_read_data(SensorType::ENVIRONMENT, SensorDataTypeIdentifier::HUMIDITY);
-    record.light_level = sensor_wrapper.sensor_read_data(SensorType::LIGHT, SensorDataTypeIdentifier::LIGHT_LEVEL);
     
     // Get GPS RMC data
     std::vector<std::string> rmc_tokens = nmea_data.get_rmc_tokens();
@@ -214,10 +171,17 @@ bool collect_telemetry() {
         record.altitude = "";
     }
     
+    SensorDataRecord sensor_record;
+    sensor_record.timestamp = systemClock.get_unix_time();
+    sensor_record.temperature = sensor_wrapper.sensor_read_data(SensorType::ENVIRONMENT, SensorDataTypeIdentifier::TEMPERATURE);
+    sensor_record.pressure = sensor_wrapper.sensor_read_data(SensorType::ENVIRONMENT, SensorDataTypeIdentifier::PRESSURE);
+    sensor_record.humidity = sensor_wrapper.sensor_read_data(SensorType::ENVIRONMENT, SensorDataTypeIdentifier::HUMIDITY);
+    sensor_record.light = sensor_wrapper.sensor_read_data(SensorType::LIGHT, SensorDataTypeIdentifier::LIGHT_LEVEL);
+    
     mutex_enter_blocking(&telemetry_mutex);
     
-    // Add to circular buffer
     telemetry_buffer[telemetry_buffer_write_index] = record;
+    sensor_data_buffer[telemetry_buffer_write_index] = sensor_record; 
     telemetry_buffer_write_index = (telemetry_buffer_write_index + 1) % TELEMETRY_BUFFER_SIZE;
     if (telemetry_buffer_count < TELEMETRY_BUFFER_SIZE) {
         telemetry_buffer_count++;
@@ -273,6 +237,47 @@ bool flush_telemetry() {
     return true;
 }
 
+bool flush_sensor_data() {
+    if (!sd_card_mounted) {
+        return false;
+    }
+    
+    mutex_enter_blocking(&telemetry_mutex);
+    
+    if (telemetry_buffer_count == 0) {
+        mutex_exit(&telemetry_mutex);
+        return true; // Nothing to save
+    }
+    
+    FILE* file = fopen(SENSOR_DATA_CSV_PATH, "a");
+    if (!file) {
+        uart_print("Failed to open sensor data log for writing", VerbosityLevel::ERROR);
+        mutex_exit(&telemetry_mutex);
+        return false;
+    }
+    
+    // Calculate start index (for circular buffer)
+    size_t read_index = 0;
+    if (telemetry_buffer_count == TELEMETRY_BUFFER_SIZE) {
+        // Buffer is full, start from oldest entry
+        read_index = telemetry_buffer_write_index;
+    }
+    
+    // Write all records to CSV
+    for (size_t i = 0; i < telemetry_buffer_count; i++) {
+        fprintf(file, "%s\n", sensor_data_buffer[read_index].to_csv().c_str());
+        read_index = (read_index + 1) % TELEMETRY_BUFFER_SIZE;
+    }
+    
+    // We don't need to clear the buffer here since it's cleared in flush_telemetry()
+    // and both buffers use the same indices
+    
+    fclose(file);
+    
+    mutex_exit(&telemetry_mutex);
+    return true;
+}
+
 bool is_telemetry_collection_time(uint32_t current_time, uint32_t& last_collection_time) {
     if (current_time - last_collection_time >= sample_interval_ms) {
         last_collection_time = current_time;
@@ -304,7 +309,43 @@ uint32_t get_telemetry_flush_threshold() {
 }
 
 void set_telemetry_flush_threshold(uint32_t records) {
-    if (records >= 1 && records <= 100) { // Reasonable limits
+    if (records >= 1 && records <= 100) { 
         flush_threshold = records;
     }
+}
+
+// Remove the template function and implement the two specific functions directly
+
+std::string get_last_telemetry_record_csv() {
+    mutex_enter_blocking(&telemetry_mutex);
+    
+    if (telemetry_buffer_count == 0) {
+        mutex_exit(&telemetry_mutex);
+        return ""; 
+    }
+    
+    size_t last_record_index = (telemetry_buffer_write_index + TELEMETRY_BUFFER_SIZE - 1) % TELEMETRY_BUFFER_SIZE;
+    
+    TelemetryRecord last_record = telemetry_buffer[last_record_index];
+    
+    mutex_exit(&telemetry_mutex);
+    
+    return last_record.to_csv();
+}
+
+std::string get_last_sensor_record_csv() {
+    mutex_enter_blocking(&telemetry_mutex);
+
+    if (telemetry_buffer_count == 0) {
+        mutex_exit(&telemetry_mutex);
+        return ""; 
+    }
+
+    size_t last_record_index = (telemetry_buffer_write_index + TELEMETRY_BUFFER_SIZE - 1) % TELEMETRY_BUFFER_SIZE;
+
+    SensorDataRecord last_record = sensor_data_buffer[last_record_index];
+
+    mutex_exit(&telemetry_mutex);
+
+    return last_record.to_csv();
 }

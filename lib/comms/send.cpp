@@ -23,7 +23,7 @@ void send_message(string outgoing)
     LoRa.write(lora_address_remote);  // add destination address
     LoRa.write(lora_address_local); // add sender address
     LoRa.print(send);         // add payload
-    LoRa.endPacket(true);    // finish packet and send it
+    LoRa.endPacket(false);    // finish packet and send it
 
     uart_print("LoRa packet end", VerbosityLevel::DEBUG);
 

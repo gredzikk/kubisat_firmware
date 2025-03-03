@@ -11,6 +11,7 @@ add_library(commands_lib STATIC
     event_commands.cpp
     storage_commands.cpp
     sensor_commands.cpp
+    telemetry_commands.cpp
 )
 
 target_include_directories(commands_lib PUBLIC

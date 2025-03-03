@@ -82,6 +82,22 @@
             "problemMatcher": [
                 "$gcc"
             ]
+        },
+        {
+            "label": "Build test runner",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "${workspaceFolder}/build", 
+                "--target",
+                "build_tests"
+            ],
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Build executables for test runner project"
         }
     ]
 }

@@ -20,7 +20,119 @@
  #include <string>
  #include "pico/stdlib.h"
  #include "lib/location/NMEA/nmea_data.h"
- 
+ #include "utils.h"
+ #include "storage.h"
+ #include "PowerManager.h"
+ #include "ISensor.h"
+ #include "DS3231.h"
+ #include <deque>
+ #include <mutex>
+ #include <iomanip>
+ #include <sstream>
+ #include <cstdio>
+ #include "communication.h"
+ #include <functional>
+
+ /**
+ * @struct TelemetryRecord
+ * @brief Structure representing a single telemetry data point
+ * @details Contains all measurements from power subsystem, sensors, and GPS data
+ *          collected at a specific point in time
+ */
+struct TelemetryRecord {
+    uint32_t timestamp;       /**< Unix timestamp of the record */
+
+    std::string build_version; /**< Build version of the firmware */
+    
+    // Power data
+    float battery_voltage;    /**< Battery voltage in volts */
+    float system_voltage;     /**< System 5V rail voltage in volts */
+    float charge_current_usb; /**< USB charging current in mA */
+    float charge_current_solar; /**< Solar charging current in mA */
+    float discharge_current;  /**< Battery discharge current in mA */
+    
+    // GPS data - key RMC fields
+    std::string time;         /**< UTC time from GPS */
+    std::string latitude;     /**< Latitude from GPS */
+    std::string lat_dir;      /**< N/S latitude direction */
+    std::string longitude;    /**< Longitude from GPS */
+    std::string lon_dir;      /**< E/W longitude direction */
+    std::string speed;        /**< Speed in knots */
+    std::string course;       /**< Course in degrees */
+    std::string date;         /**< Date from GPS */
+    
+    // GPS data - key GGA fields
+    std::string fix_quality;  /**< GPS fix quality */
+    std::string satellites;   /**< Number of satellites in view */
+    std::string altitude;     /**< Altitude in meters */
+    
+    
+    // Convert record to CSV line
+    std::string to_csv() const {
+        std::stringstream ss;
+        ss << timestamp << "," 
+           << build_version << ","
+           << std::fixed << std::setprecision(3)
+           << battery_voltage << ","
+           << system_voltage << ","
+           << charge_current_usb << ","
+           << charge_current_solar << ","
+           << discharge_current << ","
+
+           // GPS RMC data
+           << time << ","
+           << latitude << "," << lat_dir << ","
+           << longitude << "," << lon_dir << ","
+           << speed << ","
+           << course << ","
+           << date << ","
+           // GPS GGA data
+           << fix_quality << ","
+           << satellites << ","
+           << altitude;
+        return ss.str();
+    }
+};
+
+
+struct SensorDataRecord {
+    uint32_t timestamp;       /**< Unix timestamp of the record */
+    float temperature;        /**< Temperature in degrees Celsius */
+    float pressure;           /**< Pressure in hPa */
+    float humidity;           /**< Relative humidity in % */
+    float light;              /**< Light intensity in lux */
+    
+    // Convert record to CSV line
+    std::string to_csv() const {
+        std::stringstream ss;
+        ss << timestamp << "," 
+           << std::fixed << std::setprecision(3)
+           << temperature << ","
+           << pressure << ","
+           << humidity << ","
+           << light;
+        return ss.str();
+    }
+};
+
+/**
+ * @brief Circular buffer for telemetry records
+ */
+constexpr int TELEMETRY_BUFFER_SIZE = 20;
+extern const int TELEMETRY_BUFFER_SIZE;
+extern TelemetryRecord telemetry_buffer[TELEMETRY_BUFFER_SIZE];
+extern size_t telemetry_buffer_count;
+extern size_t telemetry_buffer_write_index;
+
+extern SensorDataRecord sensor_data_buffer[TELEMETRY_BUFFER_SIZE];
+extern size_t sensor_data_buffer_count;
+extern size_t sensor_data_buffer_write_index;
+
+/**
+ * @brief Mutex for thread-safe access to the telemetry buffer
+ */
+extern mutex_t telemetry_mutex;
+
 
  /**
   * @brief Initialize the telemetry system
@@ -46,6 +158,15 @@
   */
  bool flush_telemetry();
  
+
+ /**
+ * @brief Save buffered sensor data to storage
+ * @return True if data was successfully saved
+ * @details Writes all records from the sensor data buffer to the CSV file
+ *          and clears the buffer after successful writing
+ */
+bool flush_sensor_data();
+
  /**
   * @brief Check if it's time to collect telemetry based on interval
   * @param current_time Current system time in milliseconds
@@ -89,6 +210,19 @@
   */
  void set_telemetry_flush_threshold(uint32_t records);
  
+
+/**
+ * @brief Gets the last telemetry record as a CSV string.
+ * @return A CSV string representing the last telemetry record, or an empty string if no data is available.
+ */
+std::string get_last_telemetry_record_csv();
+
+/**
+ * @brief Gets the last sensor data record as a CSV string.
+ * @return A CSV string representing the last sensor data record, or an empty string if no data is available.
+ */
+std::string get_last_sensor_record_csv();
+
  #endif // TELEMETRY_MANAGER_H
  
  /** @} */ // End of TelemetryManager group

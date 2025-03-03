@@ -7,6 +7,7 @@
 #include "event_manager.h"
 
 bool initialize_radio();
+void lora_tx_done_callback();
 void on_receive(int packetSize);
 void handle_uart_input();
 void send_message(std::string outgoing);

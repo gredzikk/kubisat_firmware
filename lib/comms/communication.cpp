@@ -14,6 +14,7 @@ unsigned long interval = 0;
  * @details Sets the LoRa pins and attempts to begin LoRa communication at a specified frequency.
  *          Emits a CommsEvent::RADIO_INIT event on success or a CommsEvent::RADIO_ERROR event on failure.
  */
+// In initialize_radio() function in communication.cpp
 bool initialize_radio() {
     LoRa.set_pins(lora_cs_pin, lora_reset_pin, lora_irq_pin);
     long frequency = 433E6;
@@ -24,6 +25,13 @@ bool initialize_radio() {
         init_status = false;
     } else {
         uart_print("LoRa initialized with frequency " + std::to_string(frequency), VerbosityLevel::INFO);
+        
+        // Set up TxDone callback to automatically return to receive mode
+        LoRa.onTxDone(lora_tx_done_callback);
+        
+        // Start in receive mode
+        LoRa.receive(0);
+        
         init_status = true;
     }
 
@@ -32,13 +40,7 @@ bool initialize_radio() {
     return init_status;
 }
 
-void reinitialize_radio() {
-    uart_print("Re-initializing LoRa radio", VerbosityLevel::INFO);
-    if (!LoRa.begin(433E6)) { // Replace 433E6 with your frequency
-        uart_print("LoRa re-init failed", VerbosityLevel::ERROR);
-    } else {
-        uart_print("LoRa re-init successful", VerbosityLevel::INFO);
-        // Verify radio state
-    }
+void lora_tx_done_callback() {
+    uart_print("LoRa transmission complete", VerbosityLevel::DEBUG);
+    LoRa.receive(0);
 }
-

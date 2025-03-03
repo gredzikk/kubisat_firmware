@@ -41,6 +41,7 @@ void core1_entry() {
             
             if (is_telemetry_flush_time(telemetry_collection_counter)) {
                 flush_telemetry();
+                flush_sensor_data();
             }
         }
 
@@ -54,7 +55,7 @@ void core1_entry() {
     }
 }
 
-bool init_systems() {
+bool init_pico_hw() {
     stdio_init_all();
 
     uart_init(DEBUG_UART_PORT, DEBUG_UART_BAUD_RATE);
@@ -81,6 +82,11 @@ bool init_systems() {
     EventEmitter::emit(EventGroup::GPS, GPSEvent::POWER_ON);
     
     system("color");
+
+    return true;
+}
+
+bool init_modules(){
 
     bool radio_init_status = false;
     radio_init_status = initialize_radio();
@@ -124,13 +130,23 @@ bool init_systems() {
     Frame boot = frame_build(OperationType::RES, 0, 0, "HELLO");
     send_frame_lora(boot);
 
-    return radio_init_status;
-}
+    // uart_print("Initializing sensors...", VerbosityLevel::DEBUG);
+    // SensorWrapper& sensor_wrapper = SensorWrapper::get_instance();
+    // bool light_sensor_init = sensor_wrapper.sensor_init(SensorType::LIGHT, MAIN_I2C_PORT);
+    // bool env_sensor_init = sensor_wrapper.sensor_init(SensorType::ENVIRONMENT, MAIN_I2C_PORT);
+    // bool mag_sensor_init = sensor_wrapper.sensor_init(SensorType::MAGNETOMETER, MAIN_I2C_PORT);
 
+    // if (!light_sensor_init || !env_sensor_init || !mag_sensor_init) {
+    //     uart_print("One or more sensors failed to initialize", VerbosityLevel::WARNING);
+    // }
+
+    return sd_init_status && radio_init_status;
+}
 
 int main()
 {
-    init_systems();
+    init_pico_hw();
+    init_modules();
     EventEmitter::emit(EventGroup::SYSTEM, SystemEvent::BOOT);
     multicore_launch_core1(core1_entry);
 

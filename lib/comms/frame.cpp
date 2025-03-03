@@ -132,7 +132,7 @@ void frame_process(const std::string& data, Interface interface) {
                 send_frame_uart(response_frame);
             } else if (interface == Interface::LORA) {
                 send_frame_lora(response_frame);
-                sleep_ms(50);
+                sleep_ms(25);
             }
         }
     } catch (const std::exception& e) {
