@@ -53,7 +53,7 @@ add_subdirectory(lib/storage/pico-vfs)
 add_subdirectory(lib/eventman)
 add_subdirectory(lib/telemetry)
 
-add_subdirectory(test)
+add_subdirectory(test EXCLUDE_FROM_ALL)
 
 
 # Main executable sources

@@ -1,11 +1,16 @@
 cmake_minimum_required(VERSION 3.13)
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 project(test_runner C CXX)
+
 
 add_executable(test_runner
     test_runner.cpp
+    test_mocks.cpp
     comms/test_converters.cpp
     comms/test_frame_build.cpp
     comms/test_frame_coding.cpp
+    comms/test_frame_send.cpp
     ${CMAKE_SOURCE_DIR}/unity/src/unity.c 
 )
 
@@ -32,10 +37,12 @@ target_link_libraries(test_runner PRIVATE
     pico_multicore
     Comms_lib
     PowerManager_lib
-    EventManager_lib
+    eventman_lib        
     Sensors_lib
-    Storage_lib
-    Location_lib
-    Clock_lib
-    # Add any other libraries used by main.cpp
+    storage_lib         
+    clock_lib
+    telemetry_lib
+    commands_lib
 )
+
+pico_add_extra_outputs(test_runner)

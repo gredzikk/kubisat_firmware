@@ -314,8 +314,6 @@ void set_telemetry_flush_threshold(uint32_t records) {
     }
 }
 
-// Remove the template function and implement the two specific functions directly
-
 std::string get_last_telemetry_record_csv() {
     mutex_enter_blocking(&telemetry_mutex);
     

@@ -7,7 +7,7 @@
 #include "communication.h"
 
 // Helper function to create a test frame
-Frame create_test_frame() {
+inline Frame create_test_frame() {
     Frame frame;
     frame.header = FRAME_BEGIN;
     frame.direction = 1;
