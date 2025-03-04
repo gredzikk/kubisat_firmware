@@ -32,7 +32,6 @@ std::string get_level_color(VerbosityLevel level) {
         case VerbosityLevel::WARNING: return ANSI_YELLOW;
         case VerbosityLevel::INFO:    return ANSI_GREEN;
         case VerbosityLevel::DEBUG:   return ANSI_BLUE;
-        case VerbosityLevel::EVENT:    return ANSI_CYAN;
         default:                      return "";
     }
 }
@@ -49,7 +48,6 @@ std::string get_level_prefix(VerbosityLevel level) {
         case VerbosityLevel::WARNING: return "WARNING: ";
         case VerbosityLevel::INFO:    return "INFO: ";
         case VerbosityLevel::DEBUG:   return "DEBUG: ";
-        case VerbosityLevel::EVENT:   return "EVENT: ";
         default:                      return "";
     }
 }

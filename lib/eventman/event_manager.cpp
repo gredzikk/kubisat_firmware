@@ -58,7 +58,7 @@ void EventManager::log_event(uint8_t group, uint8_t event) {
     log.event = event;
 
     // Print event immediately
-    uart_print(log.to_string(), VerbosityLevel::EVENT);
+    uart_print(log.to_string(), VerbosityLevel::WARNING);
 
     writeIndex = (writeIndex + 1) % EVENT_BUFFER_SIZE;
     eventCount++;
