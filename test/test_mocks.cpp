@@ -86,6 +86,14 @@ std::vector<std::pair<SensorType, uint8_t>> SensorWrapper::get_available_sensors
     };
 }
 
+std::string get_last_telemetry_record_csv() {
+    return "mock_timestamp,mock_value1,mock_value2";
+}
+
+std::string get_last_sensor_record_csv() {
+    return "mock_timestamp,mock_sensor1,mock_sensor2";
+}
+
 // Private constructor implementation (that would be defined in ISensor.cpp)
 SensorWrapper::SensorWrapper() {}
 

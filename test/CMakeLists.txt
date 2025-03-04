@@ -26,6 +26,7 @@ target_include_directories(test_runner PRIVATE
     ${CMAKE_SOURCE_DIR}/lib/storage
     ${CMAKE_SOURCE_DIR}/lib/location
     ${CMAKE_SOURCE_DIR}/lib/clock
+    ${CMAKE_SOURCE_DIR}/lib/telemetry
 )
 
 # Link all libraries used by the main application

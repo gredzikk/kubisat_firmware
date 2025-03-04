@@ -167,14 +167,4 @@ add_custom_command(
     VERBATIM
 )
 
-add_custom_target(build_tests DEPENDS test_runner)
-add_custom_command(
-    TARGET build_tests POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "${CMAKE_BINARY_DIR}/test/test_runner.uf2"
-        "${CMAKE_CURRENT_SOURCE_DIR}/release/test_runner_v${CURRENT_BUILD_NUMBER}.uf2"
-    COMMENT "Copying test_runner.uf2 to release directory"
-    VERBATIM
-)
-
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/documentation.cmake)
