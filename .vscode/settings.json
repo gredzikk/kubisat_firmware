@@ -121,5 +121,6 @@
         "stop_token": "cpp",
         "thread": "cpp"
     },
-    "C_Cpp.errorSquiggles": "disabled"
+    "C_Cpp.errorSquiggles": "disabled",
+    "codechecker.backend.compilationDatabasePath": "d:\\UMK\\kubisat\\software\\kubisat_firmware\\build\\compile_commands.json"
 }

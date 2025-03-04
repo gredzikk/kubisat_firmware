@@ -5,13 +5,21 @@ project(test_runner C CXX)
 
 
 add_executable(test_runner
+${CMAKE_SOURCE_DIR}/unity/src/unity.c 
     test_runner.cpp
     test_mocks.cpp
     comms/test_converters.cpp
     comms/test_frame_build.cpp
     comms/test_frame_coding.cpp
     comms/test_frame_send.cpp
-    ${CMAKE_SOURCE_DIR}/unity/src/unity.c 
+    comms/commands/test_clock_commands.cpp
+    comms/commands/test_diagnostic_commands.cpp
+    comms/commands/test_gps_commands.cpp
+    comms/commands/test_power_commands.cpp
+    comms/commands/test_event_commands.cpp
+    comms/commands/test_storage_commands.cpp
+    comms/commands/test_sensor_commands.cpp
+    comms/commands/test_telemetry_commands.cpp
 )
 
 # Include all directories needed

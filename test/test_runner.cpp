@@ -26,6 +26,12 @@ extern void test_command_handler_get_operation(void);
 extern void test_command_handler_set_operation(void);
 extern void test_command_handler_invalid_operation(void);
 
+//diagnostic
+extern void test_handle_get_commands_list(void);
+extern void test_handle_get_build_version(void);
+extern void test_handle_verbosity(void);
+extern void test_handle_enter_bootloader_mode(void);
+
 // Error code tests
 extern void test_error_code_conversion(void);
 
@@ -68,6 +74,13 @@ int main(void) {
     RUN_TEST(test_command_handler_set_operation);
     RUN_TEST(test_command_handler_invalid_operation);
     uart_puts(uart0, "end command handler tests\n");
+
+    uart_puts(uart0, "begin diagnostic command handlers tests\n");
+    RUN_TEST(test_handle_get_commands_list);
+    RUN_TEST(test_handle_get_build_version);
+    RUN_TEST(test_handle_verbosity);
+    RUN_TEST(test_handle_enter_bootloader_mode);
+    uart_puts(uart0, "end diagnostic commands handlers tests\n");
 
     return UNITY_END();
 }
