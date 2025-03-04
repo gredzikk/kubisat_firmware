@@ -5,7 +5,7 @@
 #include <queue>
 #include <string>
 #include <array>
-
+#include "system_state_manager.h"
 
 /**
  * @file utils.cpp
@@ -15,10 +15,6 @@
 
 /** @brief Mutex for UART access protection */
 static mutex_t uart_mutex;
-
-
-/** @brief Global verbosity level setting */
-VerbosityLevel g_uart_verbosity = VerbosityLevel::DEBUG;
 
 
 /**
@@ -60,8 +56,8 @@ std::string get_level_prefix(VerbosityLevel level) {
  * @details Prints the given message to the specified UART, prepending it with a timestamp and the core number.
  *          Uses a mutex to ensure thread-safe access to the UART.
  */
-void uart_print(const std::string& msg, VerbosityLevel level, bool logToFile, uart_inst_t* uart) {
-    if (static_cast<int>(level) > static_cast<int>(g_uart_verbosity)) {
+void uart_print(const std::string& msg, VerbosityLevel level, uart_inst_t* uart) {
+    if (static_cast<int>(level) > static_cast<int>(SystemStateManager::get_instance().get_uart_verbosity())) {
         return;
     }
 

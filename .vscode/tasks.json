@@ -100,5 +100,40 @@
             ],
             "detail": "Build executables for test runner project"
         },
+        {
+            "label": "CodeChecker Analyze",
+            "type": "shell",
+            "command": "CodeChecker",
+            "args": [
+                "analyze",
+                "${workspaceFolder}/build/compile_commands.json",
+                "--enable=all", 
+                "-o",
+                "${workspaceFolder}/codechecker_report"
+            ],
+            "group": "none",
+            "problemMatcher": []
+        },
+        {
+            "label": "CodeChecker Parse and View",
+            "type": "shell",
+            "command": "CodeChecker",
+            "args": [
+                "parse",
+                "${workspaceFolder}/codechecker_report",
+                "-e",
+                "html",
+                "-o",
+                "${workspaceFolder}/codechecker_report/report.html",
+                "&&",
+                "CodeChecker",
+                "server",
+                "--view",
+                "${workspaceFolder}/codechecker_report/report.html"
+            ],
+            "group": "none",
+            "problemMatcher": [],
+            "dependsOn": "CodeChecker Analyze"
+        }
     ]
 }

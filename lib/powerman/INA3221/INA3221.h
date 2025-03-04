@@ -133,9 +133,9 @@ class INA3221 {
         uint16_t reserved:1;
     } masken_reg_t;
 
-    i2c_inst_t* _i2c;
     // I2C address
     ina3221_addr_t _i2c_addr;
+    i2c_inst_t* _i2c;
 
     // Shunt resistance in mOhm
     uint32_t _shuntRes[INA3221_CH_NUM];

@@ -14,22 +14,21 @@
  */
 void send_message(string outgoing)
 {
-    int n = outgoing.length();
-    char send[n + 1];
-    strcpy(send, outgoing.c_str());
+    std::vector<char> send(outgoing.length() + 1);
+    strcpy(send.data(), outgoing.c_str());
 
     uart_print("LoRa packet begin", VerbosityLevel::DEBUG);
     LoRa.beginPacket();       // start packet
     LoRa.write(lora_address_remote);  // add destination address
     LoRa.write(lora_address_local); // add sender address
-    LoRa.print(send);         // add payload
+    LoRa.print(send.data());         // add payload
     LoRa.endPacket(false);    // finish packet and send it
 
     uart_print("LoRa packet end", VerbosityLevel::DEBUG);
 
-    std::string message_to_log = "Sent message of size " + std::to_string(n);
+    std::string message_to_log = "Sent message of size " + std::to_string(send.size());
     message_to_log += " to 0x" + std::to_string(lora_address_remote);
-    message_to_log += " containing: " + string(send);
+    message_to_log += " containing: " + string(send.data());
 
     uart_print(message_to_log, VerbosityLevel::DEBUG);
     
@@ -38,20 +37,10 @@ void send_message(string outgoing)
 
 
 void send_frame_lora(const Frame& frame) {
-    if (LoRa.beginPacket()) {
-        std::string encoded_frame = frame_encode(frame);
-        LoRa.write((uint8_t*)encoded_frame.c_str(), encoded_frame.length());
-        
-        if (LoRa.endPacket()) {
-            uart_print("LoRa frame sent: " + encoded_frame, VerbosityLevel::DEBUG);
-        } else {
-            uart_print("Failed to send LoRa frame", VerbosityLevel::ERROR);
-            EventEmitter::emit(EventGroup::COMMS, CommsEvent::RADIO_ERROR);
-        }
-    } else {
-        uart_print("Failed to begin LoRa packet", VerbosityLevel::ERROR);
-        EventEmitter::emit(EventGroup::COMMS, CommsEvent::RADIO_ERROR);
-    }
+    uart_print("Sending frame via LoRa", VerbosityLevel::DEBUG);
+    string outgoing = frame_encode(frame);
+    send_message(outgoing);
+    uart_print("Frame sent via LoRa", VerbosityLevel::DEBUG);
 }
 
 void send_frame_uart(const Frame& frame) {

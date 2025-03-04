@@ -122,5 +122,5 @@
         "thread": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled",
-    "codechecker.backend.compilationDatabasePath": "d:\\UMK\\kubisat\\software\\kubisat_firmware\\build\\compile_commands.json"
+    "codechecker.backend.compilationDatabasePath": "c:\\Users\\Kuba\\Desktop\\inz\\kubisat\\software\\kubisat_firmware\\build\\compile_commands.json"
 }

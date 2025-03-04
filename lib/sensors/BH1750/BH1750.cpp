@@ -10,7 +10,6 @@ bool BH1750::begin(Mode mode) {
     write8(static_cast<uint8_t>(Mode::RESET));
     configure(mode);
     configure(BH1750::Mode::POWER_ON);
-    uint8_t check = 0;
     uint8_t cmd = 0x10; // Continuously H-Resolution Mode
     if (i2c_write_blocking(i2c1, _i2c_addr, &cmd, 1, false) == 1) {
         std::cout << "BH1750 sensor found at 0x" << std::hex << (int)_i2c_addr << std::endl;

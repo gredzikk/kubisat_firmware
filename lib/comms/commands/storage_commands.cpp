@@ -125,7 +125,9 @@ std::vector<Frame> handle_mount(const std::string& param, OperationType operatio
     std::string error_msg;
 
     if (operationType == OperationType::GET) {
-        frames.push_back(frame_build(OperationType::VAL, STORAGE_GROUP, MOUNT_COMMAND, std::to_string(sd_card_mounted)));
+        bool state = SystemStateManager::get_instance().is_sd_card_mounted();
+
+        frames.push_back(frame_build(OperationType::VAL, STORAGE_GROUP, MOUNT_COMMAND, std::to_string(state)));
         return frames;
     } else if (operationType == OperationType::SET) {
         if (param == "1") {
@@ -139,8 +141,9 @@ std::vector<Frame> handle_mount(const std::string& param, OperationType operatio
             }
         } else if (param == "0") {
             if (fs_unmount("/") == 0) {
-                sd_card_mounted = false;
-                frames.push_back(frame_build(OperationType::RES, STORAGE_GROUP, MOUNT_COMMAND, "SD_UNMOUNT_OK"));
+                if (SystemStateManager::get_instance().is_sd_card_mounted()) {
+                    frames.push_back(frame_build(OperationType::RES, STORAGE_GROUP, MOUNT_COMMAND, "SD_UNMOUNT_OK"));
+                }
                 return frames;
             } else {
                 error_msg = error_code_to_string(ErrorCode::FAIL_TO_SET);

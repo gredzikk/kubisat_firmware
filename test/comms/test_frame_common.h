@@ -6,7 +6,6 @@
 #include "protocol.h"
 #include "communication.h"
 
-// Helper function to create a test frame
 inline Frame create_test_frame() {
     Frame frame;
     frame.header = FRAME_BEGIN;

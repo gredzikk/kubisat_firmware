@@ -498,12 +498,12 @@ int DS3231::i2c_write_reg(uint8_t reg_addr, size_t length, uint8_t *data) {
         return -1;
 
     recursive_mutex_enter_blocking(&clock_mutex_);
-    uint8_t message[length + 1];
+    std::vector<uint8_t> message(length + 1);
     message[0] = reg_addr;
     for (int i = 0; i < length; i++) {
         message[i + 1] = data[i];
     }
-    int write_result = i2c_write_blocking(i2c, ds3231_addr, message, (length + 1), false);
+    int write_result = i2c_write_blocking(i2c, ds3231_addr, message.data(), (length + 1), false);
     if (write_result == PICO_ERROR_GENERIC) {
         uart_print("Error: i2c_write_blocking failed in i2c_write_reg", VerbosityLevel::ERROR);
         recursive_mutex_exit(&clock_mutex_);

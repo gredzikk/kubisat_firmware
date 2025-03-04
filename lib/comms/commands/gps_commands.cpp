@@ -1,6 +1,7 @@
 #include "communication.h"
 #include "lib/location/gps_collector.h"
-#include <sstream> // Include for stringstream
+#include <sstream> 
+#include "system_state_manager.h"
 
 #define GPS_GROUP 7
 #define POWER_STATUS_COMMAND 1
@@ -110,8 +111,7 @@ std::vector<Frame> handle_enable_gps_uart_passthrough(const std::string& param, 
     const std::string EXIT_SEQUENCE = "##EXIT##";
     std::string input_buffer;
     bool exit_requested = false;
-    static volatile bool pause_gps_collection = false;
-    pause_gps_collection = true;
+    SystemStateManager::get_instance().set_gps_collection_paused(true);
     sleep_ms(100); 
 
     uint32_t original_baud_rate = DEBUG_UART_BAUD_RATE;
@@ -165,7 +165,7 @@ std::vector<Frame> handle_enable_gps_uart_passthrough(const std::string& param, 
     
     sleep_ms(50);
     
-    pause_gps_collection = false;
+    SystemStateManager::get_instance().set_gps_collection_paused(false);
 
     EventEmitter::emit(EventGroup::GPS, GPSEvent::PASS_THROUGH_END);
     

@@ -2,13 +2,11 @@
 #include "commands.h"
 #include "pico/stdlib.h"
 #include "pico/bootrom.h" 
-
+#include "system_state_manager.h"
 /**
  * @defgroup DiagnosticCommands Diagnostic Commands
  * @{
  */
-
-extern volatile bool g_pending_bootloader_reset;
 
 /**
  * @brief Handler for listing all available commands on UART
@@ -121,10 +119,11 @@ std::vector<Frame> handle_verbosity(const std::string& param, OperationType oper
     std::string error_msg;
 
     if (operationType == OperationType::GET && param.empty()) {
-        uart_print("GET_VERBOSITY_ " + std::to_string(static_cast<int>(g_uart_verbosity)), 
+        VerbosityLevel current_level = SystemStateManager::get_instance().get_uart_verbosity();
+        uart_print("GET_VERBOSITY_ " + std::to_string(static_cast<int>(current_level)), 
                   VerbosityLevel::INFO);
         frames.push_back(frame_build(OperationType::VAL, 1, 8, 
-                        std::to_string(static_cast<int>(g_uart_verbosity))));
+                        std::to_string(static_cast<int>(current_level))));
         return frames;
     }
 
@@ -135,8 +134,8 @@ std::vector<Frame> handle_verbosity(const std::string& param, OperationType oper
             frames.push_back(frame_build(OperationType::ERR, 1, 8, error_msg));
             return frames;
         }
-        g_uart_verbosity = static_cast<VerbosityLevel>(level);
-        frames.push_back(frame_build(OperationType::RES, 1, 8, "SET_VERBOSITY_" + std::to_string(level)));
+        SystemStateManager::get_instance().set_uart_verbosity(static_cast<VerbosityLevel>(level));
+        frames.push_back(frame_build(OperationType::RES, 1, 8, "LEVEL SET"));
         return frames;
     } catch (...) {
         error_msg = error_code_to_string(ErrorCode::INVALID_FORMAT);
@@ -173,7 +172,7 @@ std::vector<Frame> handle_enter_bootloader_mode(const std::string& param, Operat
 
     frames.push_back(frame_build(OperationType::RES, 1, 9, "REBOOT BOOTSEL"));
     
-    g_pending_bootloader_reset = true;
+    SystemStateManager::get_instance().set_bootloader_reset_pending(true);
     
     return frames;
 }

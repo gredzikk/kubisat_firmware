@@ -37,21 +37,6 @@ enum class VerbosityLevel {
 
 
 /**
- * @brief Global verbosity level setting for UART output
- * @details Controls which messages are displayed:
- *          - SILENT (0): No output
- *          - ERROR (1): Only errors
- *          - WARNING (2): Warnings and errors
- *          - INFO (3): Normal operation information
- *          - DEBUG (4): Detailed debug information
- * @note Can be changed at runtime through the command interface
- * @see VerbosityLevel
- * @see handle_verbosity
- */
-extern VerbosityLevel g_uart_verbosity;
-
-
-/**
  * @brief Prints a message to UART with timestamp and formatting
  * @param msg The message to print
  * @param level Message verbosity level
@@ -59,8 +44,7 @@ extern VerbosityLevel g_uart_verbosity;
  * @param uart The UART port to use
  */
 void uart_print(const std::string& msg, 
-               VerbosityLevel level = VerbosityLevel::INFO,
-               bool logToFile = false, 
+               VerbosityLevel level = VerbosityLevel::INFO, 
                uart_inst_t* uart = DEBUG_UART_PORT);
 
 

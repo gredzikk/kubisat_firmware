@@ -230,70 +230,52 @@ static int unmount(filesystem_t *fs) {
 static int format(filesystem_t *fs, blockdevice_t *device) {
     filesystem_fat_context_t *context = fs->context;
     mutex_enter_blocking(&context->_mutex_format);
-    printf("FAT: format() - Entering format function\n"); // Indicate entry
 
     if (!device->is_initialized) {
-        printf("FAT: format() - Device not initialized, initializing...\n"); // Indicate device init
         int err = device->init(device);
         if (err) {
-            printf("FAT: format() - Device initialization failed, error: %d\n", err); // Indicate init failure
             mutex_exit(&context->_mutex_format);
             return err;
         }
-        printf("FAT: format() - Device initialized successfully.\n"); // Indicate init success
     }
 
     // Erase first handful of blocks
     bd_size_t header = 2 * device->erase_size;
-    printf("FAT: format() - Erasing header blocks, size: %llu\n", header); // Indicate erase start
     int err = device->erase(device, 0, header);
     if (err) {
-        printf("FAT: format() - Erasing header blocks failed, error: %d\n", err); // Indicate erase failure
         mutex_exit(&context->_mutex_format);
         return err;
     }
-    printf("FAT: format() - Header blocks erased successfully.\n"); // Indicate erase success
 
     size_t program_size = device->program_size;
-    printf("FAT: format() - Allocating buffer for programming, size: %llu\n", program_size); // Indicate buffer alloc
     void *buffer = malloc(program_size);
     if (!buffer) {
-        printf("FAT: format() - Failed to allocate buffer\n"); // Indicate alloc failure
         mutex_exit(&context->_mutex_format);
         return -ENOMEM;
     }
     memset(buffer, 0xFF, program_size);
-    printf("FAT: format() - Programming header blocks...\n"); // Indicate program start
     for (size_t i = 0; i < header; i += program_size) {
         err = device->program(device, buffer, i, program_size);
         if (err) {
-            printf("FAT: format() - Programming header blocks failed, error: %d\n", err); // Indicate program failure
             free(buffer);
             mutex_exit(&context->_mutex_format);
             return err;
         }
     }
-    printf("FAT: format() - Header blocks programmed successfully.\n"); // Indicate program success
     free(buffer);
 
     // Trim entire device to indicate it is unneeded
-    printf("FAT: format() - Trimming entire device, size: %zu\n", device->size(device)); // Indicate trim start
     err = device->trim(device, 0, device->size(device));
     if (err) {
-        printf("FAT: format() - Trimming device failed, error: %d\n", err); // Indicate trim failure
         mutex_exit(&context->_mutex_format);
         return err;
     }
-    printf("FAT: format() - Device trimmed successfully.\n"); // Indicate trim success
 
-    printf("FAT: format() - Mounting filesystem...\n"); // Indicate mount start
     err = fs->mount(fs, device, true);
     if (err) {
-        printf("FAT: format() - Mounting filesystem failed, error: %d\n", err); // Indicate mount failure
         mutex_exit(&context->_mutex_format);
         return err;
     }
-    printf("FAT: format() - Filesystem mounted successfully.\n"); // Indicate mount success
 
     MKFS_PARM opt;
     opt.fmt = (FM_ANY | FM_SFD);
@@ -305,28 +287,21 @@ static int format(filesystem_t *fs, blockdevice_t *device) {
     char id[3] = "0:";
     id[0] = '0' + context->id;
 
-    printf("FAT: format() - Calling f_mkfs with id: %s\n", id); // Indicate f_mkfs call
     FRESULT res = f_mkfs((const TCHAR *)id, &opt, NULL, FF_MAX_SS);
 
     if (res != FR_OK) {
-        printf("FAT: format() - f_mkfs failed, result: %d\n", res); // Indicate f_mkfs failure
         fs->unmount(fs);
         mutex_exit(&context->_mutex_format);
         return fat_error_remap(res);
     }
-    printf("FAT: format() - f_mkfs completed successfully.\n"); // Indicate f_mkfs success
 
-    printf("FAT: format() - Unmounting filesystem...\n"); // Indicate unmount start
     err = fs->unmount(fs);
     if (err) {
-        printf("FAT: format() - Unmounting filesystem failed, error: %d\n", err); // Indicate unmount failure
         mutex_exit(&context->_mutex_format);
         return res;
     }
-    printf("FAT: format() - Filesystem unmounted successfully.\n"); // Indicate unmount success
 
     mutex_exit(&context->_mutex_format);
-    printf("FAT: format() - Exiting format function successfully.\n"); // Indicate exit
     return 0;
 }
 

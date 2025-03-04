@@ -4,10 +4,8 @@
 
 PowerManager powerManager(MAIN_I2C_PORT);
 DS3231 systemClock(MAIN_I2C_PORT);
-volatile bool g_pending_bootloader_reset = false;
-volatile bool pause_gps_collection = false;
 
-char buffer[BUFFER_SIZE];
+char buffer[BUFFER_SIZE] = {0};
 int buffer_index = 0;
 
 void core1_entry() {
@@ -45,7 +43,7 @@ void core1_entry() {
             }
         }
 
-        if (g_pending_bootloader_reset) {
+        if (SystemStateManager::get_instance().is_bootloader_reset_pending()) {
             sleep_ms(100);
             uart_print("Entering BOOTSEL mode...", VerbosityLevel::WARNING);
             reset_usb_boot(0, 0);
@@ -68,6 +66,10 @@ bool init_pico_hw() {
 
     gpio_init(PICO_DEFAULT_LED_PIN);
     gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
+
+    gpio_init(PICO_DEFAULT_LED_PIN);
+    gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
+    gpio_put(PICO_DEFAULT_LED_PIN, 1);
     
     i2c_init(MAIN_I2C_PORT, 400 * 1000);
     gpio_set_function(MAIN_I2C_SCL_PIN, GPIO_FUNC_I2C);
@@ -79,6 +81,8 @@ bool init_pico_hw() {
     gpio_set_dir(GPS_POWER_ENABLE_PIN, GPIO_OUT);
     gpio_put(GPS_POWER_ENABLE_PIN, 1); 
 
+    SystemStateManager::get_instance();
+
     EventEmitter::emit(EventGroup::GPS, GPSEvent::POWER_ON);
     
     system("color");
@@ -87,7 +91,6 @@ bool init_pico_hw() {
 }
 
 bool init_modules(){
-
     bool radio_init_status = false;
     radio_init_status = initialize_radio();
     
@@ -146,8 +149,10 @@ bool init_modules(){
 int main()
 {
     init_pico_hw();
+    sleep_ms(100);
     init_modules();
     EventEmitter::emit(EventGroup::SYSTEM, SystemEvent::BOOT);
+    sleep_ms(100);
     multicore_launch_core1(core1_entry);
 
     gpio_put(PICO_DEFAULT_LED_PIN, 0);

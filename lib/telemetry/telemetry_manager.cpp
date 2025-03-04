@@ -10,6 +10,7 @@
 #include <sstream>
 #include <cstdio>
 #include "communication.h"
+#include "system_state_manager.h"
 
 /**
  * @file telemetry_manager.cpp
@@ -76,11 +77,9 @@ mutex_t telemetry_mutex;
 bool telemetry_init() {
     mutex_init(&telemetry_mutex);
     
-    // Create CSV files with headers if they don't exist
-    if (sd_card_mounted) {
+    if (!SystemStateManager::get_instance().is_sd_card_mounted()) {
         bool success = true;
         
-        // Create telemetry CSV file
         FILE* file = fopen(TELEMETRY_CSV_PATH, "w");
         if (!file) {
             file = fopen(TELEMETRY_CSV_PATH, "w");
@@ -98,7 +97,6 @@ bool telemetry_init() {
             fclose(file);
         }
         
-        // Create sensor data CSV file
         file = fopen(SENSOR_DATA_CSV_PATH, "w");
         if (!file) {
             file = fopen(SENSOR_DATA_CSV_PATH, "w");
@@ -123,9 +121,9 @@ bool telemetry_init() {
 
 bool collect_telemetry() {
     SensorWrapper& sensor_wrapper = SensorWrapper::get_instance();
-    
+    uint32_t timestamp = systemClock.get_unix_time();
     TelemetryRecord record;
-    record.timestamp = systemClock.get_unix_time();
+    record.timestamp = timestamp;
     record.build_version = std::to_string(BUILD_NUMBER);
     
     // Power data
@@ -172,7 +170,7 @@ bool collect_telemetry() {
     }
     
     SensorDataRecord sensor_record;
-    sensor_record.timestamp = systemClock.get_unix_time();
+    sensor_record.timestamp = timestamp;
     sensor_record.temperature = sensor_wrapper.sensor_read_data(SensorType::ENVIRONMENT, SensorDataTypeIdentifier::TEMPERATURE);
     sensor_record.pressure = sensor_wrapper.sensor_read_data(SensorType::ENVIRONMENT, SensorDataTypeIdentifier::PRESSURE);
     sensor_record.humidity = sensor_wrapper.sensor_read_data(SensorType::ENVIRONMENT, SensorDataTypeIdentifier::HUMIDITY);
@@ -195,7 +193,7 @@ bool collect_telemetry() {
 }
 
 bool flush_telemetry() {
-    if (!sd_card_mounted) {
+    if (!SystemStateManager::get_instance().is_sd_card_mounted()) {
         return false;
     }
     
@@ -238,7 +236,7 @@ bool flush_telemetry() {
 }
 
 bool flush_sensor_data() {
-    if (!sd_card_mounted) {
+    if (!SystemStateManager::get_instance().is_sd_card_mounted()) {
         return false;
     }
     

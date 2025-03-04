@@ -9,8 +9,7 @@
 #include <cstring>
 #include "DS3231.h"
 #include <sstream>
-
-extern volatile bool pause_gps_collection;
+#include "system_state_manager.h"
 
 #define MAX_RAW_DATA_LENGTH 256
 
@@ -28,7 +27,7 @@ std::vector<std::string> splitString(const std::string& str, char delimiter) {
 
 void collect_gps_data() {
 
-    if (pause_gps_collection) {
+    if (SystemStateManager::get_instance().is_bootloader_reset_pending()) {
         return;
     }
 

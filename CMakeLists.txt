@@ -23,6 +23,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(PICO_BOARD pico CACHE STRING "Board type")
 set(PICO_CXX_ENABLE_EXCEPTIONS 1)
 set(PICO_CXX_ENABLE_RTTI 1)
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic")
 
 # VS Code Pico extension configuration (only needed once)
 if(WIN32)
@@ -64,6 +66,7 @@ set(MAIN_SOURCES
     lib/eventman/event_manager.cpp
     lib/utils.cpp
     lib/storage/storage.cpp
+    lib/system_state_manager.cpp
 )
 
 set(GPS_SOURCES
@@ -168,3 +171,4 @@ add_custom_command(
 )
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/documentation.cmake)
+

@@ -7,6 +7,8 @@
 #include "pico/mutex.h"
 #include "storage.h"
 #include "utils.h"
+#include "system_state_manager.h"
+
 
 #define EVENT_BUFFER_SIZE 100
 #define EVENT_FLUSH_THRESHOLD 10
@@ -153,7 +155,7 @@ class EventLog {
          * @return A string representation of the EventLog.
          */
         std::string to_string() const {
-            char buffer[256];
+            char buffer[256] = {0};
             snprintf(buffer, sizeof(buffer),
                         "EventLog: id=%u, timestamp=%lu, group=%u, event=%u",
                         id, timestamp, group, event);
@@ -262,7 +264,7 @@ class EventManagerImpl : public EventManager {
          */
         public:
         bool save_to_storage() override {
-            if(!sd_card_mounted) {
+            if (!SystemStateManager::get_instance().is_sd_card_mounted()) {
                 bool status = fs_init();
                 if(!status) {
                     return false;

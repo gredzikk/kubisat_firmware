@@ -6,6 +6,7 @@
 #include "storage.h"
 #include "errno.h"
 #include "utils.h"
+#include "system_state_manager.h"
 
 /**
  * @file storage.cpp
@@ -14,7 +15,6 @@
  *          reading, and closing files.
  */
 
-bool sd_card_mounted = false;
 
 /**
  * @brief Initializes the file system on the SD card.
@@ -23,7 +23,7 @@ bool sd_card_mounted = false;
  *          with littlefs and then attempts to mount again.
  */
 bool fs_init(void) {
-    sd_card_mounted = false;
+    SystemStateManager::get_instance().set_sd_card_mounted(false);
     uart_print("fs_init littlefs on SD card", VerbosityLevel::DEBUG);
     blockdevice_t *sd = blockdevice_sd_create(SD_SPI_PORT,
                                               SD_MOSI_PIN,
@@ -53,6 +53,17 @@ bool fs_init(void) {
         }
     }
 
-    sd_card_mounted = true;
+    SystemStateManager::get_instance().set_sd_card_mounted(true);
+    return true;
+}
+
+bool fs_stop(void) {
+    int err = fs_unmount("/");
+    if (err == -1) {
+        uart_print("fs_unmount error", VerbosityLevel::ERROR);
+        return false;
+    }
+    SystemStateManager::get_instance().set_sd_card_mounted(false);
+
     return true;
 }
