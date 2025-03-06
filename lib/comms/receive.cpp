@@ -1,5 +1,6 @@
 #include "communication.h"
 
+#define MAX_PACKET_SIZE 255
 
 /**
  * @file receive.cpp
@@ -16,20 +17,30 @@ void on_receive(int packet_size) {
     if (packet_size == 0) return;
     uart_print("Received LoRa packet of size " + std::to_string(packet_size), VerbosityLevel::DEBUG);
 
-    uint8_t buffer[256] = {0};
+    std::vector<uint8_t> buffer;
+    buffer.reserve(packet_size); 
+
     int bytes_read = 0;
     
     while (LoRa.available() && bytes_read < packet_size) {
-        buffer[bytes_read++] = LoRa.read();
+        if (bytes_read >= MAX_PACKET_SIZE) {
+            uart_print("Error: Packet exceeds maximum allowed size!", VerbosityLevel::ERROR);
+            return;
+        }
+        buffer.push_back(LoRa.read());
+        bytes_read++;
+    }
+
+    if (bytes_read < 2) { 
+        uart_print("Error: Packet too small to contain metadata!", VerbosityLevel::ERROR);
+        return;
     }
 
     uart_print("Received " + std::to_string(bytes_read) + " bytes", VerbosityLevel::DEBUG);
     
-    // Extract LoRa metadata
     uint8_t received_destination = buffer[0];
     uint8_t received_local_address = buffer[1];
     
-    // Validate metadata (optional, for security)
     if (received_destination != lora_address_local) {
         uart_print("Error: Destination address mismatch!", VerbosityLevel::ERROR);
         return;
@@ -40,15 +51,12 @@ void on_receive(int packet_size) {
         return;
     }
 
-    // Find the starting index of the actual frame data
-    int start_index = 2; // Start after the metadata
+    int start_index = 2; 
     
-    // Extract the frame data
     std::string received = std::string(reinterpret_cast<char*>(buffer + start_index), bytes_read - start_index);
     
     if (received.empty()) return;
     
-    // Debug: Print raw hex values
     std::stringstream hex_dump;
     hex_dump << "Raw bytes: ";
     for (int i = 0; i < bytes_read; i++) {
@@ -57,7 +65,6 @@ void on_receive(int packet_size) {
     }
     uart_print(hex_dump.str(), VerbosityLevel::DEBUG);
     
-    // Find frame boundaries
     size_t header_pos = received.find(FRAME_BEGIN);
     size_t footer_pos = received.find(FRAME_END);
     
