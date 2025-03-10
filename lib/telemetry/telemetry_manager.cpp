@@ -22,7 +22,6 @@
 
 extern PowerManager powerManager;
 extern DS3231 systemClock;
-extern NMEAData nmea_data;
 
 
 /**
@@ -133,6 +132,7 @@ bool collect_telemetry() {
     record.charge_current_solar = powerManager.get_current_charge_solar();
     record.discharge_current = powerManager.get_current_draw();
     
+    auto& nmea_data = NMEAData::get_instance();
     // Get GPS RMC data
     std::vector<std::string> rmc_tokens = nmea_data.get_rmc_tokens();
     if (rmc_tokens.size() >= 12) {  // RMC has at least 12 fields when complete

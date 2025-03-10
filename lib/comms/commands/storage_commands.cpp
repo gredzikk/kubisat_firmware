@@ -46,7 +46,7 @@ std::vector<Frame> handle_list_files(const std::string& param, OperationType ope
 
     DIR* dir;
     struct dirent* ent;
-    int file_count = 0; // Counter for the number of files
+    int file_count = 0; 
     if ((dir = opendir("/")) != NULL) {
         // First, count the number of files
         while ((ent = readdir(dir)) != NULL) {

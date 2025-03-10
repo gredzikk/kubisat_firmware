@@ -51,7 +51,6 @@ std::vector<Frame> handle_get_last_telemetry_record(const std::string& param, Op
         frames.push_back(frame_build(OperationType::ERR, TELEMETRY_GROUP, GET_LAST_SENSOR_RECORD_COMMAND, error_msg));
         return frames;
     }
-    // Create and send the frame with the base64 encoded data
     frames.push_back(frame_build(OperationType::VAL, TELEMETRY_GROUP, GET_LAST_TELEMETRY_RECORD_COMMAND, csv_data));
 
     return frames;
@@ -86,7 +85,6 @@ std::vector<Frame> handle_get_last_sensor_record(const std::string& param, Opera
         return frames;
     }
 
-    // Create and send the frame with the sensor data
     frames.push_back(frame_build(OperationType::VAL, TELEMETRY_GROUP, GET_LAST_SENSOR_RECORD_COMMAND, csv_data));
 
     return frames;

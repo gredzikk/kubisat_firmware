@@ -51,8 +51,8 @@ void on_receive(int packet_size) {
         return;
     }
 
+    // Skip 2 bytes being local and remote address appended by ground station 
     int start_index = 2; 
-    
     std::string received(buffer.begin() + start_index, buffer.end());
     
     if (received.empty()) return;

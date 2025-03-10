@@ -407,7 +407,7 @@ bool DS3231::is_sync_needed() {
  *       by other components of the system.
  */
 bool DS3231::sync_clock_with_gps() {
-    extern NMEAData nmea_data; 
+    auto& nmea_data = NMEAData::get_instance(); 
     
     if (!nmea_data.has_valid_time()) {
         uart_print("GPS time data not available for sync", VerbosityLevel::WARNING);

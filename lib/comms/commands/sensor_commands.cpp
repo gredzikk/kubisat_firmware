@@ -22,8 +22,6 @@
  *        - data_type (optional): specific data type for the sensor
  *          - For light: "light_level"
  *          - For environment: "temperature", "pressure", "humidity"
- *          - For magnetometer: "mag_field_x", "mag_field_y", "mag_field_z"
- *          - For IMU: "gyro_x", "gyro_y", "gyro_z", "accel_x", "accel_y", "accel_z"
  * @param operationType GET
  * @return Vector of Frames containing:
  *         - Success: Sensor data value(s)
@@ -67,10 +65,6 @@ std::vector<Frame> handle_get_sensor_data(const std::string& param, OperationTyp
         sensor_type = SensorType::LIGHT;
     } else if (sensor_type_str == "environment") {
         sensor_type = SensorType::ENVIRONMENT;
-    } else if (sensor_type_str == "magnetometer") {
-        sensor_type = SensorType::MAGNETOMETER;
-    } else if (sensor_type_str == "imu") {
-        sensor_type = SensorType::IMU;
     } else {
         error_msg = error_code_to_string(ErrorCode::PARAM_INVALID) + ": Invalid sensor type";
         frames.push_back(frame_build(OperationType::ERR, SENSOR_GROUP, SENSOR_READ, error_msg));
@@ -92,24 +86,6 @@ std::vector<Frame> handle_get_sensor_data(const std::string& param, OperationTyp
             data_type = SensorDataTypeIdentifier::PRESSURE;
         } else if (data_type_str == "humidity") {
             data_type = SensorDataTypeIdentifier::HUMIDITY;
-        } else if (data_type_str == "mag_field_x") {
-            data_type = SensorDataTypeIdentifier::MAG_FIELD_X;
-        } else if (data_type_str == "mag_field_y") {
-            data_type = SensorDataTypeIdentifier::MAG_FIELD_Y;
-        } else if (data_type_str == "mag_field_z") {
-            data_type = SensorDataTypeIdentifier::MAG_FIELD_Z;
-        } else if (data_type_str == "gyro_x") {
-            data_type = SensorDataTypeIdentifier::GYRO_X;
-        } else if (data_type_str == "gyro_y") {
-            data_type = SensorDataTypeIdentifier::GYRO_Y;
-        } else if (data_type_str == "gyro_z") {
-            data_type = SensorDataTypeIdentifier::GYRO_Z;
-        } else if (data_type_str == "accel_x") {
-            data_type = SensorDataTypeIdentifier::ACCEL_X;
-        } else if (data_type_str == "accel_y") {
-            data_type = SensorDataTypeIdentifier::ACCEL_Y;
-        } else if (data_type_str == "accel_z") {
-            data_type = SensorDataTypeIdentifier::ACCEL_Z;
         } else {
             error_msg = error_code_to_string(ErrorCode::PARAM_INVALID) + ": Invalid data type";
             frames.push_back(frame_build(OperationType::ERR, SENSOR_GROUP, SENSOR_READ, error_msg));
@@ -134,24 +110,7 @@ std::vector<Frame> handle_get_sensor_data(const std::string& param, OperationTyp
                     SensorDataTypeIdentifier::TEMPERATURE,
                     SensorDataTypeIdentifier::PRESSURE,
                     SensorDataTypeIdentifier::HUMIDITY
-                };
-                break;
-            case SensorType::MAGNETOMETER:
-                data_types = {
-                    SensorDataTypeIdentifier::MAG_FIELD_X,
-                    SensorDataTypeIdentifier::MAG_FIELD_Y,
-                    SensorDataTypeIdentifier::MAG_FIELD_Z
-                };
-                break;
-            case SensorType::IMU:
-                data_types = {
-                    SensorDataTypeIdentifier::GYRO_X,
-                    SensorDataTypeIdentifier::GYRO_Y,
-                    SensorDataTypeIdentifier::GYRO_Z,
-                    SensorDataTypeIdentifier::ACCEL_X,
-                    SensorDataTypeIdentifier::ACCEL_Y,
-                    SensorDataTypeIdentifier::ACCEL_Z
-                };
+                };              
                 break;
         }
         
@@ -173,33 +132,6 @@ std::vector<Frame> handle_get_sensor_data(const std::string& param, OperationTyp
                     break;
                 case SensorDataTypeIdentifier::HUMIDITY:
                     data_type_names.push_back("humidity");
-                    break;
-                case SensorDataTypeIdentifier::MAG_FIELD_X:
-                    data_type_names.push_back("mag_field_x");
-                    break;
-                case SensorDataTypeIdentifier::MAG_FIELD_Y:
-                    data_type_names.push_back("mag_field_y");
-                    break;
-                case SensorDataTypeIdentifier::MAG_FIELD_Z:
-                    data_type_names.push_back("mag_field_z");
-                    break;
-                case SensorDataTypeIdentifier::GYRO_X:
-                    data_type_names.push_back("gyro_x");
-                    break;
-                case SensorDataTypeIdentifier::GYRO_Y:
-                    data_type_names.push_back("gyro_y");
-                    break;
-                case SensorDataTypeIdentifier::GYRO_Z:
-                    data_type_names.push_back("gyro_z");
-                    break;
-                case SensorDataTypeIdentifier::ACCEL_X:
-                    data_type_names.push_back("accel_x");
-                    break;
-                case SensorDataTypeIdentifier::ACCEL_Y:
-                    data_type_names.push_back("accel_y");
-                    break;
-                case SensorDataTypeIdentifier::ACCEL_Z:
-                    data_type_names.push_back("accel_z");
                     break;
             }
             
@@ -266,10 +198,6 @@ std::vector<Frame> handle_sensor_config(const std::string& param, OperationType 
         sensor_type = SensorType::LIGHT;
     } else if (sensor_type_str == "environment") {
         sensor_type = SensorType::ENVIRONMENT;
-    } else if (sensor_type_str == "magnetometer") {
-        sensor_type = SensorType::MAGNETOMETER;
-    } else if (sensor_type_str == "imu") {
-        sensor_type = SensorType::IMU;
     } else {
         error_msg = error_code_to_string(ErrorCode::PARAM_INVALID) + ": Invalid sensor type";
         frames.push_back(frame_build(OperationType::ERR, SENSOR_GROUP, SENSOR_CONFIGURE, error_msg));
@@ -356,12 +284,6 @@ std::vector<Frame> handle_get_sensor_list(const std::string& param, OperationTyp
                 break;
             case SensorType::ENVIRONMENT:
                 sensor_list << "environment:0x" << addr_hex.str();
-                break;
-            case SensorType::MAGNETOMETER:
-                sensor_list << "magnetometer:0x" << addr_hex.str();
-                break;
-            case SensorType::IMU:
-                sensor_list << "imu:0x" << addr_hex.str();
                 break;
             default:
                 sensor_list << "unknown:0x" << addr_hex.str();

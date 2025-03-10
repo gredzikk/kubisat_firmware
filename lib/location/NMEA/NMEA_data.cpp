@@ -1,10 +1,34 @@
-#include "lib/location/NMEA/NMEA_data.h"
+/**
+ * @file NMEA_data.cpp
+ * @brief Implementation of the NMEAData class for GPS data management
+ * @details Provides thread-safe storage and parsing of NMEA GPS sentences
+ */
 
-NMEAData nmea_data; 
+ #include "lib/location/NMEA/NMEA_data.h"
+
+NMEAData* NMEAData::instance = nullptr;
+mutex_t NMEAData::instance_mutex;
 
 NMEAData::NMEAData() {
     mutex_init(&rmc_mutex_);
     mutex_init(&gga_mutex_);
+}
+
+NMEAData& NMEAData::get_instance() {
+    // Initialize mutex once
+    static bool mutex_initialized = false;
+    if (!mutex_initialized) {
+        mutex_init(&instance_mutex);
+        mutex_initialized = true;
+    }
+
+    // Thread-safe singleton access
+    mutex_enter_blocking(&instance_mutex);
+    if (instance == nullptr) {
+        instance = new NMEAData();
+    }
+    mutex_exit(&instance_mutex);
+    return *instance;
 }
 
 void NMEAData::update_rmc_tokens(const std::vector<std::string>& tokens) {

@@ -128,6 +128,7 @@ std::vector<Frame> handle_enable_gps_uart_passthrough(const std::string& param, 
 
     sleep_ms(10);
     
+    // Change main UART baudrate to GPS module baudrate for passthrough duration
     uart_set_baudrate(DEBUG_UART_PORT, gps_baud_rate);
 
     while (!exit_requested) {
@@ -166,7 +167,6 @@ std::vector<Frame> handle_enable_gps_uart_passthrough(const std::string& param, 
     sleep_ms(50);
     
     SystemStateManager::get_instance().set_gps_collection_paused(false);
-
     EventEmitter::emit(EventGroup::GPS, GPSEvent::PASS_THROUGH_END);
     
     std::string exit_reason = exit_requested ? "USER_EXIT" : "TIMEOUT";
@@ -206,6 +206,7 @@ std::vector<Frame> handle_get_rmc_data(const std::string& param, OperationType o
         return frames;
     }
 
+    auto& nmea_data = NMEAData::get_instance();
     std::vector<std::string> tokens = nmea_data.get_rmc_tokens();
     std::stringstream ss;
     for (size_t i = 0; i < tokens.size(); ++i) {
@@ -247,7 +248,8 @@ std::vector<Frame> handle_get_gga_data(const std::string& param, OperationType o
         frames.push_back(frame_build(OperationType::ERR, GPS_GROUP, GGA_DATA_COMMAND, error_msg));
         return frames;
     }
-
+    
+    auto& nmea_data = NMEAData::get_instance();
     std::vector<std::string> tokens = nmea_data.get_gga_tokens();
     std::stringstream ss;
     for (size_t i = 0; i < tokens.size(); ++i) {

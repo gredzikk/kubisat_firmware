@@ -7,14 +7,12 @@ long lastReceiveTime = 0;
 long lastPrintTime = 0;
 unsigned long interval = 0;
 
-
 /**
  * @brief Initializes the LoRa radio module.
  * @return True if initialization was successful, false otherwise.
  * @details Sets the LoRa pins and attempts to begin LoRa communication at a specified frequency.
  *          Emits a CommsEvent::RADIO_INIT event on success or a CommsEvent::RADIO_ERROR event on failure.
  */
-// In initialize_radio() function in communication.cpp
 bool initialize_radio() {
     LoRa.set_pins(lora_cs_pin, lora_reset_pin, lora_irq_pin);
     long frequency = 433E6;
@@ -29,7 +27,6 @@ bool initialize_radio() {
         // Set up TxDone callback to automatically return to receive mode
         LoRa.onTxDone(lora_tx_done_callback);
         
-        // Start in receive mode
         LoRa.receive(0);
         
         init_status = true;

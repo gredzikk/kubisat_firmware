@@ -49,9 +49,9 @@ void collect_gps_data() {
 
                 // Update the global vectors based on the sentence type
                 if (message.find("$GPRMC") == 0) {
-                    nmea_data.update_rmc_tokens(tokens);
+                    NMEAData::get_instance().update_rmc_tokens(tokens);
                 } else if (message.find("$GPGGA") == 0) {
-                    nmea_data.update_gga_tokens(tokens);
+                    NMEAData::get_instance().update_gga_tokens(tokens);
                 }
             }
         } else {
