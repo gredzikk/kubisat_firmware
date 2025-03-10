@@ -43,9 +43,10 @@ void send_frame_lora(const Frame& frame) {
     uart_print("Frame sent via LoRa", VerbosityLevel::DEBUG);
 }
 
+// If level is 0 - SILENT it means no diagnostic output but frame communications should still work
 void send_frame_uart(const Frame& frame) {
     std::string encoded_frame = frame_encode(frame);
-    uart_print(encoded_frame);
+    uart_print(encoded_frame, VerbosityLevel::SILENT);
 }
 
 

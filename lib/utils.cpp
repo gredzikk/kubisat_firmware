@@ -51,13 +51,12 @@ std::string get_level_prefix(VerbosityLevel level) {
 /**
  * @brief Prints a message to the UART with a timestamp and core number.
  * @param msg The message to print.
- * @param logToFile A flag indicating whether to log the message to a file (currently not implemented).
  * @param uart The UART instance to use for printing.
  * @details Prints the given message to the specified UART, prepending it with a timestamp and the core number.
  *          Uses a mutex to ensure thread-safe access to the UART.
  */
 void uart_print(const std::string& msg, VerbosityLevel level, uart_inst_t* uart) {
-    if (static_cast<int>(level) > static_cast<int>(SystemStateManager::get_instance().get_uart_verbosity())) {
+    if (static_cast<int>(level) >= static_cast<int>(SystemStateManager::get_instance().get_uart_verbosity())) {
         return;
     }
 
