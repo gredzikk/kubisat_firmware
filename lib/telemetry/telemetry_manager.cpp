@@ -38,7 +38,7 @@ extern NMEAData nmea_data;
 /**
  * @brief Default interval between telemetry samples in milliseconds (2 seconds)
  */
-#define DEFAULT_SAMPLE_INTERVAL_MS 2000
+#define DEFAULT_SAMPLE_INTERVAL_MS 1000
 
 /**
  * @brief Default number of records to collect before flushing to storage
