@@ -40,7 +40,6 @@ enum class VerbosityLevel {
  * @brief Prints a message to UART with timestamp and formatting
  * @param msg The message to print
  * @param level Message verbosity level
- * @param logToFile Whether to store the message in log storage
  * @param uart The UART port to use
  */
 void uart_print(const std::string& msg, 
