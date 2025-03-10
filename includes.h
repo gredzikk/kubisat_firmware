@@ -14,8 +14,6 @@
 #include "ISensor.h"
 #include "lib/sensors/BH1750/BH1750_WRAPPER.h" // Corrected path
 #include "lib/sensors/BME280/BME280_WRAPPER.h" // Corrected path
-#include "lib/sensors/HMC5883L/HMC5883L_WRAPPER.h" // Corrected path
-#include "lib/sensors/MPU6050/MPU6050_WRAPPER.h" // Corrected path
 #include "lib/clock/DS3231.h" // Corrected path
 #include <iostream>
 #include <iomanip>

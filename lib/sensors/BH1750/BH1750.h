@@ -24,7 +24,7 @@ public:
         ONE_TIME_LOW_RES_MODE = 0x23
     };
 
-    BH1750(uint8_t addr = 0x23);
+    BH1750(i2c_inst_t* i2c, uint8_t addr = 0x23); // Modified constructor
     bool begin(Mode mode = Mode::CONTINUOUS_HIGH_RES_MODE);
     void configure(Mode mode);
     float get_light_level();
@@ -32,6 +32,7 @@ public:
 private:
     void write8(uint8_t data);
     uint8_t _i2c_addr;
+    i2c_inst_t* i2c_port_; // Add i2c_port_ member
 };
 
 #endif // __BH1750_H__

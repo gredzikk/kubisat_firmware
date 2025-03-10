@@ -1,34 +1,24 @@
-// ISensor.h
 #ifndef ISENSOR_H
 #define ISENSOR_H
 
-#include <cstdint>
-#include "hardware/i2c.h"
 #include <map>
 #include <string>
 #include <vector>
+#include <utility>
+#include "hardware/i2c.h"
 
-enum class SensorType {
-    LIGHT,          // BH1750
-    ENVIRONMENT,    // BME280
-    MAGNETOMETER,   // HMC5883L
-    IMU             // MPU6050
+enum class SensorType : uint8_t {
+    NONE = 0x00,
+    LIGHT = 0x01,
+    ENVIRONMENT = 0x02,
 };
 
-enum class SensorDataTypeIdentifier {
-    LIGHT_LEVEL,
-    TEMPERATURE,
-    PRESSURE,
-    HUMIDITY,
-    MAG_FIELD_X,
-    MAG_FIELD_Y,
-    MAG_FIELD_Z,
-    GYRO_X,
-    GYRO_Y,
-    GYRO_Z,
-    ACCEL_X,
-    ACCEL_Y,
-    ACCEL_Z
+enum class SensorDataTypeIdentifier : uint8_t {
+    NONE = 0x00,
+    LIGHT_LEVEL = 0x01,
+    TEMPERATURE = 0x02,
+    HUMIDITY = 0x03,
+    PRESSURE = 0x04,
 };
 
 class ISensor {
@@ -44,7 +34,11 @@ public:
 
 class SensorWrapper {
 public:
-    static SensorWrapper& get_instance();
+    static SensorWrapper& get_instance() {
+        static SensorWrapper instance;
+        return instance;
+    }
+
     bool sensor_init(SensorType type, i2c_inst_t* i2c = nullptr);
     bool sensor_configure(SensorType type, const std::map<std::string, std::string>& config);
     float sensor_read_data(SensorType sensorType, SensorDataTypeIdentifier dataType);
@@ -52,10 +46,10 @@ public:
 
     std::vector<std::pair<SensorType, uint8_t>> scan_connected_sensors(i2c_inst_t* i2c);
     std::vector<std::pair<SensorType, uint8_t>> get_available_sensors();
-    
+
 private:
     std::map<SensorType, ISensor*> sensors;
-    SensorWrapper();
+    SensorWrapper() = default;
 };
 
-#endif // ISENSOR_H
+#endif
