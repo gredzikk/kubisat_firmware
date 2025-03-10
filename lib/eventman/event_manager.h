@@ -166,151 +166,85 @@ class EventLog {
 
 /**
  * @class EventManager
- * @brief Manages the event logging system.
+ * @brief Singleton class managing the event logging system
+ * @details Provides thread-safe event logging with circular buffer storage
+ *          and persistent storage capabilities
  */
 class EventManager {
-    public:
-        /**
-         * @brief Constructor for the EventManager.
-         * @details Initializes the event buffer, mutex, and other internal variables.
-         */
-        EventManager()
-            : eventCount(0)
-            , writeIndex(0)
-            , eventsSinceFlush(0)  // Add eventsSinceFlush initialization
-        {
-            mutex_init(&eventMutex);
-        }
+private:
+    /** @brief Pointer to singleton instance */
+    static EventManager* instance;
     
-        /**
-         * @brief Virtual destructor for the EventManager.
-         */
-        virtual ~EventManager() = default;
+    /** @brief Mutex for thread-safe instance access */
+    static mutex_t instance_mutex;
     
-        /**
-         * @brief Initializes the EventManager.
-         * @details Loads events from storage.
-         */
-        virtual void init() {
-            load_from_storage();
-        }
+    /** @brief Private constructor to enforce singleton pattern */
+    EventManager();
     
-        /**
-         * @brief Logs an event.
-         * @param group The event group.
-         * @param event The event identifier.
-         */
-        void log_event(uint8_t group, uint8_t event);
+    /** @brief Deleted copy constructor */
+    EventManager(const EventManager&) = delete;
     
-        /**
-         * @brief Retrieves an event from the event buffer.
-         * @param index The index of the event to retrieve.
-         * @return A const reference to the EventLog at the specified index.
-         */
-        const EventLog& get_event(size_t index) const;
+    /** @brief Deleted assignment operator */
+    EventManager& operator=(const EventManager&) = delete;
     
-        /**
-         * @brief Gets the number of events in the buffer.
-         * @return The number of events in the buffer.
-         */
-        size_t get_event_count() const { return eventCount; }
+    /** @brief Circular buffer for event storage */
+    EventLog events[EVENT_BUFFER_SIZE];
     
-        /**
-         * @brief Saves the events to storage.
-         * @return True if the events were successfully saved, false otherwise.
-         */
-        virtual bool save_to_storage() = 0;
+    /** @brief Current number of events in buffer */
+    size_t eventCount;
     
-        /**
-         * @brief Loads the events from storage.
-         * @return True if the events were successfully loaded, false otherwise.
-         */
-        virtual bool load_from_storage() = 0;   
+    /** @brief Current write position in circular buffer */
+    size_t writeIndex;
+    
+    /** @brief Mutex for thread-safe event access */
+    mutex_t eventMutex;
+    
+    /** @brief Next available event ID */
+    static uint16_t nextEventId;
+    
+    /** @brief Counter for events since last storage flush */
+    size_t eventsSinceFlush;
 
-        protected:
-        /** @brief Event buffer */
-        EventLog events[EVENT_BUFFER_SIZE];
-        /** @brief Number of events in the buffer */
-        size_t eventCount;
-        /** @brief Index of the next event to be written */
-        size_t writeIndex;
-        /** @brief Mutex for protecting the event buffer */
-        mutex_t eventMutex;
-        /** @brief Static event ID counter */
-        static uint16_t nextEventId;
-        /** @brief Number of events since last flush to storage */
-        size_t eventsSinceFlush;
-    };
+public:
+    /**
+     * @brief Gets the singleton instance
+     * @return Reference to EventManager instance
+     */
+    static EventManager& get_instance();
     
-
-/**
- * @class EventManagerImpl
- * @brief Implementation of the EventManager class.
- */
-class EventManagerImpl : public EventManager {
-    public:
-        /**
-         * @brief Constructor for the EventManagerImpl.
-         * @details Initializes the EventManagerImpl and calls the init method.
-         */
-        EventManagerImpl() {
-            init(); // Safe to call virtual functions here
-        }
+    /**
+     * @brief Initializes the event manager
+     * @return true if initialization successful
+     */
+    bool init();
     
-        /**
-         * @brief Saves the events to storage.
-         * @return True if the events were successfully saved, false otherwise.
-         * @details This method is not yet implemented.
-         */
-        public:
-        bool save_to_storage() override {
-            if (!SystemStateManager::get_instance().is_sd_card_mounted()) {
-                bool status = fs_init();
-                if(!status) {
-                    return false;
-                }
-            } 
-            
-            FILE *file = fopen(EVENT_LOG_FILE, "a");
-            if (file) {
-                // Calculate start index for last EVENT_FLUSH_THRESHOLD events
-                size_t startIdx = (writeIndex >= eventsSinceFlush) ? 
-                    writeIndex - eventsSinceFlush : 
-                    EVENT_BUFFER_SIZE - (eventsSinceFlush - writeIndex);
+    /**
+     * @brief Logs a new event
+     * @param group Event group identifier
+     * @param event Event identifier
+     */
+    void log_event(uint8_t group, uint8_t event);
+    
+    /**
+     * @brief Retrieves an event from the buffer
+     * @param index Index of event to retrieve
+     * @return Const reference to the event log entry
+     */
+    const EventLog& get_event(size_t index) const;
+    
+    /**
+     * @brief Gets the current event count
+     * @return Number of events in buffer
+     */
+    size_t get_event_count() const { return eventCount; }
+    
+    /**
+     * @brief Saves events to persistent storage
+     * @return true if save successful
+     */
+    bool save_to_storage();
+};
 
-                // Write only the most recent batch of events
-                for (size_t i = 0; i < eventsSinceFlush; i++) {
-                    size_t idx = (startIdx + i) % EVENT_BUFFER_SIZE;
-                    fprintf(file, "%u;%lu;%u;%u\n", 
-                        events[idx].id,
-                        events[idx].timestamp,
-                        events[idx].group,
-                        events[idx].event
-                    );
-                }
-                fclose(file);
-                uart_print("Events saved to storage", VerbosityLevel::INFO);
-                return true;
-            }
-            return false;
-        }
-        
-        /**
-         * @brief Loads the events from storage.
-         * @return True if the events were successfully loaded, false otherwise.
-         * @details This method is not yet implemented.
-         */
-        bool load_from_storage() override {
-            // TODO: Implement based on chosen storage (SD/EEPROM)
-            return false;
-        }
-    };
-
-
-/**
- * @brief Global instance of the EventManagerImpl class.
- */
-extern EventManagerImpl eventManager;
 
 /**
  * @class EventEmitter
@@ -326,8 +260,8 @@ class EventEmitter {
          */
     template<typename T>
     static void emit(EventGroup group, T event) {
-        eventManager.log_event(
-            static_cast<uint8_t>(group), 
+        EventManager::get_instance().log_event(
+            static_cast<uint8_t>(group),
             static_cast<uint8_t>(event)
         );
     }

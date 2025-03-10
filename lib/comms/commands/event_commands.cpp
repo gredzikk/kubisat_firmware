@@ -39,6 +39,7 @@ std::vector<Frame> handle_get_last_events(const std::string& param, OperationTyp
         frames.push_back(frame_build(OperationType::ERR, 5, 1, error_msg));
         return frames;
     }
+
     size_t count = 10; // Default number of events to return
     if (!param.empty()) {
         try {
@@ -55,7 +56,8 @@ std::vector<Frame> handle_get_last_events(const std::string& param, OperationTyp
         }
     }
 
-    size_t available = eventManager.get_event_count();
+    auto& event_manager = EventManager::get_instance();
+    size_t available = event_manager.get_event_count();
     size_t to_return = (count == 0) ? available : std::min(count, available);
     size_t event_index = available;
 
@@ -66,7 +68,7 @@ std::vector<Frame> handle_get_last_events(const std::string& param, OperationTyp
 
         for (size_t i = 0; i < 10 && to_return > 0; ++i) {
             event_index--;
-            const EventLog& event = eventManager.get_event(event_index);
+            const EventLog& event = event_manager.get_event(event_index);
 
             ss << std::setw(4) << event.id
                << std::setw(8) << event.timestamp
@@ -74,7 +76,6 @@ std::vector<Frame> handle_get_last_events(const std::string& param, OperationTyp
                << std::setw(2) << static_cast<int>(event.event);
 
             if (to_return > 1) ss << "-";
-
             to_return--;
             events_in_frame++;
         }
@@ -106,7 +107,10 @@ std::vector<Frame> handle_get_event_count(const std::string& param, OperationTyp
         frames.push_back(frame_build(OperationType::ERR, 5, 2, error_msg));
         return frames;
     }
-    frames.push_back(frame_build(OperationType::VAL, 5, 2, std::to_string(eventManager.get_event_count())));
+
+    auto& event_manager = EventManager::get_instance();
+    frames.push_back(frame_build(OperationType::VAL, 5, 2, 
+                    std::to_string(event_manager.get_event_count())));
     return frames;
 }
 /** @} */ // end of EventCommands group

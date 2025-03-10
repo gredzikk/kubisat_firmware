@@ -53,7 +53,7 @@ void on_receive(int packet_size) {
 
     int start_index = 2; 
     
-    std::string received = std::string(reinterpret_cast<char*>(buffer + start_index), bytes_read - start_index);
+    std::string received(buffer.begin() + start_index, buffer.end());
     
     if (received.empty()) return;
     

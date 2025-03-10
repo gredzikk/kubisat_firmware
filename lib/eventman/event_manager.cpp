@@ -26,13 +26,45 @@ volatile uint16_t eventLogId = 0;
  */
 extern DS3231 systemClock;
 
-/**
- * @brief Global instance of the EventManager implementation.
- * @ingroup EventManagerGroup
- */
-EventManagerImpl eventManager;
 
+// Initialize static members
+EventManager* EventManager::instance = nullptr;
+mutex_t EventManager::instance_mutex;
 uint16_t EventManager::nextEventId = 0;
+
+/**
+ * @brief Private constructor for EventManager singleton
+ * @details Initializes the event buffer and mutex
+ */
+EventManager::EventManager()
+    : eventCount(0)
+    , writeIndex(0)
+    , eventsSinceFlush(0)
+{
+    mutex_init(&eventMutex);
+}
+
+/**
+ * @brief Gets the singleton instance of EventManager
+ * @return Reference to the EventManager instance
+ * @details Thread-safe implementation using mutex protection
+ */
+EventManager& EventManager::get_instance() {
+    // Initialize mutex once
+    static bool mutex_initialized = false;
+    if (!mutex_initialized) {
+        mutex_init(&instance_mutex);
+        mutex_initialized = true;
+    }
+
+    // Thread-safe singleton access
+    mutex_enter_blocking(&instance_mutex);
+    if (instance == nullptr) {
+        instance = new EventManager();
+    }
+    mutex_exit(&instance_mutex);
+    return *instance;
+}
 
 /**
  * @brief Logs an event to the event buffer.
@@ -95,4 +127,34 @@ const EventLog& EventManager::get_event(size_t index) const {
     }
     
     return events[actualIndex];
+}
+
+bool EventManager::save_to_storage() {
+    if (!SystemStateManager::get_instance().is_sd_card_mounted()) {
+        bool status = fs_init();
+        if(!status) {
+            return false;
+        }
+    }
+    
+    FILE *file = fopen(EVENT_LOG_FILE, "a");
+    if (file) {
+        size_t startIdx = (writeIndex >= eventsSinceFlush) ? 
+            writeIndex - eventsSinceFlush : 
+            EVENT_BUFFER_SIZE - (eventsSinceFlush - writeIndex);
+
+        for (size_t i = 0; i < eventsSinceFlush; i++) {
+            size_t idx = (startIdx + i) % EVENT_BUFFER_SIZE;
+            fprintf(file, "%u;%lu;%u;%u\n", 
+                events[idx].id,
+                events[idx].timestamp,
+                events[idx].group,
+                events[idx].event
+            );
+        }
+        fclose(file);
+        uart_print("Events saved to storage", VerbosityLevel::INFO);
+        return true;
+    }
+    return false;
 }
