@@ -13,10 +13,14 @@
  *          default device address. This constructor also initializes the clock mutex
  *          for thread-safe I²C access.
  */
-DS3231::DS3231(i2c_inst_t *i2c_instance) : i2c(i2c_instance), ds3231_addr(DS3231_DEVICE_ADRESS) {
+DS3231::DS3231() : i2c(MAIN_I2C_PORT), ds3231_addr(DS3231_DEVICE_ADRESS) {
     recursive_mutex_init(&clock_mutex_);
 }
 
+DS3231& DS3231::get_instance() {
+    static DS3231 instance;
+    return instance;
+}
 
 /**
  * @brief Sets the time on the DS3231 RTC module

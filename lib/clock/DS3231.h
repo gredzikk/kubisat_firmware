@@ -113,6 +113,7 @@ public:
      * @param[in] i2c_instance Pointer to the I2C instance to use
      */
     DS3231(i2c_inst_t *i2c_instance);
+    static DS3231& get_instance();
 
     /**
      * @brief Sets the time on the DS3231 clock
@@ -223,8 +224,19 @@ public:
 
     
 private:
-    i2c_inst_t *i2c;                      ///< Pointer to I2C instance
-    uint8_t ds3231_addr;                  ///< I2C address of DS3231
+    i2c_inst_t *i2c;
+    uint8_t ds3231_addr;
+    recursive_mutex_t clock_mutex_;
+    int16_t timezone_offset_minutes_ = 60;
+    uint32_t sync_interval_minutes_ = 1440;
+    time_t last_sync_time_ = 0;
+
+    // Private constructor
+    DS3231();
+
+    // Delete copy constructor and assignment operator
+    DS3231(const DS3231&) = delete;
+    DS3231& operator=(const DS3231&) = delete;
 
     /**
      * @brief Reads data from a specific register on the DS3231
@@ -261,11 +273,6 @@ private:
      * @return Binary representation of the input BCD value
      */
     uint8_t bcd_to_bin(const uint8_t bcd);
-
-    recursive_mutex_t clock_mutex_;          ///< Mutex for thread-safe I2C access
-    int16_t timezone_offset_minutes_ = 60;    ///< Timezone offset in minutes, default: UTC
-    uint32_t sync_interval_minutes_ = 1440;  ///< Sync interval in minutes, default: 24 hours
-    time_t last_sync_time_ = 0;              ///< Last sync timestamp, 0 = never synced
 };
 
 #endif // DS3231_H

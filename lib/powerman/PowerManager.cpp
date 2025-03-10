@@ -3,41 +3,46 @@
 #include <sstream>
 #include "event_manager.h"
 
-PowerManager::PowerManager(i2c_inst_t* i2c) 
-    : ina3221_(INA3221_ADDR40_GND, i2c) {
-        recursive_mutex_init(&powerman_mutex_);
-    };
+PowerManager::PowerManager() 
+    : ina3221_(INA3221_ADDR40_GND, MAIN_I2C_PORT) {
+    recursive_mutex_init(&powerman_mutex_);
+}
 
-    bool PowerManager::initialize() {
-        recursive_mutex_enter_blocking(&powerman_mutex_);
-        initialized_ = ina3221_.begin();
-        
-        if (initialized_) {
-            // Set up alerts
-            ina3221_.set_warn_alert_limit(INA3221_CH2, VOLTAGE_LOW_THRESHOLD);
-            ina3221_.set_crit_alert_limit(INA3221_CH2, VOLTAGE_OVERCHARGE_THRESHOLD);
-            ina3221_.set_power_valid_limit(VOLTAGE_OVERCHARGE_THRESHOLD, VOLTAGE_LOW_THRESHOLD);
-            ina3221_.enable_alerts();
-            ina3221_.set_alert_latch(true);
-        }
-        
-        recursive_mutex_exit(&powerman_mutex_);
-        return initialized_;
-    }
+PowerManager& PowerManager::get_instance() {
+    static PowerManager instance;
+    return instance;
+}
 
-    std::string PowerManager::read_device_ids() {
-        if (!initialized_) return "noinit";
-        recursive_mutex_enter_blocking(&powerman_mutex_);
-        std::stringstream man_ss;
-        man_ss << std::hex << ina3221_.get_manufacturer_id();
-        std::string MAN = "MAN 0x" + man_ss.str();
+bool PowerManager::initialize() {
+    recursive_mutex_enter_blocking(&powerman_mutex_);
+    initialized_ = ina3221_.begin();
     
-        std::stringstream die_ss;
-        die_ss << std::hex << ina3221_.get_die_id();
-        std::string DIE = "DIE 0x" + die_ss.str();
-        recursive_mutex_exit(&powerman_mutex_);
-        return MAN + " - " + DIE;
+    if (initialized_) {
+        // Set up alerts
+        ina3221_.set_warn_alert_limit(INA3221_CH2, VOLTAGE_LOW_THRESHOLD);
+        ina3221_.set_crit_alert_limit(INA3221_CH2, VOLTAGE_OVERCHARGE_THRESHOLD);
+        ina3221_.set_power_valid_limit(VOLTAGE_OVERCHARGE_THRESHOLD, VOLTAGE_LOW_THRESHOLD);
+        ina3221_.enable_alerts();
+        ina3221_.set_alert_latch(true);
     }
+    
+    recursive_mutex_exit(&powerman_mutex_);
+    return initialized_;
+}
+
+std::string PowerManager::read_device_ids() {
+    if (!initialized_) return "noinit";
+    recursive_mutex_enter_blocking(&powerman_mutex_);
+    std::stringstream man_ss;
+    man_ss << std::hex << ina3221_.get_manufacturer_id();
+    std::string MAN = "MAN 0x" + man_ss.str();
+
+    std::stringstream die_ss;
+    die_ss << std::hex << ina3221_.get_die_id();
+    std::string DIE = "DIE 0x" + die_ss.str();
+    recursive_mutex_exit(&powerman_mutex_);
+    return MAN + " - " + DIE;
+}
 
 float PowerManager::get_voltage_battery() {
     if (!initialized_) return 0.0f;

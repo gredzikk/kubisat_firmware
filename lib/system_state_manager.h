@@ -24,7 +24,6 @@ class SystemStateManager {
             recursive_mutex_init(&mutex_);
         }
     
-        // Delete copy constructor and assignment operator to enforce singleton pattern
         SystemStateManager(const SystemStateManager&) = delete;
         SystemStateManager& operator=(const SystemStateManager&) = delete;
     

@@ -120,17 +120,17 @@ bool telemetry_init() {
 
 bool collect_telemetry() {
     SensorWrapper& sensor_wrapper = SensorWrapper::get_instance();
-    uint32_t timestamp = systemClock.get_unix_time();
+    uint32_t timestamp = DS3231::get_instance().get_unix_time();
     TelemetryRecord record;
     record.timestamp = timestamp;
     record.build_version = std::to_string(BUILD_NUMBER);
     
     // Power data
-    record.battery_voltage = powerManager.get_voltage_battery();
-    record.system_voltage = powerManager.get_voltage_5v();
-    record.charge_current_usb = powerManager.get_current_charge_usb();
-    record.charge_current_solar = powerManager.get_current_charge_solar();
-    record.discharge_current = powerManager.get_current_draw();
+    record.battery_voltage = PowerManager::get_instance().get_voltage_battery();
+    record.system_voltage = PowerManager::get_instance().get_voltage_5v();
+    record.charge_current_usb = PowerManager::get_instance().get_current_charge_usb();
+    record.charge_current_solar = PowerManager::get_instance().get_current_charge_solar();
+    record.discharge_current = PowerManager::get_instance().get_current_draw();
     
     auto& nmea_data = NMEAData::get_instance();
     // Get GPS RMC data

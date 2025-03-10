@@ -14,7 +14,6 @@
  * @{
  */
 
- extern DS3231 systemClock;
 
 /**
  * @brief Handler for getting and setting system time
@@ -47,14 +46,14 @@ std::vector<Frame> handle_time(const std::string& param, OperationType operation
                 return frames;
             }
 
-            if (systemClock.set_unix_time(newTime) != 0) {
+            if (DS3231::get_instance().set_unix_time(newTime) != 0) {
                 error_msg = error_code_to_string(ErrorCode::FAIL_TO_SET);
                 frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, TIME, error_msg));
                 return frames;
             }
 
             EventEmitter::emit(EventGroup::CLOCK, ClockEvent::CHANGED);
-            frames.push_back(frame_build(OperationType::RES, CLOCK_GROUP, TIME, std::to_string(systemClock.get_unix_time())));
+            frames.push_back(frame_build(OperationType::RES, CLOCK_GROUP, TIME, std::to_string(DS3231::get_instance().get_unix_time())));
             return frames;
         } catch (...) {
             error_msg = error_code_to_string(ErrorCode::INVALID_FORMAT);
@@ -68,7 +67,7 @@ std::vector<Frame> handle_time(const std::string& param, OperationType operation
             return frames;
         }
 
-        uint32_t time_unix = systemClock.get_local_time();
+        uint32_t time_unix = DS3231::get_instance().get_local_time();
         if (time_unix == 0) {
             error_msg = error_code_to_string(ErrorCode::INTERNAL_FAIL_TO_READ);
             frames.push_back(frame_build(OperationType::ERR, CLOCK_GROUP, TIME, error_msg));
@@ -111,7 +110,7 @@ std::vector<Frame> handle_timezone_offset(const std::string& param, OperationTyp
             return frames;
         }
 
-        int offset = systemClock.get_timezone_offset();
+        int offset = DS3231::get_instance().get_timezone_offset();
         std::string offset_set = std::to_string(offset);
         frames.push_back(frame_build(OperationType::VAL, CLOCK_GROUP, TIMEZONE_OFFSET, offset_set));
         return frames;
@@ -131,7 +130,7 @@ std::vector<Frame> handle_timezone_offset(const std::string& param, OperationTyp
             return frames;
         }
 
-        systemClock.set_timezone_offset(offset);
+        DS3231::get_instance().set_timezone_offset(offset);
         std::string offset_set = std::to_string(offset);
         frames.push_back(frame_build(OperationType::RES, CLOCK_GROUP, TIMEZONE_OFFSET, offset_set));
         return frames;
@@ -170,7 +169,7 @@ std::vector<Frame> handle_clock_sync_interval(const std::string& param, Operatio
             return frames;
         }
 
-        uint32_t syncInterval = systemClock.get_clock_sync_interval();
+        uint32_t syncInterval = DS3231::get_instance().get_clock_sync_interval();
         std::string clockSyncInterval = std::to_string(syncInterval);
         frames.push_back(frame_build(OperationType::VAL, CLOCK_GROUP, CLOCK_SYNC_INTERVAL, clockSyncInterval));
         return frames;
@@ -185,7 +184,7 @@ std::vector<Frame> handle_clock_sync_interval(const std::string& param, Operatio
         try {
             uint32_t interval = std::stoul(param);
             
-            systemClock.set_clock_sync_interval(interval);
+            DS3231::get_instance().set_clock_sync_interval(interval);
             std::string interval_set = std::to_string(interval);
 
             frames.push_back(frame_build(OperationType::RES, CLOCK_GROUP, CLOCK_SYNC_INTERVAL, interval_set));
@@ -219,7 +218,7 @@ std::vector<Frame> handle_get_last_sync_time(const std::string& param, Operation
         return frames;
     }
 
-    time_t lastSyncTime = systemClock.get_last_sync_time();
+    time_t lastSyncTime = DS3231::get_instance().get_last_sync_time();
 
     if (lastSyncTime == 0) {
         frames.push_back(frame_build(OperationType::VAL, CLOCK_GROUP, LAST_SYNC_TIME, "NEVER"));

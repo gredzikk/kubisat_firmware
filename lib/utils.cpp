@@ -56,7 +56,7 @@ std::string get_level_prefix(VerbosityLevel level) {
  *          Uses a mutex to ensure thread-safe access to the UART.
  */
 void uart_print(const std::string& msg, VerbosityLevel level, uart_inst_t* uart) {
-    if (static_cast<int>(level) >= static_cast<int>(SystemStateManager::get_instance().get_uart_verbosity())) {
+    if (static_cast<int>(level) > static_cast<int>(SystemStateManager::get_instance().get_uart_verbosity())) {
         return;
     }
 

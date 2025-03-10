@@ -11,6 +11,7 @@
 class PowerManager {
 public:
     PowerManager(i2c_inst_t* i2c);
+    static PowerManager& get_instance();
     bool initialize();
     std::string read_device_ids();
     float get_current_charge_solar();
@@ -38,6 +39,13 @@ private:
     recursive_mutex_t powerman_mutex_;
     bool charging_solar_active_ = false;
     bool charging_usb_active_ = false;
+
+    // Private constructor
+    PowerManager();
+
+    // Delete copy constructor and assignment operator
+    PowerManager(const PowerManager&) = delete;
+    PowerManager& operator=(const PowerManager&) = delete;
 };
 
 #endif // POWER_MANAGER_H

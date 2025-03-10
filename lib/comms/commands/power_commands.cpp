@@ -43,8 +43,7 @@ std::vector<Frame> handle_get_power_manager_ids(const std::string& param, Operat
         return frames;
     }
 
-    extern PowerManager powerManager;
-    std::string power_manager_ids = powerManager.read_device_ids();
+    std::string power_manager_ids = PowerManager::get_instance().read_device_ids();
     frames.push_back(frame_build(OperationType::VAL, POWER_GROUP, POWER_MANAGER_IDS, power_manager_ids));
     return frames;
 }
@@ -77,8 +76,7 @@ std::vector<Frame> handle_get_voltage_battery(const std::string& param, Operatio
         return frames;
     }
 
-    extern PowerManager powerManager;
-    float voltage = powerManager.get_voltage_battery();
+    float voltage = PowerManager::get_instance().get_voltage_battery();
     frames.push_back(frame_build(OperationType::VAL, POWER_GROUP, VOLTAGE_BATTERY, std::to_string(voltage), ValueUnit::VOLT));
     return frames;
 }
@@ -111,8 +109,7 @@ std::vector<Frame> handle_get_voltage_5v(const std::string& param, OperationType
         return frames;
     }
 
-    extern PowerManager powerManager;
-    float voltage = powerManager.get_voltage_5v();
+    float voltage = PowerManager::get_instance().get_voltage_5v();
     frames.push_back(frame_build(OperationType::VAL, POWER_GROUP, VOLTAGE_MAIN, std::to_string(voltage), ValueUnit::VOLT));
     return frames;
 }
@@ -145,8 +142,7 @@ std::vector<Frame> handle_get_current_charge_usb(const std::string& param, Opera
         return frames;
     }
 
-    extern PowerManager powerManager;
-    float charge_current = powerManager.get_current_charge_usb();
+    float charge_current = PowerManager::get_instance().get_current_charge_usb();
     frames.push_back(frame_build(OperationType::VAL, POWER_GROUP, CHARGE_USB, std::to_string(charge_current), ValueUnit::MILIAMP));
     return frames;
 }
@@ -179,8 +175,7 @@ std::vector<Frame> handle_get_current_charge_solar(const std::string& param, Ope
         return frames;
     }
 
-    extern PowerManager powerManager;
-    float charge_current = powerManager.get_current_charge_solar();
+    float charge_current = PowerManager::get_instance().get_current_charge_solar();
     frames.push_back(frame_build(OperationType::VAL, POWER_GROUP, CHARGE_SOLAR, std::to_string(charge_current), ValueUnit::MILIAMP));
     return frames;
 }
@@ -213,8 +208,7 @@ std::vector<Frame> handle_get_current_charge_total(const std::string& param, Ope
         return frames;
     }
 
-    extern PowerManager powerManager;
-    float charge_current = powerManager.get_current_charge_total();
+    float charge_current = PowerManager::get_instance().get_current_charge_total();
     frames.push_back(frame_build(OperationType::VAL, POWER_GROUP, CHARGE_TOTAL, std::to_string(charge_current), ValueUnit::MILIAMP));
     return frames;
 }
@@ -247,8 +241,7 @@ std::vector<Frame> handle_get_current_draw(const std::string& param, OperationTy
         return frames;
     }
 
-    extern PowerManager powerManager;
-    float current_draw = powerManager.get_current_draw();
+    float current_draw = PowerManager::get_instance().get_current_draw();
     frames.push_back(frame_build(OperationType::VAL, POWER_GROUP, DRAW_TOTAL, std::to_string(current_draw), ValueUnit::MILIAMP));
     return frames;
 }

@@ -2,9 +2,6 @@
 
 #define LOG_FILENAME "/log.txt"
 
-PowerManager powerManager(MAIN_I2C_PORT);
-DS3231 systemClock(MAIN_I2C_PORT);
-
 char buffer[BUFFER_SIZE] = {0};
 int buffer_index = 0;
 
@@ -23,13 +20,13 @@ void core1_entry() {
         
         uint32_t currentTime = to_ms_since_boot(get_absolute_time());
         
-        uint32_t check_interval_ms = systemClock.get_clock_sync_interval() * 60000;
+        uint32_t check_interval_ms = DS3231::get_instance().get_clock_sync_interval() * 60000;
         if (currentTime - last_clock_check_time >= check_interval_ms) {
             last_clock_check_time = currentTime;
             
-            if (systemClock.is_sync_needed()) {
+            if (DS3231::get_instance().is_sync_needed()) {
                 uart_print("Clock sync interval reached, attempting sync", VerbosityLevel::INFO);
-                systemClock.sync_clock_with_gps();
+                DS3231::get_instance().sync_clock_with_gps();
             }
         }
         
@@ -157,14 +154,13 @@ int main()
 
     gpio_put(PICO_DEFAULT_LED_PIN, 0);
 
-    bool power_manager_init_status = powerManager.initialize();
-    if (power_manager_init_status)
-    {
+    bool power_manager_init_status = PowerManager::get_instance().initialize();
+    if (power_manager_init_status) {
         std::map<std::string, std::string> power_config = {
             {"operating_mode", "continuous"},
             {"averaging_mode", "16"},
         };
-        powerManager.configure(power_config);
+        PowerManager::get_instance().configure(power_config);
     } else {
         uart_print("Power manager init error", VerbosityLevel::ERROR);
     }
