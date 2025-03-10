@@ -213,15 +213,6 @@ public:
 
     // Gets bus voltage in V.
     float get_voltage(ina3221_ch_t channel);
-
-    void set_warn_alert_limit(ina3221_ch_t channel, float voltage_v);
-    void set_crit_alert_limit(ina3221_ch_t channel, float voltage_v);
-    void set_power_valid_limit(float voltage_upper_v, float voltage_lower_v);
-    void enable_alerts();
-    bool get_warn_alert(ina3221_ch_t channel);
-    bool get_crit_alert(ina3221_ch_t channel);
-    bool get_power_valid_alert();
-    void set_alert_latch(bool enable);
 };
 
 #endif

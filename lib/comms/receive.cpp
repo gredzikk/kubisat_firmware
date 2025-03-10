@@ -5,6 +5,8 @@
 /**
  * @file receive.cpp
  * @brief Implements functions for receiving and processing data, including LoRa and UART input.
+ * @defgroup ReceiveData Receiving Data
+ * @brief Functions for receiving and processing data from LoRa and UART interfaces.
  */
 
 /**
@@ -12,6 +14,7 @@
  * @param packet_size The size of the received packet.
  * @details Reads the received LoRa packet, extracts metadata, validates the lora_address_remote and local addresses,
  *          extracts the frame data, and processes it. Prints raw hex values for debugging.
+ * @ingroup ReceiveData
  */
 void on_receive(int packet_size) {
     if (packet_size == 0) return;
@@ -82,6 +85,7 @@ void on_receive(int packet_size) {
  * @brief Handles UART input.
  * @details Reads characters from the UART port, appends them to a buffer, and processes the buffer when a newline
  *          character is received.
+ * @ingroup ReceiveData
  */
 void handle_uart_input() {
     static std::string uart_buffer;
@@ -98,3 +102,4 @@ void handle_uart_input() {
         }
     }
 }
+/** @} */ 

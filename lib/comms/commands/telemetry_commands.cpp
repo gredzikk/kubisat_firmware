@@ -34,7 +34,7 @@ extern const int TELEMETRY_BUFFER_SIZE;
  * @ingroup TelemetryBufferCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 8.2
  */
-std::vector<Frame> handle_get_last_telemetry_record(const std::string& param, OperationType operationType) {
+std::vector<Frame> handle_get_last_telemetry_record([[maybe_unused]] const std::string& param, OperationType operationType) {
     std::vector<Frame> frames;
     std::string error_msg;
 
@@ -67,7 +67,7 @@ std::vector<Frame> handle_get_last_telemetry_record(const std::string& param, Op
  * @param operationType The operation type (must be GET).
  * @return A vector of Frames indicating the result of the operation.
  */
-std::vector<Frame> handle_get_last_sensor_record(const std::string& param, OperationType operationType) {
+std::vector<Frame> handle_get_last_sensor_record([[maybe_unused]]const std::string& param, OperationType operationType) {
     std::vector<Frame> frames;
     std::string error_msg;
 

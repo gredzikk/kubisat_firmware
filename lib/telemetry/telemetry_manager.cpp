@@ -1,4 +1,13 @@
-#include "telemetry_manager.h"
+/**
+ * @file telemetry_manager.cpp
+ * @brief Implementation of telemetry collection and storage functionality
+ * @details Handles collecting, buffering, and persisting telemetry data from various
+ *          satellite subsystems including power, sensors, and GPS
+ * @defgroup TelemetryManager Telemetry Manager
+ * @{
+ */
+
+ #include "telemetry_manager.h"
 #include "utils.h"
 #include "storage.h"
 #include "PowerManager.h"
@@ -11,18 +20,6 @@
 #include <cstdio>
 #include "communication.h"
 #include "system_state_manager.h"
-
-/**
- * @file telemetry_manager.cpp
- * @brief Implementation of telemetry collection and storage functionality
- * @details Handles collecting, buffering, and persisting telemetry data from various 
- *          satellite subsystems including power, sensors, and GPS
- */
-
-
-extern PowerManager powerManager;
-extern DS3231 systemClock;
-
 
 /**
  * @brief Path to the telemetry CSV file on storage media
@@ -73,6 +70,13 @@ size_t sensor_data_buffer_write_index = 0;
  */
 mutex_t telemetry_mutex;
 
+/**
+ * @brief Initialize the telemetry system
+ * @return True if initialization was successful
+ * @details Sets up the mutex for thread-safe buffer access and creates a telemetry
+ *          CSV file with appropriate headers if it doesn't already exist
+ * @ingroup TelemetryManager
+ */
 bool telemetry_init() {
     mutex_init(&telemetry_mutex);
     
@@ -118,20 +122,72 @@ bool telemetry_init() {
     return false;
 }
 
-bool collect_telemetry() {
-    SensorWrapper& sensor_wrapper = SensorWrapper::get_instance();
-    uint32_t timestamp = DS3231::get_instance().get_unix_time();
-    TelemetryRecord record;
-    record.timestamp = timestamp;
-    record.build_version = std::to_string(BUILD_NUMBER);
-    
-    // Power data
+
+/**
+ * @brief Collects power subsystem telemetry data.
+ * @param[out] record The telemetry record to update with power data.
+ * @ingroup TelemetryManager
+ */
+void collect_power_telemetry(TelemetryRecord& record) {
     record.battery_voltage = PowerManager::get_instance().get_voltage_battery();
     record.system_voltage = PowerManager::get_instance().get_voltage_5v();
     record.charge_current_usb = PowerManager::get_instance().get_current_charge_usb();
     record.charge_current_solar = PowerManager::get_instance().get_current_charge_solar();
     record.discharge_current = PowerManager::get_instance().get_current_draw();
-    
+}
+
+/**
+ * @brief Emits power-related events based on current and voltage levels.
+ * @param[in] battery_voltage The current battery voltage.
+ * @param[in] charge_current_usb The current USB charging current.
+ * @param[in] charge_current_solar The current solar charging current.
+ * @ingroup TelemetryManager
+ */
+void emit_power_events(float battery_voltage, float charge_current_usb, float charge_current_solar) {
+    static bool usb_charging_active = false;
+    static bool solar_charging_active = false;
+    static bool battery_low = false;
+    static bool battery_full = false;
+
+    if (charge_current_usb > PowerManager::USB_CURRENT_THRESHOLD && !usb_charging_active) {
+        EventEmitter::emit(EventGroup::POWER, PowerEvent::USB_CONNECTED);
+        usb_charging_active = true;
+    } else if (charge_current_usb < PowerManager::USB_CURRENT_THRESHOLD && usb_charging_active) {
+        EventEmitter::emit(EventGroup::POWER, PowerEvent::USB_DISCONNECTED);
+        usb_charging_active = false;
+    }
+
+    if (charge_current_solar > PowerManager::SOLAR_CURRENT_THRESHOLD && !solar_charging_active) {
+        EventEmitter::emit(EventGroup::POWER, PowerEvent::SOLAR_ACTIVE);
+        solar_charging_active = true;
+    } else if (charge_current_solar < PowerManager::SOLAR_CURRENT_THRESHOLD && solar_charging_active) {
+        EventEmitter::emit(EventGroup::POWER, PowerEvent::SOLAR_INACTIVE);
+        solar_charging_active = false;
+    }
+
+    if (battery_voltage < PowerManager::BATTERY_LOW_THRESHOLD && !battery_low) {
+        EventEmitter::emit(EventGroup::POWER, PowerEvent::BATTERY_LOW);
+        battery_low = true;
+        battery_full = false; // Cancel overcharge event
+    } else if (battery_voltage > PowerManager::BATTERY_FULL_THRESHOLD && !battery_full) {
+        EventEmitter::emit(EventGroup::POWER, PowerEvent::BATTERY_FULL);
+        battery_full = true;
+        battery_low = false; // Cancel low battery event
+    } else if (battery_voltage > PowerManager::BATTERY_LOW_THRESHOLD && battery_low) {
+        EventEmitter::emit(EventGroup::POWER, PowerEvent::BATTERY_NORMAL);
+        battery_low = false;
+    } else if (battery_voltage < PowerManager::BATTERY_FULL_THRESHOLD && battery_full) {
+        EventEmitter::emit(EventGroup::POWER, PowerEvent::BATTERY_NORMAL);
+        battery_full = false;
+    }
+}
+
+/**
+ * @brief Collects GPS telemetry data.
+ * @param[out] record The telemetry record to update with GPS data.
+ * @ingroup TelemetryManager
+ */
+void collect_gps_telemetry(TelemetryRecord& record) {
     auto& nmea_data = NMEAData::get_instance();
     // Get GPS RMC data
     std::vector<std::string> rmc_tokens = nmea_data.get_rmc_tokens();
@@ -155,7 +211,7 @@ bool collect_telemetry() {
         record.course = "";
         record.date = "";
     }
-    
+
     // Get GPS GGA data
     std::vector<std::string> gga_tokens = nmea_data.get_gga_tokens();
     if (gga_tokens.size() >= 15) {  // GGA has 15 fields when complete
@@ -168,23 +224,55 @@ bool collect_telemetry() {
         record.satellites = "";
         record.altitude = "";
     }
-    
-    SensorDataRecord sensor_record;
-    sensor_record.timestamp = timestamp;
+}
+
+/**
+ * @brief Collects sensor telemetry data.
+ * @param[out] sensor_record The sensor data record to update with sensor data.
+ * @ingroup TelemetryManager
+ */
+void collect_sensor_telemetry(SensorDataRecord& sensor_record) {
+    SensorWrapper& sensor_wrapper = SensorWrapper::get_instance();
     sensor_record.temperature = sensor_wrapper.sensor_read_data(SensorType::ENVIRONMENT, SensorDataTypeIdentifier::TEMPERATURE);
     sensor_record.pressure = sensor_wrapper.sensor_read_data(SensorType::ENVIRONMENT, SensorDataTypeIdentifier::PRESSURE);
     sensor_record.humidity = sensor_wrapper.sensor_read_data(SensorType::ENVIRONMENT, SensorDataTypeIdentifier::HUMIDITY);
     sensor_record.light = sensor_wrapper.sensor_read_data(SensorType::LIGHT, SensorDataTypeIdentifier::LIGHT_LEVEL);
-    
+}
+
+/**
+ * @brief Collect telemetry data from sensors and power subsystems
+ * @return True if data was successfully collected
+ * @details Reads data from power manager, sensors, and GPS and stores it
+ *          in the telemetry buffer with proper mutex protection
+ * @ingroup TelemetryManager
+ */
+bool collect_telemetry() {
+    uint32_t timestamp = DS3231::get_instance().get_local_time();
+    TelemetryRecord record;
+    record.timestamp = timestamp;
+    record.build_version = std::to_string(BUILD_NUMBER);
+
+    // Collect power telemetry and emit events
+    collect_power_telemetry(record);
+    emit_power_events(record.battery_voltage, record.charge_current_usb, record.charge_current_solar);
+
+    // Collect GPS telemetry
+    collect_gps_telemetry(record);
+
+    // Collect sensor telemetry
+    SensorDataRecord sensor_record;
+    sensor_record.timestamp = timestamp;
+    collect_sensor_telemetry(sensor_record);
+
     mutex_enter_blocking(&telemetry_mutex);
-    
+
     telemetry_buffer[telemetry_buffer_write_index] = record;
-    sensor_data_buffer[telemetry_buffer_write_index] = sensor_record; 
+    sensor_data_buffer[telemetry_buffer_write_index] = sensor_record;
     telemetry_buffer_write_index = (telemetry_buffer_write_index + 1) % TELEMETRY_BUFFER_SIZE;
     if (telemetry_buffer_count < TELEMETRY_BUFFER_SIZE) {
         telemetry_buffer_count++;
     }
-    
+
     mutex_exit(&telemetry_mutex);
 
     uart_print("Telemetry collected", VerbosityLevel::DEBUG);
@@ -192,6 +280,14 @@ bool collect_telemetry() {
     return true;
 }
 
+
+/**
+ * @brief Save buffered telemetry data to storage
+ * @return True if data was successfully saved
+ * @details Writes all records from the telemetry buffer to the CSV file
+ *          and clears the buffer after successful writing
+ * @ingroup TelemetryManager
+ */
 bool flush_telemetry() {
     if (!SystemStateManager::get_instance().is_sd_card_mounted()) {
         return false;
@@ -235,6 +331,14 @@ bool flush_telemetry() {
     return true;
 }
 
+
+/**
+ * @brief Save buffered sensor data to storage
+ * @return True if data was successfully saved
+ * @details Writes all records from the sensor data buffer to the CSV file
+ *          and clears the buffer after successful writing
+ * @ingroup TelemetryManager
+ */
 bool flush_sensor_data() {
     if (!SystemStateManager::get_instance().is_sd_card_mounted()) {
         return false;
@@ -276,6 +380,15 @@ bool flush_sensor_data() {
     return true;
 }
 
+
+/**
+ * @brief Check if it's time to collect telemetry based on interval
+ * @param current_time Current system time in milliseconds
+ * @param last_collection_time Previous collection time in milliseconds
+ * @return True if collection interval has passed
+ * @details Updates last_collection_time if the interval has passed
+ * @ingroup TelemetryManager
+ */
 bool is_telemetry_collection_time(uint32_t current_time, uint32_t& last_collection_time) {
     if (current_time - last_collection_time >= sample_interval_ms) {
         last_collection_time = current_time;
@@ -284,6 +397,14 @@ bool is_telemetry_collection_time(uint32_t current_time, uint32_t& last_collecti
     return false;
 }
 
+
+/**
+ * @brief Check if it's time to flush telemetry buffer based on count
+ * @param collection_counter Current collection counter
+ * @return True if flush threshold has been reached
+ * @details Resets collection_counter to zero if the threshold has been reached
+ * @ingroup TelemetryManager
+ */
 bool is_telemetry_flush_time(uint32_t& collection_counter) {
     if (collection_counter >= flush_threshold) {
         collection_counter = 0;
@@ -292,26 +413,11 @@ bool is_telemetry_flush_time(uint32_t& collection_counter) {
     return false;
 }
 
-uint32_t get_telemetry_sample_interval() {
-    return sample_interval_ms;
-}
-
-void set_telemetry_sample_interval(uint32_t interval_ms) {
-    if (interval_ms >= 100) { // Minimum 100ms
-        sample_interval_ms = interval_ms;
-    }
-}
-
-uint32_t get_telemetry_flush_threshold() {
-    return flush_threshold;
-}
-
-void set_telemetry_flush_threshold(uint32_t records) {
-    if (records >= 1 && records <= 100) { 
-        flush_threshold = records;
-    }
-}
-
+/**
+ * @brief Gets the last telemetry record as a CSV string.
+ * @return A CSV string representing the last telemetry record, or an empty string if no data is available.
+ * @ingroup TelemetryManager
+ */
 std::string get_last_telemetry_record_csv() {
     mutex_enter_blocking(&telemetry_mutex);
     
@@ -329,6 +435,11 @@ std::string get_last_telemetry_record_csv() {
     return last_record.to_csv();
 }
 
+/**
+ * @brief Gets the last sensor data record as a CSV string.
+ * @return A CSV string representing the last sensor data record, or an empty string if no data is available.
+ * @ingroup TelemetryManager
+ */
 std::string get_last_sensor_record_csv() {
     mutex_enter_blocking(&telemetry_mutex);
 

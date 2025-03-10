@@ -1,3 +1,17 @@
+/**
+ * @file PowerManager.h
+ * @brief Header file for the PowerManager class, which manages power-related functions.
+ *
+ * @details This file defines the PowerManager class, a singleton that provides
+ *          methods for reading voltage and current values, configuring the
+ *          INA3221 power monitor, and checking power alerts.
+ *
+ * @defgroup PowerManagement Power Management
+ * @brief Classes for handling power-related functions.
+ *
+ * @{
+ */
+
 #ifndef POWER_MANAGER_H
 #define POWER_MANAGER_H
 
@@ -8,44 +22,130 @@
 #include "pico/stdlib.h"
 #include "pico/mutex.h"
 
+/**
+ * @brief Manages power-related functions.
+ * @details This class is a singleton that provides methods for reading voltage
+ *          and current values, configuring the INA3221 power monitor, and
+ *          checking power alerts.
+ * @ingroup PowerManagement
+ */
 class PowerManager {
 public:
+    /**
+     * @brief Constructor for the PowerManager class.
+     * @param[in] i2c I2C instance to use for communication with the INA3221.
+     */
     PowerManager(i2c_inst_t* i2c);
-    static PowerManager& get_instance();
-    bool initialize();
-    std::string read_device_ids();
-    float get_current_charge_solar();
-    float get_current_charge_usb();
-    float get_current_charge_total();
-    float get_current_draw();
-    float get_voltage_battery();
-    float get_voltage_5v();
-    void configure(const std::map<std::string, std::string>& config);
-    bool is_charging_solar();
-    bool is_charging_usb();
-    bool check_power_alerts();
 
-    
+    /**
+     * @brief Gets the singleton instance of the PowerManager class.
+     * @return A reference to the singleton instance.
+     */
+    static PowerManager& get_instance();
+
+    /**
+     * @brief Initializes the PowerManager.
+     * @return True if initialization was successful, false otherwise.
+     */
+    bool initialize();
+
+    /**
+     * @brief Reads the manufacturer and die IDs from the INA3221.
+     * @return A string containing the manufacturer and die IDs.
+     */
+    std::string read_device_ids();
+
+    /**
+     * @brief Gets the solar charging current.
+     * @return The solar charging current in milliamperes.
+     */
+    float get_current_charge_solar();
+
+    /**
+     * @brief Gets the USB charging current.
+     * @return The USB charging current in milliamperes.
+     */
+    float get_current_charge_usb();
+
+    /**
+     * @brief Gets the total charging current.
+     * @return The total charging current in milliamperes.
+     */
+    float get_current_charge_total();
+
+    /**
+     * @brief Gets the current draw.
+     * @return The current draw in milliamperes.
+     */
+    float get_current_draw();
+
+    /**
+     * @brief Gets the battery voltage.
+     * @return The battery voltage in volts.
+     */
+    float get_voltage_battery();
+
+    /**
+     * @brief Gets the 5V voltage.
+     * @return The 5V voltage in volts.
+     */
+    float get_voltage_5v();
+
+    /**
+     * @brief Configures the INA3221.
+     * @param[in] config A map of configuration parameters.
+     */
+    void configure(const std::map<std::string, std::string>& config);
+
+    /**
+     * @brief Checks if solar charging is active.
+     * @return True if solar charging is active, false otherwise.
+     */
+    bool is_charging_solar();
+
+    /**
+     * @brief Checks if USB charging is active.
+     * @return True if USB charging is active, false otherwise.
+     */
+    bool is_charging_usb();
+
+
+    /** @brief Solar current threshold in milliamperes. */
     static constexpr float SOLAR_CURRENT_THRESHOLD = 50.0f;  // mA
+    /** @brief USB current threshold in milliamperes. */
     static constexpr float USB_CURRENT_THRESHOLD = 50.0f;    // mA
-    static constexpr float VOLTAGE_LOW_THRESHOLD = 4.6f;     // V
-    static constexpr float VOLTAGE_OVERCHARGE_THRESHOLD = 5.3f; // V
-    static constexpr float FALL_RATE_THRESHOLD = -0.02f;     // V/sample
-    static constexpr int FALLING_TREND_REQUIRED = 3;         // samples
+    /** @brief Low voltage threshold in volts. */
+    static constexpr float BATTERY_LOW_THRESHOLD = 2.8f;     // V
+    /** @brief Overcharge voltage threshold in volts. */
+    static constexpr float BATTERY_FULL_THRESHOLD = 4.2f; // V
 
 private:
+    /** @brief INA3221 instance for power monitoring. */
     INA3221 ina3221_;
+    /** @brief Flag indicating if the PowerManager is initialized. */
     bool initialized_;
+    /** @brief Mutex for thread-safe access to the PowerManager. */
     recursive_mutex_t powerman_mutex_;
+    /** @brief Flag indicating if solar charging is active. */
     bool charging_solar_active_ = false;
+    /** @brief Flag indicating if USB charging is active. */
     bool charging_usb_active_ = false;
 
-    // Private constructor
+    /**
+     * @brief Private constructor for the singleton pattern.
+     * @details Initializes the INA3221 and mutex.
+     */
     PowerManager();
 
-    // Delete copy constructor and assignment operator
+    /**
+     * @brief Deleted copy constructor to prevent copying.
+     */
     PowerManager(const PowerManager&) = delete;
+    /**
+     * @brief Deleted assignment operator to prevent assignment.
+     */
     PowerManager& operator=(const PowerManager&) = delete;
 };
 
-#endif // POWER_MANAGER_H
+ #endif // POWER_MANAGER_H
+ /** @} */

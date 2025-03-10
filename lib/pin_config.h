@@ -1,8 +1,8 @@
 // pin_config.h
-#include <stdint.h>
-
 #ifndef PIN_CONFIG_H
 #define PIN_CONFIG_H
+
+#include <stdint.h>
 
 //DEBUG uart
 #define DEBUG_UART_PORT uart0
@@ -49,14 +49,11 @@
 #define PA_OUTPUT_RFO_PIN          11
 #define PA_OUTPUT_PA_BOOST_PIN     12
 
+inline constexpr int lora_cs_pin = 17;          // LoRa radio chip select
+inline constexpr int lora_reset_pin = 22;       // LoRa radio reset
+inline constexpr int lora_irq_pin = 28;         // LoRa hardware interrupt pin
 
-
-// LoRa constants - declare as extern
-extern const int lora_cs_pin;      // LoRa radio chip select
-extern const int lora_reset_pin;   // LoRa radio reset  
-extern const int lora_irq_pin;     // LoRa hardware interrupt pin
-extern uint8_t lora_address_local; // address of this device
-extern uint8_t lora_address_remote;  // destination to send to
-
+inline uint8_t lora_address_local = 37;         // address of this device
+inline uint8_t lora_address_remote = 21;        // destination to send to
 
 #endif // PIN_CONFIG_H

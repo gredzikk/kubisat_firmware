@@ -4,12 +4,14 @@
 /**
  * @file utils_converters.cpp
  * @brief Implements utility functions for converting between different data types.
+ * @defgroup UtilsConverters Utility Converters
  */
 
 /**
  * @brief Converts an ExceptionType to a string.
  * @param type The ExceptionType to convert.
  * @return The string representation of the ExceptionType.
+ * @ingroup UtilsConverters
  */
 std::string exception_type_to_string(ExceptionType type) {
     switch (type) {
@@ -27,6 +29,7 @@ std::string exception_type_to_string(ExceptionType type) {
  * @brief Converts a ValueUnit to a string.
  * @param unit The ValueUnit to convert.
  * @return The string representation of the ValueUnit.
+ * @ingroup UtilsConverters
  */
 std::string value_unit_type_to_string(ValueUnit unit) {
     switch (unit) {
@@ -46,6 +49,7 @@ std::string value_unit_type_to_string(ValueUnit unit) {
  * @brief Converts an OperationType to a string.
  * @param type The OperationType to convert.
  * @return The string representation of the OperationType.
+ * @ingroup UtilsConverters
  */
 std::string operation_type_to_string(OperationType type) {
     switch (type) {
@@ -64,6 +68,7 @@ std::string operation_type_to_string(OperationType type) {
  * @brief Converts a string to an OperationType.
  * @param str The string to convert.
  * @return The OperationType corresponding to the string. Defaults to GET if the string is not recognized.
+ * @ingroup UtilsConverters
  */
 OperationType string_to_operation_type(const std::string& str) {
     if (str == "GET") return OperationType::GET;
@@ -79,6 +84,7 @@ OperationType string_to_operation_type(const std::string& str) {
  * @brief Converts an ErrorCode to its string representation
  * @param code The error code
  * @return String representation of the error code
+ * @ingroup UtilsConverters
  */
 std::string error_code_to_string(ErrorCode code) {
     switch (code) {
@@ -100,6 +106,7 @@ std::string error_code_to_string(ErrorCode code) {
  * @brief Converts a hex string to a vector of bytes.
  * @param hexString The hex string to convert.
  * @return A vector of bytes representing the hex string.
+ * @ingroup UtilsConverters
  */
 std::vector<uint8_t> hex_string_to_bytes(const std::string& hexString) {
     std::vector<uint8_t> bytes;
@@ -113,3 +120,5 @@ std::vector<uint8_t> hex_string_to_bytes(const std::string& hexString) {
     }
     return bytes;
 }
+
+/** @} */ 

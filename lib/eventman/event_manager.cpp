@@ -1,3 +1,18 @@
+/**
+ * @file event_manager.cpp
+ * @brief Implementation of the Event Manager and Event Emitter classes.
+ *
+ * @details This file implements the EventManager class, which provides a
+ *          singleton instance for logging events to a circular buffer and
+ *          saving them to persistent storage. The EventEmitter class provides
+ *          a simple interface for emitting events throughout the system.
+ *
+ * @defgroup EventManagement Event Management
+ * @brief Classes and enums for handling system events.
+ *
+ * @{
+ */
+
 #include "event_manager.h"
 #include <cstdio>
 #include "protocol.h"
@@ -6,14 +21,27 @@
 #include "utils.h"
 #include "DS3231.h"
 
+
+/**
+ * @brief Initializes the event manager.
+ * @return True if initialization was successful, false otherwise.
+ * @ingroup EventManagement
+ */
 bool EventManager::init() {
     return load_from_storage();
 }
 
+
+/**
+ * @brief Logs an event to the event buffer.
+ * @param[in] group Event group.
+ * @param[in] event Event code.
+ * @ingroup EventManagement
+ */
 void EventManager::log_event(uint8_t group, uint8_t event) {
     mutex_enter_blocking(&eventMutex);
 
-    uint32_t timestamp = to_ms_since_boot(get_absolute_time());
+    uint32_t timestamp = DS3231::get_instance().get_local_time();
     uint16_t id = nextEventId++;
 
     EventLog& log = events[writeIndex];
@@ -34,7 +62,7 @@ void EventManager::log_event(uint8_t group, uint8_t event) {
     std::string event_string = "Event: " + std::to_string(id) +
         " Group: " + std::to_string(group) +
         " Event: " + std::to_string(event);
-    uart_print(event_string, VerbosityLevel::DEBUG);
+    uart_print(event_string, VerbosityLevel::WARNING);
 
     if (eventsSinceFlush >= EVENT_FLUSH_THRESHOLD || group == static_cast<uint8_t>(EventGroup::POWER)) {
         save_to_storage();
@@ -42,6 +70,13 @@ void EventManager::log_event(uint8_t group, uint8_t event) {
     }
 }
 
+
+/**
+ * @brief Gets an event from the event buffer.
+ * @param[in] index Index of the event to retrieve.
+ * @return A const reference to the event log entry.
+ * @ingroup EventManagement
+ */
 const EventLog& EventManager::get_event(size_t index) const {
     mutex_enter_blocking(const_cast<mutex_t*>(&eventMutex));
     if (index >= eventCount) {
@@ -62,6 +97,12 @@ const EventLog& EventManager::get_event(size_t index) const {
     return event;
 }
 
+
+/**
+ * @brief Saves the event buffer to persistent storage.
+ * @return True if the save was successful, false otherwise.
+ * @ingroup EventManagement
+ */
 bool EventManager::save_to_storage() {
     if (!SystemStateManager::get_instance().is_sd_card_mounted()) {
         bool status = fs_init();
@@ -91,3 +132,5 @@ bool EventManager::save_to_storage() {
     }
     return false;
 }
+
+/** @} */

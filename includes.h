@@ -8,13 +8,13 @@
 #include "hardware/uart.h"
 #include "pico/multicore.h"
 #include "event_manager.h"
-#include "lib/powerman/PowerManager.h" // Corrected path
+#include "lib/powerman/PowerManager.h" 
 #include <pico/bootrom.h>
 
 #include "ISensor.h"
-#include "lib/sensors/BH1750/BH1750_WRAPPER.h" // Corrected path
-#include "lib/sensors/BME280/BME280_WRAPPER.h" // Corrected path
-#include "lib/clock/DS3231.h" // Corrected path
+#include "lib/sensors/BH1750/BH1750_WRAPPER.h" 
+#include "lib/sensors/BME280/BME280_WRAPPER.h" 
+#include "lib/clock/DS3231.h" 
 #include <iostream>
 #include <iomanip>
 #include <queue>
@@ -28,8 +28,8 @@
 #include "communication.h"
 #include "build_number.h"
 #include "lib/location/gps_collector.h"
-#include "lib/storage/storage.h" // Corrected path
-#include "lib/storage/pico-vfs/include/filesystem/vfs.h" // Corrected path
+#include "lib/storage/storage.h" 
+#include "lib/storage/pico-vfs/include/filesystem/vfs.h"
 #include "telemetry_manager.h"
 #include "system_state_manager.h"
 

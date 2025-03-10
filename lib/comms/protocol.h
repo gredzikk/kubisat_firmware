@@ -19,21 +19,28 @@
 #include "build_number.h"
 #include "LoRa/LoRa-RP2040.h"
 
+/** 
+ * @defgroup Protocol Protocol
+ * @brief Definitions for the communication protocol used by the satellite.
+ */
 /**
  * @def FRAME_BEGIN
  * @brief Defines the start marker for a communication frame.
+ * @ingroup Protocol
  */
 const std::string FRAME_BEGIN = "KBST";
 
 /**
  * @def FRAME_END
  * @brief Defines the end marker for a communication frame.
+ * @ingroup Protocol
  */
 const std::string FRAME_END = "TSBK";
 
 /**
  * @def DELIMITER
  * @brief Defines the delimiter used to separate fields within a communication frame.
+ * @ingroup Protocol
  */
 const char DELIMITER = ';';
 
@@ -41,6 +48,7 @@ const char DELIMITER = ';';
 /**
  * @enum ErrorCode
  * @brief Standard error codes for command responses
+ * @ingroup Protocol
  */
 enum class ErrorCode {
     PARAM_UNNECESSARY,    // Parameter provided but not needed
@@ -59,6 +67,7 @@ enum class ErrorCode {
 /**
  * @enum OperationType
  * @brief Represents the type of operation being performed.
+ * @ingroup Protocol
  */
 enum class OperationType {
     /** @brief Get data. */
@@ -81,6 +90,7 @@ enum class OperationType {
 /**
  * @enum CommandAccessLevel
  * @brief Represents the access level required to execute a command.
+ * @ingroup Protocol
  */
 enum class CommandAccessLevel {
     /** @brief No access allowed. */
@@ -98,6 +108,7 @@ enum class CommandAccessLevel {
 /**
  * @enum ValueUnit
  * @brief Represents the unit of measurement for a payload value.
+ * @ingroup Protocol
  */
 enum class ValueUnit {
     /** @brief Unit is undefined. */
@@ -121,6 +132,7 @@ enum class ValueUnit {
 /**
  * @enum ExceptionType
  * @brief Represents the type of exception that occurred during command execution.
+ * @ingroup Protocol
  */
 enum class ExceptionType {
     /** @brief No exception. */
@@ -140,6 +152,7 @@ enum class ExceptionType {
 /**
  * @enum Interface
  * @brief Represents the communication interface being used.
+ * @ingroup Protocol
  */
 enum class Interface {
     /** @brief UART interface. */
@@ -163,66 +176,7 @@ enum class Interface {
  * @note The `group` and `command` fields identify the specific command being executed.
  * @note The `value` field contains the payload data.
  * @note The `unit` field specifies the unit of measurement for the payload data.
- *
- * Example Usage:
- * @code
- * // Creating a Frame instance
- * Frame myFrame;
- * myFrame.header = FRAME_BEGIN;
- * myFrame.direction = 1;
- * myFrame.operationType = OperationType::ANS;
- * myFrame.group = 2;
- * myFrame.command = 5;
- * myFrame.value = "25.5";
- * myFrame.unit = "VOLT";
- * myFrame.footer = FRAME_END;
- *
- * // Encoding the Frame to a string
- * std::string encodedFrame = frame_encode(myFrame);
- * @endcode
- *
- * Example Instances:
- * @code
- * // Example of a GET command
- * Frame getCommand;
- * getCommand.header = FRAME_BEGIN;
- * getCommand.direction = 0;
- * getCommand.operationType = OperationType::GET;
- * getCommand.group = 1;
- * getCommand.command = 10;
- * getCommand.value = "";
- * getCommand.unit = "";
- * getCommand.footer = FRAME_END;
- *
- * // Example of an ANSWER command
- * Frame answerCommand;
- * answerCommand.header = FRAME_BEGIN;
- * answerCommand.direction = 1;
- * answerCommand.operationType = OperationType::ANS;
- * answerCommand.group = 1;
- * answerCommand.command = 10;
- * answerCommand.value = "OK";
- * answerCommand.unit = "";
- * answerCommand.footer = FRAME_END;
- * @endcode
- *
- * Example of Encoded Frames:
- * @code
- * // Encoded GET command example:
- * // KBST;0;GET;1;10;;TSBK
- *
- * // Encoded SET command example:
- * // KBST;0;SET;2;5;25.5;VOLT;TSBK
- *
- * // Encoded ANSWER command example:
- * // KBST;1;ANS;1;10;OK;;TSBK
- *
- * // Encoded ERROR command example:
- * // KBST;1;ERR;3;1;Invalid Parameter;;TSBK
- *
- * // Encoded INFO command example:
- * // KBST;1;INF;4;2;System Booted;;TSBK
- * @endcode
+ * @ingroup Protocol
  */
 struct Frame {
     std::string header;             // Start marker
@@ -243,3 +197,5 @@ std::vector<uint8_t> hex_string_to_bytes(const std::string& hexString);
 std::string value_unit_type_to_string(ValueUnit unit);
 
 #endif
+
+/** @} */ 

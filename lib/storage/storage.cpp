@@ -1,26 +1,26 @@
-/*
- * Copyright 2024, Hiroyuki OYAMA. All rights reserved.
+/**
+ * @file storage.cpp
+ * @brief Implements file system operations for the Kubisat firmware.
+ * @details This file contains functions for initializing the file system, opening, writing,
+ *          reading, and closing files.
  *
- * SPDX-License-Identifier: BSD-3-Clause
+ * @defgroup Storage Storage
+ * @brief Classes and functions for managing file system operations.
+ *
+ * @{
  */
+
 #include "storage.h"
 #include "errno.h"
 #include "utils.h"
 #include "system_state_manager.h"
 
 /**
- * @file storage.cpp
- * @brief Implements file system operations for the Kubisat firmware.
- * @details This file contains functions for initializing the file system, opening, writing,
- *          reading, and closing files.
- */
-
-
-/**
  * @brief Initializes the file system on the SD card.
  * @return True if initialization was successful, false otherwise.
  * @details Mounts the littlefs file system on the SD card. If mounting fails, it formats the SD card
  *          with littlefs and then attempts to mount again.
+ * @ingroup Storage
  */
 bool fs_init(void) {
     SystemStateManager::get_instance().set_sd_card_mounted(false);
@@ -57,6 +57,11 @@ bool fs_init(void) {
     return true;
 }
 
+/**
+ * @brief Unmounts the file system from the SD card.
+ * @return True if unmounting was successful, false otherwise.
+ * @ingroup Storage
+ */
 bool fs_stop(void) {
     int err = fs_unmount("/");
     if (err == -1) {
@@ -67,3 +72,4 @@ bool fs_stop(void) {
 
     return true;
 }
+ /** @} */

@@ -37,6 +37,10 @@ bool initialize_radio() {
     return init_status;
 }
 
+/**
+ * @brief Callback function for LoRa transmission completion.
+ * @details Prints a debug message to the UART and sets the LoRa module to receive mode.
+ */
 void lora_tx_done_callback() {
     uart_print("LoRa transmission complete", VerbosityLevel::DEBUG);
     LoRa.receive(0);

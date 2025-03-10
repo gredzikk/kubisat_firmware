@@ -117,7 +117,7 @@ Frame frame_decode(const std::string& data) {
 void frame_process(const std::string& data, Interface interface) {
     gpio_put(PICO_DEFAULT_LED_PIN, 0);
 
-    uart_print("Processing frame: " + data, VerbosityLevel::WARNING);
+    uart_print("Processing frame: " + data, VerbosityLevel::INFO);
     try {
         Frame frame = frame_decode(data);
         uint32_t command_key = (static_cast<uint32_t>(frame.group) << 8) | static_cast<uint32_t>(frame.command);
@@ -188,6 +188,8 @@ Frame frame_build(OperationType operation, uint8_t group, uint8_t command,
             frame.operationType = OperationType::SEQ;
             frame.value = value;
             frame.unit = value_unit_type_to_string(unitType);
+            break;
+        default:
             break;
     }
     

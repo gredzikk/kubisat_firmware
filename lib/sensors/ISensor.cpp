@@ -1,8 +1,29 @@
+/**
+ * @file ISensor.cpp
+ * @brief Implementation of the ISensor interface and SensorWrapper class.
+ *
+ * @details This file implements the ISensor interface and SensorWrapper class,
+ *          which provide a common interface for interacting with different
+ *          types of sensors.
+ *
+ * @defgroup Sensors Sensors
+ * @brief Classes for handling sensor-related functions.
+ *
+ * @{
+ */
+
 #include "ISensor.h"
 #include "lib/sensors/BH1750/BH1750_WRAPPER.h"
 #include "lib/sensors/BME280/BME280_WRAPPER.h"
 #include "lib/utils.h"
 
+/**
+ * @brief Initializes a sensor.
+ * @param[in] type Sensor type to initialize.
+ * @param[in] i2c I2C instance to use for communication.
+ * @return True if initialization was successful, false otherwise.
+ * @ingroup Sensors
+ */
 bool SensorWrapper::sensor_init(SensorType type, i2c_inst_t* i2c) {
     switch (type) {
     case SensorType::LIGHT:
@@ -17,6 +38,13 @@ bool SensorWrapper::sensor_init(SensorType type, i2c_inst_t* i2c) {
     return sensors[type]->init();
 }
 
+/**
+ * @brief Configures a sensor.
+ * @param[in] type Sensor type to configure.
+ * @param[in] config A map of configuration parameters.
+ * @return True if configuration was successful, false otherwise.
+ * @ingroup Sensors
+ */
 bool SensorWrapper::sensor_configure(SensorType type, const std::map<std::string, std::string>& config) {
     if (sensors.find(type) == sensors.end()) {
         return false;
@@ -24,6 +52,13 @@ bool SensorWrapper::sensor_configure(SensorType type, const std::map<std::string
     return sensors[type]->configure(config);
 }
 
+/**
+ * @brief Reads data from a sensor.
+ * @param[in] sensorType Sensor type to read from.
+ * @param[in] dataType Data type to read.
+ * @return The sensor data.
+ * @ingroup Sensors
+ */
 float SensorWrapper::sensor_read_data(SensorType sensorType, SensorDataTypeIdentifier dataType) {
     if (sensors.find(sensorType) == sensors.end()) {
         return -1.0f;
@@ -31,10 +66,22 @@ float SensorWrapper::sensor_read_data(SensorType sensorType, SensorDataTypeIdent
     return sensors[sensorType]->read_data(dataType);
 }
 
+/**
+ * @brief Gets a sensor.
+ * @param[in] type Sensor type to get.
+ * @return A pointer to the sensor.
+ * @ingroup Sensors
+ */
 ISensor* SensorWrapper::get_sensor(SensorType type) {
     return sensors[type];
 }
 
+/**
+ * @brief Scans for connected sensors.
+ * @param[in] i2c I2C instance to use for scanning.
+ * @return A vector of pairs, where each pair contains a sensor type and its address.
+ * @ingroup Sensors
+ */
 std::vector<std::pair<SensorType, uint8_t>> SensorWrapper::scan_connected_sensors(i2c_inst_t* i2c) {
     std::vector<std::pair<SensorType, uint8_t>> connectedSensors;
 
@@ -53,6 +100,11 @@ std::vector<std::pair<SensorType, uint8_t>> SensorWrapper::scan_connected_sensor
     return connectedSensors;
 }
 
+/**
+ * @brief Gets a list of available sensors.
+ * @return A vector of pairs, where each pair contains a sensor type and its address.
+ * @ingroup Sensors
+ */
 std::vector<std::pair<SensorType, uint8_t>> SensorWrapper::get_available_sensors() {
     std::vector<std::pair<SensorType, uint8_t>> availableSensors;
     for (const auto& sensorPair : sensors) {
@@ -60,3 +112,4 @@ std::vector<std::pair<SensorType, uint8_t>> SensorWrapper::get_available_sensors
     }
     return availableSensors;
 }
+ /** @} */

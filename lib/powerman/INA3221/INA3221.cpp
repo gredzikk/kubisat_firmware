@@ -28,11 +28,6 @@
  *   Functions for reading voltage, current and power measurements
  *   @{
  *   @}
- *   
- *   @defgroup INA3221_Alert Alert Functions
- *   Functions for configuring and reading alert conditions
- *   @{
- *   @}
  * @}
  */
 
@@ -78,7 +73,6 @@ bool INA3221::begin() {
         uart_print("INA3221 initialization failed. Incorrect IDs.", VerbosityLevel::ERROR);
         return false;
     }
-
 }
 
 
@@ -347,159 +341,6 @@ float INA3221::get_voltage(ina3221_ch_t channel) {
     _read(reg, &val_raw);
     voltage_V = val_raw / 1000.0;
     return voltage_V;
-}
-
-
-// alerts
-/**
- * @ingroup INA3221_Alert
- * @brief Set warning alert voltage threshold for a channel
- * @param channel Channel number (1-3)
- * @param voltage_v Voltage threshold in volts
- */
-void INA3221::set_warn_alert_limit(ina3221_ch_t channel, float voltage_v) {
-    ina3221_reg_t reg;
-    uint16_t val = (uint16_t)(voltage_v * 1000); // Convert V to mV
-
-    switch(channel) {
-        case INA3221_CH1:
-            reg = INA3221_REG_CH1_WARNING_ALERT_LIM;
-            break;
-        case INA3221_CH2:
-            reg = INA3221_REG_CH2_WARNING_ALERT_LIM;
-            break;
-        case INA3221_CH3:
-            reg = INA3221_REG_CH3_WARNING_ALERT_LIM;
-            break;
-    }
-    _write(reg, &val);
-}
-
-
-/**
- * @ingroup INA3221_Alert
- * @brief Set critical alert voltage threshold for a channel
- * @param channel Channel number (1-3)
- * @param voltage_v Voltage threshold in volts
- */
-void INA3221::set_crit_alert_limit(ina3221_ch_t channel, float voltage_v) {
-    ina3221_reg_t reg;
-    uint16_t val = (uint16_t)(voltage_v * 1000); // Convert V to mV
-
-    switch(channel) {
-        case INA3221_CH1:
-            reg = INA3221_REG_CH1_CRIT_ALERT_LIM;
-            break;
-        case INA3221_CH2:
-            reg = INA3221_REG_CH2_CRIT_ALERT_LIM;
-            break;
-        case INA3221_CH3:
-            reg = INA3221_REG_CH3_CRIT_ALERT_LIM;
-            break;
-    }
-    _write(reg, &val);
-}
-
-
-/**
- * @ingroup INA3221_Alert
- * @brief Set power valid voltage range
- * @param voltage_upper_v Upper voltage threshold in volts
- * @param voltage_lower_v Lower voltage threshold in volts
- */
-void INA3221::set_power_valid_limit(float voltage_upper_v, float voltage_lower_v) {
-    uint16_t val;
-    
-    val = (uint16_t)(voltage_upper_v * 1000);
-    _write(INA3221_REG_PWR_VALID_HI_LIM, &val);
-    
-    val = (uint16_t)(voltage_lower_v * 1000);
-    _write(INA3221_REG_PWR_VALID_LO_LIM, &val);
-}
-
-
-/**
- * @ingroup INA3221_Alert
- * @brief Enable all alert functions
- * @details Enables warning alerts, critical alerts, and power valid alerts for all channels
- */
-void INA3221::enable_alerts() {
-    masken_reg_t masken;
-    _read(INA3221_REG_MASK_ENABLE, (uint16_t*)&masken);
-    
-    masken.warn_alert_ch1 = 1;
-    masken.warn_alert_ch2 = 1;
-    masken.warn_alert_ch3 = 1;
-    masken.crit_alert_ch1 = 1;
-    masken.crit_alert_ch2 = 1;
-    masken.crit_alert_ch3 = 1;
-    masken.pwr_valid_alert = 1;
-    
-    _write(INA3221_REG_MASK_ENABLE, (uint16_t*)&masken);
-}
-
-
-/**
- * @ingroup INA3221_Alert
- * @brief Get warning alert status for a channel
- * @param channel Channel number (1-3)
- * @return true if warning alert is active, false otherwise
- */
-bool INA3221::get_warn_alert(ina3221_ch_t channel) {
-    masken_reg_t masken;
-    _read(INA3221_REG_MASK_ENABLE, (uint16_t*)&masken);
-    
-    switch(channel) {
-        case INA3221_CH1: return masken.warn_alert_ch1;
-        case INA3221_CH2: return masken.warn_alert_ch2;
-        case INA3221_CH3: return masken.warn_alert_ch3;
-        default: return false;
-    }
-}
-
-
-/**
- * @ingroup INA3221_Alert
- * @brief Get critical alert status for a channel
- * @param channel Channel number (1-3)
- * @return true if critical alert is active, false otherwise
- */
-bool INA3221::get_crit_alert(ina3221_ch_t channel) {
-    masken_reg_t masken;
-    _read(INA3221_REG_MASK_ENABLE, (uint16_t*)&masken);
-    
-    switch(channel) {
-        case INA3221_CH1: return masken.crit_alert_ch1;
-        case INA3221_CH2: return masken.crit_alert_ch2;
-        case INA3221_CH3: return masken.crit_alert_ch3;
-        default: return false;
-    }
-}
-
-
-/**
- * @ingroup INA3221_Alert
- * @brief Get power valid alert status
- * @return true if power valid alert is active, false otherwise
- */
-bool INA3221::get_power_valid_alert() {
-    masken_reg_t masken;
-    _read(INA3221_REG_MASK_ENABLE, (uint16_t*)&masken);
-    return masken.pwr_valid_alert;
-}
-
-
-/**
- * @ingroup INA3221_Alert
- * @brief Set alert latch mode
- * @param enable true to enable alert latching, false for transparent alerts
- */
-void INA3221::set_alert_latch(bool enable) {
-    masken_reg_t masken;
-    _read(INA3221_REG_MASK_ENABLE, (uint16_t*)&masken);
-    masken.warn_alert_latch_en = enable;
-    masken.crit_alert_latch_en = enable;
-    _write(INA3221_REG_MASK_ENABLE, (uint16_t*)&masken);
 }
 
 

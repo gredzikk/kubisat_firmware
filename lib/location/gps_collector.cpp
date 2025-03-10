@@ -1,4 +1,17 @@
-// filepath: /c:/Users/Kuba/Desktop/inz/kubisat/software/kubisat_firmware/lib/GPS/gps_collector.cpp
+/**
+ * @file gps_collector.cpp
+ * @brief Implementation of the GPS data collector module.
+ *
+ * @details This file implements the function `collect_gps_data`, which is
+ *          responsible for reading raw NMEA sentences from the GPS UART,
+ *          parsing them, and updating the NMEA data in the NMEAData singleton.
+ *
+ * @defgroup Location Location
+ * @brief Classes for handling location data.
+ *
+ * @{
+ */
+
 #include "lib/location/gps_collector.h"
 #include "utils.h"
 #include "pico/time.h"
@@ -11,10 +24,19 @@
 #include <sstream>
 #include "system_state_manager.h"
 
+/**
+ * @brief Maximum length of the raw data buffer for NMEA sentences.
+ */
 #define MAX_RAW_DATA_LENGTH 256
 
-extern NMEAData nmea_data;
-
+/**
+ * @brief Splits a string into tokens based on a delimiter.
+ *
+ * @param[in] str The string to split.
+ * @param[in] delimiter The delimiter character.
+ * @return A vector of strings representing the tokens.
+ * @ingroup Location
+ */
 std::vector<std::string> splitString(const std::string& str, char delimiter) {
     std::vector<std::string> tokens;
     std::stringstream ss(str);
@@ -25,6 +47,15 @@ std::vector<std::string> splitString(const std::string& str, char delimiter) {
     return tokens;
 }
 
+/**
+ * @brief Collects GPS data from the UART and updates the NMEA data.
+ *
+ * @details This function reads raw NMEA sentences from the GPS UART,
+ *          parses them, and updates the RMC and GGA tokens in the
+ *          NMEAData singleton. It also handles buffer overflow and
+ *          checks for bootloader reset pending status.
+ * @ingroup Location
+ */
 void collect_gps_data() {
 
     if (SystemStateManager::get_instance().is_bootloader_reset_pending()) {
@@ -64,3 +95,4 @@ void collect_gps_data() {
         }
     }
 }
+/** @} */

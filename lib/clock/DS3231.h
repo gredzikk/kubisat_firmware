@@ -113,6 +113,11 @@ public:
      * @param[in] i2c_instance Pointer to the I2C instance to use
      */
     DS3231(i2c_inst_t *i2c_instance);
+    /**
+     * @brief Gets the singleton instance of the DS3231 class
+     * 
+     * @return A reference to the singleton instance of the DS3231 class
+     */
     static DS3231& get_instance();
 
     /**

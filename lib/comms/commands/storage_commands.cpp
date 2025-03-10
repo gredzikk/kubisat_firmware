@@ -34,7 +34,7 @@
  * @ingroup StorageCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 6.0
  */
-std::vector<Frame> handle_list_files(const std::string& param, OperationType operationType) {
+std::vector<Frame> handle_list_files([[maybe_unused]] const std::string& param, OperationType operationType) {
     std::vector<Frame> frames;
     std::string error_msg;
 
@@ -74,7 +74,10 @@ std::vector<Frame> handle_list_files(const std::string& param, OperationType ope
 
                 // Get file size
                 char filepath[256];
-                snprintf(filepath, sizeof(filepath), "/%s", filename);
+                int written = snprintf(filepath, sizeof(filepath), "/%s", filename);
+                if (written < 0 || written >= static_cast<int>(sizeof(filepath))) {
+                    continue; // Skip this file if path is too long
+                }
 
                 FILE* file = fopen(filepath, "rb");
                 size_t file_size = 0;

@@ -112,6 +112,8 @@ std::vector<Frame> handle_get_sensor_data(const std::string& param, OperationTyp
                     SensorDataTypeIdentifier::HUMIDITY
                 };              
                 break;
+            default:
+                break;
         }
         
         std::stringstream combined_values;
@@ -132,6 +134,8 @@ std::vector<Frame> handle_get_sensor_data(const std::string& param, OperationTyp
                     break;
                 case SensorDataTypeIdentifier::HUMIDITY:
                     data_type_names.push_back("humidity");
+                    break;
+                default:
                     break;
             }
             
@@ -245,7 +249,7 @@ std::vector<Frame> handle_sensor_config(const std::string& param, OperationType 
  * @ingroup SensorCommands
  * @xrefitem command "Command" "List of Commands" Command ID: 4.2
  */
-std::vector<Frame> handle_get_sensor_list(const std::string& param, OperationType operationType) {
+std::vector<Frame> handle_get_sensor_list([[maybe_unused]] const std::string& param, OperationType operationType) {
     std::vector<Frame> frames;
     std::string error_msg;
 
@@ -296,3 +300,4 @@ std::vector<Frame> handle_get_sensor_list(const std::string& param, OperationTyp
     frames.push_back(frame_build(OperationType::VAL, SENSOR_GROUP, 2, sensor_list.str()));
     return frames;
 }
+/** @} */ 

@@ -1,3 +1,16 @@
+/**
+ * @file storage.h
+ * @brief Header file for file system operations on the Kubisat firmware.
+ *
+ * @details This file defines functions for initializing, mounting, and
+ *          unmounting the file system on the SD card.
+ *
+ * @defgroup Storage Storage
+ * @brief Classes and functions for managing file system operations.
+ *
+ * @{
+ */
+
 #ifndef STORAGE_H
 #define STORAGE_H
 
@@ -10,59 +23,24 @@
 #include "filesystem/littlefs.h"
 #include "filesystem/vfs.h"
 #include "pin_config.h"
-#include "lfs.h" 
+#include "lfs.h"
 #include "filesystem/fat.h"
 
-
-extern bool sd_card_mounted;
-
-struct FileHandle {
-    int fd;
-    bool is_open;
-};
-
+/**
+ * @brief Initializes the file system on the SD card.
+ * @return True if initialization was successful, false otherwise.
+ * @details Mounts the FAT file system on the SD card. If mounting fails, it
+ *          formats the SD card with FAT and then attempts to mount again.
+ * @ingroup Storage
+ */
 bool fs_init(void);
-FileHandle fs_open_file(const char* filename, const char* mode);
-ssize_t fs_write_file(FileHandle& handle, const void* buffer, size_t size);
-ssize_t fs_read_file(FileHandle& handle, void* buffer, size_t size);
-bool fs_close_file(FileHandle& handle);
-bool fs_file_exists(const char* filename);
+
+/**
+ * @brief Unmounts the file system from the SD card.
+ * @return True if unmounting was successful, false otherwise.
+ * @ingroup Storage
+ */
+bool fs_stop(void);
 
 #endif
-
-// void example_file_operations() {
-//     // Open a file for writing
-//     FileHandle log_file = fs_open_file("/log.txt", "w");
-//     if (!log_file.is_open) {
-//         uartPrint("Failed to open log file");
-//         return;
-//     }
-
-//     // Write some data
-//     const char* message = "Hello, World!\n";
-//     ssize_t written = fs_write_file(log_file, message, strlen(message));
-//     if (written < 0) {
-//         uartPrint("Failed to write to log file");
-//     }
-
-//     // Close the file
-//     fs_close_file(log_file);
-
-//     // Open file for reading
-//     log_file = fs_open_file("/log.txt", "r");
-//     if (!log_file.is_open) {
-//         uartPrint("Failed to open log file for reading");
-//         return;
-//     }
-
-//     // Read the data
-//     char buffer[128];
-//     ssize_t bytes_read = fs_read_file(log_file, buffer, sizeof(buffer) - 1);
-//     if (bytes_read > 0) {
-//         buffer[bytes_read] = '\0';  // Null terminate the string
-//         uartPrint(buffer);
-//     }
-
-//     // Close the file
-//     fs_close_file(log_file);
-// }
+/** @} */

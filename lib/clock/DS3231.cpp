@@ -6,17 +6,35 @@
 #include "NMEA_data.h"
 
 /**
+ * @defgroup DS3231 RTC clock
+ * @brief Functions for interfacing with the DS3231 RTC module
+ * @{
+ */
+
+/**
  * @brief Constructor for the DS3231 class
  * 
- * @param[in] i2c_instance Pointer to the i2c_inst_t structure representing the I²C port
- * @details Initializes a DS3231 RTC controller object with the specified I²C port and
- *          default device address. This constructor also initializes the clock mutex
- *          for thread-safe I²C access.
+ * @details Initializes the I2C interface and sets the device address for the DS3231 RTC module.
+ *         The constructor is private to enforce the singleton pattern, ensuring that only one
+ *        instance of the class can be created. The mutex for the class is also initialized.
+ * @note The DS3231 device address is defined in the header file as DS3231_DEVICE_ADRESS.
+ * @ingroup DS3231_RTC
  */
 DS3231::DS3231() : i2c(MAIN_I2C_PORT), ds3231_addr(DS3231_DEVICE_ADRESS) {
     recursive_mutex_init(&clock_mutex_);
 }
 
+
+/**
+ * @brief Gets the singleton instance of the DS3231 class
+ * 
+ * @return A reference to the singleton instance of the DS3231 class
+ * @details This function provides access to the single instance of the DS3231
+ *          class, ensuring that only one object manages the RTC module. The
+ *          instance is created upon the first call to this function and remains
+ *          available for the lifetime of the program.
+ * @ingroup DS3231_RTC
+ */
 DS3231& DS3231::get_instance() {
     static DS3231 instance;
     return instance;
@@ -33,6 +51,7 @@ DS3231& DS3231::get_instance() {
  *          before being written to the device registers.
  * @note The ds3231_data_t structure must contain valid values for seconds,
  *       minutes, hours, day, date, month, year, and century.
+ * @ingroup DS3231_RTC
  */
 int DS3231::set_time(ds3231_data_t *data) {
     uint8_t temp[7] = {0};
@@ -102,6 +121,7 @@ int DS3231::set_time(ds3231_data_t *data) {
  *          validation on the read values to ensure they are within valid ranges.
  * @note The function logs debug information including the raw BCD values read
  *       and the decoded time and date.
+ * @ingroup DS3231_RTC
  */
 int DS3231::get_time(ds3231_data_t *data) {
     std::string status;
@@ -143,6 +163,7 @@ int DS3231::get_time(ds3231_data_t *data) {
  *          degrees Celsius. The temperature sensor is primarily used for the
  *          oscillator's temperature compensation, but can be used for general
  *          temperature monitoring as well.
+ * @ingroup DS3231_RTC
  */
 int DS3231::read_temperature(float *resolution) {
     std::string status;
@@ -172,6 +193,7 @@ int DS3231::read_temperature(float *resolution) {
  *          and sets the DS3231 RTC accordingly. This function properly handles
  *          the conversion between the tm structure (used by C standard library)
  *          and the internal ds3231_data_t format.
+ * @ingroup DS3231_RTC
  */
 int DS3231::set_unix_time(time_t unix_time) {
     struct tm *timeinfo = gmtime(&unix_time);
@@ -202,6 +224,7 @@ int DS3231::set_unix_time(time_t unix_time) {
  *          timestamp. This function properly handles the conversion between the 
  *          internal ds3231_data_t format and the tm structure used by the C
  *          standard library.
+ * @ingroup DS3231_RTC
  */
 time_t DS3231::get_unix_time() {
     ds3231_data_t data;
@@ -239,6 +262,7 @@ time_t DS3231::get_unix_time() {
  * @details Reads the control register and clears the EOSC (Enable Oscillator) bit
  *          to ensure the oscillator is running. This is necessary for the RTC to 
  *          keep time when not on external power.
+ * @ingroup DS3231_RTC
  */
 int DS3231::clock_enable() {
     std::string status;
@@ -271,6 +295,7 @@ int DS3231::clock_enable() {
  * @details Returns the current timezone offset in minutes relative to UTC.
  *          Positive values represent timezones ahead of UTC (east),
  *          negative values represent timezones behind UTC (west).
+ * @ingroup DS3231_RTC
  */
 int16_t DS3231::get_timezone_offset() const {
     return timezone_offset_minutes_;
@@ -286,6 +311,7 @@ int16_t DS3231::get_timezone_offset() const {
  *          validates that the offset is within a valid range (-720 to +720 minutes,
  *          which corresponds to -12 to +12 hours).
  * @note This setting is stored in memory and does not persist across reboots.
+ * @ingroup DS3231_RTC
  */
 void DS3231::set_timezone_offset(int16_t offset_minutes) {
     // Validate range: -12 hours to +12 hours (-720 to +720 minutes)
@@ -303,6 +329,7 @@ void DS3231::set_timezone_offset(int16_t offset_minutes) {
  * @return The sync interval in minutes
  * @details Returns the current interval between clock synchronization attempts.
  *          This is the time after which is_sync_needed() will return true.
+ * @ingroup DS3231_RTC
  */
 uint32_t DS3231::get_clock_sync_interval() const {
     return sync_interval_minutes_;
@@ -317,6 +344,7 @@ uint32_t DS3231::get_clock_sync_interval() const {
  *          time source (such as GPS). The function validates that the interval is
  *          within a valid range (1 minute to 43200 minutes, which is 30 days).
  * @note This setting is stored in memory and does not persist across reboots.
+ * @ingroup DS3231_RTC
  */
 void DS3231::set_clock_sync_interval(uint32_t interval_minutes) {
     if (interval_minutes >= 1 && interval_minutes <= 43200) {
@@ -334,6 +362,7 @@ void DS3231::set_clock_sync_interval(uint32_t interval_minutes) {
  * @details Returns the Unix timestamp of when the clock was last successfully
  *          synchronized with an external time source. A value of 0 indicates
  *          that the clock has never been synchronized.
+ * @ingroup DS3231_RTC
  */
 time_t DS3231::get_last_sync_time() const {
     return last_sync_time_;
@@ -347,6 +376,7 @@ time_t DS3231::get_last_sync_time() const {
  *          This should be called after successfully setting the time from an
  *          external source (such as GPS). The function logs the update with an
  *          informational message.
+ * @ingroup DS3231_RTC
  */
 void DS3231::update_last_sync_time() {
     last_sync_time_ = get_unix_time();
@@ -360,6 +390,7 @@ void DS3231::update_last_sync_time() {
  * @return Local time as Unix timestamp, or -1 on error
  * @details Retrieves the current UTC time from the RTC and applies the configured
  *          timezone offset (in minutes) to calculate the local time.
+ * @ingroup DS3231_RTC
  */
 time_t DS3231::get_local_time() {
     time_t utc_time = get_unix_time();
@@ -379,6 +410,7 @@ time_t DS3231::get_local_time() {
  *          or if the time elapsed since the last synchronization exceeds the configured
  *          sync_interval_minutes_. If the current time cannot be determined, it assumes
  *          synchronization is needed.
+ * @ingroup DS3231_RTC
  */
 bool DS3231::is_sync_needed() {
     if (last_sync_time_ == 0) {
@@ -409,6 +441,7 @@ bool DS3231::is_sync_needed() {
  * 
  * @note This function emits events to the EventEmitter system that can be monitored
  *       by other components of the system.
+ * @ingroup DS3231_RTC
  */
 bool DS3231::sync_clock_with_gps() {
     auto& nmea_data = NMEAData::get_instance(); 
@@ -455,6 +488,7 @@ bool DS3231::sync_clock_with_gps() {
  *          concurrent I²C operations that could corrupt data.
  * 
  * @note This is a low-level method used internally by the class.
+ * @ingroup DS3231_RTC
  */
 int DS3231::i2c_read_reg(uint8_t reg_addr, size_t length, uint8_t *data) {
     if (!length)
@@ -496,6 +530,7 @@ int DS3231::i2c_read_reg(uint8_t reg_addr, size_t length, uint8_t *data) {
  *          concurrent I²C operations that could corrupt data.
  * 
  * @note This is a low-level method used internally by the class.
+ * @ingroup DS3231_RTC
  */
 int DS3231::i2c_write_reg(uint8_t reg_addr, size_t length, uint8_t *data) {
     if (!length)
@@ -504,7 +539,7 @@ int DS3231::i2c_write_reg(uint8_t reg_addr, size_t length, uint8_t *data) {
     recursive_mutex_enter_blocking(&clock_mutex_);
     std::vector<uint8_t> message(length + 1);
     message[0] = reg_addr;
-    for (int i = 0; i < length; i++) {
+    for (size_t i = 0; i < length; i++) {
         message[i + 1] = data[i];
     }
     int write_result = i2c_write_blocking(i2c, ds3231_addr, message.data(), (length + 1), false);
@@ -526,6 +561,7 @@ int DS3231::i2c_write_reg(uint8_t reg_addr, size_t length, uint8_t *data) {
  * @details The DS3231 stores time values in BCD format where each nibble represents
  *          a decimal digit. This function converts a standard binary value to its
  *          BCD equivalent (e.g., 42 becomes 0x42).
+ * @ingroup DS3231_RTC
  */
 uint8_t DS3231::bin_to_bcd(const uint8_t data) {
     uint8_t ones_digit = (uint8_t)(data % 10);
@@ -542,6 +578,7 @@ uint8_t DS3231::bin_to_bcd(const uint8_t data) {
  * @details The DS3231 stores time values in BCD format where each nibble represents
  *          a decimal digit. This function converts a BCD value to its standard binary
  *          equivalent (e.g., 0x42 becomes 42).
+ * @ingroup DS3231_RTC
  */
 uint8_t DS3231::bcd_to_bin(const uint8_t bcd) {
     uint8_t ones_digit = (uint8_t)(bcd & 0x0F);

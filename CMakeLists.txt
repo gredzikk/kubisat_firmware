@@ -62,16 +62,13 @@ add_subdirectory(test EXCLUDE_FROM_ALL)
 set(MAIN_SOURCES
     main.cpp
     lib/sensors/ISensor.cpp
-    lib/pin_config.cpp
     lib/eventman/event_manager.cpp
     lib/utils.cpp
     lib/storage/storage.cpp
-    lib/system_state_manager.cpp
 )
 
 set(GPS_SOURCES
     lib/location/gps_collector.cpp
-    lib/location/NMEA/NMEA_data.cpp
 )
 
 # Main target
@@ -170,8 +167,6 @@ add_custom_command(
     VERBATIM
 )
 
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/documentation.cmake)
-
 find_program(CLANG_TIDY_EXE NAMES "clang-tidy" DOC "Path to clang-tidy executable")
 if(CLANG_TIDY_EXE)
   set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE}")
@@ -179,3 +174,6 @@ if(CLANG_TIDY_EXE)
 else()
   message(STATUS "clang-tidy not found.")
 endif()
+
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/documentation.cmake)
+
