@@ -159,5 +159,5 @@ class SystemStateManager {
         }
     };
     
-#endif // SYSTEM_STATE_MANAGER_H
+#endif 
 /** @} */

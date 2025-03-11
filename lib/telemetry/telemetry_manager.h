@@ -131,117 +131,173 @@ struct SensorDataRecord {
     }
 };
 
-/**
- * @brief Circular buffer for telemetry records
- */
-constexpr int TELEMETRY_BUFFER_SIZE = 20;
-extern const int TELEMETRY_BUFFER_SIZE;
-extern TelemetryRecord telemetry_buffer[TELEMETRY_BUFFER_SIZE];
-extern size_t telemetry_buffer_count;
-extern size_t telemetry_buffer_write_index;
-
-extern SensorDataRecord sensor_data_buffer[TELEMETRY_BUFFER_SIZE];
-extern size_t sensor_data_buffer_count;
-extern size_t sensor_data_buffer_write_index;
 
 /**
- * @brief Mutex for thread-safe access to the telemetry buffer
- */
-extern mutex_t telemetry_mutex;
-
-
-/**
- * @brief Initialize the telemetry system
- * @return True if initialization was successful
- * @details Sets up the mutex for thread-safe buffer access and creates a telemetry
- *          CSV file with appropriate headers if it doesn't already exist
- */
-bool telemetry_init();
-
-/**
- * @brief Collect telemetry data from sensors and power subsystems
- * @return True if data was successfully collected
- * @details Reads data from power manager, sensors, and GPS and stores it
- *          in the telemetry buffer with proper mutex protection
- */
-bool collect_telemetry();
-
-/**
- * @brief Collects power subsystem telemetry data.
- * @param[out] record The telemetry record to update with power data.
+ * @class TelemetryManager
+ * @brief Manages the collection, storage, and retrieval of telemetry data.
+ * @details This class implements a singleton pattern to provide a single
+ *          point of access for managing telemetry data. It handles the
+ *          collection of data from various subsystems, stores the data in
+ *          circular buffers, and provides methods for flushing the data to
+ *          persistent storage and retrieving the last recorded data.
  * @ingroup TelemetryManager
  */
-void collect_power_telemetry(TelemetryRecord& record);
+class TelemetryManager {
+public:
+    /**
+     * @brief Gets the singleton instance of the TelemetryManager class.
+     * @return A reference to the singleton instance.
+     */
+    static TelemetryManager& get_instance() {
+        static TelemetryManager instance;
+        return instance;
+    }
 
-/**
- * @brief Emits power-related events based on current and voltage levels.
- * @param[in] battery_voltage The current battery voltage.
- * @param[in] charge_current_usb The current USB charging current.
- * @param[in] charge_current_solar The current solar charging current.
- * @ingroup TelemetryManager
- */
-void emit_power_events(float battery_voltage, float charge_current_usb, float charge_current_solar);
+    /**
+     * @brief Initialize the telemetry system
+     * @return True if initialization was successful
+     * @details Sets up the mutex for thread-safe buffer access and creates a telemetry
+     *          CSV file with appropriate headers if it doesn't already exist
+     */
+    bool init();
 
-/**
- * @brief Collects GPS telemetry data.
- * @param[out] record The telemetry record to update with GPS data.
- * @ingroup TelemetryManager
- */
-void collect_gps_telemetry(TelemetryRecord& record);
+    /**
+     * @brief Collect telemetry data from sensors and power subsystems
+     * @return True if data was successfully collected
+     * @details Reads data from power manager, sensors, and GPS and stores it
+     *          in the telemetry buffer with proper mutex protection
+     */
+    bool collect_telemetry();
 
-/**
- * @brief Collects sensor telemetry data.
- * @param[out] sensor_record The sensor data record to update with sensor data.
- * @ingroup TelemetryManager
- */
-void collect_sensor_telemetry(SensorDataRecord& sensor_record);
+    /**
+     * @brief Collects power subsystem telemetry data.
+     * @param[out] record The telemetry record to update with power data.
+     * @ingroup TelemetryManager
+     */
+    void collect_power_telemetry(TelemetryRecord& record);
 
-/**
- * @brief Save buffered telemetry data to storage
- * @return True if data was successfully saved
- * @details Writes all records from the telemetry buffer to the CSV file
- *          and clears the buffer after successful writing
- */
-bool flush_telemetry();
+    /**
+     * @brief Emits power-related events based on current and voltage levels.
+     * @param[in] battery_voltage The current battery voltage.
+     * @param[in] charge_current_usb The current USB charging current.
+     * @param[in] charge_current_solar The current solar charging current.
+     * @ingroup TelemetryManager
+     */
+    void emit_power_events(float battery_voltage, float charge_current_usb, float charge_current_solar);
 
-/**
-* @brief Save buffered sensor data to storage
-* @return True if data was successfully saved
-* @details Writes all records from the sensor data buffer to the CSV file
-*          and clears the buffer after successful writing
-*/
-bool flush_sensor_data();
+    /**
+     * @brief Collects GPS telemetry data.
+     * @param[out] record The telemetry record to update with GPS data.
+     * @ingroup TelemetryManager
+     */
+    void collect_gps_telemetry(TelemetryRecord& record);
 
-/**
- * @brief Check if it's time to collect telemetry based on interval
- * @param current_time Current system time in milliseconds
- * @param last_collection_time Previous collection time in milliseconds
- * @return True if collection interval has passed
- * @details Updates last_collection_time if the interval has passed
- */
-bool is_telemetry_collection_time(uint32_t current_time, uint32_t& last_collection_time);
+    /**
+     * @brief Collects sensor telemetry data.
+     * @param[out] sensor_record The sensor data record to update with sensor data.
+     * @ingroup TelemetryManager
+     */
+    void collect_sensor_telemetry(SensorDataRecord& sensor_record);
 
-/**
- * @brief Check if it's time to flush telemetry buffer based on count
- * @param collection_counter Current collection counter
- * @return True if flush threshold has been reached
- * @details Resets collection_counter to zero if the threshold has been reached
- */
-bool is_telemetry_flush_time(uint32_t& collection_counter);
+    /**
+     * @brief Save buffered telemetry data to storage
+     * @return True if data was successfully saved
+     * @details Writes all records from the telemetry buffer to the CSV file
+     *          and clears the buffer after successful writing
+     */
+    bool flush_telemetry();
+
+    /**
+    * @brief Save buffered sensor data to storage
+    * @return True if data was successfully saved
+    * @details Writes all records from the sensor data buffer to the CSV file
+    *          and clears the buffer after successful writing
+    */
+    bool flush_sensor_data();
+
+    /**
+     * @brief Check if it's time to collect telemetry based on interval
+     * @param current_time Current system time in milliseconds
+     * @param last_collection_time Previous collection time in milliseconds
+     * @return True if collection interval has passed
+     * @details Updates last_collection_time if the interval has passed
+     */
+    bool is_telemetry_collection_time(uint32_t current_time, uint32_t& last_collection_time);
+
+    /**
+     * @brief Check if it's time to flush telemetry buffer based on count
+     * @param collection_counter Current collection counter
+     * @return True if flush threshold has been reached
+     * @details Resets collection_counter to zero if the threshold has been reached
+     */
+    bool is_telemetry_flush_time(uint32_t& collection_counter);
 
 
-/**
- * @brief Gets the last telemetry record as a CSV string.
- * @return A CSV string representing the last telemetry record, or an empty string if no data is available.
- */
-std::string get_last_telemetry_record_csv();
+    /**
+     * @brief Gets the last telemetry record as a CSV string.
+     * @return A CSV string representing the last telemetry record, or an empty string if no data is available.
+     */
+    std::string get_last_telemetry_record_csv();
 
-/**
- * @brief Gets the last sensor data record as a CSV string.
- * @return A CSV string representing the last sensor data record, or an empty string if no data is available.
- */
-std::string get_last_sensor_record_csv();
+    /**
+     * @brief Gets the last sensor data record as a CSV string.
+     * @return A CSV string representing the last sensor data record, or an empty string if no data is available.
+     */
+    std::string get_last_sensor_record_csv();
 
+    static constexpr int TELEMETRY_BUFFER_SIZE = 20;
+
+    TelemetryRecord& get_last_telemetry_record() {
+        size_t last_record_index = (telemetry_buffer_write_index + TELEMETRY_BUFFER_SIZE - 1) % TELEMETRY_BUFFER_SIZE;
+        return telemetry_buffer[last_record_index];
+    }
+
+    SensorDataRecord& get_last_sensor_record() {
+        size_t last_record_index = (telemetry_buffer_write_index + TELEMETRY_BUFFER_SIZE - 1) % TELEMETRY_BUFFER_SIZE;
+        return sensor_data_buffer[last_record_index];
+    }
+
+    size_t get_telemetry_buffer_count() const { return telemetry_buffer_count; }
+    size_t get_telemetry_buffer_write_index() const { return telemetry_buffer_write_index; }
+
+private:
+    TelemetryManager();  // Private constructor
+    ~TelemetryManager() = default;
+
+    /**
+     * @brief Current sampling interval in milliseconds
+     */
+    static constexpr uint32_t DEFAULT_SAMPLE_INTERVAL_MS = 1000;
+
+    /**
+     * @brief Default number of records to collect before flushing to storage
+     */
+    static constexpr uint32_t DEFAULT_FLUSH_THRESHOLD = 10;
+
+    uint32_t sample_interval_ms = DEFAULT_SAMPLE_INTERVAL_MS;
+
+    /**
+     * @brief Current flush threshold (number of records that triggers a flush)
+     */
+    uint32_t flush_threshold = DEFAULT_FLUSH_THRESHOLD;
+
+    /**
+     * @brief Circular buffer for telemetry records
+     */
+    TelemetryRecord telemetry_buffer[TELEMETRY_BUFFER_SIZE];
+    size_t telemetry_buffer_count = 0;
+    size_t telemetry_buffer_write_index = 0;
+
+    /**
+     * @brief Circular buffer for sensor data records
+     */
+    SensorDataRecord sensor_data_buffer[TELEMETRY_BUFFER_SIZE];
+
+    /**
+     * @brief Mutex for thread-safe access to the telemetry buffer
+     */
+    mutex_t telemetry_mutex;
+};
 #endif // TELEMETRY_MANAGER_H
 
  /** @} */ // End of TelemetryManager group

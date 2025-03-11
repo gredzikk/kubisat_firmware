@@ -1,4 +1,4 @@
-// pin_config.h
+
 #ifndef PIN_CONFIG_H
 #define PIN_CONFIG_H
 
@@ -22,7 +22,7 @@
 #define GPS_UART_RX_PIN 9
 #define GPS_POWER_ENABLE_PIN 14
 
-#define BUFFER_SIZE 85  // NMEA sentences are usually under 85 chars
+#define BUFFER_SIZE 85  
 
 // SPI configuration for SD card
 #define SD_SPI_PORT spi1
@@ -56,4 +56,4 @@ inline constexpr int lora_irq_pin = 28;         // LoRa hardware interrupt pin
 inline uint8_t lora_address_local = 37;         // address of this device
 inline uint8_t lora_address_remote = 21;        // destination to send to
 
-#endif // PIN_CONFIG_H
+#endif 

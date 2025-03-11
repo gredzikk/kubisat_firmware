@@ -23,8 +23,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(PICO_BOARD pico CACHE STRING "Board type")
 set(PICO_CXX_ENABLE_EXCEPTIONS 1)
 set(PICO_CXX_ENABLE_RTTI 1)
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Wunused-function -Wunused-variable")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -Wunused-function -Wunused-variable")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Wunused-function -Wunused-variable -Wunused -Wunreachable-code")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -Wunused-function -Wunused-variable -Wunused -Wunreachable-code")
 
 # VS Code Pico extension configuration (only needed once)
 if(WIN32)
@@ -82,6 +82,8 @@ target_compile_options(main PRIVATE
     -Wall
     -Wextra
     -Wno-error
+    -Wunused
+    -Wunreachable-code
 )
 
 # Include directories

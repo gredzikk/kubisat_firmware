@@ -6,11 +6,6 @@
 #define GET_LAST_TELEMETRY_RECORD_COMMAND 2
 #define GET_LAST_SENSOR_RECORD_COMMAND 3 
 
-extern mutex_t telemetry_mutex;
-extern size_t telemetry_buffer_count;
-extern size_t telemetry_buffer_write_index;
-extern const int TELEMETRY_BUFFER_SIZE; 
-
 /**
  * @defgroup TelemetryBufferCommands Telemetry Buffer Commands
  * @brief Commands for interacting with the telemetry buffer.
@@ -44,7 +39,7 @@ std::vector<Frame> handle_get_last_telemetry_record([[maybe_unused]] const std::
         return frames;
     }
 
-    std::string csv_data = get_last_telemetry_record_csv();
+    std::string csv_data = TelemetryManager::get_instance().get_last_telemetry_record_csv();
 
     if (csv_data.empty()) {
         error_msg = "NO_DATA";
@@ -77,7 +72,7 @@ std::vector<Frame> handle_get_last_sensor_record([[maybe_unused]]const std::stri
         return frames;
     }
 
-    std::string csv_data = get_last_sensor_record_csv();
+    std::string csv_data = TelemetryManager::get_instance().get_last_sensor_record_csv();
 
     if (csv_data.empty()) {
         error_msg = "NO_DATA";

@@ -13,7 +13,7 @@ void core1_entry() {
     uint32_t last_telemetry_time = 0;
     uint32_t telemetry_collection_counter = 0;
 
-    telemetry_init();
+    TelemetryManager::get_instance().init();
 
     while (true) {
         collect_gps_data();
@@ -30,13 +30,13 @@ void core1_entry() {
             }
         }
         
-        if (is_telemetry_collection_time(currentTime, last_telemetry_time)) {
-            collect_telemetry();
+        if (TelemetryManager::get_instance().is_telemetry_collection_time(currentTime, last_telemetry_time)) {
+            TelemetryManager::get_instance().collect_telemetry();
             telemetry_collection_counter++;
             
-            if (is_telemetry_flush_time(telemetry_collection_counter)) {
-                flush_telemetry();
-                flush_sensor_data();
+            if (TelemetryManager::get_instance().is_telemetry_flush_time(telemetry_collection_counter)) {
+                TelemetryManager::get_instance().flush_telemetry();
+                TelemetryManager::get_instance().flush_sensor_data();
             }
         }
 
