@@ -78,6 +78,15 @@ bool init_pico_hw() {
     gpio_set_dir(GPS_POWER_ENABLE_PIN, GPIO_OUT);
     gpio_put(GPS_POWER_ENABLE_PIN, 1); 
 
+    i2c_init(SENSORS_I2C_PORT, 400 * 1000);
+    gpio_set_function(SENSORS_I2C_SCL_PIN, GPIO_FUNC_I2C);
+    gpio_set_function(SENSORS_I2C_SDA_PIN, GPIO_FUNC_I2C);
+    gpio_pull_up(SENSORS_I2C_SCL_PIN);
+    gpio_pull_up(SENSORS_I2C_SDA_PIN);
+    gpio_init(SENSORS_POWER_ENABLE_PIN);
+    gpio_set_dir(SENSORS_POWER_ENABLE_PIN, GPIO_OUT);
+    gpio_put(SENSORS_POWER_ENABLE_PIN, 1);
+
     SystemStateManager::get_instance();
 
     EventEmitter::emit(EventGroup::GPS, GPSEvent::POWER_ON);
@@ -130,15 +139,14 @@ bool init_modules(){
     Frame boot = frame_build(OperationType::RES, 0, 0, "HELLO");
     send_frame_lora(boot);
 
-    // uart_print("Initializing sensors...", VerbosityLevel::DEBUG);
-    // SensorWrapper& sensor_wrapper = SensorWrapper::get_instance();
-    // bool light_sensor_init = sensor_wrapper.sensor_init(SensorType::LIGHT, MAIN_I2C_PORT);
-    // bool env_sensor_init = sensor_wrapper.sensor_init(SensorType::ENVIRONMENT, MAIN_I2C_PORT);
-    // bool mag_sensor_init = sensor_wrapper.sensor_init(SensorType::MAGNETOMETER, MAIN_I2C_PORT);
+    uart_print("Initializing sensors...", VerbosityLevel::DEBUG);
+    SensorWrapper& sensor_wrapper = SensorWrapper::get_instance();
+    bool light_sensor_init = sensor_wrapper.sensor_init(SensorType::LIGHT, SENSORS_I2C_PORT);
+    bool env_sensor_init = sensor_wrapper.sensor_init(SensorType::ENVIRONMENT, SENSORS_I2C_PORT);
 
-    // if (!light_sensor_init || !env_sensor_init || !mag_sensor_init) {
-    //     uart_print("One or more sensors failed to initialize", VerbosityLevel::WARNING);
-    // }
+    if (!light_sensor_init || !env_sensor_init) {
+        uart_print("One or more sensors failed to initialize", VerbosityLevel::WARNING);
+    }
 
     return sd_init_status && radio_init_status;
 }

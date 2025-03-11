@@ -2,7 +2,7 @@
 #include <string>
 #include <iostream>
 
-BH1750Wrapper::BH1750Wrapper(i2c_inst_t* i2c) : sensor_(i2c) { // Initialize i2c_port_ and sensor_
+BH1750Wrapper::BH1750Wrapper(i2c_inst_t* i2c) : sensor_(i2c) { 
     sensor_.configure(BH1750::Mode::CONTINUOUS_HIGH_RES_MODE);
 }
 
@@ -52,7 +52,6 @@ bool BH1750Wrapper::configure(const std::map<std::string, std::string>& config) 
                 return false;
             }
         }
-        // Handle additional configuration keys here
         else {
             std::cerr << "[BH1750Wrapper] Unknown configuration key: " << key << std::endl;
             return false;

@@ -1,73 +1,87 @@
-// BME280.cpp
+/**
+ * @file BME280.cpp
+ * @brief Implementation of the BME280 environmental sensor class.
+ *
+ * This file contains the implementation of the BME280 class, which provides an
+ * interface to the BME280 temperature, pressure, and humidity sensor using the
+ * I2C communication protocol.
+ */
 
 #include "BME280.h"
-
 #include <iomanip>
 #include <vector>
 #include <algorithm>
 #include "hardware/i2c.h"
 #include "pico/binary_info.h"
 #include "pico/stdlib.h"
+#include "utils.h"
 
-// BME280 (BME280) Class Implementation
-
+/**
+ * @brief Constructor for the BME280 class.
+ * @param i2cPort Pointer to the I2C interface.
+ * @param address I2C address of the BME280 sensor (default: ADDR_SDO_LOW).
+ */
 BME280::BME280(i2c_inst_t* i2cPort, uint8_t address)
     : i2c_port(i2cPort), device_addr(address), calib_params{}, initialized_(false), t_fine(0) {
 }
 
+/**
+ * @brief Initializes the BME280 sensor.
+ * @return True if initialization was successful, false otherwise.
+ */
 bool BME280::init() {
     if (!i2c_port) {
-        std::cerr << "Invalid I2C port.\n";
+        uart_print("BME280 I2C port not initialized.", VerbosityLevel::ERROR);
         return false;
     }
 
     // Check device ID to confirm it's a BME280
-    uint8_t reg = 0xD0; // Chip ID register
-    uint8_t chip_id = 0;
-    int ret = i2c_write_blocking(i2c_port, device_addr, &reg, 1, true);
-    if (ret != 1) {
-        std::cerr << "Failed to write to BME280.\n";
+    uint8_t chip_id;
+    if (!read_register(0xD0, &chip_id)) {
+        uart_print("Failed to read chip ID from BME280.", VerbosityLevel::ERROR);
         return false;
     }
-    ret = i2c_read_blocking(i2c_port, device_addr, &chip_id, 1, false);
-    if (ret != 1) {
-        std::cerr << "Failed to read chip ID from BME280.\n";
-        return false;
-    }
+
     if (chip_id != 0x60) {
-        std::cerr << "Device is not a BME280.\n";
+        uart_print("Invalid BME280 chip ID.", VerbosityLevel::ERROR);
         return false;
     }
 
     // Configure sensor
     if (!configure_sensor()) {
-        std::cerr << "Failed to configure BME280 sensor.\n";
+        uart_print("Failed to configure BME280 sensor.", VerbosityLevel::ERROR);
         return false;
     }
 
     // Retrieve calibration parameters
     if (!get_calibration_parameters()) {
-        std::cerr << "Failed to retrieve calibration parameters.\n";
+        uart_print("Failed to get calibration parameters from BME280.", VerbosityLevel::ERROR);
         return false;
     }
 
     initialized_ = true;
-    std::cout << "BME280 sensor initialized_ successfully.\n";
+    uart_print("BME280 initialized.", VerbosityLevel::INFO);
     return true;
 }
 
+/**
+ * @brief Resets the BME280 sensor.
+ */
 void BME280::reset() {
-    uint8_t buf[2] = { REG_RESET, 0xB6 };
-    int ret = i2c_write_blocking(i2c_port, device_addr, buf, 2, false);
-    if (ret != 2) {
-        std::cerr << "Failed to reset BME280 sensor.\n";
-    }
+    write_register(REG_RESET, 0xB6);
     sleep_ms(10); // Wait for reset to complete
 }
 
+/**
+ * @brief Reads all raw data from the sensor.
+ * @param temperature Pointer to store the raw temperature value.
+ * @param pressure Pointer to store the raw pressure value.
+ * @param humidity Pointer to store the raw humidity value.
+ * @return True if the data was read successfully, false otherwise.
+ */
 bool BME280::read_raw_all(int32_t* temperature, int32_t* pressure, int32_t* humidity) {
     if (!initialized_) {
-        std::cerr << "BME280 not initialized_.\n";
+        uart_print("BME280 not initialized.", VerbosityLevel::ERROR);
         return false;
     }
 
@@ -77,16 +91,15 @@ bool BME280::read_raw_all(int32_t* temperature, int32_t* pressure, int32_t* humi
     uint8_t buf[8] = {0};
 
     // Write the starting register address
-    int ret = i2c_write_blocking(i2c_port, device_addr, &start_reg, 1, true);
-    if (ret != 1) {
-        std::cerr << "Failed to write starting register address to BME280.\n";
+    if (!write_register(start_reg, 1)) {
+        uart_print("Failed to write to BME280.", VerbosityLevel::ERROR);
         return false;
     }
 
     // Read data
-    ret = i2c_read_blocking(i2c_port, device_addr, buf, 8, false);
+    int ret = i2c_read_blocking(i2c_port, device_addr, buf, 8, false);
     if (ret != 8) {
-        std::cerr << "Failed to read data from BME280.\n";
+        uart_print("Failed to read from BME280.", VerbosityLevel::ERROR);
         return false;
     }
 
@@ -98,6 +111,11 @@ bool BME280::read_raw_all(int32_t* temperature, int32_t* pressure, int32_t* humi
     return true;
 }
 
+/**
+ * @brief Converts raw temperature data to degrees Celsius.
+ * @param temp_raw Raw temperature value.
+ * @return Temperature in degrees Celsius.
+ */
 float BME280::convert_temperature(int32_t temp_raw) const {
     int32_t var1, var2;
     var1 = ((((temp_raw >> 3) - ((int32_t)calib_params.dig_t1 << 1))) * ((int32_t)calib_params.dig_t2)) >> 11;
@@ -107,6 +125,11 @@ float BME280::convert_temperature(int32_t temp_raw) const {
     return T / 100.0f;
 }
 
+/**
+ * @brief Converts raw pressure data to hectopascals (hPa).
+ * @param pressure_raw Raw pressure value.
+ * @return Pressure in hPa.
+ */
 float BME280::convert_pressure(int32_t pressure_raw) const {
     int64_t var1, var2, p;
     var1 = ((int64_t)t_fine) - 128000;
@@ -128,6 +151,11 @@ float BME280::convert_pressure(int32_t pressure_raw) const {
     return (float)p / 25600.0f; // in hPa
 }
 
+/**
+ * @brief Converts raw humidity data to relative humidity (%).
+ * @param humidity_raw Raw humidity value.
+ * @return Relative humidity in %.
+ */
 float BME280::convert_humidity(int32_t humidity_raw) const {
     int32_t v_x1_u32r;
     v_x1_u32r = t_fine - 76800;
@@ -140,18 +168,15 @@ float BME280::convert_humidity(int32_t humidity_raw) const {
     return h / 1024.0f;
 }
 
+/**
+ * @brief Retrieves the calibration parameters from the sensor.
+ * @return True if the parameters were read successfully, false otherwise.
+ */
 bool BME280::get_calibration_parameters() {
     // Read temperature and pressure calibration data (0x88 to 0xA1)
-    uint8_t calib_data[26];
-    uint8_t reg = REG_DIG_T1_LSB;
-    int ret = i2c_write_blocking(i2c_port, device_addr, &reg, 1, true);
-    if (ret != 1) {
-        std::cerr << "Failed to write to BME280.\n";
-        return false;
-    }
-    ret = i2c_read_blocking(i2c_port, device_addr, calib_data, 26, false);
-    if (ret != 26) {
-        std::cerr << "Failed to read calibration data from BME280.\n";
+    uint8_t calib_data[NUM_CALIB_PARAMS];
+    if (!read_register(REG_DIG_T1_LSB, calib_data, NUM_CALIB_PARAMS)) {
+        uart_print("Failed to read calibration data from BME280.", VerbosityLevel::ERROR);
         return false;
     }
 
@@ -174,17 +199,9 @@ bool BME280::get_calibration_parameters() {
     calib_params.dig_h1 = calib_data[25];
 
     // Read humidity calibration data (0xE1 to 0xE7)
-    reg = 0xE1;
-    ret = i2c_write_blocking(i2c_port, device_addr, &reg, 1, true);
-    if (ret != 1) {
-        std::cerr << "Failed to write to BME280 for humidity calibration.\n";
-        return false;
-    }
-
-    uint8_t hum_calib_data[7];
-    ret = i2c_read_blocking(i2c_port, device_addr, hum_calib_data, 7, false);
-    if (ret != 7) {
-        std::cerr << "Failed to read humidity calibration data from BME280.\n";
+    uint8_t hum_calib_data[NUM_HUM_CALIB_PARAMS];
+    if (!read_register(REG_DIG_H2, hum_calib_data, NUM_HUM_CALIB_PARAMS)) {
+        uart_print("Failed to read humidity calibration data from BME280.", VerbosityLevel::ERROR);
         return false;
     }
 
@@ -198,35 +215,66 @@ bool BME280::get_calibration_parameters() {
     return true;
 }
 
+/**
+ * @brief Configures the sensor with default settings.
+ * @return True if the configuration was successful, false otherwise.
+ */
 bool BME280::configure_sensor() {
-    uint8_t buf[2];
-
     // Set humidity oversampling (must be set before ctrl_meas)
-    buf[0] = REG_CTRL_HUM;
-    buf[1] = 0x05; // Humidity oversampling x16
-    int ret = i2c_write_blocking(i2c_port, device_addr, buf, 2, false);
-    if (ret != 2) {
-        std::cerr << "Failed to write CTRL_HUM to BME280.\n";
+    if (!write_register(REG_CTRL_HUM, HUMIDITY_OVERSAMPLING)) {
+        uart_print("Failed to write CTRL_HUM to BME280.", VerbosityLevel::ERROR);
         return false;
     }
 
     // Write config register
-    buf[0] = REG_CONFIG;
-    buf[1] = 0x00; // Default settings
-    ret = i2c_write_blocking(i2c_port, device_addr, buf, 2, false);
-    if (ret != 2) {
-        std::cerr << "Failed to write CONFIG to BME280.\n";
+    if (!write_register(REG_CONFIG, 0x00)) {
+        uart_print("Failed to write CONFIG to BME280.", VerbosityLevel::ERROR);
         return false;
     }
 
     // Write ctrl_meas register
-    buf[0] = REG_CTRL_MEAS;
-    buf[1] = 0xB7; // Temp and pressure oversampling x16, normal mode
-    ret = i2c_write_blocking(i2c_port, device_addr, buf, 2, false);
-    if (ret !=2) {
-        std::cerr << "Failed to write CTRL_MEAS to BME280.\n";
+    if (!write_register(REG_CTRL_MEAS, NORMAL_MODE)) {
+        uart_print("Failed to write CTRL_MEAS to BME280.", VerbosityLevel::ERROR);
         return false;
     }
 
     return true;
+}
+
+/**
+ * @brief Helper function for I2C writes.
+ * @param reg Register address to write to.
+ * @param value Value to write to the register.
+ * @return True if the write was successful, false otherwise.
+ */
+bool BME280::write_register(uint8_t reg, uint8_t value) {
+    uint8_t buf[2] = {reg, value};
+    int ret = i2c_write_blocking(i2c_port, device_addr, buf, 2, false);
+    return (ret == 2);
+}
+
+/**
+ * @brief Helper function for I2C reads with a specified length.
+ * @param reg Register address to read from.
+ * @param data Pointer to store the read data.
+ * @param len Number of bytes to read.
+ * @return True if the read was successful, false otherwise.
+ */
+bool BME280::read_register(uint8_t reg, uint8_t* data, size_t len) {
+    int ret = i2c_write_blocking(i2c_port, device_addr, &reg, 1, true);
+    if (ret != 1) {
+        return false;
+    }
+    ret = i2c_read_blocking(i2c_port, device_addr, data, len, false);
+    return (static_cast<size_t>(ret) == len);
+}
+
+/**
+ * @brief Helper function for I2C reads.
+ * @param reg Register address to read from.
+ * @param data Pointer to store the read data.
+ * @return True if the read was successful, false otherwise.
+ */
+bool BME280::read_register(uint8_t reg, uint8_t* data) {
+    return read_register(reg, data, 1);
 }

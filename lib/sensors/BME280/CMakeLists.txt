@@ -9,6 +9,7 @@ add_library(BME280_lib STATIC
 target_include_directories(BME280_lib PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_SOURCE_DIR}/lib/sensors
+    ${CMAKE_SOURCE_DIR}/lib
 )
 target_link_libraries(BME280_lib PUBLIC
     pico_stdlib

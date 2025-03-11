@@ -12,7 +12,7 @@ private:
     bool initialized_ = false;
 
 public:
-    BH1750Wrapper(i2c_inst_t* i2c); // Add constructor with i2c_inst_t*
+    BH1750Wrapper(i2c_inst_t* i2c); 
     BH1750Wrapper();
     int get_i2c_addr();
     bool init() override;

@@ -22,6 +22,11 @@
 #define GPS_UART_RX_PIN 9
 #define GPS_POWER_ENABLE_PIN 14
 
+#define SENSORS_POWER_ENABLE_PIN 15
+#define SENSORS_I2C_PORT i2c0
+#define SENSORS_I2C_SDA_PIN 4
+#define SENSORS_I2C_SCL_PIN 5
+
 #define BUFFER_SIZE 85  
 
 // SPI configuration for SD card
