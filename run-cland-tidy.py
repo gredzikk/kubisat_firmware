@@ -4,16 +4,6 @@ import subprocess
 import sys
 import glob
 
-def find_all_header_paths(root_dir):
-    """Recursively searches for header files in a directory and returns their paths."""
-    header_paths = []
-    for dirpath, dirnames, filenames in os.walk(root_dir):
-        for filename in filenames:
-            if filename.endswith((".h", ".hpp")):
-                header_paths.append(dirpath)
-                break  # Only add the directory once if it contains a header
-    return header_paths
-
 def main():
     compile_db_path = "build/compile_commands.json"
     if not os.path.exists(compile_db_path):
@@ -30,19 +20,28 @@ def main():
     print(f"Running clang-tidy on {len(source_files)} files...")
 
     # Find header paths
-    pico_sdk_path = "C:/Users/Kuba/.pico-sdk"
-    header_paths = find_all_header_paths(pico_sdk_path)
+    pico_sdk_path = "C:/Users/710_300704/.pico-sdk"
+    toolchain_path = os.path.join(pico_sdk_path, "toolchain", "13_3_Rel1", "arm-none-eabi", "include")
+
+    # Fix path for Windows
+    toolchain_path = os.path.normpath(toolchain_path)
 
     for file in source_files:
         print(f"Analyzing {file}...")
         command = [
             "clang-tidy",
             "-p", compile_db_path,
+            "main.cpp"
         ]
-        for path in header_paths:
-            command.append(f"--extra-arg=-I{path}")
         command.append(file)
-        subprocess.run(command)
+        print(command)
+        try:
+            subprocess.run(command, check=True, capture_output=True, text=True)
+        except subprocess.CalledProcessError as e:
+            print(f"Error running clang-tidy: {e}")
+            print(f"Return code: {e.returncode}")
+            print(f"stdout: {e.stdout}")
+            print(f"stderr: {e.stderr}")
 
 if __name__ == "__main__":
     main()

@@ -2,7 +2,7 @@
 #include <string>
 #include <iostream>
 
-BH1750Wrapper::BH1750Wrapper(i2c_inst_t* i2c) : i2c_port_(i2c), sensor_(i2c, 0x23) { // Initialize i2c_port_ and sensor_
+BH1750Wrapper::BH1750Wrapper(i2c_inst_t* i2c) : sensor_(i2c) { // Initialize i2c_port_ and sensor_
     sensor_.configure(BH1750::Mode::CONTINUOUS_HIGH_RES_MODE);
 }
 
