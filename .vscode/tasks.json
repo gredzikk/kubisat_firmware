@@ -134,6 +134,116 @@
             "group": "none",
             "problemMatcher": [],
             "dependsOn": "CodeChecker Analyze"
+        },
+        {
+            "label": "Generate Dependency Graph",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--graphviz=deps.dot",
+                "..",
+                "&&",
+                "$C:/Program Files/Graphviz/bin/dot",
+                "-Tpng",
+                "deps.dot",
+                "-o",
+                "dependency_graph.png"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "group": "none",
+            "problemMatcher": [],
+            "detail": "Generate complete dependency graph using Graphviz"
+        },
+        {
+            "label": "Generate Target-Specific Dependency Graph",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--graphviz=target_deps.dot",
+                "--graphviz-target=${input:targetName}",
+                "..",
+                "&&",
+                "$C:/Program Files/Graphviz/bin/dot",
+                "-Tpng",
+                "target_deps.dot", 
+                "-o",
+                "${input:targetName}_deps.png"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "group": "none",
+            "problemMatcher": [],
+            "detail": "Generate dependency graph for specific target using Graphviz"
+        },
+        {
+            "label": "Generate Reduced Dependency Graph",
+            "type": "shell",
+            "command": "C:/Program Files/Graphviz/bin/tred",
+            "args": [
+                "deps.dot",
+                ">",
+                "deps_reduced.dot",
+                "&&",
+                "C:/Program Files/Graphviz/bin",
+                "-Tpng",
+                "deps_reduced.dot",
+                "-o",
+                "dependency_graph_reduced.png"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/build",
+                "shell": {
+                    "executable": "cmd.exe",
+                    "args": ["/c"]
+                }
+            },
+            "group": "none",
+            "problemMatcher": [],
+            "detail": "Generate reduced dependency graph (removes transitive edges)",
+            "dependsOn": "Generate Dependency Graph"
+        },
+        {
+            "label": "Generate Project-Only Dependency Graph",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--graphviz=project_deps.dot",
+                "..",
+                "&&",
+                "findstr",
+                "/V",
+                "\"pico_stdlib hardware_ pico_\"",
+                "project_deps.dot",
+                ">",
+                "project_deps_filtered.dot",
+                "&&",
+                "\"C:/Program Files/Graphviz/bin/dot\"",
+                "-Tpng",
+                "project_deps_filtered.dot",
+                "-o",
+                "project_deps.png"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/build",
+                "shell": {
+                    "executable": "cmd.exe",
+                    "args": ["/c"]
+                }
+            },
+            "group": "none",
+            "problemMatcher": [],
+            "detail": "Generate dependency graph excluding system and Pico SDK libraries"
+        }
+    ],
+    "inputs": [
+        {
+            "id": "targetName",
+            "type": "promptString",
+            "description": "Name of the target to generate dependency graph for",
+            "default": "kubisat_firmware"
         }
     ]
 }

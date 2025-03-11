@@ -31,6 +31,6 @@ SensorType BME280Wrapper::get_type() const {
     return SensorType::ENVIRONMENT;
 }
 
-bool BME280Wrapper::configure(const std::map<std::string, std::string>& config) {
+bool BME280Wrapper::configure(const std::map<std::string, [[maybe_unused]] std::string>& config) {
     return true;
 }
