@@ -39,6 +39,14 @@ class SystemStateManager {
         bool sd_card_mounted;
         /** @brief The UART verbosity level. */
         VerbosityLevel uart_verbosity;
+        /** @brief Flag indicating whether the SD card initialization was successful. */
+        bool sd_card_init_status;
+        /** @brief Flag indicating whether the radio initialization was successful. */
+        bool radio_init_status;
+        /** @brief Flag indicating whether the light sensor initialization was successful. */
+        bool light_sensor_init_status;
+        /** @brief Flag indicating whether the environment sensor initialization was successful. */
+        bool env_sensor_init_status;
         /** @brief Mutex for thread-safe access to the system state. */
         recursive_mutex_t mutex_;
     
@@ -47,10 +55,14 @@ class SystemStateManager {
          * @details Initializes the system state and mutex.
          */
         SystemStateManager() :
-            pending_bootloader_reset(false),
-            gps_collection_paused(false),
-            sd_card_mounted(false),
-            uart_verbosity(VerbosityLevel::DEBUG)
+        pending_bootloader_reset(false),
+        gps_collection_paused(false),
+        sd_card_mounted(false),
+        uart_verbosity(VerbosityLevel::DEBUG),
+        sd_card_init_status(false),
+        radio_init_status(false),
+        light_sensor_init_status(false),
+        env_sensor_init_status(false)
         {
             recursive_mutex_init(&mutex_);
         }
@@ -155,6 +167,69 @@ class SystemStateManager {
         void set_uart_verbosity(VerbosityLevel level) {
             recursive_mutex_enter_blocking(&mutex_);
             uart_verbosity = level;
+            recursive_mutex_exit(&mutex_);
+        }
+    
+        /**
+         * @brief Checks if the radio initialization was successful.
+         * @return True if the radio initialization was successful, false otherwise.
+         */
+        bool is_radio_init_ok() const {
+            recursive_mutex_enter_blocking(const_cast<recursive_mutex_t*>(&mutex_));
+            bool result = radio_init_status;
+            recursive_mutex_exit(const_cast<recursive_mutex_t*>(&mutex_));
+            return result;
+        }
+    
+        /**
+         * @brief Sets whether the radio initialization was successful.
+         * @param[in] status True if the radio initialization was successful, false otherwise.
+         */
+        void set_radio_init_ok(bool status) {
+            recursive_mutex_enter_blocking(&mutex_);
+            radio_init_status = status;
+            recursive_mutex_exit(&mutex_);
+        }
+    
+        /**
+         * @brief Checks if the light sensor initialization was successful.
+         * @return True if the light sensor initialization was successful, false otherwise.
+         */
+        bool is_light_sensor_init_ok() const {
+            recursive_mutex_enter_blocking(const_cast<recursive_mutex_t*>(&mutex_));
+            bool result = light_sensor_init_status;
+            recursive_mutex_exit(const_cast<recursive_mutex_t*>(&mutex_));
+            return result;
+        }
+    
+        /**
+         * @brief Sets whether the light sensor initialization was successful.
+         * @param[in] status True if the light sensor initialization was successful, false otherwise.
+         */
+        void set_light_sensor_init_ok(bool status) {
+            recursive_mutex_enter_blocking(&mutex_);
+            light_sensor_init_status = status;
+            recursive_mutex_exit(&mutex_);
+        }
+    
+        /**
+         * @brief Checks if the environment sensor initialization was successful.
+         * @return True if the environment sensor initialization was successful, false otherwise.
+         */
+        bool is_env_sensor_init_ok() const {
+            recursive_mutex_enter_blocking(const_cast<recursive_mutex_t*>(&mutex_));
+            bool result = env_sensor_init_status;
+            recursive_mutex_exit(const_cast<recursive_mutex_t*>(&mutex_));
+            return result;
+        }
+    
+        /**
+         * @brief Sets whether the environment sensor initialization was successful.
+         * @param[in] status True if the environment sensor initialization was successful, false otherwise.
+         */
+        void set_env_sensor_init_ok(bool status) {
+            recursive_mutex_enter_blocking(&mutex_);
+            env_sensor_init_status = status;
             recursive_mutex_exit(&mutex_);
         }
     };

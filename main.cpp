@@ -36,7 +36,7 @@ void core1_entry() {
             
             if (TelemetryManager::get_instance().is_telemetry_flush_time(telemetry_collection_counter)) {
                 TelemetryManager::get_instance().flush_telemetry();
-                TelemetryManager::get_instance().flush_sensor_data();
+                telemetry_collection_counter = 0;
             }
         }
 
@@ -97,10 +97,12 @@ bool init_pico_hw() {
 }
 
 bool init_modules(){
-    bool radio_init_status = false;
-    radio_init_status = initialize_radio();
+    bool radio_init_status = initialize_radio();
+    SystemStateManager::get_instance().set_radio_init_ok(radio_init_status);
     
     bool sd_init_status = fs_init();
+    SystemStateManager::get_instance().set_sd_card_mounted(sd_init_status);
+    
     if (sd_init_status) {
         FILE *fp = fopen(LOG_FILENAME, "w");
         if (fp) {
@@ -140,9 +142,13 @@ bool init_modules(){
     send_frame_lora(boot);
 
     uart_print("Initializing sensors...", VerbosityLevel::DEBUG);
+
     SensorWrapper& sensor_wrapper = SensorWrapper::get_instance();
     bool light_sensor_init = sensor_wrapper.sensor_init(SensorType::LIGHT, SENSORS_I2C_PORT);
+    SystemStateManager::get_instance().set_light_sensor_init_ok(light_sensor_init);
+
     bool env_sensor_init = sensor_wrapper.sensor_init(SensorType::ENVIRONMENT, SENSORS_I2C_PORT);
+    SystemStateManager::get_instance().set_env_sensor_init_ok(env_sensor_init);
 
     if (!light_sensor_init || !env_sensor_init) {
         uart_print("One or more sensors failed to initialize", VerbosityLevel::WARNING);
