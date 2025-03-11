@@ -1,6 +1,6 @@
 #include "DS3231.h"
 #include "utils.h"
-#include <stdio.h> 
+#include <cstdio> 
 #include <mutex>  
 #include "event_manager.h"
 #include "NMEA_data.h"
