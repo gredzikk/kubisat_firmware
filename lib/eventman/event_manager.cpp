@@ -28,7 +28,29 @@
  * @ingroup EventManagement
  */
 bool EventManager::init() {
-    return load_from_storage();
+    if (!SystemStateManager::get_instance().is_sd_card_mounted()) {
+        uart_print("Event manager initialized (storage not available)", VerbosityLevel::WARNING);
+        return false;
+    }
+
+    FILE* file = fopen(EVENT_LOG_FILE, "w");
+    if (!file) {
+        file = fopen(EVENT_LOG_FILE, "w");
+        if (file) {
+            fclose(file);
+            uart_print("Created new event log", VerbosityLevel::INFO);
+        }
+        else {
+            uart_print("Failed to create event log", VerbosityLevel::ERROR);
+            return false;
+        }
+    }
+    else {
+        fclose(file);
+    }
+
+    uart_print("Event manager initialized", VerbosityLevel::INFO);
+    return true;
 }
 
 
