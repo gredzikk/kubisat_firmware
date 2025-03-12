@@ -121,20 +121,17 @@ public:
     static DS3231& get_instance();
 
     /**
-     * @brief Sets the time on the DS3231 clock
-     * 
-     * @param[in] data Pointer to a ds3231_data_t structure with time information
+     * @brief Sets the RTC time using a Unix timestamp
+     * @param unix_time Time in seconds since Unix epoch
      * @return 0 on success, -1 on failure
      */
-    int set_time(ds3231_data_t *data);
+    int set_time(time_t unix_time);
     
     /**
-     * @brief Gets the current time from the DS3231 clock
-     * 
-     * @param[out] data Pointer to a ds3231_data_t structure to store time information
-     * @return 0 on success, -1 on failure
+     * @brief Gets the current RTC time as Unix timestamp
+     * @return Unix timestamp or -1 on error
      */
-    int get_time(ds3231_data_t *data);
+    time_t get_time();
     
     /**
      * @brief Reads the current temperature from the DS3231
@@ -144,27 +141,6 @@ public:
      */
     int read_temperature(float *resolution);
 
-    /**
-     * @brief Sets the time using a Unix timestamp
-     * 
-     * @param[in] unix_time Time as seconds since Unix epoch (1970-01-01 00:00:00 UTC)
-     * @return 0 on success, -1 on failure
-     */
-    int set_unix_time(time_t unix_time);
-    
-    /**
-     * @brief Gets the current time as a Unix timestamp
-     * 
-     * @return Unix timestamp, or -1 on error
-     */
-    time_t get_unix_time();
-    
-    /**
-     * @brief Enables the DS3231 clock oscillator
-     * 
-     * @return 0 on success, -1 on failure
-     */
-    int clock_enable();
 
     /**
      * @brief Gets the current timezone offset

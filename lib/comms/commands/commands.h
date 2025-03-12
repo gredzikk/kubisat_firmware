@@ -12,6 +12,7 @@ std::vector<Frame> handle_time(const std::string& param, OperationType operation
 std::vector<Frame> handle_timezone_offset(const std::string& param, OperationType operationType);
 std::vector<Frame> handle_clock_sync_interval(const std::string& param, OperationType operationType);
 std::vector<Frame> handle_get_last_sync_time(const std::string& param, OperationType operationType);
+std::vector<Frame> handle_get_internal_temperature(const std::string& param, OperationType operationType);
 
 
 // DIAG
