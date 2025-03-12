@@ -50,7 +50,7 @@ const char DELIMITER = ';';
  * @brief Standard error codes for command responses
  * @ingroup Protocol
  */
-enum class ErrorCode {
+enum class ErrorCode : uint8_t {
     PARAM_UNNECESSARY,    // Parameter provided but not needed
     PARAM_REQUIRED,       // Required parameter missing
     PARAM_INVALID,        // Parameter has invalid format or value
@@ -69,7 +69,7 @@ enum class ErrorCode {
  * @brief Represents the type of operation being performed.
  * @ingroup Protocol
  */
-enum class OperationType {
+enum class OperationType : uint8_t {
     /** @brief Get data. */
     GET,
     /** @brief Set data. */
@@ -92,7 +92,7 @@ enum class OperationType {
  * @brief Represents the access level required to execute a command.
  * @ingroup Protocol
  */
-enum class CommandAccessLevel {
+enum class CommandAccessLevel : uint8_t {
     /** @brief No access allowed. */
     NONE,
     /** @brief Read-only access. */
@@ -110,7 +110,7 @@ enum class CommandAccessLevel {
  * @brief Represents the unit of measurement for a payload value.
  * @ingroup Protocol
  */
-enum class ValueUnit {
+enum class ValueUnit : uint8_t {
     /** @brief Unit is undefined. */
     UNDEFINED,
     /** @brief Unit is seconds. */
@@ -134,7 +134,7 @@ enum class ValueUnit {
  * @brief Represents the type of exception that occurred during command execution.
  * @ingroup Protocol
  */
-enum class ExceptionType {
+enum class ExceptionType : uint8_t {
     /** @brief No exception. */
     NONE,
     /** @brief Operation not allowed. */
@@ -154,7 +154,7 @@ enum class ExceptionType {
  * @brief Represents the communication interface being used.
  * @ingroup Protocol
  */
-enum class Interface {
+enum class Interface : uint8_t {
     /** @brief UART interface. */
     UART,
     /** @brief LoRa interface. */

@@ -47,9 +47,9 @@ std::vector<Frame> handle_list_files([[maybe_unused]] const std::string& param, 
     DIR* dir;
     struct dirent* ent;
     int file_count = 0; 
-    if ((dir = opendir("/")) != NULL) {
+    if ((dir = opendir("/")) != nullptr) {
         // First, count the number of files
-        while ((ent = readdir(dir)) != NULL) {
+        while ((ent = readdir(dir)) != nullptr) {
             const char* filename = ent->d_name;
             if (strcmp(filename, ".") == 0 || strcmp(filename, "..") == 0) {
                 continue;
@@ -63,8 +63,8 @@ std::vector<Frame> handle_list_files([[maybe_unused]] const std::string& param, 
 
         // Open the directory again to read file information
         dir = opendir("/");
-        if (dir != NULL) {
-            while ((ent = readdir(dir)) != NULL) {
+        if (dir != nullptr) {
+            while ((ent = readdir(dir)) != nullptr) {
                 const char* filename = ent->d_name;
 
                 // Skip "." and ".." directories
@@ -73,25 +73,26 @@ std::vector<Frame> handle_list_files([[maybe_unused]] const std::string& param, 
                 }
 
                 // Get file size
-                char filepath[256];
-                int written = snprintf(filepath, sizeof(filepath), "/%s", filename);
+                std::array<char, 256> filepath;
+                int written = snprintf(filepath.data(), filepath.size(), "/%s", filename);
                 if (written < 0 || written >= static_cast<int>(sizeof(filepath))) {
                     continue; // Skip this file if path is too long
                 }
 
-                FILE* file = fopen(filepath, "rb");
+                FILE* file = fopen(filepath.data(), "rb");
                 size_t file_size = 0;
 
-                if (file != NULL) {
+                if (file != nullptr)
+                {
                     fseek(file, 0, SEEK_END);
                     file_size = ftell(file);
                     fclose(file);
                 }
 
                 // Create and send frame with filename and size
-                char file_info[512];
-                snprintf(file_info, sizeof(file_info), "%s:%zu", filename, file_size);
-                frames.push_back(frame_build(OperationType::SEQ, STORAGE_GROUP, LIST_FILES_COMMAND, file_info));
+                std::array<char, 512> file_info;
+                snprintf(file_info.data(), file_info.size(), "%s:%zu", filename, file_size);
+                frames.push_back(frame_build(OperationType::SEQ, STORAGE_GROUP, LIST_FILES_COMMAND, file_info.data()));
             }
             closedir(dir);
             frames.push_back(frame_build(OperationType::VAL, STORAGE_GROUP, LIST_FILES_COMMAND, "SEQ_DONE"));

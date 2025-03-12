@@ -14,7 +14,9 @@
 
 
 /** @brief Mutex for UART access protection */
-static mutex_t uart_mutex;
+namespace {
+    mutex_t uart_mutex;
+}
 
 
 /**

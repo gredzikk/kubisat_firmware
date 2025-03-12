@@ -27,7 +27,7 @@
 /**
  * @brief Verbosity levels for logging system
  */
-enum class VerbosityLevel {
+enum class VerbosityLevel : uint8_t {
     SILENT = 0,  /**< No output */
     ERROR = 1,   /**< Only critical errors */
     WARNING = 2, /**< Warnings and errors */
