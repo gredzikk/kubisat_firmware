@@ -58,7 +58,7 @@ inline constexpr int lora_cs_pin = 17;          // LoRa radio chip select
 inline constexpr int lora_reset_pin = 22;       // LoRa radio reset
 inline constexpr int lora_irq_pin = 28;         // LoRa hardware interrupt pin
 
-inline uint8_t lora_address_local = 37;         // address of this device
-inline uint8_t lora_address_remote = 21;        // destination to send to
+inline constexpr int lora_address_local = 37;         // address of this device
+inline constexpr int lora_address_remote = 21;        // destination to send to
 
 #endif 

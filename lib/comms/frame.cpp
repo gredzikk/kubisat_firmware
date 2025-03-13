@@ -2,7 +2,6 @@
 
 using CommandHandler = std::function<std::vector<Frame>(const std::string&, OperationType)>;
 extern std::map<uint32_t, CommandHandler> command_handlers;
-extern volatile uint16_t eventRegister;
 
 /**
  * @file frame.cpp
@@ -115,7 +114,7 @@ Frame frame_decode(const std::string& data) {
  *          Sends the response frame. If an error occurs, an error frame is built and sent.
  */
 void frame_process(const std::string& data, Interface interface) {
-    gpio_put(PICO_DEFAULT_LED_PIN, 0);
+    gpio_put(PICO_DEFAULT_LED_PIN, false);
 
     uart_print("Processing frame: " + data, VerbosityLevel::INFO);
     try {
@@ -124,7 +123,7 @@ void frame_process(const std::string& data, Interface interface) {
 
         std::vector<Frame> response_frames = execute_command(command_key, frame.value, frame.operationType);
 
-        gpio_put(PICO_DEFAULT_LED_PIN, 1);
+        gpio_put(PICO_DEFAULT_LED_PIN, true);
 
         // Send all responses through the same interface that received the command
         for (const auto& response_frame : response_frames) {

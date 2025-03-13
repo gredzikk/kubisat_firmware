@@ -62,7 +62,7 @@ void collect_gps_data() {
         return;
     }
 
-    static char raw_data_buffer[MAX_RAW_DATA_LENGTH];
+    std::array<char, MAX_RAW_DATA_LENGTH> raw_data_buffer;
     static int raw_data_index = 0;
 
     while (uart_is_readable(GPS_UART_PORT)) {
@@ -72,7 +72,7 @@ void collect_gps_data() {
             // End of message
             if (raw_data_index > 0) {
                 raw_data_buffer[raw_data_index] = '\0';
-                std::string message(raw_data_buffer);
+                std::string message(raw_data_buffer.data());
                 raw_data_index = 0;
 
                 // Split the message into tokens

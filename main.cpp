@@ -2,9 +2,6 @@
 
 #define LOG_FILENAME "/log.txt"
 
-char buffer[BUFFER_SIZE] = {0};
-int buffer_index = 0;
-
 void core1_entry() {
     uart_print("Starting core 1", VerbosityLevel::DEBUG);
     EventEmitter::emit(EventGroup::SYSTEM, SystemEvent::CORE1_START);
@@ -66,7 +63,7 @@ bool init_pico_hw() {
 
     gpio_init(PICO_DEFAULT_LED_PIN);
     gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
-    gpio_put(PICO_DEFAULT_LED_PIN, 1);
+    gpio_put(PICO_DEFAULT_LED_PIN, true);
     
     i2c_init(MAIN_I2C_PORT, 400 * 1000);
     gpio_set_function(MAIN_I2C_SCL_PIN, GPIO_FUNC_I2C);
@@ -76,7 +73,7 @@ bool init_pico_hw() {
 
     gpio_init(GPS_POWER_ENABLE_PIN);
     gpio_set_dir(GPS_POWER_ENABLE_PIN, GPIO_OUT);
-    gpio_put(GPS_POWER_ENABLE_PIN, 1); 
+    gpio_put(GPS_POWER_ENABLE_PIN, true); 
 
     i2c_init(SENSORS_I2C_PORT, 400 * 1000);
     gpio_set_function(SENSORS_I2C_SCL_PIN, GPIO_FUNC_I2C);
@@ -85,7 +82,7 @@ bool init_pico_hw() {
     gpio_pull_up(SENSORS_I2C_SDA_PIN);
     gpio_init(SENSORS_POWER_ENABLE_PIN);
     gpio_set_dir(SENSORS_POWER_ENABLE_PIN, GPIO_OUT);
-    gpio_put(SENSORS_POWER_ENABLE_PIN, 1);
+    gpio_put(SENSORS_POWER_ENABLE_PIN, true);
 
     SystemStateManager::get_instance();
 
@@ -166,7 +163,7 @@ int main()
     sleep_ms(100);
     multicore_launch_core1(core1_entry);
 
-    gpio_put(PICO_DEFAULT_LED_PIN, 0);
+    gpio_put(PICO_DEFAULT_LED_PIN, false);
 
     bool power_manager_init_status = PowerManager::get_instance().initialize();
     if (power_manager_init_status) {
@@ -185,7 +182,7 @@ int main()
     std::string boot_string = "System init completed @ " + std::to_string(to_ms_since_boot(get_absolute_time())) + " ms";
     uart_print(boot_string, VerbosityLevel::WARNING);
 
-    gpio_put(PICO_DEFAULT_LED_PIN, 1);
+    gpio_put(PICO_DEFAULT_LED_PIN, true);
 
     while (true)
     {

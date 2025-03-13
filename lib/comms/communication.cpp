@@ -1,12 +1,5 @@
 #include "communication.h"
 
-string outgoing;
-uint8_t msgCount = 0;
-long lastSendTime = 0;
-long lastReceiveTime = 0;
-long lastPrintTime = 0;
-unsigned long interval = 0;
-
 /**
  * @brief Initializes the LoRa radio module.
  * @return True if initialization was successful, false otherwise.

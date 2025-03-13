@@ -31,6 +31,7 @@
 #include <iomanip>
 #include <sstream>
 #include <cstdio>
+#include <array>
 #include "communication.h"
 #include <functional>
 
@@ -280,18 +281,17 @@ private:
      * @brief Current flush threshold (number of records that triggers a flush)
      */
     uint32_t flush_threshold = DEFAULT_FLUSH_THRESHOLD;
-
     /**
      * @brief Circular buffer for telemetry records
      */
-    TelemetryRecord telemetry_buffer[TELEMETRY_BUFFER_SIZE];
+    std::array<TelemetryRecord, TELEMETRY_BUFFER_SIZE> telemetry_buffer;
     size_t telemetry_buffer_count = 0;
     size_t telemetry_buffer_write_index = 0;
 
     /**
      * @brief Circular buffer for sensor data records
      */
-    SensorDataRecord sensor_data_buffer[TELEMETRY_BUFFER_SIZE];
+    std::array<SensorDataRecord, TELEMETRY_BUFFER_SIZE> sensor_data_buffer;
 
     /**
      * @brief Mutex for thread-safe access to the telemetry buffer
