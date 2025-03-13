@@ -169,13 +169,11 @@ add_custom_command(
     VERBATIM
 )
 
-find_program(CLANG_TIDY_EXE NAMES "clang-tidy" DOC "Path to clang-tidy executable")
-if(CLANG_TIDY_EXE)
-  set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE}")
-  message(STATUS "Found clang-tidy: ${CLANG_TIDY_EXE}")
-else()
-  message(STATUS "clang-tidy not found.")
-endif()
+add_custom_target(dependency_graph
+    COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_CURRENT_SOURCE_DIR}/dependency_graphs"
+    COMMAND doxygen "${CMAKE_CURRENT_SOURCE_DIR}/graph-doxyfile"
+    COMMENT "Generating dependency graphs with Doxygen"
+)
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/documentation.cmake)
 

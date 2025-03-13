@@ -74,7 +74,7 @@
             "command": "cmake",
             "args": [
                 "--build",
-                "${workspaceFolder}/build", 
+                "${workspaceFolder}/build",
                 "--target",
                 "doc"
             ],
@@ -90,7 +90,7 @@
             "command": "cmake",
             "args": [
                 "--build",
-                "${workspaceFolder}/build", 
+                "${workspaceFolder}/build",
                 "--target",
                 "build_tests"
             ],
@@ -101,141 +101,54 @@
             "detail": "Build executables for test runner project"
         },
         {
-            "label": "CodeChecker Analyze",
-            "type": "shell",
-            "command": "CodeChecker",
-            "args": [
-                "analyze",
-                "${workspaceFolder}/build/compile_commands.json",
-                "--enable=all", 
-                "-o",
-                "${workspaceFolder}/codechecker_report"
-            ],
-            "group": "none",
-            "problemMatcher": []
-        },
-        {
-            "label": "CodeChecker Parse and View",
-            "type": "shell",
-            "command": "CodeChecker",
-            "args": [
-                "parse",
-                "${workspaceFolder}/codechecker_report",
-                "-e",
-                "html",
-                "-o",
-                "${workspaceFolder}/codechecker_report/report.html",
-                "&&",
-                "CodeChecker",
-                "server",
-                "--view",
-                "${workspaceFolder}/codechecker_report/report.html"
-            ],
-            "group": "none",
-            "problemMatcher": [],
-            "dependsOn": "CodeChecker Analyze"
-        },
-        {
             "label": "Generate Dependency Graph",
             "type": "shell",
             "command": "cmake",
             "args": [
                 "--graphviz=deps.dot",
-                "..",
-                "&&",
-                "$C:/Program Files/Graphviz/bin/dot",
-                "-Tpng",
-                "deps.dot",
-                "-o",
-                "dependency_graph.png"
+                ".."
             ],
             "options": {
                 "cwd": "${workspaceFolder}/build"
             },
             "group": "none",
             "problemMatcher": [],
-            "detail": "Generate complete dependency graph using Graphviz"
+            "detail": "Generate complete dependency graph using Graphviz",
+            "dependsOn": "Generate CMake Graphviz Dot File"
         },
         {
-            "label": "Generate Target-Specific Dependency Graph",
+            "label": "Convert Dependency Graph to PNG",
             "type": "shell",
-            "command": "cmake",
+            "command": "\"C:/Program Files/Graphviz/bin/dot\"",
             "args": [
-                "--graphviz=target_deps.dot",
-                "--graphviz-target=${input:targetName}",
-                "..",
-                "&&",
-                "$C:/Program Files/Graphviz/bin/dot",
                 "-Tpng",
-                "target_deps.dot", 
+                "${workspaceFolder}/build/deps.dot",
                 "-o",
-                "${input:targetName}_deps.png"
+                "${workspaceFolder}/build/dependency_graph.png"
             ],
             "options": {
-                "cwd": "${workspaceFolder}/build"
+                "cwd": "${workspaceFolder}"
             },
             "group": "none",
             "problemMatcher": [],
-            "detail": "Generate dependency graph for specific target using Graphviz"
-        },
-        {
-            "label": "Generate Reduced Dependency Graph",
-            "type": "shell",
-            "command": "C:/Program Files/Graphviz/bin/tred",
-            "args": [
-                "deps.dot",
-                ">",
-                "deps_reduced.dot",
-                "&&",
-                "C:/Program Files/Graphviz/bin",
-                "-Tpng",
-                "deps_reduced.dot",
-                "-o",
-                "dependency_graph_reduced.png"
-            ],
-            "options": {
-                "cwd": "${workspaceFolder}/build",
-                "shell": {
-                    "executable": "cmd.exe",
-                    "args": ["/c"]
-                }
-            },
-            "group": "none",
-            "problemMatcher": [],
-            "detail": "Generate reduced dependency graph (removes transitive edges)",
+            "detail": "Convert the .dot file to a .png image",
             "dependsOn": "Generate Dependency Graph"
         },
         {
-            "label": "Generate Project-Only Dependency Graph",
+            "label": "Generate All Dependency Graphs",
             "type": "shell",
             "command": "cmake",
             "args": [
-                "--graphviz=project_deps.dot",
-                "..",
-                "&&",
-                "findstr",
-                "/V",
-                "\"pico_stdlib hardware_ pico_\"",
-                "project_deps.dot",
-                ">",
-                "project_deps_filtered.dot",
-                "&&",
-                "\"C:/Program Files/Graphviz/bin/dot\"",
-                "-Tpng",
-                "project_deps_filtered.dot",
-                "-o",
-                "project_deps.png"
+                "--graphviz=all_deps.dot",
+                ".."
             ],
             "options": {
-                "cwd": "${workspaceFolder}/build",
-                "shell": {
-                    "executable": "cmd.exe",
-                    "args": ["/c"]
-                }
+                "cwd": "${workspaceFolder}/build"
             },
             "group": "none",
             "problemMatcher": [],
-            "detail": "Generate dependency graph excluding system and Pico SDK libraries"
+            "detail": "Generate all dependency graphs (.dot files)",
+            "dependsOn": "Compile Project"
         }
     ],
     "inputs": [

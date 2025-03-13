@@ -1,0 +1,60 @@
+digraph "main" {
+node [
+  fontsize = "12"
+];
+subgraph clusterLegend {
+  label = "Legend";
+  color = black;
+  edge [ style = invis ];
+  legendNode0 [ label = "Executable", shape = egg ];
+  legendNode1 [ label = "Static Library", shape = octagon ];
+  legendNode2 [ label = "Shared Library", shape = doubleoctagon ];
+  legendNode3 [ label = "Module Library", shape = tripleoctagon ];
+  legendNode4 [ label = "Interface Library", shape = pentagon ];
+  legendNode5 [ label = "Object Library", shape = hexagon ];
+  legendNode6 [ label = "Unknown Library", shape = septagon ];
+  legendNode7 [ label = "Custom Target", shape = box ];
+  legendNode0 -> legendNode1 [ style = solid ];
+  legendNode0 -> legendNode2 [ style = solid ];
+  legendNode0 -> legendNode3;
+  legendNode1 -> legendNode4 [ label = "Interface", style = dashed ];
+  legendNode2 -> legendNode5 [ label = "Private", style = dotted ];
+  legendNode3 -> legendNode6 [ style = solid ];
+  legendNode0 -> legendNode7;
+}
+    "node0" [ label = "BH1750_lib", shape = octagon ];
+    "node142" [ label = "BME280_lib", shape = octagon ];
+    "node143" [ label = "Comms_lib", shape = octagon ];
+    "node144" [ label = "LoRa_pico_lib", shape = octagon ];
+    "node145" [ label = "LoRa_print", shape = octagon ];
+    "node150" [ label = "commands_lib", shape = octagon ];
+    "node151" [ label = "Sensors_lib", shape = pentagon ];
+    "node168" [ label = "storage_lib", shape = octagon ];
+    "node169" [ label = "PowerManager_lib", shape = octagon ];
+    "node170" [ label = "eventman_lib", shape = octagon ];
+    "node174" [ label = "clock_lib", shape = octagon ];
+    "node195" [ label = "main", shape = egg ];
+    "node197" [ label = "telemetry_lib", shape = octagon ];
+    "node144" -> "node145"  // LoRa_pico_lib -> LoRa_print
+    "node143" -> "node144"  // Comms_lib -> LoRa_pico_lib
+    "node151" -> "node0" [ style = dashed ] // Sensors_lib -> BH1750_lib
+    "node151" -> "node142" [ style = dashed ] // Sensors_lib -> BME280_lib
+    "node150" -> "node151"  // commands_lib -> Sensors_lib
+    "node150" -> "node168"  // commands_lib -> storage_lib
+    "node143" -> "node150"  // Comms_lib -> commands_lib
+    "node170" -> "node169"  // eventman_lib -> PowerManager_lib
+    "node169" -> "node170"  // PowerManager_lib -> eventman_lib
+    "node169" -> "node168"  // PowerManager_lib -> storage_lib
+    "node195" -> "node143" [ style = dotted ] // main -> Comms_lib
+    "node195" -> "node144" [ style = dotted ] // main -> LoRa_pico_lib
+    "node195" -> "node169" [ style = dotted ] // main -> PowerManager_lib
+    "node195" -> "node151" [ style = dotted ] // main -> Sensors_lib
+    "node195" -> "node174" [ style = dotted ] // main -> clock_lib
+    "node195" -> "node170" [ style = dotted ] // main -> eventman_lib
+    "node195" -> "node168" [ style = dotted ] // main -> storage_lib
+    "node197" -> "node169"  // telemetry_lib -> PowerManager_lib
+    "node197" -> "node151"  // telemetry_lib -> Sensors_lib
+    "node197" -> "node174"  // telemetry_lib -> clock_lib
+    "node197" -> "node168"  // telemetry_lib -> storage_lib
+    "node195" -> "node197" [ style = dotted ] // main -> telemetry_lib
+}
