@@ -4,7 +4,7 @@ PROJECT_BRIEF          = "Dependency Analysis for KubiSat Firmware"
 OUTPUT_DIRECTORY       = doxygen-graph
 
 # Input settings
-INPUT                  = c:/Users/710_300704/dev/kubisat_firmware
+INPUT = C:/Users/Kuba/Desktop/inz/kubisat/software/kubisat_firmware
 EXCLUDE_PATTERNS       = */build/* */unity/* */release/* */pico-vfs/vendor/* */.pico-sdk/*
 RECURSIVE              = YES
 FILE_PATTERNS          = *.c *.cpp *.h *.hpp
@@ -32,7 +32,20 @@ MAX_DOT_GRAPH_DEPTH    = 0
 DOT_TRANSPARENT        = YES
 DOT_MULTI_TARGETS      = YES
 GENERATE_LEGEND        = YES
-
+UML_LOOK             = YES
+UML_LIMIT_NUM_FIELDS = 10
+EXTRACT_ALL          = YES
+CLASS_DIAGRAMS      = YES
+HIDE_UNDOC_RELATIONS = NO
+HAVE_DOT             = YES
+CLASS_GRAPH          = YES
+COLLABORATION_GRAPH  = YES
+UML_LOOK             = YES
+UML_LIMIT_NUM_FIELDS = 50
+TEMPLATE_RELATIONS   = YES
+DOT_GRAPH_MAX_NODES  = 100
+MAX_DOT_GRAPH_DEPTH  = 0
+DOT_TRANSPARENT      = YES
 # Disable other output formats
 GENERATE_LATEX         = NO
 GENERATE_XML           = NO

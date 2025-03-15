@@ -3,10 +3,6 @@
 #ifndef CMAKE_BUILD_NUMBER_HEADER
 #define CMAKE_BUILD_NUMBER_HEADER
 
-<<<<<<< HEAD
-#define BUILD_NUMBER 496
-=======
-#define BUILD_NUMBER 499
->>>>>>> 98e8e8494b9b3673d7737551ad6281c285cd7fe8
+#define BUILD_NUMBER 501
 
 #endif
