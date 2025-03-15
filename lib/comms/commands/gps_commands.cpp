@@ -35,6 +35,14 @@ std::vector<Frame> handle_gps_power_status(const std::string& param, OperationTy
     std::string error_str;
 
     if (operationType == OperationType::SET) {
+        // command allowed only in ground mode
+        SystemOperatingMode mode = SystemStateManager::get_instance().get_operating_mode();
+        if (mode == SystemOperatingMode::BATTERY_POWERED) {
+            error_str = error_code_to_string(ErrorCode::INVALID_OPERATION);
+            frames.push_back(frame_build(OperationType::ERR, GPS_GROUP, POWER_STATUS_COMMAND, error_str));
+            return frames;
+        }
+
         if (param.empty()) {
             error_str = error_code_to_string(ErrorCode::PARAM_REQUIRED);
             frames.push_back(frame_build(OperationType::ERR, GPS_GROUP, POWER_STATUS_COMMAND, error_str));
@@ -92,6 +100,14 @@ std::vector<Frame> handle_enable_gps_uart_passthrough(const std::string& param, 
     std::string error_str;
 
     if (!(operationType == OperationType::SET)) {
+        error_str = error_code_to_string(ErrorCode::INVALID_OPERATION);
+        frames.push_back(frame_build(OperationType::ERR, GPS_GROUP, PASSTHROUGH_COMMAND, error_str));
+        return frames;
+    }
+
+    // disable command if in battery mode
+    SystemOperatingMode mode = SystemStateManager::get_instance().get_operating_mode();
+    if (mode == SystemOperatingMode::BATTERY_POWERED) {
         error_str = error_code_to_string(ErrorCode::INVALID_OPERATION);
         frames.push_back(frame_build(OperationType::ERR, GPS_GROUP, PASSTHROUGH_COMMAND, error_str));
         return frames;

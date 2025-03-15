@@ -1,3 +1,7 @@
+#include "communication.h"
+
+#define MAX_PACKET_SIZE 255
+
 /**
  * @brief Extract and process frames from a buffer
  * @param buffer The buffer containing potential frame data

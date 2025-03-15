@@ -154,6 +154,21 @@ bool init_modules(){
     return sd_init_status && radio_init_status;
 }
 
+void define_system_operating_mode() {
+    // If system is running but measured battery voltage is below this threshold it means that power is sourced from USB
+    static constexpr float BAT_VOLTAGE_THRESHOLD = 2.4f;
+    // If system is running but measured current discharge is below this threshold it means that power is sourced from USB
+    static constexpr uint8_t current_discharge_threshold = 40;    
+    float battery_voltage = PowerManager::get_instance().get_voltage_battery();
+    uint8_t current_discharge = PowerManager::get_instance().get_current_draw();
+
+    if (battery_voltage < BAT_VOLTAGE_THRESHOLD && current_discharge < current_discharge_threshold) {
+        SystemStateManager::get_instance().set_operating_mode(SystemOperatingMode::USB_POWERED);
+    } else {
+        SystemStateManager::get_instance().set_operating_mode(SystemOperatingMode::BATTERY_POWERED);
+    }
+}
+
 int main()
 {
     init_pico_hw();
@@ -161,9 +176,6 @@ int main()
     init_modules();
     EventEmitter::emit(EventGroup::SYSTEM, SystemEvent::BOOT);
     sleep_ms(100);
-    multicore_launch_core1(core1_entry);
-
-    gpio_put(PICO_DEFAULT_LED_PIN, false);
 
     bool power_manager_init_status = PowerManager::get_instance().initialize();
     if (power_manager_init_status) {
@@ -175,7 +187,13 @@ int main()
     } else {
         uart_print("Power manager init error", VerbosityLevel::ERROR);
     }
-    
+
+    define_system_operating_mode();
+
+    multicore_launch_core1(core1_entry);
+
+    gpio_put(PICO_DEFAULT_LED_PIN, false);
+
     Frame boot = frame_build(OperationType::RES, 0, 0, "START");
     send_frame_lora(boot);
     

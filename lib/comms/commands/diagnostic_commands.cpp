@@ -157,7 +157,13 @@ std::vector<Frame> handle_verbosity(const std::string& param, OperationType oper
 std::vector<Frame> handle_enter_bootloader_mode(const std::string& param, OperationType operationType) {
     std::vector<Frame> frames;
     std::string error_msg;
-
+    SystemOperatingMode mode = SystemStateManager::get_instance().get_operating_mode();
+    if (mode == SystemOperatingMode::BATTERY_POWERED) {
+        error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
+        frames.push_back(frame_build(OperationType::ERR, 1, 9, error_msg));
+        return frames;
+    }
+    
     if (param != "USB") {
         error_msg = error_code_to_string(ErrorCode::PARAM_INVALID);
         frames.push_back(frame_build(OperationType::ERR, 1, 9, error_msg));

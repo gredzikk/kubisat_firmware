@@ -128,12 +128,21 @@ std::vector<Frame> handle_mount(const std::string& param, OperationType operatio
     std::vector<Frame> frames;
     std::string error_msg;
 
-    if (operationType == OperationType::GET) {
+    if (operationType == OperationType::GET) { 
+        //get always allowed
         bool state = SystemStateManager::get_instance().is_sd_card_mounted();
 
         frames.push_back(frame_build(OperationType::VAL, STORAGE_GROUP, MOUNT_COMMAND, std::to_string(state)));
         return frames;
-    } else if (operationType == OperationType::SET) {
+    } else if (operationType == OperationType::SET) { 
+        //set allowed only in ground mode
+        SystemOperatingMode mode = SystemStateManager::get_instance().get_operating_mode();
+        if (mode == SystemOperatingMode::BATTERY_POWERED) {
+            error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
+            frames.push_back(frame_build(OperationType::ERR, STORAGE_GROUP, MOUNT_COMMAND, error_msg));
+            return frames;
+        }
+
         if (param == "1") {
             if (fs_init()) {
                 frames.push_back(frame_build(OperationType::RES, STORAGE_GROUP, MOUNT_COMMAND, "SD_MOUNT_OK"));

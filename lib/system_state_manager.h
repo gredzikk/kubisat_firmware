@@ -22,6 +22,14 @@
 #include "pico/sync.h"
 
 /**
+ * @brief Enumeration of system operating modes.
+ */
+enum class SystemOperatingMode : uint8_t {
+    BATTERY_POWERED = 0, /**< Battery powered mode */
+    USB_POWERED = 1      /**< USB powered mode */
+};
+
+/**
  * @brief Manages the system state of the Kubisat firmware.
  * @details This class is a singleton that provides methods for getting and setting
  *          various system states, such as whether a bootloader reset is pending,
@@ -47,6 +55,8 @@ class SystemStateManager {
         bool light_sensor_init_status;
         /** @brief Flag indicating whether the environment sensor initialization was successful. */
         bool env_sensor_init_status;
+        /** @brief The system operating mode. */
+        SystemOperatingMode system_operating_mode;        
         /** @brief Mutex for thread-safe access to the system state. */
         recursive_mutex_t mutex_;
     
@@ -62,7 +72,8 @@ class SystemStateManager {
         sd_card_init_status(false),
         radio_init_status(false),
         light_sensor_init_status(false),
-        env_sensor_init_status(false)
+        env_sensor_init_status(false),
+        system_operating_mode(SystemOperatingMode::BATTERY_POWERED)
         {
             recursive_mutex_init(&mutex_);
         }
@@ -230,6 +241,27 @@ class SystemStateManager {
         void set_env_sensor_init_ok(bool status) {
             recursive_mutex_enter_blocking(&mutex_);
             env_sensor_init_status = status;
+            recursive_mutex_exit(&mutex_);
+        }
+
+        /**
+         * @brief Gets the system operating mode.
+         * @return The system operating mode.
+         */
+        SystemOperatingMode get_operating_mode() const {
+            recursive_mutex_enter_blocking(const_cast<recursive_mutex_t*>(&mutex_));
+            SystemOperatingMode result = system_operating_mode;
+            recursive_mutex_exit(const_cast<recursive_mutex_t*>(&mutex_));
+            return result;
+        }
+
+        /**
+         * @brief Sets the system operating mode.
+         * @param[in] mode The system operating mode.
+         */
+        void set_operating_mode(SystemOperatingMode mode) {
+            recursive_mutex_enter_blocking(&mutex_);
+            system_operating_mode = mode;
             recursive_mutex_exit(&mutex_);
         }
     };
