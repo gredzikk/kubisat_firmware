@@ -154,7 +154,7 @@ bool init_modules(){
     return sd_init_status && radio_init_status;
 }
 
-void define_system_operating_mode() {
+SystemOperatingMode define_system_operating_mode() {
     // If system is running but measured battery voltage is below this threshold it means that power is sourced from USB
     static constexpr float BAT_VOLTAGE_THRESHOLD = 2.4f;
     // If system is running but measured current discharge is below this threshold it means that power is sourced from USB
@@ -167,6 +167,8 @@ void define_system_operating_mode() {
     } else {
         SystemStateManager::get_instance().set_operating_mode(SystemOperatingMode::BATTERY_POWERED);
     }
+
+    return SystemStateManager::get_instance().get_operating_mode();
 }
 
 int main()
@@ -188,13 +190,15 @@ int main()
         uart_print("Power manager init error", VerbosityLevel::ERROR);
     }
 
-    define_system_operating_mode();
+    SystemOperatingMode current_mode = define_system_operating_mode();
 
     multicore_launch_core1(core1_entry);
 
     gpio_put(PICO_DEFAULT_LED_PIN, false);
 
-    Frame boot = frame_build(OperationType::RES, 0, 0, "START");
+    std::string mode_string = (current_mode == SystemOperatingMode::USB_POWERED) ? "USB" : "BATTERY";
+    uart_print("Operating mode: " + mode_string, VerbosityLevel::WARNING);
+    Frame boot = frame_build(OperationType::RES, 0, 0, "START_MODE_" + mode_string);
     send_frame_lora(boot);
     
     std::string boot_string = "System init completed @ " + std::to_string(to_ms_since_boot(get_absolute_time())) + " ms";
