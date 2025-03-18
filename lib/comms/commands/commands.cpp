@@ -27,6 +27,8 @@ using CommandMap = std::map<uint32_t, CommandHandler>;
 CommandMap command_handlers = {
     {((static_cast<uint32_t>(1) << 8) | static_cast<uint32_t>(0)), handle_get_commands_list},               // Group 1, Command 0
     {((static_cast<uint32_t>(1) << 8) | static_cast<uint32_t>(1)), handle_get_build_version},               // Group 1, Command 1
+    {((static_cast<uint32_t>(1) << 8) | static_cast<uint32_t>(2)), handle_get_power_mode},                  // Group 1, Command 2
+    {((static_cast<uint32_t>(1) << 8) | static_cast<uint32_t>(3)), handle_get_uptime},                      // Group 1, Command 3
     {((static_cast<uint32_t>(1) << 8) | static_cast<uint32_t>(8)), handle_verbosity},                       // Group 1, Command 9
     {((static_cast<uint32_t>(1) << 8) | static_cast<uint32_t>(9)), handle_enter_bootloader_mode},           // Group 1, Command 9
     {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(0)), handle_get_power_manager_ids},           // Group 2, Command 0
@@ -38,12 +40,7 @@ CommandMap command_handlers = {
     {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(7)), handle_get_current_draw},                // Group 2, Command 7
     {((static_cast<uint32_t>(3) << 8) | static_cast<uint32_t>(0)), handle_time},                            // Group 3, Command 0
     {((static_cast<uint32_t>(3) << 8) | static_cast<uint32_t>(1)), handle_timezone_offset},                 // Group 3, Command 1
-    {((static_cast<uint32_t>(3) << 8) | static_cast<uint32_t>(2)), handle_clock_sync_interval},             // Group 3, Command 2         
-    {((static_cast<uint32_t>(3) << 8) | static_cast<uint32_t>(3)), handle_get_last_sync_time},              // Group 3, Command 3
     {((static_cast<uint32_t>(3) << 8) | static_cast<uint32_t>(4)), handle_get_internal_temperature},        // Group 3, Command 4
-    {((static_cast<uint32_t>(4) << 8) | static_cast<uint32_t>(0)), handle_get_sensor_data},                 // Group 4, Command 0
-    {((static_cast<uint32_t>(4) << 8) | static_cast<uint32_t>(1)), handle_sensor_config},                   // Group 4, Command 1
-    {((static_cast<uint32_t>(4) << 8) | static_cast<uint32_t>(3)), handle_get_sensor_list},                 // Group 4, Command 3
     {((static_cast<uint32_t>(5) << 8) | static_cast<uint32_t>(1)), handle_get_last_events},                 // Group 5, Command 1
     {((static_cast<uint32_t>(5) << 8) | static_cast<uint32_t>(2)), handle_get_event_count},                 // Group 5, Command 2
     {((static_cast<uint32_t>(6) << 8) | static_cast<uint32_t>(0)), handle_list_files},                      // Group 6, Command 0

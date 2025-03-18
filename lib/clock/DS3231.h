@@ -157,51 +157,12 @@ public:
     void set_timezone_offset(int16_t offset_minutes);
     
     /**
-     * @brief Gets the clock synchronization interval
-     * 
-     * @return Sync interval in minutes
-     */
-    uint32_t get_clock_sync_interval() const;
-    
-    /**
-     * @brief Sets the clock synchronization interval
-     * 
-     * @param interval_minutes Interval in minutes (1-43200)
-     */
-    void set_clock_sync_interval(uint32_t interval_minutes);
-    
-    /**
-     * @brief Gets the timestamp of the last clock synchronization
-     * 
-     * @return Unix timestamp of last sync, 0 if never synced
-     */
-    time_t get_last_sync_time() const;
-    
-    /**
-     * @brief Updates the last sync time to current time
-     */
-    void update_last_sync_time();
-    
-    /**
      * @brief Gets the current local time (including timezone offset)
      * 
      * @return Unix timestamp adjusted for timezone, or -1 on error
      */
     time_t get_local_time();
 
-    /**
-     * @brief Checks if clock synchronization is needed
-     * 
-     * @return true if sync interval has elapsed since last sync, false otherwise
-     */
-    bool is_sync_needed();
-    
-    /**
-     * @brief Synchronizes clock with GPS data
-     * 
-     * @return true if sync successful, false otherwise
-     */
-    bool sync_clock_with_gps();
 
     
 private:

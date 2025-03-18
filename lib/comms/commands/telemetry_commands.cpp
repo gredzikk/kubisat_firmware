@@ -2,9 +2,9 @@
 #include "communication.h"
 #include "telemetry_manager.h"
 
-#define TELEMETRY_GROUP 8
-#define GET_LAST_TELEMETRY_RECORD_COMMAND 2
-#define GET_LAST_SENSOR_RECORD_COMMAND 3 
+static constexpr uint8_t telemetry_commands_group = 8;
+static constexpr uint8_t last_telemetry_command_id = 2;
+static constexpr uint8_t last_sensor_command_id = 3;
 
 /**
  * @defgroup TelemetryBufferCommands Telemetry Buffer Commands
@@ -35,7 +35,7 @@ std::vector<Frame> handle_get_last_telemetry_record([[maybe_unused]] const std::
 
     if (operationType != OperationType::GET) {
         error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
-        frames.push_back(frame_build(OperationType::ERR, TELEMETRY_GROUP, GET_LAST_TELEMETRY_RECORD_COMMAND, error_msg));
+        frames.push_back(frame_build(OperationType::ERR, telemetry_commands_group, last_telemetry_command_id, error_msg));
         return frames;
     }
 
@@ -43,10 +43,10 @@ std::vector<Frame> handle_get_last_telemetry_record([[maybe_unused]] const std::
 
     if (csv_data.empty()) {
         error_msg = "NO_DATA";
-        frames.push_back(frame_build(OperationType::ERR, TELEMETRY_GROUP, GET_LAST_SENSOR_RECORD_COMMAND, error_msg));
+        frames.push_back(frame_build(OperationType::ERR, telemetry_commands_group, last_sensor_command_id, error_msg));
         return frames;
     }
-    frames.push_back(frame_build(OperationType::VAL, TELEMETRY_GROUP, GET_LAST_TELEMETRY_RECORD_COMMAND, csv_data));
+    frames.push_back(frame_build(OperationType::VAL, telemetry_commands_group, last_telemetry_command_id, csv_data));
 
     return frames;
 }
@@ -68,7 +68,7 @@ std::vector<Frame> handle_get_last_sensor_record([[maybe_unused]]const std::stri
 
     if (operationType != OperationType::GET) {
         error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
-        frames.push_back(frame_build(OperationType::ERR, TELEMETRY_GROUP, GET_LAST_SENSOR_RECORD_COMMAND, error_msg));
+        frames.push_back(frame_build(OperationType::ERR, telemetry_commands_group, last_sensor_command_id, error_msg));
         return frames;
     }
 
@@ -76,11 +76,11 @@ std::vector<Frame> handle_get_last_sensor_record([[maybe_unused]]const std::stri
 
     if (csv_data.empty()) {
         error_msg = "NO_DATA";
-        frames.push_back(frame_build(OperationType::ERR, TELEMETRY_GROUP, GET_LAST_SENSOR_RECORD_COMMAND, error_msg));
+        frames.push_back(frame_build(OperationType::ERR, telemetry_commands_group, last_sensor_command_id, error_msg));
         return frames;
     }
 
-    frames.push_back(frame_build(OperationType::VAL, TELEMETRY_GROUP, GET_LAST_SENSOR_RECORD_COMMAND, csv_data));
+    frames.push_back(frame_build(OperationType::VAL, telemetry_commands_group, last_sensor_command_id, csv_data));
 
     return frames;
 }

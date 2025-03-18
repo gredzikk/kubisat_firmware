@@ -7,10 +7,10 @@
 #include <errno.h>
 #include "dirent.h"
 
-#define STORAGE_GROUP 6
+static constexpr uint8_t storage_commands_group_id = 6;
+static constexpr uint8_t list_files_command_id = 0;
+static constexpr uint8_t mount_command_id = 4;
 
-#define LIST_FILES_COMMAND 0
-#define MOUNT_COMMAND 4
 /**
  * @defgroup StorageCommands Storage Commands
  * @brief Commands for interacting with the SD card storage.
@@ -40,7 +40,7 @@ std::vector<Frame> handle_list_files([[maybe_unused]] const std::string& param, 
 
     if (operationType != OperationType::GET) {
         error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
-        frames.push_back(frame_build(OperationType::ERR, STORAGE_GROUP, LIST_FILES_COMMAND, error_msg));
+        frames.push_back(frame_build(OperationType::ERR, storage_commands_group_id, list_files_command_id, error_msg));
         return frames;
     }
 
@@ -59,7 +59,7 @@ std::vector<Frame> handle_list_files([[maybe_unused]] const std::string& param, 
         closedir(dir);
 
         // Send the number of files
-        frames.push_back(frame_build(OperationType::VAL, STORAGE_GROUP, LIST_FILES_COMMAND, std::to_string(file_count)));
+        frames.push_back(frame_build(OperationType::VAL, storage_commands_group_id, list_files_command_id, std::to_string(file_count)));
 
         // Open the directory again to read file information
         dir = opendir("/");
@@ -92,18 +92,18 @@ std::vector<Frame> handle_list_files([[maybe_unused]] const std::string& param, 
                 // Create and send frame with filename and size
                 std::array<char, 512> file_info;
                 snprintf(file_info.data(), file_info.size(), "%s:%zu", filename, file_size);
-                frames.push_back(frame_build(OperationType::SEQ, STORAGE_GROUP, LIST_FILES_COMMAND, file_info.data()));
+                frames.push_back(frame_build(OperationType::SEQ, storage_commands_group_id, list_files_command_id, file_info.data()));
             }
             closedir(dir);
-            frames.push_back(frame_build(OperationType::VAL, STORAGE_GROUP, LIST_FILES_COMMAND, "SEQ_DONE"));
+            frames.push_back(frame_build(OperationType::VAL, storage_commands_group_id, list_files_command_id, "SEQ_DONE"));
             return frames;
         } else {
             error_msg = error_code_to_string(ErrorCode::INTERNAL_FAIL_TO_READ);
-            frames.push_back(frame_build(OperationType::ERR, STORAGE_GROUP, LIST_FILES_COMMAND, error_msg));
+            frames.push_back(frame_build(OperationType::ERR, storage_commands_group_id, list_files_command_id, error_msg));
             return frames;
         }
     } else {
-        frames.push_back(frame_build(OperationType::ERR, STORAGE_GROUP, LIST_FILES_COMMAND, error_msg));
+        frames.push_back(frame_build(OperationType::ERR, storage_commands_group_id, list_files_command_id, error_msg));
         return frames;
     }
 }
@@ -132,45 +132,45 @@ std::vector<Frame> handle_mount(const std::string& param, OperationType operatio
         //get always allowed
         bool state = SystemStateManager::get_instance().is_sd_card_mounted();
 
-        frames.push_back(frame_build(OperationType::VAL, STORAGE_GROUP, MOUNT_COMMAND, std::to_string(state)));
+        frames.push_back(frame_build(OperationType::VAL, storage_commands_group_id, mount_command_id, std::to_string(state)));
         return frames;
     } else if (operationType == OperationType::SET) { 
         //set allowed only in ground mode
         SystemOperatingMode mode = SystemStateManager::get_instance().get_operating_mode();
         if (mode == SystemOperatingMode::BATTERY_POWERED) {
             error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
-            frames.push_back(frame_build(OperationType::ERR, STORAGE_GROUP, MOUNT_COMMAND, error_msg));
+            frames.push_back(frame_build(OperationType::ERR, storage_commands_group_id, mount_command_id, error_msg));
             return frames;
         }
 
         if (param == "1") {
             if (fs_init()) {
-                frames.push_back(frame_build(OperationType::RES, STORAGE_GROUP, MOUNT_COMMAND, "SD_MOUNT_OK"));
+                frames.push_back(frame_build(OperationType::RES, storage_commands_group_id, mount_command_id, "SD_MOUNT_OK"));
                 return frames;
             } else {
                 error_msg = error_code_to_string(ErrorCode::FAIL_TO_SET);
-                frames.push_back(frame_build(OperationType::ERR, STORAGE_GROUP, MOUNT_COMMAND, error_msg));
+                frames.push_back(frame_build(OperationType::ERR, storage_commands_group_id, mount_command_id, error_msg));
                 return frames;
             }
         } else if (param == "0") {
             if (fs_unmount("/") == 0) {
                 if (SystemStateManager::get_instance().is_sd_card_mounted()) {
-                    frames.push_back(frame_build(OperationType::RES, STORAGE_GROUP, MOUNT_COMMAND, "SD_UNMOUNT_OK"));
+                    frames.push_back(frame_build(OperationType::RES, storage_commands_group_id, mount_command_id, "SD_UNMOUNT_OK"));
                 }
                 return frames;
             } else {
                 error_msg = error_code_to_string(ErrorCode::FAIL_TO_SET);
-                frames.push_back(frame_build(OperationType::ERR, STORAGE_GROUP, MOUNT_COMMAND, error_msg));
+                frames.push_back(frame_build(OperationType::ERR, storage_commands_group_id, mount_command_id, error_msg));
                 return frames;
             }
         } else {
             error_msg = error_code_to_string(ErrorCode::PARAM_INVALID);
-            frames.push_back(frame_build(OperationType::ERR, STORAGE_GROUP, MOUNT_COMMAND, error_msg));
+            frames.push_back(frame_build(OperationType::ERR, storage_commands_group_id, mount_command_id, error_msg));
             return frames;
         }
     } else {
         error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
-        frames.push_back(frame_build(OperationType::ERR, STORAGE_GROUP, MOUNT_COMMAND, error_msg));
+        frames.push_back(frame_build(OperationType::ERR, storage_commands_group_id, mount_command_id, error_msg));
         return frames;
     }
 }

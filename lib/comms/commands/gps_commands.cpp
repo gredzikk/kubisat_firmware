@@ -3,11 +3,11 @@
 #include <sstream> 
 #include "system_state_manager.h"
 
-#define GPS_GROUP 7
-#define POWER_STATUS_COMMAND 1
-#define PASSTHROUGH_COMMAND 2
-#define RMC_DATA_COMMAND 3
-#define GGA_DATA_COMMAND 4
+static constexpr uint8_t gps_commands_group_id = 7;
+static constexpr uint8_t power_status_command_id = 1;
+static constexpr uint8_t passthrough_command_id = 2;
+static constexpr uint8_t rmc_data_command_id = 3;
+static constexpr uint8_t gga_data_command_id = 4;
 
 /**
  * @defgroup GPSCommands GPS Commands
@@ -39,13 +39,13 @@ std::vector<Frame> handle_gps_power_status(const std::string& param, OperationTy
         SystemOperatingMode mode = SystemStateManager::get_instance().get_operating_mode();
         if (mode == SystemOperatingMode::BATTERY_POWERED) {
             error_str = error_code_to_string(ErrorCode::INVALID_OPERATION);
-            frames.push_back(frame_build(OperationType::ERR, GPS_GROUP, POWER_STATUS_COMMAND, error_str));
+            frames.push_back(frame_build(OperationType::ERR, gps_commands_group_id, power_status_command_id, error_str));
             return frames;
         }
 
         if (param.empty()) {
             error_str = error_code_to_string(ErrorCode::PARAM_REQUIRED);
-            frames.push_back(frame_build(OperationType::ERR, GPS_GROUP, POWER_STATUS_COMMAND, error_str));
+            frames.push_back(frame_build(OperationType::ERR, gps_commands_group_id, power_status_command_id, error_str));
             return frames;
         }
 
@@ -53,16 +53,16 @@ std::vector<Frame> handle_gps_power_status(const std::string& param, OperationTy
             int power_status = std::stoi(param);
             if (power_status != 0 && power_status != 1) {
                 error_str = error_code_to_string(ErrorCode::PARAM_INVALID);
-                frames.push_back(frame_build(OperationType::ERR, GPS_GROUP, POWER_STATUS_COMMAND, error_str));
+                frames.push_back(frame_build(OperationType::ERR, gps_commands_group_id, power_status_command_id, error_str));
                 return frames;
             }
             gpio_put(GPS_POWER_ENABLE_PIN, power_status);
             EventEmitter::emit(EventGroup::GPS, power_status ? GPSEvent::POWER_ON : GPSEvent::POWER_OFF);
-            frames.push_back(frame_build(OperationType::RES, GPS_GROUP, POWER_STATUS_COMMAND, std::to_string(power_status)));
+            frames.push_back(frame_build(OperationType::RES, gps_commands_group_id, power_status_command_id, std::to_string(power_status)));
             return frames;
         } catch (...) {
             error_str = error_code_to_string(ErrorCode::PARAM_INVALID);
-            frames.push_back(frame_build(OperationType::ERR, GPS_GROUP, POWER_STATUS_COMMAND, error_str));
+            frames.push_back(frame_build(OperationType::ERR, gps_commands_group_id, power_status_command_id, error_str));
             return frames;
         }
     }
@@ -70,12 +70,12 @@ std::vector<Frame> handle_gps_power_status(const std::string& param, OperationTy
     // GET operation
     if (!param.empty()) {
         error_str = error_code_to_string(ErrorCode::PARAM_UNNECESSARY);
-        frames.push_back(frame_build(OperationType::ERR, GPS_GROUP, POWER_STATUS_COMMAND, error_str));
+        frames.push_back(frame_build(OperationType::ERR, gps_commands_group_id, power_status_command_id, error_str));
         return frames;
     }
 
     bool power_status = gpio_get(GPS_POWER_ENABLE_PIN);
-    frames.push_back(frame_build(OperationType::VAL, GPS_GROUP, POWER_STATUS_COMMAND, std::to_string(power_status)));
+    frames.push_back(frame_build(OperationType::VAL, gps_commands_group_id, power_status_command_id, std::to_string(power_status)));
     return frames;
 }
 
@@ -101,7 +101,7 @@ std::vector<Frame> handle_enable_gps_uart_passthrough(const std::string& param, 
 
     if (!(operationType == OperationType::SET)) {
         error_str = error_code_to_string(ErrorCode::INVALID_OPERATION);
-        frames.push_back(frame_build(OperationType::ERR, GPS_GROUP, PASSTHROUGH_COMMAND, error_str));
+        frames.push_back(frame_build(OperationType::ERR, gps_commands_group_id, passthrough_command_id, error_str));
         return frames;
     }
 
@@ -109,7 +109,7 @@ std::vector<Frame> handle_enable_gps_uart_passthrough(const std::string& param, 
     SystemOperatingMode mode = SystemStateManager::get_instance().get_operating_mode();
     if (mode == SystemOperatingMode::BATTERY_POWERED) {
         error_str = error_code_to_string(ErrorCode::INVALID_OPERATION);
-        frames.push_back(frame_build(OperationType::ERR, GPS_GROUP, PASSTHROUGH_COMMAND, error_str));
+        frames.push_back(frame_build(OperationType::ERR, gps_commands_group_id, passthrough_command_id, error_str));
         return frames;
     }
 
@@ -119,7 +119,7 @@ std::vector<Frame> handle_enable_gps_uart_passthrough(const std::string& param, 
         timeout_ms = param.empty() ? 60000u : std::stoul(param) * 1000;
     } catch (...) {
         error_str = error_code_to_string(ErrorCode::INVALID_VALUE);
-        frames.push_back(frame_build(OperationType::ERR, GPS_GROUP, PASSTHROUGH_COMMAND, error_str));
+        frames.push_back(frame_build(OperationType::ERR, gps_commands_group_id, passthrough_command_id, error_str));
         return frames;
     }
 
@@ -189,7 +189,7 @@ std::vector<Frame> handle_enable_gps_uart_passthrough(const std::string& param, 
     std::string response = "GPS UART BRIDGE EXIT: " + exit_reason;
     uart_print(response, VerbosityLevel::INFO);
     
-    frames.push_back(frame_build(OperationType::RES, GPS_GROUP, PASSTHROUGH_COMMAND, response));
+    frames.push_back(frame_build(OperationType::RES, gps_commands_group_id, passthrough_command_id, response));
     return frames;
 }
 
@@ -212,13 +212,13 @@ std::vector<Frame> handle_get_rmc_data(const std::string& param, OperationType o
 
     if (operationType != OperationType::GET) {
         error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
-        frames.push_back(frame_build(OperationType::ERR, GPS_GROUP, RMC_DATA_COMMAND, error_msg));
+        frames.push_back(frame_build(OperationType::ERR, gps_commands_group_id, rmc_data_command_id, error_msg));
         return frames;
     }
 
     if (!param.empty()) {
         error_msg = error_code_to_string(ErrorCode::PARAM_UNNECESSARY);
-        frames.push_back(frame_build(OperationType::ERR, GPS_GROUP, RMC_DATA_COMMAND, error_msg));
+        frames.push_back(frame_build(OperationType::ERR, gps_commands_group_id, rmc_data_command_id, error_msg));
         return frames;
     }
 
@@ -232,7 +232,7 @@ std::vector<Frame> handle_get_rmc_data(const std::string& param, OperationType o
         }
     }
 
-    frames.push_back(frame_build(OperationType::VAL, GPS_GROUP, RMC_DATA_COMMAND, ss.str()));
+    frames.push_back(frame_build(OperationType::VAL, gps_commands_group_id, rmc_data_command_id, ss.str()));
     return frames;
 }
 
@@ -255,13 +255,13 @@ std::vector<Frame> handle_get_gga_data(const std::string& param, OperationType o
 
     if (operationType != OperationType::GET) {
         error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
-        frames.push_back(frame_build(OperationType::ERR, GPS_GROUP, GGA_DATA_COMMAND, error_msg));
+        frames.push_back(frame_build(OperationType::ERR, gps_commands_group_id, gga_data_command_id, error_msg));
         return frames;
     }
 
     if (!param.empty()) {
         error_msg = error_code_to_string(ErrorCode::PARAM_UNNECESSARY);
-        frames.push_back(frame_build(OperationType::ERR, GPS_GROUP, GGA_DATA_COMMAND, error_msg));
+        frames.push_back(frame_build(OperationType::ERR, gps_commands_group_id, gga_data_command_id, error_msg));
         return frames;
     }
     
@@ -275,7 +275,7 @@ std::vector<Frame> handle_get_gga_data(const std::string& param, OperationType o
         }
     }
 
-    frames.push_back(frame_build(OperationType::VAL, GPS_GROUP, GGA_DATA_COMMAND, ss.str()));
+    frames.push_back(frame_build(OperationType::VAL, gps_commands_group_id, gga_data_command_id, ss.str()));
     return frames;
 }
 /** @} */ // end of GPSCommands group

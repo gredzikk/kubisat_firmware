@@ -167,53 +167,6 @@ void DS3231::set_timezone_offset(int16_t offset_minutes) {
     }
 }
 
-
-/**
- * @brief Gets the currently configured clock synchronization interval
- * 
- * @return The sync interval in minutes
- * @details Returns the current interval between clock synchronization attempts.
- *          This is the time after which is_sync_needed() will return true.
- * @ingroup DS3231_RTC
- */
-uint32_t DS3231::get_clock_sync_interval() const {
-    return sync_interval_minutes_;
-}
-
-
-/**
- * @brief Sets the clock synchronization interval
- * 
- * @param[in] interval_minutes The desired sync interval in minutes
- * @details Sets how frequently the clock should be synchronized with an external
- *          time source (such as GPS). The function validates that the interval is
- *          within a valid range (1 minute to 43200 minutes, which is 30 days).
- * @note This setting is stored in memory and does not persist across reboots.
- * @ingroup DS3231_RTC
- */
-void DS3231::set_clock_sync_interval(uint32_t interval_minutes) {
-    if (interval_minutes >= 1 && interval_minutes <= 43200) {
-        sync_interval_minutes_ = interval_minutes;
-    } else {
-        uart_print("Error: Invalid sync interval", VerbosityLevel::ERROR);
-    }
-}
-
-
-/**
- * @brief Gets the timestamp of the last successful clock synchronization
- * 
- * @return Unix timestamp of the last sync, or 0 if never synced
- * @details Returns the Unix timestamp of when the clock was last successfully
- *          synchronized with an external time source. A value of 0 indicates
- *          that the clock has never been synchronized.
- * @ingroup DS3231_RTC
- */
-time_t DS3231::get_last_sync_time() const {
-    return last_sync_time_;
-}
-
-
 /**
  * @brief Gets the current local time by applying the timezone offset to UTC time
  * 
@@ -231,77 +184,6 @@ time_t DS3231::get_local_time() {
     return utc_time + (timezone_offset_minutes_ * 60);
 }
 
-
-/**
- * @brief Determines if the clock needs synchronization based on the configured interval
- * 
- * @return true if synchronization is needed, false otherwise
- * @details This method checks if the clock has ever been synchronized (last_sync_time_ is 0)
- *          or if the time elapsed since the last synchronization exceeds the configured
- *          sync_interval_minutes_. If the current time cannot be determined, it assumes
- *          synchronization is needed.
- * @ingroup DS3231_RTC
- */
-bool DS3231::is_sync_needed() {
-    if (last_sync_time_ == 0) {
-        return true;
-    }
-    
-    time_t current_time = get_time();
-    if (current_time == -1) {
-        return true;
-    }
-    
-    time_t time_since_last_sync = current_time - last_sync_time_;
-    uint32_t minutes_since_last_sync = time_since_last_sync / 60;
-    
-    return minutes_since_last_sync >= sync_interval_minutes_;
-}
-
-
-/**
- * @brief Synchronizes the RTC with time from GPS
- * 
- * @param[in] nmea_data Reference to NMEA data containing time information
- * @return true if synchronization succeeded, false if it failed
- * @details This method attempts to extract valid time data from the provided NMEA data
- *          and use it to update the RTC. It performs validity checks on the GPS data
- *          before attempting synchronization. If successful, it updates the last sync
- *          time and emits a SYNCED event. If unsuccessful, it emits a SYNC_FAILED event.
- * 
- * @note This function emits events to the EventEmitter system that can be monitored
- *       by other components of the system.
- * @ingroup DS3231_RTC
- */
-bool DS3231::sync_clock_with_gps() {
-    auto& nmea_data = NMEAData::get_instance(); 
-    
-    if (!nmea_data.has_valid_time()) {
-        uart_print("GPS time data not available for sync", VerbosityLevel::WARNING);
-        EventEmitter::emit(EventGroup::CLOCK, ClockEvent::GPS_SYNC_DATA_NOT_READY);
-        return false;
-    }
-    
-    time_t gps_time = nmea_data.get_unix_time();
-    if (gps_time <= 0) {
-        uart_print("Invalid GPS time for sync", VerbosityLevel::ERROR);
-        EventEmitter::emit(EventGroup::CLOCK, ClockEvent::GPS_SYNC_DATA_NOT_READY);
-        return false;
-    }
-    
-    if (set_time(gps_time) != 0) {
-        uart_print("Failed to set system time from GPS", VerbosityLevel::ERROR);
-        EventEmitter::emit(EventGroup::CLOCK, ClockEvent::GPS_SYNC_DATA_NOT_READY);
-        return false;
-    }
-    
-    last_sync_time_ = get_time();
-    
-    EventEmitter::emit(EventGroup::CLOCK, ClockEvent::GPS_SYNC);
-    uart_print("Clock synced with GPS time: " + std::to_string(gps_time), VerbosityLevel::INFO);
-    
-    return true;
-}
 
 // ==================== private methods
 

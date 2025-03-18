@@ -10,14 +10,14 @@
 // CLOCK
 std::vector<Frame> handle_time(const std::string& param, OperationType operationType);
 std::vector<Frame> handle_timezone_offset(const std::string& param, OperationType operationType);
-std::vector<Frame> handle_clock_sync_interval(const std::string& param, OperationType operationType);
-std::vector<Frame> handle_get_last_sync_time(const std::string& param, OperationType operationType);
 std::vector<Frame> handle_get_internal_temperature(const std::string& param, OperationType operationType);
 
 
 // DIAG
 std::vector<Frame> handle_get_commands_list(const std::string& param, OperationType operationType);
 std::vector<Frame> handle_get_build_version(const std::string& param, OperationType operationType);
+std::vector<Frame> handle_get_power_mode(const std::string& param, OperationType operationType);
+std::vector<Frame> handle_get_uptime(const std::string& param, OperationType operationType);
 std::vector<Frame> handle_verbosity(const std::string& param, OperationType operationType);
 std::vector<Frame> handle_enter_bootloader_mode(const std::string& param, OperationType operationType);
 
@@ -47,12 +47,6 @@ std::vector<Frame> handle_get_event_count(const std::string& param, OperationTyp
 //STORAGE
 std::vector<Frame> handle_list_files(const std::string& param, OperationType operationType);
 std::vector<Frame> handle_mount(const std::string& param, OperationType operationType);
-
-// SENSOR
-std::vector<Frame> handle_get_sensor_data(const std::string& param, OperationType operationType);
-std::vector<Frame> handle_sensor_config(const std::string& param, OperationType operationType);
-std::vector<Frame> handle_get_sensor_list(const std::string& param, OperationType operationType);
-
 
 // TELEMETRY
 std::vector<Frame> handle_get_last_telemetry_record(const std::string& param, OperationType operationType);

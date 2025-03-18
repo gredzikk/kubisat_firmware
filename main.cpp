@@ -6,7 +6,6 @@ void core1_entry() {
     uart_print("Starting core 1", VerbosityLevel::DEBUG);
     EventEmitter::emit(EventGroup::SYSTEM, SystemEvent::CORE1_START);
     
-    uint32_t last_clock_check_time = 0;
     uint32_t last_telemetry_time = 0;
     uint32_t telemetry_collection_counter = 0;
 
@@ -16,17 +15,7 @@ void core1_entry() {
         collect_gps_data();
         
         uint32_t currentTime = to_ms_since_boot(get_absolute_time());
-        
-        uint32_t check_interval_ms = DS3231::get_instance().get_clock_sync_interval() * 60000;
-        if (currentTime - last_clock_check_time >= check_interval_ms) {
-            last_clock_check_time = currentTime;
-            
-            if (DS3231::get_instance().is_sync_needed()) {
-                uart_print("Clock sync interval reached, attempting sync", VerbosityLevel::INFO);
-                DS3231::get_instance().sync_clock_with_gps();
-            }
-        }
-        
+                
         if (TelemetryManager::get_instance().is_telemetry_collection_time(currentTime, last_telemetry_time)) {
             TelemetryManager::get_instance().collect_telemetry();
             telemetry_collection_counter++;

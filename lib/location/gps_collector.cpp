@@ -58,7 +58,7 @@ std::vector<std::string> splitString(const std::string& str, char delimiter) {
  */
 void collect_gps_data() {
 
-    if (SystemStateManager::get_instance().is_bootloader_reset_pending()) {
+    if (SystemStateManager::get_instance().is_gps_collection_paused()) {
         return;
     }
 

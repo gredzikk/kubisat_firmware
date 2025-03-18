@@ -9,6 +9,11 @@
  * @{
  */
 
+static constexpr uint8_t event_commands_group_id = 5;
+static constexpr uint8_t last_events_command_id = 1;
+static constexpr uint8_t event_count_command_id = 2;
+
+
 /**
  * @brief Handler for retrieving last N events from the event log
  * @param param Number of events to retrieve (optional, default 10). If 0, all events are returned.
@@ -36,7 +41,7 @@ std::vector<Frame> handle_get_last_events(const std::string& param, OperationTyp
 
     if (operationType != OperationType::GET) {
         error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
-        frames.push_back(frame_build(OperationType::ERR, 5, 1, error_msg));
+        frames.push_back(frame_build(OperationType::ERR, event_commands_group_id, last_events_command_id, error_msg));
         return frames;
     }
 
@@ -46,12 +51,12 @@ std::vector<Frame> handle_get_last_events(const std::string& param, OperationTyp
             count = std::stoul(param);
             if (count > EVENT_BUFFER_SIZE) {
                 error_msg = error_code_to_string(ErrorCode::INVALID_VALUE);
-                frames.push_back(frame_build(OperationType::ERR, 5, 1, error_msg));
+                frames.push_back(frame_build(OperationType::ERR, event_commands_group_id, last_events_command_id, error_msg));
                 return frames;
             }
         } catch (...) {
             error_msg = error_code_to_string(ErrorCode::PARAM_INVALID);
-            frames.push_back(frame_build(OperationType::ERR, 5, 1, error_msg));
+            frames.push_back(frame_build(OperationType::ERR, event_commands_group_id, last_events_command_id, error_msg));
             return frames;
         }
     }
@@ -79,9 +84,9 @@ std::vector<Frame> handle_get_last_events(const std::string& param, OperationTyp
             to_return--;
             events_in_frame++;
         }
-        frames.push_back(frame_build(OperationType::SEQ, 5, 1, ss.str()));
+        frames.push_back(frame_build(OperationType::SEQ, event_commands_group_id, last_events_command_id, ss.str()));
     }
-    frames.push_back(frame_build(OperationType::VAL, 5, 1, "SEQ_DONE"));
+    frames.push_back(frame_build(OperationType::VAL, event_commands_group_id, last_events_command_id, "SEQ_DONE"));
     return frames;
 }
 
@@ -104,12 +109,12 @@ std::vector<Frame> handle_get_event_count(const std::string& param, OperationTyp
 
     if (operationType != OperationType::GET || !param.empty()) {
         error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
-        frames.push_back(frame_build(OperationType::ERR, 5, 2, error_msg));
+        frames.push_back(frame_build(OperationType::ERR, event_commands_group_id, event_count_command_id, error_msg));
         return frames;
     }
 
     auto& event_manager = EventManager::get_instance();
-    frames.push_back(frame_build(OperationType::VAL, 5, 2, 
+    frames.push_back(frame_build(OperationType::VAL, event_commands_group_id, event_count_command_id, 
                     std::to_string(event_manager.get_event_count())));
     return frames;
 }
