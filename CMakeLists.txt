@@ -86,6 +86,9 @@ target_compile_options(main PRIVATE
     -Wunreachable-code
 )
 
+add_compile_options(--coverage -O0 -g)
+add_link_options(--coverage)
+
 # Include directories
 target_include_directories(main PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}
@@ -173,6 +176,13 @@ add_custom_target(dependency_graph
     COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_CURRENT_SOURCE_DIR}/dependency_graphs"
     COMMAND doxygen "${CMAKE_CURRENT_SOURCE_DIR}/graph-doxyfile"
     COMMENT "Generating dependency graphs with Doxygen"
+)
+
+add_custom_target(coverage
+    COMMAND lcov --capture --directory ${CMAKE_BINARY_DIR} --output-file coverage.info
+    COMMAND genhtml coverage.info --output-directory coverage_report
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+    COMMENT "Generating coverage report"
 )
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/documentation.cmake)

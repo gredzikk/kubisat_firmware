@@ -7,16 +7,11 @@ add_library(LoRa_pico_lib
     LoRa-RP2040.h
 )
 
-add_library(LoRa_print 
-    Print.h 
-    Print.cpp
-)
 
 target_link_libraries(LoRa_pico_lib PUBLIC
     pico_stdlib 
     hardware_spi 
     hardware_interp 
-    LoRa_print
 )
 
 target_include_directories(LoRa_pico_lib PUBLIC

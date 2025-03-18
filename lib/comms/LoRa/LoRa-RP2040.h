@@ -6,15 +6,13 @@
 #include "hardware/gpio.h"
 #include "hardware/spi.h"
 #include "string.h"
-#include "Print.h"
 #include "pin_config.h"
 
 #endif
 
-static void __empty();
 
 //class LoRaClass : public Stream {
-class LoRaClass : public Print {
+class LoRaClass {
 public:
   LoRaClass();
 

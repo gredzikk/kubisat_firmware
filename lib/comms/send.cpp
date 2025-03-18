@@ -12,7 +12,7 @@
  * @details Converts the outgoing string to a C-style string, adds destination and local addresses,
  *          and sends the message using LoRa. Prints a log message to the UART.
  */
-void send_message(string outgoing)
+void send_message(std::string outgoing)
 {
     std::vector<char> send(outgoing.length() + 1);
     strcpy(send.data(), outgoing.c_str());
@@ -21,14 +21,16 @@ void send_message(string outgoing)
     LoRa.beginPacket();       // start packet
     LoRa.write(lora_address_remote);  // add destination address
     LoRa.write(lora_address_local); // add sender address
-    LoRa.print(send.data());         // add payload
+    for(size_t i = 0; i < send.size(); i++) {
+        LoRa.write(static_cast<uint8_t>(send[i]));         // add payload byte by byte
+    }
     LoRa.endPacket(false);    // finish packet and send it, param - async
 
     uart_print("LoRa packet end", VerbosityLevel::DEBUG);
 
     std::string message_to_log = "Sent message of size " + std::to_string(send.size());
     message_to_log += " to 0x" + std::to_string(lora_address_remote);
-    message_to_log += " containing: " + string(send.data());
+    message_to_log += " containing: " + std::string(send.data());
 
     uart_print(message_to_log, VerbosityLevel::DEBUG);
     
@@ -38,7 +40,7 @@ void send_message(string outgoing)
 
 void send_frame_lora(const Frame& frame) {
     uart_print("Sending frame via LoRa", VerbosityLevel::DEBUG);
-    string outgoing = frame_encode(frame);
+    std::string outgoing = frame_encode(frame);
     send_message(outgoing);
     uart_print("Frame sent via LoRa", VerbosityLevel::DEBUG);
 }
