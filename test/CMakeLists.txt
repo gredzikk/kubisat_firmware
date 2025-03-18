@@ -8,6 +8,7 @@ add_executable(test_runner
 ${CMAKE_SOURCE_DIR}/unity/src/unity.c 
     test_runner.cpp
     test_clock.cpp
+    ${CMAKE_SOURCE_DIR}/lib/utils.cpp
 )
 
 # Include all directories needed

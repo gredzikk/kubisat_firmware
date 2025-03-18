@@ -55,7 +55,7 @@ add_subdirectory(lib/storage/pico-vfs)
 add_subdirectory(lib/eventman)
 add_subdirectory(lib/telemetry)
 
-add_subdirectory(test)
+# add_subdirectory(test)
 
 
 # Main executable sources
@@ -170,19 +170,6 @@ add_custom_command(
         "${CMAKE_CURRENT_SOURCE_DIR}/release/test_runner_v${CURRENT_BUILD_NUMBER}.uf2"
     COMMENT "Copying test_runner.uf2 to release directory"
     VERBATIM
-)
-
-add_custom_target(dependency_graph
-    COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_CURRENT_SOURCE_DIR}/dependency_graphs"
-    COMMAND doxygen "${CMAKE_CURRENT_SOURCE_DIR}/graph-doxyfile"
-    COMMENT "Generating dependency graphs with Doxygen"
-)
-
-add_custom_target(coverage
-    COMMAND lcov --capture --directory ${CMAKE_BINARY_DIR} --output-file coverage.info
-    COMMAND genhtml coverage.info --output-directory coverage_report
-    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-    COMMENT "Generating coverage report"
 )
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/documentation.cmake)

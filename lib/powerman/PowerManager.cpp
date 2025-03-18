@@ -15,7 +15,7 @@
 #include "PowerManager.h"
 #include <iostream>
 #include <sstream>
-#include "event_manager.h"
+#include "pin_config.h"
 
 /**
  * @brief Private constructor for the singleton pattern.
