@@ -141,6 +141,19 @@ void INA3221::set_mode_triggered(){
     _write(INA3221_REG_CONF, (uint16_t*)&conf_reg);
 }
 
+/**
+ * @ingroup INA3221_Config
+ * @brief Set the averaging mode for measurements
+ * @param mode Number of samples to average
+ */
+void INA3221::set_averaging_mode(ina3221_avg_mode_t mode) {
+    conf_reg_t conf_reg;
+
+    _read(INA3221_REG_CONF, (uint16_t*)&conf_reg);
+    conf_reg.avg_mode = mode;
+    _write(INA3221_REG_CONF, (uint16_t*)&conf_reg);
+}
+
 //get measurement 
 /**
  * @ingroup INA3221_Measure

@@ -53,8 +53,6 @@ CommandMap command_handlers = {
     
     {CMD(7, 1), handle_gps_power_status},             // Group 7, Command 1
     {CMD(7, 2), handle_enable_gps_uart_passthrough},  // Group 7, Command 2
-    {CMD(7, 3), handle_get_rmc_data},                 // Group 7, Command 3
-    {CMD(7, 4), handle_get_gga_data},                 // Group 7, Command 4
     
     {CMD(8, 2), handle_get_last_telemetry_record},    // Group 8, Command 2
     {CMD(8, 3), handle_get_last_sensor_record},       // Group 8, Command 3

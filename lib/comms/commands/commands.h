@@ -25,8 +25,6 @@ std::vector<Frame> handle_enter_bootloader_mode(const std::string& param, Operat
 // GPS
 std::vector<Frame> handle_gps_power_status(const std::string& param, OperationType operationType);
 std::vector<Frame> handle_enable_gps_uart_passthrough(const std::string& param, OperationType operationType);
-std::vector<Frame> handle_get_rmc_data(const std::string& param, OperationType operationType);
-std::vector<Frame> handle_get_gga_data(const std::string& param, OperationType operationType);
 
 
 // POWER
