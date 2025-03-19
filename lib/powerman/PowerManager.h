@@ -97,18 +97,6 @@ public:
      */
     void configure(const std::map<std::string, std::string>& config);
 
-    /**
-     * @brief Checks if solar charging is active.
-     * @return True if solar charging is active, false otherwise.
-     */
-    bool is_charging_solar();
-
-    /**
-     * @brief Checks if USB charging is active.
-     * @return True if USB charging is active, false otherwise.
-     */
-    bool is_charging_usb();
-
 
     /** @brief Solar current threshold in milliamperes. */
     static constexpr float SOLAR_CURRENT_THRESHOLD = 50.0f;  // mA
@@ -126,10 +114,6 @@ private:
     bool initialized_;
     /** @brief Mutex for thread-safe access to the PowerManager. */
     recursive_mutex_t powerman_mutex_;
-    /** @brief Flag indicating if solar charging is active. */
-    bool charging_solar_active_ = false;
-    /** @brief Flag indicating if USB charging is active. */
-    bool charging_usb_active_ = false;
 
     /**
      * @brief Private constructor for the singleton pattern.

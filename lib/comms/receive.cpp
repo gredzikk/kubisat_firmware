@@ -23,7 +23,7 @@ bool extract_and_process_frames(const std::string& buffer, Interface interface) 
         if (footer_pos > header_pos) {
             std::string frame_data = buffer.substr(header_pos, footer_pos + FRAME_END.length() - header_pos);
             uart_print("Extracted frame (length=" + std::to_string(frame_data.length()) + 
-                      "): " + frame_data, VerbosityLevel::DEBUG);
+                        "): " + frame_data, VerbosityLevel::DEBUG);
             frame_process(frame_data, interface);
             found_frame = true;
         }

@@ -181,30 +181,4 @@ void PowerManager::configure(const std::map<std::string, std::string>& config) {
     recursive_mutex_exit(&powerman_mutex_);
 }
 
-/**
- * @brief Checks if solar charging is active.
- * @return True if solar charging is active, false otherwise.
- * @ingroup PowerManagement
- */
-bool PowerManager::is_charging_solar() {
-    if (!initialized_) return false;
-    recursive_mutex_enter_blocking(&powerman_mutex_);
-    bool active = get_current_charge_solar() > SOLAR_CURRENT_THRESHOLD;
-    recursive_mutex_exit(&powerman_mutex_);
-    return active;
-}
-
-/**
- * @brief Checks if USB charging is active.
- * @return True if USB charging is active, false otherwise.
- * @ingroup PowerManagement
- */
-bool PowerManager::is_charging_usb() {
-    if (!initialized_) return false;
-    recursive_mutex_enter_blocking(&powerman_mutex_);
-    bool connected = get_current_charge_usb() > USB_CURRENT_THRESHOLD;
-    recursive_mutex_exit(&powerman_mutex_);
-    return connected;
-}
-
  /** @} */

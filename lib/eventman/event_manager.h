@@ -168,10 +168,10 @@ enum class ClockEvent : uint8_t {
  */
 class EventLog {
     public:
-        /** @brief Unique identifier for the event. */
-        uint16_t id;
         /** @brief Timestamp of the event in milliseconds since boot. */
         uint32_t timestamp;
+        /** @brief Unique identifier for the event. */
+        uint16_t id;
         /** @brief Event group. */
         uint8_t group;
         /** @brief Event code. */
@@ -249,12 +249,6 @@ private:
      * @return True if the save was successful, false otherwise.
      */
     bool save_to_storage();
-
-    /**
-     * @brief Loads the event buffer from persistent storage.
-     * @return True if the load was successful, false otherwise.
-     */
-    bool load_from_storage();
 };
 
 /**

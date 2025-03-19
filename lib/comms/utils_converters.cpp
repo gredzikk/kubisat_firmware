@@ -7,23 +7,6 @@
  * @defgroup UtilsConverters Utility Converters
  */
 
-/**
- * @brief Converts an ExceptionType to a string.
- * @param type The ExceptionType to convert.
- * @return The string representation of the ExceptionType.
- * @ingroup UtilsConverters
- */
-std::string exception_type_to_string(ExceptionType type) {
-    switch (type) {
-        case ExceptionType::NOT_ALLOWED:       return "NOT ALLOWED";
-        case ExceptionType::INVALID_PARAM:     return "INVALID PARAM";
-        case ExceptionType::INVALID_OPERATION: return "INVALID OPERATION";
-        case ExceptionType::PARAM_UNECESSARY:  return "PARAM UNECESSARY";
-        case ExceptionType::NONE:              return "NONE";
-        default:                               return "UNKNOWN EXCEPTION";
-    }
-}
-
 
 /**
  * @brief Converts a ValueUnit to a string.
@@ -99,26 +82,6 @@ std::string error_code_to_string(ErrorCode code) {
         case ErrorCode::INTERNAL_FAIL_TO_READ:  return "INTERNAL_FAIL_TO_READ";
         default:                                return "UNKNOWN_ERROR";
     }
-}
-
-
-/**
- * @brief Converts a hex string to a vector of bytes.
- * @param hexString The hex string to convert.
- * @return A vector of bytes representing the hex string.
- * @ingroup UtilsConverters
- */
-std::vector<uint8_t> hex_string_to_bytes(const std::string& hexString) {
-    std::vector<uint8_t> bytes;
-    for (size_t i = 0; i < hexString.length(); i += 2) {
-        std::string byteString = hexString.substr(i, 2);
-        unsigned int byte;
-        std::stringstream ss;
-        ss << std::hex << byteString;
-        ss >> byte;
-        bytes.push_back(static_cast<uint8_t>(byte));
-    }
-    return bytes;
 }
 
 /** @} */ 

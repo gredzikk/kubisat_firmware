@@ -75,21 +75,6 @@ bool INA3221::begin() {
     }
 }
 
-
-/**
- * @ingroup INA3221_Config
- * @brief Reset the INA3221 to default settings
- * @details Performs a software reset of the device by setting the reset bit
- */
-void INA3221::reset(){
-    conf_reg_t conf_reg;
-
-    _read(INA3221_REG_CONF, (uint16_t*)&conf_reg);
-    conf_reg.reset = 1;
-    _write(INA3221_REG_CONF, (uint16_t*)&conf_reg);
-}
-
-
 /**
  * @ingroup INA3221_Config
  * @brief Get the manufacturer ID of the device
@@ -131,21 +116,6 @@ uint16_t INA3221::read_register(ina3221_reg_t reg){
 
 /**
  * @ingroup INA3221_Config
- * @brief Set device to power-down mode
- * @details Disables bus voltage and continuous measurements
- */
-void INA3221::set_mode_power_down(){
-    conf_reg_t conf_reg;
-
-    _read(INA3221_REG_CONF, (uint16_t*)&conf_reg);
-    conf_reg.mode_bus_en = 0;
-    conf_reg.mode_continious_en =0 ;
-    _write(INA3221_REG_CONF, (uint16_t*)&conf_reg);
-}
-
-
-/**
- * @ingroup INA3221_Config
  * @brief Set device to continuous measurement mode
  * @details Enables continuous measurement of bus voltage and shunt voltage
  */
@@ -170,101 +140,6 @@ void INA3221::set_mode_triggered(){
     conf_reg.mode_continious_en = 0;
     _write(INA3221_REG_CONF, (uint16_t*)&conf_reg);
 }
-
-
-/**
- * @ingroup INA3221_Config
- * @brief Enable shunt voltage measurements
- */
-void INA3221::set_shunt_measurement_enable(){
-    conf_reg_t conf_reg;
-
-    _read(INA3221_REG_CONF, (uint16_t*)&conf_reg);
-    conf_reg.mode_shunt_en = 1;
-    _write(INA3221_REG_CONF, (uint16_t*)&conf_reg);
-}
-
-
-/**
- * @ingroup INA3221_Config
- * @brief Disable shunt voltage measurements
- */
-void INA3221::set_shunt_measurement_disable(){
-    conf_reg_t conf_reg;
-
-    _read(INA3221_REG_CONF, (uint16_t*)&conf_reg);
-    conf_reg.mode_shunt_en = 0;
-    _write(INA3221_REG_CONF, (uint16_t*)&conf_reg);
-}
-
-
-/**
- * @ingroup INA3221_Config
- * @brief Enable bus voltage measurements
- */
-void INA3221::set_bus_measurement_enable(){
-    conf_reg_t conf_reg;
-
-    _read(INA3221_REG_CONF, (uint16_t*)&conf_reg);
-    conf_reg.mode_bus_en = 1;
-    _write(INA3221_REG_CONF, (uint16_t*)&conf_reg);
-}
-
-
-/**
- * @ingroup INA3221_Config
- * @brief Disable bus voltage measurements
- */
-void INA3221::set_bus_measurement_disable(){
-    conf_reg_t conf_reg;
-
-    _read(INA3221_REG_CONF, (uint16_t*)&conf_reg);
-    conf_reg.mode_bus_en = 0;
-    _write(INA3221_REG_CONF, (uint16_t*)&conf_reg);
-}
-
-
-/**
- * @ingroup INA3221_Config
- * @brief Set the averaging mode for measurements
- * @param mode Number of samples to average
- */
-void INA3221::set_averaging_mode(ina3221_avg_mode_t mode) {
-    conf_reg_t conf_reg;
-
-    _read(INA3221_REG_CONF, (uint16_t*)&conf_reg);
-    conf_reg.avg_mode = mode;
-    _write(INA3221_REG_CONF, (uint16_t*)&conf_reg);
-}
-
-
-/**
- * @ingroup INA3221_Config
- * @brief Set bus voltage conversion time
- * @param convTime Conversion time setting
- */
-void INA3221::set_bus_conversion_time(ina3221_conv_time_t convTime) {
-    conf_reg_t conf_reg;
-
-    _read(INA3221_REG_CONF, (uint16_t*)&conf_reg);
-    conf_reg.bus_conv_time = convTime;
-    _write(INA3221_REG_CONF, (uint16_t*)&conf_reg);
-}
-
-
-/**
- * @ingroup INA3221_Config
- * @brief Set shunt voltage conversion time
- * @param convTime Conversion time setting
- */
-void INA3221::set_shunt_conversion_time(ina3221_conv_time_t convTime) {
-    conf_reg_t conf_reg;
-
-    _read(INA3221_REG_CONF, (uint16_t*)&conf_reg);
-    conf_reg.shunt_conv_time = convTime;
-    _write(INA3221_REG_CONF, (uint16_t*)&conf_reg);
-}
-
 
 //get measurement 
 /**

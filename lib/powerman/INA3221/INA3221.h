@@ -16,10 +16,6 @@ typedef enum {
     INA3221_ADDR43_SCL = 0b1000011  // A0 pin -> SCL
 } ina3221_addr_t;
 
-/**
- * @file INA3221.h
- * @brief Header file for the INA3221 triple-channel power monitor driver
- */
 typedef enum {
     INA3221_CH1 = 0,
     INA3221_CH2,
@@ -30,7 +26,6 @@ typedef enum {
 const int INA3221_CH_NUM = 3;
 /** @brief LSB value for shunt voltage measurements in microvolts */
 const int SHUNT_VOLTAGE_LSB_UV = 5;
-
 
 /**
  * @brief Register addresses for INA3221
@@ -58,20 +53,6 @@ typedef enum {
     INA3221_REG_DIE_ID = 0xFF
 } ina3221_reg_t;
 
-/**
- * @brief Conversion time settings
- * @details Time taken for each measurement conversion
- */
-typedef enum {
-    INA3221_REG_CONF_CT_140US = 0,
-    INA3221_REG_CONF_CT_204US,
-    INA3221_REG_CONF_CT_332US,
-    INA3221_REG_CONF_CT_588US,
-    INA3221_REG_CONF_CT_1100US,
-    INA3221_REG_CONF_CT_2116US,
-    INA3221_REG_CONF_CT_4156US,
-    INA3221_REG_CONF_CT_8244US
-} ina3221_conv_time_t;
 
 /**
  * @brief Averaging mode settings
@@ -161,39 +142,15 @@ public:
     // Gets a register value.
     uint16_t read_register(ina3221_reg_t reg);
 
-    // Resets INA3221
-    void reset();
-
-    // Sets operating mode to power-down
-    void set_mode_power_down();
-
     // Sets operating mode to continious
     void set_mode_continuous();
 
     // Sets operating mode to triggered (single-shot)
     void set_mode_triggered();
 
-    // Enables shunt-voltage measurement
-    void set_shunt_measurement_enable();
-
-    // Disables shunt-voltage mesurement
-    void set_shunt_measurement_disable();
-
-    // Enables bus-voltage measurement
-    void set_bus_measurement_enable();
-
-    // Disables bus-voltage measureement
-    void set_bus_measurement_disable();
-
     // Sets averaging mode. Sets number of samples that are collected
     // and averaged togehter.
     void set_averaging_mode(ina3221_avg_mode_t mode);
-
-    // Sets bus-voltage conversion time.
-    void set_bus_conversion_time(ina3221_conv_time_t convTime);
-
-    // Sets shunt-voltage conversion time.
-    void set_shunt_conversion_time(ina3221_conv_time_t convTime);
 
     // Gets manufacturer ID.
     // Should read 0x5449.
@@ -206,9 +163,7 @@ public:
     // Gets shunt voltage in uV.
     int32_t get_shunt_voltage(ina3221_ch_t channel);
 
-    // Gets current in A.
-    float get_current(ina3221_ch_t channel);
-
+    // Gets current in mA.
     float get_current_ma(ina3221_ch_t channel);
 
     // Gets bus voltage in V.

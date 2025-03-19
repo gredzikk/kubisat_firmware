@@ -86,25 +86,6 @@ enum class OperationType : uint8_t {
 };
 
 
-
-/**
- * @enum CommandAccessLevel
- * @brief Represents the access level required to execute a command.
- * @ingroup Protocol
- */
-enum class CommandAccessLevel : uint8_t {
-    /** @brief No access allowed. */
-    NONE,
-    /** @brief Read-only access. */
-    READ_ONLY,
-    /** @brief Write-only access. */
-    WRITE_ONLY,
-    /** @brief Read and write access. */
-    READ_WRITE
-};
-
-
-
 /**
  * @enum ValueUnit
  * @brief Represents the unit of measurement for a payload value.
@@ -126,27 +107,6 @@ enum class ValueUnit : uint8_t {
     /** @brief Unit is milliamperes. */
     MILIAMP,
 };
-
-
-
-/**
- * @enum ExceptionType
- * @brief Represents the type of exception that occurred during command execution.
- * @ingroup Protocol
- */
-enum class ExceptionType : uint8_t {
-    /** @brief No exception. */
-    NONE,
-    /** @brief Operation not allowed. */
-    NOT_ALLOWED,
-    /** @brief Invalid parameter provided. */
-    INVALID_PARAM,
-    /** @brief Invalid operation requested. */
-    INVALID_OPERATION,
-    /** @brief Parameter is unnecessary for the operation. */
-    PARAM_UNECESSARY
-};
-
 
 
 /**
@@ -189,11 +149,9 @@ struct Frame {
     std::string footer;             // End marker
 };
 
-std::string exception_type_to_string(ExceptionType type);
 std::string error_code_to_string(ErrorCode code);
 std::string operation_type_to_string(OperationType type);
 OperationType string_to_operation_type(const std::string& str);
-std::vector<uint8_t> hex_string_to_bytes(const std::string& hexString);
 std::string value_unit_type_to_string(ValueUnit unit);
 
 #endif
