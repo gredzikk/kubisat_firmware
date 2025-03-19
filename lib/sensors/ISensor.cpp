@@ -75,41 +75,4 @@ float SensorWrapper::sensor_read_data(SensorType sensorType, SensorDataTypeIdent
 ISensor* SensorWrapper::get_sensor(SensorType type) {
     return sensors[type];
 }
-
-/**
- * @brief Scans for connected sensors.
- * @param[in] i2c I2C instance to use for scanning.
- * @return A vector of pairs, where each pair contains a sensor type and its address.
- * @ingroup Sensors
- */
-std::vector<std::pair<SensorType, uint8_t>> SensorWrapper::scan_connected_sensors(i2c_inst_t* i2c) {
-    std::vector<std::pair<SensorType, uint8_t>> connectedSensors;
-
-    // Scan for BH1750 (Light Sensor)
-    BH1750Wrapper lightSensor(i2c);
-    if (lightSensor.init()) {
-        connectedSensors.push_back(std::make_pair(SensorType::LIGHT, lightSensor.get_address()));
-    }
-
-    // Scan for BME280 (Environment Sensor)
-    BME280Wrapper environmentSensor(i2c);
-    if (environmentSensor.init()) {
-        connectedSensors.push_back(std::make_pair(SensorType::ENVIRONMENT, environmentSensor.get_address()));
-    }
-
-    return connectedSensors;
-}
-
-/**
- * @brief Gets a list of available sensors.
- * @return A vector of pairs, where each pair contains a sensor type and its address.
- * @ingroup Sensors
- */
-std::vector<std::pair<SensorType, uint8_t>> SensorWrapper::get_available_sensors() {
-    std::vector<std::pair<SensorType, uint8_t>> availableSensors;
-    for (const auto& sensorPair : sensors) {
-        availableSensors.push_back(std::make_pair(sensorPair.first, sensorPair.second->get_address()));
-    }
-    return availableSensors;
-}
  /** @} */
