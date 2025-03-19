@@ -33,14 +33,6 @@ CommandMap command_handlers = {
     {CMD(1, 8), handle_verbosity},                    // Group 1, Command 8
     {CMD(1, 9), handle_enter_bootloader_mode},        // Group 1, Command 9
     
-    {CMD(2, 0), handle_get_power_manager_ids},        // Group 2, Command 0
-    {CMD(2, 2), handle_get_voltage_battery},          // Group 2, Command 2
-    {CMD(2, 3), handle_get_voltage_5v},               // Group 2, Command 3
-    {CMD(2, 4), handle_get_current_charge_usb},       // Group 2, Command 4
-    {CMD(2, 5), handle_get_current_charge_solar},     // Group 2, Command 5
-    {CMD(2, 6), handle_get_current_charge_total},     // Group 2, Command 6
-    {CMD(2, 7), handle_get_current_draw},             // Group 2, Command 7
-    
     {CMD(3, 0), handle_time},                         // Group 3, Command 0
     {CMD(3, 1), handle_timezone_offset},              // Group 3, Command 1
     {CMD(3, 4), handle_get_internal_temperature},     // Group 3, Command 4

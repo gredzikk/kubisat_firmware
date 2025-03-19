@@ -27,16 +27,6 @@ std::vector<Frame> handle_gps_power_status(const std::string& param, OperationTy
 std::vector<Frame> handle_enable_gps_uart_passthrough(const std::string& param, OperationType operationType);
 
 
-// POWER
-std::vector<Frame> handle_get_power_manager_ids(const std::string& param, OperationType operationType);
-std::vector<Frame> handle_get_voltage_battery(const std::string& param, OperationType operationType);
-std::vector<Frame> handle_get_voltage_5v(const std::string& param, OperationType operationType);
-std::vector<Frame> handle_get_current_charge_usb(const std::string& param, OperationType operationType);
-std::vector<Frame> handle_get_current_charge_solar(const std::string& param, OperationType operationType);
-std::vector<Frame> handle_get_current_charge_total(const std::string& param, OperationType operationType);
-std::vector<Frame> handle_get_current_draw(const std::string& param, OperationType operationType);
-
-
 // EVENT
 std::vector<Frame> handle_get_last_events(const std::string& param, OperationType operationType);
 std::vector<Frame> handle_get_event_count(const std::string& param, OperationType operationType);

@@ -7,7 +7,6 @@ add_library(commands_lib STATIC
     clock_commands.cpp
     diagnostic_commands.cpp
     gps_commands.cpp
-    power_commands.cpp
     event_commands.cpp
     telemetry_commands.cpp
 )
