@@ -169,7 +169,7 @@ std::vector<Frame> handle_get_internal_temperature(const std::string& param, Ope
 
     std::stringstream ss;
     ss << std::fixed << std::setprecision(2) << temperature;
-    frames.push_back(frame_build(OperationType::VAL, clock_commands_group_id, internal_temperature_command_id, ss.str()));
+    frames.push_back(frame_build(OperationType::VAL, clock_commands_group_id, internal_temperature_command_id, ss.str(), ValueUnit::CELSIUS));
 
     return frames;
 }

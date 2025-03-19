@@ -106,6 +106,8 @@ enum class ValueUnit : uint8_t {
     TEXT,
     /** @brief Unit is milliamperes. */
     MILIAMP,
+    /** @brief Unit is degrees Celsius. */
+    CELSIUS,
 };
 
 

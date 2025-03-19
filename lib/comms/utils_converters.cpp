@@ -23,6 +23,7 @@ std::string value_unit_type_to_string(ValueUnit unit) {
         case ValueUnit::DATETIME:   return "";
         case ValueUnit::TEXT:       return "";
         case ValueUnit::MILIAMP:    return "mA";
+        case ValueUnit::CELSIUS:    return "C";
         default: return "";
     }
 }
