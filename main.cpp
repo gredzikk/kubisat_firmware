@@ -17,12 +17,14 @@ void core1_entry() {
         uint32_t currentTime = to_ms_since_boot(get_absolute_time());
                 
         if (TelemetryManager::get_instance().is_telemetry_collection_time(currentTime, last_telemetry_time)) {
+            uart_print("Collecting telemetry...", VerbosityLevel::DEBUG);
             TelemetryManager::get_instance().collect_telemetry();
             telemetry_collection_counter++;
             
             if (TelemetryManager::get_instance().is_telemetry_flush_time(telemetry_collection_counter)) {
                 TelemetryManager::get_instance().flush_telemetry();
                 telemetry_collection_counter = 0;
+                uart_print("Telemetry flushed to SD", VerbosityLevel::INFO);
             }
         }
 

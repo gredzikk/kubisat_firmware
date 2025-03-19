@@ -44,6 +44,12 @@ std::vector<Frame> handle_list_files([[maybe_unused]] const std::string& param, 
         return frames;
     }
 
+    if (!acquire_sd_card(2000)) {  
+        error_msg = "SD card busy, try again later";
+        frames.push_back(frame_build(OperationType::ERR, storage_commands_group_id, list_files_command_id, error_msg));
+        return frames;
+    }
+
     DIR* dir;
     struct dirent* ent;
     int file_count = 0; 
@@ -96,14 +102,17 @@ std::vector<Frame> handle_list_files([[maybe_unused]] const std::string& param, 
             }
             closedir(dir);
             frames.push_back(frame_build(OperationType::VAL, storage_commands_group_id, list_files_command_id, "SEQ_DONE"));
+            release_sd_card();
             return frames;
         } else {
             error_msg = error_code_to_string(ErrorCode::INTERNAL_FAIL_TO_READ);
             frames.push_back(frame_build(OperationType::ERR, storage_commands_group_id, list_files_command_id, error_msg));
+            release_sd_card();
             return frames;
         }
     } else {
         frames.push_back(frame_build(OperationType::ERR, storage_commands_group_id, list_files_command_id, error_msg));
+        release_sd_card();
         return frames;
     }
 }

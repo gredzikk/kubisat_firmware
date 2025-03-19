@@ -42,10 +42,6 @@ std::vector<Frame> handle_get_last_events(const std::string& param, OperationTyp
 std::vector<Frame> handle_get_event_count(const std::string& param, OperationType operationType);
 
 
-//STORAGE
-std::vector<Frame> handle_list_files(const std::string& param, OperationType operationType);
-std::vector<Frame> handle_mount(const std::string& param, OperationType operationType);
-
 // TELEMETRY
 std::vector<Frame> handle_get_last_telemetry_record(const std::string& param, OperationType operationType);
 std::vector<Frame> handle_get_last_sensor_record(const std::string& param, OperationType operationType);

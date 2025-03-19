@@ -48,9 +48,6 @@ CommandMap command_handlers = {
     {CMD(5, 1), handle_get_last_events},              // Group 5, Command 1
     {CMD(5, 2), handle_get_event_count},              // Group 5, Command 2
     
-    {CMD(6, 0), handle_list_files},                   // Group 6, Command 0
-    {CMD(6, 4), handle_mount},                        // Group 6, Command 4
-    
     {CMD(7, 1), handle_gps_power_status},             // Group 7, Command 1
     {CMD(7, 2), handle_enable_gps_uart_passthrough},  // Group 7, Command 2
     
