@@ -7,6 +7,7 @@
  * @brief Core command system implementation
  * @{
  */
+#define CMD(group, cmd) ((static_cast<uint32_t>(group) << 8) | static_cast<uint32_t>(cmd))
 
 /**
  * @typedef CommandHandler
@@ -25,32 +26,38 @@ using CommandMap = std::map<uint32_t, CommandHandler>;
  * @details Maps command keys (group << 8 | command) to their handler functions
  */
 CommandMap command_handlers = {
-    {((static_cast<uint32_t>(1) << 8) | static_cast<uint32_t>(0)), handle_get_commands_list},               // Group 1, Command 0
-    {((static_cast<uint32_t>(1) << 8) | static_cast<uint32_t>(1)), handle_get_build_version},               // Group 1, Command 1
-    {((static_cast<uint32_t>(1) << 8) | static_cast<uint32_t>(2)), handle_get_power_mode},                  // Group 1, Command 2
-    {((static_cast<uint32_t>(1) << 8) | static_cast<uint32_t>(3)), handle_get_uptime},                      // Group 1, Command 3
-    {((static_cast<uint32_t>(1) << 8) | static_cast<uint32_t>(8)), handle_verbosity},                       // Group 1, Command 9
-    {((static_cast<uint32_t>(1) << 8) | static_cast<uint32_t>(9)), handle_enter_bootloader_mode},           // Group 1, Command 9
-    {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(0)), handle_get_power_manager_ids},           // Group 2, Command 0
-    {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(2)), handle_get_voltage_battery},             // Group 2, Command 2
-    {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(3)), handle_get_voltage_5v},                  // Group 2, Command 3
-    {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(4)), handle_get_current_charge_usb},          // Group 2, Command 4
-    {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(5)), handle_get_current_charge_solar},        // Group 2, Command 5
-    {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(6)), handle_get_current_charge_total},        // Group 2, Command 6
-    {((static_cast<uint32_t>(2) << 8) | static_cast<uint32_t>(7)), handle_get_current_draw},                // Group 2, Command 7
-    {((static_cast<uint32_t>(3) << 8) | static_cast<uint32_t>(0)), handle_time},                            // Group 3, Command 0
-    {((static_cast<uint32_t>(3) << 8) | static_cast<uint32_t>(1)), handle_timezone_offset},                 // Group 3, Command 1
-    {((static_cast<uint32_t>(3) << 8) | static_cast<uint32_t>(4)), handle_get_internal_temperature},        // Group 3, Command 4
-    {((static_cast<uint32_t>(5) << 8) | static_cast<uint32_t>(1)), handle_get_last_events},                 // Group 5, Command 1
-    {((static_cast<uint32_t>(5) << 8) | static_cast<uint32_t>(2)), handle_get_event_count},                 // Group 5, Command 2
-    {((static_cast<uint32_t>(6) << 8) | static_cast<uint32_t>(0)), handle_list_files},                      // Group 6, Command 0
-    {((static_cast<uint32_t>(6) << 8) | static_cast<uint32_t>(4)), handle_mount},                           // Group 6, Command 4
-    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(1)), handle_gps_power_status},                // Group 7, Command 1
-    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(2)), handle_enable_gps_uart_passthrough},     // Group 7, Command 3
-    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(3)), handle_get_rmc_data},                    // Group 7, Command 3
-    {((static_cast<uint32_t>(7) << 8) | static_cast<uint32_t>(4)), handle_get_gga_data},                    // Group 7, Command 4
-    {((static_cast<uint32_t>(8) << 8) | static_cast<uint32_t>(2)), handle_get_last_telemetry_record},
-    {((static_cast<uint32_t>(8) << 8) | static_cast<uint32_t>(3)), handle_get_last_sensor_record},
+    {CMD(1, 0), handle_get_commands_list},            // Group 1, Command 0
+    {CMD(1, 1), handle_get_build_version},            // Group 1, Command 1
+    {CMD(1, 2), handle_get_power_mode},               // Group 1, Command 2
+    {CMD(1, 3), handle_get_uptime},                   // Group 1, Command 3
+    {CMD(1, 8), handle_verbosity},                    // Group 1, Command 8
+    {CMD(1, 9), handle_enter_bootloader_mode},        // Group 1, Command 9
+    
+    {CMD(2, 0), handle_get_power_manager_ids},        // Group 2, Command 0
+    {CMD(2, 2), handle_get_voltage_battery},          // Group 2, Command 2
+    {CMD(2, 3), handle_get_voltage_5v},               // Group 2, Command 3
+    {CMD(2, 4), handle_get_current_charge_usb},       // Group 2, Command 4
+    {CMD(2, 5), handle_get_current_charge_solar},     // Group 2, Command 5
+    {CMD(2, 6), handle_get_current_charge_total},     // Group 2, Command 6
+    {CMD(2, 7), handle_get_current_draw},             // Group 2, Command 7
+    
+    {CMD(3, 0), handle_time},                         // Group 3, Command 0
+    {CMD(3, 1), handle_timezone_offset},              // Group 3, Command 1
+    {CMD(3, 4), handle_get_internal_temperature},     // Group 3, Command 4
+    
+    {CMD(5, 1), handle_get_last_events},              // Group 5, Command 1
+    {CMD(5, 2), handle_get_event_count},              // Group 5, Command 2
+    
+    {CMD(6, 0), handle_list_files},                   // Group 6, Command 0
+    {CMD(6, 4), handle_mount},                        // Group 6, Command 4
+    
+    {CMD(7, 1), handle_gps_power_status},             // Group 7, Command 1
+    {CMD(7, 2), handle_enable_gps_uart_passthrough},  // Group 7, Command 2
+    {CMD(7, 3), handle_get_rmc_data},                 // Group 7, Command 3
+    {CMD(7, 4), handle_get_gga_data},                 // Group 7, Command 4
+    
+    {CMD(8, 2), handle_get_last_telemetry_record},    // Group 8, Command 2
+    {CMD(8, 3), handle_get_last_sensor_record},       // Group 8, Command 3
 };
 
 
