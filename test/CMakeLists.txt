@@ -8,6 +8,9 @@ add_executable(test_runner
 ${CMAKE_SOURCE_DIR}/unity/src/unity.c 
     test_runner.cpp
     test_clock.cpp
+    test_powerman.cpp
+    test_frame.cpp
+    ${CMAKE_SOURCE_DIR}/lib/telemetry/telemetry_manager.cpp 
     ${CMAKE_SOURCE_DIR}/lib/utils.cpp
 )
 

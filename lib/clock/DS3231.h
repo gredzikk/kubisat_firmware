@@ -200,21 +200,6 @@ private:
      */
     int i2c_write_reg(uint8_t reg_addr, size_t length, uint8_t *data);
 
-    /**
-     * @brief Converts binary value to BCD (Binary Coded Decimal)
-     * 
-     * @param[in] data Binary value to convert (0-99)
-     * @return BCD representation of the input value
-     */
-    uint8_t bin_to_bcd(const uint8_t data);
-    
-    /**
-     * @brief Converts BCD (Binary Coded Decimal) to binary value
-     * 
-     * @param[in] bcd BCD value to convert
-     * @return Binary representation of the input BCD value
-     */
-    uint8_t bcd_to_bin(const uint8_t bcd);
 };
 
 #endif // DS3231_H

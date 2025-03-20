@@ -95,6 +95,7 @@ int DS3231::set_time(time_t unix_time) {
 
     if (i2c_write_reg(DS3231_SECONDS_REG, 7, time_data) != 0) {
         uart_print("Failed to write time to RTC", VerbosityLevel::ERROR);
+        
         return -1;
     }
 

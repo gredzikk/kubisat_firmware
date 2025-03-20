@@ -97,7 +97,12 @@ Frame frame_decode(const std::string& data) {
 
         std::getline(frame_data_stream, token, DELIMITER);
         frame.unit = token;
-
+        
+        std::getline(ss, token, DELIMITER);
+        if (token != FRAME_END)
+            throw std::runtime_error("Missing or invalid frame footer");
+        frame.footer = token;
+        
         return frame;
     } catch (const std::exception& e) {
         uart_print("Frame error: " + std::string(e.what()), VerbosityLevel::ERROR);

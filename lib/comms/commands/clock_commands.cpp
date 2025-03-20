@@ -38,7 +38,7 @@ std::vector<Frame> handle_time(const std::string& param, OperationType operation
         }
         try {
             time_t newTime = std::stoll(param);
-            if (newTime <= 0) {
+            if (newTime <= 1742487032 || newTime >= 1893520044) {
                 error_msg = error_code_to_string(ErrorCode::INVALID_VALUE);
                 frames.push_back(frame_build(OperationType::ERR, clock_commands_group_id, time_command_id, error_msg));
                 return frames;
