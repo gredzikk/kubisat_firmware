@@ -66,16 +66,20 @@ std::vector<Frame> handle_gps_power_status(const std::string& param, OperationTy
             return frames;
         }
     }
+    else if (operationType == OperationType::GET) {
+        if (!param.empty()) {
+            error_str = error_code_to_string(ErrorCode::PARAM_UNNECESSARY);
+            frames.push_back(frame_build(OperationType::ERR, gps_commands_group_id, power_status_command_id, error_str));
+            return frames;
+        }
 
-    // GET operation
-    if (!param.empty()) {
-        error_str = error_code_to_string(ErrorCode::PARAM_UNNECESSARY);
-        frames.push_back(frame_build(OperationType::ERR, gps_commands_group_id, power_status_command_id, error_str));
+        bool power_status = gpio_get(GPS_POWER_ENABLE_PIN);
+        frames.push_back(frame_build(OperationType::VAL, gps_commands_group_id, power_status_command_id, std::to_string(power_status)));
         return frames;
     }
 
-    bool power_status = gpio_get(GPS_POWER_ENABLE_PIN);
-    frames.push_back(frame_build(OperationType::VAL, gps_commands_group_id, power_status_command_id, std::to_string(power_status)));
+    error_str = error_code_to_string(ErrorCode::INVALID_OPERATION);
+    frames.push_back(frame_build(OperationType::ERR, gps_commands_group_id, power_status_command_id, error_str));
     return frames;
 }
 

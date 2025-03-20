@@ -30,14 +30,14 @@ std::vector<Frame> handle_get_commands_list(const std::string& param, OperationT
     std::vector<Frame> frames;
     std::string error_msg;
 
-    if (!param.empty()) {
-        error_msg = error_code_to_string(ErrorCode::PARAM_UNNECESSARY);
+    if (!(operationType == OperationType::GET)) {
+        error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
         frames.push_back(frame_build(OperationType::ERR, diagnostic_commands_group_id, commands_list_command_id, error_msg));
         return frames;
     }
 
-    if (!(operationType == OperationType::GET)) {
-        error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
+    if (!param.empty()) {
+        error_msg = error_code_to_string(ErrorCode::PARAM_UNNECESSARY);
         frames.push_back(frame_build(OperationType::ERR, diagnostic_commands_group_id, commands_list_command_id, error_msg));
         return frames;
     }
@@ -84,19 +84,19 @@ std::vector<Frame> handle_get_build_version(const std::string& param, OperationT
     std::vector<Frame> frames;
     std::string error_msg;
 
+    if (!(operationType == OperationType::GET)) {
+        error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
+        frames.push_back(frame_build(OperationType::ERR, diagnostic_commands_group_id, build_version_command_id, error_msg));
+        return frames;
+    }
+
     if (!param.empty()) {
         error_msg = error_code_to_string(ErrorCode::PARAM_UNNECESSARY);
         frames.push_back(frame_build(OperationType::ERR, diagnostic_commands_group_id, build_version_command_id, error_msg));
         return frames;
     }
     
-    if (operationType == OperationType::GET) {
-        frames.push_back(frame_build(OperationType::VAL, diagnostic_commands_group_id, build_version_command_id, std::to_string(BUILD_NUMBER)));
-        return frames;
-    }
-
-    error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
-    frames.push_back(frame_build(OperationType::ERR, diagnostic_commands_group_id, build_version_command_id, error_msg));
+    frames.push_back(frame_build(OperationType::VAL, diagnostic_commands_group_id, build_version_command_id, std::to_string(BUILD_NUMBER)));
     return frames;
 }
 
@@ -115,20 +115,20 @@ std::vector<Frame> handle_get_uptime(const std::string& param, OperationType ope
     std::vector<Frame> frames;
     std::string error_msg;
 
+    if (!(operationType == OperationType::GET)) {
+        error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
+        frames.push_back(frame_build(OperationType::ERR, diagnostic_commands_group_id, uptime_command_id, error_msg));
+        return frames;
+    }
+
     if (!param.empty()) {
         error_msg = error_code_to_string(ErrorCode::PARAM_UNNECESSARY);
         frames.push_back(frame_build(OperationType::ERR, diagnostic_commands_group_id, uptime_command_id, error_msg));
         return frames;
     }
 
-    if (operationType == OperationType::GET) {
-        uint32_t uptime = to_ms_since_boot(get_absolute_time()) / 1000;
-        frames.push_back(frame_build(OperationType::VAL, diagnostic_commands_group_id, uptime_command_id, std::to_string(uptime)));
-        return frames;
-    }
-
-    error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
-    frames.push_back(frame_build(OperationType::ERR, diagnostic_commands_group_id, uptime_command_id, error_msg));
+    uint32_t uptime = to_ms_since_boot(get_absolute_time()) / 1000;
+    frames.push_back(frame_build(OperationType::VAL, diagnostic_commands_group_id, uptime_command_id, std::to_string(uptime)));
     return frames;
 }
 
@@ -147,21 +147,21 @@ std::vector<Frame> handle_get_power_mode(const std::string& param, OperationType
     std::vector<Frame> frames;
     std::string error_msg;
 
+    if (!(operationType == OperationType::GET)) {
+        error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
+        frames.push_back(frame_build(OperationType::ERR, diagnostic_commands_group_id, power_mode_command_id, error_msg));
+        return frames;
+    }
+
     if (!param.empty()) {
         error_msg = error_code_to_string(ErrorCode::PARAM_UNNECESSARY);
         frames.push_back(frame_build(OperationType::ERR, diagnostic_commands_group_id, power_mode_command_id, error_msg));
         return frames;
     }
 
-    if (operationType == OperationType::GET) {
-        SystemOperatingMode mode = SystemStateManager::get_instance().get_operating_mode();
-        std::string mode_str = (mode == SystemOperatingMode::BATTERY_POWERED) ? "BATTERY" : "USB";
-        frames.push_back(frame_build(OperationType::VAL, diagnostic_commands_group_id, power_mode_command_id, mode_str));
-        return frames;
-    }
-
-    error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
-    frames.push_back(frame_build(OperationType::ERR, diagnostic_commands_group_id, power_mode_command_id, error_msg));
+    SystemOperatingMode mode = SystemStateManager::get_instance().get_operating_mode();
+    std::string mode_str = (mode == SystemOperatingMode::BATTERY_POWERED) ? "BATTERY" : "USB";
+    frames.push_back(frame_build(OperationType::VAL, diagnostic_commands_group_id, power_mode_command_id, mode_str));
     return frames;
 }
 
@@ -191,7 +191,13 @@ std::vector<Frame> handle_verbosity(const std::string& param, OperationType oper
     std::vector<Frame> frames;
     std::string error_msg;
 
-    if (operationType == OperationType::GET && param.empty()) {
+    if (operationType == OperationType::GET) {
+        if (!param.empty()) {
+            error_msg = error_code_to_string(ErrorCode::PARAM_UNNECESSARY);
+            frames.push_back(frame_build(OperationType::ERR, diagnostic_commands_group_id, verbosity_command_id, error_msg));
+            return frames;
+        }
+        
         VerbosityLevel current_level = SystemStateManager::get_instance().get_uart_verbosity();
         uart_print("GET_VERBOSITY_ " + std::to_string(static_cast<int>(current_level)), 
                   VerbosityLevel::INFO);
@@ -230,6 +236,13 @@ std::vector<Frame> handle_verbosity(const std::string& param, OperationType oper
 std::vector<Frame> handle_enter_bootloader_mode(const std::string& param, OperationType operationType) {
     std::vector<Frame> frames;
     std::string error_msg;
+
+    if (operationType != OperationType::SET) {
+        error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
+        frames.push_back(frame_build(OperationType::ERR, diagnostic_commands_group_id, enter_bootloader_command_id, error_msg));
+        return frames;
+    }
+
     SystemOperatingMode mode = SystemStateManager::get_instance().get_operating_mode();
     if (mode == SystemOperatingMode::BATTERY_POWERED) {
         error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
@@ -239,12 +252,6 @@ std::vector<Frame> handle_enter_bootloader_mode(const std::string& param, Operat
     
     if (param != "USB") {
         error_msg = error_code_to_string(ErrorCode::PARAM_INVALID);
-        frames.push_back(frame_build(OperationType::ERR, diagnostic_commands_group_id, enter_bootloader_command_id, error_msg));
-        return frames;
-    }
-
-    if (operationType != OperationType::SET) {
-        error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
         frames.push_back(frame_build(OperationType::ERR, diagnostic_commands_group_id, enter_bootloader_command_id, error_msg));
         return frames;
     }

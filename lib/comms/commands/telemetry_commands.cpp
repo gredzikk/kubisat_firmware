@@ -34,12 +34,18 @@ std::vector<Frame> handle_get_last_telemetry_record([[maybe_unused]] const std::
     std::string error_msg;
 
     if (operationType != OperationType::GET) {
+        if (!(param.empty())) {
+            error_msg = error_code_to_string(ErrorCode::PARAM_UNNECESSARY);
+            frames.push_back(frame_build(OperationType::ERR, telemetry_commands_group, last_telemetry_command_id, error_msg));
+            return frames;
+        }
         error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
         frames.push_back(frame_build(OperationType::ERR, telemetry_commands_group, last_telemetry_command_id, error_msg));
         return frames;
     }
 
     std::string csv_data = TelemetryManager::get_instance().get_last_telemetry_record_csv();
+    sleep_ms(10);
 
     if (csv_data.empty()) {
         error_msg = "NO_DATA";
@@ -67,12 +73,18 @@ std::vector<Frame> handle_get_last_sensor_record([[maybe_unused]]const std::stri
     std::string error_msg;
 
     if (operationType != OperationType::GET) {
+        if (!(param.empty())) {
+            error_msg = error_code_to_string(ErrorCode::PARAM_UNNECESSARY);
+            frames.push_back(frame_build(OperationType::ERR, telemetry_commands_group, last_telemetry_command_id, error_msg));
+            return frames;
+        }
         error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
         frames.push_back(frame_build(OperationType::ERR, telemetry_commands_group, last_sensor_command_id, error_msg));
         return frames;
     }
 
     std::string csv_data = TelemetryManager::get_instance().get_last_sensor_record_csv();
+    sleep_ms(10);
 
     if (csv_data.empty()) {
         error_msg = "NO_DATA";
