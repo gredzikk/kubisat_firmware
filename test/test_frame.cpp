@@ -14,7 +14,18 @@ void test_frame_encode_decode() {
     original_frame.footer = FRAME_END;
 
     std::string encoded_frame = frame_encode(original_frame);
+    std::cout << "Encoded frame: " << encoded_frame << std::endl; // Add this line
     Frame decoded_frame = frame_decode(encoded_frame);
+
+    std::cout << "Decoded frame: header=" << decoded_frame.header
+              << ", direction=" << decoded_frame.direction
+              << ", operationType=" << static_cast<int>(decoded_frame.operationType)
+              << ", group=" << decoded_frame.group
+              << ", command=" << decoded_frame.command
+              << ", value=" << decoded_frame.value
+              << ", unit=" << decoded_frame.unit
+              << ", footer=" << decoded_frame.footer << std::endl; // Add this line
+
 
     TEST_ASSERT_EQUAL_STRING(original_frame.header.c_str(), decoded_frame.header.c_str());
     TEST_ASSERT_NOT_EQUAL(original_frame.direction, decoded_frame.direction);

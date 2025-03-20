@@ -59,58 +59,83 @@ std::string frame_encode(const Frame& frame) {
  * @ingroup FrameHandling
  */
 Frame frame_decode(const std::string& data) {
+    Frame frame;
+    frame.header = FRAME_BEGIN;
+    frame.footer = FRAME_END;
     try {
-        Frame frame;
         std::stringstream ss(data);
         std::string token;
 
-        std::getline(ss, token, DELIMITER);
-        if (token != FRAME_BEGIN)
+        uart_print("Decoding frame: " + data, VerbosityLevel::INFO);
+
+        // 1. Check Header
+        if (!std::getline(ss, token, DELIMITER) || token != FRAME_BEGIN) {
+            uart_print("Invalid frame header", VerbosityLevel::ERROR);
             throw std::runtime_error("Invalid frame header");
-        frame.header = token;
-
-        std::string decoded_frame_data;
-        while (std::getline(ss, token, DELIMITER)) {
-            if (token == FRAME_END) break; 
-            decoded_frame_data += token + DELIMITER;
-        }
-        if (!decoded_frame_data.empty()) {
-            decoded_frame_data.pop_back();
         }
 
-        std::stringstream frame_data_stream(decoded_frame_data);
+        std::getline(ss, token, DELIMITER);
+        uart_print("direction token: " + token, VerbosityLevel::INFO);
+        int direction = std::stoi(token);
+        if (direction != 0 && direction != 1) {
+            uart_print("Invalid direction value", VerbosityLevel::ERROR);
+            throw std::runtime_error("Invalid direction value");
+        }
+        frame.direction = direction;
 
-        std::getline(frame_data_stream, token, DELIMITER);
-        frame.direction = std::stoi(token);
-
-        std::getline(frame_data_stream, token, DELIMITER);
+        if (!std::getline(ss, token, DELIMITER)) {
+            uart_print("Missing operation type", VerbosityLevel::ERROR);
+            throw std::runtime_error("Missing operation type");
+        }
+        uart_print("operationType token: " + token, VerbosityLevel::INFO);
         frame.operationType = string_to_operation_type(token);
 
-        std::getline(frame_data_stream, token, DELIMITER);
-        frame.group = std::stoi(token);
+        if (!std::getline(ss, token, DELIMITER)) {
+            uart_print("Missing group", VerbosityLevel::ERROR);
+            throw std::runtime_error("Missing group");
+        }
+        uart_print("group token: " + token, VerbosityLevel::INFO);
+        int group = std::stoi(token);
+        if (group < 0 || group > 10) {
+            uart_print("Invalid group value", VerbosityLevel::ERROR);
+            throw std::runtime_error("Invalid group value");
+        }
+        frame.group = group;
 
-        std::getline(frame_data_stream, token, DELIMITER);
-        frame.command = std::stoi(token);
+        if (!std::getline(ss, token, DELIMITER)) {
+            uart_print("Missing command", VerbosityLevel::ERROR);
+            throw std::runtime_error("Missing command");
+        }
+        uart_print("command token: " + token, VerbosityLevel::INFO);
+        int command = std::stoi(token);
+        if (command < 0 || command > 10) {
+            uart_print("Invalid command value", VerbosityLevel::ERROR);
+            throw std::runtime_error("Invalid command value");
+        }
+        frame.command = command;
 
-        std::getline(frame_data_stream, token, DELIMITER);
-        frame.value = token;
+        if (!std::getline(ss, token, DELIMITER)) frame.value = "";
+        else frame.value = token;
+        uart_print("value token: " + token, VerbosityLevel::INFO);
 
-        std::getline(frame_data_stream, token, DELIMITER);
-        frame.unit = token;
-        
+        if (!std::getline(ss, token, DELIMITER)) frame.unit = "";
+        else frame.unit = token;
+        uart_print("unit token: " + token, VerbosityLevel::INFO);
+
         std::getline(ss, token, DELIMITER);
-        if (token != FRAME_END)
+        if (token != FRAME_END) {
+            uart_print("Missing or invalid frame footer", VerbosityLevel::ERROR);
             throw std::runtime_error("Missing or invalid frame footer");
+        }
         frame.footer = token;
-        
+
         return frame;
+
     } catch (const std::exception& e) {
-        uart_print("Frame error: " + std::string(e.what()), VerbosityLevel::ERROR);
-        Frame error_frame = frame_build(OperationType::ERR, 0, 0, e.what()); 
-        return error_frame;
+        uart_print("Frame decode error: " + std::string(e.what()), VerbosityLevel::ERROR);
+        return frame_build(OperationType::ERR, 0, 0, e.what());
     }
 }
-
 
 /**
  * @brief Executes a command based on the command key and the parameter.
