@@ -147,12 +147,12 @@ void TelemetryManager::emit_power_events(float battery_voltage, float charge_cur
     if (battery_voltage < PowerManager::BATTERY_LOW_THRESHOLD && !battery_low) {
         EventEmitter::emit(EventGroup::POWER, PowerEvent::BATTERY_LOW);
         battery_low = true;
-        battery_full = false; // Cancel overcharge event
+        battery_full = false; 
     }
     else if (battery_voltage > PowerManager::BATTERY_FULL_THRESHOLD && !battery_full) {
         EventEmitter::emit(EventGroup::POWER, PowerEvent::BATTERY_FULL);
         battery_full = true;
-        battery_low = false; // Cancel low battery event
+        battery_low = false; 
     }
     else if (battery_voltage > PowerManager::BATTERY_LOW_THRESHOLD && battery_low) {
         EventEmitter::emit(EventGroup::POWER, PowerEvent::BATTERY_NORMAL);
@@ -236,14 +236,11 @@ bool TelemetryManager::collect_telemetry() {
     record.timestamp = timestamp;
     record.build_version = std::to_string(BUILD_NUMBER);
 
-    // Collect power telemetry and emit events
     collect_power_telemetry(record);
     emit_power_events(record.battery_voltage, record.charge_current_usb, record.charge_current_solar);
 
-    // Collect GPS telemetry
     collect_gps_telemetry(record);
 
-    // Collect sensor telemetry
     SensorDataRecord sensor_record;
     sensor_record.timestamp = timestamp;
     collect_sensor_telemetry(sensor_record);
