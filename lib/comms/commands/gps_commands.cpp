@@ -6,8 +6,6 @@
 static constexpr uint8_t gps_commands_group_id = 7;
 static constexpr uint8_t power_status_command_id = 1;
 static constexpr uint8_t passthrough_command_id = 2;
-static constexpr uint8_t rmc_data_command_id = 3;
-static constexpr uint8_t gga_data_command_id = 4;
 
 /**
  * @defgroup GPSCommands GPS Commands

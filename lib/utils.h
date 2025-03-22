@@ -43,7 +43,7 @@ enum class VerbosityLevel : uint8_t {
  * @param uart The UART port to use
  */
 void uart_print(const std::string& msg, 
-                VerbosityLevel level = VerbosityLevel::INFO, 
+                VerbosityLevel level, 
                 uart_inst_t* uart = DEBUG_UART_PORT);
 
 

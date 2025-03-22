@@ -66,66 +66,51 @@ Frame frame_decode(const std::string& data) {
         std::stringstream ss(data);
         std::string token;
 
-        uart_print("Decoding frame: " + data, VerbosityLevel::INFO);
+        uart_print("Decoding frame: " + data, VerbosityLevel::WARNING);
 
-        // 1. Check Header
         if (!std::getline(ss, token, DELIMITER) || token != FRAME_BEGIN) {
-            uart_print("Invalid frame header", VerbosityLevel::ERROR);
-            throw std::runtime_error("Invalid frame header");
+            throw std::runtime_error("DECODE_INVALID_HEADER");
         }
 
         std::getline(ss, token, DELIMITER);
-        uart_print("direction token: " + token, VerbosityLevel::INFO);
         int direction = std::stoi(token);
         if (direction != 0 && direction != 1) {
-            uart_print("Invalid direction value", VerbosityLevel::ERROR);
-            throw std::runtime_error("Invalid direction value");
+            throw std::runtime_error("DECODE_INVALID_DIR");
         }
         frame.direction = direction;
 
         if (!std::getline(ss, token, DELIMITER)) {
-            uart_print("Missing operation type", VerbosityLevel::ERROR);
-            throw std::runtime_error("Missing operation type");
+            throw std::runtime_error("DECODE_MISSING_OP");
         }
-        uart_print("operationType token: " + token, VerbosityLevel::INFO);
         frame.operationType = string_to_operation_type(token);
 
         if (!std::getline(ss, token, DELIMITER)) {
-            uart_print("Missing group", VerbosityLevel::ERROR);
-            throw std::runtime_error("Missing group");
+            throw std::runtime_error("DECODE_MISSING_GROUP");
         }
-        uart_print("group token: " + token, VerbosityLevel::INFO);
         int group = std::stoi(token);
         if (group < 0 || group > 10) {
-            uart_print("Invalid group value", VerbosityLevel::ERROR);
-            throw std::runtime_error("Invalid group value");
+            throw std::runtime_error("DECODE_INVALID_GROUP");
         }
         frame.group = group;
 
         if (!std::getline(ss, token, DELIMITER)) {
-            uart_print("Missing command", VerbosityLevel::ERROR);
-            throw std::runtime_error("Missing command");
+            throw std::runtime_error("DECODE_MISSING_CMD");
         }
-        uart_print("command token: " + token, VerbosityLevel::INFO);
         int command = std::stoi(token);
         if (command < 0 || command > 10) {
-            uart_print("Invalid command value", VerbosityLevel::ERROR);
-            throw std::runtime_error("Invalid command value");
+            throw std::runtime_error("DECODE_INVALID_CMD");
         }
         frame.command = command;
 
         if (!std::getline(ss, token, DELIMITER)) frame.value = "";
         else frame.value = token;
-        uart_print("value token: " + token, VerbosityLevel::INFO);
 
         if (!std::getline(ss, token, DELIMITER)) frame.unit = "";
         else frame.unit = token;
-        uart_print("unit token: " + token, VerbosityLevel::INFO);
 
         std::getline(ss, token, DELIMITER);
         if (token != FRAME_END) {
-            uart_print("Missing or invalid frame footer", VerbosityLevel::ERROR);
-            throw std::runtime_error("Missing or invalid frame footer");
+            throw std::runtime_error("DECODE_INVALID_FOOTER");
         }
         frame.footer = token;
 
@@ -146,7 +131,6 @@ Frame frame_decode(const std::string& data) {
 void frame_process(const std::string& data, Interface interface) {
     gpio_put(PICO_DEFAULT_LED_PIN, false);
 
-    uart_print("Processing frame: " + data, VerbosityLevel::INFO);
     try {
         Frame frame = frame_decode(data);
         uint32_t command_key = (static_cast<uint32_t>(frame.group) << 8) | static_cast<uint32_t>(frame.command);

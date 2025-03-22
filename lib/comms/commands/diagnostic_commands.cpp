@@ -199,25 +199,32 @@ std::vector<Frame> handle_verbosity(const std::string& param, OperationType oper
         }
         
         VerbosityLevel current_level = SystemStateManager::get_instance().get_uart_verbosity();
-        uart_print("GET_VERBOSITY_ " + std::to_string(static_cast<int>(current_level)), 
+        uart_print("GET_VERBOSITY_" + std::to_string(static_cast<int>(current_level)), 
                   VerbosityLevel::INFO);
         frames.push_back(frame_build(OperationType::VAL, diagnostic_commands_group_id, verbosity_command_id, 
                         std::to_string(static_cast<int>(current_level))));
         return frames;
     }
-
-    try {
-        int level = std::stoi(param);
-        if (level < 0 || level > 4) {
-            error_msg = error_code_to_string(ErrorCode::PARAM_INVALID);
+    else if (operationType == OperationType::SET) {
+        try {
+            int level = std::stoi(param);
+            if (level < 0 || level > 4) {
+                error_msg = error_code_to_string(ErrorCode::PARAM_INVALID);
+                frames.push_back(frame_build(OperationType::ERR, diagnostic_commands_group_id, verbosity_command_id, error_msg));
+                return frames;
+            }
+            SystemStateManager::get_instance().set_uart_verbosity(static_cast<VerbosityLevel>(level));
+            uart_print("SET_VERBOSITY_" + std::to_string(level), VerbosityLevel::WARNING); 
+            frames.push_back(frame_build(OperationType::RES, diagnostic_commands_group_id, verbosity_command_id, "LEVEL SET"));
+            return frames;
+        } catch (...) {
+            error_msg = error_code_to_string(ErrorCode::INVALID_FORMAT);
             frames.push_back(frame_build(OperationType::ERR, diagnostic_commands_group_id, verbosity_command_id, error_msg));
             return frames;
         }
-        SystemStateManager::get_instance().set_uart_verbosity(static_cast<VerbosityLevel>(level));
-        frames.push_back(frame_build(OperationType::RES, diagnostic_commands_group_id, verbosity_command_id, "LEVEL SET"));
-        return frames;
-    } catch (...) {
-        error_msg = error_code_to_string(ErrorCode::INVALID_FORMAT);
+    }
+    else {
+        error_msg = error_code_to_string(ErrorCode::INVALID_OPERATION);
         frames.push_back(frame_build(OperationType::ERR, diagnostic_commands_group_id, verbosity_command_id, error_msg));
         return frames;
     }

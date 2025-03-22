@@ -17,7 +17,6 @@ bool initialize_radio() {
     } else {
         uart_print("LoRa initialized with frequency " + std::to_string(frequency), VerbosityLevel::INFO);
         
-        // Set up TxDone callback to automatically return to receive mode
         LoRa.onTxDone(lora_tx_done_callback);
         
         LoRa.receive(0);

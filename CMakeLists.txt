@@ -45,7 +45,6 @@ include(pico_sdk_import.cmake)
 project(main C CXX ASM)
 pico_sdk_init()
 
-# Library dependencies
 add_subdirectory(lib/sensors)
 add_subdirectory(lib/clock)
 add_subdirectory(lib/powerman)
@@ -55,10 +54,6 @@ add_subdirectory(lib/storage/pico-vfs)
 add_subdirectory(lib/eventman)
 add_subdirectory(lib/telemetry)
 
-add_subdirectory(test)
-
-
-# Main executable sources
 set(MAIN_SOURCES
     main.cpp
     lib/sensors/ISensor.cpp
@@ -71,13 +66,11 @@ set(GPS_SOURCES
     lib/location/gps_collector.cpp
 )
 
-# Main target
 add_executable(main
     ${MAIN_SOURCES}
     ${GPS_SOURCES}
 )
 
-# Compiler flags
 target_compile_options(main PRIVATE
     -Wall
     -Wextra
@@ -86,10 +79,6 @@ target_compile_options(main PRIVATE
     -Wunreachable-code
 )
 
-add_compile_options(--coverage -O0 -g)
-add_link_options(--coverage)
-
-# Include directories
 target_include_directories(main PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}
@@ -105,12 +94,10 @@ target_include_directories(main PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/lib/storage/pico-vfs/vendor/littlefs
 )
 
-# Dependencies and configuration
 pico_enable_filesystem(${CMAKE_PROJECT_NAME} FS_INIT lib/storage/storage.cpp)
 pico_enable_stdio_uart(main 1)
 pico_enable_stdio_usb(main 0)
 
-# Link libraries
 target_link_libraries(main PRIVATE
     pico_stdlib
     hardware_spi
@@ -159,16 +146,6 @@ add_custom_command(
         "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.uf2"
         "${CMAKE_CURRENT_SOURCE_DIR}/release/${PROJECT_NAME}_v${CURRENT_BUILD_NUMBER}.uf2"
     COMMENT "Copying ${PROJECT_NAME}.uf2 to release directory with build number"
-    VERBATIM
-)
-
-add_custom_target(build_tests DEPENDS test_runner)
-add_custom_command(
-    TARGET build_tests POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "${CMAKE_BINARY_DIR}/test/test_runner.uf2"
-        "${CMAKE_CURRENT_SOURCE_DIR}/release/test_runner_v${CURRENT_BUILD_NUMBER}.uf2"
-    COMMENT "Copying test_runner.uf2 to release directory"
     VERBATIM
 )
 
