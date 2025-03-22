@@ -206,9 +206,8 @@ time_t DS3231::get_local_time() {
 int DS3231::i2c_read_reg(uint8_t reg_addr, size_t length, uint8_t *data) {
     if (!length)
         return -1;
+    std::string status;
 
-    std::string status = "Reading register " + std::to_string(reg_addr) + " from DS3231";
-    uart_print(status, VerbosityLevel::DEBUG);
     recursive_mutex_enter_blocking(&clock_mutex_);
     uint8_t reg = reg_addr;
     int write_result = i2c_write_blocking(i2c, ds3231_addr, &reg, 1, true);

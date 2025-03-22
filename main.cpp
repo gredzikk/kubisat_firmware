@@ -17,7 +17,6 @@ void core1_entry() {
         uint32_t currentTime = to_ms_since_boot(get_absolute_time());
                 
         if (TelemetryManager::get_instance().is_telemetry_collection_time(currentTime, last_telemetry_time)) {
-            uart_print("Collecting telemetry...", VerbosityLevel::DEBUG);
             TelemetryManager::get_instance().collect_telemetry();
             telemetry_collection_counter++;
             

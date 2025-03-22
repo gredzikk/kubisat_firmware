@@ -96,6 +96,19 @@ float PowerManager::get_voltage_5v() {
 }
 
 /**
+ * @brief Gets the solar voltage.
+ * @return The solar voltage in volts.
+ * @ingroup PowerManagement
+ */
+float PowerManager::get_voltage_solar() {
+    if (!initialized_) return 0.0f;
+    recursive_mutex_enter_blocking(&powerman_mutex_);
+    float voltage = ina3221_.get_voltage(INA3221_CH3);
+    recursive_mutex_exit(&powerman_mutex_);
+    return voltage;
+}
+
+/**
  * @brief Gets the USB charging current.
  * @return The USB charging current in milliamperes.
  * @ingroup PowerManagement

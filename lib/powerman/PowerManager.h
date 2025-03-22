@@ -92,6 +92,12 @@ public:
     float get_voltage_5v();
 
     /**
+     * @brief Gets solar voltage.
+     * @return The solar voltage in volts.
+     */
+    float get_voltage_solar();
+
+    /**
      * @brief Configures the INA3221.
      * @param[in] config A map of configuration parameters.
      */

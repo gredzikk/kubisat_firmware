@@ -111,6 +111,8 @@ void TelemetryManager::collect_power_telemetry(TelemetryRecord& record) {
     record.charge_current_usb = PowerManager::get_instance().get_current_charge_usb();
     record.charge_current_solar = PowerManager::get_instance().get_current_charge_solar();
     record.discharge_current = PowerManager::get_instance().get_current_draw();
+    float solar_voltage = PowerManager::get_instance().get_voltage_solar(); 
+    uart_print("Solar voltage: " + std::to_string(solar_voltage), VerbosityLevel::DEBUG);
 }
 
 /**
