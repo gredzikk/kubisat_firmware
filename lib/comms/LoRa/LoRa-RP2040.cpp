@@ -138,8 +138,14 @@ int LoRaClass::begin(long frequency)
   // set auto AGC
   writeRegister(REG_MODEM_CONFIG_3, 0x04);
 
-  // set output power to 17 dBm
-  setTxPower(17);
+  setSpreadingFactor(8);       // SF12
+  setSignalBandwidth(125E3);    // 125 kHz
+  setCodingRate4(8);           // Coding Rate 4/8
+  setTxPower(17); // +20 dBm (if supported)
+  setPreambleLength(12);        // Preamble length of 12
+  setSyncWord(0x12);            // Custom sync word
+  enableCrc();                 // Enable CRC
+  explicitHeaderMode();        // Explicit Header Mode
 
   // put in standby mode
   idle();
