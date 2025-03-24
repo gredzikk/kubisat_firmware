@@ -162,35 +162,23 @@ float PowerManager::get_current_charge_total() {
 
 /**
  * @brief Configures the INA3221.
- * @param[in] config A map of configuration parameters.
+ * @param[in] op_mode Operating mode
+ * @param[in] avg_mode Averaging mode.
  * @ingroup PowerManagement
  */
-void PowerManager::configure(const std::map<std::string, std::string>& config) {
+void PowerManager::configure(ina3221_op_mode_t op_mode, ina3221_avg_mode_t avg_mode) {
     if (!initialized_) return;
+
     recursive_mutex_enter_blocking(&powerman_mutex_);
 
-    if (config.find("operating_mode") != config.end()) {
-        if (config.at("operating_mode") == "continuous") {
-            ina3221_.set_mode_continuous();
-        }
+    if (op_mode == CONTINUOUS_MODE) {
+        ina3221_.set_mode_continuous();
+    } else {
+        ina3221_.set_mode_triggered();
     }
 
-    if (config.find("averaging_mode") != config.end()) {
-        int avg_mode = std::stoi(config.at("averaging_mode"));
-        switch(avg_mode) {
-            case 1:
-                ina3221_.set_averaging_mode(INA3221_REG_CONF_AVG_1);
-                break;
-            case 4:
-                ina3221_.set_averaging_mode(INA3221_REG_CONF_AVG_4);
-                break;
-            case 16:
-                ina3221_.set_averaging_mode(INA3221_REG_CONF_AVG_16);
-                break;
-            default:
-                ina3221_.set_averaging_mode(INA3221_REG_CONF_AVG_16);
-        }
-    }
+    ina3221_.set_averaging_mode(avg_mode);
+
     recursive_mutex_exit(&powerman_mutex_);
 }
 

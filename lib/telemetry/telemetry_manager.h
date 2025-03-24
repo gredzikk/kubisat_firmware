@@ -77,25 +77,25 @@ struct TelemetryRecord {
     std::string to_csv() const {
         std::stringstream ss;
         ss << timestamp << "," 
-           << build_version << ","
-           << std::fixed << std::setprecision(3)
-           << battery_voltage << ","
-           << system_voltage << ","
-           << charge_current_usb << ","
-           << charge_current_solar << ","
-           << discharge_current << ","
+            << build_version << ","
+            << std::fixed << std::setprecision(3)
+            << battery_voltage << ","
+            << system_voltage << ","
+            << charge_current_usb << ","
+            << charge_current_solar << ","
+            << discharge_current << ","
 
            // GPS RMC data
-           << time << ","
-           << latitude << "," << lat_dir << ","
-           << longitude << "," << lon_dir << ","
-           << speed << ","
-           << course << ","
-           << date << ","
-           // GPS GGA data
-           << fix_quality << ","
-           << satellites << ","
-           << altitude;
+            << time << ","
+            << latitude << "," << lat_dir << ","
+            << longitude << "," << lon_dir << ","
+            << speed << ","
+            << course << ","
+            << date << ","
+            // GPS GGA data
+            << fix_quality << ","
+            << satellites << ","
+            << altitude;
         return ss.str();
     }
 };
@@ -123,11 +123,11 @@ struct SensorDataRecord {
     std::string to_csv() const {
         std::stringstream ss;
         ss << timestamp << "," 
-           << std::fixed << std::setprecision(3)
-           << temperature << ","
-           << pressure << ","
-           << humidity << ","
-           << light;
+            << std::fixed << std::setprecision(3)
+            << temperature << ","
+            << pressure << ","
+            << humidity << ","
+            << light;
         return ss.str();
     }
 };

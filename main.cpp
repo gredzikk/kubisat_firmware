@@ -171,11 +171,7 @@ int main()
 
     bool power_manager_init_status = PowerManager::get_instance().initialize();
     if (power_manager_init_status) {
-        std::map<std::string, std::string> power_config = {
-            {"operating_mode", "continuous"},
-            {"averaging_mode", "16"},
-        };
-        PowerManager::get_instance().configure(power_config);
+        PowerManager::get_instance().configure(CONTINUOUS_MODE, INA3221_REG_CONF_AVG_16);
     } else {
         uart_print("Power manager init error", VerbosityLevel::ERROR);
     }

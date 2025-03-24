@@ -65,7 +65,7 @@ bool TelemetryManager::init() {
         telemetry_file = fopen(TELEMETRY_CSV_PATH, "w");
         if (telemetry_file) {
             fprintf(telemetry_file, "timestamp,build,battery_v,system_v,usb_ma,solar_ma,discharge_ma,"
-                "gps_time,latitude,lat_dir,longitude,lon_dir,speed_knots,course_deg,date,"
+                "gps_time,latitude,lat_dir,longitude,lon_dir,speed_mps,course_deg,date,"
                 "fix_quality,satellites,altitude_m\n");
             fclose(telemetry_file);
             uart_print("Created new telemetry log", VerbosityLevel::INFO);
@@ -181,7 +181,8 @@ void TelemetryManager::collect_gps_telemetry(TelemetryRecord& record) {
         record.lat_dir = rmc_tokens[4];
         record.longitude = rmc_tokens[5];
         record.lon_dir = rmc_tokens[6];
-        record.speed = rmc_tokens[7];
+        std::string knots = rmc_tokens[7];
+        record.speed = knots / 1.9438444924406;  // Convert knots to m/s
         record.course = rmc_tokens[8];
         record.date = rmc_tokens[9];
     }

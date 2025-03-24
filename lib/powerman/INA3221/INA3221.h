@@ -69,6 +69,15 @@ typedef enum {
     INA3221_REG_CONF_AVG_1024
 } ina3221_avg_mode_t;
 
+`/**
+ * @brief Operating mode settings
+ * @details Continuous or triggered (single-shot) mode
+ */
+typedef enum {
+    CONTINUOUS_MODE,
+    TRIGGERED_MODE
+} ina3221_op_mode_t;
+
 /**
  * @brief INA3221 Triple-Channel Power Monitor driver class
  * @details Provides functionality for voltage, current, and power monitoring

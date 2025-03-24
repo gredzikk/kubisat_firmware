@@ -86,7 +86,6 @@ void collect_gps_data() {
                 }
             }
         } else {
-            // Append to buffer
             if (raw_data_index < MAX_RAW_DATA_LENGTH - 1) {
                 raw_data_buffer[raw_data_index++] = c;
             } else {

@@ -101,7 +101,7 @@ public:
      * @brief Configures the INA3221.
      * @param[in] config A map of configuration parameters.
      */
-    void configure(const std::map<std::string, std::string>& config);
+    void configure(ina3221_op_mode_t op_mode, ina3221_avg_mode_t avg_mode);
 
 
     /** @brief Solar current threshold in milliamperes. */
