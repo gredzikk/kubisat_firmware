@@ -173,43 +173,46 @@ void TelemetryManager::emit_power_events(float battery_voltage, float charge_cur
  */
 void TelemetryManager::collect_gps_telemetry(TelemetryRecord& record) {
     auto& nmea_data = NMEAData::get_instance();
-    // Get GPS RMC data
+    
     std::vector<std::string> rmc_tokens = nmea_data.get_rmc_tokens();
-    if (rmc_tokens.size() >= 12) {  // RMC has at least 12 fields when complete
-        record.time = rmc_tokens[1].substr(0, 6);  // Only keep HHMMSS
-        record.latitude = rmc_tokens[3];
-        record.lat_dir = rmc_tokens[4];
-        record.longitude = rmc_tokens[5];
-        record.lon_dir = rmc_tokens[6];
-        std::string knots = rmc_tokens[7];
-        record.speed = knots / 1.9438444924406;  // Convert knots to m/s
-        record.course = rmc_tokens[8];
-        record.date = rmc_tokens[9];
-    }
-    else {
-        // Fill with defaults if no GPS data
-        record.time = "";
-        record.latitude = "";
-        record.lat_dir = "";
-        record.longitude = "";
-        record.lon_dir = "";
-        record.speed = "";
-        record.course = "";
-        record.date = "";
+    if (rmc_tokens.size() >= 12) {
+        record.time = (rmc_tokens.size() > 1 && !rmc_tokens[1].empty()) ? rmc_tokens[1].substr(0, 6) : "0";  // Only keep HHMMSS
+        record.latitude = (rmc_tokens.size() > 3 && !rmc_tokens[3].empty()) ? rmc_tokens[3] : "0";
+        record.lat_dir = (rmc_tokens.size() > 4 && !rmc_tokens[4].empty()) ? rmc_tokens[4] : "N";
+        record.longitude = (rmc_tokens.size() > 5 && !rmc_tokens[5].empty()) ? rmc_tokens[5] : "0";
+        record.lon_dir = (rmc_tokens.size() > 6 && !rmc_tokens[6].empty()) ? rmc_tokens[6] : "E";
+        
+        std::string knots = (rmc_tokens.size() > 7 && !rmc_tokens[7].empty()) ? rmc_tokens[7] : "0";
+        try {
+            float speed_knots = std::stof(knots);
+            float speed_ms = speed_knots * 0.514444; // Convert knots to m/s
+            record.speed = std::to_string(speed_ms);
+        } catch (const std::exception&) {
+            record.speed = "0";
+        }
+        
+        record.course = (rmc_tokens.size() > 8 && !rmc_tokens[8].empty()) ? rmc_tokens[8] : "0";
+        record.date = (rmc_tokens.size() > 9 && !rmc_tokens[9].empty()) ? rmc_tokens[9] : "0";
+    } else {
+        record.time = "0";
+        record.latitude = "0";
+        record.lat_dir = "N";
+        record.longitude = "0";
+        record.lon_dir = "E";
+        record.speed = "0";
+        record.course = "0";
+        record.date = "0";
     }
 
-    // Get GPS GGA data
     std::vector<std::string> gga_tokens = nmea_data.get_gga_tokens();
-    if (gga_tokens.size() >= 15) {  // GGA has 15 fields when complete
-        record.fix_quality = gga_tokens[6];
-        record.satellites = gga_tokens[7];
-        record.altitude = gga_tokens[9];
-    }
-    else {
-        // Fill with defaults if no GPS data
-        record.fix_quality = "";
-        record.satellites = "";
-        record.altitude = "";
+    if (gga_tokens.size() >= 15) {
+        record.fix_quality = (gga_tokens.size() > 6 && !gga_tokens[6].empty()) ? gga_tokens[6] : "0";
+        record.satellites = (gga_tokens.size() > 7 && !gga_tokens[7].empty()) ? gga_tokens[7] : "0";
+        record.altitude = (gga_tokens.size() > 9 && !gga_tokens[9].empty()) ? gga_tokens[9] : "0";
+    } else {
+        record.fix_quality = "0";
+        record.satellites = "0";
+        record.altitude = "0";
     }
 }
 

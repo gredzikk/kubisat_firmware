@@ -69,7 +69,7 @@ typedef enum {
     INA3221_REG_CONF_AVG_1024
 } ina3221_avg_mode_t;
 
-`/**
+/**
  * @brief Operating mode settings
  * @details Continuous or triggered (single-shot) mode
  */
