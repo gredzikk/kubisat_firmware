@@ -248,16 +248,6 @@ public:
 
     static constexpr int TELEMETRY_BUFFER_SIZE = 20;
 
-    TelemetryRecord& get_last_telemetry_record() {
-        size_t last_record_index = (telemetry_buffer_write_index + TELEMETRY_BUFFER_SIZE - 1) % TELEMETRY_BUFFER_SIZE;
-        return telemetry_buffer[last_record_index];
-    }
-
-    SensorDataRecord& get_last_sensor_record() {
-        size_t last_record_index = (telemetry_buffer_write_index + TELEMETRY_BUFFER_SIZE - 1) % TELEMETRY_BUFFER_SIZE;
-        return sensor_data_buffer[last_record_index];
-    }
-
     size_t get_telemetry_buffer_count() const { return telemetry_buffer_count; }
     size_t get_telemetry_buffer_write_index() const { return telemetry_buffer_write_index; }
 
@@ -292,6 +282,12 @@ private:
      * @brief Circular buffer for sensor data records
      */
     std::array<SensorDataRecord, TELEMETRY_BUFFER_SIZE> sensor_data_buffer;
+
+    /**
+     * @brief Last record copies for retrieval
+     */
+    TelemetryRecord last_telemetry_record_copy;
+    SensorDataRecord last_sensor_record_copy;
 
     /**
      * @brief Mutex for thread-safe access to the telemetry buffer

@@ -260,6 +260,9 @@ bool TelemetryManager::collect_telemetry() {
         telemetry_buffer_count++;
     }
 
+    last_telemetry_record_copy = record;
+    last_sensor_record_copy = sensor_record;
+
     mutex_exit(&telemetry_mutex);
 
     uart_print("Telemetry collected", VerbosityLevel::DEBUG);
@@ -361,18 +364,7 @@ bool TelemetryManager::is_telemetry_flush_time(uint32_t& collection_counter) {
  * @ingroup TelemetryManager
  */
 std::string TelemetryManager::get_last_telemetry_record_csv() {
-    mutex_enter_blocking(&telemetry_mutex);
-
-    if (telemetry_buffer_count == 0) {
-        mutex_exit(&telemetry_mutex);
-        return "";
-    }
-
-    TelemetryRecord last_record = get_last_telemetry_record();
-
-    mutex_exit(&telemetry_mutex);
-
-    return last_record.to_csv();
+    return last_telemetry_record_copy.to_csv();
 }
 
 /**
@@ -381,16 +373,5 @@ std::string TelemetryManager::get_last_telemetry_record_csv() {
  * @ingroup TelemetryManager
  */
 std::string TelemetryManager::get_last_sensor_record_csv() {
-    mutex_enter_blocking(&telemetry_mutex);
-
-    if (telemetry_buffer_count == 0) {
-        mutex_exit(&telemetry_mutex);
-        return "";
-    }
-
-    SensorDataRecord last_record = get_last_sensor_record();
-
-    mutex_exit(&telemetry_mutex);
-
-    return last_record.to_csv();
+    return last_sensor_record_copy.to_csv();
 }
