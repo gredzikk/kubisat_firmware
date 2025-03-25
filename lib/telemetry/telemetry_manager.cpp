@@ -111,8 +111,6 @@ void TelemetryManager::collect_power_telemetry(TelemetryRecord& record) {
     record.charge_current_usb = PowerManager::get_instance().get_current_charge_usb();
     record.charge_current_solar = PowerManager::get_instance().get_current_charge_solar();
     record.discharge_current = PowerManager::get_instance().get_current_draw();
-    float solar_voltage = PowerManager::get_instance().get_voltage_solar(); 
-    uart_print("Solar voltage: " + std::to_string(solar_voltage), VerbosityLevel::DEBUG);
 }
 
 /**
@@ -122,11 +120,12 @@ void TelemetryManager::collect_power_telemetry(TelemetryRecord& record) {
  * @param[in] charge_current_solar The current solar charging current.
  * @ingroup TelemetryManager
  */
-void TelemetryManager::emit_power_events(float battery_voltage, float charge_current_usb, float charge_current_solar) {
+void TelemetryManager::emit_power_events(float battery_voltage, float charge_current_usb, float charge_current_solar, float discharge_current) {
     static bool usb_charging_active = false;
     static bool solar_charging_active = false;
     static bool battery_low = false;
     static bool battery_full = false;
+    static bool discharge_active = true;
 
     if (charge_current_usb > PowerManager::USB_CURRENT_THRESHOLD && !usb_charging_active) {
         EventEmitter::emit(EventGroup::POWER, PowerEvent::USB_CONNECTED);
@@ -163,6 +162,15 @@ void TelemetryManager::emit_power_events(float battery_voltage, float charge_cur
     else if (battery_voltage < PowerManager::BATTERY_FULL_THRESHOLD && battery_full) {
         EventEmitter::emit(EventGroup::POWER, PowerEvent::BATTERY_NORMAL);
         battery_full = false;
+    }
+
+    if (charge_current_solar + charge_current_usb > discharge_current && !discharge_active) {
+        EventEmitter::emit(EventGroup::POWER, PowerEvent::CHARGING);
+        discharge_active = true;
+    }
+    else if (charge_current_solar + charge_current_usb < discharge_current && discharge_active) {
+        EventEmitter::emit(EventGroup::POWER, PowerEvent::DISCHARGING);
+        discharge_active = false;
     }
 }
 
@@ -243,7 +251,7 @@ bool TelemetryManager::collect_telemetry() {
     record.build_version = std::to_string(BUILD_NUMBER);
 
     collect_power_telemetry(record);
-    emit_power_events(record.battery_voltage, record.charge_current_usb, record.charge_current_solar);
+    emit_power_events(record.battery_voltage, record.charge_current_usb, record.charge_current_solar, record.discharge_current);                                            
 
     collect_gps_telemetry(record);
 

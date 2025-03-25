@@ -100,7 +100,11 @@ enum class PowerEvent : uint8_t {
     /** @brief USB connected event. */
     USB_CONNECTED = 0x07,
     /** @brief USB disconnected event. */
-    USB_DISCONNECTED = 0x08
+    USB_DISCONNECTED = 0x08,
+    /** @brief Current balance negative */
+    DISCHARGING = 0x09,
+    /** @brief Current balance positive */
+    CHARGING = 0x0A,
 };
 
 

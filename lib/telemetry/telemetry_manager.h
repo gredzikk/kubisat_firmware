@@ -182,9 +182,10 @@ public:
      * @param[in] battery_voltage The current battery voltage.
      * @param[in] charge_current_usb The current USB charging current.
      * @param[in] charge_current_solar The current solar charging current.
+     * @param[in] discharge_current The current battery discharge current.
      * @ingroup TelemetryManager
      */
-    void emit_power_events(float battery_voltage, float charge_current_usb, float charge_current_solar);
+    void emit_power_events(float battery_voltage, float charge_current_usb, float charge_current_solar, float discharge_current);
 
     /**
      * @brief Collects GPS telemetry data.
